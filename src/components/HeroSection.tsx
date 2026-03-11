@@ -23,10 +23,10 @@ const HeroSection = ({ onCtaClick }: HeroSectionProps) => {
       <div className="relative z-10 container mx-auto text-center">
         <img src={logo} alt="Luxury Chocolate" className="h-14 w-auto mx-auto mb-10 invert brightness-200" />
         <h1 className="text-4xl sm:text-5xl lg:text-6xl text-primary-foreground mb-4">
-          Šokolāde ar Jūsu logo
+          Ekskluzīvas šokolādes<br />ar Jūsu logo
         </h1>
         <p className="text-lg text-primary-foreground/80 mb-10 max-w-lg mx-auto">
-          Personalizētas korporatīvās dāvanas klientiem, partneriem un pasākumiem.
+          Premium korporatīvās dāvanas klientiem un partneriem.
         </p>
         <ul className="flex flex-wrap justify-center gap-x-6 gap-y-2 mb-10 text-sm text-primary-foreground/90">
           <li className="flex items-center gap-1.5">✔ Premium Beļģu šokolāde</li>
