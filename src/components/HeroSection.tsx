@@ -46,18 +46,15 @@ const HeroSection = ({ onCtaClick }: HeroSectionProps) => {
           Saņemt piedāvājumu
         </button>
 
-        <div className="mt-8">
-          <h2 className="sr-only">
-            Uzticības punkti zem pogas — Kāpēc izvēlēties Luxury Chocolate
-          </h2>
-          <ul role="list" aria-label="Uzticības punkti zem pogas" className="flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm sm:text-base text-primary-foreground/90">
+        <div className="mt-8" role="region" aria-label="Uzticības punkti zem pogas">
+          <p className="text-[11px] uppercase tracking-[0.2em] text-primary-foreground/50 mb-3">
+            Kāpēc izvēlēties mūs
+          </p>
+          <ul role="list" className="flex flex-col sm:flex-row flex-wrap justify-center gap-x-8 gap-y-1.5 text-sm sm:text-base text-primary-foreground/90">
             <li className="flex items-center gap-2">✔ Premium Beļģu šokolāde</li>
             <li className="flex items-center gap-2">✔ Personalizēta apdruka ar Jūsu logo</li>
             <li className="flex items-center gap-2">✔ Minimālais pasūtījums no 50 gab.</li>
           </ul>
-          <p className="sr-only">
-            3 uzticības punkti zem pogas: Premium Beļģu šokolāde, Personalizēta apdruka ar Jūsu logo, Minimālais pasūtījums no 50 gab.
-          </p>
         </div>
       </div>
     </section>
