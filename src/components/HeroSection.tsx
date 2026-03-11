@@ -21,7 +21,7 @@ const HeroSection = ({ onCtaClick }: HeroSectionProps) => {
       <div className="absolute inset-0 bg-foreground/60" />
       {/* Content */}
       <div className="relative z-10 container mx-auto text-center">
-        <img src={logo} alt="Luxury Chocolate" className="h-[200px] w-auto mx-auto mb-10 invert brightness-200" />
+        <img src={logo} alt="Luxury Chocolate" className="h-[280px] w-auto mx-auto mb-10 invert brightness-200 mix-blend-screen" />
         <h1 className="text-4xl sm:text-5xl lg:text-6xl text-primary-foreground mb-4">
           Ekskluzīvas šokolādes<br />ar Jūsu logo
         </h1>
