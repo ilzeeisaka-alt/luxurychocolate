@@ -1,6 +1,7 @@
 import { useState } from "react";
 import HeroSection from "@/components/HeroSection";
 import ClientExamplesSection from "@/components/ClientExamplesSection";
+import QuickFactsSection from "@/components/QuickFactsSection";
 import HowToOrderSection from "@/components/HowToOrderSection";
 import TrustSection from "@/components/TrustSection";
 import ProductsSection from "@/components/ProductsSection";
