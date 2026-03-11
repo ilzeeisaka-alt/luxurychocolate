@@ -69,6 +69,7 @@ const OfferModal = ({ open, onOpenChange }: OfferModalProps) => {
       const name = (formData.get('name') as string).trim();
       const company = (formData.get('company') as string).trim();
       const email = (formData.get('email') as string).trim();
+      const size = (formData.get('size') as string).trim();
       const quantity = (formData.get('quantity') as string).trim();
       const message = (formData.get('message') as string).trim();
 
@@ -99,7 +100,7 @@ const OfferModal = ({ open, onOpenChange }: OfferModalProps) => {
 
       // Send email via edge function
       const { error } = await supabase.functions.invoke('send-logo-email', {
-        body: { name, company, email, quantity, message, logoUrl },
+        body: { name, company, email, size, quantity, message, logoUrl },
       });
 
       if (error) {
@@ -154,6 +155,20 @@ const OfferModal = ({ open, onOpenChange }: OfferModalProps) => {
             className={inputClasses}
             style={{ boxShadow: "0 0 0 1px hsl(var(--border))" }}
           />
+          <select
+            name="size"
+            defaultValue=""
+            className={`${inputClasses} appearance-none`}
+            style={{ boxShadow: "0 0 0 1px hsl(var(--border))" }}
+          >
+            <option value="" disabled>Šokolādes izmērs</option>
+            <option value="5g">5g — mini šokolāde</option>
+            <option value="10g">10g — neliela tāfelīte</option>
+            <option value="20g">20g — klasiskā tāfelīte</option>
+            <option value="50g">50g — vidēja tāfelīte</option>
+            <option value="100g">100g — liela tāfelīte</option>
+            <option value="custom">Cits izmērs</option>
+          </select>
           <input
             name="quantity"
             type="text"
