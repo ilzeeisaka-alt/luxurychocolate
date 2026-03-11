@@ -47,8 +47,8 @@ const HeroSection = ({ onCtaClick }: HeroSectionProps) => {
         </button>
 
         <div className="mt-8">
-          <h2 className="text-sm sm:text-base font-medium tracking-wide text-primary-foreground/95 mb-3">
-            ✔ Uzticības punkti zem pogas
+          <h2 className="sr-only">
+            Uzticības punkti zem pogas — Kāpēc izvēlēties Luxury Chocolate
           </h2>
           <ul role="list" aria-label="Uzticības punkti zem pogas" className="flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm sm:text-base text-primary-foreground/90">
             <li className="flex items-center gap-2">✔ Premium Beļģu šokolāde</li>
