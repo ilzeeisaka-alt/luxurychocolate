@@ -24,7 +24,7 @@ const HeroSection = ({ onCtaClick }: HeroSectionProps) => {
       {/* Content */}
       <div className="relative z-10 container mx-auto text-center">
         <img src={logo} alt="Luxury Chocolate" className="h-[280px] w-auto mx-auto mb-10" />
-        <p className="text-4xl sm:text-5xl lg:text-6xl text-primary-foreground mb-4" aria-hidden="true">
+        <p className="text-5xl sm:text-6xl lg:text-7xl text-primary-foreground mb-4" aria-hidden="true">
           Ekskluzīvas šokolādes<br />ar Jūsu logo
         </p>
         <p className="text-lg text-primary-foreground/80 mb-10 max-w-lg mx-auto">
