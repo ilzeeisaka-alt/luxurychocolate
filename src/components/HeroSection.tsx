@@ -45,13 +45,21 @@ const HeroSection = ({ onCtaClick }: HeroSectionProps) => {
         >
           Saņemt piedāvājumu
         </button>
-        <h2 className="sr-only">Kāpēc izvēlēties Luxury Chocolate korporatīvās dāvanas Rīgā, Latvijā</h2>
-        <ul role="list" className="flex flex-wrap justify-center gap-x-6 gap-y-2 mt-8 text-sm text-primary-foreground/90">
-          <li className="flex items-center gap-1.5"><span aria-hidden="true">✔</span> Premium Beļģu šokolāde</li>
-          <li className="flex items-center gap-1.5"><span aria-hidden="true">✔</span> Personalizēta apdruka</li>
-          <li className="flex items-center gap-1.5"><span aria-hidden="true">✔</span> Ražots Latvijā</li>
-          <li className="flex items-center gap-1.5"><span aria-hidden="true">✔</span> Piegāde visā pasaulē</li>
-        </ul>
+
+        <div className="mt-8">
+          <h2 className="text-sm sm:text-base font-medium tracking-wide text-primary-foreground/95 mb-3">
+            Uzticības punkti
+          </h2>
+          <ul role="list" aria-label="Uzticības punkti" className="flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm sm:text-base text-primary-foreground/90">
+            <li className="flex items-center gap-2">✔ Premium Beļģu šokolāde</li>
+            <li className="flex items-center gap-2">✔ Personalizēta apdruka</li>
+            <li className="flex items-center gap-2">✔ Ražots Latvijā</li>
+            <li className="flex items-center gap-2">✔ Piegāde visā pasaulē</li>
+          </ul>
+          <p className="sr-only">
+            Uzticības punkti: ✔ Premium Beļģu šokolāde, ✔ Personalizēta apdruka, ✔ Ražots Latvijā, ✔ Piegāde visā pasaulē.
+          </p>
+        </div>
       </div>
     </section>
   );
