@@ -49,8 +49,8 @@ serve(async (req) => {
           'Authorization': `Bearer ${RESEND_API_KEY}`,
         },
         body: JSON.stringify({
-          from: 'Luxury Chocolate <info@luxuschocolate.com>',
-          to: ['info@luxuschocolate.com'],
+          from: 'Luxury Chocolate <onboarding@resend.dev>',
+          to: ['ilze.eisaka@gmail.com'],
           subject: `Jauns pieprasījums no ${company} — ${name}`,
           html: htmlBody,
           reply_to: email,
