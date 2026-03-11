@@ -5,6 +5,7 @@ import QuickFactsSection from "@/components/QuickFactsSection";
 import HowToOrderSection from "@/components/HowToOrderSection";
 import TrustSection from "@/components/TrustSection";
 import ProductsSection from "@/components/ProductsSection";
+import SeoContentSection from "@/components/SeoContentSection";
 import CtaSection from "@/components/CtaSection";
 import FooterSection from "@/components/FooterSection";
 import OfferModal from "@/components/OfferModal";
