@@ -1,17 +1,23 @@
 import { motion } from "framer-motion";
 import giftBox from "@/assets/gift-box.jpg";
 import praline from "@/assets/praline.jpg";
+import heroChocolate from "@/assets/hero-chocolate.jpg";
 
 const products = [
   {
+    image: heroChocolate,
+    title: "Šokolādes tāfelītes",
+    description: "Ar Jūsu uzņēmuma logo un individuālu iepakojumu.",
+  },
+  {
     image: giftBox,
-    title: "Šokolādes komplekts",
-    description: "Eleganta dāvanu kastīte ar 12 rokām gatavotām šokolādes konfektēm.",
+    title: "Dāvanu komplekti",
+    description: "Eleganta kastīte ar 12 rokām gatavotām konfektēm.",
   },
   {
     image: praline,
     title: "Šokolādes konfektes",
-    description: "Individuāli veidotas pralines ar krēma pildījumu un Jūsu logo.",
+    description: "Pralines ar krēma pildījumu un personalizētu dizainu.",
   },
 ];
 
@@ -26,27 +32,29 @@ const ProductsSection = () => {
   return (
     <motion.section className="py-24" {...sectionVariants}>
       <div className="container mx-auto">
-        <h2 className="text-3xl sm:text-4xl text-foreground text-center mb-16">
-          Mūsu produkti
+        <h2 className="text-3xl sm:text-4xl text-foreground text-center mb-4">
+          Mūsu šokolādes
         </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <p className="text-muted-foreground text-center mb-16 max-w-md mx-auto">
+          Katrs produkts tiek pielāgots Jūsu zīmolam — no dizaina līdz garšai.
+        </p>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {products.map((product) => (
             <div
               key={product.title}
               className="bg-card rounded-xl overflow-hidden transition-all duration-200 hover:-translate-y-0.5"
               style={{ boxShadow: "var(--shadow-card)" }}
             >
-              <div className="aspect-[4/3] overflow-hidden">
+              <div className="aspect-square overflow-hidden">
                 <img
                   src={product.image}
                   alt={product.title}
                   className="w-full h-full object-cover"
-                  style={{ outline: "1px solid hsla(20, 14%, 12%, 0.1)", outlineOffset: "-1px" }}
                 />
               </div>
               <div className="p-6">
-                <h3 className="text-xl font-bold text-foreground mb-2">{product.title}</h3>
-                <p className="text-muted-foreground text-body">{product.description}</p>
+                <h3 className="text-lg font-bold text-foreground mb-1">{product.title}</h3>
+                <p className="text-sm text-muted-foreground">{product.description}</p>
               </div>
             </div>
           ))}
