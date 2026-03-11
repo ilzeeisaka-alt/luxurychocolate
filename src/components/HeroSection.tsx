@@ -28,6 +28,12 @@ const HeroSection = ({ onCtaClick }: HeroSectionProps) => {
         <p className="text-lg text-primary-foreground/80 mb-10 max-w-lg mx-auto">
           Personalizētas korporatīvās dāvanas klientiem, partneriem un pasākumiem.
         </p>
+        <ul className="flex flex-wrap justify-center gap-x-6 gap-y-2 mb-10 text-sm text-primary-foreground/90">
+          <li className="flex items-center gap-1.5">✔ Premium Beļģu šokolāde</li>
+          <li className="flex items-center gap-1.5">✔ Personalizēta apdruka</li>
+          <li className="flex items-center gap-1.5">✔ Ražots Latvijā</li>
+          <li className="flex items-center gap-1.5">✔ Piegāde visā pasaulē</li>
+        </ul>
         <button
           onClick={onCtaClick}
           className="inline-flex items-center justify-center rounded-lg bg-primary text-primary-foreground px-8 py-3.5 font-medium tracking-wide text-base transition-all duration-200 active:scale-[0.98]"
