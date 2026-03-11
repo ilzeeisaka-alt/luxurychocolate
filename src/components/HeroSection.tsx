@@ -30,13 +30,6 @@ const HeroSection = ({ onCtaClick }: HeroSectionProps) => {
         <p className="text-lg text-primary-foreground/80 mb-10 max-w-lg mx-auto">
           Premium korporatīvās dāvanas klientiem un partneriem.
         </p>
-        <h2 className="sr-only">Kāpēc izvēlēties Luxury Chocolate</h2>
-        <ul role="list" className="flex flex-wrap justify-center gap-x-6 gap-y-2 mb-10 text-sm text-primary-foreground/90">
-          <li className="flex items-center gap-1.5"><span aria-hidden="true">✔</span> Premium Beļģu šokolāde</li>
-          <li className="flex items-center gap-1.5"><span aria-hidden="true">✔</span> Personalizēta apdruka</li>
-          <li className="flex items-center gap-1.5"><span aria-hidden="true">✔</span> Ražots Latvijā</li>
-          <li className="flex items-center gap-1.5"><span aria-hidden="true">✔</span> Piegāde visā pasaulē</li>
-        </ul>
         <button
           onClick={onCtaClick}
           className="inline-flex items-center justify-center rounded-lg bg-primary text-primary-foreground px-8 py-3.5 font-medium tracking-wide text-base transition-all duration-200 active:scale-[0.98]"
@@ -52,6 +45,13 @@ const HeroSection = ({ onCtaClick }: HeroSectionProps) => {
         >
           Saņemt piedāvājumu
         </button>
+        <h2 className="sr-only">Kāpēc izvēlēties Luxury Chocolate korporatīvās dāvanas Rīgā, Latvijā</h2>
+        <ul role="list" className="flex flex-wrap justify-center gap-x-6 gap-y-2 mt-8 text-sm text-primary-foreground/90">
+          <li className="flex items-center gap-1.5"><span aria-hidden="true">✔</span> Premium Beļģu šokolāde</li>
+          <li className="flex items-center gap-1.5"><span aria-hidden="true">✔</span> Personalizēta apdruka</li>
+          <li className="flex items-center gap-1.5"><span aria-hidden="true">✔</span> Ražots Latvijā</li>
+          <li className="flex items-center gap-1.5"><span aria-hidden="true">✔</span> Piegāde visā pasaulē</li>
+        </ul>
       </div>
     </section>
   );
