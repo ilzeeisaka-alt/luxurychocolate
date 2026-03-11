@@ -20,24 +20,60 @@
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "Luxury Chocolate",
-    "description": "Ekskluzīvas korporatīvās šokolādes dāvanas ar Jūsu uzņēmuma logo. Premium Beļģu šokolāde, personalizēta apdruka, ražots Latvijā, piegāde visā pasaulē.",
-    "url": "https://luxurychocolate.lovable.app",
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": "Rīga",
-      "addressCountry": "LV"
-    },
-    "areaServed": "Worldwide",
-    "knowsAbout": [
-      "Premium Beļģu šokolāde",
-      "Personalizēta apdruka",
-      "Ražots Latvijā",
-      "Piegāde visā pasaulē",
-      "Korporatīvās dāvanas",
-      "Šokolādes ar logo",
-      "Korporatīvās dāvanas Rīgā"
+    "@graph": [
+      {
+        "@type": "Organization",
+        "name": "Luxury Chocolate",
+        "description": "Ekskluzīvas korporatīvās šokolādes dāvanas ar Jūsu uzņēmuma logo. Premium Beļģu šokolāde, personalizēta apdruka, ražots Latvijā, piegāde visā pasaulē.",
+        "url": "https://luxurychocolate.lovable.app",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Rīga",
+          "addressCountry": "LV"
+        },
+        "areaServed": "Worldwide",
+        "knowsAbout": [
+          "Premium Beļģu šokolāde",
+          "Personalizēta apdruka",
+          "Ražots Latvijā",
+          "Piegāde visā pasaulē",
+          "Korporatīvās dāvanas",
+          "Šokolādes ar logo",
+          "Korporatīvās dāvanas Rīgā"
+        ]
+      },
+      {
+        "@type": "WebPage",
+        "name": "Luxury Chocolate — Uzticības punkti",
+        "url": "https://luxurychocolate.lovable.app",
+        "inLanguage": "lv",
+        "mainEntity": {
+          "@type": "ItemList",
+          "name": "Uzticības punkti",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Premium Beļģu šokolāde"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Personalizēta apdruka"
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "name": "Ražots Latvijā"
+            },
+            {
+              "@type": "ListItem",
+              "position": 4,
+              "name": "Piegāde visā pasaulē"
+            }
+          ]
+        }
+      }
     ]
   }
   </script>
