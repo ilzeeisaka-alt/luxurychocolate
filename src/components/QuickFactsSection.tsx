@@ -11,8 +11,18 @@ const vp = { once: true, margin: "-50px" as const };
 
 const QuickFactsSection = () => {
   return (
-    <section className="py-10 bg-secondary/50" aria-label="Ātra informācija">
-      <div className="container mx-auto">
+    <section className="py-12 bg-secondary/50" aria-labelledby="quick-facts-heading">
+      <div className="container mx-auto text-center">
+        <motion.p
+          id="quick-facts-heading"
+          className="text-sm uppercase tracking-[0.2em] text-muted-foreground mb-6"
+          initial={{ opacity: 0, y: 8 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={vp}
+          transition={{ duration: 0.3 }}
+        >
+          Kāpēc izvēlēties mūs
+        </motion.p>
         <motion.div
           className="flex flex-col sm:flex-row flex-wrap justify-center gap-x-10 gap-y-3 text-sm sm:text-base text-foreground/90"
           initial={{ opacity: 0, y: 12 }}
