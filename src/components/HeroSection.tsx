@@ -52,12 +52,11 @@ const HeroSection = ({ onCtaClick }: HeroSectionProps) => {
           </h2>
           <ul role="list" aria-label="Uzticības punkti zem pogas" className="flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm sm:text-base text-primary-foreground/90">
             <li className="flex items-center gap-2">✔ Premium Beļģu šokolāde</li>
-            <li className="flex items-center gap-2">✔ Personalizēta apdruka</li>
-            <li className="flex items-center gap-2">✔ Ražots Latvijā</li>
-            <li className="flex items-center gap-2">✔ Piegāde visā pasaulē</li>
+            <li className="flex items-center gap-2">✔ Personalizēta apdruka ar Jūsu logo</li>
+            <li className="flex items-center gap-2">✔ Minimālais pasūtījums no 50 gab.</li>
           </ul>
           <p className="sr-only">
-            4 lietas, kas padara sākumu spēcīgāku: uzticības punkti zem pogas — Premium Beļģu šokolāde, Personalizēta apdruka, Ražots Latvijā, Piegāde visā pasaulē.
+            3 uzticības punkti zem pogas: Premium Beļģu šokolāde, Personalizēta apdruka ar Jūsu logo, Minimālais pasūtījums no 50 gab.
           </p>
         </div>
       </div>
