@@ -210,7 +210,7 @@ const OfferModal = ({ open, onOpenChange }: OfferModalProps) => {
             <input
               ref={fileInputRef}
               type="file"
-              accept=".png,.jpg,.jpeg,.svg,.webp,.pdf"
+              accept=".png,.jpg,.jpeg,.svg,.webp,.pdf,.cdr,.eps,.ai"
               onChange={handleFileChange}
               className="hidden"
             />
