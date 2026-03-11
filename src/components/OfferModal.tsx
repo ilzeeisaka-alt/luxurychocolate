@@ -28,9 +28,11 @@ const OfferModal = ({ open, onOpenChange }: OfferModalProps) => {
     if (!file) return;
 
     // Validate file type
-    const allowedTypes = ['image/png', 'image/jpeg', 'image/svg+xml', 'image/webp', 'application/pdf'];
-    if (!allowedTypes.includes(file.type)) {
-      toast.error("Atbalstītie formāti: PNG, JPG, SVG, WebP, PDF");
+    const allowedTypes = ['image/png', 'image/jpeg', 'image/svg+xml', 'image/webp', 'application/pdf', 'application/postscript', 'application/illustrator', 'application/x-cdr'];
+    const allowedExtensions = ['.png', '.jpg', '.jpeg', '.svg', '.webp', '.pdf', '.cdr', '.eps', '.ai'];
+    const ext = '.' + file.name.split('.').pop()?.toLowerCase();
+    if (!allowedTypes.includes(file.type) && !allowedExtensions.includes(ext)) {
+      toast.error("Atbalstītie formāti: PNG, JPG, SVG, WebP, PDF, CDR, EPS, AI");
       return;
     }
 
@@ -182,7 +184,7 @@ const OfferModal = ({ open, onOpenChange }: OfferModalProps) => {
               >
                 <Upload className="w-6 h-6" />
                 <span className="text-sm">Augšupielādēt logo</span>
-                <span className="text-xs">PNG, JPG, SVG, WebP, PDF — maks. 10MB</span>
+                <span className="text-xs">PNG, JPG, SVG, WebP, PDF, CDR, EPS, AI — maks. 10MB</span>
               </button>
             ) : (
               <div className="rounded-lg border border-border p-3 flex items-center gap-3">
@@ -208,7 +210,7 @@ const OfferModal = ({ open, onOpenChange }: OfferModalProps) => {
             <input
               ref={fileInputRef}
               type="file"
-              accept=".png,.jpg,.jpeg,.svg,.webp,.pdf"
+              accept=".png,.jpg,.jpeg,.svg,.webp,.pdf,.cdr,.eps,.ai"
               onChange={handleFileChange}
               className="hidden"
             />
