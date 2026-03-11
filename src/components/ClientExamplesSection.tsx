@@ -37,10 +37,11 @@ const ClientExamplesSection = () => {
           </h2>
         </motion.div>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6" role="list" aria-label="Klientu piemēri — zīmolu šokolādes">
           {clients.map((client, i) => (
-            <motion.div
+            <motion.figure
               key={client.brand}
+              role="listitem"
               className="group relative overflow-hidden rounded-xl aspect-[4/3]"
               style={{ boxShadow: "var(--shadow-card)" }}
               initial={{ opacity: 0, y: 24 }}
@@ -55,12 +56,20 @@ const ClientExamplesSection = () => {
                 loading="lazy"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-foreground/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              <span className="absolute bottom-3 left-4 text-sm font-medium text-primary-foreground opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <figcaption className="absolute bottom-3 left-4 text-sm font-medium text-primary-foreground opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                 {client.brand}
-              </span>
-            </motion.div>
+              </figcaption>
+            </motion.figure>
           ))}
         </div>
+
+        {/* sr-only summary for AI crawlers */}
+        <p className="sr-only">
+          Klientu piemēri — pasaules zīmoli, kas uzticas Luxury Chocolate: MasterCard logo šokolāde pie kafijas,
+          Bosch brendētas šokolādes, Chopard premium šokolādes dāvanu kastītēs, Samsung Galaxy logo uz šokolādes,
+          Vodafone sirds formas šokolāde, Volkswagen logo cepums ar brendētu lenti.
+          Mēs izgatvojam personalizētas šokolādes ar Jūsu uzņēmuma logo.
+        </p>
       </div>
     </section>
   );
