@@ -11,7 +11,7 @@ serve(async (req) => {
   }
 
   try {
-    const { name, company, email, quantity, message, logoUrl } = await req.json();
+    const { name, company, email, size, quantity, message, logoUrl } = await req.json();
 
     if (!name || !company || !email) {
       return new Response(
