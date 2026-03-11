@@ -23,6 +23,7 @@ const Index = () => {
       <TrustSection />
       <ProductsSection />
       <SeoContentSection />
+      <IdeasSection />
       <CtaSection onCtaClick={() => setModalOpen(true)} />
       <FooterSection />
       <OfferModal open={modalOpen} onOpenChange={setModalOpen} />
