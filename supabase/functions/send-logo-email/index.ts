@@ -49,7 +49,7 @@ serve(async (req) => {
           'Authorization': `Bearer ${RESEND_API_KEY}`,
         },
         body: JSON.stringify({
-          from: 'Luxury Chocolate <onboarding@resend.dev>',
+          from: 'Luxury Chocolate <info@luxuschocolate.com>',
           to: ['info@luxuschocolate.com'],
           subject: `Jauns pieprasījums no ${company} — ${name}`,
           html: htmlBody,
@@ -57,14 +57,15 @@ serve(async (req) => {
         }),
       });
 
-      if (!res.ok) {
-        const errorText = await res.text();
-        console.error('Resend error:', errorText);
-        throw new Error(`Email sending failed: ${res.status}`);
-      }
-
       const data = await res.json();
-      console.log('Email sent successfully:', data);
+      if (!res.ok) {
+        console.error('Resend error:', JSON.stringify(data));
+        // Don't throw — log the request instead so it's not lost
+        console.log('=== FALLBACK LOG (email failed) ===');
+        console.log(JSON.stringify({ name, company, email, quantity, message, logoUrl }));
+      } else {
+        console.log('Email sent successfully:', JSON.stringify(data));
+      }
     } else {
       // Log the submission when no email service configured
       console.log('=== NEW OFFER REQUEST (no email service configured) ===');
