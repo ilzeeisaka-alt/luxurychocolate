@@ -6,7 +6,7 @@ interface HeroSectionProps {
 
 const HeroSection = ({ onCtaClick }: HeroSectionProps) => {
   return (
-    <section className="relative min-h-svh flex items-center overflow-hidden">
+    <section className="relative min-h-svh flex items-start pt-32 overflow-hidden">
       {/* Video background */}
       <video
         autoPlay
