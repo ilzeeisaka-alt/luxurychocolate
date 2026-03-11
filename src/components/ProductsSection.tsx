@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import giftBox from "@/assets/gift-box.jpg";
+import giftBoxCorporate from "@/assets/gift-box-corporate.jpg";
 import praline from "@/assets/praline.jpg";
 import heroChocolate from "@/assets/hero-chocolate.jpg";
 
