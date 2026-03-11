@@ -162,11 +162,11 @@ const OfferModal = ({ open, onOpenChange }: OfferModalProps) => {
             style={{ boxShadow: "0 0 0 1px hsl(var(--border))" }}
           >
             <option value="" disabled>Šokolādes izmērs</option>
-            <option value="5g">5g — mini šokolāde</option>
-            <option value="10g">10g — neliela tāfelīte</option>
-            <option value="20g">20g — klasiskā tāfelīte</option>
-            <option value="50g">50g — vidēja tāfelīte</option>
-            <option value="100g">100g — liela tāfelīte</option>
+            <option value="5x5cm">5×5 cm</option>
+            <option value="10x5cm">10×5 cm</option>
+            <option value="10x10cm">10×10 cm</option>
+            <option value="15x8cm">15×8 cm</option>
+            <option value="20x10cm">20×10 cm</option>
             <option value="custom">Cits izmērs</option>
           </select>
           <input
