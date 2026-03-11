@@ -184,7 +184,7 @@ const OfferModal = ({ open, onOpenChange }: OfferModalProps) => {
               >
                 <Upload className="w-6 h-6" />
                 <span className="text-sm">Augšupielādēt logo</span>
-                <span className="text-xs">PNG, JPG, SVG, WebP, PDF — maks. 10MB</span>
+                <span className="text-xs">PNG, JPG, SVG, WebP, PDF, CDR, EPS, AI — maks. 10MB</span>
               </button>
             ) : (
               <div className="rounded-lg border border-border p-3 flex items-center gap-3">
