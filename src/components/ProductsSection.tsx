@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import giftBox from "@/assets/gift-box.jpg";
+import giftBoxCorporate from "@/assets/gift-box-corporate.jpg";
 import praline from "@/assets/praline.jpg";
 import heroChocolate from "@/assets/hero-chocolate.jpg";
 
@@ -10,9 +10,9 @@ const products = [
     description: "Ar Jūsu uzņēmuma logo un individuālu iepakojumu.",
   },
   {
-    image: giftBox,
+    image: giftBoxCorporate,
     title: "Dāvanu komplekti",
-    description: "Eleganta kastīte ar 12 rokām gatavotām konfektēm.",
+    description: "Eleganta kastīte ar 5 rokām gatavotām konfektēm.",
   },
   {
     image: praline,
