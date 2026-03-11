@@ -52,6 +52,12 @@ const HeroSection = ({ onCtaClick }: HeroSectionProps) => {
         >
           Saņemt piedāvājumu
         </button>
+        {/* Trust points under CTA */}
+        <ul role="list" className="flex flex-wrap justify-center gap-x-6 gap-y-2 mt-6 text-sm text-primary-foreground/80">
+          <li className="flex items-center gap-1.5"><span aria-hidden="true">✔</span> Premium Beļģu šokolāde</li>
+          <li className="flex items-center gap-1.5"><span aria-hidden="true">✔</span> Personalizēta apdruka ar Jūsu logo</li>
+          <li className="flex items-center gap-1.5"><span aria-hidden="true">✔</span> Minimālais pasūtījums no 50 gab.</li>
+        </ul>
       </div>
     </section>
   );
