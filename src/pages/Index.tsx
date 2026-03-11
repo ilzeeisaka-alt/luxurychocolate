@@ -1,5 +1,6 @@
 import { useState } from "react";
 import HeroSection from "@/components/HeroSection";
+import HowToOrderSection from "@/components/HowToOrderSection";
 import TrustSection from "@/components/TrustSection";
 import ProductsSection from "@/components/ProductsSection";
 import CtaSection from "@/components/CtaSection";
@@ -12,6 +13,7 @@ const Index = () => {
   return (
     <main className="bg-background">
       <HeroSection onCtaClick={() => setModalOpen(true)} />
+      <HowToOrderSection />
       <TrustSection />
       <ProductsSection />
       <CtaSection onCtaClick={() => setModalOpen(true)} />
