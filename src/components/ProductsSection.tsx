@@ -51,7 +51,8 @@ const ProductsSection = () => {
               <div className="aspect-square overflow-hidden">
                 <img
                   src={product.image}
-                  alt={product.title}
+                  alt={product.alt}
+                  loading="lazy"
                   className="w-full h-full object-cover"
                 />
               </div>

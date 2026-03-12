@@ -15,7 +15,7 @@ const HeroSection = ({ onCtaClick }: HeroSectionProps) => {
           >
             <img
               src={logo}
-              alt="Luxury Chocolate"
+              alt="Luxury Chocolate — ekskluzīvas korporatīvās šokolādes ar logo"
               className="w-[85%] h-[85%] object-contain"
             />
           </div>
