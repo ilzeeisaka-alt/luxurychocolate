@@ -7,16 +7,19 @@ const products = [
   {
     image: heroChocolate,
     title: "Šokolādes tāfelītes",
+    alt: "Personalizēta šokolādes tāfelīte ar uzņēmuma logo un individuālu iepakojumu",
     description: "Ar Jūsu uzņēmuma logo un individuālu iepakojumu.",
   },
   {
     image: giftBoxCorporate,
     title: "Dāvanu komplekti",
+    alt: "Eleganta korporatīvā šokolādes dāvanu kastīte ar konfektēm",
     description: "Eleganta kastīte ar 5 rokām gatavotām konfektēm.",
   },
   {
     image: praline,
     title: "Šokolādes konfektes",
+    alt: "Premium šokolādes pralines ar krēma pildījumu un personalizētu dizainu",
     description: "Pralines ar krēma pildījumu un personalizētu dizainu.",
   },
 ];
