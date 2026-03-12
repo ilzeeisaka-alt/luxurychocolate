@@ -9,7 +9,7 @@ export const uiStrings: Record<string, UiStrings> = {
     relatedHeading: "Skatiet arī",
     ctaSubtext: "Minimālais pasūtījums no 50 gab. Izgatavošana 3–10 darba dienas.",
     freePreviewHeading: "Saņemiet bezmaksas dizaina paraugu",
-    freePreviewDesc: "Nosūtiet mums savu logo, un mēs sagatavosim bezmaksas šokolādes dizaina preview ar Jūsu uzņēmuma logo.",
+    freePreviewDesc: "Nosūtiet mums savu logo, un mēs sagatavosim bezmaksas šokolādes dizaina apskati ar Jūsu uzņēmuma logo.",
     freePreviewBadge1: "✔ Bezmaksas dizaina paraugs",
     freePreviewBadge2: "✔ Bez saistībām",
     freePreviewBadge3: "✔ Atbilde 24h laikā",

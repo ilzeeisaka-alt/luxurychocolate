@@ -221,9 +221,9 @@ export const useCasesContent: Record<Lang, { subtitle: string; heading: string; 
 
 export const ctaContent: Record<Lang, { heading: string; description: string; button: string }> = {
   lv: {
-    heading: "Saņemiet bezmaksas dizaina preview",
-    description: "Nosūtiet mums savu logo, un mēs sagatavosim personalizētu šokolādes dizaina preview 24h laikā — pilnīgi bez maksas.",
-    button: "Saņemt bezmaksas preview",
+    heading: "Saņemiet bezmaksas dizaina apskati",
+    description: "Nosūtiet mums savu logo, un mēs sagatavosim personalizētu šokolādes dizaina apskati 24h laikā — pilnīgi bez maksas.",
+    button: "Saņemt bezmaksas apskati",
   },
   en: {
     heading: "Get a free design preview",
@@ -268,7 +268,7 @@ export const seoContent: Record<Lang, { heading: string; paragraphs: { text: str
 };
 
 export const heroContent: Record<Lang, { title1: string; title2: string; subtitle: string; ctaButton: string }> = {
-  lv: { title1: "Šokolādes ar logo", title2: "uzņēmumiem", subtitle: "Saņemiet bezmaksas dizaina preview ar Jūsu logo.", ctaButton: "Bezmaksas dizaina preview" },
+  lv: { title1: "Šokolādes ar logo", title2: "uzņēmumiem", subtitle: "Saņemiet bezmaksas dizaina apskati ar Jūsu logo.", ctaButton: "Bezmaksas dizaina apskate" },
   en: { title1: "Custom Chocolate", title2: "with Your Logo", subtitle: "Get a free design preview with your logo.", ctaButton: "Free design preview" },
   ru: { title1: "Шоколад с логотипом", title2: "для компаний", subtitle: "Получите бесплатный макет дизайна с вашим логотипом.", ctaButton: "Бесплатный макет дизайна" },
 };

@@ -32,7 +32,7 @@ const HeroSection = ({ onCtaClick }: HeroSectionProps) => {
           </h1>
 
           <p className="text-lg sm:text-xl text-white/60 mb-10 max-w-xl mx-auto leading-relaxed tracking-wide font-normal">
-            Saņemiet bezmaksas dizaina preview ar Jūsu logo.
+            Saņemiet bezmaksas dizaina apskati ar Jūsu logo.
           </p>
 
           <button
@@ -53,7 +53,7 @@ const HeroSection = ({ onCtaClick }: HeroSectionProps) => {
               e.currentTarget.style.transform = "translateY(0)";
             }}
           >
-            Bezmaksas dizaina preview
+            Bezmaksas dizaina apskate
           </button>
         </div>
       </div>
