@@ -16,10 +16,10 @@ const CtaSection = ({ onCtaClick }: CtaSectionProps) => {
     <motion.section className="py-24" {...sectionVariants}>
       <div className="container mx-auto text-center">
         <h2 className="text-3xl sm:text-4xl text-foreground mb-6">
-          Gatavi pasūtīt?
+          Saņemiet bezmaksas dizaina preview
         </h2>
         <p className="text-lg text-muted-foreground text-body mx-auto mb-10">
-          Sazinieties ar mums, un mēs sagatavosim individuālu piedāvājumu Jūsu uzņēmumam.
+          Nosūtiet mums savu logo, un mēs sagatavosim personalizētu šokolādes dizaina preview 24h laikā — pilnīgi bez maksas.
         </p>
         <button
           onClick={onCtaClick}
