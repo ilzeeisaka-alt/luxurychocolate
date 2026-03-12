@@ -52,7 +52,7 @@ const SeoLandingLayout = ({
   });
 
   useEffect(() => {
-    const BASE_URL = "https://luxurychocolate.lovable.app";
+    const BASE_URL = "https://luxurychocolate.lv";
     const fullUrl = `${BASE_URL}${pathname}`;
     const fullTitle = `${title} — Luxury Chocolate`;
 
