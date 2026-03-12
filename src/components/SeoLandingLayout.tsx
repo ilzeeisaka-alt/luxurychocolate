@@ -38,6 +38,7 @@ const SeoLandingLayout = ({
   body,
   cta,
   keywords,
+  faqs,
 }: SeoLandingPageProps) => {
   const [modalOpen, setModalOpen] = useState(false);
 
