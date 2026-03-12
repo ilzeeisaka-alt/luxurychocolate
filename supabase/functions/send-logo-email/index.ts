@@ -34,6 +34,7 @@ serve(async (req) => {
         <tr><td style="padding:8px;font-weight:bold;">Vārds:</td><td style="padding:8px;">${name}</td></tr>
         <tr><td style="padding:8px;font-weight:bold;">Uzņēmums:</td><td style="padding:8px;">${company}</td></tr>
         <tr><td style="padding:8px;font-weight:bold;">E-pasts:</td><td style="padding:8px;">${email}</td></tr>
+        <tr><td style="padding:8px;font-weight:bold;">Telefons:</td><td style="padding:8px;">${phone || 'Nav norādīts'}</td></tr>
         <tr><td style="padding:8px;font-weight:bold;">Izmērs:</td><td style="padding:8px;">${size || 'Nav norādīts'}</td></tr>
         <tr><td style="padding:8px;font-weight:bold;">Iepakojums:</td><td style="padding:8px;">${packaging || 'Nav norādīts'}</td></tr>
         <tr><td style="padding:8px;font-weight:bold;">Pielietošana:</td><td style="padding:8px;">${purpose || 'Nav norādīts'}</td></tr>
