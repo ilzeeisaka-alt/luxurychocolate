@@ -11,6 +11,7 @@ import KlientuDavanas from "./pages/KlientuDavanas.tsx";
 import SokoladesKonferencem from "./pages/SokoladesKonferencem.tsx";
 import SokoladesDarbiniekiem from "./pages/SokoladesDarbiniekiem.tsx";
 import SokoladesPartneriem from "./pages/SokoladesPartneriem.tsx";
+import KorporativoDavanuIdejas from "./pages/KorporativoDavanuIdejas.tsx";
 import NotFound from "./pages/NotFound.tsx";
 import CookieConsent from "./components/CookieConsent.tsx";
 
