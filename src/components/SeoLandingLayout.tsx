@@ -34,6 +34,7 @@ const vp = { once: true, margin: "-50px" as const };
 const SeoLandingLayout = ({
   emoji,
   title,
+  metaDescription,
   intro,
   benefits,
   body,
@@ -42,7 +43,13 @@ const SeoLandingLayout = ({
   faqs,
 }: SeoLandingPageProps) => {
   const [modalOpen, setModalOpen] = useState(false);
+  const { pathname } = useLocation();
 
+  useSeo({
+    title,
+    description: metaDescription,
+    path: pathname,
+  });
   return (
     <main className="bg-background">
       {/* Nav */}
