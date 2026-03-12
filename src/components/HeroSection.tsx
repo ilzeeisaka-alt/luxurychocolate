@@ -20,18 +20,15 @@ const HeroSection = ({ onCtaClick }: HeroSectionProps) => {
             />
           </div>
 
-          <p
-            className="text-4xl sm:text-5xl lg:text-6xl text-white mb-5 leading-[1.1] tracking-tight"
-            aria-hidden="true"
-          >
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl text-white mb-5 leading-[1.1] tracking-tight font-normal">
             Ekskluzīvas šokolādes
             <br />
             <span className="text-primary">ar Jūsu logo</span>
-          </p>
+          </h1>
 
-          <p className="text-lg sm:text-xl text-white/60 mb-10 max-w-xl mx-auto leading-relaxed tracking-wide">
+          <h2 className="text-lg sm:text-xl text-white/60 mb-10 max-w-xl mx-auto leading-relaxed tracking-wide font-normal">
             Premium korporatīvās dāvanas klientiem un partneriem.
-          </p>
+          </h2>
 
           <button
             onClick={onCtaClick}
