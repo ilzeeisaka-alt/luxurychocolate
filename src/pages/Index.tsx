@@ -6,6 +6,7 @@ import HowToOrderSection from "@/components/HowToOrderSection";
 import TrustSection from "@/components/TrustSection";
 import ProductsSection from "@/components/ProductsSection";
 import SeoContentSection from "@/components/SeoContentSection";
+import FaqSection from "@/components/FaqSection";
 import IdeasSection from "@/components/IdeasSection";
 import CtaSection from "@/components/CtaSection";
 import FooterSection from "@/components/FooterSection";
