@@ -27,13 +27,34 @@ interface OfferModalProps {
 const inputClasses =
   "w-full rounded-lg bg-background px-4 py-3 text-foreground placeholder:text-muted-foreground outline-none transition-shadow duration-200 focus:shadow-[0_0_0_2px_hsl(var(--ring))]";
 
+const quantityOptions = [
+  { value: "50–100", label: "50–100 gab." },
+  { value: "100–500", label: "100–500 gab." },
+  { value: "500+", label: "500+ gab." },
+];
+
 const OfferModal = ({ open, onOpenChange }: OfferModalProps) => {
+  const [step, setStep] = useState<1 | 2>(1);
+  const [selectedQuantity, setSelectedQuantity] = useState<string>("");
   const [loading, setLoading] = useState(false);
   const [logoFile, setLogoFile] = useState<File | null>(null);
   const [logoPreview, setLogoPreview] = useState<string | null>(null);
   const [usageType, setUsageType] = useState<string>("");
   const [eventDate, setEventDate] = useState<Date | undefined>();
   const fileInputRef = useRef<HTMLInputElement>(null);
+
+  const resetAll = () => {
+    setStep(1);
+    setSelectedQuantity("");
+    removeLogo();
+    setUsageType("");
+    setEventDate(undefined);
+  };
+
+  const handleOpenChange = (val: boolean) => {
+    if (!val) resetAll();
+    onOpenChange(val);
+  };
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -141,199 +162,233 @@ const OfferModal = ({ open, onOpenChange }: OfferModalProps) => {
   };
 
   return (
-    <Dialog open={open} onOpenChange={onOpenChange}>
+    <Dialog open={open} onOpenChange={handleOpenChange}>
       <DialogContent className="sm:max-w-md bg-card border-border">
-        <DialogHeader>
-          <DialogTitle className="text-2xl text-foreground">Saņemt piedāvājumu</DialogTitle>
-        </DialogHeader>
-        <form onSubmit={handleSubmit} className="flex flex-col gap-4 mt-2">
-          <input
-            name="name"
-            type="text"
-            placeholder="Jūsu vārds"
-            required
-            maxLength={100}
-            className={inputClasses}
-            style={{ boxShadow: "0 0 0 1px hsl(var(--border))" }}
-          />
-          <input
-            name="company"
-            type="text"
-            placeholder="Uzņēmums"
-            required
-            maxLength={100}
-            className={inputClasses}
-            style={{ boxShadow: "0 0 0 1px hsl(var(--border))" }}
-          />
-          <input
-            name="email"
-            type="email"
-            placeholder="E-pasts"
-            required
-            maxLength={255}
-            className={inputClasses}
-            style={{ boxShadow: "0 0 0 1px hsl(var(--border))" }}
-          />
-          <input
-            name="phone"
-            type="tel"
-            placeholder="Telefona numurs (neobligāti)"
-            maxLength={20}
-            className={inputClasses}
-            style={{ boxShadow: "0 0 0 1px hsl(var(--border))" }}
-          />
-          <input
-            name="size"
-            type="text"
-            placeholder="Vēlamais izmērs cm (piem., 10×5 cm)"
-            maxLength={50}
-            className={inputClasses}
-            style={{ boxShadow: "0 0 0 1px hsl(var(--border))" }}
-          />
-          <input
-            name="packaging"
-            type="text"
-            placeholder="Vēlamais iepakojums (piem., kastīte, maisiņš, bez iepakojuma)"
-            maxLength={200}
-            className={inputClasses}
-            style={{ boxShadow: "0 0 0 1px hsl(var(--border))" }}
-          />
-          <div>
-            <label className="text-sm font-medium text-muted-foreground mb-2 block">
-              Paredzētā pielietošana
-            </label>
-            <div className="flex gap-3">
-              <button
-                type="button"
-                onClick={() => setUsageType("event")}
-                className={cn(
-                  "flex-1 rounded-lg px-4 py-3 text-sm font-medium transition-all",
-                  usageType === "event"
-                    ? "bg-primary text-primary-foreground"
-                    : "bg-background text-muted-foreground hover:text-foreground"
-                )}
-                style={{ boxShadow: "0 0 0 1px hsl(var(--border))" }}
-              >
-                🎉 Pasākumam
-              </button>
-              <button
-                type="button"
-                onClick={() => { setUsageType("regular"); setEventDate(undefined); }}
-                className={cn(
-                  "flex-1 rounded-lg px-4 py-3 text-sm font-medium transition-all",
-                  usageType === "regular"
-                    ? "bg-primary text-primary-foreground"
-                    : "bg-background text-muted-foreground hover:text-foreground"
-                )}
-                style={{ boxShadow: "0 0 0 1px hsl(var(--border))" }}
-              >
-                🏢 Ikdienas lietošanai
-              </button>
-            </div>
-          </div>
-          {usageType === "event" && (
-            <div>
-              <label className="text-sm font-medium text-muted-foreground mb-2 block">
-                Pasākuma datums
-              </label>
-              <Popover>
-                <PopoverTrigger asChild>
-                  <Button
-                    type="button"
-                    variant="outline"
-                    className={cn(
-                      "w-full justify-start text-left font-normal h-auto py-3",
-                      !eventDate && "text-muted-foreground"
-                    )}
-                  >
-                    <CalendarIcon className="mr-2 h-4 w-4" />
-                    {eventDate ? format(eventDate, "dd.MM.yyyy") : "Izvēlieties datumu"}
-                  </Button>
-                </PopoverTrigger>
-                <PopoverContent className="w-auto p-0" align="start">
-                  <Calendar
-                    mode="single"
-                    selected={eventDate}
-                    onSelect={setEventDate}
-                    disabled={(date) => date < new Date()}
-                    initialFocus
-                    className={cn("p-3 pointer-events-auto")}
-                  />
-                </PopoverContent>
-              </Popover>
-            </div>
-          )}
-          <input
-            name="quantity"
-            type="text"
-            placeholder="Daudzums (piem., 200)"
-            maxLength={50}
-            className={inputClasses}
-            style={{ boxShadow: "0 0 0 1px hsl(var(--border))" }}
-          />
-          <textarea
-            name="message"
-            placeholder="Ziņojums (neobligāti)"
-            rows={3}
-            maxLength={1000}
-            className={`${inputClasses} resize-none`}
-            style={{ boxShadow: "0 0 0 1px hsl(var(--border))" }}
-          />
-
-          {/* Logo upload */}
-          <div>
-            <label className="text-sm font-medium text-muted-foreground mb-2 block">
-              Jūsu logo (neobligāti)
-            </label>
-            {!logoFile ? (
-              <button
-                type="button"
-                onClick={() => fileInputRef.current?.click()}
-                className="w-full rounded-lg border-2 border-dashed border-border px-4 py-6 flex flex-col items-center gap-2 text-muted-foreground hover:border-primary/50 hover:text-foreground transition-colors"
-              >
-                <Upload className="w-6 h-6" />
-                <span className="text-sm">Augšupielādēt logo</span>
-                <span className="text-xs">PNG, JPG, SVG, WebP, PDF, CDR, EPS, AI — maks. 10MB</span>
-              </button>
-            ) : (
-              <div className="rounded-lg border border-border p-3 flex items-center gap-3">
-                {logoPreview && (
-                  <img
-                    src={logoPreview}
-                    alt="Logo preview"
-                    className="w-12 h-12 object-contain rounded"
-                  />
-                )}
-                <span className="text-sm text-foreground flex-1 truncate">
-                  {logoFile.name}
-                </span>
+        {step === 1 ? (
+          <>
+            <DialogHeader>
+              <DialogTitle className="text-2xl text-foreground">
+                Cik šokolādes Jums vajadzēs?
+              </DialogTitle>
+              <p className="text-sm text-muted-foreground mt-1">
+                Izvēlieties apjomu — mēs sagatavosim individuālu piedāvājumu
+              </p>
+            </DialogHeader>
+            <div className="flex flex-col gap-3 mt-4">
+              {quantityOptions.map((opt) => (
                 <button
+                  key={opt.value}
                   type="button"
-                  onClick={removeLogo}
-                  className="p-1 rounded-full hover:bg-muted transition-colors text-muted-foreground hover:text-foreground"
+                  onClick={() => {
+                    setSelectedQuantity(opt.value);
+                    setStep(2);
+                  }}
+                  className="w-full rounded-lg px-5 py-4 text-left text-base font-medium transition-all duration-200 bg-background text-foreground hover:bg-primary hover:text-primary-foreground group"
+                  style={{ boxShadow: "0 0 0 1px hsl(var(--border))" }}
                 >
-                  <X className="w-4 h-4" />
+                  <span className="flex items-center justify-between">
+                    {opt.label}
+                    <span className="text-muted-foreground group-hover:text-primary-foreground/70 text-sm">→</span>
+                  </span>
                 </button>
+              ))}
+            </div>
+          </>
+        ) : (
+          <>
+            <DialogHeader>
+              <DialogTitle className="text-2xl text-foreground">Saņemt piedāvājumu</DialogTitle>
+              <button
+                type="button"
+                onClick={() => setStep(1)}
+                className="text-sm text-muted-foreground hover:text-foreground transition-colors text-left mt-1"
+              >
+                ← {selectedQuantity} gab. · Mainīt
+              </button>
+            </DialogHeader>
+            <form onSubmit={handleSubmit} className="flex flex-col gap-4 mt-2">
+              <input type="hidden" name="quantity" value={selectedQuantity} />
+              <input
+                name="name"
+                type="text"
+                placeholder="Jūsu vārds"
+                required
+                maxLength={100}
+                className={inputClasses}
+                style={{ boxShadow: "0 0 0 1px hsl(var(--border))" }}
+              />
+              <input
+                name="company"
+                type="text"
+                placeholder="Uzņēmums"
+                required
+                maxLength={100}
+                className={inputClasses}
+                style={{ boxShadow: "0 0 0 1px hsl(var(--border))" }}
+              />
+              <input
+                name="email"
+                type="email"
+                placeholder="E-pasts"
+                required
+                maxLength={255}
+                className={inputClasses}
+                style={{ boxShadow: "0 0 0 1px hsl(var(--border))" }}
+              />
+              <input
+                name="phone"
+                type="tel"
+                placeholder="Telefona numurs (neobligāti)"
+                maxLength={20}
+                className={inputClasses}
+                style={{ boxShadow: "0 0 0 1px hsl(var(--border))" }}
+              />
+              <input
+                name="size"
+                type="text"
+                placeholder="Vēlamais izmērs cm (piem., 10×5 cm)"
+                maxLength={50}
+                className={inputClasses}
+                style={{ boxShadow: "0 0 0 1px hsl(var(--border))" }}
+              />
+              <input
+                name="packaging"
+                type="text"
+                placeholder="Vēlamais iepakojums (piem., kastīte, maisiņš)"
+                maxLength={200}
+                className={inputClasses}
+                style={{ boxShadow: "0 0 0 1px hsl(var(--border))" }}
+              />
+              <div>
+                <label className="text-sm font-medium text-muted-foreground mb-2 block">
+                  Paredzētā pielietošana
+                </label>
+                <div className="flex gap-3">
+                  <button
+                    type="button"
+                    onClick={() => setUsageType("event")}
+                    className={cn(
+                      "flex-1 rounded-lg px-4 py-3 text-sm font-medium transition-all",
+                      usageType === "event"
+                        ? "bg-primary text-primary-foreground"
+                        : "bg-background text-muted-foreground hover:text-foreground"
+                    )}
+                    style={{ boxShadow: "0 0 0 1px hsl(var(--border))" }}
+                  >
+                    🎉 Pasākumam
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => { setUsageType("regular"); setEventDate(undefined); }}
+                    className={cn(
+                      "flex-1 rounded-lg px-4 py-3 text-sm font-medium transition-all",
+                      usageType === "regular"
+                        ? "bg-primary text-primary-foreground"
+                        : "bg-background text-muted-foreground hover:text-foreground"
+                    )}
+                    style={{ boxShadow: "0 0 0 1px hsl(var(--border))" }}
+                  >
+                    🏢 Ikdienas lietošanai
+                  </button>
+                </div>
               </div>
-            )}
-            <input
-              ref={fileInputRef}
-              type="file"
-              accept=".png,.jpg,.jpeg,.svg,.webp,.pdf,.cdr,.eps,.ai"
-              onChange={handleFileChange}
-              className="hidden"
-            />
-          </div>
+              {usageType === "event" && (
+                <div>
+                  <label className="text-sm font-medium text-muted-foreground mb-2 block">
+                    Pasākuma datums
+                  </label>
+                  <Popover>
+                    <PopoverTrigger asChild>
+                      <Button
+                        type="button"
+                        variant="outline"
+                        className={cn(
+                          "w-full justify-start text-left font-normal h-auto py-3",
+                          !eventDate && "text-muted-foreground"
+                        )}
+                      >
+                        <CalendarIcon className="mr-2 h-4 w-4" />
+                        {eventDate ? format(eventDate, "dd.MM.yyyy") : "Izvēlieties datumu"}
+                      </Button>
+                    </PopoverTrigger>
+                    <PopoverContent className="w-auto p-0" align="start">
+                      <Calendar
+                        mode="single"
+                        selected={eventDate}
+                        onSelect={setEventDate}
+                        disabled={(date) => date < new Date()}
+                        initialFocus
+                        className={cn("p-3 pointer-events-auto")}
+                      />
+                    </PopoverContent>
+                  </Popover>
+                </div>
+              )}
+              <textarea
+                name="message"
+                placeholder="Ziņojums (neobligāti)"
+                rows={3}
+                maxLength={1000}
+                className={`${inputClasses} resize-none`}
+                style={{ boxShadow: "0 0 0 1px hsl(var(--border))" }}
+              />
 
-          <button
-            type="submit"
-            disabled={loading}
-            className="rounded-lg bg-primary text-primary-foreground px-6 py-3 font-medium tracking-wide transition-all duration-200 active:scale-[0.98] disabled:opacity-60"
-            style={{ boxShadow: "var(--shadow-button)" }}
-          >
-            {loading ? "Nosūta…" : "Nosūtīt pieprasījumu"}
-          </button>
-        </form>
+              {/* Logo upload */}
+              <div>
+                <label className="text-sm font-medium text-muted-foreground mb-2 block">
+                  Jūsu logo (neobligāti)
+                </label>
+                {!logoFile ? (
+                  <button
+                    type="button"
+                    onClick={() => fileInputRef.current?.click()}
+                    className="w-full rounded-lg border-2 border-dashed border-border px-4 py-6 flex flex-col items-center gap-2 text-muted-foreground hover:border-primary/50 hover:text-foreground transition-colors"
+                  >
+                    <Upload className="w-6 h-6" />
+                    <span className="text-sm">Augšupielādēt logo</span>
+                    <span className="text-xs">PNG, JPG, SVG, WebP, PDF, CDR, EPS, AI — maks. 10MB</span>
+                  </button>
+                ) : (
+                  <div className="rounded-lg border border-border p-3 flex items-center gap-3">
+                    {logoPreview && (
+                      <img
+                        src={logoPreview}
+                        alt="Logo preview"
+                        className="w-12 h-12 object-contain rounded"
+                      />
+                    )}
+                    <span className="text-sm text-foreground flex-1 truncate">
+                      {logoFile.name}
+                    </span>
+                    <button
+                      type="button"
+                      onClick={removeLogo}
+                      className="p-1 rounded-full hover:bg-muted transition-colors text-muted-foreground hover:text-foreground"
+                    >
+                      <X className="w-4 h-4" />
+                    </button>
+                  </div>
+                )}
+                <input
+                  ref={fileInputRef}
+                  type="file"
+                  accept=".png,.jpg,.jpeg,.svg,.webp,.pdf,.cdr,.eps,.ai"
+                  onChange={handleFileChange}
+                  className="hidden"
+                />
+              </div>
+
+              <button
+                type="submit"
+                disabled={loading}
+                className="rounded-lg bg-primary text-primary-foreground px-6 py-3 font-medium tracking-wide transition-all duration-200 active:scale-[0.98] disabled:opacity-60"
+                style={{ boxShadow: "var(--shadow-button)" }}
+              >
+                {loading ? "Nosūta…" : "Nosūtīt pieprasījumu"}
+              </button>
+            </form>
+          </>
+        )}
       </DialogContent>
     </Dialog>
   );
