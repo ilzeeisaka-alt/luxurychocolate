@@ -18,43 +18,25 @@ const SeoContentSection = () => {
 
           <div className="space-y-6 text-base text-muted-foreground leading-relaxed">
             <p>
-              Mēs piedāvājam <strong className="text-foreground">premium šokolādes ar individuālu apdruku</strong> — 
-              ideālas korporatīvās dāvanas klientiem, partneriem un pasākumiem. Katrs izstrādājums tiek izgatavots 
-              no augstākās kvalitātes <strong className="text-foreground">Beļģu šokolādes</strong> ar Jūsu uzņēmuma logo vai dizainu.
+              <strong className="text-foreground">Personalizētas šokolādes ar logo</strong> ir eleganta un efektīva 
+              korporatīvā dāvana klientiem, partneriem un darbiniekiem. Premium šokolāde ar individuālu apdruku palīdz 
+              uzņēmumiem izcelt savu zīmolu un radīt pozitīvu iespaidu biznesa attiecībās. 
+              <strong className="text-foreground">Šokolādes ar uzņēmuma logo</strong> bieži izmanto konferencēs, 
+              izstādēs, marketinga pasākumos un svētku dāvanām.
             </p>
 
             <p>
-              Uzņēmumi visā pasaulē izmanto <strong className="text-foreground">personalizētas šokolādes</strong> kā 
-              efektīvu mārketinga rīku — no konferenču viesmīlības līdz VIP klientu dāvanām. 
-              Mūsu <strong className="text-foreground">korporatīvās šokolādes</strong> atstāj neaizmirstamu iespaidu.
+              Mēs piedāvājam ekskluzīvas šokolādes ar <strong className="text-foreground">personalizētu apdruku</strong>, 
+              kas pielāgota Jūsu uzņēmuma dizainam un identitātei. Šokolādes var izmantot gan kā 
+              <strong className="text-foreground"> reklāmas dāvanas</strong>, gan kā premium 
+              <strong className="text-foreground"> korporatīvās dāvanas</strong> īpašiem klientiem un partneriem. 
+              Personalizēta šokolāde ir ne tikai garšīga dāvana, bet arī efektīvs veids, kā palielināt zīmola atpazīstamību.
             </p>
 
-            <div>
-              <h3 className="text-lg font-medium text-foreground mb-3">Mūsu iespējas</h3>
-              <ul className="space-y-2" role="list">
-                <li className="flex items-start gap-2">
-                  <span className="text-primary mt-0.5">✔</span>
-                  <span><strong className="text-foreground">Šokolādes ar uzņēmuma logo</strong> — apdruka tieši uz šokolādes virsmas</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-primary mt-0.5">✔</span>
-                  <span><strong className="text-foreground">Šokolādes ar reklāmas dizainu</strong> — pilnkrāsu apdruka jebkuram motīvam</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-primary mt-0.5">✔</span>
-                  <span><strong className="text-foreground">Personalizēti šokolādes iepakojumi</strong> — branded kastītes un iesaiņojums</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-primary mt-0.5">✔</span>
-                  <span><strong className="text-foreground">Reklāmas šokolāde</strong> pasākumiem, izstādēm un konferencēm</span>
-                </li>
-              </ul>
-            </div>
-
             <p>
-              Neatkarīgi no tā, vai meklējat <em>custom chocolate with logo</em>, <em>corporate chocolate gifts</em> vai 
-              <em> branded chocolate</em> — mēs piedāvājam pilnu servisu no dizaina izstrādes līdz piegādei visā pasaulē.
-              Minimālais pasūtījums — no 50 gab., izgatavošana — 3–10 darba dienas.
+              Mūsu piedāvājumā ir dažādi šokolādes veidi un iepakojuma risinājumi, kas piemēroti gan nelielām uzņēmumu 
+              dāvanām, gan lielākiem marketinga projektiem. <strong className="text-foreground">Šokolādes ar logo</strong> ir 
+              ideāls veids, kā apvienot izsmalcinātu garšu ar uzņēmuma identitāti.
             </p>
           </div>
         </motion.div>
