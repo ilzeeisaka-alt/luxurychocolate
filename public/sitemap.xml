@@ -48,4 +48,10 @@
     <priority>0.7</priority>
     <changefreq>monthly</changefreq>
   </url>
+  <url>
+    <loc>https://luxurychocolate.lv/korporativo-davanu-idejas</loc>
+    <lastmod>2026-03-12</lastmod>
+    <priority>0.8</priority>
+    <changefreq>monthly</changefreq>
+  </url>
 </urlset>

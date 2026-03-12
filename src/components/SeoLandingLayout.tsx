@@ -256,6 +256,7 @@ const SeoLandingLayout = ({
                 { to: "/sokolades-konferencem", label: "Šokolādes konferencēm", desc: "Personalizēta šokolāde pasākumiem un semināriem" },
                 { to: "/sokolades-darbinieku-davanam", label: "Darbinieku dāvanas", desc: "Šokolādes dāvanas komandai un darbiniekiem" },
                 { to: "/sokolades-partneru-davanam", label: "Partneru dāvanas", desc: "Ekskluzīvas dāvanas biznesa partneriem" },
+                { to: "/korporativo-davanu-idejas", label: "Dāvanu idejas", desc: "Labākās korporatīvo dāvanu idejas" },
               ]
                 .filter((link) => link.to !== pathname)
                 .map((link) => (

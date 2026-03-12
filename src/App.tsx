@@ -11,6 +11,7 @@ import KlientuDavanas from "./pages/KlientuDavanas.tsx";
 import SokoladesKonferencem from "./pages/SokoladesKonferencem.tsx";
 import SokoladesDarbiniekiem from "./pages/SokoladesDarbiniekiem.tsx";
 import SokoladesPartneriem from "./pages/SokoladesPartneriem.tsx";
+import KorporativoDavanuIdejas from "./pages/KorporativoDavanuIdejas.tsx";
 import NotFound from "./pages/NotFound.tsx";
 import CookieConsent from "./components/CookieConsent.tsx";
 
@@ -31,6 +32,7 @@ const App = () => (
           <Route path="/sokolades-konferencem" element={<SokoladesKonferencem />} />
           <Route path="/sokolades-darbinieku-davanam" element={<SokoladesDarbiniekiem />} />
           <Route path="/sokolades-partneru-davanam" element={<SokoladesPartneriem />} />
+          <Route path="/korporativo-davanu-idejas" element={<KorporativoDavanuIdejas />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
