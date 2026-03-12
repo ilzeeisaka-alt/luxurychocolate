@@ -7,7 +7,7 @@ interface SeoProps {
   ogImage?: string;
 }
 
-const BASE_URL = "https://luxurychocolate.lovable.app";
+const BASE_URL = "https://luxurychocolate.lv";
 
 function setMeta(name: string, content: string, attribute = "name") {
   let el = document.querySelector(`meta[${attribute}="${name}"]`) as HTMLMetaElement | null;
