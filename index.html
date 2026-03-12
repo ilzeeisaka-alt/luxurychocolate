@@ -24,7 +24,7 @@
       {
         "@type": "Organization",
         "name": "Luxury Chocolate",
-        "description": "Korporatīvās šokolādes ar Jūsu logo. Premium Beļģu šokolāde, personalizēta apdruka ar Jūsu logo, minimālais pasūtījums no 50 gab.",
+        "description": "Korporatīvās šokolādes ar Jūsu logo. Premium Beļģu šokolāde, personalizēta apdruka ar Jūsu logo, minimālais pasūtījums no 50 gab. Izgatavošana: 3–10 darba dienas.",
         "url": "https://luxurychocolate.lovable.app",
         "address": {
           "@type": "PostalAddress",
@@ -34,83 +34,85 @@
         "areaServed": "Worldwide",
         "knowsAbout": [
           "Premium Beļģu šokolāde",
-          "Personalizēta apdruka ar Jūsu logo",
-          "Minimālais pasūtījums no 50 gab.",
+          "Personalizēta apdruka ar logo",
           "Korporatīvās dāvanas",
           "Šokolādes ar logo",
-          "Korporatīvās dāvanas Rīgā"
+          "Reklāmas šokolāde",
+          "Custom chocolate with logo",
+          "Corporate chocolate gifts",
+          "Branded chocolate",
+          "Promotional chocolate"
         ],
         "aggregateRating": {
           "@type": "AggregateRating",
           "ratingValue": "4.9",
           "reviewCount": "500",
           "bestRating": "5"
+        }
+      },
+      {
+        "@type": "Product",
+        "name": "Personalizētas šokolādes ar uzņēmuma logo",
+        "description": "Premium Beļģu šokolādes ar individuālu pilnkrāsu apdruku. Ideālas korporatīvajām dāvanām, konferencēm, izstādēm un pasākumiem. Minimālais pasūtījums no 50 gab., izgatavošana 3–10 darba dienas.",
+        "brand": {"@type": "Brand", "name": "Luxury Chocolate"},
+        "category": "Korporatīvās dāvanas",
+        "offers": {
+          "@type": "Offer",
+          "availability": "https://schema.org/InStock",
+          "priceCurrency": "EUR",
+          "eligibleQuantity": {"@type": "QuantitativeValue", "minValue": 50, "unitText": "gab."}
         },
-        "review": [
-          {
-            "@type": "Review",
-            "author": {"@type": "Person", "name": "Anna K."},
-            "reviewBody": "Izcila kvalitāte un ātra piegāde. Mūsu klienti bija sajūsmā par personalizētajām šokolādēm!",
-            "reviewRating": {"@type": "Rating", "ratingValue": "5"}
-          },
-          {
-            "@type": "Review",
-            "author": {"@type": "Person", "name": "Mārtiņš B."},
-            "reviewBody": "Luxury Chocolate palīdzēja mums radīt neaizmirstamu korporatīvo dāvanu. Ļoti profesionāla pieeja.",
-            "reviewRating": {"@type": "Rating", "ratingValue": "5"}
-          },
-          {
-            "@type": "Review",
-            "author": {"@type": "Person", "name": "Ieva L."},
-            "reviewBody": "Jau trešo gadu pasūtām šokolādes ar mūsu logo — vienmēr augstākajā līmenī.",
-            "reviewRating": {"@type": "Rating", "ratingValue": "5"}
-          }
+        "material": "Premium Beļģu šokolāde",
+        "additionalProperty": [
+          {"@type": "PropertyValue", "name": "Izgatavošanas laiks", "value": "3–10 darba dienas"},
+          {"@type": "PropertyValue", "name": "Minimālais pasūtījums", "value": "no 50 gab."},
+          {"@type": "PropertyValue", "name": "Apdruka", "value": "Pilnkrāsu personalizēta apdruka ar Jūsu logo"},
+          {"@type": "PropertyValue", "name": "Iepakojums", "value": "Individuāls dizains vai standarta kastīte"},
+          {"@type": "PropertyValue", "name": "Piegāde", "value": "Visā pasaulē, 30+ valstis"}
         ]
       },
       {
-        "@type": "WebPage",
-        "name": "Luxury Chocolate — Uzticības punkti zem pogas",
-        "url": "https://luxurychocolate.lovable.app",
-        "inLanguage": "lv",
-        "mainEntity": {
-          "@type": "ItemList",
-          "name": "✔ Uzticības punkti zem pogas",
-          "description": "3 lietas, kas padara sākumu spēcīgāku: Premium Beļģu šokolāde, Personalizēta apdruka ar Jūsu logo, Minimālais pasūtījums no 50 gab.",
-          "numberOfItems": 3,
+        "@type": "Service",
+        "name": "Korporatīvo šokolādes dāvanu izgatavošana",
+        "description": "Pilns serviss no dizaina izstrādes līdz piegādei: logo apdruka uz šokolādes, individuāls iepakojums, piegāde visā pasaulē.",
+        "provider": {"@type": "Organization", "name": "Luxury Chocolate"},
+        "serviceType": "Personalizētu šokolādes dāvanu ražošana",
+        "areaServed": "Worldwide",
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "Šokolādes produkti",
           "itemListElement": [
-            {
-              "@type": "ListItem",
-              "position": 1,
-              "name": "✔ Premium Beļģu šokolāde",
-              "description": "Izmantojam tikai augstākās kvalitātes Beļģu šokolādi"
-            },
-            {
-              "@type": "ListItem",
-              "position": 2,
-              "name": "✔ Personalizēta apdruka ar Jūsu logo",
-              "description": "Jūsu uzņēmuma logo un dizains uz katras šokolādes"
-            },
-            {
-              "@type": "ListItem",
-              "position": 3,
-              "name": "✔ Minimālais pasūtījums no 50 gab.",
-              "description": "Ērts minimālā pasūtījuma apjoms uzņēmumiem no 50 vienībām"
-            }
+            {"@type": "Offer", "itemOffered": {"@type": "Product", "name": "Šokolādes ar uzņēmuma logo"}},
+            {"@type": "Offer", "itemOffered": {"@type": "Product", "name": "Reklāmas šokolāde ar apdruku"}},
+            {"@type": "Offer", "itemOffered": {"@type": "Product", "name": "Ziemassvētku korporatīvās šokolādes"}},
+            {"@type": "Offer", "itemOffered": {"@type": "Product", "name": "Šokolādes klientu dāvanām"}}
           ]
         }
       },
       {
         "@type": "ItemList",
-        "name": "Klientu piemēri — Pasaules zīmoli uzticas mums",
-        "description": "Luxury Chocolate ir izgatvojis personalizētas šokolādes tādiem zīmoliem kā MasterCard, Bosch, Chopard, Samsung, Vodafone un Volkswagen.",
+        "name": "Klientu piemēri — šokolādes ar logo",
+        "description": "Pasaules zīmoli, kas uzticas Luxury Chocolate personalizēto šokolādes dāvanu izgatavošanā.",
         "numberOfItems": 6,
         "itemListElement": [
-          {"@type": "ListItem", "position": 1, "name": "MasterCard", "description": "MasterCard logo šokolāde pie kafijas tases — korporatīvais viesmīlības piemērs"},
-          {"@type": "ListItem", "position": 2, "name": "Bosch", "description": "Bosch brendētas šokolādes uz cepuma — marketinga dāvana"},
-          {"@type": "ListItem", "position": 3, "name": "Chopard", "description": "Chopard premium šokolādes elegantās dāvanu kastītēs"},
+          {"@type": "ListItem", "position": 1, "name": "MasterCard", "description": "MasterCard logo šokolāde — korporatīvā viesmīlība"},
+          {"@type": "ListItem", "position": 2, "name": "Bosch", "description": "Bosch brendētas šokolādes — mārketinga dāvana"},
+          {"@type": "ListItem", "position": 3, "name": "Chopard", "description": "Chopard premium šokolādes dāvanu kastītēs"},
           {"@type": "ListItem", "position": 4, "name": "Samsung", "description": "Samsung Galaxy logo uz šokolādes — prezentāciju dāvana"},
-          {"@type": "ListItem", "position": 5, "name": "Vodafone", "description": "Vodafone sirds formas šokolāde dāvanu kastē — Valentīndienas kampaņa"},
-          {"@type": "ListItem", "position": 6, "name": "Volkswagen", "description": "Volkswagen logo cepums ar brendētu lenti — korporatīvais pasākums"}
+          {"@type": "ListItem", "position": 5, "name": "Vodafone", "description": "Vodafone brendēta šokolāde — Valentīndienas kampaņa"},
+          {"@type": "ListItem", "position": 6, "name": "Volkswagen", "description": "Volkswagen logo šokolāde — korporatīvais pasākums"}
+        ]
+      },
+      {
+        "@type": "HowTo",
+        "name": "Kā pasūtīt personalizētās šokolādes ar logo",
+        "description": "Pasūtīšanas process 4 vienkāršos soļos — no logo iesniegšanas līdz piegādei. Izgatavošana: 3–10 darba dienas.",
+        "totalTime": "P10D",
+        "step": [
+          {"@type": "HowToStep", "position": 1, "name": "Atsūtiet logo", "text": "Atsūtiet savu uzņēmuma logo vai dizaina ideju mūsu piedāvājuma formā."},
+          {"@type": "HowToStep", "position": 2, "name": "Dizaina paraugs", "text": "Mēs izveidosim dizaina paraugu ar Jūsu logo uz šokolādes."},
+          {"@type": "HowToStep", "position": 3, "name": "Apstipriniet", "text": "Apskatiet un apstipriniet dizainu pirms ražošanas uzsākšanas."},
+          {"@type": "HowToStep", "position": 4, "name": "Ražošana un piegāde", "text": "Mēs izgatavosim un piegādāsim Jūsu personalizētās šokolādes 3–10 darba dienu laikā."}
         ]
       },
       {
@@ -118,19 +120,33 @@
         "mainEntity": [
           {
             "@type": "Question",
-            "name": "Kādi ir uzticības punkti zem pogas?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "✔ Premium Beļģu šokolāde. ✔ Personalizēta apdruka ar Jūsu logo. ✔ Minimālais pasūtījums no 50 gab."
-            }
+            "name": "Kāds ir minimālais pasūtījums personalizētām šokolādēm?",
+            "acceptedAnswer": {"@type": "Answer", "text": "Minimālais pasūtījums ir no 50 gab. Tas ir ērts apjoms gan mazākiem pasākumiem, gan lielām korporatīvajām kampaņām."}
           },
           {
             "@type": "Question",
-            "name": "Kādiem zīmoliem Luxury Chocolate ir izgatvojis personalizētas šokolādes?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Luxury Chocolate ir izgatvojis brendētas šokolādes tādiem pasaules zīmoliem kā MasterCard, Bosch, Chopard, Samsung, Vodafone un Volkswagen."
-            }
+            "name": "Cik ilgi aizņem šokolādes ar logo izgatavošana?",
+            "acceptedAnswer": {"@type": "Answer", "text": "Standarta izgatavošanas laiks ir 3–10 darba dienas no dizaina apstiprināšanas brīža. Steidzamiem pasūtījumiem iespējama ātrāka izpilde."}
+          },
+          {
+            "@type": "Question",
+            "name": "Kāda kvalitātes šokolāde tiek izmantota?",
+            "acceptedAnswer": {"@type": "Answer", "text": "Mēs izmantojam tikai premium Beļģu šokolādi — piena, tumšo un balto šokolādi no sertificētām ražotnēm."}
+          },
+          {
+            "@type": "Question",
+            "name": "Vai ir iespējams pasūtīt šokolādes ar pilnkrāsu apdruku?",
+            "acceptedAnswer": {"@type": "Answer", "text": "Jā, mēs piedāvājam pilnkrāsu apdruku tieši uz šokolādes virsmas — Jūsu logo, dizains vai jebkurš grafisks motīvs. Apdruka ir pārtikas droša."}
+          },
+          {
+            "@type": "Question",
+            "name": "Kādiem pasākumiem piemērotas korporatīvās šokolādes?",
+            "acceptedAnswer": {"@type": "Answer", "text": "Personalizētas šokolādes ir ideālas konferencēm, izstādēm, klientu tikšanām, Ziemassvētku dāvanām, uzņēmuma jubileju pasākumiem, produktu prezentācijām un VIP viesmīlībai."}
+          },
+          {
+            "@type": "Question",
+            "name": "Vai piedāvājat piegādi ārpus Latvijas?",
+            "acceptedAnswer": {"@type": "Answer", "text": "Jā, mēs piegādājam personalizētās šokolādes uz vairāk nekā 30 valstīm visā pasaulē."}
           }
         ]
       }
@@ -141,19 +157,90 @@
   <body>
     <noscript>
       <header>
-        <h1>Luxury Chocolate — Ekskluzīvas šokolādes ar Jūsu logo</h1>
-        <p>Premium korporatīvās dāvanas klientiem un partneriem.</p>
-        <h2>Uzticības punkti — Kāpēc izvēlēties Luxury Chocolate</h2>
-        <ul>
-          <li>✔ Premium Beļģu šokolāde</li>
-          <li>✔ Personalizēta apdruka ar Jūsu logo</li>
-         <li>✔ Minimālais pasūtījums no 50 gab.</li>
-        </ul>
-        <h2>Klientu piemēri — Pasaules zīmoli uzticas mums</h2>
-        <p>Luxury Chocolate ir izgatvojis personalizētas šokolādes tādiem zīmoliem kā MasterCard, Bosch, Chopard, Samsung, Vodafone un Volkswagen.</p>
-        <h2>Šokolādes ar logo uzņēmumiem</h2>
-        <p>Mēs piedāvājam premium šokolādes ar individuālu apdruku — ideālas korporatīvās dāvanas klientiem, partneriem un pasākumiem. Uzņēmumi izmanto personalizētas šokolādes kā efektīvu mārketinga rīku. Iespējas: šokolādes ar uzņēmuma logo, šokolādes ar reklāmas dizainu, personalizēti šokolādes iepakojumi, reklāmas šokolāde pasākumiem. Custom chocolate with logo, corporate chocolate gifts, branded chocolate — pilns serviss no dizaina līdz piegādei.</p>
+        <h1>Luxury Chocolate — Ekskluzīvas korporatīvās šokolādes ar Jūsu logo</h1>
+        <p>Premium korporatīvās dāvanas klientiem un partneriem. Personalizētas Beļģu šokolādes ar Jūsu uzņēmuma logo vai dizainu.</p>
       </header>
+
+      <section>
+        <h2>Ātra informācija</h2>
+        <ul>
+          <li>✔ Premium Beļģu šokolāde — tikai augstākās kvalitātes ingredienti</li>
+          <li>✔ Personalizēta pilnkrāsu apdruka ar Jūsu logo</li>
+          <li>✔ Minimālais pasūtījums: no 50 gab.</li>
+          <li>✔ Izgatavošana: 3–10 darba dienas</li>
+          <li>✔ Piegāde visā pasaulē — 30+ valstis</li>
+          <li>✔ Kvalitātes garantija un sertificēta ražotne</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Šokolādes ar klientu logo — piemēri</h2>
+        <p>Pasaules zīmoli uzticas Luxury Chocolate:</p>
+        <ul>
+          <li>MasterCard — logo šokolāde korporatīvai viesmīlībai</li>
+          <li>Bosch — brendētas šokolādes mārketinga dāvanām</li>
+          <li>Chopard — premium šokolādes elegantās dāvanu kastītēs</li>
+          <li>Samsung — Galaxy logo uz šokolādes prezentācijām</li>
+          <li>Vodafone — sirds formas šokolāde kampaņām</li>
+          <li>Volkswagen — logo šokolāde korporatīviem pasākumiem</li>
+        </ul>
+        <p>Arī SEB Banka, Latvenergo, Rīgas Dome, Printful, Tet un Maxima uzticas mūsu personalizētajām šokolādēm.</p>
+      </section>
+
+      <section>
+        <h2>Kā pasūtīt personalizētās šokolādes</h2>
+        <ol>
+          <li>Atsūtiet savu uzņēmuma logo vai dizaina ideju</li>
+          <li>Mēs izveidosim dizaina paraugu ar Jūsu logo uz šokolādes</li>
+          <li>Apskatiet un apstipriniet dizainu</li>
+          <li>Mēs izgatavosim un piegādāsim 3–10 darba dienu laikā</li>
+        </ol>
+      </section>
+
+      <section>
+        <h2>Kāpēc mums uzticas</h2>
+        <ul>
+          <li>500+ izpildīti pasūtījumi</li>
+          <li>10+ gadu pieredze</li>
+          <li>98% klientu apmierinātība</li>
+          <li>Piegāde uz 30+ valstīm</li>
+        </ul>
+        <h3>Klientu atsauksmes</h3>
+        <blockquote>"Izcila kvalitāte un ātra piegāde. Mūsu klienti bija sajūsmā par personalizētajām šokolādēm!" — Anna K., SIA MarketPro</blockquote>
+        <blockquote>"Luxury Chocolate palīdzēja mums radīt neaizmirstamu korporatīvo dāvanu. Ļoti profesionāla pieeja." — Mārtiņš B., Tech Solutions</blockquote>
+        <blockquote>"Jau trešo gadu pasūtām šokolādes ar mūsu logo — vienmēr augstākajā līmenī." — Ieva L., Baltic Events</blockquote>
+      </section>
+
+      <section>
+        <h2>Šokolādes ar logo uzņēmumiem</h2>
+        <p>Mēs piedāvājam premium šokolādes ar individuālu apdruku — ideālas korporatīvās dāvanas klientiem, partneriem un pasākumiem.</p>
+        <h3>Mūsu iespējas</h3>
+        <ul>
+          <li>Šokolādes ar uzņēmuma logo — apdruka tieši uz šokolādes virsmas</li>
+          <li>Šokolādes ar reklāmas dizainu — pilnkrāsu apdruka jebkuram motīvam</li>
+          <li>Personalizēti šokolādes iepakojumi — branded kastītes un iesaiņojums</li>
+          <li>Reklāmas šokolāde pasākumiem, izstādēm un konferencēm</li>
+        </ul>
+        <p>Custom chocolate with logo, corporate chocolate gifts, branded chocolate, promotional chocolate — pilns serviss no dizaina līdz piegādei visā pasaulē.</p>
+      </section>
+
+      <section>
+        <h2>Biežāk uzdotie jautājumi</h2>
+        <h3>Kāds ir minimālais pasūtījums?</h3>
+        <p>Minimālais pasūtījums ir no 50 gab. — ērts apjoms gan mazākiem pasākumiem, gan lielām kampaņām.</p>
+        <h3>Cik ilgi aizņem izgatavošana?</h3>
+        <p>Standarta izgatavošanas laiks ir 3–10 darba dienas no dizaina apstiprināšanas brīža.</p>
+        <h3>Kāda kvalitātes šokolāde tiek izmantota?</h3>
+        <p>Mēs izmantojam tikai premium Beļģu šokolādi — piena, tumšo un balto šokolādi no sertificētām ražotnēm.</p>
+        <h3>Vai piedāvājat piegādi ārpus Latvijas?</h3>
+        <p>Jā, mēs piegādājam personalizētās šokolādes uz vairāk nekā 30 valstīm visā pasaulē.</p>
+        <h3>Kādiem pasākumiem piemērotas korporatīvās šokolādes?</h3>
+        <p>Personalizētas šokolādes ir ideālas konferencēm, izstādēm, klientu tikšanām, Ziemassvētku dāvanām, uzņēmuma jubileju pasākumiem un VIP viesmīlībai.</p>
+      </section>
+
+      <footer>
+        <p>Luxury Chocolate — Rīga, Latvija. Personalizētas korporatīvās šokolādes ar Jūsu logo visā pasaulē.</p>
+      </footer>
     </noscript>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
