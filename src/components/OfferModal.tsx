@@ -177,27 +177,79 @@ const OfferModal = ({ open, onOpenChange }: OfferModalProps) => {
             className={inputClasses}
             style={{ boxShadow: "0 0 0 1px hsl(var(--border))" }}
           />
-          <select
-            name="packaging"
-            defaultValue=""
-            className={`${inputClasses} appearance-none`}
-            style={{ boxShadow: "0 0 0 1px hsl(var(--border))" }}
-          >
-            <option value="" disabled>Vēlamais iepakojums</option>
-            <option value="bez_iepakojuma">Bez iepakojuma</option>
-            <option value="standarta_kastite">Standarta kastīte</option>
-            <option value="lukss_kastite">Lukss kastīte</option>
-            <option value="individuala_dizaina">Individuāla dizaina iepakojums</option>
-            <option value="cits">Cits / vēlos konsultāciju</option>
-          </select>
           <input
-            name="purpose"
+            name="packaging"
             type="text"
-            placeholder="Paredzētā pielietošana (piem., konference, klientu dāvanas)"
+            placeholder="Vēlamais iepakojums (piem., kastīte, maisiņš, bez iepakojuma)"
             maxLength={200}
             className={inputClasses}
             style={{ boxShadow: "0 0 0 1px hsl(var(--border))" }}
           />
+          <div>
+            <label className="text-sm font-medium text-muted-foreground mb-2 block">
+              Paredzētā pielietošana
+            </label>
+            <div className="flex gap-3">
+              <button
+                type="button"
+                onClick={() => setUsageType("event")}
+                className={cn(
+                  "flex-1 rounded-lg px-4 py-3 text-sm font-medium transition-all",
+                  usageType === "event"
+                    ? "bg-primary text-primary-foreground"
+                    : "bg-background text-muted-foreground hover:text-foreground"
+                )}
+                style={{ boxShadow: "0 0 0 1px hsl(var(--border))" }}
+              >
+                🎉 Pasākumam
+              </button>
+              <button
+                type="button"
+                onClick={() => { setUsageType("regular"); setEventDate(undefined); }}
+                className={cn(
+                  "flex-1 rounded-lg px-4 py-3 text-sm font-medium transition-all",
+                  usageType === "regular"
+                    ? "bg-primary text-primary-foreground"
+                    : "bg-background text-muted-foreground hover:text-foreground"
+                )}
+                style={{ boxShadow: "0 0 0 1px hsl(var(--border))" }}
+              >
+                🏢 Ikdienas lietošanai
+              </button>
+            </div>
+          </div>
+          {usageType === "event" && (
+            <div>
+              <label className="text-sm font-medium text-muted-foreground mb-2 block">
+                Pasākuma datums
+              </label>
+              <Popover>
+                <PopoverTrigger asChild>
+                  <Button
+                    type="button"
+                    variant="outline"
+                    className={cn(
+                      "w-full justify-start text-left font-normal h-auto py-3",
+                      !eventDate && "text-muted-foreground"
+                    )}
+                  >
+                    <CalendarIcon className="mr-2 h-4 w-4" />
+                    {eventDate ? format(eventDate, "dd.MM.yyyy") : "Izvēlieties datumu"}
+                  </Button>
+                </PopoverTrigger>
+                <PopoverContent className="w-auto p-0" align="start">
+                  <Calendar
+                    mode="single"
+                    selected={eventDate}
+                    onSelect={setEventDate}
+                    disabled={(date) => date < new Date()}
+                    initialFocus
+                    className={cn("p-3 pointer-events-auto")}
+                  />
+                </PopoverContent>
+              </Popover>
+            </div>
+          )}
           <input
             name="quantity"
             type="text"
