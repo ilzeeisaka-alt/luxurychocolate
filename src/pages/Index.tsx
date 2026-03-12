@@ -5,6 +5,7 @@ import QuickFactsSection from "@/components/QuickFactsSection";
 import HowToOrderSection from "@/components/HowToOrderSection";
 import TrustSection from "@/components/TrustSection";
 import ProductsSection from "@/components/ProductsSection";
+import CakeChocolateSection from "@/components/CakeChocolateSection";
 import SeoContentSection from "@/components/SeoContentSection";
 import FaqSection from "@/components/FaqSection";
 import IdeasSection from "@/components/IdeasSection";
