@@ -129,6 +129,8 @@ const OfferModal = ({ open, onOpenChange }: OfferModalProps) => {
       
       // Reset form
       removeLogo();
+      setUsageType("");
+      setEventDate(undefined);
     } catch (err) {
       console.error('Submit error:', err);
       toast.error("Kļūda nosūtot pieprasījumu. Lūdzu mēģiniet vēlreiz.");
