@@ -26,6 +26,13 @@ const SokoladesArLogo = () => (
       "custom chocolate with logo", "branded chocolate", "logo chocolate",
       "personalizētas šokolādes", "korporatīvās šokolādes"
     ]}
+    faqs={[
+      { q: "Kā logo tiek uzdrukāts uz šokolādes?", a: "Logo tiek uzdrukāts ar pārtikas drošu pilnkrāsu apdruku tieši uz šokolādes virsmas. Apdruka ir bez garšas un pilnībā droša." },
+      { q: "Kādas šokolādes formas ir pieejamas?", a: "Piedāvājam klasiskās tāfelītes, konfektes, medaljonus un individuālas formas. Katru var papildināt ar Jūsu logo." },
+      { q: "Kāds ir minimālais pasūtījums?", a: "Minimālais pasūtījums ir no 50 gab. — piemērots gan mazākiem pasākumiem, gan lielām kampaņām." },
+      { q: "Cik ilgi aizņem izgatavošana?", a: "Standarta izgatavošanas laiks ir 3–10 darba dienas no dizaina apstiprināšanas brīža." },
+      { q: "Vai var pievienot arī personalizētu iepakojumu?", a: "Jā, piedāvājam pilnībā personalizētus iepakojumus ar Jūsu brendingu — kastītes, lentītes un iesaiņojumu." },
+    ]}
   />
 );
 
