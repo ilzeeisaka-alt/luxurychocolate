@@ -1,13 +1,18 @@
 import { motion } from "framer-motion";
 import { Palette } from "lucide-react";
+import type { Lang } from "@/i18n/types";
+import { uiStrings } from "@/i18n/ui-strings";
 
 const vp = { once: true, margin: "-50px" as const };
 
 interface FreePreviewSectionProps {
   onCtaClick: () => void;
+  lang?: Lang;
 }
 
-const FreePreviewSection = ({ onCtaClick }: FreePreviewSectionProps) => {
+const FreePreviewSection = ({ onCtaClick, lang = "lv" }: FreePreviewSectionProps) => {
+  const ui = uiStrings[lang] || uiStrings.lv;
+
   return (
     <section className="py-20 bg-foreground" aria-labelledby="free-preview-heading">
       <div className="container mx-auto max-w-3xl text-center">
@@ -22,17 +27,17 @@ const FreePreviewSection = ({ onCtaClick }: FreePreviewSectionProps) => {
           </span>
 
           <h2 id="free-preview-heading" className="text-3xl sm:text-4xl text-white mb-4">
-            Saņemiet bezmaksas dizaina paraugu
+            {ui.freePreviewHeading}
           </h2>
 
           <p className="text-lg text-white/60 max-w-xl mx-auto mb-8 leading-relaxed">
-            Nosūtiet mums savu logo, un mēs sagatavosim bezmaksas šokolādes dizaina preview ar Jūsu uzņēmuma logo.
+            {ui.freePreviewDesc}
           </p>
 
           <div className="flex flex-wrap justify-center gap-x-8 gap-y-2 text-sm text-white/50 mb-10">
-            <span>✔ Bezmaksas dizaina paraugs</span>
-            <span>✔ Bez saistībām</span>
-            <span>✔ Atbilde 24h laikā</span>
+            <span>{ui.freePreviewBadge1}</span>
+            <span>{ui.freePreviewBadge2}</span>
+            <span>{ui.freePreviewBadge3}</span>
           </div>
 
           <button
@@ -44,7 +49,7 @@ const FreePreviewSection = ({ onCtaClick }: FreePreviewSectionProps) => {
               letterSpacing: "0.12em",
             }}
           >
-            Saņemt dizaina paraugu
+            {ui.freePreviewButton}
           </button>
         </motion.div>
       </div>
