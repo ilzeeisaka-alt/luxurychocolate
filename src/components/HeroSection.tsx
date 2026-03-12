@@ -26,9 +26,9 @@ const HeroSection = ({ onCtaClick }: HeroSectionProps) => {
             <span className="text-primary">uzņēmumiem</span>
           </h1>
 
-          <h2 className="text-lg sm:text-xl text-white/60 mb-10 max-w-xl mx-auto leading-relaxed tracking-wide font-normal">
+          <p className="text-lg sm:text-xl text-white/60 mb-10 max-w-xl mx-auto leading-relaxed tracking-wide font-normal">
             Premium korporatīvās dāvanas klientiem un partneriem.
-          </h2>
+          </p>
 
           <button
             onClick={onCtaClick}
