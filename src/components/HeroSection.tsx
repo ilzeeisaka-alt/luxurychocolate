@@ -60,6 +60,8 @@ const HeroSection = ({ onCtaClick }: HeroSectionProps) => {
           muted
           loop
           playsInline
+          preload="none"
+          poster="/video/hero-poster.webp"
           className="absolute inset-0 w-full h-full object-cover"
         >
           <source src="/video/hero.mp4" type="video/mp4" />
