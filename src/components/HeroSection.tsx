@@ -13,8 +13,11 @@ const HeroSection = ({ onCtaClick }: HeroSectionProps) => {
           <img
             src={logo}
             alt="Luxury Chocolate"
-            className="h-[180px] sm:h-[220px] w-auto mx-auto mb-10"
-            style={{ filter: "drop-shadow(0 4px 24px rgba(0,0,0,0.4))" }}
+            className="h-[180px] sm:h-[220px] w-auto mx-auto mb-10 rounded-full"
+            style={{
+              filter: "drop-shadow(0 4px 24px rgba(0,0,0,0.4))",
+              mixBlendMode: "screen",
+            }}
           />
 
           <p
