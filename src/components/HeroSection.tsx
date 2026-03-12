@@ -1,4 +1,5 @@
 import logo from "@/assets/logo-transparent.png";
+import LanguageSwitcher from "@/components/LanguageSwitcher";
 
 interface HeroSectionProps {
   onCtaClick: () => void;
