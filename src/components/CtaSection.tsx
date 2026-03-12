@@ -34,7 +34,7 @@ const CtaSection = ({ onCtaClick }: CtaSectionProps) => {
             e.currentTarget.style.filter = "brightness(1)";
           }}
         >
-          Saņemt piedāvājumu
+          Saņemt bezmaksas preview
         </button>
       </div>
     </motion.section>

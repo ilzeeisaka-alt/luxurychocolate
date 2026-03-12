@@ -32,7 +32,7 @@ const HeroSection = ({ onCtaClick }: HeroSectionProps) => {
           </h1>
 
           <p className="text-lg sm:text-xl text-white/60 mb-10 max-w-xl mx-auto leading-relaxed tracking-wide font-normal">
-            Premium korporatīvās dāvanas klientiem un partneriem.
+            Saņemiet bezmaksas dizaina preview ar Jūsu logo.
           </p>
 
           <button
