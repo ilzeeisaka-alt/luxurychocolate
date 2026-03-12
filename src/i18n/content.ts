@@ -221,9 +221,9 @@ export const useCasesContent: Record<Lang, { subtitle: string; heading: string; 
 
 export const ctaContent: Record<Lang, { heading: string; description: string; button: string }> = {
   lv: {
-    heading: "Saņemiet bezmaksas dizaina preview",
-    description: "Nosūtiet mums savu logo, un mēs sagatavosim personalizētu šokolādes dizaina preview 24h laikā — pilnīgi bez maksas.",
-    button: "Saņemt bezmaksas preview",
+    heading: "Saņemiet bezmaksas dizaina apskati",
+    description: "Nosūtiet mums savu logo, un mēs sagatavosim personalizētu šokolādes dizaina apskati 24h laikā — pilnīgi bez maksas.",
+    button: "Saņemt bezmaksas apskati",
   },
   en: {
     heading: "Get a free design preview",
