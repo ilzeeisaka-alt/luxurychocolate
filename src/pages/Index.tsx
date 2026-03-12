@@ -10,6 +10,7 @@ import FaqSection from "@/components/FaqSection";
 import IdeasSection from "@/components/IdeasSection";
 import CtaSection from "@/components/CtaSection";
 import FreePreviewSection from "@/components/FreePreviewSection";
+import UseCasesSection from "@/components/UseCasesSection";
 import RelatedPagesSection from "@/components/RelatedPagesSection";
 import FooterSection from "@/components/FooterSection";
 import OfferModal from "@/components/OfferModal";
@@ -30,6 +31,7 @@ const Index = () => {
       <SeoContentSection />
       <QuickFactsSection />
       <ClientExamplesSection />
+      <UseCasesSection onCtaClick={() => setModalOpen(true)} />
       <HowToOrderSection />
       <FreePreviewSection onCtaClick={() => setModalOpen(true)} />
       <TrustSection />
