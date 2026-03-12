@@ -57,27 +57,16 @@ const HeroSection = ({ onCtaClick }: HeroSectionProps) => {
       </div>
 
       {/* Video segment below */}
-      <div className="relative w-full h-[50vh] sm:h-[60vh] overflow-hidden bg-black">
+      <div className="relative w-full h-[50vh] sm:h-[60vh] overflow-hidden">
         <video
           autoPlay
           muted
           loop
           playsInline
           className="absolute inset-0 w-full h-full object-cover"
-          style={{ filter: "brightness(0.3) saturate(1.05) contrast(1.2)" }}
         >
           <source src="/video/hero.mp4" type="video/mp4" />
         </video>
-        {/* Top fade from dark segment */}
-        <div className="absolute inset-0 bg-gradient-to-b from-foreground via-transparent to-transparent" style={{ height: "30%" }} />
-        {/* Bottom fade to dark */}
-        <div className="absolute bottom-0 left-0 right-0 h-[40%] bg-gradient-to-t from-black/90 to-transparent" />
-        {/* Heavy vignette — dark edges to isolate center product */}
-        <div className="absolute inset-0" style={{ background: "radial-gradient(ellipse 50% 55% at center 50%, transparent 10%, rgba(0,0,0,0.7) 100%)" }} />
-        {/* Spotlight — bright center to illuminate the chocolate */}
-        <div className="absolute inset-0 mix-blend-screen" style={{ background: "radial-gradient(ellipse 35% 40% at center 50%, rgba(255,255,255,0.12) 0%, transparent 65%)" }} />
-        {/* Warm gold glow on product */}
-        <div className="absolute inset-0 mix-blend-soft-light" style={{ background: "radial-gradient(ellipse 30% 35% at center 50%, rgba(196,163,90,0.25) 0%, transparent 60%)" }} />
       </div>
 
       {/* Hidden SEO H1 */}
