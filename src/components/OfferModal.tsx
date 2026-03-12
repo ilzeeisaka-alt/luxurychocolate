@@ -27,13 +27,34 @@ interface OfferModalProps {
 const inputClasses =
   "w-full rounded-lg bg-background px-4 py-3 text-foreground placeholder:text-muted-foreground outline-none transition-shadow duration-200 focus:shadow-[0_0_0_2px_hsl(var(--ring))]";
 
+const quantityOptions = [
+  { value: "50–100", label: "50–100 gab." },
+  { value: "100–500", label: "100–500 gab." },
+  { value: "500+", label: "500+ gab." },
+];
+
 const OfferModal = ({ open, onOpenChange }: OfferModalProps) => {
+  const [step, setStep] = useState<1 | 2>(1);
+  const [selectedQuantity, setSelectedQuantity] = useState<string>("");
   const [loading, setLoading] = useState(false);
   const [logoFile, setLogoFile] = useState<File | null>(null);
   const [logoPreview, setLogoPreview] = useState<string | null>(null);
   const [usageType, setUsageType] = useState<string>("");
   const [eventDate, setEventDate] = useState<Date | undefined>();
   const fileInputRef = useRef<HTMLInputElement>(null);
+
+  const resetAll = () => {
+    setStep(1);
+    setSelectedQuantity("");
+    removeLogo();
+    setUsageType("");
+    setEventDate(undefined);
+  };
+
+  const handleOpenChange = (val: boolean) => {
+    if (!val) resetAll();
+    onOpenChange(val);
+  };
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
