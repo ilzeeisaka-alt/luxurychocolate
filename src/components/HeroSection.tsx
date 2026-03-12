@@ -53,7 +53,7 @@ const HeroSection = ({ onCtaClick }: HeroSectionProps) => {
               e.currentTarget.style.transform = "translateY(0)";
             }}
           >
-            Saņemt piedāvājumu
+            Bezmaksas dizaina preview
           </button>
         </div>
       </div>
