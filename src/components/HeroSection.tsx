@@ -57,18 +57,25 @@ const HeroSection = ({ onCtaClick }: HeroSectionProps) => {
       </div>
 
       {/* Video segment below */}
-      <div className="relative w-full h-[50vh] sm:h-[60vh] overflow-hidden">
+      <div className="relative w-full h-[50vh] sm:h-[60vh] overflow-hidden bg-black">
         <video
           autoPlay
           muted
           loop
           playsInline
           className="absolute inset-0 w-full h-full object-cover"
-          style={{ filter: "brightness(0.45) saturate(0.9)" }}
+          style={{ filter: "brightness(0.38) saturate(1.1) contrast(1.15)" }}
         >
           <source src="/video/hero.mp4" type="video/mp4" />
         </video>
-        <div className="absolute inset-0 bg-gradient-to-b from-foreground/80 via-transparent to-foreground/40" />
+        {/* Top fade from dark segment */}
+        <div className="absolute inset-0 bg-gradient-to-b from-foreground via-transparent to-transparent" style={{ height: "30%" }} />
+        {/* Bottom fade to dark */}
+        <div className="absolute bottom-0 left-0 right-0 h-[40%] bg-gradient-to-t from-black/80 to-transparent" />
+        {/* Vignette — spotlight effect on center product */}
+        <div className="absolute inset-0" style={{ background: "radial-gradient(ellipse 60% 70% at center 50%, transparent 20%, rgba(0,0,0,0.55) 100%)" }} />
+        {/* Warm gold light accent on center */}
+        <div className="absolute inset-0" style={{ background: "radial-gradient(ellipse 40% 50% at center 50%, rgba(196,163,90,0.08) 0%, transparent 70%)" }} />
       </div>
 
       {/* Hidden SEO H1 */}
