@@ -3,11 +3,11 @@ import SeoLandingLayout from "@/components/SeoLandingLayout";
 const ZiemassvētkuŠokolādes = () => (
   <SeoLandingLayout
     emoji="🎄"
-    title="Ziemassvētku korporatīvās šokolādes"
+    title="Ziemassvētku korporatīvās dāvanas ar šokolādi"
     metaDescription="Ziemassvētku korporatīvās dāvanas ar personalizētu šokolādi. Ekskluzīvas šokolādes ar logo klientiem, partneriem un darbiniekiem."
-    intro="Svētku laiks ir ideāla iespēja pateikt paldies saviem klientiem un partneriem ar ekskluzīvu, personalizētu šokolādes dāvanu ar Jūsu uzņēmuma logo."
+    intro="Ziemassvētku korporatīvās dāvanas ir lielisks veids, kā uzņēmumi var pateikties saviem klientiem, partneriem un darbiniekiem par veiksmīgu sadarbību gada laikā."
     benefits={[
-      "Svētku tematisks dizains ar Jūsu logo",
+      "Svētku tematisks dizains ar Jūsu uzņēmuma logo",
       "Premium Beļģu šokolāde elegantā svētku iepakojumā",
       "Piemērots kā korporatīvā Ziemassvētku dāvana klientiem",
       "Piegāde visā Latvijā un Eiropā",
@@ -15,10 +15,11 @@ const ZiemassvētkuŠokolādes = () => (
     ]}
     body={`
       <h3 class="text-xl font-medium text-foreground mb-3">Kāpēc šokolāde ir ideāla Ziemassvētku dāvana?</h3>
-      <p><strong class="text-foreground">Korporatīvās Ziemassvētku šokolādes</strong> ir universāla un izsmalcināta dāvana, kas vienmēr atstāj pozitīvu iespaidu. Atšķirībā no standarta suvenīriem, personalizēta šokolāde ar logo izceļ Jūsu zīmolu un parāda rūpes par saņēmēju.</p>
+      <p><strong class="text-foreground">Personalizētas šokolādes ar logo</strong> ir eleganta un universāla dāvana, kas apvieno svētku noskaņu ar uzņēmuma identitāti. Premium šokolādes ar personalizētu apdruku ir populāra izvēle uzņēmumiem, kas vēlas radīt īpašu iespaidu.</p>
+      <p>Šādas dāvanas bieži tiek izmantotas <strong class="text-foreground">klientu dāvanām</strong>, partneru sveicieniem un uzņēmuma svētku komplektiem.</p>
+      <h3 class="text-xl font-medium text-foreground mb-3 mt-6">Ziemassvētku šokolādes ar logo</h3>
+      <p><strong class="text-foreground">Ziemassvētku šokolādes ar logo</strong> var būt lielisks risinājums gan nelielām dāvanām, gan lielākiem korporatīvajiem projektiem. Personalizēta šokolāde palīdz uzņēmumiem radīt siltu svētku atmosfēru un vienlaikus stiprināt zīmola atpazīstamību.</p>
       <p>Mēs piedāvājam īpašus <strong class="text-foreground">svētku kolekcijas iepakojumus</strong> — no elegantām kastītēm līdz adventes kalendāriem ar Jūsu brendingu.</p>
-      <h3 class="text-xl font-medium text-foreground mb-3 mt-6">Populārākie varianti</h3>
-      <p>Uzņēmumi visbiežāk izvēlas svētku šokolādes komplektus ar 6–24 konfektēm, šokolādes tāfelītes ar logo vai personalizētus adventes kalendārus — ideālas <em>corporate Christmas gifts</em> un <em>holiday corporate chocolate</em> vajadzībām.</p>
     `}
     cta="Pasūtiet Ziemassvētku šokolādes"
     keywords={[
