@@ -174,6 +174,14 @@ const OfferModal = ({ open, onOpenChange }: OfferModalProps) => {
             style={{ boxShadow: "0 0 0 1px hsl(var(--border))" }}
           />
           <input
+            name="phone"
+            type="tel"
+            placeholder="Telefona numurs (neobligāti)"
+            maxLength={20}
+            className={inputClasses}
+            style={{ boxShadow: "0 0 0 1px hsl(var(--border))" }}
+          />
+          <input
             name="size"
             type="text"
             placeholder="Vēlamais izmērs cm (piem., 10×5 cm)"
