@@ -19,8 +19,8 @@ const VideoSection = () => {
             className="w-full aspect-video"
             controls
             playsInline
-            preload="metadata"
-            poster=""
+            preload="none"
+            poster="/video/hero-poster.webp"
           >
             <source src="/video/hero.mp4" type="video/mp4" />
           </video>
