@@ -30,4 +30,22 @@
     <priority>0.8</priority>
     <changefreq>monthly</changefreq>
   </url>
+  <url>
+    <loc>https://luxurychocolate.lv/sokolades-konferencem</loc>
+    <lastmod>2026-03-12</lastmod>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://luxurychocolate.lv/sokolades-darbinieku-davanam</loc>
+    <lastmod>2026-03-12</lastmod>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://luxurychocolate.lv/sokolades-partneru-davanam</loc>
+    <lastmod>2026-03-12</lastmod>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>
 </urlset>
