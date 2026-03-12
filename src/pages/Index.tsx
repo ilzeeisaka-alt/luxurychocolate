@@ -9,6 +9,7 @@ import SeoContentSection from "@/components/SeoContentSection";
 import FaqSection from "@/components/FaqSection";
 import IdeasSection from "@/components/IdeasSection";
 import CtaSection from "@/components/CtaSection";
+import RelatedPagesSection from "@/components/RelatedPagesSection";
 import FooterSection from "@/components/FooterSection";
 import OfferModal from "@/components/OfferModal";
 import { useSeo } from "@/hooks/useSeo";
@@ -33,6 +34,7 @@ const Index = () => {
       <SeoContentSection />
       <FaqSection />
       <IdeasSection />
+      <RelatedPagesSection />
       <CtaSection onCtaClick={() => setModalOpen(true)} />
       <FooterSection />
       <OfferModal open={modalOpen} onOpenChange={setModalOpen} />
