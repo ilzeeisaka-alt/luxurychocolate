@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowLeft } from "lucide-react";
@@ -50,6 +50,68 @@ const SeoLandingLayout = ({
     description: metaDescription,
     path: pathname,
   });
+
+  useEffect(() => {
+    const BASE_URL = "https://luxurychocolate.lovable.app";
+    const fullUrl = `${BASE_URL}${pathname}`;
+    const fullTitle = `${title} — Luxury Chocolate`;
+
+    const jsonLd: Record<string, unknown>[] = [
+      {
+        "@type": "WebPage",
+        "@id": fullUrl,
+        "name": fullTitle,
+        "description": metaDescription,
+        "url": fullUrl,
+        "isPartOf": { "@id": `${BASE_URL}/#website` },
+        "breadcrumb": {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Sākumlapa", "item": BASE_URL },
+            { "@type": "ListItem", "position": 2, "name": title, "item": fullUrl },
+          ],
+        },
+      },
+      {
+        "@type": "Product",
+        "name": title,
+        "description": intro,
+        "brand": { "@type": "Brand", "name": "Luxury Chocolate" },
+        "offers": {
+          "@type": "Offer",
+          "availability": "https://schema.org/InStock",
+          "priceCurrency": "EUR",
+          "eligibleQuantity": { "@type": "QuantitativeValue", "minValue": 50, "unitText": "gab." },
+        },
+        "material": "Premium Beļģu šokolāde",
+      },
+    ];
+
+    if (faqs && faqs.length > 0) {
+      jsonLd.push({
+        "@type": "FAQPage",
+        "mainEntity": faqs.map((faq) => ({
+          "@type": "Question",
+          "name": faq.q,
+          "acceptedAnswer": { "@type": "Answer", "text": faq.a },
+        })),
+      });
+    }
+
+    const script = document.createElement("script");
+    script.type = "application/ld+json";
+    script.id = "seo-landing-jsonld";
+    script.textContent = JSON.stringify({ "@context": "https://schema.org", "@graph": jsonLd });
+
+    const existing = document.getElementById("seo-landing-jsonld");
+    if (existing) existing.remove();
+    document.head.appendChild(script);
+
+    return () => {
+      document.getElementById("seo-landing-jsonld")?.remove();
+    };
+  }, [pathname, title, metaDescription, intro, faqs]);
+
   return (
     <main className="bg-background">
       {/* Nav */}
