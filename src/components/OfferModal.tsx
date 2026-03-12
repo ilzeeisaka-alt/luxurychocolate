@@ -81,6 +81,7 @@ const OfferModal = ({ open, onOpenChange }: OfferModalProps) => {
       const name = (formData.get('name') as string).trim();
       const company = (formData.get('company') as string).trim();
       const email = (formData.get('email') as string).trim();
+      const phone = (formData.get('phone') as string || '').trim();
       const size = (formData.get('size') as string).trim();
       const packaging = (formData.get('packaging') as string || '').trim();
       const purpose = usageType === "event" 
@@ -116,7 +117,7 @@ const OfferModal = ({ open, onOpenChange }: OfferModalProps) => {
 
       // Send email via edge function
       const { error } = await supabase.functions.invoke('send-logo-email', {
-        body: { name, company, email, size, packaging, purpose, quantity, message, logoUrl },
+        body: { name, company, email, phone, size, packaging, purpose, quantity, message, logoUrl },
       });
 
       if (error) {
@@ -170,6 +171,14 @@ const OfferModal = ({ open, onOpenChange }: OfferModalProps) => {
             placeholder="E-pasts"
             required
             maxLength={255}
+            className={inputClasses}
+            style={{ boxShadow: "0 0 0 1px hsl(var(--border))" }}
+          />
+          <input
+            name="phone"
+            type="tel"
+            placeholder="Telefona numurs (neobligāti)"
+            maxLength={20}
             className={inputClasses}
             style={{ boxShadow: "0 0 0 1px hsl(var(--border))" }}
           />
