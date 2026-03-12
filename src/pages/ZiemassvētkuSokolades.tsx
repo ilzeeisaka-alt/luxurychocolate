@@ -3,8 +3,8 @@ import SeoLandingLayout from "@/components/SeoLandingLayout";
 const ZiemassvētkuŠokolādes = () => (
   <SeoLandingLayout
     emoji="🎄"
-    title="Ziemassvētku korporatīvās šokolādes ar logo"
-    metaDescription="Ziemassvētku korporatīvās šokolādes ar Jūsu logo. Eleganta dāvana klientiem un partneriem svētku sezonā."
+    title="Ziemassvētku korporatīvās šokolādes"
+    metaDescription="Ziemassvētku korporatīvās dāvanas ar personalizētu šokolādi. Ekskluzīvas šokolādes ar logo klientiem, partneriem un darbiniekiem."
     intro="Svētku laiks ir ideāla iespēja pateikt paldies saviem klientiem un partneriem ar ekskluzīvu, personalizētu šokolādes dāvanu ar Jūsu uzņēmuma logo."
     benefits={[
       "Svētku tematisks dizains ar Jūsu logo",

@@ -18,8 +18,8 @@ const Index = () => {
   const [modalOpen, setModalOpen] = useState(false);
 
   useSeo({
-    title: "Ekskluzīvas šokolādes ar Jūsu logo",
-    description: "Korporatīvās šokolādes ar Jūsu logo. ✔ Premium Beļģu šokolāde ✔ Personalizēta apdruka ar Jūsu logo ✔ Minimālais pasūtījums no 50 gab.",
+    title: "Šokolādes ar logo uzņēmumiem | Premium korporatīvās dāvanas",
+    description: "Ekskluzīvas šokolādes ar logo uzņēmumiem. Premium korporatīvās dāvanas klientiem, partneriem un pasākumiem ar personalizētu šokolādes apdruku.",
     path: "/",
   });
 
