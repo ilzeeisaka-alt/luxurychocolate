@@ -1,11 +1,11 @@
 import { motion } from "framer-motion";
 
-import mastercard from "@/assets/clients/mastercard.jpg";
-import bosch from "@/assets/clients/bosch.jpg";
-import chopard from "@/assets/clients/chopard.jpg";
-import samsung from "@/assets/clients/samsung.jpg";
-import vodafone from "@/assets/clients/vodafone.jpg";
-import volkswagen from "@/assets/clients/volkswagen.jpg";
+import mastercard from "@/assets/clients/mastercard.webp";
+import bosch from "@/assets/clients/bosch.webp";
+import chopard from "@/assets/clients/chopard.webp";
+import samsung from "@/assets/clients/samsung.webp";
+import vodafone from "@/assets/clients/vodafone.webp";
+import volkswagen from "@/assets/clients/volkswagen.webp";
 
 const clients = [
   { src: mastercard, alt: "MasterCard logo šokolāde pie kafijas tases", brand: "MasterCard" },

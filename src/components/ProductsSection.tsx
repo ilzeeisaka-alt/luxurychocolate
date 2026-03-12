@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
-import giftBoxCorporate from "@/assets/gift-box-corporate.jpg";
-import praline from "@/assets/praline.jpg";
-import heroChocolate from "@/assets/hero-chocolate.jpg";
+import giftBoxCorporate from "@/assets/gift-box-corporate.webp";
+import praline from "@/assets/praline.webp";
+import heroChocolate from "@/assets/hero-chocolate.webp";
 
 const products = [
   {
