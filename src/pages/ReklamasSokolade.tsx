@@ -26,6 +26,13 @@ const ReklamasSokolade = () => (
       "promo šokolāde", "šokolāde izstādēm", "reklāmas produkti šokolāde",
       "branded promotional chocolate", "custom promo chocolate"
     ]}
+    faqs={[
+      { q: "Kāda veida apdruka tiek izmantota?", a: "Izmantojam pilnkrāsu pārtikas drošu apdruku — var uzdrukāt jebkuru logo, dizainu vai grafisku motīvu tieši uz šokolādes." },
+      { q: "Vai reklāmas šokolāde ir piemērota izstādēm?", a: "Jā, mazās šokolādes tāfelītes (5–10g) ar logo ir viens no populārākajiem promo produktiem izstādēs un konferencēs." },
+      { q: "Cik ātri var izgatavot reklāmas šokolādi?", a: "Standarta izgatavošana ir 3–10 darba dienas. Steidzamiem pasūtījumiem iespējama ātrāka izpilde." },
+      { q: "Vai ir iespējams individuāls iepakojums?", a: "Jā, piedāvājam pilnībā personalizētus iepakojumus — ar Jūsu reklāmas dizainu, logo un kontaktinformāciju." },
+      { q: "Kāds ir minimālais daudzums?", a: "Minimālais pasūtījums ir no 50 gab., kas ir piemērots arī nelieliem pasākumiem." },
+    ]}
   />
 );
 

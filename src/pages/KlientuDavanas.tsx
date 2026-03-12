@@ -26,6 +26,13 @@ const KlientuDavanas = () => (
       "corporate gifts", "corporate chocolate gifts", "biznesa dāvanas",
       "dāvanas partneriem", "VIP klientu dāvanas", "personalizētas dāvanas uzņēmumiem"
     ]}
+    faqs={[
+      { q: "Kādu šokolādi izmantojat klientu dāvanām?", a: "Izmantojam tikai premium Beļģu šokolādi — piena, tumšo un balto. Visas izejvielas ir no sertificētām ražotnēm." },
+      { q: "Vai var pievienot personalizētu kartīti?", a: "Jā, katrai dāvanai var pievienot personalizētu apsveikuma kartīti vai vēstuli ar Jūsu uzņēmuma vēstījumu." },
+      { q: "Kādiem gadījumiem piemērotas klientu dāvanas?", a: "Ideāli piemērotas biznesa tikšanām, līgumu parakstīšanai, gada beigu pateicībai, jubileju svinēšanai un VIP viesmīlībai." },
+      { q: "Vai piegādājat starptautiskiem partneriem?", a: "Jā, piegādājam uz vairāk nekā 30 valstīm visā pasaulē — arī ar individuālu adrešu sarakstu." },
+      { q: "Kāds ir minimālais pasūtījums?", a: "Minimālais pasūtījums ir no 50 gab. Lielākiem apjomiem piedāvājam individuālas cenas." },
+    ]}
   />
 );
 

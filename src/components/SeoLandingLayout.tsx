@@ -4,6 +4,17 @@ import { motion } from "framer-motion";
 import { ArrowLeft } from "lucide-react";
 import FooterSection from "@/components/FooterSection";
 import OfferModal from "@/components/OfferModal";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+
+export interface FaqItem {
+  q: string;
+  a: string;
+}
 
 interface SeoLandingPageProps {
   emoji: string;
@@ -14,6 +25,7 @@ interface SeoLandingPageProps {
   body: string;
   cta: string;
   keywords: string[];
+  faqs?: FaqItem[];
 }
 
 const vp = { once: true, margin: "-50px" as const };
@@ -26,6 +38,7 @@ const SeoLandingLayout = ({
   body,
   cta,
   keywords,
+  faqs,
 }: SeoLandingPageProps) => {
   const [modalOpen, setModalOpen] = useState(false);
 
@@ -99,7 +112,40 @@ const SeoLandingLayout = ({
         </div>
       </section>
 
-      {/* CTA */}
+      {/* FAQ */}
+      {faqs && faqs.length > 0 && (
+        <section className="py-16 bg-background" aria-labelledby="landing-faq-heading">
+          <div className="container mx-auto max-w-3xl px-4">
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={vp}
+              transition={{ duration: 0.4 }}
+            >
+              <h2 id="landing-faq-heading" className="text-2xl sm:text-3xl text-foreground mb-8">
+                Biežāk uzdotie jautājumi
+              </h2>
+              <Accordion type="single" collapsible className="w-full space-y-2">
+                {faqs.map((faq, i) => (
+                  <AccordionItem
+                    key={i}
+                    value={`faq-${i}`}
+                    className="bg-secondary/50 rounded-lg border border-border px-5"
+                  >
+                    <AccordionTrigger className="text-left text-base text-foreground hover:no-underline">
+                      {faq.q}
+                    </AccordionTrigger>
+                    <AccordionContent className="text-muted-foreground text-sm leading-relaxed">
+                      {faq.a}
+                    </AccordionContent>
+                  </AccordionItem>
+                ))}
+              </Accordion>
+            </motion.div>
+          </div>
+        </section>
+      )}
+
       <section className="py-20 bg-background text-center">
         <div className="container mx-auto max-w-2xl">
           <motion.div

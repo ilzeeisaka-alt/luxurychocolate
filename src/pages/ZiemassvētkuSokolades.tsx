@@ -27,6 +27,13 @@ const ZiemassvētkuŠokolādes = () => (
       "holiday corporate chocolate", "svētku dāvanas uzņēmumiem",
       "Christmas chocolate with logo"
     ]}
+    faqs={[
+      { q: "Kad jāpasūta Ziemassvētku šokolādes?", a: "Iesakām pasūtīt vismaz 2–3 nedēļas pirms svētkiem. Sezonas laikā pieprasījums ir liels, tāpēc agrāka pasūtīšana garantē savlaicīgu piegādi." },
+      { q: "Vai pieejami svētku tematiski dizaini?", a: "Jā, piedāvājam gatavus svētku dizainus vai izstrādājam individuālu noformējumu ar Jūsu logo un svētku elementiem." },
+      { q: "Vai var pasūtīt adventes kalendārus ar logo?", a: "Jā, personalizēti adventes kalendāri ar premium šokolādi un Jūsu brendingu ir viens no populārākajiem svētku produktiem." },
+      { q: "Kāds ir minimālais pasūtījums svētku šokolādēm?", a: "Minimālais pasūtījums ir no 50 gab. Lielākiem pasūtījumiem piedāvājam atlaides." },
+      { q: "Vai piegādājat arī ārpus Latvijas?", a: "Jā, piegādājam visā Eiropā un uz vairāk nekā 30 valstīm pasaulē." },
+    ]}
   />
 );
 
