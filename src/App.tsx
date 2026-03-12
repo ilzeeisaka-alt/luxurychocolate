@@ -12,6 +12,11 @@ import SokoladesKonferencem from "./pages/SokoladesKonferencem.tsx";
 import SokoladesDarbiniekiem from "./pages/SokoladesDarbiniekiem.tsx";
 import SokoladesPartneriem from "./pages/SokoladesPartneriem.tsx";
 import KorporativoDavanuIdejas from "./pages/KorporativoDavanuIdejas.tsx";
+import EnIndex from "./pages/EnIndex.tsx";
+import RuIndex from "./pages/RuIndex.tsx";
+import EnGiftIdeas from "./pages/EnGiftIdeas.tsx";
+import RuGiftIdeas from "./pages/RuGiftIdeas.tsx";
+import LangPage from "./pages/LangPage.tsx";
 import NotFound from "./pages/NotFound.tsx";
 import CookieConsent from "./components/CookieConsent.tsx";
 
@@ -24,6 +29,7 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <Routes>
+          {/* LV routes */}
           <Route path="/" element={<Index />} />
           <Route path="/sokolades-ar-logo" element={<SokoladesArLogo />} />
           <Route path="/ziemassvetku-korporativas-sokolades" element={<ZiemassvētkuSokolades />} />
@@ -33,7 +39,15 @@ const App = () => (
           <Route path="/sokolades-darbinieku-davanam" element={<SokoladesDarbiniekiem />} />
           <Route path="/sokolades-partneru-davanam" element={<SokoladesPartneriem />} />
           <Route path="/korporativo-davanu-idejas" element={<KorporativoDavanuIdejas />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+          {/* EN routes */}
+          <Route path="/en" element={<EnIndex />} />
+          <Route path="/en/corporate-gift-ideas" element={<EnGiftIdeas />} />
+          <Route path="/en/:slug" element={<LangPage lang="en" />} />
+          {/* RU routes */}
+          <Route path="/ru" element={<RuIndex />} />
+          <Route path="/ru/idei-korporativnyh-podarkov" element={<RuGiftIdeas />} />
+          <Route path="/ru/:slug" element={<LangPage lang="ru" />} />
+          {/* Catch-all */}
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
