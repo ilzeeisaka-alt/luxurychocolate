@@ -5,7 +5,7 @@ import heroChocolate from "@/assets/hero-chocolate.webp";
 import type { Lang } from "@/i18n/types";
 import { products as productsContent } from "@/i18n/content";
 
-const images = [heroChocolate, giftBoxCorporate, praline];
+const images = [heroChocolate, giftBoxCorporate, pralinePhoto];
 
 const sectionVariants = {
   initial: { opacity: 0, y: 8 },
