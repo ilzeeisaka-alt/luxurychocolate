@@ -1,9 +1,10 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowLeft } from "lucide-react";
 import FooterSection from "@/components/FooterSection";
 import OfferModal from "@/components/OfferModal";
+import { useSeo } from "@/hooks/useSeo";
 import {
   Accordion,
   AccordionContent,
@@ -33,6 +34,7 @@ const vp = { once: true, margin: "-50px" as const };
 const SeoLandingLayout = ({
   emoji,
   title,
+  metaDescription,
   intro,
   benefits,
   body,
@@ -41,7 +43,13 @@ const SeoLandingLayout = ({
   faqs,
 }: SeoLandingPageProps) => {
   const [modalOpen, setModalOpen] = useState(false);
+  const { pathname } = useLocation();
 
+  useSeo({
+    title,
+    description: metaDescription,
+    path: pathname,
+  });
   return (
     <main className="bg-background">
       {/* Nav */}
