@@ -163,6 +163,27 @@ const OfferModal = ({ open, onOpenChange }: OfferModalProps) => {
             className={inputClasses}
             style={{ boxShadow: "0 0 0 1px hsl(var(--border))" }}
           />
+          <select
+            name="packaging"
+            defaultValue=""
+            className={`${inputClasses} appearance-none`}
+            style={{ boxShadow: "0 0 0 1px hsl(var(--border))" }}
+          >
+            <option value="" disabled>Vēlamais iepakojums</option>
+            <option value="bez_iepakojuma">Bez iepakojuma</option>
+            <option value="standarta_kastite">Standarta kastīte</option>
+            <option value="lukss_kastite">Lukss kastīte</option>
+            <option value="individuala_dizaina">Individuāla dizaina iepakojums</option>
+            <option value="cits">Cits / vēlos konsultāciju</option>
+          </select>
+          <input
+            name="purpose"
+            type="text"
+            placeholder="Paredzētā pielietošana (piem., konference, klientu dāvanas)"
+            maxLength={200}
+            className={inputClasses}
+            style={{ boxShadow: "0 0 0 1px hsl(var(--border))" }}
+          />
           <input
             name="quantity"
             type="text"
