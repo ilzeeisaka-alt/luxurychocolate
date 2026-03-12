@@ -15,6 +15,7 @@ const KlientuDavanas = lazy(() => import("./pages/KlientuDavanas.tsx"));
 const SokoladesKonferencem = lazy(() => import("./pages/SokoladesKonferencem.tsx"));
 const SokoladesDarbiniekiem = lazy(() => import("./pages/SokoladesDarbiniekiem.tsx"));
 const SokoladesPartneriem = lazy(() => import("./pages/SokoladesPartneriem.tsx"));
+const KorporativoDavanuCelvedis = lazy(() => import("./pages/KorporativoDavanuCelvedis.tsx"));
 const KorporativoDavanuIdejas = lazy(() => import("./pages/KorporativoDavanuIdejas.tsx"));
 const EnIndex = lazy(() => import("./pages/EnIndex.tsx"));
 const RuIndex = lazy(() => import("./pages/RuIndex.tsx"));
@@ -43,6 +44,7 @@ const App = () => (
             <Route path="/sokolades-darbinieku-davanam" element={<SokoladesDarbiniekiem />} />
             <Route path="/sokolades-partneru-davanam" element={<SokoladesPartneriem />} />
             <Route path="/korporativo-davanu-idejas" element={<KorporativoDavanuIdejas />} />
+            <Route path="/korporativo-davanu-celvedis" element={<KorporativoDavanuCelvedis />} />
             {/* EN routes */}
             <Route path="/en" element={<EnIndex />} />
             <Route path="/en/corporate-gift-ideas" element={<EnGiftIdeas />} />
