@@ -155,20 +155,14 @@ const OfferModal = ({ open, onOpenChange }: OfferModalProps) => {
             className={inputClasses}
             style={{ boxShadow: "0 0 0 1px hsl(var(--border))" }}
           />
-          <select
+          <input
             name="size"
-            defaultValue=""
-            className={`${inputClasses} appearance-none`}
+            type="text"
+            placeholder="Vēlamais izmērs cm (piem., 10×5 cm)"
+            maxLength={50}
+            className={inputClasses}
             style={{ boxShadow: "0 0 0 1px hsl(var(--border))" }}
-          >
-            <option value="" disabled>Šokolādes izmērs</option>
-            <option value="5x5cm">5×5 cm</option>
-            <option value="10x5cm">10×5 cm</option>
-            <option value="10x10cm">10×10 cm</option>
-            <option value="15x8cm">15×8 cm</option>
-            <option value="20x10cm">20×10 cm</option>
-            <option value="custom">Cits izmērs</option>
-          </select>
+          />
           <input
             name="quantity"
             type="text"
