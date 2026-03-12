@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import giftBoxCorporate from "@/assets/gift-box-corporate.webp";
 import pralinePhoto from "@/assets/ziemassvetku-sokolades-davanas.webp";
-import heroChocolate from "@/assets/christmas-chocolate-tablet.webp";
+import heroChocolate from "@/assets/logo-chocolate-cookie.webp";
 import type { Lang } from "@/i18n/types";
 import { products as productsContent } from "@/i18n/content";
 
