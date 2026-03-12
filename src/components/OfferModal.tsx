@@ -81,6 +81,7 @@ const OfferModal = ({ open, onOpenChange }: OfferModalProps) => {
       const name = (formData.get('name') as string).trim();
       const company = (formData.get('company') as string).trim();
       const email = (formData.get('email') as string).trim();
+      const phone = (formData.get('phone') as string || '').trim();
       const size = (formData.get('size') as string).trim();
       const packaging = (formData.get('packaging') as string || '').trim();
       const purpose = usageType === "event" 
