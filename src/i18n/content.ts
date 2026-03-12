@@ -272,3 +272,49 @@ export const heroContent: Record<Lang, { title1: string; title2: string; subtitl
   en: { title1: "Custom Chocolate", title2: "with Your Logo", subtitle: "Get a free design preview with your logo.", ctaButton: "Free design preview" },
   ru: { title1: "Шоколад с логотипом", title2: "для компаний", subtitle: "Получите бесплатный макет дизайна с вашим логотипом.", ctaButton: "Бесплатный макет дизайна" },
 };
+
+export const cakeChocolateContent: Record<Lang, {
+  heading: string;
+  subtitle: string;
+  items: { title: string; description: string; alt: string }[];
+}> = {
+  lv: {
+    heading: "Šokolādes kūkām un konditorejai",
+    subtitle: "Logo šokolādes dekorācijas kūkām, cupcakes, eklēriem un citiem konditorejas izstrādājumiem.",
+    items: [
+      { title: "Logo cupcakes", description: "Šokolādes dekorācijas ar logo cupcake cepumiem — ideāli pasākumiem un viesmīlībai.", alt: "Cupcakes ar šokolādes logo dekorāciju King's College jubilejas pasākumam" },
+      { title: "Mini šokolādes cupcakes", description: "Nelielas šokolādes plāksnītes ar logo vai vārdu — elegants akcents katram cupcake.", alt: "Cupcake ar personalizētu šokolādes mini dekorāciju" },
+      { title: "Tartes un kūciņas", description: "Šokolādes logo uz tartēm un kūciņām — kafejnīcu un restorānu zīmola komunikācija.", alt: "Šokolādes tarte ar aveņēm un kafejnīcas logo uz šokolādes" },
+      { title: "Premium deserts", description: "Ekskluzīva šokolādes dekorācija ar logo uz premium desertiem.", alt: "Premium deserts ar BackBerry logo šokolādes dekorāciju" },
+      { title: "Kūkas ar logo", description: "Šokolādes plāksnīte ar logo kā elegants kūkas akcents.", alt: "Eleganta kūka ar ziediem un Ristiheina kafejnīcas logo šokolādē" },
+      { title: "Svētku kūkas", description: "Logo šokolādes dekorācija svētku un svinību kūkām.", alt: "Svētku kūka ar La Mer logo šokolādes dekorāciju" },
+      { title: "Šokolādes dekori", description: "Individuālas formas šokolādes ar logo desertiem un konditorejai.", alt: "Šokolādes deserts ar Faceplay logo dekorāciju" },
+    ],
+  },
+  en: {
+    heading: "Chocolate for cakes & pastry",
+    subtitle: "Logo chocolate decorations for cakes, cupcakes, eclairs, and other pastry products.",
+    items: [
+      { title: "Logo cupcakes", description: "Chocolate decorations with logo for cupcakes — ideal for events and hospitality.", alt: "Cupcakes with chocolate logo decoration for King's College anniversary event" },
+      { title: "Mini chocolate cupcakes", description: "Small chocolate plaques with logo or name — an elegant accent for each cupcake.", alt: "Cupcake with personalized mini chocolate decoration" },
+      { title: "Tarts & pastries", description: "Chocolate logo on tarts and pastries — café and restaurant brand communication.", alt: "Chocolate tart with raspberries and café logo on chocolate" },
+      { title: "Premium desserts", description: "Exclusive chocolate decoration with logo on premium desserts.", alt: "Premium dessert with BackBerry logo chocolate decoration" },
+      { title: "Cakes with logo", description: "Chocolate plaque with logo as an elegant cake accent.", alt: "Elegant cake with flowers and Ristiheina café logo in chocolate" },
+      { title: "Celebration cakes", description: "Logo chocolate decoration for celebration and festive cakes.", alt: "Celebration cake with La Mer logo chocolate decoration" },
+      { title: "Chocolate décor", description: "Custom-shaped chocolate with logo for desserts and pastry.", alt: "Chocolate dessert with Faceplay logo decoration" },
+    ],
+  },
+  ru: {
+    heading: "Шоколад для тортов и кондитерских",
+    subtitle: "Шоколадные декорации с логотипом для тортов, капкейков, эклеров и других кондитерских изделий.",
+    items: [
+      { title: "Логотип-капкейки", description: "Шоколадные декорации с логотипом для капкейков — идеально для мероприятий и гостеприимства.", alt: "Капкейки с шоколадным логотипом для юбилея King's College" },
+      { title: "Мини шоколад для капкейков", description: "Небольшие шоколадные плашки с логотипом — элегантный акцент для каждого капкейка.", alt: "Капкейк с персонализированной мини шоколадной декорацией" },
+      { title: "Тарты и пирожные", description: "Шоколадный логотип на тартах — брендинг для кафе и ресторанов.", alt: "Шоколадный тарт с малиной и логотипом кафе на шоколаде" },
+      { title: "Премиум десерты", description: "Эксклюзивная шоколадная декорация с логотипом на премиум десертах.", alt: "Премиум десерт с логотипом BackBerry на шоколаде" },
+      { title: "Торты с логотипом", description: "Шоколадная плашка с логотипом как элегантный акцент торта.", alt: "Элегантный торт с цветами и логотипом кафе Ristiheina на шоколаде" },
+      { title: "Праздничные торты", description: "Шоколадная декорация с логотипом для праздничных тортов.", alt: "Праздничный торт с логотипом La Mer на шоколаде" },
+      { title: "Шоколадный декор", description: "Шоколад индивидуальной формы с логотипом для десертов и кондитерских.", alt: "Шоколадный десерт с логотипом Faceplay" },
+    ],
+  },
+};
