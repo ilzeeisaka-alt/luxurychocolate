@@ -66,8 +66,7 @@ const HeroSection = ({ onCtaClick }: HeroSectionProps) => {
         </video>
       </div>
 
-      {/* Hidden SEO H1 */}
-      <h1 className="sr-only">Ekskluzīvas korporatīvās šokolādes dāvanas ar Jūsu logo — Luxury Chocolate</h1>
+      {/* Removed duplicate sr-only H1 — visible H1 now in hero */}
     </section>
   );
 };
