@@ -9,6 +9,7 @@ import ZiemassvētkuSokolades from "./pages/ZiemassvētkuSokolades.tsx";
 import ReklamasSokolade from "./pages/ReklamasSokolade.tsx";
 import KlientuDavanas from "./pages/KlientuDavanas.tsx";
 import NotFound from "./pages/NotFound.tsx";
+import CookieConsent from "./components/CookieConsent.tsx";
 
 const queryClient = new QueryClient();
 
