@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 
 const vp = { once: true, margin: "-50px" as const };
@@ -18,23 +19,35 @@ const SeoContentSection = () => {
 
           <div className="space-y-6 text-base text-muted-foreground leading-relaxed">
             <p>
-              <strong className="text-foreground">Šokolādes ar logo</strong> ir viena no populārākajām korporatīvajām 
-              dāvanām uzņēmumiem, kas vēlas radīt pozitīvu iespaidu uz klientiem un partneriem. 
-              Personalizēta šokolāde ar uzņēmuma logo apvieno izsmalcinātu garšu ar efektīvu zīmola komunikāciju, 
-              padarot to par lielisku reklāmas un reprezentācijas produktu.
+              Mūsu{" "}
+              <Link to="/sokolades-ar-logo" className="text-foreground underline underline-offset-2 hover:text-primary transition-colors">
+                šokolādes ar logo uzņēmumiem
+              </Link>{" "}
+              ir viena no populārākajām korporatīvajām dāvanām, kas vēlas radīt pozitīvu iespaidu uz klientiem un 
+              partneriem. Personalizēta šokolāde ar uzņēmuma logo apvieno izsmalcinātu garšu ar efektīvu zīmola 
+              komunikāciju, padarot to par lielisku reklāmas un reprezentācijas produktu.
             </p>
 
             <p>
               Uzņēmumi bieži izmanto <strong className="text-foreground">šokolādes ar apdruku</strong> dažādos biznesa 
-              pasākumos — konferencēs, izstādēs, klientu tikšanās reizēs un korporatīvajās svinībās. Šāda dāvana ir 
-              gan eleganta, gan praktiska, jo tā rada patīkamu emociju un vienlaikus palīdz stiprināt uzņēmuma identitāti.
+              pasākumos — konferencēs, izstādēs, klientu tikšanās reizēs un korporatīvajās svinībās. Īpaši populāras ir{" "}
+              <Link to="/reklamas-sokolade" className="text-foreground underline underline-offset-2 hover:text-primary transition-colors">
+                reklāmas šokolādes ar logo
+              </Link>{" "}
+              izstādēm un pasākumiem, kā arī{" "}
+              <Link to="/ziemassvetku-korporativas-sokolades" className="text-foreground underline underline-offset-2 hover:text-primary transition-colors">
+                Ziemassvētku korporatīvās šokolādes
+              </Link>{" "}
+              svētku sezonā.
             </p>
 
             <p>
               Mēs piedāvājam premium kvalitātes šokolādes ar <strong className="text-foreground">personalizētu apdruku</strong>, 
-              kas pielāgota Jūsu uzņēmuma logo, krāsām un dizainam. Šokolādes var izmantot gan kā 
-              <strong className="text-foreground"> reklāmas dāvanas</strong>, gan kā ekskluzīvas 
-              <strong className="text-foreground"> korporatīvās dāvanas</strong> īpašiem klientiem un partneriem.
+              kas pielāgota Jūsu uzņēmuma logo, krāsām un dizainam. Šokolādes var izmantot gan kā reklāmas dāvanas, gan kā 
+              ekskluzīvas{" "}
+              <Link to="/sokolades-klientu-davanam" className="text-foreground underline underline-offset-2 hover:text-primary transition-colors">
+                korporatīvās dāvanas klientiem un partneriem
+              </Link>.
             </p>
 
             <p>
