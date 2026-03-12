@@ -4,6 +4,17 @@ import { motion } from "framer-motion";
 import { ArrowLeft } from "lucide-react";
 import FooterSection from "@/components/FooterSection";
 import OfferModal from "@/components/OfferModal";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+
+export interface FaqItem {
+  q: string;
+  a: string;
+}
 
 interface SeoLandingPageProps {
   emoji: string;
@@ -14,6 +25,7 @@ interface SeoLandingPageProps {
   body: string;
   cta: string;
   keywords: string[];
+  faqs?: FaqItem[];
 }
 
 const vp = { once: true, margin: "-50px" as const };
