@@ -3,8 +3,8 @@ import SeoLandingLayout from "@/components/SeoLandingLayout";
 const ReklamasSokolade = () => (
   <SeoLandingLayout
     emoji="🎁"
-    title="Reklāmas šokolāde ar apdruku"
-    metaDescription="Reklāmas šokolāde ar apdruku — efektīvs mārketinga rīks izstādēm, konferencēm un pasākumiem. No 50 gab."
+    title="Reklāmas šokolādes ar logo"
+    metaDescription="Reklāmas šokolādes ar uzņēmuma logo. Personalizēta šokolādes apdruka izstādēm, konferencēm un marketinga pasākumiem."
     intro="Reklāmas šokolāde ar Jūsu logo vai dizainu — viens no efektīvākajiem promo produktiem, kas piesaista uzmanību un atstāj garšīgu iespaidu."
     benefits={[
       "Pilnkrāsu apdruka uz šokolādes — jebkurš dizains",
