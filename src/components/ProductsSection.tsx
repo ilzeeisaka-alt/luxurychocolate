@@ -1,11 +1,11 @@
 import { motion } from "framer-motion";
 import giftBoxCorporate from "@/assets/gift-box-corporate.webp";
-import praline from "@/assets/praline.webp";
+import pralinePhoto from "@/assets/ziemassvetku-sokolades-davanas.webp";
 import heroChocolate from "@/assets/hero-chocolate.webp";
 import type { Lang } from "@/i18n/types";
 import { products as productsContent } from "@/i18n/content";
 
-const images = [heroChocolate, giftBoxCorporate, praline];
+const images = [heroChocolate, giftBoxCorporate, pralinePhoto];
 
 const sectionVariants = {
   initial: { opacity: 0, y: 8 },
