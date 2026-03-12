@@ -2,26 +2,31 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://luxurychocolate.lovable.app/</loc>
+    <lastmod>2026-03-12</lastmod>
     <priority>1.0</priority>
     <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>https://luxurychocolate.lovable.app/sokolades-ar-logo</loc>
+    <lastmod>2026-03-12</lastmod>
     <priority>0.8</priority>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://luxurychocolate.lovable.app/ziemassvetku-korporativas-sokolades</loc>
+    <lastmod>2026-03-12</lastmod>
     <priority>0.8</priority>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://luxurychocolate.lovable.app/reklamas-sokolade</loc>
+    <lastmod>2026-03-12</lastmod>
     <priority>0.8</priority>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://luxurychocolate.lovable.app/sokolades-klientu-davanam</loc>
+    <lastmod>2026-03-12</lastmod>
     <priority>0.8</priority>
     <changefreq>monthly</changefreq>
   </url>

@@ -11,9 +11,16 @@ import IdeasSection from "@/components/IdeasSection";
 import CtaSection from "@/components/CtaSection";
 import FooterSection from "@/components/FooterSection";
 import OfferModal from "@/components/OfferModal";
+import { useSeo } from "@/hooks/useSeo";
 
 const Index = () => {
   const [modalOpen, setModalOpen] = useState(false);
+
+  useSeo({
+    title: "Ekskluzīvas šokolādes ar Jūsu logo",
+    description: "Korporatīvās šokolādes ar Jūsu logo. ✔ Premium Beļģu šokolāde ✔ Personalizēta apdruka ar Jūsu logo ✔ Minimālais pasūtījums no 50 gab.",
+    path: "/",
+  });
 
   return (
     <main className="bg-background">
