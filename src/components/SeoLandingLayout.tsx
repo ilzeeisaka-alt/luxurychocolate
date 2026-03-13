@@ -32,6 +32,8 @@ interface SeoLandingPageProps {
   faqs?: FaqItem[];
   lang?: Lang;
   relatedPages?: RelatedPage[];
+  productImage?: string;
+  priceFrom?: string;
 }
 
 const vp = { once: true, margin: "-50px" as const };
