@@ -91,12 +91,48 @@ const SeoLandingLayout = ({
         "@type": "Product",
         "name": title,
         "description": intro,
+        "image": productImage || `${BASE_URL}/og-image.png`,
         "brand": { "@type": "Brand", "name": "Luxury Chocolate" },
         "offers": {
           "@type": "Offer",
+          "url": fullUrl,
           "availability": "https://schema.org/InStock",
           "priceCurrency": "EUR",
+          "price": priceFrom,
           "eligibleQuantity": { "@type": "QuantitativeValue", "minValue": 50, "unitText": lang === "ru" ? "шт." : lang === "en" ? "pcs" : "gab." },
+          "hasMerchantReturnPolicy": {
+            "@type": "MerchantReturnPolicy",
+            "applicableCountry": "LV",
+            "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted",
+            "merchantReturnDays": 0,
+          },
+          "shippingDetails": {
+            "@type": "OfferShippingDetails",
+            "shippingDestination": {
+              "@type": "DefinedRegion",
+              "addressCountry": "LV",
+            },
+            "shippingRate": {
+              "@type": "MonetaryAmount",
+              "value": "0",
+              "currency": "EUR",
+            },
+            "deliveryTime": {
+              "@type": "ShippingDeliveryTime",
+              "handlingTime": {
+                "@type": "QuantitativeValue",
+                "minValue": 3,
+                "maxValue": 10,
+                "unitCode": "DAY",
+              },
+              "transitTime": {
+                "@type": "QuantitativeValue",
+                "minValue": 1,
+                "maxValue": 3,
+                "unitCode": "DAY",
+              },
+            },
+          },
         },
         "material": lang === "ru" ? "Премиум бельгийский шоколад" : lang === "en" ? "Premium Belgian chocolate" : "Premium Beļģu šokolāde",
       },
