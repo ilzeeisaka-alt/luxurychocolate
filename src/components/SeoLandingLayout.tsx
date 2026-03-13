@@ -32,6 +32,8 @@ interface SeoLandingPageProps {
   faqs?: FaqItem[];
   lang?: Lang;
   relatedPages?: RelatedPage[];
+  productImage?: string;
+  priceFrom?: string;
 }
 
 const vp = { once: true, margin: "-50px" as const };
@@ -48,6 +50,8 @@ const SeoLandingLayout = ({
   faqs,
   lang = "lv",
   relatedPages,
+  productImage,
+  priceFrom = "3.50",
 }: SeoLandingPageProps) => {
   const [modalOpen, setModalOpen] = useState(false);
   const { pathname } = useLocation();
@@ -87,12 +91,48 @@ const SeoLandingLayout = ({
         "@type": "Product",
         "name": title,
         "description": intro,
+        "image": productImage || `${BASE_URL}/images/hero-chocolate.webp`,
         "brand": { "@type": "Brand", "name": "Luxury Chocolate" },
         "offers": {
           "@type": "Offer",
+          "url": fullUrl,
           "availability": "https://schema.org/InStock",
           "priceCurrency": "EUR",
+          "price": priceFrom,
           "eligibleQuantity": { "@type": "QuantitativeValue", "minValue": 50, "unitText": lang === "ru" ? "шт." : lang === "en" ? "pcs" : "gab." },
+          "hasMerchantReturnPolicy": {
+            "@type": "MerchantReturnPolicy",
+            "applicableCountry": "LV",
+            "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted",
+            "merchantReturnDays": 0,
+          },
+          "shippingDetails": {
+            "@type": "OfferShippingDetails",
+            "shippingDestination": {
+              "@type": "DefinedRegion",
+              "addressCountry": "LV",
+            },
+            "shippingRate": {
+              "@type": "MonetaryAmount",
+              "value": "0",
+              "currency": "EUR",
+            },
+            "deliveryTime": {
+              "@type": "ShippingDeliveryTime",
+              "handlingTime": {
+                "@type": "QuantitativeValue",
+                "minValue": 3,
+                "maxValue": 10,
+                "unitCode": "DAY",
+              },
+              "transitTime": {
+                "@type": "QuantitativeValue",
+                "minValue": 1,
+                "maxValue": 3,
+                "unitCode": "DAY",
+              },
+            },
+          },
         },
         "material": lang === "ru" ? "Премиум бельгийский шоколад" : lang === "en" ? "Premium Belgian chocolate" : "Premium Beļģu šokolāde",
       },
