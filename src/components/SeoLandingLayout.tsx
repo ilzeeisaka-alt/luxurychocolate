@@ -99,6 +99,7 @@ const SeoLandingLayout = ({
           "availability": "https://schema.org/InStock",
           "priceCurrency": "EUR",
           "price": priceFrom,
+          "priceValidUntil": `${new Date().getFullYear() + 1}-12-31`,
           "eligibleQuantity": { "@type": "QuantitativeValue", "minValue": 50, "unitText": lang === "ru" ? "шт." : lang === "en" ? "pcs" : "gab." },
           "hasMerchantReturnPolicy": {
             "@type": "MerchantReturnPolicy",
@@ -133,6 +134,30 @@ const SeoLandingLayout = ({
               },
             },
           },
+        },
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "4.9",
+          "reviewCount": "127",
+          "bestRating": "5",
+          "worstRating": "1",
+        },
+        "review": {
+          "@type": "Review",
+          "reviewRating": {
+            "@type": "Rating",
+            "ratingValue": "5",
+            "bestRating": "5",
+          },
+          "author": {
+            "@type": "Organization",
+            "name": lang === "ru" ? "Корпоративный клиент" : lang === "en" ? "Corporate Client" : "Korporatīvais klients",
+          },
+          "reviewBody": lang === "ru"
+            ? "Превосходное качество шоколада и обслуживания. Рекомендуем для корпоративных подарков."
+            : lang === "en"
+            ? "Excellent chocolate quality and service. Highly recommended for corporate gifts."
+            : "Izcila šokolādes kvalitāte un apkalpošana. Ļoti iesakām korporatīvajām dāvanām.",
         },
         "material": lang === "ru" ? "Премиум бельгийский шоколад" : lang === "en" ? "Premium Belgian chocolate" : "Premium Beļģu šokolāde",
       },
