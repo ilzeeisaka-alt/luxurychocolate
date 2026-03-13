@@ -50,6 +50,8 @@ const SeoLandingLayout = ({
   faqs,
   lang = "lv",
   relatedPages,
+  productImage,
+  priceFrom = "3.50",
 }: SeoLandingPageProps) => {
   const [modalOpen, setModalOpen] = useState(false);
   const { pathname } = useLocation();
