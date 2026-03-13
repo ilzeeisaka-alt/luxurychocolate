@@ -91,7 +91,7 @@ const SeoLandingLayout = ({
         "@type": "Product",
         "name": title,
         "description": intro,
-        "image": productImage || `${BASE_URL}/og-image.png`,
+        "image": productImage || `${BASE_URL}/images/hero-chocolate.webp`,
         "brand": { "@type": "Brand", "name": "Luxury Chocolate" },
         "offers": {
           "@type": "Offer",
