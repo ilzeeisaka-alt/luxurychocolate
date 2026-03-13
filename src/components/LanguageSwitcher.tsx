@@ -5,6 +5,8 @@ const langLabels: Record<string, string> = {
   lv: "LV",
   en: "EN",
   ru: "RU",
+  et: "ET",
+  lt: "LT",
 };
 
 const LanguageSwitcher = () => {
@@ -14,7 +16,7 @@ const LanguageSwitcher = () => {
   if (!alternatives) return null;
 
   // Determine current language
-  const currentLang = pathname.startsWith("/ru") ? "ru" : pathname.startsWith("/en") ? "en" : "lv";
+  const currentLang = pathname.startsWith("/et") ? "et" : pathname.startsWith("/lt") ? "lt" : pathname.startsWith("/ru") ? "ru" : pathname.startsWith("/en") ? "en" : "lv";
 
   return (
     <div className="flex items-center gap-1 text-xs">

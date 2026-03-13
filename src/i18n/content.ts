@@ -13,12 +13,22 @@ export const quickFacts: Record<Lang, { heading: string; facts: string[] }> = {
     heading: "Почему выбирают нас",
     facts: ["Минимальный заказ: от 50 шт.", "Изготовление: 3–10 рабочих дней", "Премиум бельгийский шоколад", "Индивидуальный дизайн с вашим логотипом"],
   },
+  et: {
+    heading: "Miks valida meid",
+    facts: ["Minimaalne tellimus: alates 50 tk", "Tootmine: 3–10 tööpäeva", "Premium Belgia šokolaad", "Individuaalne disain teie logoga"],
+  },
+  lt: {
+    heading: "Kodėl rinktis mus",
+    facts: ["Minimalus užsakymas: nuo 50 vnt.", "Gamyba: 3–10 darbo dienų", "Premium belgiškas šokoladas", "Individualus dizainas su jūsų logotipu"],
+  },
 };
 
 export const clientExamples: Record<Lang, { subtitle: string; heading: string; srOnly: string }> = {
   lv: { subtitle: "Klientu piemēri", heading: "Pasaules zīmoli uzticas mums", srOnly: "Klientu piemēri — pasaules zīmoli, kas uzticas Luxury Chocolate: MasterCard, Bosch, Chopard, Samsung, Vodafone, Volkswagen." },
   en: { subtitle: "Client examples", heading: "World brands trust us", srOnly: "Client examples — world brands that trust Luxury Chocolate: MasterCard, Bosch, Chopard, Samsung, Vodafone, Volkswagen." },
   ru: { subtitle: "Примеры клиентов", heading: "Мировые бренды доверяют нам", srOnly: "Примеры клиентов — мировые бренды, которые доверяют Luxury Chocolate: MasterCard, Bosch, Chopard, Samsung, Vodafone, Volkswagen." },
+  et: { subtitle: "Klientide näited", heading: "Maailma brändid usaldavad meid", srOnly: "Klientide näited — maailma brändid, kes usaldavad Luxury Chocolate: MasterCard, Bosch, Chopard, Samsung, Vodafone, Volkswagen." },
+  lt: { subtitle: "Klientų pavyzdžiai", heading: "Pasaulio prekės ženklai mumis pasitiki", srOnly: "Klientų pavyzdžiai — pasaulio prekės ženklai, kurie pasitiki Luxury Chocolate: MasterCard, Bosch, Chopard, Samsung, Vodafone, Volkswagen." },
 };
 
 export const howToOrder: Record<Lang, { heading: string; steps: string[]; footer: string; srOnly: string }> = {
@@ -39,6 +49,18 @@ export const howToOrder: Record<Lang, { heading: string; steps: string[]; footer
     steps: ["Отправьте свой логотип или идею", "Мы создадим макет дизайна", "Утвердите дизайн", "Мы изготовим и доставим"],
     footer: "⏱ Изготовление: <strong>3–10 рабочих дней</strong>",
     srOnly: "Как заказать: 1) Отправьте логотип, 2) Мы создадим макет, 3) Утвердите дизайн, 4) Мы изготовим и доставим.",
+  },
+  et: {
+    heading: "Kuidas tellida personaliseeritud šokolaadi",
+    steps: ["Saatke oma logo või idee", "Loome disaini eelvaate", "Kinnitage disain", "Toodame ja tarnime"],
+    footer: "⏱ Tootmine: <strong>3–10 tööpäeva</strong>",
+    srOnly: "Kuidas tellida: 1) Saatke logo, 2) Loome disaini eelvaate, 3) Kinnitage disain, 4) Toodame ja tarnime.",
+  },
+  lt: {
+    heading: "Kaip užsakyti personalizuotą šokoladą",
+    steps: ["Atsiųskite savo logotipą ar idėją", "Sukursime dizaino peržiūrą", "Patvirtinkite dizainą", "Pagaminsime ir pristatysime"],
+    footer: "⏱ Gamyba: <strong>3–10 darbo dienų</strong>",
+    srOnly: "Kaip užsakyti: 1) Atsiųskite logotipą, 2) Sukursime dizaino peržiūrą, 3) Patvirtinkite dizainą, 4) Pagaminsime ir pristatysime.",
   },
 };
 
@@ -82,6 +104,28 @@ export const trust: Record<Lang, {
     ],
     guarantees: ["Гарантия качества", "Сертифицированное производство", "Доставка по всему миру", "Выполнение в течение 14 дней"],
   },
+  et: {
+    heading: "Miks kliendid usaldavad meid",
+    stats: [{ value: "500+", label: "Täidetud tellimust" }, { value: "10+", label: "Aastat kogemust" }, { value: "98%", label: "Kliendi rahulolu" }, { value: "30+", label: "Riiki" }],
+    clientsLabel: "Meid usaldavad juhtivad ettevõtted",
+    testimonials: [
+      { quote: "Suurepärane kvaliteet ja kiire tarne. Meie kliendid olid personaliseeritud šokolaadist vaimustuses!", author: "Anna K.", company: "SIA MarketPro" },
+      { quote: "Luxury Chocolate aitas meil luua unustamatu korporatiivkingituse. Väga professionaalne lähenemine.", author: "Mārtiņš B.", company: "Tech Solutions" },
+      { quote: "Kolmandat aastat tellime šokolaadi meie logoga — alati tipptasemel.", author: "Ieva L.", company: "Baltic Events" },
+    ],
+    guarantees: ["Kvaliteedigarantii", "Sertifitseeritud tootmine", "Tarne üle maailma", "Täitmine 14 päeva jooksul"],
+  },
+  lt: {
+    heading: "Kodėl klientai mumis pasitiki",
+    stats: [{ value: "500+", label: "Įvykdytų užsakymų" }, { value: "10+", label: "Metų patirties" }, { value: "98%", label: "Klientų pasitenkinimas" }, { value: "30+", label: "Šalių" }],
+    clientsLabel: "Mumis pasitiki pirmaujančios įmonės",
+    testimonials: [
+      { quote: "Puiki kokybė ir greitas pristatymas. Mūsų klientai buvo sužavėti personalizuotu šokoladu!", author: "Anna K.", company: "SIA MarketPro" },
+      { quote: "Luxury Chocolate padėjo mums sukurti neužmirštamą korporatyvinę dovaną. Labai profesionalus požiūris.", author: "Mārtiņš B.", company: "Tech Solutions" },
+      { quote: "Trečius metus užsakome šokoladą su mūsų logotipu — visada aukščiausio lygio.", author: "Ieva L.", company: "Baltic Events" },
+    ],
+    guarantees: ["Kokybės garantija", "Sertifikuota gamykla", "Pristatymas visame pasaulyje", "Įvykdymas per 14 dienų"],
+  },
 };
 
 export const products: Record<Lang, { heading: string; subtitle: string; items: { title: string; description: string; alt: string }[] }> = {
@@ -110,6 +154,24 @@ export const products: Record<Lang, { heading: string; subtitle: string; items: 
       { title: "Шоколадные плитки", description: "С логотипом вашей компании и индивидуальной упаковкой.", alt: "Персонализированная шоколадная плитка с логотипом компании" },
       { title: "Подарочные наборы", description: "Элегантная коробка с 5 пралине ручной работы.", alt: "Элегантная корпоративная подарочная коробка с шоколадом" },
       { title: "Шоколадные конфеты", description: "Пралине с кремовой начинкой и персонализированным дизайном.", alt: "Премиум шоколадные пралине с кремовой начинкой" },
+    ],
+  },
+  et: {
+    heading: "Meie šokolaadid",
+    subtitle: "Iga toode kohandatakse teie brändile — disainist maitseni.",
+    items: [
+      { title: "Šokolaadid", description: "Teie ettevõtte logo ja individuaalse pakendiga.", alt: "Personaliseeritud šokolaad ettevõtte logo ja individuaalse pakendiga" },
+      { title: "Kinkekomplektid", description: "Elegantne karp 5 käsitööna valmistatud pralineega.", alt: "Elegantne korporatiivne šokolaadi kinkekarp pralineedega" },
+      { title: "Šokolaadipralineed", description: "Pralineed kreemitäidise ja personaliseeritud disainiga.", alt: "Premium šokolaadipralineed kreemitäidise ja personaliseeritud disainiga" },
+    ],
+  },
+  lt: {
+    heading: "Mūsų šokoladai",
+    subtitle: "Kiekvienas produktas pritaikomas jūsų prekės ženklui — nuo dizaino iki skonio.",
+    items: [
+      { title: "Šokolado plyteliai", description: "Su jūsų įmonės logotipu ir individualia pakuote.", alt: "Personalizuotas šokolado plytelis su įmonės logotipu" },
+      { title: "Dovanų rinkiniai", description: "Elegantiškas dėžutė su 5 rankų darbo pralinė.", alt: "Elegantiškas korporatyvinis šokolado dovanų rinkinys" },
+      { title: "Šokolado pralinė", description: "Pralinė su kreminio įdaru ir personalizuotu dizainu.", alt: "Premium šokolado pralinė su kreminio įdaru" },
     ],
   },
 };
@@ -148,6 +210,28 @@ export const faqContent: Record<Lang, { heading: string; items: { q: string; a: 
       { q: "Доставляете ли вы за пределы Латвии?", a: "Да, мы доставляем персонализированный шоколад в более чем 30 стран мира." },
     ],
   },
+  et: {
+    heading: "Korduma kippuvad küsimused",
+    items: [
+      { q: "Milline on minimaalne tellimus personaliseeritud šokolaadile?", a: "Minimaalne tellimus on 50 tükki. See on mugav kogus nii väiksematele üritustele kui ka suurtele korporatiivkampaaniatele." },
+      { q: "Kui kaua võtab šokolaadi logoga tootmine aega?", a: "Standardne tootmisaeg on 3–10 tööpäeva alates disaini kinnitamisest. Kiireloomulised tellimused on võimalikud." },
+      { q: "Millist kvaliteeti šokolaadi kasutatakse?", a: "Kasutame ainult premium Belgia šokolaadi — piima, tumedat ja valget šokolaadi sertifitseeritud tootmisüksustest." },
+      { q: "Kas saan tellida šokolaadi täisvärvilise trükiga?", a: "Jah, pakume täisvärvilist trükki otse šokolaadi pinnale — teie logo, disain või mis tahes graafiline motiiv. Trükk on toiduohutu." },
+      { q: "Millistele üritustele sobivad korporatiivšokolaadid?", a: "Personaliseeritud šokolaadid sobivad konverentsidele, messidele, klientide kohtumistele, jõulukingitusteks, ettevõtte juubelitele ja VIP-külalislahkusele." },
+      { q: "Kas tarnite väljaspool Lätit?", a: "Jah, tarnime personaliseeritud šokolaade üle 30 riiki üle maailma." },
+    ],
+  },
+  lt: {
+    heading: "Dažniausiai užduodami klausimai",
+    items: [
+      { q: "Koks minimalus užsakymas personalizuotam šokoladui?", a: "Minimalus užsakymas — 50 vnt. Tai patogus kiekis tiek mažesniems renginiams, tiek didelėms korporatyvinėms kampanijoms." },
+      { q: "Kiek laiko užtrunka šokolado su logotipu gamyba?", a: "Standartinis gamybos laikas — 3–10 darbo dienų nuo dizaino patvirtinimo. Galimi skubūs užsakymai." },
+      { q: "Kokios kokybės šokoladas naudojamas?", a: "Naudojame tik premium belgišką šokoladą — pieninį, tamsų ir baltą iš sertifikuotų gamyklų." },
+      { q: "Ar galiu užsakyti šokoladą su pilnos spalvos spauda?", a: "Taip, siūlome pilnos spalvos spaudą tiesiog ant šokolado paviršiaus — jūsų logotipas, dizainas ar bet koks grafinis motyvas. Spauda yra maistui saugi." },
+      { q: "Kokiems renginiams tinka korporatyvinis šokoladas?", a: "Personalizuotas šokoladas idealus konferencijoms, parodoms, susitikimams su klientais, kalėdinėms dovanoms, įmonės jubiliejams ir VIP svetingumui." },
+      { q: "Ar pristatote už Latvijos ribų?", a: "Taip, pristatome personalizuotą šokoladą į daugiau nei 30 šalių visame pasaulyje." },
+    ],
+  },
 };
 
 export const ideasContent: Record<Lang, { subtitle: string; heading: string; items: { emoji: string; title: string; description: string; path: string }[] }> = {
@@ -179,6 +263,26 @@ export const ideasContent: Record<Lang, { subtitle: string; heading: string; ite
       { emoji: "🎄", title: "Рождественский корпоративный шоколад", description: "Эксклюзивные праздничные подарки клиентам и партнёрам с логотипом.", path: "/ru/rozhdestvenskij-shokolad" },
       { emoji: "🎁", title: "Рекламный шоколад", description: "Эффективный промо-продукт для выставок, конференций и мероприятий.", path: "/ru/reklamniy-shokolad" },
       { emoji: "🏢", title: "Шоколад для подарков клиентам", description: "Премиум идеи подарков для бизнес-партнёров и клиентов.", path: "/ru/podarki-klientam" },
+    ],
+  },
+  et: {
+    subtitle: "Ideed ja lahendused",
+    heading: "Korporatiivkingituste ideed",
+    items: [
+      { emoji: "🍫", title: "Šokolaad ettevõtte logoga", description: "Personaliseeritud šokolaad teie logoga — elegantne viis brändi esile tõsta.", path: "/et/sokolaad-logoga" },
+      { emoji: "🎄", title: "Jõulu korporatiivne šokolaad", description: "Eksklusivsed pühade kingitused klientidele ja partneritele.", path: "/et/joulu-sokolaad" },
+      { emoji: "🎁", title: "Reklaamšokolaad", description: "Tõhus reklaamtoode messidele, konverentsidele ja üritustele.", path: "/et/reklaam-sokolaad" },
+      { emoji: "🏢", title: "Šokolaad kliendikingitusteks", description: "Premium kinkeideed äripartneritele ja klientidele.", path: "/et/kingitused-klientidele" },
+    ],
+  },
+  lt: {
+    subtitle: "Idėjos ir sprendimai",
+    heading: "Korporatyvinių dovanų idėjos",
+    items: [
+      { emoji: "🍫", title: "Šokoladas su įmonės logotipu", description: "Personalizuotas šokoladas su logotipu — elegantiškas būdas pabrėžti prekės ženklą.", path: "/lt/sokoladas-su-logotipu" },
+      { emoji: "🎄", title: "Kalėdinis korporatyvinis šokoladas", description: "Eksklusivinės šventinės dovanos klientams ir partneriams.", path: "/lt/kaledinis-sokoladas" },
+      { emoji: "🎁", title: "Reklaminis šokoladas", description: "Efektyvus reklaminis produktas parodoms, konferencijoms ir renginiams.", path: "/lt/reklaminis-sokoladas" },
+      { emoji: "🏢", title: "Šokoladas dovanoms klientams", description: "Premium dovanų idėjos verslo partneriams ir klientams.", path: "/lt/dovanos-klientams" },
     ],
   },
 };
@@ -217,6 +321,28 @@ export const useCasesContent: Record<Lang, { subtitle: string; heading: string; 
       { title: "Рождественские подарки", desc: "Праздничный дизайн с логотипом — самый популярный корпоративный подарок на конец года.", link: "/ru/rozhdestvenskij-shokolad", linkLabel: "Узнать больше →" },
     ],
   },
+  et: {
+    subtitle: "Kasutusvõimalused",
+    heading: "Kus ettevõtted kasutavad šokolaadi logoga",
+    ctaLabel: "Saada päring",
+    items: [
+      { title: "Kliendikingitused", desc: "Elegantne šokolaad teie logoga — et kliendid mäletaks teie ettevõtet positiivsete emotsioonidega.", link: "/et/kingitused-klientidele", linkLabel: "Loe lähemalt →" },
+      { title: "Konverentsid ja üritused", desc: "Kompaktsed šokolaadid logoga — ideaalsed messidele, seminaridele ja äriüritustele.", link: "/et/konverentsi-sokolaad", linkLabel: "Loe lähemalt →" },
+      { title: "Partnerite tervitused", desc: "Premium šokolaadi kinkekomplektid, mis tugevdavad ärisuhteid ja loovad professionaalse mulje.", link: "/et/kingitused-partneritele", linkLabel: "Loe lähemalt →" },
+      { title: "Jõulukingitused", desc: "Pidulik disain teie logoga — populaarseim korporatiivkingitus aasta lõpus.", link: "/et/joulu-sokolaad", linkLabel: "Loe lähemalt →" },
+    ],
+  },
+  lt: {
+    subtitle: "Panaudojimo atvejai",
+    heading: "Kur įmonės naudoja šokoladą su logotipu",
+    ctaLabel: "Gauti pasiūlymą",
+    items: [
+      { title: "Dovanos klientams", desc: "Elegantiškas šokoladas su logotipu — kad klientai prisimintų jūsų įmonę su teigiamomis emocijomis.", link: "/lt/dovanos-klientams", linkLabel: "Sužinoti daugiau →" },
+      { title: "Konferencijos ir renginiai", desc: "Kompaktiški šokolado plyteliai su logotipu — idealūs parodoms, seminarams ir verslo renginiams.", link: "/lt/sokoladas-konferencijoms", linkLabel: "Sužinoti daugiau →" },
+      { title: "Sveikinimas partneriams", desc: "Premium šokolado dovanų rinkiniai, stiprinantys verslo santykius.", link: "/lt/dovanos-partneriams", linkLabel: "Sužinoti daugiau →" },
+      { title: "Kalėdinės dovanos", desc: "Šventinis dizainas su logotipu — populiariausia korporatyvinė dovana metų pabaigoje.", link: "/lt/kaledinis-sokoladas", linkLabel: "Sužinoti daugiau →" },
+    ],
+  },
 };
 
 export const ctaContent: Record<Lang, { heading: string; description: string; button: string }> = {
@@ -234,6 +360,16 @@ export const ctaContent: Record<Lang, { heading: string; description: string; bu
     heading: "Получите бесплатный макет дизайна",
     description: "Отправьте нам свой логотип, и мы подготовим персонализированный макет шоколада в течение 24 часов — совершенно бесплатно.",
     button: "Получить бесплатный макет",
+  },
+  et: {
+    heading: "Saage tasuta disaini eelvaade",
+    description: "Saatke meile oma logo ja me valmistame personaliseeritud šokolaadi disaini eelvaate 24 tunni jooksul — täiesti tasuta.",
+    button: "Saada tasuta eelvaade",
+  },
+  lt: {
+    heading: "Gaukite nemokamą dizaino peržiūrą",
+    description: "Atsiųskite mums savo logotipą ir mes paruošime personalizuotą šokolado dizaino peržiūrą per 24 valandas — visiškai nemokamai.",
+    button: "Gauti nemokamą peržiūrą",
   },
 };
 
@@ -265,12 +401,32 @@ export const seoContent: Record<Lang, { heading: string; paragraphs: { text: str
       { text: "Шоколад с логотипом — эффективный способ сделать корпоративный подарок незабываемым и повысить узнаваемость бренда." },
     ],
   },
+  et: {
+    heading: "Šokolaad logoga ettevõtetele",
+    paragraphs: [
+      { text: "Meie {link1} on üks populaarsemaid korporatiivkingitusi, mis loovad positiivse mulje klientidele ja partneritele. Personaliseeritud šokolaad ettevõtte logoga ühendab peenkeelset maitset ja tõhusat brändikommunikatsiooni.", links: [{ text: "šokolaad ettevõtte logoga", to: "/et/sokolaad-logoga" }] },
+      { text: "Ettevõtted kasutavad sageli bränditud šokolaadi erinevatel äriüritustel — konverentsidel, messidel ja klientide kohtumistel. Eriti populaarsed on {link1} messidele ja üritustele, samuti {link2} pühade hooajal.", links: [{ text: "reklaamšokolaad logoga", to: "/et/reklaam-sokolaad" }, { text: "jõulu korporatiivne šokolaad", to: "/et/joulu-sokolaad" }] },
+      { text: "Pakume premium kvaliteediga šokolaadi personaliseeritud trükiga, mis on kohandatud teie ettevõtte logo, värvide ja disainiga. Šokolaade saab kasutada nii reklaamkingitustena kui ka eksklusivsete {link1}.", links: [{ text: "korporatiivkingitustena klientidele ja partneritele", to: "/et/kingitused-klientidele" }] },
+      { text: "Šokolaad logoga on tõhus viis muuta oma ettevõtte kingitus unustamatuks ja samal ajal suurendada brändi tuntust." },
+    ],
+  },
+  lt: {
+    heading: "Šokoladas su logotipu verslui",
+    paragraphs: [
+      { text: "Mūsų {link1} — vienas populiariausių korporatyvinių dovanų, kuriančių teigiamą įspūdį klientams ir partneriams. Personalizuotas šokoladas su įmonės logotipu sujungia rafinuotą skonį su efektyvia prekės ženklo komunikacija.", links: [{ text: "šokoladas su įmonės logotipu", to: "/lt/sokoladas-su-logotipu" }] },
+      { text: "Įmonės dažnai naudoja firminį šokoladą įvairiuose verslo renginiuose — konferencijose, parodose ir susitikimuose su klientais. Ypač populiarus {link1} parodoms ir renginiams, taip pat {link2} švenčių sezonu.", links: [{ text: "reklaminis šokoladas su logotipu", to: "/lt/reklaminis-sokoladas" }, { text: "kalėdinis korporatyvinis šokoladas", to: "/lt/kaledinis-sokoladas" }] },
+      { text: "Siūlome premium kokybės šokoladą su personalizuota spauda, pritaikyta jūsų įmonės logotipui, spalvoms ir dizainui. Šokoladą galima naudoti tiek kaip reklaminę dovaną, tiek kaip eksklusivinę {link1}.", links: [{ text: "korporatyvinę dovaną klientams ir partneriams", to: "/lt/dovanos-klientams" }] },
+      { text: "Šokoladas su logotipu — efektyvus būdas padaryti korporatyvinę dovaną neužmirštamą ir kartu padidinti prekės ženklo atpažįstamumą." },
+    ],
+  },
 };
 
 export const heroContent: Record<Lang, { title1: string; title2: string; subtitle: string; ctaButton: string }> = {
   lv: { title1: "Šokolādes ar logo", title2: "uzņēmumiem", subtitle: "Saņemiet bezmaksas dizaina apskati ar Jūsu logo.", ctaButton: "Bezmaksas dizaina apskate" },
   en: { title1: "Custom Chocolate", title2: "with Your Logo", subtitle: "Get a free design preview with your logo.", ctaButton: "Free design preview" },
   ru: { title1: "Шоколад с логотипом", title2: "для компаний", subtitle: "Получите бесплатный макет дизайна с вашим логотипом.", ctaButton: "Бесплатный макет дизайна" },
+  et: { title1: "Šokolaad logoga", title2: "ettevõtetele", subtitle: "Saage tasuta disaini eelvaade oma logoga.", ctaButton: "Tasuta disaini eelvaade" },
+  lt: { title1: "Šokoladas su logotipu", title2: "įmonėms", subtitle: "Gaukite nemokamą dizaino peržiūrą su jūsų logotipu.", ctaButton: "Nemokama dizaino peržiūra" },
 };
 
 export const cakeChocolateContent: Record<Lang, {
@@ -315,6 +471,32 @@ export const cakeChocolateContent: Record<Lang, {
       { title: "Торты с логотипом", description: "Шоколадная плашка с логотипом как элегантный акцент торта.", alt: "Элегантный торт с цветами и логотипом кафе Ristiheina на шоколаде" },
       { title: "Праздничные торты", description: "Шоколадная декорация с логотипом для праздничных тортов.", alt: "Праздничный торт с логотипом La Mer на шоколаде" },
       { title: "Шоколадный декор", description: "Шоколад индивидуальной формы с логотипом для десертов и кондитерских.", alt: "Шоколадный десерт с логотипом Faceplay" },
+    ],
+  },
+  et: {
+    heading: "Šokolaad tortidele ja kondiitritoodetle",
+    subtitle: "Logo šokolaadi dekoratsioonid tortidele, cupcake'idele, eklääridele ja teistele kondiitritoodetele.",
+    items: [
+      { title: "Logo cupcake'id", description: "Šokolaadi dekoratsioonid logoga cupcake'idele — ideaalsed üritustele ja külalislahkusele.", alt: "Cupcake'id šokolaadi logo dekoratsiooniga King's College juubeli üritusele" },
+      { title: "Mini šokolaadi cupcake'id", description: "Väikesed šokolaadi plaadid logo või nimega — elegantne aktsent igale cupcake'ile.", alt: "Cupcake personaliseeritud mini šokolaadi dekoratsiooniga" },
+      { title: "Tardid ja koogid", description: "Šokolaadi logo tartidel ja kookidel — kohvikute ja restoranide brändi kommunikatsioon.", alt: "Šokolaadi tart vaarikate ja kohviku logoga šokolaadil" },
+      { title: "Premium desserdid", description: "Eksklusiivne šokolaadi dekoratsioon logoga premium dessertidel.", alt: "Premium dessert BackBerry logo šokolaadi dekoratsiooniga" },
+      { title: "Tordid logoga", description: "Šokolaadi plaat logoga kui elegantne tordi aktsent.", alt: "Elegantne tort lilledega ja Ristiheina kohviku logoga šokolaadis" },
+      { title: "Pidulikud tordid", description: "Logo šokolaadi dekoratsioon pidulikele ja pidutortidele.", alt: "Pidulik tort La Mer logo šokolaadi dekoratsiooniga" },
+      { title: "Šokolaadi dekorid", description: "Individuaalsed kujuga šokolaadid logoga dessertidele ja kondiitritoodetle.", alt: "Šokolaadi dessert Faceplay logo dekoratsiooniga" },
+    ],
+  },
+  lt: {
+    heading: "Šokoladas tortams ir konditerijos gaminiams",
+    subtitle: "Logotipo šokolado dekoracijos tortams, keksiukams, eklėrams ir kitiems konditerijos gaminiams.",
+    items: [
+      { title: "Logotipo keksiukai", description: "Šokolado dekoracijos su logotipu keksiukams — idealūs renginiams ir svetingumui.", alt: "Keksiukai su šokolado logotipo dekoracija King's College jubiliejaus renginiui" },
+      { title: "Mini šokolado keksiukai", description: "Mažos šokolado plokštelės su logotipu ar vardu — elegantiškas akcentas kiekvienam keksiukui.", alt: "Keksiukas su personalizuota mini šokolado dekoracija" },
+      { title: "Tartai ir pyragai", description: "Šokolado logotipas ant tartų ir pyragų — kavinių ir restoranų prekės ženklo komunikacija.", alt: "Šokolado tartas su avietėmis ir kavinės logotipu ant šokolado" },
+      { title: "Premium desertai", description: "Eksklusivinė šokolado dekoracija su logotipu ant premium desertų.", alt: "Premium desertas su BackBerry logotipo šokolado dekoracija" },
+      { title: "Tortai su logotipu", description: "Šokolado plokštelė su logotipu kaip elegantiškas torto akcentas.", alt: "Elegantiškas tortas su gėlėmis ir Ristiheina kavinės logotipu šokolade" },
+      { title: "Šventiniai tortai", description: "Logotipo šokolado dekoracija šventiniams ir švenčių tortams.", alt: "Šventinis tortas su La Mer logotipo šokolado dekoracija" },
+      { title: "Šokolado dekorai", description: "Individualios formos šokoladas su logotipu desertams ir konditerijos gaminiams.", alt: "Šokolado desertas su Faceplay logotipo dekoracija" },
     ],
   },
 };

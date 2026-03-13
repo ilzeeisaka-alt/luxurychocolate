@@ -1,4 +1,4 @@
-export type Lang = "lv" | "en" | "ru";
+export type Lang = "lv" | "en" | "ru" | "et" | "lt";
 
 export interface PageContent {
   slug: string;
