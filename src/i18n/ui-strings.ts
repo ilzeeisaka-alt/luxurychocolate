@@ -94,6 +94,7 @@ export const relatedPages: Record<string, RelatedPage[]> = {
     { to: "/en/employee-gifts", label: "Employee Gifts", desc: "Chocolate gifts for your team" },
     { to: "/en/partner-gifts", label: "Partner Gifts", desc: "Exclusive gifts for business partners" },
     { to: "/en/corporate-gift-ideas", label: "Gift Ideas", desc: "Best corporate gift ideas" },
+    { to: "/en/chocolate-book-box", label: "Chocolate Book Box", desc: "Gift box shaped like a book with magnetic closure" },
   ],
   ru: [
     { to: "/ru/shokolad-s-logotipom", label: "Шоколад с логотипом", desc: "Персонализированная печать с логотипом компании" },
