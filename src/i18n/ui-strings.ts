@@ -83,6 +83,7 @@ export const relatedPages: Record<string, RelatedPage[]> = {
     { to: "/sokolades-darbinieku-davanam", label: "Darbinieku dāvanas", desc: "Šokolādes dāvanas komandai un darbiniekiem" },
     { to: "/sokolades-partneru-davanam", label: "Partneru dāvanas", desc: "Ekskluzīvas dāvanas biznesa partneriem" },
     { to: "/korporativo-davanu-idejas", label: "Dāvanu idejas", desc: "Labākās korporatīvo dāvanu idejas" },
+    { to: "/sokolades-gramata", label: "Šokolādes grāmata", desc: "Dāvanu kastīte grāmatas formā ar magnētisku aizdari" },
   ],
   en: [
     { to: "/en/chocolate-with-logo", label: "Chocolate with Logo", desc: "Personalized printing with your company logo" },
@@ -93,6 +94,7 @@ export const relatedPages: Record<string, RelatedPage[]> = {
     { to: "/en/employee-gifts", label: "Employee Gifts", desc: "Chocolate gifts for your team" },
     { to: "/en/partner-gifts", label: "Partner Gifts", desc: "Exclusive gifts for business partners" },
     { to: "/en/corporate-gift-ideas", label: "Gift Ideas", desc: "Best corporate gift ideas" },
+    { to: "/en/chocolate-book-box", label: "Chocolate Book Box", desc: "Gift box shaped like a book with magnetic closure" },
   ],
   ru: [
     { to: "/ru/shokolad-s-logotipom", label: "Шоколад с логотипом", desc: "Персонализированная печать с логотипом компании" },
@@ -103,6 +105,7 @@ export const relatedPages: Record<string, RelatedPage[]> = {
     { to: "/ru/podarki-sotrudnikam", label: "Подарки сотрудникам", desc: "Шоколадные подарки для команды" },
     { to: "/ru/podarki-partneram", label: "Подарки партнёрам", desc: "Эксклюзивные подарки бизнес-партнёрам" },
     { to: "/ru/idei-korporativnyh-podarkov", label: "Идеи подарков", desc: "Лучшие идеи корпоративных подарков" },
+    { to: "/ru/shokoladnaya-kniga", label: "Шоколадная книга", desc: "Подарочная коробка в форме книги с магнитной застёжкой" },
   ],
   et: [
     { to: "/et/sokolaad-logoga", label: "Šokolaad logoga", desc: "Personaliseeritud trükk ettevõtte logoga" },
@@ -113,6 +116,7 @@ export const relatedPages: Record<string, RelatedPage[]> = {
     { to: "/et/kingitused-tootajatele", label: "Töötajate kingitused", desc: "Šokolaadikingitused meeskonnale" },
     { to: "/et/kingitused-partneritele", label: "Partnerite kingitused", desc: "Eksklusivsed kingitused äripartneritele" },
     { to: "/et/korporatiiv-kingituste-ideed", label: "Kinkeideed", desc: "Parimad korporatiivkingituste ideed" },
+    { to: "/et/sokolaadi-raamat", label: "Šokolaadiraamat", desc: "Kinkekarp raamatu kujul magnetilise sulguriga" },
   ],
   lt: [
     { to: "/lt/sokoladas-su-logotipu", label: "Šokoladas su logotipu", desc: "Personalizuotas spausdinimas su įmonės logotipu" },
@@ -123,6 +127,7 @@ export const relatedPages: Record<string, RelatedPage[]> = {
     { to: "/lt/dovanos-darbuotojams", label: "Dovanos darbuotojams", desc: "Šokolado dovanos komandai" },
     { to: "/lt/dovanos-partneriams", label: "Dovanos partneriams", desc: "Eksklusivinės dovanos verslo partneriams" },
     { to: "/lt/korporatyviniu-dovanu-idejos", label: "Dovanų idėjos", desc: "Geriausios korporatyvinių dovanų idėjos" },
+    { to: "/lt/sokolado-knyga", label: "Šokolado knyga", desc: "Dovanų dėžutė knygos formos su magnetiniu užsegimu" },
   ],
 };
 
@@ -137,6 +142,7 @@ export const hreflangMap: Record<string, Record<string, string>> = {
   "/sokolades-darbinieku-davanam": { lv: "/sokolades-darbinieku-davanam", en: "/en/employee-gifts", ru: "/ru/podarki-sotrudnikam", et: "/et/kingitused-tootajatele", lt: "/lt/dovanos-darbuotojams" },
   "/sokolades-partneru-davanam": { lv: "/sokolades-partneru-davanam", en: "/en/partner-gifts", ru: "/ru/podarki-partneram", et: "/et/kingitused-partneritele", lt: "/lt/dovanos-partneriams" },
   "/korporativo-davanu-idejas": { lv: "/korporativo-davanu-idejas", en: "/en/corporate-gift-ideas", ru: "/ru/idei-korporativnyh-podarkov", et: "/et/korporatiiv-kingituste-ideed", lt: "/lt/korporatyviniu-dovanu-idejos" },
+  "/sokolades-gramata": { lv: "/sokolades-gramata", en: "/en/chocolate-book-box", ru: "/ru/shokoladnaya-kniga", et: "/et/sokolaadi-raamat", lt: "/lt/sokolado-knyga" },
   // EN keys
   "/en": { lv: "/", en: "/en", ru: "/ru", et: "/et", lt: "/lt" },
   "/en/chocolate-with-logo": { lv: "/sokolades-ar-logo", en: "/en/chocolate-with-logo", ru: "/ru/shokolad-s-logotipom", et: "/et/sokolaad-logoga", lt: "/lt/sokoladas-su-logotipu" },
@@ -147,6 +153,7 @@ export const hreflangMap: Record<string, Record<string, string>> = {
   "/en/employee-gifts": { lv: "/sokolades-darbinieku-davanam", en: "/en/employee-gifts", ru: "/ru/podarki-sotrudnikam", et: "/et/kingitused-tootajatele", lt: "/lt/dovanos-darbuotojams" },
   "/en/partner-gifts": { lv: "/sokolades-partneru-davanam", en: "/en/partner-gifts", ru: "/ru/podarki-partneram", et: "/et/kingitused-partneritele", lt: "/lt/dovanos-partneriams" },
   "/en/corporate-gift-ideas": { lv: "/korporativo-davanu-idejas", en: "/en/corporate-gift-ideas", ru: "/ru/idei-korporativnyh-podarkov", et: "/et/korporatiiv-kingituste-ideed", lt: "/lt/korporatyviniu-dovanu-idejos" },
+  "/en/chocolate-book-box": { lv: "/sokolades-gramata", en: "/en/chocolate-book-box", ru: "/ru/shokoladnaya-kniga", et: "/et/sokolaadi-raamat", lt: "/lt/sokolado-knyga" },
   // RU keys
   "/ru": { lv: "/", en: "/en", ru: "/ru", et: "/et", lt: "/lt" },
   "/ru/shokolad-s-logotipom": { lv: "/sokolades-ar-logo", en: "/en/chocolate-with-logo", ru: "/ru/shokolad-s-logotipom", et: "/et/sokolaad-logoga", lt: "/lt/sokoladas-su-logotipu" },
@@ -157,6 +164,7 @@ export const hreflangMap: Record<string, Record<string, string>> = {
   "/ru/podarki-sotrudnikam": { lv: "/sokolades-darbinieku-davanam", en: "/en/employee-gifts", ru: "/ru/podarki-sotrudnikam", et: "/et/kingitused-tootajatele", lt: "/lt/dovanos-darbuotojams" },
   "/ru/podarki-partneram": { lv: "/sokolades-partneru-davanam", en: "/en/partner-gifts", ru: "/ru/podarki-partneram", et: "/et/kingitused-partneritele", lt: "/lt/dovanos-partneriams" },
   "/ru/idei-korporativnyh-podarkov": { lv: "/korporativo-davanu-idejas", en: "/en/corporate-gift-ideas", ru: "/ru/idei-korporativnyh-podarkov", et: "/et/korporatiiv-kingituste-ideed", lt: "/lt/korporatyviniu-dovanu-idejos" },
+  "/ru/shokoladnaya-kniga": { lv: "/sokolades-gramata", en: "/en/chocolate-book-box", ru: "/ru/shokoladnaya-kniga", et: "/et/sokolaadi-raamat", lt: "/lt/sokolado-knyga" },
   // ET keys
   "/et": { lv: "/", en: "/en", ru: "/ru", et: "/et", lt: "/lt" },
   "/et/sokolaad-logoga": { lv: "/sokolades-ar-logo", en: "/en/chocolate-with-logo", ru: "/ru/shokolad-s-logotipom", et: "/et/sokolaad-logoga", lt: "/lt/sokoladas-su-logotipu" },
@@ -167,6 +175,7 @@ export const hreflangMap: Record<string, Record<string, string>> = {
   "/et/kingitused-tootajatele": { lv: "/sokolades-darbinieku-davanam", en: "/en/employee-gifts", ru: "/ru/podarki-sotrudnikam", et: "/et/kingitused-tootajatele", lt: "/lt/dovanos-darbuotojams" },
   "/et/kingitused-partneritele": { lv: "/sokolades-partneru-davanam", en: "/en/partner-gifts", ru: "/ru/podarki-partneram", et: "/et/kingitused-partneritele", lt: "/lt/dovanos-partneriams" },
   "/et/korporatiiv-kingituste-ideed": { lv: "/korporativo-davanu-idejas", en: "/en/corporate-gift-ideas", ru: "/ru/idei-korporativnyh-podarkov", et: "/et/korporatiiv-kingituste-ideed", lt: "/lt/korporatyviniu-dovanu-idejos" },
+  "/et/sokolaadi-raamat": { lv: "/sokolades-gramata", en: "/en/chocolate-book-box", ru: "/ru/shokoladnaya-kniga", et: "/et/sokolaadi-raamat", lt: "/lt/sokolado-knyga" },
   // LT keys
   "/lt": { lv: "/", en: "/en", ru: "/ru", et: "/et", lt: "/lt" },
   "/lt/sokoladas-su-logotipu": { lv: "/sokolades-ar-logo", en: "/en/chocolate-with-logo", ru: "/ru/shokolad-s-logotipom", et: "/et/sokolaad-logoga", lt: "/lt/sokoladas-su-logotipu" },
@@ -177,4 +186,5 @@ export const hreflangMap: Record<string, Record<string, string>> = {
   "/lt/dovanos-darbuotojams": { lv: "/sokolades-darbinieku-davanam", en: "/en/employee-gifts", ru: "/ru/podarki-sotrudnikam", et: "/et/kingitused-tootajatele", lt: "/lt/dovanos-darbuotojams" },
   "/lt/dovanos-partneriams": { lv: "/sokolades-partneru-davanam", en: "/en/partner-gifts", ru: "/ru/podarki-partneram", et: "/et/kingitused-partneritele", lt: "/lt/dovanos-partneriams" },
   "/lt/korporatyviniu-dovanu-idejos": { lv: "/korporativo-davanu-idejas", en: "/en/corporate-gift-ideas", ru: "/ru/idei-korporativnyh-podarkov", et: "/et/korporatiiv-kingituste-ideed", lt: "/lt/korporatyviniu-dovanu-idejos" },
+  "/lt/sokolado-knyga": { lv: "/sokolades-gramata", en: "/en/chocolate-book-box", ru: "/ru/shokoladnaya-kniga", et: "/et/sokolaadi-raamat", lt: "/lt/sokolado-knyga" },
 };

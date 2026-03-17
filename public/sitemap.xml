@@ -127,7 +127,18 @@
     <changefreq>monthly</changefreq>
   </url>
 
-  <!-- EN homepage -->
+  <!-- Šokolādes grāmata -->
+  <url>
+    <loc>https://luxurychocolate.lv/sokolades-gramata</loc>
+    <xhtml:link rel="alternate" hreflang="lv" href="https://luxurychocolate.lv/sokolades-gramata" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://luxurychocolate.lv/en/chocolate-book-box" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://luxurychocolate.lv/ru/shokoladnaya-kniga" />
+    <xhtml:link rel="alternate" hreflang="et" href="https://luxurychocolate.lv/et/sokolaadi-raamat" />
+    <xhtml:link rel="alternate" hreflang="lt" href="https://luxurychocolate.lv/lt/sokolado-knyga" />
+    <lastmod>2026-03-17</lastmod>
+    <priority>0.8</priority>
+    <changefreq>monthly</changefreq>
+  </url>
   <url>
     <loc>https://luxurychocolate.lv/en</loc>
     <xhtml:link rel="alternate" hreflang="lv" href="https://luxurychocolate.lv/" />
@@ -148,6 +159,7 @@
   <url><loc>https://luxurychocolate.lv/en/employee-gifts</loc><lastmod>2026-03-16</lastmod><priority>0.6</priority><changefreq>monthly</changefreq></url>
   <url><loc>https://luxurychocolate.lv/en/partner-gifts</loc><lastmod>2026-03-16</lastmod><priority>0.6</priority><changefreq>monthly</changefreq></url>
   <url><loc>https://luxurychocolate.lv/en/corporate-gift-ideas</loc><lastmod>2026-03-16</lastmod><priority>0.7</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://luxurychocolate.lv/en/chocolate-book-box</loc><lastmod>2026-03-17</lastmod><priority>0.7</priority><changefreq>monthly</changefreq></url>
 
   <!-- RU homepage -->
   <url>
@@ -170,6 +182,7 @@
   <url><loc>https://luxurychocolate.lv/ru/podarki-sotrudnikam</loc><lastmod>2026-03-16</lastmod><priority>0.6</priority><changefreq>monthly</changefreq></url>
   <url><loc>https://luxurychocolate.lv/ru/podarki-partneram</loc><lastmod>2026-03-16</lastmod><priority>0.6</priority><changefreq>monthly</changefreq></url>
   <url><loc>https://luxurychocolate.lv/ru/idei-korporativnyh-podarkov</loc><lastmod>2026-03-16</lastmod><priority>0.7</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://luxurychocolate.lv/ru/shokoladnaya-kniga</loc><lastmod>2026-03-17</lastmod><priority>0.7</priority><changefreq>monthly</changefreq></url>
 
   <!-- ET homepage -->
   <url>
@@ -192,6 +205,7 @@
   <url><loc>https://luxurychocolate.lv/et/kingitused-tootajatele</loc><lastmod>2026-03-16</lastmod><priority>0.6</priority><changefreq>monthly</changefreq></url>
   <url><loc>https://luxurychocolate.lv/et/kingitused-partneritele</loc><lastmod>2026-03-16</lastmod><priority>0.6</priority><changefreq>monthly</changefreq></url>
   <url><loc>https://luxurychocolate.lv/et/korporatiiv-kingituste-ideed</loc><lastmod>2026-03-16</lastmod><priority>0.7</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://luxurychocolate.lv/et/sokolaadi-raamat</loc><lastmod>2026-03-17</lastmod><priority>0.7</priority><changefreq>monthly</changefreq></url>
 
   <!-- LT homepage -->
   <url>
@@ -214,4 +228,5 @@
   <url><loc>https://luxurychocolate.lv/lt/dovanos-darbuotojams</loc><lastmod>2026-03-16</lastmod><priority>0.6</priority><changefreq>monthly</changefreq></url>
   <url><loc>https://luxurychocolate.lv/lt/dovanos-partneriams</loc><lastmod>2026-03-16</lastmod><priority>0.6</priority><changefreq>monthly</changefreq></url>
   <url><loc>https://luxurychocolate.lv/lt/korporatyviniu-dovanu-idejos</loc><lastmod>2026-03-16</lastmod><priority>0.7</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://luxurychocolate.lv/lt/sokolado-knyga</loc><lastmod>2026-03-17</lastmod><priority>0.7</priority><changefreq>monthly</changefreq></url>
 </urlset>

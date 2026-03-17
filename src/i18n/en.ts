@@ -211,4 +211,37 @@ export const enPages: Record<string, PageContent> = {
       { q: "How quickly can orders be prepared?", a: "Standard production is 3–10 business days. VIP orders can be processed with priority." },
     ],
   },
+  "chocolate-book-box": {
+    slug: "chocolate-book-box",
+    emoji: "📖",
+    title: "Chocolate Book Box — Gift Box with Magnetic Closure",
+    metaDescription: "Chocolate gift box shaped like a book with magnetic closure. Personalized chocolate for libraries, book competitions and literary events. Premium Belgian chocolate.",
+    intro: "A unique chocolate gift box designed as a book with magnetic closure — perfect for libraries, book competitions and literary events. It not only delights with taste but also creates a special experience.",
+    benefits: [
+      "Magnetic closure — creates a \"book opening\" sensation",
+      "Fully customizable cover — book cover, illustration or any design",
+      "Inside — chocolate painting with detailed print, pralines or bars",
+      "Wide range of flavors: white, milk, dark, orange, strawberry, caramel, honey, lime and more",
+      "Box can be resealed and kept as a keepsake",
+    ],
+    body: `
+      <h3 class="text-xl font-medium text-foreground mb-3">What is a chocolate book box?</h3>
+      <p>This is a special <strong class="text-foreground">chocolate gift box</strong> shaped like a book with a magnetic closure. Opening it, the recipient experiences a \"book opening\" sensation — elegant, surprising and unforgettable.</p>
+      <p>The box cover can be designed as a <strong class="text-foreground">specific book cover</strong>, illustration or any other design. Inside, you can place a chocolate painting with detailed print, filled pralines or chocolate bars.</p>
+      <h3 class="text-xl font-medium text-foreground mb-3 mt-6">Who is it for?</h3>
+      <p>This format is ideal as a <strong class="text-foreground">prize in book competitions</strong> and reading promotion initiatives, where the idea, aesthetics and lasting value all matter. It's also perfect for library events, author evenings and literary festival gifts.</p>
+      <h3 class="text-xl font-medium text-foreground mb-3 mt-6">Flavor variety</h3>
+      <p>We offer classic chocolates — white, milk and dark, as well as <strong class="text-foreground">special flavors</strong>: orange, strawberry, caramel, honey, lime and others for an even more personalized gift.</p>
+    `,
+    cta: "Order chocolate book boxes for your event",
+    keywords: ["chocolate book box", "book shaped chocolate", "chocolate for libraries", "book competition prize", "personalized chocolate box", "magnetic chocolate box", "literary event gift"],
+    faqs: [
+      { q: "What does a chocolate book box look like?", a: "It's a gift box with magnetic closure shaped like a book. The cover is fully customizable — designed as a specific book cover, illustration or any other design." },
+      { q: "What can be placed inside the box?", a: "Inside you can place a chocolate painting with detailed print, filled chocolate pralines or chocolate bars — content is tailored to your event or purpose." },
+      { q: "What flavors are available?", a: "We offer classic — white, milk and dark chocolate, as well as special flavors: orange, strawberry, caramel, honey, lime and more." },
+      { q: "Is it suitable for book competitions and libraries?", a: "Yes, this is one of the most popular formats for book and reading promotion initiatives — it serves as both a prize and a keepsake." },
+      { q: "What is the minimum order?", a: "Minimum order is 50 pcs. Production time is 3–10 business days from design approval." },
+      { q: "Can the box be kept as a keepsake?", a: "Yes, the magnetic closure allows easy reopening and resealing. Many recipients keep the box as a decorative keepsake." },
+    ],
+  },
 };
