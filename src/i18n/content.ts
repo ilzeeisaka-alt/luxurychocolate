@@ -136,6 +136,7 @@ export const products: Record<Lang, { heading: string; subtitle: string; items: 
       { title: "Šokolādes tāfelītes", description: "Ar Jūsu uzņēmuma logo un individuālu iepakojumu.", alt: "Personalizēta šokolādes tāfelīte ar uzņēmuma logo un individuālu iepakojumu" },
       { title: "Dāvanu komplekti", description: "Eleganta kastīte ar 5 rokām gatavotām konfektēm.", alt: "Eleganta korporatīvā šokolādes dāvanu kastīte ar konfektēm" },
       { title: "Šokolādes konfektes", description: "Pralines ar krēma pildījumu un personalizētu dizainu.", alt: "Premium šokolādes pralines ar krēma pildījumu un personalizētu dizainu" },
+      { title: "Šokolādes grāmata", description: "Dāvanu kastīte grāmatas formā ar magnētisku aizdari — ideāla bibliotēkām un pasākumiem.", alt: "Šokolādes grāmata — dāvanu kastīte ar magnētisku aizdari" },
     ],
   },
   en: {
