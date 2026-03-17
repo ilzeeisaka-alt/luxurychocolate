@@ -127,7 +127,18 @@
     <changefreq>monthly</changefreq>
   </url>
 
-  <!-- EN homepage -->
+  <!-- Šokolādes grāmata -->
+  <url>
+    <loc>https://luxurychocolate.lv/sokolades-gramata</loc>
+    <xhtml:link rel="alternate" hreflang="lv" href="https://luxurychocolate.lv/sokolades-gramata" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://luxurychocolate.lv/en/chocolate-book-box" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://luxurychocolate.lv/ru/shokoladnaya-kniga" />
+    <xhtml:link rel="alternate" hreflang="et" href="https://luxurychocolate.lv/et/sokolaadi-raamat" />
+    <xhtml:link rel="alternate" hreflang="lt" href="https://luxurychocolate.lv/lt/sokolado-knyga" />
+    <lastmod>2026-03-17</lastmod>
+    <priority>0.8</priority>
+    <changefreq>monthly</changefreq>
+  </url>
   <url>
     <loc>https://luxurychocolate.lv/en</loc>
     <xhtml:link rel="alternate" hreflang="lv" href="https://luxurychocolate.lv/" />
