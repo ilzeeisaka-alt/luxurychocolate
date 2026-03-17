@@ -142,6 +142,7 @@ export const hreflangMap: Record<string, Record<string, string>> = {
   "/sokolades-darbinieku-davanam": { lv: "/sokolades-darbinieku-davanam", en: "/en/employee-gifts", ru: "/ru/podarki-sotrudnikam", et: "/et/kingitused-tootajatele", lt: "/lt/dovanos-darbuotojams" },
   "/sokolades-partneru-davanam": { lv: "/sokolades-partneru-davanam", en: "/en/partner-gifts", ru: "/ru/podarki-partneram", et: "/et/kingitused-partneritele", lt: "/lt/dovanos-partneriams" },
   "/korporativo-davanu-idejas": { lv: "/korporativo-davanu-idejas", en: "/en/corporate-gift-ideas", ru: "/ru/idei-korporativnyh-podarkov", et: "/et/korporatiiv-kingituste-ideed", lt: "/lt/korporatyviniu-dovanu-idejos" },
+  "/sokolades-gramata": { lv: "/sokolades-gramata", en: "/en/chocolate-book-box", ru: "/ru/shokoladnaya-kniga", et: "/et/sokolaadi-raamat", lt: "/lt/sokolado-knyga" },
   // EN keys
   "/en": { lv: "/", en: "/en", ru: "/ru", et: "/et", lt: "/lt" },
   "/en/chocolate-with-logo": { lv: "/sokolades-ar-logo", en: "/en/chocolate-with-logo", ru: "/ru/shokolad-s-logotipom", et: "/et/sokolaad-logoga", lt: "/lt/sokoladas-su-logotipu" },
@@ -152,6 +153,7 @@ export const hreflangMap: Record<string, Record<string, string>> = {
   "/en/employee-gifts": { lv: "/sokolades-darbinieku-davanam", en: "/en/employee-gifts", ru: "/ru/podarki-sotrudnikam", et: "/et/kingitused-tootajatele", lt: "/lt/dovanos-darbuotojams" },
   "/en/partner-gifts": { lv: "/sokolades-partneru-davanam", en: "/en/partner-gifts", ru: "/ru/podarki-partneram", et: "/et/kingitused-partneritele", lt: "/lt/dovanos-partneriams" },
   "/en/corporate-gift-ideas": { lv: "/korporativo-davanu-idejas", en: "/en/corporate-gift-ideas", ru: "/ru/idei-korporativnyh-podarkov", et: "/et/korporatiiv-kingituste-ideed", lt: "/lt/korporatyviniu-dovanu-idejos" },
+  "/en/chocolate-book-box": { lv: "/sokolades-gramata", en: "/en/chocolate-book-box", ru: "/ru/shokoladnaya-kniga", et: "/et/sokolaadi-raamat", lt: "/lt/sokolado-knyga" },
   // RU keys
   "/ru": { lv: "/", en: "/en", ru: "/ru", et: "/et", lt: "/lt" },
   "/ru/shokolad-s-logotipom": { lv: "/sokolades-ar-logo", en: "/en/chocolate-with-logo", ru: "/ru/shokolad-s-logotipom", et: "/et/sokolaad-logoga", lt: "/lt/sokoladas-su-logotipu" },
@@ -162,6 +164,7 @@ export const hreflangMap: Record<string, Record<string, string>> = {
   "/ru/podarki-sotrudnikam": { lv: "/sokolades-darbinieku-davanam", en: "/en/employee-gifts", ru: "/ru/podarki-sotrudnikam", et: "/et/kingitused-tootajatele", lt: "/lt/dovanos-darbuotojams" },
   "/ru/podarki-partneram": { lv: "/sokolades-partneru-davanam", en: "/en/partner-gifts", ru: "/ru/podarki-partneram", et: "/et/kingitused-partneritele", lt: "/lt/dovanos-partneriams" },
   "/ru/idei-korporativnyh-podarkov": { lv: "/korporativo-davanu-idejas", en: "/en/corporate-gift-ideas", ru: "/ru/idei-korporativnyh-podarkov", et: "/et/korporatiiv-kingituste-ideed", lt: "/lt/korporatyviniu-dovanu-idejos" },
+  "/ru/shokoladnaya-kniga": { lv: "/sokolades-gramata", en: "/en/chocolate-book-box", ru: "/ru/shokoladnaya-kniga", et: "/et/sokolaadi-raamat", lt: "/lt/sokolado-knyga" },
   // ET keys
   "/et": { lv: "/", en: "/en", ru: "/ru", et: "/et", lt: "/lt" },
   "/et/sokolaad-logoga": { lv: "/sokolades-ar-logo", en: "/en/chocolate-with-logo", ru: "/ru/shokolad-s-logotipom", et: "/et/sokolaad-logoga", lt: "/lt/sokoladas-su-logotipu" },
@@ -172,6 +175,7 @@ export const hreflangMap: Record<string, Record<string, string>> = {
   "/et/kingitused-tootajatele": { lv: "/sokolades-darbinieku-davanam", en: "/en/employee-gifts", ru: "/ru/podarki-sotrudnikam", et: "/et/kingitused-tootajatele", lt: "/lt/dovanos-darbuotojams" },
   "/et/kingitused-partneritele": { lv: "/sokolades-partneru-davanam", en: "/en/partner-gifts", ru: "/ru/podarki-partneram", et: "/et/kingitused-partneritele", lt: "/lt/dovanos-partneriams" },
   "/et/korporatiiv-kingituste-ideed": { lv: "/korporativo-davanu-idejas", en: "/en/corporate-gift-ideas", ru: "/ru/idei-korporativnyh-podarkov", et: "/et/korporatiiv-kingituste-ideed", lt: "/lt/korporatyviniu-dovanu-idejos" },
+  "/et/sokolaadi-raamat": { lv: "/sokolades-gramata", en: "/en/chocolate-book-box", ru: "/ru/shokoladnaya-kniga", et: "/et/sokolaadi-raamat", lt: "/lt/sokolado-knyga" },
   // LT keys
   "/lt": { lv: "/", en: "/en", ru: "/ru", et: "/et", lt: "/lt" },
   "/lt/sokoladas-su-logotipu": { lv: "/sokolades-ar-logo", en: "/en/chocolate-with-logo", ru: "/ru/shokolad-s-logotipom", et: "/et/sokolaad-logoga", lt: "/lt/sokoladas-su-logotipu" },
@@ -182,4 +186,5 @@ export const hreflangMap: Record<string, Record<string, string>> = {
   "/lt/dovanos-darbuotojams": { lv: "/sokolades-darbinieku-davanam", en: "/en/employee-gifts", ru: "/ru/podarki-sotrudnikam", et: "/et/kingitused-tootajatele", lt: "/lt/dovanos-darbuotojams" },
   "/lt/dovanos-partneriams": { lv: "/sokolades-partneru-davanam", en: "/en/partner-gifts", ru: "/ru/podarki-partneram", et: "/et/kingitused-partneritele", lt: "/lt/dovanos-partneriams" },
   "/lt/korporatyviniu-dovanu-idejos": { lv: "/korporativo-davanu-idejas", en: "/en/corporate-gift-ideas", ru: "/ru/idei-korporativnyh-podarkov", et: "/et/korporatiiv-kingituste-ideed", lt: "/lt/korporatyviniu-dovanu-idejos" },
+  "/lt/sokolado-knyga": { lv: "/sokolades-gramata", en: "/en/chocolate-book-box", ru: "/ru/shokoladnaya-kniga", et: "/et/sokolaadi-raamat", lt: "/lt/sokolado-knyga" },
 };
