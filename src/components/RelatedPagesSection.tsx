@@ -23,7 +23,7 @@ const RelatedPagesSection = () => (
         <h2 className="text-2xl sm:text-3xl text-foreground mb-8 text-center">
           Izpētiet mūsu risinājumus
         </h2>
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-4">
           {pages.map((page) => (
             <Link
               key={page.to}
