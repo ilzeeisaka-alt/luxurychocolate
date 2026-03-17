@@ -146,6 +146,7 @@ export const products: Record<Lang, { heading: string; subtitle: string; items: 
       { title: "Chocolate bars", description: "With your company logo and custom packaging.", alt: "Personalized chocolate bar with company logo and custom packaging" },
       { title: "Gift sets", description: "Elegant box with 5 handcrafted pralines.", alt: "Elegant corporate chocolate gift box with pralines" },
       { title: "Chocolate pralines", description: "Pralines with cream filling and personalized design.", alt: "Premium chocolate pralines with cream filling and personalized design" },
+      { title: "Chocolate Book Box", description: "Book-shaped gift box with magnetic closure — perfect for libraries and events.", alt: "Chocolate book box with magnetic closure" },
     ],
   },
   ru: {
