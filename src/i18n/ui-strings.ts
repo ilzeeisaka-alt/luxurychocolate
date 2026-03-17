@@ -83,6 +83,7 @@ export const relatedPages: Record<string, RelatedPage[]> = {
     { to: "/sokolades-darbinieku-davanam", label: "Darbinieku dāvanas", desc: "Šokolādes dāvanas komandai un darbiniekiem" },
     { to: "/sokolades-partneru-davanam", label: "Partneru dāvanas", desc: "Ekskluzīvas dāvanas biznesa partneriem" },
     { to: "/korporativo-davanu-idejas", label: "Dāvanu idejas", desc: "Labākās korporatīvo dāvanu idejas" },
+    { to: "/sokolades-gramata", label: "Šokolādes grāmata", desc: "Dāvanu kastīte grāmatas formā ar magnētisku aizdari" },
   ],
   en: [
     { to: "/en/chocolate-with-logo", label: "Chocolate with Logo", desc: "Personalized printing with your company logo" },
