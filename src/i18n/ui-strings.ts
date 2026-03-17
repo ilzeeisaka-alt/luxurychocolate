@@ -127,6 +127,7 @@ export const relatedPages: Record<string, RelatedPage[]> = {
     { to: "/lt/dovanos-darbuotojams", label: "Dovanos darbuotojams", desc: "Šokolado dovanos komandai" },
     { to: "/lt/dovanos-partneriams", label: "Dovanos partneriams", desc: "Eksklusivinės dovanos verslo partneriams" },
     { to: "/lt/korporatyviniu-dovanu-idejos", label: "Dovanų idėjos", desc: "Geriausios korporatyvinių dovanų idėjos" },
+    { to: "/lt/sokolado-knyga", label: "Šokolado knyga", desc: "Dovanų dėžutė knygos formos su magnetiniu užsegimu" },
   ],
 };
 
