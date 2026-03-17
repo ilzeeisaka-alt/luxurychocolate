@@ -211,4 +211,37 @@ export const etPages: Record<string, PageContent> = {
       { q: "Kui kiiresti saab tellimusi valmistada?", a: "Standardne tootmine on 3–10 tööpäeva. VIP-tellimusi töödeldakse prioriteetselt." },
     ],
   },
+  "sokolaadi-raamat": {
+    slug: "sokolaadi-raamat",
+    emoji: "📖",
+    title: "Šokolaadiraamat — kinkekarp magnetilise sulguriga",
+    metaDescription: "Šokolaadi kinkekarp raamatu kujul magnetilise sulguriga. Personaliseeritud šokolaad raamatukogudele, raamatukonkurssidele ja kirjandusüritustele.",
+    intro: "Unikaalne šokolaadi kinkekarp raamatu kujul magnetilise sulguriga — sobib suurepäraselt raamatukogudele, raamatukonkurssidele ja kirjandusüritustele.",
+    benefits: [
+      "Magnetiline sulguir — loob \"raamatu avamise\" elamuse",
+      "Täielikult kohandatav kaas — raamatu kaas, illustratsioon või mis tahes disain",
+      "Sees — šokolaadi \"maal\" detailse trükiga, pralineed või tahvlid",
+      "Lai maitsete valik: valge, piima, tume, apelsin, maasikas, karamell, mesi, laim jm",
+      "Karpi saab uuesti sulgeda ja hoida mälestusesemena",
+    ],
+    body: `
+      <h3 class="text-xl font-medium text-foreground mb-3">Mis on šokolaadiraamat?</h3>
+      <p>See on eriline <strong class="text-foreground">šokolaadi kinkekarp</strong> raamatu kujul magnetilise sulguriga. Avades kogeb saaja \"raamatu avamise\" elamust — elegantne, üllatav ja unustamatu.</p>
+      <p>Karbi kaane saab kujundada konkreetse <strong class="text-foreground">raamatu kaanena</strong>, illustratsioonina või mis tahes muu disainina.</p>
+      <h3 class="text-xl font-medium text-foreground mb-3 mt-6">Kellele sobib?</h3>
+      <p>See formaat on ideaalne <strong class="text-foreground">auhinnana raamatukonkurssidel</strong> ja lugemise edendamise algatustes, kus on oluline nii idee, esteetika kui ka püsiv väärtus.</p>
+      <h3 class="text-xl font-medium text-foreground mb-3 mt-6">Maitsete mitmekesisus</h3>
+      <p>Pakume klassikalisi šokolaade — valge, piima ja tume, samuti <strong class="text-foreground">erimaitseid</strong>: apelsin, maasikas, karamell, mesi, laim ja teised.</p>
+    `,
+    cta: "Telli šokolaadiraamat oma üritusele",
+    keywords: ["šokolaadiraamat", "raamatu kujuline šokolaad", "šokolaad raamatukogudele", "raamatukonkursi auhind", "personaliseeritud šokolaadikarp"],
+    faqs: [
+      { q: "Kuidas näeb välja šokolaadiraamat?", a: "See on kinkekarp magnetilise sulguriga raamatu kujul. Kaant saab täielikult personaliseerida — kujundada konkreetse raamatu kaanena või mis tahes disainina." },
+      { q: "Mida saab karbi sisse panna?", a: "Sisse saab panna šokolaadi \"maali\" detailse trükiga, täidistega pralineesid või šokolaadotahvleid." },
+      { q: "Millised maitsed on saadaval?", a: "Klassikalised — valge, piima ja tume šokolaad, samuti erimaitsed: apelsin, maasikas, karamell, mesi, laim jm." },
+      { q: "Kas sobib raamatukonkurssidele?", a: "Jah, see on üks populaarsemaid formaate raamatukonkurssidele ja lugemise edendamise algatustele." },
+      { q: "Milline on minimaalne tellimus?", a: "Minimaalne tellimus on 50 tk. Tootmisaeg — 3–10 tööpäeva." },
+      { q: "Kas karpi saab hoida mälestusesemena?", a: "Jah, magnetiline sulguir võimaldab kerget avamist ja sulgemist. Paljud saajad hoiavad karpi dekoratiivse mälestusesemena." },
+    ],
+  },
 };

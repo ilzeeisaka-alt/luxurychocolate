@@ -211,4 +211,37 @@ export const ltPages: Record<string, PageContent> = {
       { q: "Kaip greitai galima paruošti užsakymus?", a: "Standartinė gamyba — 3–10 darbo dienų. VIP užsakymai apdorojami prioritetiškai." },
     ],
   },
+  "sokolado-knyga": {
+    slug: "sokolado-knyga",
+    emoji: "📖",
+    title: "Šokolado knyga — dovanų dėžutė su magnetiniu užsegimu",
+    metaDescription: "Šokolado dovanų dėžutė knygos formos su magnetiniu užsegimu. Personalizuotas šokoladas bibliotekoms, knygų konkursams ir literatūros renginiams.",
+    intro: "Unikali šokolado dovanų dėžutė knygos formos su magnetiniu užsegimu — puikiai tinka bibliotekoms, knygų konkursams ir su literatūra susijusiems renginiams.",
+    benefits: [
+      "Magnetinis užsegimas — sukuria \"knygos atidarymo\" pojūtį",
+      "Pilnai pritaikomas viršelis — knygos viršelis, iliustracija ar bet koks dizainas",
+      "Viduje — šokolado \"paveikslas\" su detaliu spauda, saldainiai ar plytelės",
+      "Platus skonių pasirinkimas: baltas, pieninis, tamsus, apelsinų, braškių, karamelės, medaus, laimų ir kt.",
+      "Dėžutę galima pakartotinai uždaryti ir saugoti kaip suvenyrą",
+    ],
+    body: `
+      <h3 class="text-xl font-medium text-foreground mb-3">Kas yra šokolado knyga?</h3>
+      <p>Tai ypatinga <strong class="text-foreground">šokolado dovanų dėžutė</strong> knygos formos su magnetiniu užsegimu. Atidarant, gavėjas patiria \"knygos atidarymo\" pojūtį — elegantiška, stebinanti ir neužmirštama.</p>
+      <p>Dėžutės viršelį galima suprojektuoti kaip <strong class="text-foreground">konkrečios knygos viršelį</strong>, iliustraciją ar bet kokį kitą dizainą.</p>
+      <h3 class="text-xl font-medium text-foreground mb-3 mt-6">Kam tinka?</h3>
+      <p>Šis formatas idealus kaip <strong class="text-foreground">prizas knygų konkursuose</strong> ir skaitymo skatinimo iniciatyvose, kur svarbi idėja, estetika ir ilgalaikė vertė.</p>
+      <h3 class="text-xl font-medium text-foreground mb-3 mt-6">Skonių įvairovė</h3>
+      <p>Siūlome klasikinius šokoladus — baltą, pieninį ir tamsų, taip pat <strong class="text-foreground">specialius skonius</strong>: apelsinų, braškių, karamelės, medaus, laimų ir kitus.</p>
+    `,
+    cta: "Užsakyti šokolado knygą savo renginiui",
+    keywords: ["šokolado knyga", "knygos formos šokoladas", "šokoladas bibliotekoms", "knygų konkurso prizas", "personalizuota šokolado dėžutė"],
+    faqs: [
+      { q: "Kaip atrodo šokolado knyga?", a: "Tai dovanų dėžutė su magnetiniu užsegimu knygos formos. Viršelį galima pilnai personalizuoti — suprojektuoti kaip konkrečios knygos viršelį ar bet kokį dizainą." },
+      { q: "Ką galima įdėti į dėžutę?", a: "Viduje galima įdėti šokolado \"paveikslą\" su spauda, saldainius su įdaru ar šokolado plyteles." },
+      { q: "Kokie skoniai galimi?", a: "Klasikiniai — baltas, pieninis ir tamsus šokoladas, taip pat specialūs skoniai: apelsinų, braškių, karamelės, medaus, laimų ir kt." },
+      { q: "Ar tinka knygų konkursams?", a: "Taip, tai vienas populiariausių formatų knygų konkursams ir skaitymo skatinimo iniciatyvoms." },
+      { q: "Koks minimalus užsakymas?", a: "Minimalus užsakymas — 50 vnt. Gamybos laikas — 3–10 darbo dienų." },
+      { q: "Ar galima dėžutę saugoti kaip suvenyrą?", a: "Taip, magnetinis užsegimas leidžia lengvai atidaryti ir uždaryti pakartotinai. Daugelis gavėjų saugo dėžutę kaip dekoratyvinį suvenyrą." },
+    ],
+  },
 };
