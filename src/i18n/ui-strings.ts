@@ -116,6 +116,7 @@ export const relatedPages: Record<string, RelatedPage[]> = {
     { to: "/et/kingitused-tootajatele", label: "Töötajate kingitused", desc: "Šokolaadikingitused meeskonnale" },
     { to: "/et/kingitused-partneritele", label: "Partnerite kingitused", desc: "Eksklusivsed kingitused äripartneritele" },
     { to: "/et/korporatiiv-kingituste-ideed", label: "Kinkeideed", desc: "Parimad korporatiivkingituste ideed" },
+    { to: "/et/sokolaadi-raamat", label: "Šokolaadiraamat", desc: "Kinkekarp raamatu kujul magnetilise sulguriga" },
   ],
   lt: [
     { to: "/lt/sokoladas-su-logotipu", label: "Šokoladas su logotipu", desc: "Personalizuotas spausdinimas su įmonės logotipu" },
