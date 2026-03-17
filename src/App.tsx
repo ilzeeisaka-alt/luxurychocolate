@@ -17,6 +17,7 @@ const SokoladesDarbiniekiem = lazy(() => import("./pages/SokoladesDarbiniekiem.t
 const SokoladesPartneriem = lazy(() => import("./pages/SokoladesPartneriem.tsx"));
 const KorporativoDavanuCelvedis = lazy(() => import("./pages/KorporativoDavanuCelvedis.tsx"));
 const KorporativoDavanuIdejas = lazy(() => import("./pages/KorporativoDavanuIdejas.tsx"));
+const SokoladesGramata = lazy(() => import("./pages/SokoladesGramata.tsx"));
 const EnIndex = lazy(() => import("./pages/EnIndex.tsx"));
 const RuIndex = lazy(() => import("./pages/RuIndex.tsx"));
 const EtIndex = lazy(() => import("./pages/EtIndex.tsx"));
