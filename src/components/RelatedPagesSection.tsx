@@ -6,6 +6,7 @@ const pages = [
   { to: "/ziemassvetku-korporativas-sokolades", label: "Ziemassvētku šokolādes", desc: "Svētku korporatīvās dāvanas ar logo elegantā iepakojumā" },
   { to: "/reklamas-sokolade", label: "Reklāmas šokolāde", desc: "Promo šokolāde izstādēm, konferencēm un pasākumiem" },
   { to: "/sokolades-klientu-davanam", label: "Klientu dāvanas", desc: "Premium šokolādes dāvanas klientiem un partneriem" },
+  { to: "/sokolades-gramata", label: "Šokolādes grāmata", desc: "Dāvanu kastīte grāmatas formā ar magnētisku aizdari" },
 ];
 
 const vp = { once: true, margin: "-50px" as const };

@@ -1,11 +1,21 @@
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import giftBoxCorporate from "@/assets/gift-box-corporate.webp";
 import pralinePhoto from "@/assets/ziemassvetku-sokolades-davanas.webp";
 import heroChocolate from "@/assets/logo-chocolate-cookie.webp";
+import bookBoxPhoto from "@/assets/sokolades-gramata-hero.jpg";
 import type { Lang } from "@/i18n/types";
 import { products as productsContent } from "@/i18n/content";
 
-const images = [heroChocolate, giftBoxCorporate, pralinePhoto];
+const images = [heroChocolate, giftBoxCorporate, pralinePhoto, bookBoxPhoto];
+
+const productLinks: Record<Lang, string> = {
+  lv: "/sokolades-gramata",
+  en: "/en/chocolate-book-box",
+  ru: "/ru/shokoladnaya-kniga",
+  et: "/et/sokolaadi-raamat",
+  lt: "/lt/sokolado-knyga",
+};
 
 const sectionVariants = {
   initial: { opacity: 0, y: 8 },

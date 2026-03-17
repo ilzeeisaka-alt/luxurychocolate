@@ -176,6 +176,7 @@ export const products: Record<Lang, { heading: string; subtitle: string; items: 
       { title: "Šokolado plyteliai", description: "Su jūsų įmonės logotipu ir individualia pakuote.", alt: "Personalizuotas šokolado plytelis su įmonės logotipu" },
       { title: "Dovanų rinkiniai", description: "Elegantiškas dėžutė su 5 rankų darbo pralinė.", alt: "Elegantiškas korporatyvinis šokolado dovanų rinkinys" },
       { title: "Šokolado pralinė", description: "Pralinė su kreminio įdaru ir personalizuotu dizainu.", alt: "Premium šokolado pralinė su kreminio įdaru" },
+      { title: "Šokolado knyga", description: "Dovanų dėžutė knygos formos su magnetiniu užsegimu — puikiai tinka bibliotekoms ir renginiams.", alt: "Šokolado knyga — dovanų dėžutė su magnetiniu užsegimu" },
     ],
   },
 };
