@@ -136,6 +136,7 @@ export const products: Record<Lang, { heading: string; subtitle: string; items: 
       { title: "Šokolādes tāfelītes", description: "Ar Jūsu uzņēmuma logo un individuālu iepakojumu.", alt: "Personalizēta šokolādes tāfelīte ar uzņēmuma logo un individuālu iepakojumu" },
       { title: "Dāvanu komplekti", description: "Eleganta kastīte ar 5 rokām gatavotām konfektēm.", alt: "Eleganta korporatīvā šokolādes dāvanu kastīte ar konfektēm" },
       { title: "Šokolādes konfektes", description: "Pralines ar krēma pildījumu un personalizētu dizainu.", alt: "Premium šokolādes pralines ar krēma pildījumu un personalizētu dizainu" },
+      { title: "Šokolādes grāmata", description: "Dāvanu kastīte grāmatas formā ar magnētisku aizdari — ideāla bibliotēkām un pasākumiem.", alt: "Šokolādes grāmata — dāvanu kastīte ar magnētisku aizdari" },
     ],
   },
   en: {
@@ -145,6 +146,7 @@ export const products: Record<Lang, { heading: string; subtitle: string; items: 
       { title: "Chocolate bars", description: "With your company logo and custom packaging.", alt: "Personalized chocolate bar with company logo and custom packaging" },
       { title: "Gift sets", description: "Elegant box with 5 handcrafted pralines.", alt: "Elegant corporate chocolate gift box with pralines" },
       { title: "Chocolate pralines", description: "Pralines with cream filling and personalized design.", alt: "Premium chocolate pralines with cream filling and personalized design" },
+      { title: "Chocolate Book Box", description: "Book-shaped gift box with magnetic closure — perfect for libraries and events.", alt: "Chocolate book box with magnetic closure" },
     ],
   },
   ru: {
@@ -154,6 +156,7 @@ export const products: Record<Lang, { heading: string; subtitle: string; items: 
       { title: "Шоколадные плитки", description: "С логотипом вашей компании и индивидуальной упаковкой.", alt: "Персонализированная шоколадная плитка с логотипом компании" },
       { title: "Подарочные наборы", description: "Элегантная коробка с 5 пралине ручной работы.", alt: "Элегантная корпоративная подарочная коробка с шоколадом" },
       { title: "Шоколадные конфеты", description: "Пралине с кремовой начинкой и персонализированным дизайном.", alt: "Премиум шоколадные пралине с кремовой начинкой" },
+      { title: "Шоколадная книга", description: "Подарочная коробка в форме книги с магнитной застёжкой — идеально для библиотек и мероприятий.", alt: "Шоколадная книга — подарочная коробка с магнитной застёжкой" },
     ],
   },
   et: {
@@ -163,6 +166,7 @@ export const products: Record<Lang, { heading: string; subtitle: string; items: 
       { title: "Šokolaadid", description: "Teie ettevõtte logo ja individuaalse pakendiga.", alt: "Personaliseeritud šokolaad ettevõtte logo ja individuaalse pakendiga" },
       { title: "Kinkekomplektid", description: "Elegantne karp 5 käsitööna valmistatud pralineega.", alt: "Elegantne korporatiivne šokolaadi kinkekarp pralineedega" },
       { title: "Šokolaadipralineed", description: "Pralineed kreemitäidise ja personaliseeritud disainiga.", alt: "Premium šokolaadipralineed kreemitäidise ja personaliseeritud disainiga" },
+      { title: "Šokolaadiraamat", description: "Kinkekarp raamatu kujul magnetilise sulguriga — ideaalne raamatukogudele ja üritustele.", alt: "Šokolaadiraamat — kinkekarp magnetilise sulguriga" },
     ],
   },
   lt: {
@@ -172,6 +176,7 @@ export const products: Record<Lang, { heading: string; subtitle: string; items: 
       { title: "Šokolado plyteliai", description: "Su jūsų įmonės logotipu ir individualia pakuote.", alt: "Personalizuotas šokolado plytelis su įmonės logotipu" },
       { title: "Dovanų rinkiniai", description: "Elegantiškas dėžutė su 5 rankų darbo pralinė.", alt: "Elegantiškas korporatyvinis šokolado dovanų rinkinys" },
       { title: "Šokolado pralinė", description: "Pralinė su kreminio įdaru ir personalizuotu dizainu.", alt: "Premium šokolado pralinė su kreminio įdaru" },
+      { title: "Šokolado knyga", description: "Dovanų dėžutė knygos formos su magnetiniu užsegimu — puikiai tinka bibliotekoms ir renginiams.", alt: "Šokolado knyga — dovanų dėžutė su magnetiniu užsegimu" },
     ],
   },
 };
