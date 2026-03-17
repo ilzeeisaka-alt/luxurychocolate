@@ -166,6 +166,7 @@ export const products: Record<Lang, { heading: string; subtitle: string; items: 
       { title: "Šokolaadid", description: "Teie ettevõtte logo ja individuaalse pakendiga.", alt: "Personaliseeritud šokolaad ettevõtte logo ja individuaalse pakendiga" },
       { title: "Kinkekomplektid", description: "Elegantne karp 5 käsitööna valmistatud pralineega.", alt: "Elegantne korporatiivne šokolaadi kinkekarp pralineedega" },
       { title: "Šokolaadipralineed", description: "Pralineed kreemitäidise ja personaliseeritud disainiga.", alt: "Premium šokolaadipralineed kreemitäidise ja personaliseeritud disainiga" },
+      { title: "Šokolaadiraamat", description: "Kinkekarp raamatu kujul magnetilise sulguriga — ideaalne raamatukogudele ja üritustele.", alt: "Šokolaadiraamat — kinkekarp magnetilise sulguriga" },
     ],
   },
   lt: {
