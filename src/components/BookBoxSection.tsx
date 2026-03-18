@@ -29,6 +29,20 @@ const BookBoxSection = ({ lang = "lv" }: BookBoxSectionProps) => {
 
   return (
     <>
+      {/* Hero video — full width, looping */}
+      <div className="w-full overflow-hidden">
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="w-full h-auto block"
+          poster={heroImg}
+        >
+          <source src="/video/sokolades-gramata.mp4" type="video/mp4" />
+        </video>
+      </div>
+
       <motion.section className="py-24" {...sectionVariants}>
         <div className="container mx-auto">
           <h2 className="text-3xl sm:text-4xl text-foreground text-center mb-4">
@@ -59,7 +73,6 @@ const BookBoxSection = ({ lang = "lv" }: BookBoxSectionProps) => {
                       loading="lazy"
                       className="w-full h-full object-cover transition-all duration-700 ease-out group-hover:scale-110 group-hover:brightness-110 group-hover:saturate-[1.1]"
                     />
-                    {/* Golden shimmer border on hover */}
                     <div className="absolute inset-0 rounded-t-xl ring-0 ring-primary/0 group-hover:ring-2 group-hover:ring-primary/30 transition-all duration-500 z-[3] pointer-events-none" />
                   </div>
                   <div className="p-5 relative z-[3] transition-transform duration-300 group-hover:-translate-y-0.5">
