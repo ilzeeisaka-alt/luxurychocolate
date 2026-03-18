@@ -153,19 +153,30 @@ const Navbar = ({ lang = "lv" }: NavbarProps) => {
       {/* Mobile menu */}
       {mobileOpen && (
         <div className="lg:hidden bg-foreground border-t border-white/10 px-4 pb-4">
-          {items.map((item) => (
-            <Link
-              key={item.to}
-              to={item.to}
-              className={`block py-2.5 px-3 rounded-md text-sm font-medium transition-colors ${
-                pathname === item.to
-                  ? "text-primary bg-primary/10"
-                  : "text-white/70 hover:text-white hover:bg-white/5"
-              }`}
-            >
-              {item.label}
-            </Link>
-          ))}
+          {items.map((item) =>
+            item.to.startsWith("#") ? (
+              <a
+                key={item.to}
+                href={item.to}
+                className="block py-2.5 px-3 rounded-md text-sm font-medium transition-colors text-white/70 hover:text-white hover:bg-white/5"
+                onClick={() => setMobileOpen(false)}
+              >
+                {item.label}
+              </a>
+            ) : (
+              <Link
+                key={item.to}
+                to={item.to}
+                className={`block py-2.5 px-3 rounded-md text-sm font-medium transition-colors ${
+                  pathname === item.to
+                    ? "text-primary bg-primary/10"
+                    : "text-white/70 hover:text-white hover:bg-white/5"
+                }`}
+              >
+                {item.label}
+              </Link>
+            )
+          )}
         </div>
       )}
     </nav>
