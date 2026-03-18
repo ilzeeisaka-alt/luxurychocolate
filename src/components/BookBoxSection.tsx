@@ -7,8 +7,9 @@ import heroImg from "@/assets/sokolades-gramata-hero.jpg";
 import elegantaImg from "@/assets/sokolades-gramata-eleganta.jpg";
 import konfektesImg from "@/assets/sokolades-gramata-konfektes.jpg";
 import openImg from "@/assets/sokolades-gramata-open.png";
+import konkursImg from "@/assets/sokolades-gramata-konkurss.png";
 
-const images = [heroImg, elegantaImg, openImg, konfektesImg];
+const images = [heroImg, elegantaImg, openImg, konfektesImg, konkursImg];
 
 const productLinks: Record<Lang, string> = {
   lv: "/sokolades-gramata",
@@ -43,7 +44,7 @@ const BookBoxSection = ({ lang = "lv" }: BookBoxSectionProps) => {
           {t.subtitle}
         </p>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
           {t.items.map((item, i) => (
             <motion.div
               key={item.title}

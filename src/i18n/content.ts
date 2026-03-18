@@ -447,6 +447,7 @@ export const bookBoxContent: Record<Lang, {
       { title: "Elegants noformējums", description: "Pilnībā personalizējams vāciņa dizains — grāmatas vāks, ilustrācija vai logo.", alt: "Eleganti noformēta šokolādes grāmata ar individuālu dizainu" },
       { title: "Atvērta kastīte", description: "Magnētiskā aizdare rada grāmatas atvēršanas sajūtu — iekšā šokolādes glezniņa vai konfektes.", alt: "Atvērta šokolādes grāmata ar šokolādes saturu iekšpusē" },
       { title: "Konfektes kastītē", description: "Iekšpusē — šokolādes konfektes ar dažādiem pildījumiem premium noformējumā.", alt: "Šokolādes grāmata ar konfektēm iekšpusē" },
+      { title: "Konkursa balva", description: "Šokolādes grāmata kā ekskluzīva balva konkursiem un pasākumiem — ar personalizētu dizainu.", alt: "Bērnu grāmatu konkursa balva — šokolādes grāmata ar grāmatas nosaukumu" },
     ],
   },
   en: {
@@ -457,6 +458,7 @@ export const bookBoxContent: Record<Lang, {
       { title: "Elegant design", description: "Fully customizable cover — book cover, illustration or logo.", alt: "Elegantly designed chocolate book box with custom design" },
       { title: "Open box", description: "Magnetic closure creates a book-opening experience — inside: chocolate painting or pralines.", alt: "Open chocolate book box with chocolate content inside" },
       { title: "Pralines inside", description: "Inside — chocolate pralines with various fillings in premium presentation.", alt: "Chocolate book box with pralines inside" },
+      { title: "Contest prize", description: "Chocolate book box as an exclusive prize for contests and events — with personalized design.", alt: "Children's book contest prize — chocolate book box with book title" },
     ],
   },
   ru: {
@@ -467,6 +469,7 @@ export const bookBoxContent: Record<Lang, {
       { title: "Элегантный дизайн", description: "Полностью настраиваемый дизайн обложки — обложка книги, иллюстрация или логотип.", alt: "Элегантно оформленная шоколадная книга с индивидуальным дизайном" },
       { title: "Открытая коробка", description: "Магнитная застёжка создаёт ощущение открытия книги — внутри шоколадная картина или конфеты.", alt: "Открытая шоколадная книга с шоколадным содержимым внутри" },
       { title: "Конфеты внутри", description: "Внутри — шоколадные конфеты с различными начинками в премиум оформлении.", alt: "Шоколадная книга с конфетами внутри" },
+      { title: "Приз конкурса", description: "Шоколадная книга как эксклюзивный приз для конкурсов и мероприятий — с персонализированным дизайном.", alt: "Приз конкурса детских книг — шоколадная книга с названием книги" },
     ],
   },
   et: {
@@ -477,6 +480,7 @@ export const bookBoxContent: Record<Lang, {
       { title: "Elegantne disain", description: "Täielikult kohandatav kaanedisain — raamatukaas, illustratsioon või logo.", alt: "Elegantselt disainitud šokolaadi raamat individuaalse disainiga" },
       { title: "Avatud karp", description: "Magnetiline sulgumine loob raamatu avamise kogemuse — sees: šokolaadimaaling või kommid.", alt: "Avatud šokolaadi raamat šokolaadesisuga sees" },
       { title: "Kommid sees", description: "Sees — šokolaadikommid erinevate täidistega premium esitluses.", alt: "Šokolaadi raamat kommidega sees" },
+      { title: "Konkursi auhind", description: "Šokolaadi raamat kui eksklusiivne auhind konkurssidele ja üritustele — personaliseeritud disainiga.", alt: "Lasteraamatute konkursi auhind — šokolaadi raamat raamatu pealkirjaga" },
     ],
   },
   lt: {
@@ -487,6 +491,7 @@ export const bookBoxContent: Record<Lang, {
       { title: "Elegantiškas dizainas", description: "Pilnai pritaikomas viršelio dizainas — knygos viršelis, iliustracija ar logotipas.", alt: "Elegantiška šokolado knyga su individualiu dizainu" },
       { title: "Atidaryta dėžutė", description: "Magnetinis uždarymas sukuria knygos atidarymo patirtį — viduje: šokolado paveikslas ar saldainiai.", alt: "Atidaryta šokolado knyga su šokolado turiniu viduje" },
       { title: "Saldainiai viduje", description: "Viduje — šokolado saldainiai su įvairiais įdarais premium pateikime.", alt: "Šokolado knyga su saldainiais viduje" },
+      { title: "Konkurso prizas", description: "Šokolado knyga kaip ekskluzivinis prizas konkursams ir renginiams — su personalizuotu dizainu.", alt: "Vaikų knygų konkurso prizas — šokolado knyga su knygos pavadinimu" },
     ],
   },
 };
