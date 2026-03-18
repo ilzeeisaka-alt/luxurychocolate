@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
 import ClientExamplesSection from "@/components/ClientExamplesSection";
 import QuickFactsSection from "@/components/QuickFactsSection";
