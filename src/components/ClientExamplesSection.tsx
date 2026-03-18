@@ -38,15 +38,16 @@ const ClientExamplesSection = ({ lang = "lv" }: ClientExamplesSectionProps) => {
         </motion.div>
         <div className="grid grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6" role="list">
           {clients.map((client, i) => (
-            <motion.figure
-              key={client.brand}
-              role="listitem"
-              className="photo-card group relative overflow-hidden rounded-xl aspect-[4/3]"
-              style={{ boxShadow: "var(--shadow-card)" }}
-              initial={{ opacity: 0, y: 40, scale: 0.92 }}
-              whileInView={{ opacity: 1, y: 0, scale: 1 }}
-              viewport={vp}
-              transition={{ duration: 0.6, delay: i * 0.1 }}
+              <motion.figure
+                key={client.brand}
+                role="listitem"
+                className="photo-card group relative overflow-hidden rounded-xl aspect-[4/3] cursor-pointer"
+                style={{ boxShadow: "var(--shadow-card)" }}
+                initial={{ opacity: 0, y: 40, scale: 0.92 }}
+                whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                viewport={vp}
+                transition={{ duration: 0.6, delay: i * 0.1 }}
+                onClick={() => setLightboxIndex(i)}
             >
               <div className="relative w-full h-full photo-vignette photo-gradient-gold">
                 <img
