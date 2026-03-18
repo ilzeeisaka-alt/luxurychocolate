@@ -18,6 +18,7 @@ const navItems: Record<Lang, NavItem[]> = {
     { label: "Ziemassvētku", to: "/ziemassvetku-korporativas-sokolades" },
     { label: "Šokolādes grāmata", to: "/sokolades-gramata" },
     { label: "Dāvanu idejas", to: "/korporativo-davanu-idejas" },
+    { label: "Kontakti", to: "#kontakti" },
   ],
   en: [
     { label: "Chocolate with Logo", to: "/en/chocolate-with-logo" },
@@ -26,6 +27,7 @@ const navItems: Record<Lang, NavItem[]> = {
     { label: "Christmas", to: "/en/christmas-corporate-chocolate" },
     { label: "Book Box", to: "/en/chocolate-book-box" },
     { label: "Gift Ideas", to: "/en/corporate-gift-ideas" },
+    { label: "Contact", to: "#kontakti" },
   ],
   ru: [
     { label: "Шоколад с логотипом", to: "/ru/shokolad-s-logotipom" },
@@ -34,6 +36,7 @@ const navItems: Record<Lang, NavItem[]> = {
     { label: "Рождественский", to: "/ru/rozhdestvenskij-shokolad" },
     { label: "Шоколадная книга", to: "/ru/shokoladnaya-kniga" },
     { label: "Идеи подарков", to: "/ru/idei-korporativnyh-podarkov" },
+    { label: "Контакты", to: "#kontakti" },
   ],
   et: [
     { label: "Šokolaad logoga", to: "/et/sokolaad-logoga" },
@@ -42,6 +45,7 @@ const navItems: Record<Lang, NavItem[]> = {
     { label: "Jõulušokolaad", to: "/et/joulu-sokolaad" },
     { label: "Šokolaadiraamat", to: "/et/sokolaadi-raamat" },
     { label: "Kinkeideed", to: "/et/korporatiiv-kingituste-ideed" },
+    { label: "Kontakt", to: "#kontakti" },
   ],
   lt: [
     { label: "Šokoladas su logotipu", to: "/lt/sokoladas-su-logotipu" },
@@ -50,6 +54,7 @@ const navItems: Record<Lang, NavItem[]> = {
     { label: "Kalėdinis", to: "/lt/kaledinis-sokoladas" },
     { label: "Šokolado knyga", to: "/lt/sokolado-knyga" },
     { label: "Dovanų idėjos", to: "/lt/korporatyviniu-dovanu-idejos" },
+    { label: "Kontaktai", to: "#kontakti" },
   ],
 };
 
