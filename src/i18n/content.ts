@@ -480,6 +480,7 @@ export const bookBoxContent: Record<Lang, {
       { title: "Elegantne disain", description: "Täielikult kohandatav kaanedisain — raamatukaas, illustratsioon või logo.", alt: "Elegantselt disainitud šokolaadi raamat individuaalse disainiga" },
       { title: "Avatud karp", description: "Magnetiline sulgumine loob raamatu avamise kogemuse — sees: šokolaadimaaling või kommid.", alt: "Avatud šokolaadi raamat šokolaadesisuga sees" },
       { title: "Kommid sees", description: "Sees — šokolaadikommid erinevate täidistega premium esitluses.", alt: "Šokolaadi raamat kommidega sees" },
+      { title: "Konkursi auhind", description: "Šokolaadi raamat kui eksklusiivne auhind konkurssidele ja üritustele — personaliseeritud disainiga.", alt: "Lasteraamatute konkursi auhind — šokolaadi raamat raamatu pealkirjaga" },
     ],
   },
   lt: {
