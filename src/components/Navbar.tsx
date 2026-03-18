@@ -126,6 +126,16 @@ const Navbar = ({ lang = "lv" }: NavbarProps) => {
               >
                 {item.label}
               </a>
+            ) : item.to.startsWith("http") ? (
+              <a
+                key={item.to}
+                href={item.to}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-3 py-1.5 rounded-md text-xs font-medium transition-colors text-white/70 hover:text-white hover:bg-white/5"
+              >
+                {item.label}
+              </a>
             ) : (
               <Link
                 key={item.to}
