@@ -74,6 +74,7 @@ export const uiStrings: Record<string, UiStrings> = {
     freePreviewBadge2: "✔ Be įsipareigojimų",
     freePreviewBadge3: "✔ Atsakymas per 24 val.",
     freePreviewButton: "Gauti dizaino peržiūrą",
+    freePreviewInquiryButton: "Pildyti užklausą",
   },
 };
 
