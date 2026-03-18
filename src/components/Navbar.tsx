@@ -111,19 +111,30 @@ const Navbar = ({ lang = "lv" }: NavbarProps) => {
 
         {/* Desktop nav links */}
         <div className="hidden lg:flex items-center gap-1">
-          {items.map((item) => (
-            <Link
-              key={item.to}
-              to={item.to}
-              className={`px-3 py-1.5 rounded-md text-xs font-medium transition-colors ${
-                pathname === item.to
-                  ? "text-primary bg-primary/10"
-                  : "text-white/70 hover:text-white hover:bg-white/5"
-              }`}
-            >
-              {item.label}
-            </Link>
-          ))}
+          {items.map((item) =>
+            item.to.startsWith("#") ? (
+              <a
+                key={item.to}
+                href={item.to}
+                className="px-3 py-1.5 rounded-md text-xs font-medium transition-colors text-white/70 hover:text-white hover:bg-white/5"
+                onClick={() => setMobileOpen(false)}
+              >
+                {item.label}
+              </a>
+            ) : (
+              <Link
+                key={item.to}
+                to={item.to}
+                className={`px-3 py-1.5 rounded-md text-xs font-medium transition-colors ${
+                  pathname === item.to
+                    ? "text-primary bg-primary/10"
+                    : "text-white/70 hover:text-white hover:bg-white/5"
+                }`}
+              >
+                {item.label}
+              </Link>
+            )
+          )}
         </div>
 
         {/* Right side: language + mobile toggle */}
