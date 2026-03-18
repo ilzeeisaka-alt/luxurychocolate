@@ -70,6 +70,15 @@ const ClientExamplesSection = ({ lang = "lv" }: ClientExamplesSectionProps) => {
         <p className="sr-only">{t.srOnly}</p>
       </div>
     </section>
+
+    <Lightbox
+      images={images}
+      index={lightboxIndex}
+      onClose={() => setLightboxIndex(null)}
+      onChangeIndex={setLightboxIndex}
+      title={lightboxIndex !== null ? clients[lightboxIndex]?.brand : undefined}
+    />
+    </>
   );
 };
 
