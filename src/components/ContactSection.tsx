@@ -3,19 +3,20 @@ import { Phone, Mail, MapPin } from "lucide-react";
 import ilzePhoto from "@/assets/ilze-eisaka.jpg";
 import type { Lang } from "@/i18n/types";
 
-const contactContent: Record<Lang, { heading: string; subtitle: string; role: string; cta: string }> = {
-  lv: { heading: "Sazinies ar mums", subtitle: "Mēs palīdzēsim izvēlēties ideālo šokolādes dāvanu Jūsu uzņēmumam", role: "Vadītāja", cta: "Rakstīt e-pastu" },
-  en: { heading: "Contact us", subtitle: "We'll help you choose the perfect chocolate gift for your company", role: "Manager", cta: "Send email" },
-  ru: { heading: "Свяжитесь с нами", subtitle: "Мы поможем выбрать идеальный шоколадный подарок для вашей компании", role: "Руководитель", cta: "Написать" },
-  et: { heading: "Võtke meiega ühendust", subtitle: "Aitame valida ideaalse šokolaadikingi teie ettevõttele", role: "Juhataja", cta: "Saada e-kiri" },
-  lt: { heading: "Susisiekite su mumis", subtitle: "Padėsime pasirinkti idealią šokolado dovaną jūsų įmonei", role: "Vadovė", cta: "Rašyti el. laišką" },
+const contactContent: Record<Lang, { heading: string; subtitle: string; role: string; cta: string; ctaOffer: string }> = {
+  lv: { heading: "Sazinies ar mums", subtitle: "Mēs palīdzēsim izvēlēties ideālo šokolādes dāvanu Jūsu uzņēmumam", role: "Vadītāja", cta: "Rakstīt e-pastu", ctaOffer: "Saņemt dizaina paraugu" },
+  en: { heading: "Contact us", subtitle: "We'll help you choose the perfect chocolate gift for your company", role: "Manager", cta: "Send email", ctaOffer: "Get design preview" },
+  ru: { heading: "Свяжитесь с нами", subtitle: "Мы поможем выбрать идеальный шоколадный подарок для вашей компании", role: "Руководитель", cta: "Написать", ctaOffer: "Получить макет" },
+  et: { heading: "Võtke meiega ühendust", subtitle: "Aitame valida ideaalse šokolaadikingi teie ettevõttele", role: "Juhataja", cta: "Saada e-kiri", ctaOffer: "Saa disaini eelvaade" },
+  lt: { heading: "Susisiekite su mumis", subtitle: "Padėsime pasirinkti idealią šokolado dovaną jūsų įmonei", role: "Vadovė", cta: "Rašyti el. laišką", ctaOffer: "Gauti dizaino peržiūrą" },
 };
 
 interface ContactSectionProps {
   lang?: Lang;
+  onCtaClick?: () => void;
 }
 
-const ContactSection = ({ lang = "lv" }: ContactSectionProps) => {
+const ContactSection = ({ lang = "lv", onCtaClick }: ContactSectionProps) => {
   const t = contactContent[lang];
 
   return (
@@ -79,13 +80,23 @@ const ContactSection = ({ lang = "lv" }: ContactSectionProps) => {
               </li>
             </ul>
 
-            <a
-              href="mailto:info@luxurychocolate.lv"
-              className="inline-flex items-center justify-center rounded-lg bg-primary text-primary-foreground px-8 py-3 font-medium tracking-wider text-sm uppercase transition-all duration-300 hover:brightness-110 active:scale-[0.97] mt-2"
-              style={{ boxShadow: "0 0 0 1px rgba(196,163,90,0.3), 0 4px 20px -4px rgba(196,163,90,0.4)" }}
-            >
-              {t.cta}
-            </a>
+            <div className="flex flex-wrap gap-3 justify-center sm:justify-start mt-2">
+              <a
+                href="mailto:info@luxurychocolate.lv"
+                className="inline-flex items-center justify-center rounded-lg bg-primary text-primary-foreground px-8 py-3 font-medium tracking-wider text-sm uppercase transition-all duration-300 hover:brightness-110 active:scale-[0.97]"
+                style={{ boxShadow: "0 0 0 1px rgba(196,163,90,0.3), 0 4px 20px -4px rgba(196,163,90,0.4)" }}
+              >
+                {t.cta}
+              </a>
+              {onCtaClick && (
+                <button
+                  onClick={onCtaClick}
+                  className="inline-flex items-center justify-center rounded-lg border border-primary text-primary px-8 py-3 font-medium tracking-wider text-sm uppercase transition-all duration-300 hover:bg-primary hover:text-primary-foreground active:scale-[0.97]"
+                >
+                  {t.ctaOffer}
+                </button>
+              )}
+            </div>
           </div>
         </motion.div>
       </div>

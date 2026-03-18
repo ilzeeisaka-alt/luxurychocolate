@@ -72,7 +72,7 @@ const EtIndex = () => {
       <IdeasSection lang="et" />
       <RelatedPagesSection />
       <CtaSection onCtaClick={() => setModalOpen(true)} lang="et" />
-      <ContactSection lang="et" />
+      <ContactSection lang="et" onCtaClick={() => setModalOpen(true)} />
       <FooterSection />
       <OfferModal open={modalOpen} onOpenChange={setModalOpen} />
     </main>

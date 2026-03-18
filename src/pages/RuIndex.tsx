@@ -72,7 +72,7 @@ const RuIndex = () => {
       <IdeasSection lang="ru" />
       <RelatedPagesSection />
       <CtaSection onCtaClick={() => setModalOpen(true)} lang="ru" />
-      <ContactSection lang="ru" />
+      <ContactSection lang="ru" onCtaClick={() => setModalOpen(true)} />
       <FooterSection />
       <OfferModal open={modalOpen} onOpenChange={setModalOpen} />
     </main>
