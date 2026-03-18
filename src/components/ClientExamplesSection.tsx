@@ -32,10 +32,31 @@ const ClientExamplesSection = ({ lang = "lv" }: ClientExamplesSectionProps) => {
         </motion.div>
         <div className="grid grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6" role="list">
           {clients.map((client, i) => (
-            <motion.figure key={client.brand} role="listitem" className="group relative overflow-hidden rounded-xl aspect-[4/3]" style={{ boxShadow: "var(--shadow-card)" }} initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={vp} transition={{ duration: 0.45, delay: i * 0.08 }}>
-              <img src={client.src} alt={client.alt} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />
-              <div className="absolute inset-0 bg-gradient-to-t from-foreground/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              <figcaption className="absolute bottom-3 left-4 text-sm font-medium text-primary-foreground opacity-0 group-hover:opacity-100 transition-opacity duration-300">{client.brand}</figcaption>
+            <motion.figure
+              key={client.brand}
+              role="listitem"
+              className="photo-card group relative overflow-hidden rounded-xl aspect-[4/3]"
+              style={{ boxShadow: "var(--shadow-card)" }}
+              initial={{ opacity: 0, y: 40, scale: 0.92 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              viewport={vp}
+              transition={{ duration: 0.6, delay: i * 0.1 }}
+            >
+              <div className="relative w-full h-full photo-vignette photo-gradient-gold">
+                <img
+                  src={client.src}
+                  alt={client.alt}
+                  className="w-full h-full object-cover transition-all duration-700 ease-out group-hover:scale-110 group-hover:brightness-110 group-hover:saturate-[1.15]"
+                  loading="lazy"
+                />
+                {/* Golden ring on hover */}
+                <div className="absolute inset-0 rounded-xl ring-0 ring-primary/0 group-hover:ring-2 group-hover:ring-primary/30 transition-all duration-500 z-[3] pointer-events-none" />
+              </div>
+              {/* Brand label with golden accent */}
+              <figcaption className="absolute bottom-0 left-0 right-0 p-4 z-[4] translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-400">
+                <span className="text-sm font-bold text-white drop-shadow-lg tracking-wide">{client.brand}</span>
+                <div className="w-8 h-0.5 bg-primary mt-1 rounded-full" />
+              </figcaption>
             </motion.figure>
           ))}
         </div>

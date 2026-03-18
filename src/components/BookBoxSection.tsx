@@ -42,25 +42,27 @@ const BookBoxSection = ({ lang = "lv" }: BookBoxSectionProps) => {
             {t.items.map((item, i) => (
               <motion.div
                 key={item.title}
-                initial={{ opacity: 0, y: 12 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0, y: 32, scale: 0.95 }}
+                whileInView={{ opacity: 1, y: 0, scale: 1 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: i * 0.08 }}
+                transition={{ duration: 0.5, delay: i * 0.1, ease: "easeOut" }}
               >
                 <div
-                  className="block bg-card rounded-xl overflow-hidden transition-all duration-200 hover:-translate-y-0.5 h-full cursor-pointer"
+                  className="photo-card relative block bg-card rounded-xl overflow-hidden cursor-pointer group"
                   style={{ boxShadow: "var(--shadow-card)" }}
                   onClick={() => setLightboxIndex(i)}
                 >
-                  <div className="aspect-square overflow-hidden">
+                  <div className="aspect-square overflow-hidden relative photo-vignette">
                     <img
                       src={images[i]}
                       alt={item.alt}
                       loading="lazy"
-                      className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+                      className="w-full h-full object-cover transition-all duration-700 ease-out group-hover:scale-110 group-hover:brightness-110 group-hover:saturate-[1.1]"
                     />
+                    {/* Golden shimmer border on hover */}
+                    <div className="absolute inset-0 rounded-t-xl ring-0 ring-primary/0 group-hover:ring-2 group-hover:ring-primary/30 transition-all duration-500 z-[3] pointer-events-none" />
                   </div>
-                  <div className="p-5">
+                  <div className="p-5 relative z-[3] transition-transform duration-300 group-hover:-translate-y-0.5">
                     <h3 className="text-lg font-bold text-foreground mb-1">
                       {item.title}
                     </h3>

@@ -48,64 +48,72 @@ const CakeChocolateSection = ({ lang = "lv" }: CakeChocolateSectionProps) => {
             {t.subtitle}
           </p>
 
-          {/* Top row: 3 larger items */}
+          {/* Top row: 3 larger hero cards */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-6">
             {t.items.slice(0, 3).map((item, i) => (
               <motion.div
                 key={item.title}
-                initial={{ opacity: 0, y: 12 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0, y: 40, scale: 0.92 }}
+                whileInView={{ opacity: 1, y: 0, scale: 1 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: i * 0.08 }}
-                className="bg-card rounded-xl overflow-hidden transition-all duration-200 hover:-translate-y-0.5 cursor-pointer"
-                style={{ boxShadow: "var(--shadow-card)" }}
-                onClick={() => setLightboxIndex(i)}
+                transition={{ duration: 0.6, delay: i * 0.12, ease: "easeOut" }}
               >
-                <div className="aspect-square overflow-hidden">
-                  <img
-                    src={images[i]}
-                    alt={item.alt}
-                    loading="lazy"
-                    className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
-                  />
-                </div>
-                <div className="p-5">
-                  <h3 className="text-lg font-bold text-foreground mb-1">
-                    {item.title}
-                  </h3>
-                  <p className="text-sm text-muted-foreground">
-                    {item.description}
-                  </p>
+                <div
+                  className="photo-card relative bg-card rounded-xl overflow-hidden cursor-pointer group"
+                  style={{ boxShadow: "var(--shadow-card)" }}
+                  onClick={() => setLightboxIndex(i)}
+                >
+                  <div className="aspect-square overflow-hidden relative photo-vignette photo-gradient-gold">
+                    <img
+                      src={images[i]}
+                      alt={item.alt}
+                      loading="lazy"
+                      className="w-full h-full object-cover transition-all duration-700 ease-out group-hover:scale-110 group-hover:brightness-110 group-hover:saturate-[1.15]"
+                    />
+                    <div className="absolute inset-0 ring-0 ring-primary/0 group-hover:ring-2 group-hover:ring-primary/30 transition-all duration-500 z-[3] pointer-events-none" />
+                  </div>
+                  <div className="p-5 relative z-[3] transition-transform duration-300 group-hover:-translate-y-0.5">
+                    <h3 className="text-lg font-bold text-foreground mb-1">
+                      {item.title}
+                    </h3>
+                    <p className="text-sm text-muted-foreground">
+                      {item.description}
+                    </p>
+                  </div>
                 </div>
               </motion.div>
             ))}
           </div>
 
-          {/* Bottom row: 4 smaller items */}
+          {/* Bottom row: 4 smaller cards */}
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
             {t.items.slice(3).map((item, i) => (
               <motion.div
                 key={item.title}
-                initial={{ opacity: 0, y: 12 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0, y: 32, scale: 0.95 }}
+                whileInView={{ opacity: 1, y: 0, scale: 1 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: (i + 3) * 0.08 }}
-                className="bg-card rounded-xl overflow-hidden transition-all duration-200 hover:-translate-y-0.5 cursor-pointer"
-                style={{ boxShadow: "var(--shadow-card)" }}
-                onClick={() => setLightboxIndex(i + 3)}
+                transition={{ duration: 0.5, delay: (i + 3) * 0.08, ease: "easeOut" }}
               >
-                <div className="aspect-[4/3] overflow-hidden">
-                  <img
-                    src={images[i + 3]}
-                    alt={item.alt}
-                    loading="lazy"
-                    className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
-                  />
-                </div>
-                <div className="p-4">
-                  <h3 className="text-sm font-bold text-foreground">
-                    {item.title}
-                  </h3>
+                <div
+                  className="photo-card relative bg-card rounded-xl overflow-hidden cursor-pointer group"
+                  style={{ boxShadow: "var(--shadow-card)" }}
+                  onClick={() => setLightboxIndex(i + 3)}
+                >
+                  <div className="aspect-[4/3] overflow-hidden relative photo-vignette">
+                    <img
+                      src={images[i + 3]}
+                      alt={item.alt}
+                      loading="lazy"
+                      className="w-full h-full object-cover transition-all duration-700 ease-out group-hover:scale-110 group-hover:brightness-110 group-hover:saturate-[1.1]"
+                    />
+                    <div className="absolute inset-0 ring-0 ring-primary/0 group-hover:ring-2 group-hover:ring-primary/30 transition-all duration-500 z-[3] pointer-events-none" />
+                  </div>
+                  <div className="p-4 relative z-[3]">
+                    <h3 className="text-sm font-bold text-foreground">
+                      {item.title}
+                    </h3>
+                  </div>
                 </div>
               </motion.div>
             ))}
