@@ -68,7 +68,7 @@ const LtIndex = () => {
       <FreePreviewSection onCtaClick={() => setModalOpen(true)} lang="lt" />
       <TrustSection lang="lt" />
       <ProductsSection lang="lt" />
-      <ShopSection lang="lt" />
+      <ShopSection lang="lt" onCtaClick={() => setModalOpen(true)} />
       <BookBoxSection lang="lt" />
       <FaqSection lang="lt" />
       <IdeasSection lang="lt" />

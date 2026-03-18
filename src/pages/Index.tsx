@@ -42,7 +42,7 @@ const Index = () => {
       <FreePreviewSection onCtaClick={() => setModalOpen(true)} />
       <TrustSection />
       <ProductsSection />
-      <ShopSection />
+      <ShopSection onCtaClick={() => setModalOpen(true)} />
       <CakeChocolateSection />
       <BookBoxSection />
       <FaqSection />
