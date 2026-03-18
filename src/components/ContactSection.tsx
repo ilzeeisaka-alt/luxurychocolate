@@ -4,11 +4,11 @@ import ilzePhoto from "@/assets/ilze-eisaka.jpg";
 import type { Lang } from "@/i18n/types";
 
 const contactContent: Record<Lang, { heading: string; subtitle: string; role: string; cta: string; ctaOffer: string }> = {
-  lv: { heading: "Sazinies ar mums", subtitle: "Mēs palīdzēsim izvēlēties ideālo šokolādes dāvanu Jūsu uzņēmumam", role: "Vadītāja", cta: "Rakstīt e-pastu", ctaOffer: "Saņemt dizaina paraugu" },
-  en: { heading: "Contact us", subtitle: "We'll help you choose the perfect chocolate gift for your company", role: "Manager", cta: "Send email", ctaOffer: "Get design preview" },
-  ru: { heading: "Свяжитесь с нами", subtitle: "Мы поможем выбрать идеальный шоколадный подарок для вашей компании", role: "Руководитель", cta: "Написать", ctaOffer: "Получить макет" },
-  et: { heading: "Võtke meiega ühendust", subtitle: "Aitame valida ideaalse šokolaadikingi teie ettevõttele", role: "Juhataja", cta: "Saada e-kiri", ctaOffer: "Saa disaini eelvaade" },
-  lt: { heading: "Susisiekite su mumis", subtitle: "Padėsime pasirinkti idealią šokolado dovaną jūsų įmonei", role: "Vadovė", cta: "Rašyti el. laišką", ctaOffer: "Gauti dizaino peržiūrą" },
+  lv: { heading: "Sazinies ar mums", subtitle: "Mēs palīdzēsim izvēlēties ideālo šokolādes dāvanu Jūsu uzņēmumam", role: "Vadītāja", cta: "Rakstīt e-pastu", ctaOffer: "Aizpildīt pieteikumu" },
+  en: { heading: "Contact us", subtitle: "We'll help you choose the perfect chocolate gift for your company", role: "Manager", cta: "Send email", ctaOffer: "Submit inquiry" },
+  ru: { heading: "Свяжитесь с нами", subtitle: "Мы поможем выбрать идеальный шоколадный подарок для вашей компании", role: "Руководитель", cta: "Написать", ctaOffer: "Заполнить заявку" },
+  et: { heading: "Võtke meiega ühendust", subtitle: "Aitame valida ideaalse šokolaadikingi teie ettevõttele", role: "Juhataja", cta: "Saada e-kiri", ctaOffer: "Täida taotlus" },
+  lt: { heading: "Susisiekite su mumis", subtitle: "Padėsime pasirinkti idealią šokolado dovaną jūsų įmonei", role: "Vadovė", cta: "Rašyti el. laišką", ctaOffer: "Pildyti užklausą" },
 };
 
 interface ContactSectionProps {
