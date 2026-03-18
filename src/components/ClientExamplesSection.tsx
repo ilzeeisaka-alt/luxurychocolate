@@ -27,7 +27,9 @@ interface ClientExamplesSectionProps { lang?: Lang; }
 
 const ClientExamplesSection = ({ lang = "lv" }: ClientExamplesSectionProps) => {
   const t = clientExamples[lang];
+  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
   return (
+    <>
     <section className="py-20 bg-background" aria-labelledby="client-examples-heading">
       <div className="container mx-auto">
         <motion.div className="text-center mb-12" initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={vp} transition={{ duration: 0.5 }}>
