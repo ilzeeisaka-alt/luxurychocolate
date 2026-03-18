@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
 import mastercard from "@/assets/clients/mastercard.webp";
 import bosch from "@/assets/clients/bosch.webp";
