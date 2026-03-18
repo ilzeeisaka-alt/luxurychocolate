@@ -14,6 +14,7 @@ export const uiStrings: Record<string, UiStrings> = {
     freePreviewBadge2: "✔ Bez saistībām",
     freePreviewBadge3: "✔ Atbilde 24h laikā",
     freePreviewButton: "Saņemt dizaina paraugu",
+    freePreviewInquiryButton: "Aizpildīt pieteikumu",
   },
   en: {
     backLabel: "Homepage",
