@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, type ChangeEvent } from "react";
 import { motion } from "framer-motion";
 import { ShoppingBag, ExternalLink, Upload, Check } from "lucide-react";
 import { toast } from "sonner";
@@ -13,7 +13,20 @@ const shopUrls: Record<Lang, string> = {
   lt: "https://www.luxurychocolatesia.lv/internetine-parduotuve/",
 };
 
-const shopContent: Record<Lang, { heading: string; subtitle: string; cta: string; badge1: string; badge2: string; badge3: string; uploadBtn: string; uploadSuccess: string; uploadError: string }> = {
+const shopContent: Record<
+  Lang,
+  {
+    heading: string;
+    subtitle: string;
+    cta: string;
+    badge1: string;
+    badge2: string;
+    badge3: string;
+    uploadBtn: string;
+    uploadSuccess: string;
+    uploadError: string;
+  }
+> = {
   lv: {
     heading: "Interneta veikals",
     subtitle: "Izvēlieties no mūsu plašā sortimenta un pasūtiet šokolādes ar savu logo tiešsaistē.",
@@ -22,8 +35,8 @@ const shopContent: Record<Lang, { heading: string; subtitle: string; cta: string
     badge2: "🎁 Dāvanu kastes",
     badge3: "🏷️ Ar Jūsu logo",
     uploadBtn: "Augšupielādē savu logo vai foto",
-    uploadSuccess: "Fails veiksmīgi augšupielādēts!",
-    uploadError: "Kļūda augšupielādējot failu",
+    uploadSuccess: "Fails veiksmīgi augšupielādēts un nosūtīts!",
+    uploadError: "Fails augšupielādēts, bet e-pastu nosūtīt neizdevās.",
   },
   en: {
     heading: "Online shop",
@@ -33,8 +46,8 @@ const shopContent: Record<Lang, { heading: string; subtitle: string; cta: string
     badge2: "🎁 Gift boxes",
     badge3: "🏷️ With your logo",
     uploadBtn: "Upload your logo or photo",
-    uploadSuccess: "File uploaded successfully!",
-    uploadError: "Error uploading file",
+    uploadSuccess: "File uploaded and sent successfully!",
+    uploadError: "File uploaded, but email delivery failed.",
   },
   ru: {
     heading: "Интернет-магазин",
@@ -44,8 +57,8 @@ const shopContent: Record<Lang, { heading: string; subtitle: string; cta: string
     badge2: "🎁 Подарочные наборы",
     badge3: "🏷️ С вашим логотипом",
     uploadBtn: "Загрузите ваш логотип или фото",
-    uploadSuccess: "Файл успешно загружен!",
-    uploadError: "Ошибка загрузки файла",
+    uploadSuccess: "Файл успешно загружен и отправлен!",
+    uploadError: "Файл загружен, но отправить email не удалось.",
   },
   et: {
     heading: "E-pood",
@@ -55,8 +68,8 @@ const shopContent: Record<Lang, { heading: string; subtitle: string; cta: string
     badge2: "🎁 Kinkekarbid",
     badge3: "🏷️ Teie logoga",
     uploadBtn: "Laadige üles oma logo või foto",
-    uploadSuccess: "Fail edukalt üles laaditud!",
-    uploadError: "Viga faili üleslaadimisel",
+    uploadSuccess: "Fail edukalt üles laaditud ja saadetud!",
+    uploadError: "Fail laaditi üles, kuid e-kirja saatmine ebaõnnestus.",
   },
   lt: {
     heading: "Internetinė parduotuvė",
@@ -66,16 +79,14 @@ const shopContent: Record<Lang, { heading: string; subtitle: string; cta: string
     badge2: "🎁 Dovanų rinkiniai",
     badge3: "🏷️ Su jūsų logotipu",
     uploadBtn: "Įkelkite savo logotipą ar nuotrauką",
-    uploadSuccess: "Failas sėkmingai įkeltas!",
-    uploadError: "Klaida įkeliant failą",
+    uploadSuccess: "Failas sėkmingai įkeltas ir išsiųstas!",
+    uploadError: "Failas įkeltas, bet el. laiško išsiųsti nepavyko.",
   },
 };
 
 interface ShopSectionProps {
   lang?: Lang;
 }
-
-const ACCEPTED_TYPES = ".jpg,.jpeg,.png,.gif,.webp,.svg,.pdf,.ai,.eps,.cdr,.tiff,.tif,.bmp,.psd";
 
 const ShopSection = ({ lang = "lv" }: ShopSectionProps) => {
   const t = shopContent[lang];
@@ -84,7 +95,7 @@ const ShopSection = ({ lang = "lv" }: ShopSectionProps) => {
   const [uploading, setUploading] = useState(false);
   const [uploaded, setUploaded] = useState(false);
 
-  const handleUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleUpload = async (e: ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) return;
 
@@ -93,18 +104,17 @@ const ShopSection = ({ lang = "lv" }: ShopSectionProps) => {
       const ext = file.name.split(".").pop() || "bin";
       const path = `shop/${Date.now()}-${Math.random().toString(36).slice(2, 8)}.${ext}`;
 
-      const { error } = await supabase.storage
+      const { error: uploadError } = await supabase.storage
         .from("client-logos")
         .upload(path, file);
 
-      if (error) throw error;
+      if (uploadError) throw uploadError;
 
-      // Get public URL and notify via email
       const { data: urlData } = supabase.storage
         .from("client-logos")
         .getPublicUrl(path);
 
-      await supabase.functions.invoke("send-logo-email", {
+      const { error: emailError } = await supabase.functions.invoke("send-logo-email", {
         body: {
           name: "Veikala klients",
           company: "-",
@@ -115,10 +125,13 @@ const ShopSection = ({ lang = "lv" }: ShopSectionProps) => {
         },
       });
 
+      if (emailError) throw emailError;
+
       setUploaded(true);
       toast.success(t.uploadSuccess);
       setTimeout(() => setUploaded(false), 4000);
-    } catch {
+    } catch (error) {
+      console.error("Logo upload/email error:", error);
       toast.error(t.uploadError);
     } finally {
       setUploading(false);
@@ -172,7 +185,6 @@ const ShopSection = ({ lang = "lv" }: ShopSectionProps) => {
             <input
               ref={fileInputRef}
               type="file"
-              accept={ACCEPTED_TYPES}
               className="hidden"
               onChange={handleUpload}
             />
