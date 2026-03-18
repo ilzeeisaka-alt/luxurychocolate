@@ -59,6 +59,7 @@ export const uiStrings: Record<string, UiStrings> = {
     freePreviewBadge2: "✔ Ilma kohustusteta",
     freePreviewBadge3: "✔ Vastus 24h jooksul",
     freePreviewButton: "Saada disaini eelvaade",
+    freePreviewInquiryButton: "Täida taotlus",
   },
   lt: {
     backLabel: "Pagrindinis",
