@@ -447,6 +447,7 @@ export const bookBoxContent: Record<Lang, {
       { title: "Elegants noformējums", description: "Pilnībā personalizējams vāciņa dizains — grāmatas vāks, ilustrācija vai logo.", alt: "Eleganti noformēta šokolādes grāmata ar individuālu dizainu" },
       { title: "Atvērta kastīte", description: "Magnētiskā aizdare rada grāmatas atvēršanas sajūtu — iekšā šokolādes glezniņa vai konfektes.", alt: "Atvērta šokolādes grāmata ar šokolādes saturu iekšpusē" },
       { title: "Konfektes kastītē", description: "Iekšpusē — šokolādes konfektes ar dažādiem pildījumiem premium noformējumā.", alt: "Šokolādes grāmata ar konfektēm iekšpusē" },
+      { title: "Konkursa balva", description: "Šokolādes grāmata kā ekskluzīva balva konkursiem un pasākumiem — ar personalizētu dizainu.", alt: "Bērnu grāmatu konkursa balva — šokolādes grāmata ar grāmatas nosaukumu" },
     ],
   },
   en: {
