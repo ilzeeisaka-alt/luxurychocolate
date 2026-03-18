@@ -458,6 +458,7 @@ export const bookBoxContent: Record<Lang, {
       { title: "Elegant design", description: "Fully customizable cover — book cover, illustration or logo.", alt: "Elegantly designed chocolate book box with custom design" },
       { title: "Open box", description: "Magnetic closure creates a book-opening experience — inside: chocolate painting or pralines.", alt: "Open chocolate book box with chocolate content inside" },
       { title: "Pralines inside", description: "Inside — chocolate pralines with various fillings in premium presentation.", alt: "Chocolate book box with pralines inside" },
+      { title: "Contest prize", description: "Chocolate book box as an exclusive prize for contests and events — with personalized design.", alt: "Children's book contest prize — chocolate book box with book title" },
     ],
   },
   ru: {
