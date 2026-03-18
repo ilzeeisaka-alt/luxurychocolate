@@ -16,6 +16,7 @@ import FreePreviewSection from "@/components/FreePreviewSection";
 import UseCasesSection from "@/components/UseCasesSection";
 import RelatedPagesSection from "@/components/RelatedPagesSection";
 import FooterSection from "@/components/FooterSection";
+import ContactSection from "@/components/ContactSection";
 import OfferModal from "@/components/OfferModal";
 import { useSeo } from "@/hooks/useSeo";
 
