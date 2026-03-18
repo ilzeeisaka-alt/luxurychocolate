@@ -40,8 +40,8 @@ const BookBoxSection = ({ lang = "lv" }: BookBoxSectionProps) => {
 
   return (
     <>
-      {/* Hero video — full width, looping, with sound toggle */}
-      <div className="w-full overflow-hidden relative group">
+      {/* Hero video — half-page width, looping, with sound toggle */}
+      <div className="max-w-3xl mx-auto px-4 overflow-hidden relative group">
         <video
           ref={videoRef}
           autoPlay
