@@ -491,6 +491,7 @@ export const bookBoxContent: Record<Lang, {
       { title: "Elegantiškas dizainas", description: "Pilnai pritaikomas viršelio dizainas — knygos viršelis, iliustracija ar logotipas.", alt: "Elegantiška šokolado knyga su individualiu dizainu" },
       { title: "Atidaryta dėžutė", description: "Magnetinis uždarymas sukuria knygos atidarymo patirtį — viduje: šokolado paveikslas ar saldainiai.", alt: "Atidaryta šokolado knyga su šokolado turiniu viduje" },
       { title: "Saldainiai viduje", description: "Viduje — šokolado saldainiai su įvairiais įdarais premium pateikime.", alt: "Šokolado knyga su saldainiais viduje" },
+      { title: "Konkurso prizas", description: "Šokolado knyga kaip ekskluzivinis prizas konkursams ir renginiams — su personalizuotu dizainu.", alt: "Vaikų knygų konkurso prizas — šokolado knyga su knygos pavadinimu" },
     ],
   },
 };

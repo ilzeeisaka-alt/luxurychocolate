@@ -7,8 +7,9 @@ import heroImg from "@/assets/sokolades-gramata-hero.jpg";
 import elegantaImg from "@/assets/sokolades-gramata-eleganta.jpg";
 import konfektesImg from "@/assets/sokolades-gramata-konfektes.jpg";
 import openImg from "@/assets/sokolades-gramata-open.png";
+import konkursImg from "@/assets/sokolades-gramata-konkurss.png";
 
-const images = [heroImg, elegantaImg, openImg, konfektesImg];
+const images = [heroImg, elegantaImg, openImg, konfektesImg, konkursImg];
 
 const productLinks: Record<Lang, string> = {
   lv: "/sokolades-gramata",
