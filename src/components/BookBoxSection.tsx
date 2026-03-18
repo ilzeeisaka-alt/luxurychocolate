@@ -1,9 +1,9 @@
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { Link } from "react-router-dom";
-import { X } from "lucide-react";
+import { motion } from "framer-motion";
 import type { Lang } from "@/i18n/types";
 import { bookBoxContent } from "@/i18n/content";
+import Lightbox from "@/components/Lightbox";
+
 import heroImg from "@/assets/sokolades-gramata-hero.jpg";
 import elegantaImg from "@/assets/sokolades-gramata-eleganta.jpg";
 import konfektesImg from "@/assets/sokolades-gramata-konfektes.jpg";
@@ -11,14 +11,6 @@ import openImg from "@/assets/sokolades-gramata-open.png";
 import konkursImg from "@/assets/sokolades-gramata-konkurss.png";
 
 const images = [heroImg, elegantaImg, openImg, konfektesImg, konkursImg];
-
-const productLinks: Record<Lang, string> = {
-  lv: "/sokolades-gramata",
-  en: "/en/chocolate-book-box",
-  ru: "/ru/shokoladnaya-kniga",
-  et: "/et/sokolaadi-raamat",
-  lt: "/lt/sokolado-knyga",
-};
 
 const sectionVariants = {
   initial: { opacity: 0, y: 8 },
@@ -33,7 +25,6 @@ interface BookBoxSectionProps {
 
 const BookBoxSection = ({ lang = "lv" }: BookBoxSectionProps) => {
   const t = bookBoxContent[lang];
-  const link = productLinks[lang];
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
 
   return (
@@ -84,70 +75,14 @@ const BookBoxSection = ({ lang = "lv" }: BookBoxSectionProps) => {
         </div>
       </motion.section>
 
-      {/* Lightbox */}
-      <AnimatePresence>
-        {lightboxIndex !== null && (
-          <motion.div
-            className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm p-4"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            onClick={() => setLightboxIndex(null)}
-          >
-            {/* Close button */}
-            <button
-              onClick={() => setLightboxIndex(null)}
-              className="absolute top-4 right-4 text-white/70 hover:text-white transition-colors z-10"
-              aria-label="Close"
-            >
-              <X size={32} />
-            </button>
-
-            {/* Previous */}
-            <button
-              className="absolute left-4 text-white/70 hover:text-white text-4xl font-light transition-colors z-10 select-none"
-              onClick={(e) => {
-                e.stopPropagation();
-                setLightboxIndex((lightboxIndex - 1 + images.length) % images.length);
-              }}
-              aria-label="Previous"
-            >
-              ‹
-            </button>
-
-            {/* Image */}
-            <motion.img
-              key={lightboxIndex}
-              src={images[lightboxIndex]}
-              alt={t.items[lightboxIndex]?.alt || ""}
-              className="max-h-[85vh] max-w-[90vw] object-contain rounded-lg"
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.9 }}
-              transition={{ duration: 0.2 }}
-              onClick={(e) => e.stopPropagation()}
-            />
-
-            {/* Next */}
-            <button
-              className="absolute right-16 text-white/70 hover:text-white text-4xl font-light transition-colors z-10 select-none"
-              onClick={(e) => {
-                e.stopPropagation();
-                setLightboxIndex((lightboxIndex + 1) % images.length);
-              }}
-              aria-label="Next"
-            >
-              ›
-            </button>
-
-            {/* Caption */}
-            <div className="absolute bottom-6 text-center text-white">
-              <p className="text-lg font-semibold">{t.items[lightboxIndex]?.title}</p>
-              <p className="text-sm text-white/60 mt-1">{t.items[lightboxIndex]?.description}</p>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      <Lightbox
+        images={images}
+        index={lightboxIndex}
+        onClose={() => setLightboxIndex(null)}
+        onChangeIndex={setLightboxIndex}
+        title={lightboxIndex !== null ? t.items[lightboxIndex]?.title : undefined}
+        description={lightboxIndex !== null ? t.items[lightboxIndex]?.description : undefined}
+      />
     </>
   );
 };
