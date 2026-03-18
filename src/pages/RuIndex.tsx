@@ -1,8 +1,6 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
 import logo from "@/assets/logo-transparent.png";
-import LanguageSwitcher from "@/components/LanguageSwitcher";
+import Navbar from "@/components/Navbar";
 import SeoContentSection from "@/components/SeoContentSection";
 import QuickFactsSection from "@/components/QuickFactsSection";
 import ClientExamplesSection from "@/components/ClientExamplesSection";
@@ -32,11 +30,10 @@ const RuIndex = () => {
   });
 
   return (
-    <main className="bg-background">
-      {/* Hero */}
+    <main className="bg-background pt-14">
+      <Navbar lang="ru" />
       <section className="flex flex-col">
         <div className="relative bg-foreground py-16 sm:py-20 text-center">
-          <div className="absolute top-4 right-4 z-10"><LanguageSwitcher /></div>
           <div className="container mx-auto">
             <div className="mx-auto mb-10 w-[180px] sm:w-[220px] h-[180px] sm:h-[220px] rounded-full bg-white overflow-hidden flex items-center justify-center" style={{ boxShadow: "0 0 40px rgba(196,163,90,0.15), 0 0 80px rgba(0,0,0,0.3)" }}>
               <img src={logo} alt="Luxury Chocolate — эксклюзивный корпоративный шоколад с логотипом" className="w-[85%] h-[85%] object-contain" />
