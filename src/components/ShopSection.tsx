@@ -1,8 +1,5 @@
-import { useState, useRef, type ChangeEvent } from "react";
 import { motion } from "framer-motion";
-import { ShoppingBag, ExternalLink, Upload, Check } from "lucide-react";
-import { toast } from "sonner";
-import { supabase } from "@/integrations/supabase/client";
+import { ShoppingBag, ExternalLink, Upload } from "lucide-react";
 import type { Lang } from "@/i18n/types";
 
 const shopUrls: Record<Lang, string> = {
@@ -15,18 +12,7 @@ const shopUrls: Record<Lang, string> = {
 
 const shopContent: Record<
   Lang,
-  {
-    heading: string;
-    subtitle: string;
-    cta: string;
-    badge1: string;
-    badge2: string;
-    badge3: string;
-    uploadBtn: string;
-    uploadSuccess: string;
-    uploadError: string;
-    uploadFallbackInfo: string;
-  }
+  { heading: string; subtitle: string; cta: string; badge1: string; badge2: string; badge3: string; uploadBtn: string }
 > = {
   lv: {
     heading: "Interneta veikals",
@@ -36,9 +22,6 @@ const shopContent: Record<
     badge2: "🎁 Dāvanu kastes",
     badge3: "🏷️ Ar Jūsu logo",
     uploadBtn: "Augšupielādē savu logo vai foto",
-    uploadSuccess: "Fails veiksmīgi augšupielādēts un nosūtīts!",
-    uploadError: "Neizdevās pabeigt augšupielādi.",
-    uploadFallbackInfo: "Fails saglabāts. Primārais e-pasts nebija pieejams, izmantots rezerves maršruts.",
   },
   en: {
     heading: "Online shop",
@@ -48,9 +31,6 @@ const shopContent: Record<
     badge2: "🎁 Gift boxes",
     badge3: "🏷️ With your logo",
     uploadBtn: "Upload your logo or photo",
-    uploadSuccess: "File uploaded and sent successfully!",
-    uploadError: "Upload could not be completed.",
-    uploadFallbackInfo: "File saved. Primary email route was unavailable, fallback route was used.",
   },
   ru: {
     heading: "Интернет-магазин",
@@ -60,9 +40,6 @@ const shopContent: Record<
     badge2: "🎁 Подарочные наборы",
     badge3: "🏷️ С вашим логотипом",
     uploadBtn: "Загрузите ваш логотип или фото",
-    uploadSuccess: "Файл успешно загружен и отправлен!",
-    uploadError: "Не удалось завершить загрузку.",
-    uploadFallbackInfo: "Файл сохранён. Основной маршрут e-mail недоступен, использован резервный.",
   },
   et: {
     heading: "E-pood",
@@ -72,9 +49,6 @@ const shopContent: Record<
     badge2: "🎁 Kinkekarbid",
     badge3: "🏷️ Teie logoga",
     uploadBtn: "Laadige üles oma logo või foto",
-    uploadSuccess: "Fail edukalt üles laaditud ja saadetud!",
-    uploadError: "Üleslaadimist ei saanud lõpule viia.",
-    uploadFallbackInfo: "Fail salvestati. Peamine e-posti marsruut polnud saadaval, kasutati varukanalit.",
   },
   lt: {
     heading: "Internetinė parduotuvė",
@@ -84,73 +58,17 @@ const shopContent: Record<
     badge2: "🎁 Dovanų rinkiniai",
     badge3: "🏷️ Su jūsų logotipu",
     uploadBtn: "Įkelkite savo logotipą ar nuotrauką",
-    uploadSuccess: "Failas sėkmingai įkeltas ir išsiųstas!",
-    uploadError: "Nepavyko užbaigti įkėlimo.",
-    uploadFallbackInfo: "Failas išsaugotas. Pagrindinis el. pašto maršrutas nepasiekiamas, naudotas atsarginis.",
   },
 };
 
 interface ShopSectionProps {
   lang?: Lang;
+  onCtaClick?: () => void;
 }
 
-const ShopSection = ({ lang = "lv" }: ShopSectionProps) => {
+const ShopSection = ({ lang = "lv", onCtaClick }: ShopSectionProps) => {
   const t = shopContent[lang];
   const url = shopUrls[lang];
-  const fileInputRef = useRef<HTMLInputElement>(null);
-  const [uploading, setUploading] = useState(false);
-  const [uploaded, setUploaded] = useState(false);
-
-  const handleUpload = async (e: ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (!file) return;
-
-    setUploading(true);
-    try {
-      const ext = file.name.split(".").pop() || "bin";
-      const path = `shop/${Date.now()}-${Math.random().toString(36).slice(2, 8)}.${ext}`;
-
-      const { error: uploadError } = await supabase.storage
-        .from("client-logos")
-        .upload(path, file);
-
-      if (uploadError) throw uploadError;
-
-      const { data: urlData } = supabase.storage
-        .from("client-logos")
-        .getPublicUrl(path);
-
-      const { data, error: emailError } = await supabase.functions.invoke("send-logo-email", {
-        body: {
-          name: "Veikala klients",
-          company: "-",
-          email: "-",
-          logoUrl: urlData.publicUrl,
-          shopUpload: true,
-          fileName: file.name,
-          fileType: file.type || "unknown",
-          fileSize: file.size,
-        },
-      });
-
-      if (emailError) throw emailError;
-
-      setUploaded(true);
-      if (data?.fallbackUsed) {
-        toast.warning(t.uploadFallbackInfo);
-      } else {
-        toast.success(t.uploadSuccess);
-      }
-
-      setTimeout(() => setUploaded(false), 4000);
-    } catch (error) {
-      console.error("Logo upload/email error:", error);
-      toast.error(t.uploadError);
-    } finally {
-      setUploading(false);
-      if (fileInputRef.current) fileInputRef.current.value = "";
-    }
-  };
 
   return (
     <section className="py-20 bg-primary/5" aria-labelledby="shop-heading">
@@ -195,20 +113,13 @@ const ShopSection = ({ lang = "lv" }: ShopSectionProps) => {
               <ExternalLink size={18} />
             </a>
 
-            <input
-              ref={fileInputRef}
-              type="file"
-              className="hidden"
-              onChange={handleUpload}
-            />
             <button
               type="button"
-              onClick={() => fileInputRef.current?.click()}
-              disabled={uploading}
-              className="inline-flex items-center gap-2 justify-center rounded-lg border border-primary text-primary px-8 py-3.5 font-medium tracking-wide text-sm transition-all duration-200 active:scale-[0.98] hover:bg-primary hover:text-primary-foreground disabled:opacity-60"
+              onClick={onCtaClick}
+              className="inline-flex items-center gap-2 justify-center rounded-lg border border-primary text-primary px-8 py-3.5 font-medium tracking-wide text-sm transition-all duration-200 active:scale-[0.98] hover:bg-primary hover:text-primary-foreground"
             >
-              {uploaded ? <Check size={18} /> : <Upload size={18} />}
-              {uploading ? "..." : t.uploadBtn}
+              <Upload size={18} />
+              {t.uploadBtn}
             </button>
           </div>
         </motion.div>
