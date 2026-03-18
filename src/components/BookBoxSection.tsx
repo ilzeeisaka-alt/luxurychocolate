@@ -1,8 +1,9 @@
-import { motion } from "framer-motion";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
+import { X } from "lucide-react";
 import type { Lang } from "@/i18n/types";
 import { bookBoxContent } from "@/i18n/content";
-
 import heroImg from "@/assets/sokolades-gramata-hero.jpg";
 import elegantaImg from "@/assets/sokolades-gramata-eleganta.jpg";
 import konfektesImg from "@/assets/sokolades-gramata-konfektes.jpg";
