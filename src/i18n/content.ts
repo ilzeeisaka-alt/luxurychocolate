@@ -434,6 +434,63 @@ export const heroContent: Record<Lang, { title1: string; title2: string; subtitl
   lt: { title1: "Šokoladas su logotipu", title2: "įmonėms", subtitle: "Gaukite nemokamą dizaino peržiūrą su jūsų logotipu.", ctaButton: "Nemokama dizaino peržiūra" },
 };
 
+export const bookBoxContent: Record<Lang, {
+  heading: string;
+  subtitle: string;
+  items: { title: string; description: string; alt: string }[];
+}> = {
+  lv: {
+    heading: "Šokolādes grāmata",
+    subtitle: "Ekskluzīva dāvanu kastīte grāmatas formā ar magnētisku aizdari — personalizējama pilnībā.",
+    items: [
+      { title: "Šokolādes grāmata", description: "Eleganta dāvanu kastīte ar pilnkrāsu apdruku un magnētisku aizdari.", alt: "Šokolādes grāmata — dāvanu kastīte ar personalizētu vāciņu" },
+      { title: "Elegants noformējums", description: "Pilnībā personalizējams vāciņa dizains — grāmatas vāks, ilustrācija vai logo.", alt: "Eleganti noformēta šokolādes grāmata ar individuālu dizainu" },
+      { title: "Atvērta kastīte", description: "Magnētiskā aizdare rada grāmatas atvēršanas sajūtu — iekšā šokolādes glezniņa vai konfektes.", alt: "Atvērta šokolādes grāmata ar šokolādes saturu iekšpusē" },
+      { title: "Konfektes kastītē", description: "Iekšpusē — šokolādes konfektes ar dažādiem pildījumiem premium noformējumā.", alt: "Šokolādes grāmata ar konfektēm iekšpusē" },
+    ],
+  },
+  en: {
+    heading: "Chocolate Book Box",
+    subtitle: "Exclusive gift box in book form with magnetic closure — fully customizable.",
+    items: [
+      { title: "Chocolate Book Box", description: "Elegant gift box with full-color printing and magnetic closure.", alt: "Chocolate book box — gift box with personalized cover" },
+      { title: "Elegant design", description: "Fully customizable cover — book cover, illustration or logo.", alt: "Elegantly designed chocolate book box with custom design" },
+      { title: "Open box", description: "Magnetic closure creates a book-opening experience — inside: chocolate painting or pralines.", alt: "Open chocolate book box with chocolate content inside" },
+      { title: "Pralines inside", description: "Inside — chocolate pralines with various fillings in premium presentation.", alt: "Chocolate book box with pralines inside" },
+    ],
+  },
+  ru: {
+    heading: "Шоколадная книга",
+    subtitle: "Эксклюзивная подарочная коробка в форме книги с магнитной застёжкой — полностью персонализируемая.",
+    items: [
+      { title: "Шоколадная книга", description: "Элегантная подарочная коробка с полноцветной печатью и магнитной застёжкой.", alt: "Шоколадная книга — подарочная коробка с персонализированной обложкой" },
+      { title: "Элегантный дизайн", description: "Полностью настраиваемый дизайн обложки — обложка книги, иллюстрация или логотип.", alt: "Элегантно оформленная шоколадная книга с индивидуальным дизайном" },
+      { title: "Открытая коробка", description: "Магнитная застёжка создаёт ощущение открытия книги — внутри шоколадная картина или конфеты.", alt: "Открытая шоколадная книга с шоколадным содержимым внутри" },
+      { title: "Конфеты внутри", description: "Внутри — шоколадные конфеты с различными начинками в премиум оформлении.", alt: "Шоколадная книга с конфетами внутри" },
+    ],
+  },
+  et: {
+    heading: "Šokolaadi raamat",
+    subtitle: "Eksklusiivne kingituskarp raamatu kujul magnetilise sulguriga — täielikult kohandatav.",
+    items: [
+      { title: "Šokolaadi raamat", description: "Elegantne kingituskarp täisvärviprintimise ja magnetilise sulguriga.", alt: "Šokolaadi raamat — kingituskarp personaliseeritud kaanega" },
+      { title: "Elegantne disain", description: "Täielikult kohandatav kaanedisain — raamatukaas, illustratsioon või logo.", alt: "Elegantselt disainitud šokolaadi raamat individuaalse disainiga" },
+      { title: "Avatud karp", description: "Magnetiline sulgumine loob raamatu avamise kogemuse — sees: šokolaadimaaling või kommid.", alt: "Avatud šokolaadi raamat šokolaadesisuga sees" },
+      { title: "Kommid sees", description: "Sees — šokolaadikommid erinevate täidistega premium esitluses.", alt: "Šokolaadi raamat kommidega sees" },
+    ],
+  },
+  lt: {
+    heading: "Šokolado knyga",
+    subtitle: "Ekskluzivini dovanų dėžutė knygos forma su magnetiniu užsegimu — pilnai personalizuojama.",
+    items: [
+      { title: "Šokolado knyga", description: "Elegantiška dovanų dėžutė su pilnatvaizdžiu spausdintu ir magnetiniu užsegimu.", alt: "Šokolado knyga — dovanų dėžutė su personalizuotu viršeliu" },
+      { title: "Elegantiškas dizainas", description: "Pilnai pritaikomas viršelio dizainas — knygos viršelis, iliustracija ar logotipas.", alt: "Elegantiška šokolado knyga su individualiu dizainu" },
+      { title: "Atidaryta dėžutė", description: "Magnetinis uždarymas sukuria knygos atidarymo patirtį — viduje: šokolado paveikslas ar saldainiai.", alt: "Atidaryta šokolado knyga su šokolado turiniu viduje" },
+      { title: "Saldainiai viduje", description: "Viduje — šokolado saldainiai su įvairiais įdarais premium pateikime.", alt: "Šokolado knyga su saldainiais viduje" },
+    ],
+  },
+};
+
 export const cakeChocolateContent: Record<Lang, {
   heading: string;
   subtitle: string;

@@ -69,6 +69,7 @@ const EnIndex = () => {
       <FreePreviewSection onCtaClick={() => setModalOpen(true)} lang="en" />
       <TrustSection lang="en" />
       <ProductsSection lang="en" />
+      <BookBoxSection lang="en" />
       <FaqSection lang="en" />
       <IdeasSection lang="en" />
       <RelatedPagesSection />

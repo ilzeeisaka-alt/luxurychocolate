@@ -68,6 +68,7 @@ const RuIndex = () => {
       <FreePreviewSection onCtaClick={() => setModalOpen(true)} lang="ru" />
       <TrustSection lang="ru" />
       <ProductsSection lang="ru" />
+      <BookBoxSection lang="ru" />
       <FaqSection lang="ru" />
       <IdeasSection lang="ru" />
       <RelatedPagesSection />
