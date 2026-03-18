@@ -8,6 +8,7 @@ import vodafone from "@/assets/clients/vodafone.webp";
 import volkswagen from "@/assets/clients/volkswagen.webp";
 import type { Lang } from "@/i18n/types";
 import { clientExamples } from "@/i18n/content";
+import Lightbox from "@/components/Lightbox";
 
 const clients = [
   { src: mastercard, alt: "MasterCard logo chocolate", brand: "MasterCard" },
