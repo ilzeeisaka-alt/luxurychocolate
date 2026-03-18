@@ -14,6 +14,7 @@ export const uiStrings: Record<string, UiStrings> = {
     freePreviewBadge2: "✔ Bez saistībām",
     freePreviewBadge3: "✔ Atbilde 24h laikā",
     freePreviewButton: "Saņemt dizaina paraugu",
+    freePreviewInquiryButton: "Aizpildīt pieteikumu",
   },
   en: {
     backLabel: "Homepage",
@@ -28,6 +29,7 @@ export const uiStrings: Record<string, UiStrings> = {
     freePreviewBadge2: "✔ No obligation",
     freePreviewBadge3: "✔ Response within 24h",
     freePreviewButton: "Get design preview",
+    freePreviewInquiryButton: "Submit inquiry",
   },
   ru: {
     backLabel: "Главная",
@@ -42,6 +44,7 @@ export const uiStrings: Record<string, UiStrings> = {
     freePreviewBadge2: "✔ Без обязательств",
     freePreviewBadge3: "✔ Ответ в течение 24ч",
     freePreviewButton: "Получить макет",
+    freePreviewInquiryButton: "Заполнить заявку",
   },
   et: {
     backLabel: "Avaleht",
@@ -56,6 +59,7 @@ export const uiStrings: Record<string, UiStrings> = {
     freePreviewBadge2: "✔ Ilma kohustusteta",
     freePreviewBadge3: "✔ Vastus 24h jooksul",
     freePreviewButton: "Saada disaini eelvaade",
+    freePreviewInquiryButton: "Täida taotlus",
   },
   lt: {
     backLabel: "Pagrindinis",
@@ -70,6 +74,7 @@ export const uiStrings: Record<string, UiStrings> = {
     freePreviewBadge2: "✔ Be įsipareigojimų",
     freePreviewBadge3: "✔ Atsakymas per 24 val.",
     freePreviewButton: "Gauti dizaino peržiūrą",
+    freePreviewInquiryButton: "Pildyti užklausą",
   },
 };
 

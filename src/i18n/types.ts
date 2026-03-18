@@ -26,6 +26,7 @@ export interface UiStrings {
   freePreviewBadge2: string;
   freePreviewBadge3: string;
   freePreviewButton: string;
+  freePreviewInquiryButton: string;
 }
 
 export interface RelatedPage {
