@@ -29,8 +29,8 @@ const Index = () => {
   });
 
   return (
-    <main className="bg-background">
-      <HeroSection onCtaClick={() => setModalOpen(true)} />
+    <main className="bg-background pt-14">
+      <Navbar />
       <SeoContentSection />
       <QuickFactsSection />
       <ClientExamplesSection />
