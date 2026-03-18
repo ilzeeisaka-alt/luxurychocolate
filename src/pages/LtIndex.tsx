@@ -72,6 +72,7 @@ const LtIndex = () => {
       <IdeasSection lang="lt" />
       <RelatedPagesSection />
       <CtaSection onCtaClick={() => setModalOpen(true)} lang="lt" />
+      <ContactSection lang="lt" />
       <FooterSection />
       <OfferModal open={modalOpen} onOpenChange={setModalOpen} />
     </main>

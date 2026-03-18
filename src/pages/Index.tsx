@@ -47,6 +47,7 @@ const Index = () => {
       <IdeasSection />
       <RelatedPagesSection />
       <CtaSection onCtaClick={() => setModalOpen(true)} />
+      <ContactSection />
       <FooterSection />
       <OfferModal open={modalOpen} onOpenChange={setModalOpen} />
     </main>
