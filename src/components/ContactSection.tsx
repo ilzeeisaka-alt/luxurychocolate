@@ -16,7 +16,7 @@ interface ContactSectionProps {
   onCtaClick?: () => void;
 }
 
-const ContactSection = ({ lang = "lv" }: ContactSectionProps) => {
+const ContactSection = ({ lang = "lv", onCtaClick }: ContactSectionProps) => {
   const t = contactContent[lang];
 
   return (
