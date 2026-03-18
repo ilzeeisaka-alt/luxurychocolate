@@ -99,6 +99,22 @@ const ShopSection = ({ lang = "lv" }: ShopSectionProps) => {
 
       if (error) throw error;
 
+      // Get public URL and notify via email
+      const { data: urlData } = supabase.storage
+        .from("client-logos")
+        .getPublicUrl(path);
+
+      await supabase.functions.invoke("send-logo-email", {
+        body: {
+          name: "Veikala klients",
+          company: "-",
+          email: "-",
+          logoUrl: urlData.publicUrl,
+          shopUpload: true,
+          fileName: file.name,
+        },
+      });
+
       setUploaded(true);
       toast.success(t.uploadSuccess);
       setTimeout(() => setUploaded(false), 4000);
