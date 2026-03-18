@@ -21,6 +21,8 @@ const clients = [
 
 const vp = { once: true, margin: "-50px" as const };
 
+const images = clients.map(c => c.src);
+
 interface ClientExamplesSectionProps { lang?: Lang; }
 
 const ClientExamplesSection = ({ lang = "lv" }: ClientExamplesSectionProps) => {
