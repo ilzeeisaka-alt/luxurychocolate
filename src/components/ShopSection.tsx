@@ -25,6 +25,7 @@ const shopContent: Record<
     uploadBtn: string;
     uploadSuccess: string;
     uploadError: string;
+    uploadFallbackInfo: string;
   }
 > = {
   lv: {
@@ -36,7 +37,8 @@ const shopContent: Record<
     badge3: "🏷️ Ar Jūsu logo",
     uploadBtn: "Augšupielādē savu logo vai foto",
     uploadSuccess: "Fails veiksmīgi augšupielādēts un nosūtīts!",
-    uploadError: "Fails augšupielādēts, bet e-pastu nosūtīt neizdevās.",
+    uploadError: "Neizdevās pabeigt augšupielādi.",
+    uploadFallbackInfo: "Fails saglabāts. Primārais e-pasts nebija pieejams, izmantots rezerves maršruts.",
   },
   en: {
     heading: "Online shop",
@@ -47,7 +49,8 @@ const shopContent: Record<
     badge3: "🏷️ With your logo",
     uploadBtn: "Upload your logo or photo",
     uploadSuccess: "File uploaded and sent successfully!",
-    uploadError: "File uploaded, but email delivery failed.",
+    uploadError: "Upload could not be completed.",
+    uploadFallbackInfo: "File saved. Primary email route was unavailable, fallback route was used.",
   },
   ru: {
     heading: "Интернет-магазин",
@@ -58,7 +61,8 @@ const shopContent: Record<
     badge3: "🏷️ С вашим логотипом",
     uploadBtn: "Загрузите ваш логотип или фото",
     uploadSuccess: "Файл успешно загружен и отправлен!",
-    uploadError: "Файл загружен, но отправить email не удалось.",
+    uploadError: "Не удалось завершить загрузку.",
+    uploadFallbackInfo: "Файл сохранён. Основной маршрут e-mail недоступен, использован резервный.",
   },
   et: {
     heading: "E-pood",
@@ -69,7 +73,8 @@ const shopContent: Record<
     badge3: "🏷️ Teie logoga",
     uploadBtn: "Laadige üles oma logo või foto",
     uploadSuccess: "Fail edukalt üles laaditud ja saadetud!",
-    uploadError: "Fail laaditi üles, kuid e-kirja saatmine ebaõnnestus.",
+    uploadError: "Üleslaadimist ei saanud lõpule viia.",
+    uploadFallbackInfo: "Fail salvestati. Peamine e-posti marsruut polnud saadaval, kasutati varukanalit.",
   },
   lt: {
     heading: "Internetinė parduotuvė",
@@ -80,7 +85,8 @@ const shopContent: Record<
     badge3: "🏷️ Su jūsų logotipu",
     uploadBtn: "Įkelkite savo logotipą ar nuotrauką",
     uploadSuccess: "Failas sėkmingai įkeltas ir išsiųstas!",
-    uploadError: "Failas įkeltas, bet el. laiško išsiųsti nepavyko.",
+    uploadError: "Nepavyko užbaigti įkėlimo.",
+    uploadFallbackInfo: "Failas išsaugotas. Pagrindinis el. pašto maršrutas nepasiekiamas, naudotas atsarginis.",
   },
 };
 
@@ -114,7 +120,7 @@ const ShopSection = ({ lang = "lv" }: ShopSectionProps) => {
         .from("client-logos")
         .getPublicUrl(path);
 
-      const { error: emailError } = await supabase.functions.invoke("send-logo-email", {
+      const { data, error: emailError } = await supabase.functions.invoke("send-logo-email", {
         body: {
           name: "Veikala klients",
           company: "-",
@@ -122,13 +128,20 @@ const ShopSection = ({ lang = "lv" }: ShopSectionProps) => {
           logoUrl: urlData.publicUrl,
           shopUpload: true,
           fileName: file.name,
+          fileType: file.type || "unknown",
+          fileSize: file.size,
         },
       });
 
       if (emailError) throw emailError;
 
       setUploaded(true);
-      toast.success(t.uploadSuccess);
+      if (data?.fallbackUsed) {
+        toast.warning(t.uploadFallbackInfo);
+      } else {
+        toast.success(t.uploadSuccess);
+      }
+
       setTimeout(() => setUploaded(false), 4000);
     } catch (error) {
       console.error("Logo upload/email error:", error);
