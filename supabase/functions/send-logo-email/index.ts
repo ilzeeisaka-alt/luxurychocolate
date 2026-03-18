@@ -11,8 +11,58 @@ serve(async (req) => {
   }
 
   try {
-    const { name, company, email, phone, size, packaging, purpose, quantity, message, logoUrl } = await req.json();
+    const { name, company, email, phone, size, packaging, purpose, quantity, message, logoUrl, shopUpload, fileName } = await req.json();
+    const RESEND_API_KEY = Deno.env.get('RESEND_API_KEY');
 
+    // Shop upload: simple notification to info@luxurychocolate.lv
+    if (shopUpload) {
+      if (!logoUrl) {
+        return new Response(
+          JSON.stringify({ error: 'Logo URL ir obligāts' }),
+          { status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+        );
+      }
+
+      if (RESEND_API_KEY) {
+        const htmlBody = `
+          <h2>Jauns logo augšupielādēts no interneta veikala</h2>
+          <p><strong>Faila nosaukums:</strong> ${fileName || 'Nav zināms'}</p>
+          <p><strong>Logo fails:</strong> <a href="${logoUrl}">${logoUrl}</a></p>
+          <p><img src="${logoUrl}" alt="Klienta logo" style="max-width:400px;max-height:300px;" /></p>
+        `;
+
+        const res = await fetch('https://api.resend.com/emails', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${RESEND_API_KEY}`,
+          },
+          body: JSON.stringify({
+            from: 'Luxury Chocolate <onboarding@resend.dev>',
+            to: ['info@luxurychocolate.lv'],
+            subject: `Jauns logo augšupielādēts — ${fileName || 'fails'}`,
+            html: htmlBody,
+          }),
+        });
+
+        const data = await res.json();
+        if (!res.ok) {
+          console.error('Resend error:', JSON.stringify(data));
+        } else {
+          console.log('Shop logo email sent:', JSON.stringify(data));
+        }
+      } else {
+        console.log('=== SHOP LOGO UPLOAD (no email service) ===');
+        console.log('Logo URL:', logoUrl, 'File:', fileName);
+      }
+
+      return new Response(
+        JSON.stringify({ success: true }),
+        { status: 200, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+      );
+    }
+
+    // Regular offer request
     if (!name || !company || !email) {
       return new Response(
         JSON.stringify({ error: 'Trūkst obligāto lauku' }),
@@ -20,9 +70,6 @@ serve(async (req) => {
       );
     }
 
-    const RESEND_API_KEY = Deno.env.get('RESEND_API_KEY');
-    
-    // Build email HTML
     const logoSection = logoUrl 
       ? `<p><strong>Logo fails:</strong> <a href="${logoUrl}">${logoUrl}</a></p>
          <p><img src="${logoUrl}" alt="Klienta logo" style="max-width:300px;max-height:200px;" /></p>`
@@ -45,7 +92,6 @@ serve(async (req) => {
     `;
 
     if (RESEND_API_KEY) {
-      // Send via Resend
       const res = await fetch('https://api.resend.com/emails', {
         method: 'POST',
         headers: {
@@ -64,22 +110,14 @@ serve(async (req) => {
       const data = await res.json();
       if (!res.ok) {
         console.error('Resend error:', JSON.stringify(data));
-        // Don't throw — log the request instead so it's not lost
-        console.log('=== FALLBACK LOG (email failed) ===');
+        console.log('=== FALLBACK LOG ===');
         console.log(JSON.stringify({ name, company, email, quantity, message, logoUrl }));
       } else {
         console.log('Email sent successfully:', JSON.stringify(data));
       }
     } else {
-      // Log the submission when no email service configured
-      console.log('=== NEW OFFER REQUEST (no email service configured) ===');
-      console.log('Name:', name);
-      console.log('Company:', company);
-      console.log('Email:', email);
-      console.log('Quantity:', quantity);
-      console.log('Message:', message);
-      console.log('Logo URL:', logoUrl);
-      console.log('========================================');
+      console.log('=== NEW OFFER REQUEST (no email service) ===');
+      console.log(JSON.stringify({ name, company, email, quantity, message, logoUrl }));
     }
 
     return new Response(
