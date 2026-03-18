@@ -80,13 +80,23 @@ const ContactSection = ({ lang = "lv", onCtaClick }: ContactSectionProps) => {
               </li>
             </ul>
 
-            <a
-              href="mailto:info@luxurychocolate.lv"
-              className="inline-flex items-center justify-center rounded-lg bg-primary text-primary-foreground px-8 py-3 font-medium tracking-wider text-sm uppercase transition-all duration-300 hover:brightness-110 active:scale-[0.97] mt-2"
-              style={{ boxShadow: "0 0 0 1px rgba(196,163,90,0.3), 0 4px 20px -4px rgba(196,163,90,0.4)" }}
-            >
-              {t.cta}
-            </a>
+            <div className="flex flex-wrap gap-3 justify-center sm:justify-start mt-2">
+              <a
+                href="mailto:info@luxurychocolate.lv"
+                className="inline-flex items-center justify-center rounded-lg bg-primary text-primary-foreground px-8 py-3 font-medium tracking-wider text-sm uppercase transition-all duration-300 hover:brightness-110 active:scale-[0.97]"
+                style={{ boxShadow: "0 0 0 1px rgba(196,163,90,0.3), 0 4px 20px -4px rgba(196,163,90,0.4)" }}
+              >
+                {t.cta}
+              </a>
+              {onCtaClick && (
+                <button
+                  onClick={onCtaClick}
+                  className="inline-flex items-center justify-center rounded-lg border border-primary text-primary px-8 py-3 font-medium tracking-wider text-sm uppercase transition-all duration-300 hover:bg-primary hover:text-primary-foreground active:scale-[0.97]"
+                >
+                  {t.ctaOffer}
+                </button>
+              )}
+            </div>
           </div>
         </motion.div>
       </div>
