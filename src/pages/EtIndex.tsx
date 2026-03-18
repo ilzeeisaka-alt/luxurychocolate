@@ -16,6 +16,7 @@ import RelatedPagesSection from "@/components/RelatedPagesSection";
 import CtaSection from "@/components/CtaSection";
 import FooterSection from "@/components/FooterSection";
 import ContactSection from "@/components/ContactSection";
+import ShopSection from "@/components/ShopSection";
 import OfferModal from "@/components/OfferModal";
 import { useSeo } from "@/hooks/useSeo";
 import { heroContent } from "@/i18n/content";
@@ -67,6 +68,7 @@ const EtIndex = () => {
       <FreePreviewSection onCtaClick={() => setModalOpen(true)} lang="et" />
       <TrustSection lang="et" />
       <ProductsSection lang="et" />
+      <ShopSection lang="et" />
       <BookBoxSection lang="et" />
       <FaqSection lang="et" />
       <IdeasSection lang="et" />
