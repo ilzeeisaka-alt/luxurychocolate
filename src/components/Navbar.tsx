@@ -178,6 +178,17 @@ const Navbar = ({ lang = "lv" }: NavbarProps) => {
               >
                 {item.label}
               </a>
+            ) : item.to.startsWith("http") ? (
+              <a
+                key={item.to}
+                href={item.to}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block py-2.5 px-3 rounded-md text-sm font-medium transition-colors text-white/70 hover:text-white hover:bg-white/5"
+                onClick={() => setMobileOpen(false)}
+              >
+                {item.label}
+              </a>
             ) : (
               <Link
                 key={item.to}
