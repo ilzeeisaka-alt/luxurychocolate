@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
+import { Volume2, VolumeX } from "lucide-react";
 import { motion } from "framer-motion";
 import type { Lang } from "@/i18n/types";
 import { bookBoxContent } from "@/i18n/content";
@@ -27,11 +28,22 @@ const BookBoxSection = ({ lang = "lv" }: BookBoxSectionProps) => {
   const t = bookBoxContent[lang];
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
 
+  const [isMuted, setIsMuted] = useState(true);
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  const toggleMute = () => {
+    if (videoRef.current) {
+      videoRef.current.muted = !videoRef.current.muted;
+      setIsMuted(videoRef.current.muted);
+    }
+  };
+
   return (
     <>
-      {/* Hero video — full width, looping */}
-      <div className="w-full overflow-hidden">
+      {/* Hero video — full width, looping, with sound toggle */}
+      <div className="w-full overflow-hidden relative group">
         <video
+          ref={videoRef}
           autoPlay
           loop
           muted
@@ -41,6 +53,13 @@ const BookBoxSection = ({ lang = "lv" }: BookBoxSectionProps) => {
         >
           <source src="/video/sokolades-gramata.mp4" type="video/mp4" />
         </video>
+        <button
+          onClick={toggleMute}
+          className="absolute bottom-4 right-4 z-10 p-3 rounded-full bg-background/70 backdrop-blur-sm text-foreground hover:bg-background/90 transition-all duration-200 opacity-0 group-hover:opacity-100 focus:opacity-100"
+          aria-label={isMuted ? "Ieslēgt skaņu" : "Izslēgt skaņu"}
+        >
+          {isMuted ? <VolumeX size={20} /> : <Volume2 size={20} />}
+        </button>
       </div>
 
       <motion.section className="py-24" {...sectionVariants}>
