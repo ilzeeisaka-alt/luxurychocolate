@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
+import { Volume2, VolumeX } from "lucide-react";
 import { motion } from "framer-motion";
 import type { Lang } from "@/i18n/types";
 import { bookBoxContent } from "@/i18n/content";
