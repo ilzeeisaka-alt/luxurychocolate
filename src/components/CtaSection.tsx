@@ -18,15 +18,23 @@ const CtaSection = ({ onCtaClick, lang = "lv" }: CtaSectionProps) => {
       <div className="container mx-auto text-center">
         <h2 className="text-3xl sm:text-4xl text-foreground mb-6">{t.heading}</h2>
         <p className="text-lg text-muted-foreground text-body mx-auto mb-10">{t.description}</p>
-        <button
-          onClick={onCtaClick}
-          className="inline-flex items-center justify-center rounded-lg bg-primary text-primary-foreground px-8 py-3.5 font-medium tracking-wide text-lg transition-all duration-200 active:scale-[0.98]"
-          style={{ boxShadow: "var(--shadow-button)" }}
-          onMouseEnter={(e) => { e.currentTarget.style.boxShadow = "var(--shadow-button-hover)"; e.currentTarget.style.filter = "brightness(0.92)"; }}
-          onMouseLeave={(e) => { e.currentTarget.style.boxShadow = "var(--shadow-button)"; e.currentTarget.style.filter = "brightness(1)"; }}
-        >
-          {t.button}
-        </button>
+        <div className="flex flex-wrap justify-center gap-4">
+          <button
+            onClick={onCtaClick}
+            className="inline-flex items-center justify-center rounded-lg bg-primary text-primary-foreground px-8 py-3.5 font-medium tracking-wide text-lg transition-all duration-200 active:scale-[0.98]"
+            style={{ boxShadow: "var(--shadow-button)" }}
+            onMouseEnter={(e) => { e.currentTarget.style.boxShadow = "var(--shadow-button-hover)"; e.currentTarget.style.filter = "brightness(0.92)"; }}
+            onMouseLeave={(e) => { e.currentTarget.style.boxShadow = "var(--shadow-button)"; e.currentTarget.style.filter = "brightness(1)"; }}
+          >
+            {t.button}
+          </button>
+          <button
+            onClick={onCtaClick}
+            className="inline-flex items-center justify-center rounded-lg border border-primary text-primary px-8 py-3.5 font-medium tracking-wide text-lg transition-all duration-200 active:scale-[0.98] hover:bg-primary hover:text-primary-foreground"
+          >
+            {t.inquiryButton}
+          </button>
+        </div>
       </div>
     </motion.section>
   );

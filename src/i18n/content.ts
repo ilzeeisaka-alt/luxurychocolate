@@ -350,31 +350,36 @@ export const useCasesContent: Record<Lang, { subtitle: string; heading: string; 
   },
 };
 
-export const ctaContent: Record<Lang, { heading: string; description: string; button: string }> = {
+export const ctaContent: Record<Lang, { heading: string; description: string; button: string; inquiryButton: string }> = {
   lv: {
     heading: "Saņemiet bezmaksas dizaina apskati",
     description: "Nosūtiet mums savu logo, un mēs sagatavosim personalizētu šokolādes dizaina apskati 24h laikā — pilnīgi bez maksas.",
     button: "Saņemt bezmaksas apskati",
+    inquiryButton: "Aizpildīt pieteikumu",
   },
   en: {
     heading: "Get a free design preview",
     description: "Send us your logo and we'll prepare a personalized chocolate design preview within 24 hours — completely free.",
     button: "Get free preview",
+    inquiryButton: "Submit inquiry",
   },
   ru: {
     heading: "Получите бесплатный макет дизайна",
     description: "Отправьте нам свой логотип, и мы подготовим персонализированный макет шоколада в течение 24 часов — совершенно бесплатно.",
     button: "Получить бесплатный макет",
+    inquiryButton: "Заполнить заявку",
   },
   et: {
     heading: "Saage tasuta disaini eelvaade",
     description: "Saatke meile oma logo ja me valmistame personaliseeritud šokolaadi disaini eelvaate 24 tunni jooksul — täiesti tasuta.",
     button: "Saada tasuta eelvaade",
+    inquiryButton: "Täida taotlus",
   },
   lt: {
     heading: "Gaukite nemokamą dizaino peržiūrą",
     description: "Atsiųskite mums savo logotipą ir mes paruošime personalizuotą šokolado dizaino peržiūrą per 24 valandas — visiškai nemokamai.",
     button: "Gauti nemokamą peržiūrą",
+    inquiryButton: "Pildyti užklausą",
   },
 };
 
