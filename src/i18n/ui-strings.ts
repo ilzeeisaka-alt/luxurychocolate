@@ -44,6 +44,7 @@ export const uiStrings: Record<string, UiStrings> = {
     freePreviewBadge2: "✔ Без обязательств",
     freePreviewBadge3: "✔ Ответ в течение 24ч",
     freePreviewButton: "Получить макет",
+    freePreviewInquiryButton: "Заполнить заявку",
   },
   et: {
     backLabel: "Avaleht",
