@@ -18,6 +18,7 @@ const navItems: Record<Lang, NavItem[]> = {
     { label: "Ziemassvētku", to: "/ziemassvetku-korporativas-sokolades" },
     { label: "Šokolādes grāmata", to: "/sokolades-gramata" },
     { label: "Dāvanu idejas", to: "/korporativo-davanu-idejas" },
+    { label: "Veikals", to: "https://www.luxurychocolatesia.lv/interneta-veikals-produkti/" },
     { label: "Kontakti", to: "#kontakti" },
   ],
   en: [
@@ -27,6 +28,7 @@ const navItems: Record<Lang, NavItem[]> = {
     { label: "Christmas", to: "/en/christmas-corporate-chocolate" },
     { label: "Book Box", to: "/en/chocolate-book-box" },
     { label: "Gift Ideas", to: "/en/corporate-gift-ideas" },
+    { label: "Shop", to: "https://www.luxurychocolatesia.lv/online-shop-products/" },
     { label: "Contact", to: "#kontakti" },
   ],
   ru: [
@@ -36,6 +38,7 @@ const navItems: Record<Lang, NavItem[]> = {
     { label: "Рождественский", to: "/ru/rozhdestvenskij-shokolad" },
     { label: "Шоколадная книга", to: "/ru/shokoladnaya-kniga" },
     { label: "Идеи подарков", to: "/ru/idei-korporativnyh-podarkov" },
+    { label: "Магазин", to: "https://www.luxurychocolatesia.lv/internet-magazin-produkti/" },
     { label: "Контакты", to: "#kontakti" },
   ],
   et: [
@@ -45,6 +48,7 @@ const navItems: Record<Lang, NavItem[]> = {
     { label: "Jõulušokolaad", to: "/et/joulu-sokolaad" },
     { label: "Šokolaadiraamat", to: "/et/sokolaadi-raamat" },
     { label: "Kinkeideed", to: "/et/korporatiiv-kingituste-ideed" },
+    { label: "E-pood", to: "https://www.luxurychocolatesia.lv/e-pood/" },
     { label: "Kontakt", to: "#kontakti" },
   ],
   lt: [
@@ -54,6 +58,7 @@ const navItems: Record<Lang, NavItem[]> = {
     { label: "Kalėdinis", to: "/lt/kaledinis-sokoladas" },
     { label: "Šokolado knyga", to: "/lt/sokolado-knyga" },
     { label: "Dovanų idėjos", to: "/lt/korporatyviniu-dovanu-idejos" },
+    { label: "Parduotuvė", to: "https://www.luxurychocolatesia.lv/internetine-parduotuve/" },
     { label: "Kontaktai", to: "#kontakti" },
   ],
 };
@@ -121,6 +126,16 @@ const Navbar = ({ lang = "lv" }: NavbarProps) => {
               >
                 {item.label}
               </a>
+            ) : item.to.startsWith("http") ? (
+              <a
+                key={item.to}
+                href={item.to}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-3 py-1.5 rounded-md text-xs font-medium transition-colors text-white/70 hover:text-white hover:bg-white/5"
+              >
+                {item.label}
+              </a>
             ) : (
               <Link
                 key={item.to}
@@ -158,6 +173,17 @@ const Navbar = ({ lang = "lv" }: NavbarProps) => {
               <a
                 key={item.to}
                 href={item.to}
+                className="block py-2.5 px-3 rounded-md text-sm font-medium transition-colors text-white/70 hover:text-white hover:bg-white/5"
+                onClick={() => setMobileOpen(false)}
+              >
+                {item.label}
+              </a>
+            ) : item.to.startsWith("http") ? (
+              <a
+                key={item.to}
+                href={item.to}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="block py-2.5 px-3 rounded-md text-sm font-medium transition-colors text-white/70 hover:text-white hover:bg-white/5"
                 onClick={() => setMobileOpen(false)}
               >
