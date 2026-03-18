@@ -29,6 +29,7 @@ export const uiStrings: Record<string, UiStrings> = {
     freePreviewBadge2: "✔ No obligation",
     freePreviewBadge3: "✔ Response within 24h",
     freePreviewButton: "Get design preview",
+    freePreviewInquiryButton: "Submit inquiry",
   },
   ru: {
     backLabel: "Главная",
