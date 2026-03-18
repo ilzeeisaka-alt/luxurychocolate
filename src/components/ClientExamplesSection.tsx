@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
 import mastercard from "@/assets/clients/mastercard.webp";
 import bosch from "@/assets/clients/bosch.webp";
@@ -7,6 +8,7 @@ import vodafone from "@/assets/clients/vodafone.webp";
 import volkswagen from "@/assets/clients/volkswagen.webp";
 import type { Lang } from "@/i18n/types";
 import { clientExamples } from "@/i18n/content";
+import Lightbox from "@/components/Lightbox";
 
 const clients = [
   { src: mastercard, alt: "MasterCard logo chocolate", brand: "MasterCard" },
@@ -19,11 +21,15 @@ const clients = [
 
 const vp = { once: true, margin: "-50px" as const };
 
+const images = clients.map(c => c.src);
+
 interface ClientExamplesSectionProps { lang?: Lang; }
 
 const ClientExamplesSection = ({ lang = "lv" }: ClientExamplesSectionProps) => {
   const t = clientExamples[lang];
+  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
   return (
+    <>
     <section className="py-20 bg-background" aria-labelledby="client-examples-heading">
       <div className="container mx-auto">
         <motion.div className="text-center mb-12" initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={vp} transition={{ duration: 0.5 }}>
@@ -32,15 +38,16 @@ const ClientExamplesSection = ({ lang = "lv" }: ClientExamplesSectionProps) => {
         </motion.div>
         <div className="grid grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6" role="list">
           {clients.map((client, i) => (
-            <motion.figure
-              key={client.brand}
-              role="listitem"
-              className="photo-card group relative overflow-hidden rounded-xl aspect-[4/3]"
-              style={{ boxShadow: "var(--shadow-card)" }}
-              initial={{ opacity: 0, y: 40, scale: 0.92 }}
-              whileInView={{ opacity: 1, y: 0, scale: 1 }}
-              viewport={vp}
-              transition={{ duration: 0.6, delay: i * 0.1 }}
+              <motion.figure
+                key={client.brand}
+                role="listitem"
+                className="photo-card group relative overflow-hidden rounded-xl aspect-[4/3] cursor-pointer"
+                style={{ boxShadow: "var(--shadow-card)" }}
+                initial={{ opacity: 0, y: 40, scale: 0.92 }}
+                whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                viewport={vp}
+                transition={{ duration: 0.6, delay: i * 0.1 }}
+                onClick={() => setLightboxIndex(i)}
             >
               <div className="relative w-full h-full photo-vignette photo-gradient-gold">
                 <img
@@ -63,6 +70,15 @@ const ClientExamplesSection = ({ lang = "lv" }: ClientExamplesSectionProps) => {
         <p className="sr-only">{t.srOnly}</p>
       </div>
     </section>
+
+    <Lightbox
+      images={images}
+      index={lightboxIndex}
+      onClose={() => setLightboxIndex(null)}
+      onChangeIndex={setLightboxIndex}
+      title={lightboxIndex !== null ? clients[lightboxIndex]?.brand : undefined}
+    />
+    </>
   );
 };
 
