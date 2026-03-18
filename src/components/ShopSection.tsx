@@ -1,5 +1,8 @@
+import { useState, useRef } from "react";
 import { motion } from "framer-motion";
-import { ShoppingBag, ExternalLink } from "lucide-react";
+import { ShoppingBag, ExternalLink, Upload, Check } from "lucide-react";
+import { toast } from "sonner";
+import { supabase } from "@/integrations/supabase/client";
 import type { Lang } from "@/i18n/types";
 
 const shopUrls: Record<Lang, string> = {
@@ -10,7 +13,7 @@ const shopUrls: Record<Lang, string> = {
   lt: "https://www.luxurychocolatesia.lv/internetine-parduotuve/",
 };
 
-const shopContent: Record<Lang, { heading: string; subtitle: string; cta: string; badge1: string; badge2: string; badge3: string }> = {
+const shopContent: Record<Lang, { heading: string; subtitle: string; cta: string; badge1: string; badge2: string; badge3: string; uploadBtn: string; uploadSuccess: string; uploadError: string }> = {
   lv: {
     heading: "Interneta veikals",
     subtitle: "Izvēlieties no mūsu plašā sortimenta un pasūtiet šokolādes ar savu logo tiešsaistē.",
@@ -18,6 +21,9 @@ const shopContent: Record<Lang, { heading: string; subtitle: string; cta: string
     badge1: "🍫 Premium šokolādes",
     badge2: "🎁 Dāvanu kastes",
     badge3: "🏷️ Ar Jūsu logo",
+    uploadBtn: "Augšupielādē savu logo vai foto",
+    uploadSuccess: "Fails veiksmīgi augšupielādēts!",
+    uploadError: "Kļūda augšupielādējot failu",
   },
   en: {
     heading: "Online shop",
@@ -26,6 +32,9 @@ const shopContent: Record<Lang, { heading: string; subtitle: string; cta: string
     badge1: "🍫 Premium chocolates",
     badge2: "🎁 Gift boxes",
     badge3: "🏷️ With your logo",
+    uploadBtn: "Upload your logo or photo",
+    uploadSuccess: "File uploaded successfully!",
+    uploadError: "Error uploading file",
   },
   ru: {
     heading: "Интернет-магазин",
@@ -34,6 +43,9 @@ const shopContent: Record<Lang, { heading: string; subtitle: string; cta: string
     badge1: "🍫 Премиум шоколад",
     badge2: "🎁 Подарочные наборы",
     badge3: "🏷️ С вашим логотипом",
+    uploadBtn: "Загрузите ваш логотип или фото",
+    uploadSuccess: "Файл успешно загружен!",
+    uploadError: "Ошибка загрузки файла",
   },
   et: {
     heading: "E-pood",
@@ -42,6 +54,9 @@ const shopContent: Record<Lang, { heading: string; subtitle: string; cta: string
     badge1: "🍫 Premium šokolaadid",
     badge2: "🎁 Kinkekarbid",
     badge3: "🏷️ Teie logoga",
+    uploadBtn: "Laadige üles oma logo või foto",
+    uploadSuccess: "Fail edukalt üles laaditud!",
+    uploadError: "Viga faili üleslaadimisel",
   },
   lt: {
     heading: "Internetinė parduotuvė",
@@ -50,6 +65,9 @@ const shopContent: Record<Lang, { heading: string; subtitle: string; cta: string
     badge1: "🍫 Premium šokoladai",
     badge2: "🎁 Dovanų rinkiniai",
     badge3: "🏷️ Su jūsų logotipu",
+    uploadBtn: "Įkelkite savo logotipą ar nuotrauką",
+    uploadSuccess: "Failas sėkmingai įkeltas!",
+    uploadError: "Klaida įkeliant failą",
   },
 };
 
@@ -57,9 +75,40 @@ interface ShopSectionProps {
   lang?: Lang;
 }
 
+const ACCEPTED_TYPES = ".jpg,.jpeg,.png,.gif,.webp,.svg,.pdf,.ai,.eps,.cdr,.tiff,.tif,.bmp,.psd";
+
 const ShopSection = ({ lang = "lv" }: ShopSectionProps) => {
   const t = shopContent[lang];
   const url = shopUrls[lang];
+  const fileInputRef = useRef<HTMLInputElement>(null);
+  const [uploading, setUploading] = useState(false);
+  const [uploaded, setUploaded] = useState(false);
+
+  const handleUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    setUploading(true);
+    try {
+      const ext = file.name.split(".").pop() || "bin";
+      const path = `shop/${Date.now()}-${Math.random().toString(36).slice(2, 8)}.${ext}`;
+
+      const { error } = await supabase.storage
+        .from("client-logos")
+        .upload(path, file);
+
+      if (error) throw error;
+
+      setUploaded(true);
+      toast.success(t.uploadSuccess);
+      setTimeout(() => setUploaded(false), 4000);
+    } catch {
+      toast.error(t.uploadError);
+    } finally {
+      setUploading(false);
+      if (fileInputRef.current) fileInputRef.current.value = "";
+    }
+  };
 
   return (
     <section className="py-20 bg-primary/5" aria-labelledby="shop-heading">
@@ -88,20 +137,39 @@ const ShopSection = ({ lang = "lv" }: ShopSectionProps) => {
             <span>{t.badge3}</span>
           </div>
 
-          <a
-            href={url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 justify-center rounded-lg bg-primary text-primary-foreground px-10 py-4 font-medium tracking-wider text-base uppercase transition-all duration-300 active:scale-[0.97] hover:brightness-110"
-            style={{
-              boxShadow:
-                "0 0 0 1px rgba(196,163,90,0.3), 0 4px 20px -4px rgba(196,163,90,0.4), 0 8px 32px -8px rgba(0,0,0,0.3)",
-              letterSpacing: "0.12em",
-            }}
-          >
-            {t.cta}
-            <ExternalLink size={18} />
-          </a>
+          <div className="flex flex-col items-center gap-4">
+            <a
+              href={url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 justify-center rounded-lg bg-primary text-primary-foreground px-10 py-4 font-medium tracking-wider text-base uppercase transition-all duration-300 active:scale-[0.97] hover:brightness-110"
+              style={{
+                boxShadow:
+                  "0 0 0 1px rgba(196,163,90,0.3), 0 4px 20px -4px rgba(196,163,90,0.4), 0 8px 32px -8px rgba(0,0,0,0.3)",
+                letterSpacing: "0.12em",
+              }}
+            >
+              {t.cta}
+              <ExternalLink size={18} />
+            </a>
+
+            <input
+              ref={fileInputRef}
+              type="file"
+              accept={ACCEPTED_TYPES}
+              className="hidden"
+              onChange={handleUpload}
+            />
+            <button
+              type="button"
+              onClick={() => fileInputRef.current?.click()}
+              disabled={uploading}
+              className="inline-flex items-center gap-2 justify-center rounded-lg border border-primary text-primary px-8 py-3.5 font-medium tracking-wide text-sm transition-all duration-200 active:scale-[0.98] hover:bg-primary hover:text-primary-foreground disabled:opacity-60"
+            >
+              {uploaded ? <Check size={18} /> : <Upload size={18} />}
+              {uploading ? "..." : t.uploadBtn}
+            </button>
+          </div>
         </motion.div>
       </div>
     </section>
