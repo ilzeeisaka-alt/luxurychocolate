@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
 import ClientExamplesSection from "@/components/ClientExamplesSection";
 import QuickFactsSection from "@/components/QuickFactsSection";
@@ -28,7 +29,8 @@ const Index = () => {
   });
 
   return (
-    <main className="bg-background">
+    <main className="bg-background pt-14">
+      <Navbar />
       <HeroSection onCtaClick={() => setModalOpen(true)} />
       <SeoContentSection />
       <QuickFactsSection />
