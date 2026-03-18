@@ -76,3 +76,84 @@
     max-width: 65ch;
   }
 }
+
+/* ── Premium photo effects ── */
+
+@keyframes shine-sweep {
+  0% { transform: translateX(-100%) skewX(-15deg); }
+  100% { transform: translateX(200%) skewX(-15deg); }
+}
+
+@keyframes golden-glow-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(196,163,90,0), 0 8px 32px -8px rgba(0,0,0,0.3); }
+  50% { box-shadow: 0 0 24px 4px rgba(196,163,90,0.15), 0 12px 40px -8px rgba(0,0,0,0.35); }
+}
+
+@keyframes float-up {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+
+/* Shine sweep overlay — add to parent with overflow-hidden */
+.photo-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255,255,255,0.08),
+    rgba(196,163,90,0.06),
+    transparent
+  );
+  transform: translateX(-100%) skewX(-15deg);
+  pointer-events: none;
+  z-index: 2;
+}
+
+.photo-card:hover::after {
+  animation: shine-sweep 0.8s ease-out forwards;
+}
+
+/* Golden glow on hover */
+.photo-card:hover {
+  animation: golden-glow-pulse 2s ease-in-out infinite;
+}
+
+/* Inner vignette for cinematic feel */
+.photo-vignette::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center, transparent 50%, rgba(0,0,0,0.25) 100%);
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.photo-vignette:hover::before {
+  opacity: 1;
+}
+
+/* Bottom golden gradient overlay */
+.photo-gradient-gold::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 40%;
+  background: linear-gradient(to top, rgba(20,16,10,0.7) 0%, rgba(20,16,10,0.3) 40%, transparent 100%);
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.photo-gradient-gold:hover::after {
+  opacity: 1;
+}
