@@ -11,6 +11,7 @@ import HowToOrderSection from "@/components/HowToOrderSection";
 import FreePreviewSection from "@/components/FreePreviewSection";
 import TrustSection from "@/components/TrustSection";
 import ProductsSection from "@/components/ProductsSection";
+import BookBoxSection from "@/components/BookBoxSection";
 import FaqSection from "@/components/FaqSection";
 import IdeasSection from "@/components/IdeasSection";
 import RelatedPagesSection from "@/components/RelatedPagesSection";
@@ -67,6 +68,7 @@ const EtIndex = () => {
       <FreePreviewSection onCtaClick={() => setModalOpen(true)} lang="et" />
       <TrustSection lang="et" />
       <ProductsSection lang="et" />
+      <BookBoxSection lang="et" />
       <FaqSection lang="et" />
       <IdeasSection lang="et" />
       <RelatedPagesSection />
