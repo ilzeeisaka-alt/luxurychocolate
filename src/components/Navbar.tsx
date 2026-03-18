@@ -18,6 +18,7 @@ const navItems: Record<Lang, NavItem[]> = {
     { label: "Ziemassvētku", to: "/ziemassvetku-korporativas-sokolades" },
     { label: "Šokolādes grāmata", to: "/sokolades-gramata" },
     { label: "Dāvanu idejas", to: "/korporativo-davanu-idejas" },
+    { label: "Kontakti", to: "#kontakti" },
   ],
   en: [
     { label: "Chocolate with Logo", to: "/en/chocolate-with-logo" },
@@ -26,6 +27,7 @@ const navItems: Record<Lang, NavItem[]> = {
     { label: "Christmas", to: "/en/christmas-corporate-chocolate" },
     { label: "Book Box", to: "/en/chocolate-book-box" },
     { label: "Gift Ideas", to: "/en/corporate-gift-ideas" },
+    { label: "Contact", to: "#kontakti" },
   ],
   ru: [
     { label: "Шоколад с логотипом", to: "/ru/shokolad-s-logotipom" },
@@ -34,6 +36,7 @@ const navItems: Record<Lang, NavItem[]> = {
     { label: "Рождественский", to: "/ru/rozhdestvenskij-shokolad" },
     { label: "Шоколадная книга", to: "/ru/shokoladnaya-kniga" },
     { label: "Идеи подарков", to: "/ru/idei-korporativnyh-podarkov" },
+    { label: "Контакты", to: "#kontakti" },
   ],
   et: [
     { label: "Šokolaad logoga", to: "/et/sokolaad-logoga" },
@@ -42,6 +45,7 @@ const navItems: Record<Lang, NavItem[]> = {
     { label: "Jõulušokolaad", to: "/et/joulu-sokolaad" },
     { label: "Šokolaadiraamat", to: "/et/sokolaadi-raamat" },
     { label: "Kinkeideed", to: "/et/korporatiiv-kingituste-ideed" },
+    { label: "Kontakt", to: "#kontakti" },
   ],
   lt: [
     { label: "Šokoladas su logotipu", to: "/lt/sokoladas-su-logotipu" },
@@ -50,6 +54,7 @@ const navItems: Record<Lang, NavItem[]> = {
     { label: "Kalėdinis", to: "/lt/kaledinis-sokoladas" },
     { label: "Šokolado knyga", to: "/lt/sokolado-knyga" },
     { label: "Dovanų idėjos", to: "/lt/korporatyviniu-dovanu-idejos" },
+    { label: "Kontaktai", to: "#kontakti" },
   ],
 };
 
@@ -106,19 +111,30 @@ const Navbar = ({ lang = "lv" }: NavbarProps) => {
 
         {/* Desktop nav links */}
         <div className="hidden lg:flex items-center gap-1">
-          {items.map((item) => (
-            <Link
-              key={item.to}
-              to={item.to}
-              className={`px-3 py-1.5 rounded-md text-xs font-medium transition-colors ${
-                pathname === item.to
-                  ? "text-primary bg-primary/10"
-                  : "text-white/70 hover:text-white hover:bg-white/5"
-              }`}
-            >
-              {item.label}
-            </Link>
-          ))}
+          {items.map((item) =>
+            item.to.startsWith("#") ? (
+              <a
+                key={item.to}
+                href={item.to}
+                className="px-3 py-1.5 rounded-md text-xs font-medium transition-colors text-white/70 hover:text-white hover:bg-white/5"
+                onClick={() => setMobileOpen(false)}
+              >
+                {item.label}
+              </a>
+            ) : (
+              <Link
+                key={item.to}
+                to={item.to}
+                className={`px-3 py-1.5 rounded-md text-xs font-medium transition-colors ${
+                  pathname === item.to
+                    ? "text-primary bg-primary/10"
+                    : "text-white/70 hover:text-white hover:bg-white/5"
+                }`}
+              >
+                {item.label}
+              </Link>
+            )
+          )}
         </div>
 
         {/* Right side: language + mobile toggle */}
@@ -137,19 +153,30 @@ const Navbar = ({ lang = "lv" }: NavbarProps) => {
       {/* Mobile menu */}
       {mobileOpen && (
         <div className="lg:hidden bg-foreground border-t border-white/10 px-4 pb-4">
-          {items.map((item) => (
-            <Link
-              key={item.to}
-              to={item.to}
-              className={`block py-2.5 px-3 rounded-md text-sm font-medium transition-colors ${
-                pathname === item.to
-                  ? "text-primary bg-primary/10"
-                  : "text-white/70 hover:text-white hover:bg-white/5"
-              }`}
-            >
-              {item.label}
-            </Link>
-          ))}
+          {items.map((item) =>
+            item.to.startsWith("#") ? (
+              <a
+                key={item.to}
+                href={item.to}
+                className="block py-2.5 px-3 rounded-md text-sm font-medium transition-colors text-white/70 hover:text-white hover:bg-white/5"
+                onClick={() => setMobileOpen(false)}
+              >
+                {item.label}
+              </a>
+            ) : (
+              <Link
+                key={item.to}
+                to={item.to}
+                className={`block py-2.5 px-3 rounded-md text-sm font-medium transition-colors ${
+                  pathname === item.to
+                    ? "text-primary bg-primary/10"
+                    : "text-white/70 hover:text-white hover:bg-white/5"
+                }`}
+              >
+                {item.label}
+              </Link>
+            )
+          )}
         </div>
       )}
     </nav>

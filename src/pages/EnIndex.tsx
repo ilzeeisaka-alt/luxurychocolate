@@ -15,6 +15,7 @@ import IdeasSection from "@/components/IdeasSection";
 import RelatedPagesSection from "@/components/RelatedPagesSection";
 import CtaSection from "@/components/CtaSection";
 import FooterSection from "@/components/FooterSection";
+import ContactSection from "@/components/ContactSection";
 import OfferModal from "@/components/OfferModal";
 import { useSeo } from "@/hooks/useSeo";
 import { heroContent } from "@/i18n/content";
@@ -71,6 +72,7 @@ const EnIndex = () => {
       <IdeasSection lang="en" />
       <RelatedPagesSection />
       <CtaSection onCtaClick={() => setModalOpen(true)} lang="en" />
+      <ContactSection lang="en" />
       <FooterSection />
       <OfferModal open={modalOpen} onOpenChange={setModalOpen} />
     </main>
