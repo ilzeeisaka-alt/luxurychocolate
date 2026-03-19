@@ -20,9 +20,11 @@ import ContactSection from "@/components/ContactSection";
 import ShopSection from "@/components/ShopSection";
 import OfferModal from "@/components/OfferModal";
 import { useSeo } from "@/hooks/useSeo";
+import { heroContent } from "@/i18n/content";
 
 const Index = () => {
   const [modalOpen, setModalOpen] = useState(false);
+  const t = heroContent.lv;
 
   useSeo({
     title: "Šokolādes ar logo uzņēmumiem | Premium korporatīvās dāvanas",
@@ -33,7 +35,7 @@ const Index = () => {
   return (
     <main className="bg-background pt-14">
       <Navbar />
-      <HeroSection onCtaClick={() => setModalOpen(true)} />
+      <HeroSection onCtaClick={() => setModalOpen(true)} lang="lv" {...t} />
       <SeoContentSection />
       <QuickFactsSection />
       <ClientExamplesSection />
