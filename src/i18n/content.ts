@@ -432,11 +432,11 @@ export const seoContent: Record<Lang, { heading: string; paragraphs: { text: str
 };
 
 export const heroContent: Record<Lang, { title1: string; title2: string; subtitle: string; ctaButton: string; formButton: string; pricesButton: string }> = {
-  lv: { title1: "Šokolādes ar logo", title2: "uzņēmumiem", subtitle: "Personalizētas reklāmas šokolādes — roku darbs no Beļģu šokolādes", ctaButton: "Bezmaksas dizaina apskate", formButton: "Aizpildīt pieteikumu", pricesButton: "Cenas" },
-  en: { title1: "Custom Chocolate", title2: "with Your Logo", subtitle: "Personalized Promotional Chocolates — Custom Hand Made from Belgian Chocolate", ctaButton: "Free design preview", formButton: "Fill in the form", pricesButton: "Prices" },
-  ru: { title1: "Шоколад с логотипом", title2: "для компаний", subtitle: "Персонализированный рекламный шоколад — ручная работа из бельгийского шоколада", ctaButton: "Бесплатный макет дизайна", formButton: "Заполнить заявку", pricesButton: "Цены" },
-  et: { title1: "Šokolaad logoga", title2: "ettevõtetele", subtitle: "Personaliseeritud reklaamšokolaad — käsitööna valmistatud Belgia šokolaadist", ctaButton: "Tasuta disaini eelvaade", formButton: "Täida taotlus", pricesButton: "Hinnad" },
-  lt: { title1: "Šokoladas su logotipu", title2: "įmonėms", subtitle: "Personalizuotas reklaminis šokoladas — rankų darbo iš belgiško šokolado", ctaButton: "Nemokama dizaino peržiūra", formButton: "Užpildyti paraišką", pricesButton: "Kainos" },
+  lv: { title1: "Šokolādes apdruka ar logo", title2: "uzņēmumiem", subtitle: "Personalizētas reklāmas šokolādes — roku darbs no Beļģu šokolādes", ctaButton: "Bezmaksas dizaina apskate", formButton: "Aizpildīt pieteikumu", pricesButton: "Cenas" },
+  en: { title1: "Chocolate Printing with Logo", title2: "for Companies", subtitle: "Personalized Promotional Chocolates — Custom Hand Made from Belgian Chocolate", ctaButton: "Free design preview", formButton: "Fill in the form", pricesButton: "Prices" },
+  ru: { title1: "Печать на шоколаде с логотипом", title2: "для компаний", subtitle: "Персонализированный рекламный шоколад — ручная работа из бельгийского шоколада", ctaButton: "Бесплатный макет дизайна", formButton: "Заполнить заявку", pricesButton: "Цены" },
+  et: { title1: "Šokolaadi trükk logoga", title2: "ettevõtetele", subtitle: "Personaliseeritud reklaamšokolaad — käsitööna valmistatud Belgia šokolaadist", ctaButton: "Tasuta disaini eelvaade", formButton: "Täida taotlus", pricesButton: "Hinnad" },
+  lt: { title1: "Šokolado spauda su logotipu", title2: "įmonėms", subtitle: "Personalizuotas reklaminis šokoladas — rankų darbo iš belgiško šokolado", ctaButton: "Nemokama dizaino peržiūra", formButton: "Užpildyti paraišką", pricesButton: "Kainos" },
 };
 
 export const bookBoxContent: Record<Lang, {
