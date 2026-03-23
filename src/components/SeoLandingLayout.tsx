@@ -63,6 +63,7 @@ const SeoLandingLayout = ({
     title,
     description: metaDescription,
     path: pathname,
+    keywords: keywords.join(", "),
   });
 
   useEffect(() => {
