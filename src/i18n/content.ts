@@ -662,7 +662,7 @@ export const restaurantChocolateContent: Record<Lang, {
     ],
     usageNote: "Juos galima dėti ant tortų, desertų, ledų, prie sąskaitos, ant kavos ar kokteilių taurių.",
     items: [
-      { title: "Šokoladas desertams", description: "Logotipo šokoladas ant premium desertų — rafinuotas akcentas kiekvienai lėkštei.", alt: "Premium desertas su personalizuotu logotipo šokoladu restoranui" },
+      { title: "Šokoladas desertams ir tortams", description: "Logotipo šokoladas ant premium desertų — rafinuotas akcentas kiekvienai lėkštei.", alt: "Premium desertas su personalizuotu logotipo šokoladu restoranui" },
       { title: "Logotipo šokoladas VIP dovanoms", description: "Eksklusiviniai firminio šokolado saldainiai elegantiskoje pakuotėje.", alt: "Chopard firminio šokolado pralinė elegantiskoje mėlynoje dėžutėje" },
       { title: "Šokoladas prie sąskaitos", description: "Personalizuotas šokoladas prie restorano sąskaitos — nepamirštamas paskutinis įspūdis.", alt: "Fellini restorano logotipo šokoladai prie sąskaitos" },
       { title: "Šokoladas desertams ir tortams", description: "Logotipo šokolado dekoracija ant desertų su TripAdvisor nuoroda.", alt: "Restorano desertas su TripAdvisor logotipo šokoladu" },
