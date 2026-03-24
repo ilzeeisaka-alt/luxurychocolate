@@ -608,7 +608,7 @@ export const restaurantChocolateContent: Record<Lang, {
     ],
     usageNote: "They can be placed on cakes, desserts, ice cream, with the bill, on coffee or cocktail glasses.",
     items: [
-      { title: "Chocolate for desserts", description: "Logo chocolate on premium desserts — a refined accent for every plate.", alt: "Premium dessert with personalized logo chocolate for restaurants" },
+      { title: "Chocolate for desserts & cakes", description: "Logo chocolate on premium desserts — a refined accent for every plate.", alt: "Premium dessert with personalized logo chocolate for restaurants" },
       { title: "Logo chocolate for VIP gifts", description: "Exclusive branded chocolates in elegant packaging for hospitality.", alt: "Chopard branded chocolate pralines in elegant blue box" },
       { title: "Chocolate with the bill", description: "Personalized chocolate with the restaurant bill — an unforgettable last impression.", alt: "Fellini restaurant logo chocolates with the bill" },
       { title: "Chocolate for desserts & cakes", description: "Logo chocolate decoration on desserts with TripAdvisor reference.", alt: "Restaurant dessert with TripAdvisor logo chocolate" },
