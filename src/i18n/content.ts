@@ -611,7 +611,7 @@ export const restaurantChocolateContent: Record<Lang, {
       { title: "Chocolate for desserts & cakes", description: "Logo chocolate on premium desserts — a refined accent for every plate.", alt: "Premium dessert with personalized logo chocolate for restaurants" },
       { title: "Logo chocolate for VIP gifts", description: "Exclusive branded chocolates in elegant packaging for hospitality.", alt: "Chopard branded chocolate pralines in elegant blue box" },
       { title: "Chocolate with the bill", description: "Personalized chocolate with the restaurant bill — an unforgettable last impression.", alt: "Fellini restaurant logo chocolates with the bill" },
-      { title: "Chocolate for desserts & cakes", description: "Logo chocolate decoration on desserts with TripAdvisor reference.", alt: "Restaurant dessert with TripAdvisor logo chocolate" },
+      { title: "Chocolate with TripAdvisor review invitation", description: "Logo chocolate decoration on desserts inviting guests to leave a TripAdvisor review.", alt: "Restaurant dessert with TripAdvisor logo chocolate and review invitation" },
       { title: "Chocolate for champagne glasses", description: "Logo chocolate medallion on champagne or wine glasses.", alt: "Olympic Voodoo Casino logo chocolates on champagne glasses" },
       { title: "Chocolate for cocktail glasses", description: "Personalized chocolate on the rim of cocktail or coffee glasses.", alt: "Personalized logo chocolates on cocktail glasses" },
     ],
