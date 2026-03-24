@@ -571,4 +571,103 @@ export const cakeChocolateContent: Record<Lang, {
       { title: "Šokolado dekorai", description: "Individualios formos šokoladas su logotipu desertams ir konditerijos gaminiams.", alt: "Šokolado desertas su Faceplay logotipo dekoracija" },
     ],
   },
+;
+
+export const restaurantChocolateContent: Record<Lang, {
+  heading: string;
+  subtitle: string;
+  benefits: string[];
+  usageNote: string;
+  items: { title: string; description: string; alt: string }[];
+}> = {
+  lv: {
+    heading: "Restorānu šokolādes",
+    subtitle: "Iedomājieties — jūsu restorāna logotips vai šefpavāra paraksts šokolādē uz katra deserta, kafijas tases vai šampanieša glāzes. Mēs to darām. Pēc pasūtījuma, jūsu dizainā, jūsu zīmolā.",
+    benefits: [
+      "Stiprina zīmola atpazīstamību",
+      "Pārsteidz viesus ar pārdomātu detaļu",
+      "Mudina dalīties ar fotogrāfijām sociālajos tīklos",
+    ],
+    usageNote: "Tās var likt uz kūkām, desertiem, saldējuma, pie čeka, pie kafijas vai kokteiļa glāzes.",
+    items: [
+      { title: "Šokolāde desertiem", description: "Logo šokolāde uz premium desertiem — izsmalcināts akcents katram šķīvim.", alt: "Premium deserts ar personalizētu logo šokolādi restorānam" },
+      { title: "Logo šokolāde VIP dāvanām", description: "Ekskluzīvas šokolādes ar zīmola logo elegantā iepakojumā viesmīlībai.", alt: "Chopard zīmola šokolādes konfektes elegantā zilā kastītē" },
+      { title: "Šokolāde pie čeka", description: "Personalizēta šokolāde pie restorāna rēķina — neaizmirstams pēdējais iespaids.", alt: "Fellini restorāna logo šokolādes pie rēķina" },
+      { title: "Šokolāde desertiem un kūkām", description: "Logo šokolādes dekorācija uz desertiem ar TripAdvisor atsauci.", alt: "Restorāna deserts ar TripAdvisor logo šokolādi" },
+      { title: "Šokolāde šampanieša glāzēm", description: "Logo šokolādes medaljons uz šampanieša vai vīna glāzes.", alt: "Olympic Voodoo Casino logo šokolādes uz šampanieša glāzēm" },
+      { title: "Šokolāde kokteiļu glāzēm", description: "Personalizēta šokolāde uz kokteiļa vai kafijas glāzes malas.", alt: "Personalizētas logo šokolādes uz kokteiļu glāzēm" },
+    ],
+  },
+  en: {
+    heading: "Restaurant chocolates",
+    subtitle: "Imagine — your restaurant's logo or chef's signature on chocolate, placed on every dessert, coffee cup, or champagne glass. We make it happen. Custom-made, in your design, in your brand.",
+    benefits: [
+      "Strengthens brand recognition",
+      "Surprises guests with a thoughtful detail",
+      "Encourages sharing photos on social media",
+    ],
+    usageNote: "They can be placed on cakes, desserts, ice cream, with the bill, on coffee or cocktail glasses.",
+    items: [
+      { title: "Chocolate for desserts", description: "Logo chocolate on premium desserts — a refined accent for every plate.", alt: "Premium dessert with personalized logo chocolate for restaurants" },
+      { title: "Logo chocolate for VIP gifts", description: "Exclusive branded chocolates in elegant packaging for hospitality.", alt: "Chopard branded chocolate pralines in elegant blue box" },
+      { title: "Chocolate with the bill", description: "Personalized chocolate with the restaurant bill — an unforgettable last impression.", alt: "Fellini restaurant logo chocolates with the bill" },
+      { title: "Chocolate for desserts & cakes", description: "Logo chocolate decoration on desserts with TripAdvisor reference.", alt: "Restaurant dessert with TripAdvisor logo chocolate" },
+      { title: "Chocolate for champagne glasses", description: "Logo chocolate medallion on champagne or wine glasses.", alt: "Olympic Voodoo Casino logo chocolates on champagne glasses" },
+      { title: "Chocolate for cocktail glasses", description: "Personalized chocolate on the rim of cocktail or coffee glasses.", alt: "Personalized logo chocolates on cocktail glasses" },
+    ],
+  },
+  ru: {
+    heading: "Шоколад для ресторанов",
+    subtitle: "Представьте — логотип вашего ресторана или подпись шеф-повара на шоколаде, на каждом десерте, чашке кофе или бокале шампанского. Мы это делаем. На заказ, в вашем дизайне, в вашем бренде.",
+    benefits: [
+      "Укрепляет узнаваемость бренда",
+      "Удивляет гостей продуманной деталью",
+      "Мотивирует делиться фото в социальных сетях",
+    ],
+    usageNote: "Их можно размещать на тортах, десертах, мороженом, у счёта, на кофейных или коктейльных бокалах.",
+    items: [
+      { title: "Шоколад для десертов", description: "Логотип на шоколаде для премиум десертов — изысканный акцент для каждой тарелки.", alt: "Премиум десерт с персонализированным логотипом на шоколаде" },
+      { title: "Логотип-шоколад для VIP подарков", description: "Эксклюзивные брендированные шоколадки в элегантной упаковке.", alt: "Шоколадные конфеты Chopard в элегантной синей коробке" },
+      { title: "Шоколад к счёту", description: "Персонализированный шоколад к счёту ресторана — незабываемое последнее впечатление.", alt: "Шоколад с логотипом ресторана Fellini к счёту" },
+      { title: "Шоколад для десертов и тортов", description: "Декорация десертов шоколадом с логотипом и ссылкой на TripAdvisor.", alt: "Десерт ресторана с логотипом TripAdvisor на шоколаде" },
+      { title: "Шоколад для бокалов шампанского", description: "Шоколадный медальон с логотипом на бокале шампанского или вина.", alt: "Шоколад с логотипом Olympic Voodoo Casino на бокалах шампанского" },
+      { title: "Шоколад для коктейльных бокалов", description: "Персонализированный шоколад на краю коктейльного или кофейного бокала.", alt: "Персонализированные шоколадки с логотипом на коктейльных бокалах" },
+    ],
+  },
+  et: {
+    heading: "Restoranišokolaadid",
+    subtitle: "Kujutage ette — teie restorani logo või peakoka allkiri šokolaadil, igal desserdil, kohvitassil või šampanjaklaasil. Me teeme seda. Tellimusel, teie disainis, teie brändi all.",
+    benefits: [
+      "Tugevdab brändi tuntust",
+      "Üllatab külalisi läbimõeldud detailiga",
+      "Innustab jagama fotosid sotsiaalmeedias",
+    ],
+    usageNote: "Neid saab asetada kookidele, dessertidele, jäätisele, arve juurde, kohvi- või kokteiliklaasidele.",
+    items: [
+      { title: "Šokolaad dessertidele", description: "Logo šokolaad premium dessertidel — rafineeritud aktsent igale taldrikule.", alt: "Premium dessert personaliseeritud logo šokolaadiga restoranile" },
+      { title: "Logo šokolaad VIP kingitusteks", description: "Eksklusiivne bränditud šokolaad elegantsest pakendis külalislahkuseks.", alt: "Chopard bränditud šokolaadipralineed elegantsest sinises karbis" },
+      { title: "Šokolaad arve juures", description: "Personaliseeritud šokolaad restoraniarve juures — unustamatu viimane mulje.", alt: "Fellini restorani logo šokolaadid arve juures" },
+      { title: "Šokolaad dessertidele ja kookidele", description: "Logo šokolaadi dekoratsioon dessertidel TripAdvisori viitega.", alt: "Restorani dessert TripAdvisori logo šokolaadiga" },
+      { title: "Šokolaad šampanjaklaasidele", description: "Logo šokolaadi medaljon šampanja- või veiniklaasil.", alt: "Olympic Voodoo Casino logo šokolaadid šampanjaklaasidel" },
+      { title: "Šokolaad kokteiliklaasidele", description: "Personaliseeritud šokolaad kokteili- või kohviklaasi serval.", alt: "Personaliseeritud logo šokolaadid kokteiliklaasidel" },
+    ],
+  },
+  lt: {
+    heading: "Restoranų šokoladai",
+    subtitle: "Įsivaizduokite — jūsų restorano logotipas arba šefo parašas ant šokolado, ant kiekvieno deserto, kavos puodelio ar šampano taurės. Mes tai darome. Pagal užsakymą, jūsų dizaine, jūsų prekės ženkle.",
+    benefits: [
+      "Stiprina prekės ženklo atpažįstamumą",
+      "Nustebina svečius apgalvota detale",
+      "Skatina dalintis nuotraukomis socialiniuose tinkluose",
+    ],
+    usageNote: "Juos galima dėti ant tortų, desertų, ledų, prie sąskaitos, ant kavos ar kokteilių taurių.",
+    items: [
+      { title: "Šokoladas desertams", description: "Logotipo šokoladas ant premium desertų — rafinuotas akcentas kiekvienai lėkštei.", alt: "Premium desertas su personalizuotu logotipo šokoladu restoranui" },
+      { title: "Logotipo šokoladas VIP dovanoms", description: "Eksklusiviniai firminio šokolado saldainiai elegantiskoje pakuotėje.", alt: "Chopard firminio šokolado pralinė elegantiskoje mėlynoje dėžutėje" },
+      { title: "Šokoladas prie sąskaitos", description: "Personalizuotas šokoladas prie restorano sąskaitos — nepamirštamas paskutinis įspūdis.", alt: "Fellini restorano logotipo šokoladai prie sąskaitos" },
+      { title: "Šokoladas desertams ir tortams", description: "Logotipo šokolado dekoracija ant desertų su TripAdvisor nuoroda.", alt: "Restorano desertas su TripAdvisor logotipo šokoladu" },
+      { title: "Šokoladas šampano taurėms", description: "Logotipo šokolado medalionas ant šampano ar vyno taurės.", alt: "Olympic Voodoo Casino logotipo šokoladai ant šampano taurių" },
+      { title: "Šokoladas kokteilių taurėms", description: "Personalizuotas šokoladas ant kokteilių ar kavos taurės krašto.", alt: "Personalizuoti logotipo šokoladai ant kokteilių taurių" },
+    ],
+  },
 };
