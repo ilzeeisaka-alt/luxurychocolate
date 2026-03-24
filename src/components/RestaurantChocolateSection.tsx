@@ -25,7 +25,7 @@ const RestaurantChocolateSection = ({ lang = "lv" }: RestaurantChocolateSectionP
 
   return (
     <>
-      <section className="py-24 bg-secondary/50" aria-labelledby="restaurant-chocolate-heading">
+      <section id="restoraniem" className="py-24 bg-secondary/50 scroll-mt-16" aria-labelledby="restaurant-chocolate-heading">
         <div className="container mx-auto">
           <motion.div
             className="text-center mb-6"
