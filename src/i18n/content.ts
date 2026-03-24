@@ -665,7 +665,7 @@ export const restaurantChocolateContent: Record<Lang, {
       { title: "Šokoladas desertams ir tortams", description: "Logotipo šokoladas ant premium desertų — rafinuotas akcentas kiekvienai lėkštei.", alt: "Premium desertas su personalizuotu logotipo šokoladu restoranui" },
       { title: "Logotipo šokoladas VIP dovanoms", description: "Eksklusiviniai firminio šokolado saldainiai elegantiskoje pakuotėje.", alt: "Chopard firminio šokolado pralinė elegantiskoje mėlynoje dėžutėje" },
       { title: "Šokoladas prie sąskaitos", description: "Personalizuotas šokoladas prie restorano sąskaitos — nepamirštamas paskutinis įspūdis.", alt: "Fellini restorano logotipo šokoladai prie sąskaitos" },
-      { title: "Šokoladas desertams ir tortams", description: "Logotipo šokolado dekoracija ant desertų su TripAdvisor nuoroda.", alt: "Restorano desertas su TripAdvisor logotipo šokoladu" },
+      { title: "Šokoladas su kvietimu palikti TripAdvisor atsiliepimą", description: "Logotipo šokolado dekoracija ant desertų su kvietimu palikti TripAdvisor atsiliepimą.", alt: "Restorano desertas su TripAdvisor logotipo šokoladu ir kvietimu palikti atsiliepimą" },
       { title: "Šokoladas šampano taurėms", description: "Logotipo šokolado medalionas ant šampano ar vyno taurės.", alt: "Olympic Voodoo Casino logotipo šokoladai ant šampano taurių" },
       { title: "Šokoladas kokteilių taurėms", description: "Personalizuotas šokoladas ant kokteilių ar kavos taurės krašto.", alt: "Personalizuoti logotipo šokoladai ant kokteilių taurių" },
     ],
