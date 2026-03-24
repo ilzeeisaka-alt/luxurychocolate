@@ -49,6 +49,7 @@ const EnIndex = () => {
       <ProductsSection lang="en" />
       <ShopSection lang="en" onCtaClick={() => setModalOpen(true)} />
       <BookBoxSection lang="en" />
+      <RestaurantChocolateSection lang="en" />
       <FaqSection lang="en" />
       <IdeasSection lang="en" />
       <RelatedPagesSection />

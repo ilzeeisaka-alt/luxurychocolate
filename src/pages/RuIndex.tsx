@@ -49,6 +49,7 @@ const RuIndex = () => {
       <ProductsSection lang="ru" />
       <ShopSection lang="ru" onCtaClick={() => setModalOpen(true)} />
       <BookBoxSection lang="ru" />
+      <RestaurantChocolateSection lang="ru" />
       <FaqSection lang="ru" />
       <IdeasSection lang="ru" />
       <RelatedPagesSection />
