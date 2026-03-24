@@ -593,7 +593,7 @@ export const restaurantChocolateContent: Record<Lang, {
       { title: "Šokolāde desertiem un kūkām", description: "Logo šokolāde uz premium desertiem — izsmalcināts akcents katram šķīvim.", alt: "Premium deserts ar personalizētu logo šokolādi restorānam" },
       { title: "Logo šokolāde VIP dāvanām", description: "Ekskluzīvas šokolādes ar zīmola logo elegantā iepakojumā viesmīlībai.", alt: "Chopard zīmola šokolādes konfektes elegantā zilā kastītē" },
       { title: "Šokolāde pie čeka", description: "Personalizēta šokolāde pie restorāna rēķina — neaizmirstams pēdējais iespaids.", alt: "Fellini restorāna logo šokolādes pie rēķina" },
-      { title: "Šokolāde desertiem un kūkām", description: "Logo šokolādes dekorācija uz desertiem ar TripAdvisor atsauci.", alt: "Restorāna deserts ar TripAdvisor logo šokolādi" },
+      { title: "Šokolāde ar aicinājumu atstāt TripAdvisor atsauksmi", description: "Logo šokolādes dekorācija uz desertiem ar TripAdvisor vērtējuma aicinājumu.", alt: "Restorāna deserts ar TripAdvisor logo šokolādi un aicinājumu atstāt atsauksmi" },
       { title: "Šokolāde šampanieša glāzēm", description: "Logo šokolādes medaljons uz šampanieša vai vīna glāzes.", alt: "Olympic Voodoo Casino logo šokolādes uz šampanieša glāzēm" },
       { title: "Šokolāde kokteiļu glāzēm", description: "Personalizēta šokolāde uz kokteiļa vai kafijas glāzes malas.", alt: "Personalizētas logo šokolādes uz kokteiļu glāzēm" },
     ],
