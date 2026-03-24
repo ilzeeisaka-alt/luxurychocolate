@@ -7,6 +7,7 @@ import HowToOrderSection from "@/components/HowToOrderSection";
 import TrustSection from "@/components/TrustSection";
 import ProductsSection from "@/components/ProductsSection";
 import CakeChocolateSection from "@/components/CakeChocolateSection";
+import RestaurantChocolateSection from "@/components/RestaurantChocolateSection";
 import BookBoxSection from "@/components/BookBoxSection";
 import SeoContentSection from "@/components/SeoContentSection";
 import FaqSection from "@/components/FaqSection";
@@ -46,6 +47,7 @@ const Index = () => {
       <ProductsSection />
       <ShopSection onCtaClick={() => setModalOpen(true)} />
       <CakeChocolateSection />
+      <RestaurantChocolateSection />
       <BookBoxSection />
       <FaqSection />
       <IdeasSection />

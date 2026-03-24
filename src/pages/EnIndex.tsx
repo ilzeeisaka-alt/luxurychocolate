@@ -17,6 +17,7 @@ import CtaSection from "@/components/CtaSection";
 import FooterSection from "@/components/FooterSection";
 import ContactSection from "@/components/ContactSection";
 import ShopSection from "@/components/ShopSection";
+import RestaurantChocolateSection from "@/components/RestaurantChocolateSection";
 import OfferModal from "@/components/OfferModal";
 import { useSeo } from "@/hooks/useSeo";
 import { heroContent } from "@/i18n/content";
@@ -46,6 +47,7 @@ const EnIndex = () => {
       <ProductsSection lang="en" />
       <ShopSection lang="en" onCtaClick={() => setModalOpen(true)} />
       <BookBoxSection lang="en" />
+      <RestaurantChocolateSection lang="en" />
       <FaqSection lang="en" />
       <IdeasSection lang="en" />
       <RelatedPagesSection />
