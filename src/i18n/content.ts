@@ -590,7 +590,7 @@ export const restaurantChocolateContent: Record<Lang, {
     ],
     usageNote: "Tās var likt uz kūkām, desertiem, saldējuma, pie čeka, pie kafijas vai kokteiļa glāzes.",
     items: [
-      { title: "Šokolāde desertiem", description: "Logo šokolāde uz premium desertiem — izsmalcināts akcents katram šķīvim.", alt: "Premium deserts ar personalizētu logo šokolādi restorānam" },
+      { title: "Šokolāde desertiem un kūkām", description: "Logo šokolāde uz premium desertiem — izsmalcināts akcents katram šķīvim.", alt: "Premium deserts ar personalizētu logo šokolādi restorānam" },
       { title: "Logo šokolāde VIP dāvanām", description: "Ekskluzīvas šokolādes ar zīmola logo elegantā iepakojumā viesmīlībai.", alt: "Chopard zīmola šokolādes konfektes elegantā zilā kastītē" },
       { title: "Šokolāde pie čeka", description: "Personalizēta šokolāde pie restorāna rēķina — neaizmirstams pēdējais iespaids.", alt: "Fellini restorāna logo šokolādes pie rēķina" },
       { title: "Šokolāde desertiem un kūkām", description: "Logo šokolādes dekorācija uz desertiem ar TripAdvisor atsauci.", alt: "Restorāna deserts ar TripAdvisor logo šokolādi" },
