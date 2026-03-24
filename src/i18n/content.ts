@@ -571,7 +571,7 @@ export const cakeChocolateContent: Record<Lang, {
       { title: "Šokolado dekorai", description: "Individualios formos šokoladas su logotipu desertams ir konditerijos gaminiams.", alt: "Šokolado desertas su Faceplay logotipo dekoracija" },
     ],
   },
-;
+};
 
 export const restaurantChocolateContent: Record<Lang, {
   heading: string;
