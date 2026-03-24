@@ -644,7 +644,7 @@ export const restaurantChocolateContent: Record<Lang, {
     ],
     usageNote: "Neid saab asetada kookidele, dessertidele, jäätisele, arve juurde, kohvi- või kokteiliklaasidele.",
     items: [
-      { title: "Šokolaad dessertidele", description: "Logo šokolaad premium dessertidel — rafineeritud aktsent igale taldrikule.", alt: "Premium dessert personaliseeritud logo šokolaadiga restoranile" },
+      { title: "Šokolaad dessertidele ja kookidele", description: "Logo šokolaad premium dessertidel — rafineeritud aktsent igale taldrikule.", alt: "Premium dessert personaliseeritud logo šokolaadiga restoranile" },
       { title: "Logo šokolaad VIP kingitusteks", description: "Eksklusiivne bränditud šokolaad elegantsest pakendis külalislahkuseks.", alt: "Chopard bränditud šokolaadipralineed elegantsest sinises karbis" },
       { title: "Šokolaad arve juures", description: "Personaliseeritud šokolaad restoraniarve juures — unustamatu viimane mulje.", alt: "Fellini restorani logo šokolaadid arve juures" },
       { title: "Šokolaad dessertidele ja kookidele", description: "Logo šokolaadi dekoratsioon dessertidel TripAdvisori viitega.", alt: "Restorani dessert TripAdvisori logo šokolaadiga" },
