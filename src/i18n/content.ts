@@ -647,7 +647,7 @@ export const restaurantChocolateContent: Record<Lang, {
       { title: "Šokolaad dessertidele ja kookidele", description: "Logo šokolaad premium dessertidel — rafineeritud aktsent igale taldrikule.", alt: "Premium dessert personaliseeritud logo šokolaadiga restoranile" },
       { title: "Logo šokolaad VIP kingitusteks", description: "Eksklusiivne bränditud šokolaad elegantsest pakendis külalislahkuseks.", alt: "Chopard bränditud šokolaadipralineed elegantsest sinises karbis" },
       { title: "Šokolaad arve juures", description: "Personaliseeritud šokolaad restoraniarve juures — unustamatu viimane mulje.", alt: "Fellini restorani logo šokolaadid arve juures" },
-      { title: "Šokolaad dessertidele ja kookidele", description: "Logo šokolaadi dekoratsioon dessertidel TripAdvisori viitega.", alt: "Restorani dessert TripAdvisori logo šokolaadiga" },
+      { title: "Šokolaad TripAdvisori arvustuse kutsega", description: "Logo šokolaadi dekoratsioon dessertidel TripAdvisori arvustuse kutsega.", alt: "Restorani dessert TripAdvisori logo šokolaadiga ja arvustuse kutsega" },
       { title: "Šokolaad šampanjaklaasidele", description: "Logo šokolaadi medaljon šampanja- või veiniklaasil.", alt: "Olympic Voodoo Casino logo šokolaadid šampanjaklaasidel" },
       { title: "Šokolaad kokteiliklaasidele", description: "Personaliseeritud šokolaad kokteili- või kohviklaasi serval.", alt: "Personaliseeritud logo šokolaadid kokteiliklaasidel" },
     ],
