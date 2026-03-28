@@ -1,5 +1,14 @@
 import type { Lang } from "./types";
 
+type BaseLang = "lv" | "en" | "ru" | "et" | "lt";
+const withNordics = <T>(base: Record<BaseLang, T>): Record<Lang, T> => ({
+  ...base,
+  sv: base.en,
+  no: base.en,
+  fi: base.en,
+});
+
+
 export const quickFacts: Record<Lang, { heading: string; facts: string[] }> = {
   lv: {
     heading: "Kāpēc izvēlēties mūs",
@@ -97,13 +106,7 @@ export const howToOrder: Record<Lang, { heading: string; steps: string[]; footer
   },
 };
 
-export const trust: Record<Lang, {
-  heading: string;
-  stats: { value: string; label: string }[];
-  clientsLabel: string;
-  testimonials: { quote: string; author: string; company: string }[];
-  guarantees: string[];
-}> = {
+export const trust = withNordics({
   lv: {
     heading: "Kāpēc mums uzticas",
     stats: [{ value: "500+", label: "Izpildīti pasūtījumi" }, { value: "10+", label: "Gadu pieredze" }, { value: "98%", label: "Klientu apmierinātība" }, { value: "30+", label: "Valstis" }],
@@ -114,7 +117,7 @@ export const trust: Record<Lang, {
       { quote: "Jau trešo gadu pasūtām šokolādes ar mūsu logo — vienmēr augstākajā līmenī.", author: "Ieva L.", company: "Baltic Events" },
     ],
     guarantees: ["Kvalitātes garantija", "Sertificēta ražotne", "Piegāde visā pasaulē", "Izpilde 14 dienu laikā"],
-  },
+});
   en: {
     heading: "Why clients trust us",
     stats: [{ value: "500+", label: "Orders completed" }, { value: "10+", label: "Years of experience" }, { value: "98%", label: "Client satisfaction" }, { value: "30+", label: "Countries" }],
@@ -673,11 +676,7 @@ export const heroContent: Record<Lang, { title1: string; title2: string; subtitl
   fi: { title1: "Suklaapaino logolla", title2: "yrityksille", subtitle: "Personoitu mainossuklaa — käsintehtyä belgialaisesta suklaasta", ctaButton: "Ilmainen esikatselu", formButton: "Täytä lomake", pricesButton: "Hinnat" },
 };
 
-export const bookBoxContent: Record<Lang, {
-  heading: string;
-  subtitle: string;
-  items: { title: string; description: string; alt: string }[];
-}> = {
+export const bookBoxContent = withNordics({
   lv: {
     heading: "Šokolādes grāmata",
     subtitle: "Ekskluzīva dāvanu kastīte grāmatas formā ar magnētisku aizdari — personalizējama pilnībā.",
@@ -688,7 +687,7 @@ export const bookBoxContent: Record<Lang, {
       { title: "Konfektes kastītē", description: "Iekšpusē — šokolādes konfektes ar dažādiem pildījumiem premium noformējumā.", alt: "Šokolādes grāmata ar konfektēm iekšpusē" },
       { title: "Konkursa balva", description: "Šokolādes grāmata kā ekskluzīva balva konkursiem un pasākumiem — ar personalizētu dizainu.", alt: "Bērnu grāmatu konkursa balva — šokolādes grāmata ar grāmatas nosaukumu" },
     ],
-  },
+});
   en: {
     heading: "Chocolate Book Box",
     subtitle: "Exclusive gift box in book form with magnetic closure — fully customizable.",
@@ -767,11 +766,7 @@ export const bookBoxContent: Record<Lang, {
   },
 };
 
-export const cakeChocolateContent: Record<Lang, {
-  heading: string;
-  subtitle: string;
-  items: { title: string; description: string; alt: string }[];
-}> = {
+export const cakeChocolateContent = withNordics({
   lv: {
     heading: "Šokolādes kūkām un konditorejai",
     subtitle: "Logo šokolādes dekorācijas kūkām, cupcakes, eklēriem un citiem konditorejas izstrādājumiem.",
@@ -784,7 +779,7 @@ export const cakeChocolateContent: Record<Lang, {
       { title: "Svētku kūkas", description: "Logo šokolādes dekorācija svētku un svinību kūkām.", alt: "Svētku kūka ar La Mer logo šokolādes dekorāciju" },
       { title: "Šokolādes dekori", description: "Individuālas formas šokolādes ar logo desertiem un konditorejai.", alt: "Šokolādes deserts ar Faceplay logo dekorāciju" },
     ],
-  },
+});
   en: {
     heading: "Chocolate for cakes & pastry",
     subtitle: "Logo chocolate decorations for cakes, cupcakes, eclairs, and other pastry products.",
@@ -877,13 +872,7 @@ export const cakeChocolateContent: Record<Lang, {
   },
 };
 
-export const restaurantChocolateContent: Record<Lang, {
-  heading: string;
-  subtitle: string;
-  benefits: string[];
-  usageNote: string;
-  items: { title: string; description: string; alt: string }[];
-}> = {
+export const restaurantChocolateContent = withNordics({
   lv: {
     heading: "Restorānu šokolādes",
     subtitle: "Iedomājieties — jūsu restorāna logotips vai šefpavāra paraksts šokolādē uz katra deserta, kafijas tases vai šampanieša glāzes. Mēs to darām. Pēc pasūtījuma, jūsu dizainā, jūsu zīmolā.",
@@ -901,7 +890,7 @@ export const restaurantChocolateContent: Record<Lang, {
       { title: "Šokolāde šampanieša glāzēm", description: "Logo šokolādes medaljons uz šampanieša vai vīna glāzes.", alt: "Olympic Voodoo Casino logo šokolādes uz šampanieša glāzēm" },
       { title: "Šokolāde kokteiļu glāzēm", description: "Personalizēta šokolāde uz kokteiļa vai kafijas glāzes malas.", alt: "Personalizētas logo šokolādes uz kokteiļu glāzēm" },
     ],
-  },
+});
   en: {
     heading: "Restaurant chocolates",
     subtitle: "Imagine — your restaurant's logo or chef's signature on chocolate, placed on every dessert, coffee cup, or champagne glass. We make it happen. Custom-made, in your design, in your brand.",
