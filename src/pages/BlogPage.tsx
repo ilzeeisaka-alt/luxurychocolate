@@ -100,7 +100,7 @@ const BlogPage = ({ lang = "lv" }: BlogPageProps) => {
           )}
         </div>
       </main>
-      <FooterSection lang={lang} />
+      <FooterSection />
     </div>
   );
 };

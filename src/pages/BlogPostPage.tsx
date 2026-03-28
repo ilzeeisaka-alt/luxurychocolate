@@ -88,7 +88,7 @@ const BlogPostPage = ({ lang = "lv" }: BlogPostPageProps) => {
           )}
         </div>
       </main>
-      <FooterSection lang={lang} />
+      <FooterSection />
     </div>
   );
 };
