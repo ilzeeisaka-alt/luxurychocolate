@@ -77,6 +77,24 @@ export const howToOrder: Record<Lang, { heading: string; steps: string[]; footer
     footer: "⏱ Gamyba: <strong>3–10 darbo dienų</strong>",
     srOnly: "Kaip užsakyti: 1) Atsiųskite logotipą, 2) Sukursime dizaino peržiūrą, 3) Patvirtinkite dizainą, 4) Pagaminsime ir pristatysime.",
   },
+  sv: {
+    heading: "Hur man beställer personlig choklad",
+    steps: ["Skicka din logotyp eller idé", "Vi skapar en designförhandsvisning", "Godkänn designen", "Vi producerar och levererar"],
+    footer: "⏱ Produktion: <strong>3–10 arbetsdagar</strong>",
+    srOnly: "Hur man beställer: 1) Skicka logotyp, 2) Vi skapar designförhandsvisning, 3) Godkänn, 4) Vi producerar och levererar.",
+  },
+  no: {
+    heading: "Hvordan bestille personlig sjokolade",
+    steps: ["Send din logo eller idé", "Vi lager en designforhåndsvisning", "Godkjenn designet", "Vi produserer og leverer"],
+    footer: "⏱ Produksjon: <strong>3–10 virkedager</strong>",
+    srOnly: "Hvordan bestille: 1) Send logo, 2) Vi lager designforhåndsvisning, 3) Godkjenn, 4) Vi produserer og leverer.",
+  },
+  fi: {
+    heading: "Miten tilata personoitua suklaata",
+    steps: ["Lähetä logosi tai ideasi", "Luomme suunnitelman esikatselun", "Hyväksy suunnitelma", "Valmistamme ja toimitamme"],
+    footer: "⏱ Tuotanto: <strong>3–10 arkipäivää</strong>",
+    srOnly: "Miten tilata: 1) Lähetä logo, 2) Luomme esikatselun, 3) Hyväksy, 4) Valmistamme ja toimitamme.",
+  },
 };
 
 export const trust: Record<Lang, {
