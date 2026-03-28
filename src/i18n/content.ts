@@ -21,6 +21,18 @@ export const quickFacts: Record<Lang, { heading: string; facts: string[] }> = {
     heading: "Kodėl rinktis mus",
     facts: ["Minimalus užsakymas: nuo 50 vnt.", "Gamyba: 3–10 darbo dienų", "Premium belgiškas šokoladas", "Individualus dizainas su jūsų logotipu"],
   },
+  sv: {
+    heading: "Varför välja oss",
+    facts: ["Minsta beställning: från 50 st", "Produktion: 3–10 arbetsdagar", "Premium belgisk choklad", "Anpassad design med din logotyp"],
+  },
+  no: {
+    heading: "Hvorfor velge oss",
+    facts: ["Minste bestilling: fra 50 stk", "Produksjon: 3–10 virkedager", "Premium belgisk sjokolade", "Individuell design med din logo"],
+  },
+  fi: {
+    heading: "Miksi valita meidät",
+    facts: ["Minimitilaus: alkaen 50 kpl", "Tuotanto: 3–10 arkipäivää", "Premium belgialainen suklaa", "Yksilöllinen suunnittelu logollasi"],
+  },
 };
 
 export const clientExamples: Record<Lang, { subtitle: string; heading: string; srOnly: string }> = {
@@ -29,6 +41,9 @@ export const clientExamples: Record<Lang, { subtitle: string; heading: string; s
   ru: { subtitle: "Примеры клиентов", heading: "Мировые бренды доверяют нам", srOnly: "Примеры клиентов — мировые бренды, которые доверяют Luxury Chocolate: MasterCard, Bosch, Chopard, Samsung, Vodafone, Volkswagen." },
   et: { subtitle: "Klientide näited", heading: "Maailma brändid usaldavad meid", srOnly: "Klientide näited — maailma brändid, kes usaldavad Luxury Chocolate: MasterCard, Bosch, Chopard, Samsung, Vodafone, Volkswagen." },
   lt: { subtitle: "Klientų pavyzdžiai", heading: "Pasaulio prekės ženklai mumis pasitiki", srOnly: "Klientų pavyzdžiai — pasaulio prekės ženklai, kurie pasitiki Luxury Chocolate: MasterCard, Bosch, Chopard, Samsung, Vodafone, Volkswagen." },
+  sv: { subtitle: "Kundexempel", heading: "Världens varumärken litar på oss", srOnly: "Kundexempel — världens varumärken som litar på Luxury Chocolate: MasterCard, Bosch, Chopard, Samsung, Vodafone, Volkswagen." },
+  no: { subtitle: "Kundeeksempler", heading: "Verdens merkevarer stoler på oss", srOnly: "Kundeeksempler — verdens merkevarer som stoler på Luxury Chocolate: MasterCard, Bosch, Chopard, Samsung, Vodafone, Volkswagen." },
+  fi: { subtitle: "Asiakasesimerkkejä", heading: "Maailman brändit luottavat meihin", srOnly: "Asiakasesimerkkejä — maailman brändit, jotka luottavat Luxury Chocolateen: MasterCard, Bosch, Chopard, Samsung, Vodafone, Volkswagen." },
 };
 
 export const howToOrder: Record<Lang, { heading: string; steps: string[]; footer: string; srOnly: string }> = {
