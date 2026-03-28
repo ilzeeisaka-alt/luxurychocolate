@@ -159,6 +159,39 @@ export const trust: Record<Lang, {
     ],
     guarantees: ["Kokybės garantija", "Sertifikuota gamykla", "Pristatymas visame pasaulyje", "Įvykdymas per 14 dienų"],
   },
+  sv: {
+    heading: "Varför kunderna litar på oss",
+    stats: [{ value: "500+", label: "Genomförda beställningar" }, { value: "10+", label: "Års erfarenhet" }, { value: "98%", label: "Kundnöjdhet" }, { value: "30+", label: "Länder" }],
+    clientsLabel: "Ledande företag litar på oss",
+    testimonials: [
+      { quote: "Utmärkt kvalitet och snabb leverans!", author: "Anna K.", company: "SIA MarketPro" },
+      { quote: "Luxury Chocolate hjälpte oss skapa en oförglömlig företagspresent.", author: "Mārtiņš B.", company: "Tech Solutions" },
+      { quote: "Tredje året vi beställer — alltid toppkvalitet.", author: "Ieva L.", company: "Baltic Events" },
+    ],
+    guarantees: ["Kvalitetsgaranti", "Certifierad produktion", "Leverans världen över", "Leverans inom 14 dagar"],
+  },
+  no: {
+    heading: "Hvorfor kundene stoler på oss",
+    stats: [{ value: "500+", label: "Gjennomførte bestillinger" }, { value: "10+", label: "Års erfaring" }, { value: "98%", label: "Kundetilfredshet" }, { value: "30+", label: "Land" }],
+    clientsLabel: "Ledende bedrifter stoler på oss",
+    testimonials: [
+      { quote: "Utmerket kvalitet og rask levering!", author: "Anna K.", company: "SIA MarketPro" },
+      { quote: "Luxury Chocolate hjalp oss med en uforglemmelig bedriftsgave.", author: "Mārtiņš B.", company: "Tech Solutions" },
+      { quote: "Tredje året vi bestiller — alltid topp kvalitet.", author: "Ieva L.", company: "Baltic Events" },
+    ],
+    guarantees: ["Kvalitetsgaranti", "Sertifisert produksjon", "Levering over hele verden", "Levering innen 14 dager"],
+  },
+  fi: {
+    heading: "Miksi asiakkaat luottavat meihin",
+    stats: [{ value: "500+", label: "Toteutettua tilausta" }, { value: "10+", label: "Vuoden kokemus" }, { value: "98%", label: "Asiakastyytyväisyys" }, { value: "30+", label: "Maata" }],
+    clientsLabel: "Johtavat yritykset luottavat meihin",
+    testimonials: [
+      { quote: "Erinomainen laatu ja nopea toimitus!", author: "Anna K.", company: "SIA MarketPro" },
+      { quote: "Luxury Chocolate auttoi luomaan unohtumattoman yrityslahjan.", author: "Mārtiņš B.", company: "Tech Solutions" },
+      { quote: "Kolmatta vuotta tilaamme — aina huippulaatua.", author: "Ieva L.", company: "Baltic Events" },
+    ],
+    guarantees: ["Laatutakuu", "Sertifioitu tuotanto", "Toimitus maailmanlaajuisesti", "Toimitus 14 päivän kuluessa"],
+  },
 };
 
 export const products: Record<Lang, { heading: string; subtitle: string; items: { title: string; description: string; alt: string }[] }> = {
