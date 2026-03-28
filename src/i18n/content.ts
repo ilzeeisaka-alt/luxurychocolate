@@ -243,6 +243,35 @@ export const products: Record<Lang, { heading: string; subtitle: string; items: 
       { title: "Dovanų rinkiniai", description: "Elegantiškas dėžutė su 5 rankų darbo pralinė.", alt: "Elegantiškas korporatyvinis šokolado dovanų rinkinys" },
       { title: "Šokolado pralinė", description: "Pralinė su kreminio įdaru ir personalizuotu dizainu.", alt: "Premium šokolado pralinė su kreminio įdaru" },
       { title: "Šokolado knyga", description: "Dovanų dėžutė knygos formos su magnetiniu užsegimu — puikiai tinka bibliotekoms ir renginiams.", alt: "Šokolado knyga — dovanų dėžutė su magnetiniu užsegimu" },
+    ],  },
+  sv: {
+    heading: "Våra choklader",
+    subtitle: "Varje produkt anpassas till ditt varumärke — från design till smak.",
+    items: [
+      { title: "Chokladkakor", description: "Med ditt företagslogotyp och anpassad förpackning.", alt: "Personlig chokladkaka med företagslogotyp" },
+      { title: "Presentset", description: "Elegant låda med 5 handgjorda praliner.", alt: "Elegant företags chokladpresentlåda" },
+      { title: "Chokladpraliner", description: "Praliner med krämfyllning och personlig design.", alt: "Premium chokladpraliner med krämfyllning" },
+      { title: "Chokladbok", description: "Presentlåda i bokform med magnetlås.", alt: "Chokladbok med magnetlås" },
+    ],
+  },
+  no: {
+    heading: "Våre sjokolader",
+    subtitle: "Hvert produkt tilpasses ditt merke — fra design til smak.",
+    items: [
+      { title: "Sjokoladeplater", description: "Med din bedrifts logo og tilpasset emballasje.", alt: "Personlig sjokoladeplate med bedriftslogo" },
+      { title: "Gavesett", description: "Elegant eske med 5 håndlagde praliner.", alt: "Elegant bedrifts sjokoladegaveeske" },
+      { title: "Sjokoladepraliner", description: "Praliner med kremfyll og personlig design.", alt: "Premium sjokoladepraliner med kremfyll" },
+      { title: "Sjokoladebok", description: "Gaveeske i bokform med magnetlukking.", alt: "Sjokoladebok med magnetlukking" },
+    ],
+  },
+  fi: {
+    heading: "Suklaamme",
+    subtitle: "Jokainen tuote räätälöidään brändillesi — suunnittelusta makuun.",
+    items: [
+      { title: "Suklaalevyt", description: "Yrityksesi logolla ja yksilöllisellä pakkauksella.", alt: "Personoitu suklaalevy yrityksen logolla" },
+      { title: "Lahjasetit", description: "Elegantti laatikko 5 käsintehdyllä pralineella.", alt: "Elegantti yrityslahjasuklaarasia" },
+      { title: "Suklaapraliinit", description: "Praliinit kermatäytteellä ja personoidulla designilla.", alt: "Premium suklaapraliinit kermatäytteellä" },
+      { title: "Suklaakirja", description: "Kirjanmuotoinen lahjalaatikko magneettisuljolla.", alt: "Suklaakirja magneettisuljolla" },
     ],
   },
 };
@@ -301,6 +330,38 @@ export const faqContent: Record<Lang, { heading: string; items: { q: string; a: 
       { q: "Ar galiu užsakyti šokoladą su pilnos spalvos spauda?", a: "Taip, siūlome pilnos spalvos spaudą tiesiog ant šokolado paviršiaus — jūsų logotipas, dizainas ar bet koks grafinis motyvas. Spauda yra maistui saugi." },
       { q: "Kokiems renginiams tinka korporatyvinis šokoladas?", a: "Personalizuotas šokoladas idealus konferencijoms, parodoms, susitikimams su klientais, kalėdinėms dovanoms, įmonės jubiliejams ir VIP svetingumui." },
       { q: "Ar pristatote už Latvijos ribų?", a: "Taip, pristatome personalizuotą šokoladą į daugiau nei 30 šalių visame pasaulyje." },
+    ],  },
+  sv: {
+    heading: "Vanliga frågor",
+    items: [
+      { q: "Vad är minsta beställning?", a: "Minsta beställningen är 50 stycken." },
+      { q: "Hur lång tid tar produktionen?", a: "3–10 arbetsdagar från designgodkännande." },
+      { q: "Vilken kvalitet på choklad används?", a: "Premium belgisk choklad — mjölk, mörk och vit." },
+      { q: "Kan jag beställa med fyrfärgstryck?", a: "Ja, fyrfärgstryck direkt på chokladen. Livsmedelssäkert." },
+      { q: "Vilka evenemang passar det för?", a: "Konferenser, utställningar, kundmöten, julklappar, jubileer." },
+      { q: "Levererar ni utanför Lettland?", a: "Ja, till över 30 länder." },
+    ],
+  },
+  no: {
+    heading: "Ofte stilte spørsmål",
+    items: [
+      { q: "Hva er minstebestillingen?", a: "Minstebestillingen er 50 stykker." },
+      { q: "Hvor lang tid tar produksjonen?", a: "3–10 virkedager fra designgodkjenning." },
+      { q: "Hvilken kvalitet på sjokolade brukes?", a: "Premium belgisk sjokolade — melk, mørk og hvit." },
+      { q: "Kan jeg bestille med fullfarge trykk?", a: "Ja, fullfarge trykk direkte på sjokoladen. Matsikkert." },
+      { q: "Hvilke arrangementer passer det for?", a: "Konferanser, utstillinger, kundemøter, julegaver, jubileer." },
+      { q: "Leverer dere utenfor Latvia?", a: "Ja, til over 30 land." },
+    ],
+  },
+  fi: {
+    heading: "Usein kysytyt kysymykset",
+    items: [
+      { q: "Mikä on minimitilaus?", a: "Minimitilaus on 50 kappaletta." },
+      { q: "Kuinka kauan tuotanto kestää?", a: "3–10 arkipäivää suunnitelman hyväksymisestä." },
+      { q: "Mitä laatua suklaata käytetään?", a: "Premium belgialaista suklaata — maito, tumma ja valko." },
+      { q: "Voinko tilata täysväripainatuksella?", a: "Kyllä, suoraan suklaan pinnalle. Elintarviketurvallista." },
+      { q: "Mihin tapahtumiin se sopii?", a: "Konferenssit, messut, asiakastapaamiset, joululahjat, juhlat." },
+      { q: "Toimitatteko Latvian ulkopuolelle?", a: "Kyllä, yli 30 maahan." },
     ],
   },
 };
@@ -354,6 +415,35 @@ export const ideasContent: Record<Lang, { subtitle: string; heading: string; ite
       { emoji: "🎄", title: "Kalėdinis korporatyvinis šokoladas", description: "Eksklusivinės šventinės dovanos klientams ir partneriams.", path: "/lt/kaledinis-sokoladas" },
       { emoji: "🎁", title: "Reklaminis šokoladas", description: "Efektyvus reklaminis produktas parodoms, konferencijoms ir renginiams.", path: "/lt/reklaminis-sokoladas" },
       { emoji: "🏢", title: "Šokoladas dovanoms klientams", description: "Premium dovanų idėjos verslo partneriams ir klientams.", path: "/lt/dovanos-klientams" },
+    ],  },
+  sv: {
+    subtitle: "Idéer och lösningar",
+    heading: "Företagspresentidéer",
+    items: [
+      { emoji: "🍫", title: "Choklad med logotyp", description: "Personlig choklad — elegant varumärkesbyggande.", path: "/en/chocolate-with-logo" },
+      { emoji: "🎄", title: "Julchoklad", description: "Exklusiva julpresenter med logotyp.", path: "/en/christmas-corporate-chocolate" },
+      { emoji: "🎁", title: "Reklamchoklad", description: "Effektiv för mässor och evenemang.", path: "/en/promotional-chocolate" },
+      { emoji: "🏢", title: "Kundpresenter", description: "Premium idéer för affärspartners.", path: "/en/client-gifts" },
+    ],
+  },
+  no: {
+    subtitle: "Ideer og løsninger",
+    heading: "Bedriftsgaveidéer",
+    items: [
+      { emoji: "🍫", title: "Sjokolade med logo", description: "Personlig sjokolade — elegant merkevarebygging.", path: "/en/chocolate-with-logo" },
+      { emoji: "🎄", title: "Julesjokolade", description: "Eksklusive julegaver med logo.", path: "/en/christmas-corporate-chocolate" },
+      { emoji: "🎁", title: "Reklamesjokolade", description: "Effektivt for messer og arrangementer.", path: "/en/promotional-chocolate" },
+      { emoji: "🏢", title: "Kundegaver", description: "Premium idéer for forretningspartnere.", path: "/en/client-gifts" },
+    ],
+  },
+  fi: {
+    subtitle: "Ideat ja ratkaisut",
+    heading: "Yrityslahjaideat",
+    items: [
+      { emoji: "🍫", title: "Suklaa logolla", description: "Personoitu suklaa — tyylikäs brändiviestintä.", path: "/en/chocolate-with-logo" },
+      { emoji: "🎄", title: "Joulusuklaa", description: "Eksklusiiviset joululahjat logolla.", path: "/en/christmas-corporate-chocolate" },
+      { emoji: "🎁", title: "Mainossuklaa", description: "Tehokas messuille ja tapahtumiin.", path: "/en/promotional-chocolate" },
+      { emoji: "🏢", title: "Asiakaslahjat", description: "Premium ideat liikekumppaneille.", path: "/en/client-gifts" },
     ],
   },
 };
@@ -412,6 +502,38 @@ export const useCasesContent: Record<Lang, { subtitle: string; heading: string; 
       { title: "Konferencijos ir renginiai", desc: "Kompaktiški šokolado plyteliai su logotipu — idealūs parodoms, seminarams ir verslo renginiams.", link: "/lt/sokoladas-konferencijoms", linkLabel: "Sužinoti daugiau →" },
       { title: "Sveikinimas partneriams", desc: "Premium šokolado dovanų rinkiniai, stiprinantys verslo santykius.", link: "/lt/dovanos-partneriams", linkLabel: "Sužinoti daugiau →" },
       { title: "Kalėdinės dovanos", desc: "Šventinis dizainas su logotipu — populiariausia korporatyvinė dovana metų pabaigoje.", link: "/lt/kaledinis-sokoladas", linkLabel: "Sužinoti daugiau →" },
+    ],  },
+  sv: {
+    subtitle: "Användningsområden",
+    heading: "Var företag använder choklad med logotyp",
+    ctaLabel: "Begär offert",
+    items: [
+      { title: "Kundpresenter", desc: "Elegant choklad med logotyp för positiva minnen.", link: "/en/client-gifts", linkLabel: "Läs mer →" },
+      { title: "Konferenser", desc: "Kompakta chokladkakor för mässor och seminarier.", link: "/en/conference-chocolate", linkLabel: "Läs mer →" },
+      { title: "Partnerhälsningar", desc: "Premium presentset som stärker affärsrelationer.", link: "/en/partner-gifts", linkLabel: "Läs mer →" },
+      { title: "Julklappar", desc: "Festlig design — populäraste företagspresenten.", link: "/en/christmas-corporate-chocolate", linkLabel: "Läs mer →" },
+    ],
+  },
+  no: {
+    subtitle: "Bruksområder",
+    heading: "Hvor bedrifter bruker sjokolade med logo",
+    ctaLabel: "Be om tilbud",
+    items: [
+      { title: "Kundegaver", desc: "Elegant sjokolade med logo for positive minner.", link: "/en/client-gifts", linkLabel: "Les mer →" },
+      { title: "Konferanser", desc: "Kompakte sjokoladeplater for messer og seminarer.", link: "/en/conference-chocolate", linkLabel: "Les mer →" },
+      { title: "Partnerhilsener", desc: "Premium gavesett som styrker forretningsrelasjoner.", link: "/en/partner-gifts", linkLabel: "Les mer →" },
+      { title: "Julegaver", desc: "Festlig design — mest populære bedriftsgaven.", link: "/en/christmas-corporate-chocolate", linkLabel: "Les mer →" },
+    ],
+  },
+  fi: {
+    subtitle: "Käyttökohteet",
+    heading: "Missä yritykset käyttävät suklaata logolla",
+    ctaLabel: "Pyydä tarjous",
+    items: [
+      { title: "Asiakaslahjat", desc: "Tyylikäs suklaa logolla positiivisiin muistoihin.", link: "/en/client-gifts", linkLabel: "Lue lisää →" },
+      { title: "Konferenssit", desc: "Kompaktit suklaalevyt messuille ja seminaareihin.", link: "/en/conference-chocolate", linkLabel: "Lue lisää →" },
+      { title: "Kumppanitervehdykset", desc: "Premium lahjasetit liikesuhteisiin.", link: "/en/partner-gifts", linkLabel: "Lue lisää →" },
+      { title: "Joululahjat", desc: "Juhlasuunnittelu — suosituin yrityslahja.", link: "/en/christmas-corporate-chocolate", linkLabel: "Lue lisää →" },
     ],
   },
 };
@@ -445,7 +567,24 @@ export const ctaContent: Record<Lang, { heading: string; description: string; bu
     heading: "Gaukite nemokamą dizaino peržiūrą",
     description: "Atsiųskite mums savo logotipą ir mes paruošime personalizuotą šokolado dizaino peržiūrą per 24 valandas — visiškai nemokamai.",
     button: "Gauti nemokamą peržiūrą",
-    inquiryButton: "Pildyti užklausą",
+    inquiryButton: "Pildyti užklausą",  },
+  sv: {
+    heading: "Få en gratis designförhandsvisning",
+    description: "Skicka oss din logotyp så förbereder vi en personlig chokladdesign inom 24 timmar — helt gratis.",
+    button: "Få gratis förhandsvisning",
+    inquiryButton: "Skicka förfrågan",
+  },
+  no: {
+    heading: "Få en gratis designforhåndsvisning",
+    description: "Send oss logoen din, og vi forbereder en personlig sjokoladedesign innen 24 timer — helt gratis.",
+    button: "Få gratis forhåndsvisning",
+    inquiryButton: "Send forespørsel",
+  },
+  fi: {
+    heading: "Saa ilmainen suunnitelman esikatselu",
+    description: "Lähetä meille logosi ja valmistelemme personoidun suklaadesignin 24 tunnissa — täysin ilmaiseksi.",
+    button: "Saa ilmainen esikatselu",
+    inquiryButton: "Lähetä tiedustelu",
   },
 };
 
@@ -493,6 +632,32 @@ export const seoContent: Record<Lang, { heading: string; paragraphs: { text: str
       { text: "Įmonės dažnai naudoja firminį šokoladą įvairiuose verslo renginiuose — konferencijose, parodose ir susitikimuose su klientais. Ypač populiarus {link1} parodoms ir renginiams, taip pat {link2} švenčių sezonu.", links: [{ text: "reklaminis šokoladas su logotipu", to: "/lt/reklaminis-sokoladas" }, { text: "kalėdinis korporatyvinis šokoladas", to: "/lt/kaledinis-sokoladas" }] },
       { text: "Siūlome premium kokybės šokoladą su personalizuota spauda, pritaikyta jūsų įmonės logotipui, spalvoms ir dizainui. Šokoladą galima naudoti tiek kaip reklaminę dovaną, tiek kaip eksklusivinę {link1}.", links: [{ text: "korporatyvinę dovaną klientams ir partneriams", to: "/lt/dovanos-klientams" }] },
       { text: "Šokoladas su logotipu — efektyvus būdas padaryti korporatyvinę dovaną neužmirštamą ir kartu padidinti prekės ženklo atpažįstamumą." },
+    ],  },
+  sv: {
+    heading: "Anpassad choklad med logotyp för företag",
+    paragraphs: [
+      { text: "Vår {link1} är en av de mest populära företagspresenterna.", links: [{ text: "anpassad choklad med logotyp", to: "/en/chocolate-with-logo" }] },
+      { text: "Företag använder varumärkeschoklad vid affärsevenemang. Populärt är {link1} samt {link2}.", links: [{ text: "reklamchoklad", to: "/en/promotional-chocolate" }, { text: "julchoklad", to: "/en/christmas-corporate-chocolate" }] },
+      { text: "Premium choklad med personligt tryck anpassat till ditt företag. Både reklamgåvor och exklusiva {link1}.", links: [{ text: "företagspresenter", to: "/en/client-gifts" }] },
+      { text: "Choklad med logotyp — ett effektivt sätt att göra din företagspresent oförglömlig." },
+    ],
+  },
+  no: {
+    heading: "Tilpasset sjokolade med logo for bedrifter",
+    paragraphs: [
+      { text: "Vår {link1} er en av de mest populære bedriftsgavene.", links: [{ text: "tilpasset sjokolade med logo", to: "/en/chocolate-with-logo" }] },
+      { text: "Bedrifter bruker merkevare-sjokolade på arrangementer. Populært er {link1} samt {link2}.", links: [{ text: "reklamesjokolade", to: "/en/promotional-chocolate" }, { text: "julesjokolade", to: "/en/christmas-corporate-chocolate" }] },
+      { text: "Premium sjokolade med personlig trykk. Både reklamegaver og eksklusive {link1}.", links: [{ text: "bedriftsgaver", to: "/en/client-gifts" }] },
+      { text: "Sjokolade med logo — en effektiv måte å gjøre bedriftsgaven uforglemmelig." },
+    ],
+  },
+  fi: {
+    heading: "Personoitu suklaa logolla yrityksille",
+    paragraphs: [
+      { text: "Meidän {link1} on yksi suosituimmista yrityslahjoista.", links: [{ text: "personoitu suklaa logolla", to: "/en/chocolate-with-logo" }] },
+      { text: "Yritykset käyttävät brändisuklaa tapahtumissa. Suosittua on {link1} sekä {link2}.", links: [{ text: "mainossuklaa", to: "/en/promotional-chocolate" }, { text: "joulusuklaa", to: "/en/christmas-corporate-chocolate" }] },
+      { text: "Premium suklaa personoidulla painatuksella. Sekä mainoslahjana että eksklusiivisena {link1}.", links: [{ text: "yrityslahja", to: "/en/client-gifts" }] },
+      { text: "Suklaa logolla — tehokas tapa tehdä yrityslahjasta unohtumaton." },
     ],
   },
 };
@@ -502,7 +667,10 @@ export const heroContent: Record<Lang, { title1: string; title2: string; subtitl
   en: { title1: "Chocolate Printing with Logo", title2: "for Companies", subtitle: "Personalized Promotional Chocolates — Custom Hand Made from Belgian Chocolate", ctaButton: "Free design preview", formButton: "Fill in the form", pricesButton: "Prices" },
   ru: { title1: "Печать на шоколаде с логотипом", title2: "для компаний", subtitle: "Персонализированный рекламный шоколад — ручная работа из бельгийского шоколада", ctaButton: "Бесплатный макет дизайна", formButton: "Заполнить заявку", pricesButton: "Цены" },
   et: { title1: "Šokolaadi trükk logoga", title2: "ettevõtetele", subtitle: "Personaliseeritud reklaamšokolaad — käsitööna valmistatud Belgia šokolaadist", ctaButton: "Tasuta disaini eelvaade", formButton: "Täida taotlus", pricesButton: "Hinnad" },
-  lt: { title1: "Šokolado spauda su logotipu", title2: "įmonėms", subtitle: "Personalizuotas reklaminis šokoladas — rankų darbo iš belgiško šokolado", ctaButton: "Nemokama dizaino peržiūra", formButton: "Užpildyti paraišką", pricesButton: "Kainos" },
+  lt: { title1: "Šokolado spauda su logotipu", title2: "įmonėms", subtitle: "Personalizuotas reklaminis šokoladas — rankų darbo iš belgiško šokolado", ctaButton: "Nemokama dizaino peržiūra", formButton: "Užpildyti paraišką", pricesButton: "Kainos"  },
+  sv: { title1: "Chokladtryck med logotyp", title2: "för företag", subtitle: "Personlig reklamchoklad — handgjord av belgisk choklad", ctaButton: "Gratis designförhandsvisning", formButton: "Fyll i formuläret", pricesButton: "Priser" },
+  no: { title1: "Sjokoladetrykk med logo", title2: "for bedrifter", subtitle: "Personlig reklamesjokolade — håndlaget av belgisk sjokolade", ctaButton: "Gratis designforhåndsvisning", formButton: "Fyll ut skjemaet", pricesButton: "Priser" },
+  fi: { title1: "Suklaapaino logolla", title2: "yrityksille", subtitle: "Personoitu mainossuklaa — käsintehtyä belgialaisesta suklaasta", ctaButton: "Ilmainen esikatselu", formButton: "Täytä lomake", pricesButton: "Hinnat" },
 };
 
 export const bookBoxContent: Record<Lang, {
@@ -563,6 +731,38 @@ export const bookBoxContent: Record<Lang, {
       { title: "Atidaryta dėžutė", description: "Magnetinis uždarymas sukuria knygos atidarymo patirtį — viduje: šokolado paveikslas ar saldainiai.", alt: "Atidaryta šokolado knyga su šokolado turiniu viduje" },
       { title: "Saldainiai viduje", description: "Viduje — šokolado saldainiai su įvairiais įdarais premium pateikime.", alt: "Šokolado knyga su saldainiais viduje" },
       { title: "Konkurso prizas", description: "Šokolado knyga kaip ekskluzivinis prizas konkursams ir renginiams — su personalizuotu dizainu.", alt: "Vaikų knygų konkurso prizas — šokolado knyga su knygos pavadinimu" },
+    ],  },
+  sv: {
+    heading: "Chokladbok",
+    subtitle: "Exklusiv presentlåda i bokform med magnetlås — helt anpassningsbar.",
+    items: [
+      { title: "Chokladbok", description: "Elegant presentlåda med fyrfärgstryck och magnetlås.", alt: "Chokladbok med personligt omslag" },
+      { title: "Elegant design", description: "Helt anpassningsbart omslag.", alt: "Elegant designad chokladbok" },
+      { title: "Öppen låda", description: "Magnetlåset skapar en bokupplevelse.", alt: "Öppen chokladbok" },
+      { title: "Praliner inuti", description: "Chokladpraliner med olika fyllningar.", alt: "Chokladbok med praliner" },
+      { title: "Tävlingspris", description: "Exklusivt pris för tävlingar.", alt: "Tävlingspris chokladbok" },
+    ],
+  },
+  no: {
+    heading: "Sjokoladebok",
+    subtitle: "Eksklusiv gaveeske i bokform med magnetlukking — fullt tilpassbar.",
+    items: [
+      { title: "Sjokoladebok", description: "Elegant gaveeske med fullfarge trykk og magnetlukking.", alt: "Sjokoladebok med personlig omslag" },
+      { title: "Elegant design", description: "Fullt tilpassbart omslag.", alt: "Elegant designet sjokoladebok" },
+      { title: "Åpen eske", description: "Magnetlukkingen skaper en bokopplevelse.", alt: "Åpen sjokoladebok" },
+      { title: "Praliner inni", description: "Sjokoladepraliner med ulike fyllinger.", alt: "Sjokoladebok med praliner" },
+      { title: "Konkurransepremie", description: "Eksklusiv premie for konkurranser.", alt: "Konkurransepremie sjokoladebok" },
+    ],
+  },
+  fi: {
+    heading: "Suklaakirja",
+    subtitle: "Eksklusiivinen kirjanmuotoinen lahjalaatikko magneettisuljolla — täysin muokattavissa.",
+    items: [
+      { title: "Suklaakirja", description: "Elegantti lahjalaatikko täysväripainatuksella ja magneettisuljolla.", alt: "Suklaakirja personoidulla kannella" },
+      { title: "Elegantti design", description: "Täysin muokattava kansi.", alt: "Elegantisti suunniteltu suklaakirja" },
+      { title: "Avoin laatikko", description: "Magneettisuljin luo kirjan avaamiskokemuksen.", alt: "Avoin suklaakirja" },
+      { title: "Praliinit sisällä", description: "Suklaapraliinit erilaisilla täytteillä.", alt: "Suklaakirja praliineilla" },
+      { title: "Kilpailupalkinto", description: "Eksklusiivinen palkinto kilpailuihin.", alt: "Kilpailupalkinto suklaakirja" },
     ],
   },
 };
@@ -635,6 +835,44 @@ export const cakeChocolateContent: Record<Lang, {
       { title: "Tortai su logotipu", description: "Šokolado plokštelė su logotipu kaip elegantiškas torto akcentas.", alt: "Elegantiškas tortas su gėlėmis ir Ristiheina kavinės logotipu šokolade" },
       { title: "Šventiniai tortai", description: "Logotipo šokolado dekoracija šventiniams ir švenčių tortams.", alt: "Šventinis tortas su La Mer logotipo šokolado dekoracija" },
       { title: "Šokolado dekorai", description: "Individualios formos šokoladas su logotipu desertams ir konditerijos gaminiams.", alt: "Šokolado desertas su Faceplay logotipo dekoracija" },
+    ],  },
+  sv: {
+    heading: "Choklad för tårtor och konditori",
+    subtitle: "Logotypchokladdekorationer för tårtor, cupcakes och konditorivaror.",
+    items: [
+      { title: "Logotyp-cupcakes", description: "Chokladdekorationer med logotyp för cupcakes.", alt: "Cupcakes med chokladlogotyp" },
+      { title: "Mini choklad", description: "Små chokladplattor med logotyp.", alt: "Mini chokladdekoration" },
+      { title: "Pajer och bakverk", description: "Chokladlogotyp på pajer.", alt: "Chokladpaj med logotyp" },
+      { title: "Premiumdesserter", description: "Exklusiv chokladdekoration på desserter.", alt: "Premium dessert med logotyp" },
+      { title: "Tårtor med logotyp", description: "Chokladplatta som tårtaccent.", alt: "Tårta med chokladlogotyp" },
+      { title: "Festtårtor", description: "Logotypdekoration för festtårtor.", alt: "Festtårta med logotyp" },
+      { title: "Chokladdekor", description: "Specialformad choklad för desserter.", alt: "Chokladdessert med logotyp" },
+    ],
+  },
+  no: {
+    heading: "Sjokolade for kaker og konditori",
+    subtitle: "Logo sjokoladedekorasjoner for kaker, cupcakes og konditoriprodukter.",
+    items: [
+      { title: "Logo-cupcakes", description: "Sjokoladedekorasjoner med logo for cupcakes.", alt: "Cupcakes med sjokoladelogo" },
+      { title: "Mini sjokolade", description: "Små sjokoladeplater med logo.", alt: "Mini sjokoladedekorasjon" },
+      { title: "Terter og bakverk", description: "Sjokoladelogo på terter.", alt: "Sjokoladetert med logo" },
+      { title: "Premiumdesserter", description: "Eksklusiv sjokoladedekorasjon på desserter.", alt: "Premium dessert med logo" },
+      { title: "Kaker med logo", description: "Sjokoladeplate som kakeaksent.", alt: "Kake med sjokoladelogo" },
+      { title: "Festkaker", description: "Logodekorasjon for festkaker.", alt: "Festkake med logo" },
+      { title: "Sjokoladedekor", description: "Spesialformet sjokolade for desserter.", alt: "Sjokoladedessert med logo" },
+    ],
+  },
+  fi: {
+    heading: "Suklaa kakuille ja konditoriatuotteille",
+    subtitle: "Logosuklaakoristeet kakuille, kuppikakuille ja konditoriatuotteille.",
+    items: [
+      { title: "Logo-kuppikakut", description: "Suklaakoristeet logolla kuppikakuille.", alt: "Kuppikakut suklaalogokoristella" },
+      { title: "Mini suklaa", description: "Pienet suklaalevyt logolla.", alt: "Mini suklaakoriste" },
+      { title: "Tortut", description: "Suklaalogo tortuissa.", alt: "Suklaatorttu logolla" },
+      { title: "Premium-jälkiruoat", description: "Eksklusiivinen suklaakoriste jälkiruoissa.", alt: "Premium jälkiruoka logolla" },
+      { title: "Kakut logolla", description: "Suklaalevy kakkukoristella.", alt: "Kakku suklaologolla" },
+      { title: "Juhlakakut", description: "Logokoriste juhlakakuille.", alt: "Juhlakakku logolla" },
+      { title: "Suklaakoristeet", description: "Erikoismuotoinen suklaa jälkiruoille.", alt: "Suklaajälkiruoka logolla" },
     ],
   },
 };
@@ -776,6 +1014,48 @@ export const restaurantChocolateContent: Record<Lang, {
       { title: "Suklaa TripAdvisor-kutsulla", description: "Logosuklaakoriste jälkiruoissa TripAdvisor-arvostelukutsulla.", alt: "Ravintolan jälkiruoka TripAdvisor-logosuklaalla" },
       { title: "Suklaa samppanjalaseille", description: "Logosuklaamedaljonki samppanja- tai viinilasilla.", alt: "Olympic Voodoo Casino logosuklaat samppanjalaseilla" },
       { title: "Suklaa cocktaillaseille", description: "Personoitu suklaa cocktail- tai kahvilasin reunalla.", alt: "Personoidut logosuklaat cocktaillaseilla" },
+    ],
+  },
+  sv: {
+    heading: "Restaurangchoklad",
+    subtitle: "Din restaurangs logotyp eller kockens signatur i choklad på varje dessert. Vi gör det.",
+    benefits: ["Stärker varumärkeskännedomen", "Överraskar gäster", "Uppmuntrar delning på sociala medier"],
+    usageNote: "Kan placeras på tårtor, desserter, glass, med notan, på kaffe- eller cocktailglas.",
+    items: [
+      { title: "Choklad för desserter", description: "Logotypchoklad på premiumdesserter.", alt: "Premiumdessert med logotypchoklad" },
+      { title: "VIP-presenter", description: "Exklusiva varumärkeschoklader i elegant förpackning.", alt: "Chopard chokladpraliner" },
+      { title: "Choklad med notan", description: "Personlig choklad med restaurangnotan.", alt: "Restaurang logotypchoklad med notan" },
+      { title: "TripAdvisor-inbjudan", description: "Chokladdekoration med TripAdvisor-inbjudan.", alt: "Dessert med TripAdvisor choklad" },
+      { title: "Champagneglas", description: "Logotypchokladmedalj på champagneglas.", alt: "Logo choklad på champagneglas" },
+      { title: "Cocktailglas", description: "Personlig choklad på cocktailglasets kant.", alt: "Logo choklad på cocktailglas" },
+    ],
+  },
+  no: {
+    heading: "Restaurantsjokolade",
+    subtitle: "Din restaurants logo eller kokkens signatur i sjokolade på hver dessert. Vi gjør det.",
+    benefits: ["Styrker merkevarebevissthet", "Overrasker gjester", "Oppmuntrer deling på sosiale medier"],
+    usageNote: "Kan plasseres på kaker, desserter, iskrem, ved regningen, på kaffe- eller cocktailglass.",
+    items: [
+      { title: "Sjokolade for desserter", description: "Logo sjokolade på premiumdesserter.", alt: "Premiumdessert med logo sjokolade" },
+      { title: "VIP-gaver", description: "Eksklusive merkevare-sjokolader i elegant emballasje.", alt: "Chopard sjokoladepraliner" },
+      { title: "Sjokolade med regningen", description: "Personlig sjokolade med restaurantregningen.", alt: "Restaurant logo sjokolade med regningen" },
+      { title: "TripAdvisor-invitasjon", description: "Sjokoladedekorasjon med TripAdvisor-invitasjon.", alt: "Dessert med TripAdvisor sjokolade" },
+      { title: "Champagneglass", description: "Logo sjokolademedaljong på champagneglass.", alt: "Logo sjokolade på champagneglass" },
+      { title: "Cocktailglass", description: "Personlig sjokolade på cocktailglasskanten.", alt: "Logo sjokolade på cocktailglass" },
+    ],
+  },
+  fi: {
+    heading: "Ravintolasuklaat",
+    subtitle: "Ravintolasi logo tai kokin allekirjoitus suklaassa jokaisella jälkiruoalla. Me teemme sen.",
+    benefits: ["Vahvistaa brändin tunnettuutta", "Yllättää vieraat", "Kannustaa jakamaan sosiaalisessa mediassa"],
+    usageNote: "Voidaan asettaa kakuille, jälkiruoille, jäätelöön, laskun kanssa, kahvi- tai cocktaillasille.",
+    items: [
+      { title: "Suklaa jälkiruoille", description: "Logosuklaa premium-jälkiruoilla.", alt: "Premium jälkiruoka logosuklaalla" },
+      { title: "VIP-lahjat", description: "Eksklusiiviset brändisuklaat elegantissa pakkauksessa.", alt: "Chopard suklaapraliinit" },
+      { title: "Suklaa laskun kanssa", description: "Personoitu suklaa ravintolalaskun kanssa.", alt: "Ravintolan logosuklaat laskun kanssa" },
+      { title: "TripAdvisor-kutsu", description: "Suklaakoriste TripAdvisor-arvostelukutsulla.", alt: "Jälkiruoka TripAdvisor suklaalla" },
+      { title: "Samppanjalasit", description: "Logosuklaamedaljonki samppanjalasilla.", alt: "Logosuklaa samppanjalasilla" },
+      { title: "Cocktaillasit", description: "Personoitu suklaa cocktaillasin reunalla.", alt: "Logosuklaa cocktaillasilla" },
     ],
   },
 };
