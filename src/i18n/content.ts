@@ -106,7 +106,7 @@ export const howToOrder: Record<Lang, { heading: string; steps: string[]; footer
   },
 };
 
-export const trust = withNordics({
+export const trust: Record<Lang, { heading: string; stats: { value: string; label: string }[]; clientsLabel: string; testimonials: { quote: string; author: string; company: string }[]; guarantees: string[] }> = {
   lv: {
     heading: "Kāpēc mums uzticas",
     stats: [{ value: "500+", label: "Izpildīti pasūtījumi" }, { value: "10+", label: "Gadu pieredze" }, { value: "98%", label: "Klientu apmierinātība" }, { value: "30+", label: "Valstis" }],
@@ -117,7 +117,7 @@ export const trust = withNordics({
       { quote: "Jau trešo gadu pasūtām šokolādes ar mūsu logo — vienmēr augstākajā līmenī.", author: "Ieva L.", company: "Baltic Events" },
     ],
     guarantees: ["Kvalitātes garantija", "Sertificēta ražotne", "Piegāde visā pasaulē", "Izpilde 14 dienu laikā"],
-});
+  },
   en: {
     heading: "Why clients trust us",
     stats: [{ value: "500+", label: "Orders completed" }, { value: "10+", label: "Years of experience" }, { value: "98%", label: "Client satisfaction" }, { value: "30+", label: "Countries" }],
@@ -676,7 +676,7 @@ export const heroContent: Record<Lang, { title1: string; title2: string; subtitl
   fi: { title1: "Suklaapaino logolla", title2: "yrityksille", subtitle: "Personoitu mainossuklaa — käsintehtyä belgialaisesta suklaasta", ctaButton: "Ilmainen esikatselu", formButton: "Täytä lomake", pricesButton: "Hinnat" },
 };
 
-export const bookBoxContent = withNordics({
+export const bookBoxContent: Record<Lang, { heading: string; subtitle: string; items: { title: string; description: string; alt: string }[] }> = {
   lv: {
     heading: "Šokolādes grāmata",
     subtitle: "Ekskluzīva dāvanu kastīte grāmatas formā ar magnētisku aizdari — personalizējama pilnībā.",
@@ -687,7 +687,7 @@ export const bookBoxContent = withNordics({
       { title: "Konfektes kastītē", description: "Iekšpusē — šokolādes konfektes ar dažādiem pildījumiem premium noformējumā.", alt: "Šokolādes grāmata ar konfektēm iekšpusē" },
       { title: "Konkursa balva", description: "Šokolādes grāmata kā ekskluzīva balva konkursiem un pasākumiem — ar personalizētu dizainu.", alt: "Bērnu grāmatu konkursa balva — šokolādes grāmata ar grāmatas nosaukumu" },
     ],
-});
+  },
   en: {
     heading: "Chocolate Book Box",
     subtitle: "Exclusive gift box in book form with magnetic closure — fully customizable.",
@@ -766,7 +766,7 @@ export const bookBoxContent = withNordics({
   },
 };
 
-export const cakeChocolateContent = withNordics({
+export const cakeChocolateContent: Record<Lang, { heading: string; subtitle: string; items: { title: string; description: string; alt: string }[] }> = {
   lv: {
     heading: "Šokolādes kūkām un konditorejai",
     subtitle: "Logo šokolādes dekorācijas kūkām, cupcakes, eklēriem un citiem konditorejas izstrādājumiem.",
@@ -779,7 +779,7 @@ export const cakeChocolateContent = withNordics({
       { title: "Svētku kūkas", description: "Logo šokolādes dekorācija svētku un svinību kūkām.", alt: "Svētku kūka ar La Mer logo šokolādes dekorāciju" },
       { title: "Šokolādes dekori", description: "Individuālas formas šokolādes ar logo desertiem un konditorejai.", alt: "Šokolādes deserts ar Faceplay logo dekorāciju" },
     ],
-});
+  },
   en: {
     heading: "Chocolate for cakes & pastry",
     subtitle: "Logo chocolate decorations for cakes, cupcakes, eclairs, and other pastry products.",
@@ -872,7 +872,7 @@ export const cakeChocolateContent = withNordics({
   },
 };
 
-export const restaurantChocolateContent = withNordics({
+export const restaurantChocolateContent: Record<Lang, { heading: string; subtitle: string; benefits: string[]; usageNote: string; items: { title: string; description: string; alt: string }[] }> = {
   lv: {
     heading: "Restorānu šokolādes",
     subtitle: "Iedomājieties — jūsu restorāna logotips vai šefpavāra paraksts šokolādē uz katra deserta, kafijas tases vai šampanieša glāzes. Mēs to darām. Pēc pasūtījuma, jūsu dizainā, jūsu zīmolā.",
@@ -890,7 +890,7 @@ export const restaurantChocolateContent = withNordics({
       { title: "Šokolāde šampanieša glāzēm", description: "Logo šokolādes medaljons uz šampanieša vai vīna glāzes.", alt: "Olympic Voodoo Casino logo šokolādes uz šampanieša glāzēm" },
       { title: "Šokolāde kokteiļu glāzēm", description: "Personalizēta šokolāde uz kokteiļa vai kafijas glāzes malas.", alt: "Personalizētas logo šokolādes uz kokteiļu glāzēm" },
     ],
-});
+  },
   en: {
     heading: "Restaurant chocolates",
     subtitle: "Imagine — your restaurant's logo or chef's signature on chocolate, placed on every dessert, coffee cup, or champagne glass. We make it happen. Custom-made, in your design, in your brand.",
@@ -1003,48 +1003,6 @@ export const restaurantChocolateContent = withNordics({
       { title: "Suklaa TripAdvisor-kutsulla", description: "Logosuklaakoriste jälkiruoissa TripAdvisor-arvostelukutsulla.", alt: "Ravintolan jälkiruoka TripAdvisor-logosuklaalla" },
       { title: "Suklaa samppanjalaseille", description: "Logosuklaamedaljonki samppanja- tai viinilasilla.", alt: "Olympic Voodoo Casino logosuklaat samppanjalaseilla" },
       { title: "Suklaa cocktaillaseille", description: "Personoitu suklaa cocktail- tai kahvilasin reunalla.", alt: "Personoidut logosuklaat cocktaillaseilla" },
-    ],
-  },
-  sv: {
-    heading: "Restaurangchoklad",
-    subtitle: "Din restaurangs logotyp eller kockens signatur i choklad på varje dessert. Vi gör det.",
-    benefits: ["Stärker varumärkeskännedomen", "Överraskar gäster", "Uppmuntrar delning på sociala medier"],
-    usageNote: "Kan placeras på tårtor, desserter, glass, med notan, på kaffe- eller cocktailglas.",
-    items: [
-      { title: "Choklad för desserter", description: "Logotypchoklad på premiumdesserter.", alt: "Premiumdessert med logotypchoklad" },
-      { title: "VIP-presenter", description: "Exklusiva varumärkeschoklader i elegant förpackning.", alt: "Chopard chokladpraliner" },
-      { title: "Choklad med notan", description: "Personlig choklad med restaurangnotan.", alt: "Restaurang logotypchoklad med notan" },
-      { title: "TripAdvisor-inbjudan", description: "Chokladdekoration med TripAdvisor-inbjudan.", alt: "Dessert med TripAdvisor choklad" },
-      { title: "Champagneglas", description: "Logotypchokladmedalj på champagneglas.", alt: "Logo choklad på champagneglas" },
-      { title: "Cocktailglas", description: "Personlig choklad på cocktailglasets kant.", alt: "Logo choklad på cocktailglas" },
-    ],
-  },
-  no: {
-    heading: "Restaurantsjokolade",
-    subtitle: "Din restaurants logo eller kokkens signatur i sjokolade på hver dessert. Vi gjør det.",
-    benefits: ["Styrker merkevarebevissthet", "Overrasker gjester", "Oppmuntrer deling på sosiale medier"],
-    usageNote: "Kan plasseres på kaker, desserter, iskrem, ved regningen, på kaffe- eller cocktailglass.",
-    items: [
-      { title: "Sjokolade for desserter", description: "Logo sjokolade på premiumdesserter.", alt: "Premiumdessert med logo sjokolade" },
-      { title: "VIP-gaver", description: "Eksklusive merkevare-sjokolader i elegant emballasje.", alt: "Chopard sjokoladepraliner" },
-      { title: "Sjokolade med regningen", description: "Personlig sjokolade med restaurantregningen.", alt: "Restaurant logo sjokolade med regningen" },
-      { title: "TripAdvisor-invitasjon", description: "Sjokoladedekorasjon med TripAdvisor-invitasjon.", alt: "Dessert med TripAdvisor sjokolade" },
-      { title: "Champagneglass", description: "Logo sjokolademedaljong på champagneglass.", alt: "Logo sjokolade på champagneglass" },
-      { title: "Cocktailglass", description: "Personlig sjokolade på cocktailglasskanten.", alt: "Logo sjokolade på cocktailglass" },
-    ],
-  },
-  fi: {
-    heading: "Ravintolasuklaat",
-    subtitle: "Ravintolasi logo tai kokin allekirjoitus suklaassa jokaisella jälkiruoalla. Me teemme sen.",
-    benefits: ["Vahvistaa brändin tunnettuutta", "Yllättää vieraat", "Kannustaa jakamaan sosiaalisessa mediassa"],
-    usageNote: "Voidaan asettaa kakuille, jälkiruoille, jäätelöön, laskun kanssa, kahvi- tai cocktaillasille.",
-    items: [
-      { title: "Suklaa jälkiruoille", description: "Logosuklaa premium-jälkiruoilla.", alt: "Premium jälkiruoka logosuklaalla" },
-      { title: "VIP-lahjat", description: "Eksklusiiviset brändisuklaat elegantissa pakkauksessa.", alt: "Chopard suklaapraliinit" },
-      { title: "Suklaa laskun kanssa", description: "Personoitu suklaa ravintolalaskun kanssa.", alt: "Ravintolan logosuklaat laskun kanssa" },
-      { title: "TripAdvisor-kutsu", description: "Suklaakoriste TripAdvisor-arvostelukutsulla.", alt: "Jälkiruoka TripAdvisor suklaalla" },
-      { title: "Samppanjalasit", description: "Logosuklaamedaljonki samppanjalasilla.", alt: "Logosuklaa samppanjalasilla" },
-      { title: "Cocktaillasit", description: "Personoitu suklaa cocktaillasin reunalla.", alt: "Logosuklaa cocktaillasilla" },
     ],
   },
 };
