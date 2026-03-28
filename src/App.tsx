@@ -27,6 +27,8 @@ const RuGiftIdeas = lazy(() => import("./pages/RuGiftIdeas.tsx"));
 const EtGiftIdeas = lazy(() => import("./pages/EtGiftIdeas.tsx"));
 const LtGiftIdeas = lazy(() => import("./pages/LtGiftIdeas.tsx"));
 const LangPage = lazy(() => import("./pages/LangPage.tsx"));
+const BlogPage = lazy(() => import("./pages/BlogPage.tsx"));
+const BlogPostPage = lazy(() => import("./pages/BlogPostPage.tsx"));
 const NotFound = lazy(() => import("./pages/NotFound.tsx"));
 
 const queryClient = new QueryClient();
@@ -54,19 +56,39 @@ const App = () => (
             {/* EN routes */}
             <Route path="/en" element={<EnIndex />} />
             <Route path="/en/corporate-gift-ideas" element={<EnGiftIdeas />} />
+            <Route path="/en/blog" element={<BlogPage lang="en" />} />
+            <Route path="/en/blog/:slug" element={<BlogPostPage lang="en" />} />
             <Route path="/en/:slug" element={<LangPage lang="en" />} />
             {/* RU routes */}
             <Route path="/ru" element={<RuIndex />} />
             <Route path="/ru/idei-korporativnyh-podarkov" element={<RuGiftIdeas />} />
+            <Route path="/ru/blog" element={<BlogPage lang="ru" />} />
+            <Route path="/ru/blog/:slug" element={<BlogPostPage lang="ru" />} />
             <Route path="/ru/:slug" element={<LangPage lang="ru" />} />
             {/* ET routes */}
             <Route path="/et" element={<EtIndex />} />
             <Route path="/et/korporatiiv-kingituste-ideed" element={<EtGiftIdeas />} />
+            <Route path="/et/blogi" element={<BlogPage lang="et" />} />
+            <Route path="/et/blogi/:slug" element={<BlogPostPage lang="et" />} />
             <Route path="/et/:slug" element={<LangPage lang="et" />} />
             {/* LT routes */}
             <Route path="/lt" element={<LtIndex />} />
             <Route path="/lt/korporatyviniu-dovanu-idejos" element={<LtGiftIdeas />} />
+            <Route path="/lt/blogas" element={<BlogPage lang="lt" />} />
+            <Route path="/lt/blogas/:slug" element={<BlogPostPage lang="lt" />} />
             <Route path="/lt/:slug" element={<LangPage lang="lt" />} />
+            {/* SV routes */}
+            <Route path="/sv/blogg" element={<BlogPage lang="sv" />} />
+            <Route path="/sv/blogg/:slug" element={<BlogPostPage lang="sv" />} />
+            {/* NO routes */}
+            <Route path="/no/blogg" element={<BlogPage lang="no" />} />
+            <Route path="/no/blogg/:slug" element={<BlogPostPage lang="no" />} />
+            {/* FI routes */}
+            <Route path="/fi/blogi" element={<BlogPage lang="fi" />} />
+            <Route path="/fi/blogi/:slug" element={<BlogPostPage lang="fi" />} />
+            {/* LV blog */}
+            <Route path="/blogs" element={<BlogPage lang="lv" />} />
+            <Route path="/blogs/:slug" element={<BlogPostPage lang="lv" />} />
             {/* Catch-all */}
             <Route path="*" element={<NotFound />} />
           </Routes>
