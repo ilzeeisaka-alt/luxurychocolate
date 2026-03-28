@@ -8,6 +8,9 @@ const shopUrls: Record<Lang, string> = {
   ru: "https://www.luxurychocolatesia.lv/internet-magazin-produkti/",
   et: "https://www.luxurychocolatesia.lv/e-pood/",
   lt: "https://www.luxurychocolatesia.lv/internetine-parduotuve/",
+  sv: "https://www.luxurychocolatesia.lv/online-shop-products/",
+  no: "https://www.luxurychocolatesia.lv/online-shop-products/",
+  fi: "https://www.luxurychocolatesia.lv/online-shop-products/",
 };
 
 const shopContent: Record<
@@ -58,6 +61,33 @@ const shopContent: Record<
     badge2: "🎁 Dovanų rinkiniai",
     badge3: "🏷️ Su jūsų logotipu",
     uploadBtn: "Įkelkite savo logotipą ar nuotrauką",
+  },
+  sv: {
+    heading: "Webbshop",
+    subtitle: "Välj från vårt breda sortiment och beställ choklad med din logotyp online.",
+    cta: "Beställ nu med din logotyp",
+    badge1: "🍫 Premium choklad",
+    badge2: "🎁 Presentförpackningar",
+    badge3: "🏷️ Med din logotyp",
+    uploadBtn: "Ladda upp din logotyp eller bild",
+  },
+  no: {
+    heading: "Nettbutikk",
+    subtitle: "Velg fra vårt brede utvalg og bestill sjokolade med din logo på nett.",
+    cta: "Bestill nå med din logo",
+    badge1: "🍫 Premium sjokolade",
+    badge2: "🎁 Gavesett",
+    badge3: "🏷️ Med din logo",
+    uploadBtn: "Last opp din logo eller bilde",
+  },
+  fi: {
+    heading: "Verkkokauppa",
+    subtitle: "Valitse laajasta valikoimastamme ja tilaa suklaat logollasi verkossa.",
+    cta: "Tilaa nyt logollasi",
+    badge1: "🍫 Premium suklaat",
+    badge2: "🎁 Lahjapaketit",
+    badge3: "🏷️ Logollasi",
+    uploadBtn: "Lataa logosi tai kuva",
   },
 };
 

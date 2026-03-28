@@ -66,6 +66,39 @@ const navItems: Record<Lang, NavItem[]> = {
     { label: "Parduotuvė", to: "https://www.luxurychocolatesia.lv/internetine-parduotuve/" },
     { label: "Kontaktai", to: "#kontakti" },
   ],
+  sv: [
+    { label: "Choklad med logotyp", to: "/en/chocolate-with-logo" },
+    { label: "Kundpresenter", to: "/en/client-gifts" },
+    { label: "Reklam", to: "/en/promotional-chocolate" },
+    { label: "Restauranger", to: "#restoraniem" },
+    { label: "Jul", to: "/en/christmas-corporate-chocolate" },
+    { label: "Chokladbok", to: "/en/chocolate-book-box" },
+    { label: "Presentidéer", to: "/en/corporate-gift-ideas" },
+    { label: "Butik", to: "https://www.luxurychocolatesia.lv/online-shop-products/" },
+    { label: "Kontakt", to: "#kontakti" },
+  ],
+  no: [
+    { label: "Sjokolade med logo", to: "/en/chocolate-with-logo" },
+    { label: "Kundegaver", to: "/en/client-gifts" },
+    { label: "Reklame", to: "/en/promotional-chocolate" },
+    { label: "Restauranter", to: "#restoraniem" },
+    { label: "Jul", to: "/en/christmas-corporate-chocolate" },
+    { label: "Sjokoladebok", to: "/en/chocolate-book-box" },
+    { label: "Gaveidéer", to: "/en/corporate-gift-ideas" },
+    { label: "Butikk", to: "https://www.luxurychocolatesia.lv/online-shop-products/" },
+    { label: "Kontakt", to: "#kontakti" },
+  ],
+  fi: [
+    { label: "Suklaa logolla", to: "/en/chocolate-with-logo" },
+    { label: "Asiakaslahjat", to: "/en/client-gifts" },
+    { label: "Mainonta", to: "/en/promotional-chocolate" },
+    { label: "Ravintolat", to: "#restoraniem" },
+    { label: "Joulu", to: "/en/christmas-corporate-chocolate" },
+    { label: "Suklaakirja", to: "/en/chocolate-book-box" },
+    { label: "Lahjaideat", to: "/en/corporate-gift-ideas" },
+    { label: "Kauppa", to: "https://www.luxurychocolatesia.lv/online-shop-products/" },
+    { label: "Yhteystiedot", to: "#kontakti" },
+  ],
 };
 
 const homePaths: Record<Lang, string> = {
@@ -74,6 +107,9 @@ const homePaths: Record<Lang, string> = {
   ru: "/ru",
   et: "/et",
   lt: "/lt",
+  sv: "/sv",
+  no: "/no",
+  fi: "/fi",
 };
 
 interface NavbarProps {
