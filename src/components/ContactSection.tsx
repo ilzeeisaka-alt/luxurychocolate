@@ -9,6 +9,9 @@ const contactContent: Record<Lang, { heading: string; subtitle: string; role: st
   ru: { heading: "Свяжитесь с нами", subtitle: "Мы поможем выбрать идеальный шоколадный подарок для вашей компании", role: "Руководитель", cta: "Написать", ctaOffer: "Заполнить заявку" },
   et: { heading: "Võtke meiega ühendust", subtitle: "Aitame valida ideaalse šokolaadikingi teie ettevõttele", role: "Juhataja", cta: "Saada e-kiri", ctaOffer: "Täida taotlus" },
   lt: { heading: "Susisiekite su mumis", subtitle: "Padėsime pasirinkti idealią šokolado dovaną jūsų įmonei", role: "Vadovė", cta: "Rašyti el. laišką", ctaOffer: "Pildyti užklausą" },
+  sv: { heading: "Kontakta oss", subtitle: "Vi hjälper dig välja den perfekta chokladpresenten för ditt företag", role: "Chef", cta: "Skicka e-post", ctaOffer: "Skicka förfrågan" },
+  no: { heading: "Kontakt oss", subtitle: "Vi hjelper deg å velge den perfekte sjokoladegaven for din bedrift", role: "Leder", cta: "Send e-post", ctaOffer: "Send forespørsel" },
+  fi: { heading: "Ota yhteyttä", subtitle: "Autamme valitsemaan täydellisen suklaalalahjan yrityksellesi", role: "Johtaja", cta: "Lähetä sähköposti", ctaOffer: "Lähetä tiedustelu" },
 };
 
 interface ContactSectionProps {

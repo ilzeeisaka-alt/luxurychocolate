@@ -8,6 +8,9 @@ const shopUrls: Record<Lang, string> = {
   ru: "https://www.luxurychocolatesia.lv/internet-magazin-produkti/",
   et: "https://www.luxurychocolatesia.lv/e-pood/",
   lt: "https://www.luxurychocolatesia.lv/internetine-parduotuve/",
+  sv: "https://www.luxurychocolatesia.lv/online-shop-products/",
+  no: "https://www.luxurychocolatesia.lv/online-shop-products/",
+  fi: "https://www.luxurychocolatesia.lv/online-shop-products/",
 };
 
 interface HeroSectionProps {
