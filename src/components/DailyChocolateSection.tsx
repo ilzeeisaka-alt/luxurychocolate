@@ -7,12 +7,14 @@ import img3 from "@/assets/daily-chocolate-3.jpg";
 import img4 from "@/assets/daily-chocolate-4.jpg";
 import img5 from "@/assets/daily-chocolate-5.jpg";
 import img6 from "@/assets/daily-chocolate-6.jpg";
+import coffeeHero from "@/assets/daily-chocolate-coffee-hero.jpg";
+import cardHero from "@/assets/daily-chocolate-card-hero.jpg";
 import img7 from "@/assets/daily-chocolate-7.jpg";
 import img8 from "@/assets/daily-chocolate-8.jpg";
 import img9 from "@/assets/daily-chocolate-9.jpg";
 import type { Lang } from "@/i18n/types";
 
-const images = [img1, img2, img3, img4, img5, img6, img7, img8, img9];
+const images = [coffeeHero, cardHero, img1, img2, img3, img4, img5, img6];
 
 const content: Record<Lang, {
   sectionTitle: string;
@@ -180,19 +182,12 @@ const DailyChocolateSection = ({ lang = "lv" }: DailyChocolateSectionProps) => {
           >
             <h3 className="text-xl font-semibold text-foreground mb-3">{t.coffeeTitle}</h3>
             <p className="text-muted-foreground leading-relaxed">{t.coffeeDesc}</p>
-            <div className="mt-6 grid grid-cols-2 gap-3">
+            <div className="mt-6">
               <img
-                src={img3}
+                src={coffeeHero}
                 alt="Logo chocolate with coffee"
-                className="rounded-xl w-full h-40 object-cover cursor-pointer hover:scale-105 transition-transform"
-                onClick={() => setLightboxIdx(2)}
-                loading="lazy"
-              />
-              <img
-                src={img4}
-                alt="Branded chocolate with coffee"
-                className="rounded-xl w-full h-40 object-cover cursor-pointer hover:scale-105 transition-transform"
-                onClick={() => setLightboxIdx(3)}
+                className="rounded-xl w-full h-56 object-cover cursor-pointer hover:scale-[1.02] transition-transform"
+                onClick={() => setLightboxIdx(0)}
                 loading="lazy"
               />
             </div>
@@ -207,19 +202,12 @@ const DailyChocolateSection = ({ lang = "lv" }: DailyChocolateSectionProps) => {
           >
             <h3 className="text-xl font-semibold text-foreground mb-3">{t.cardTitle}</h3>
             <p className="text-muted-foreground leading-relaxed">{t.cardDesc}</p>
-            <div className="mt-6 grid grid-cols-2 gap-3">
+            <div className="mt-6">
               <img
-                src={img5}
+                src={cardHero}
                 alt="Chocolate business card"
-                className="rounded-xl w-full h-40 object-cover cursor-pointer hover:scale-105 transition-transform"
-                onClick={() => setLightboxIdx(4)}
-                loading="lazy"
-              />
-              <img
-                src={img6}
-                alt="Chocolate compliment card"
-                className="rounded-xl w-full h-40 object-cover cursor-pointer hover:scale-105 transition-transform"
-                onClick={() => setLightboxIdx(5)}
+                className="rounded-xl w-full h-56 object-cover cursor-pointer hover:scale-[1.02] transition-transform"
+                onClick={() => setLightboxIdx(1)}
                 loading="lazy"
               />
             </div>
