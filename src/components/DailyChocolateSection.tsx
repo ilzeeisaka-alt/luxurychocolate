@@ -12,9 +12,11 @@ import cardHero from "@/assets/daily-chocolate-card-hero.jpg";
 import img7 from "@/assets/daily-chocolate-7.jpg";
 import img8 from "@/assets/daily-chocolate-8.jpg";
 import img9 from "@/assets/daily-chocolate-9.jpg";
+import img10 from "@/assets/daily-chocolate-10.jpg";
+import img11 from "@/assets/daily-chocolate-11.jpg";
 import type { Lang } from "@/i18n/types";
 
-const images = [coffeeHero, cardHero, img1, img2, img3, img4, img5, img6];
+const images = [coffeeHero, cardHero, img1, img2, img3, img4, img5, img6, img10, img11];
 
 const content: Record<Lang, {
   sectionTitle: string;
