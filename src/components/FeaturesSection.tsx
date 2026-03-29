@@ -4,18 +4,18 @@ import { Package, Clock, Award } from "lucide-react";
 const features = [
   {
     icon: Award,
-    title: "Jūsu logo uz šokolādes",
-    description: "Individuāls dizains ar Jūsu uzņēmuma logo, kas atspoguļo zīmola identitāti.",
+    title: "Šokolāde ar logo no 1 gabala",
+    description: "Šokolāde ar logo pasūtījums no 1 gabala — individuāls dizains ar Jūsu uzņēmuma logo un bezmaksas dizaina skices korporatīvajām dāvanām.",
   },
   {
     icon: Package,
-    title: "Sākot no 100 vienībām",
-    description: "Elastīgs pasūtījuma apjoms — no nelielas partijas līdz liela mēroga projektiem.",
+    title: "Ekskluzīvas korporatīvās dāvanas",
+    description: "Beļģu šokolādes dāvanu komplekti ar piegādi visā Latvijā — no reklāmas saldumiem izstādēm līdz premium dāvanu groziem.",
   },
   {
     icon: Clock,
-    title: "Piegāde 14 dienu laikā",
-    description: "Ātra izpilde un uzticama piegāde visā Latvijā un Baltijā.",
+    title: "Ātra izgatavošana 3 darba dienās",
+    description: "Ātra korporatīvo dāvanu izgatavošana 3 darba dienās — personalizētas šokolādes tāfelītes, konfekšu kastes un dāvanu komplekti.",
   },
 ];
 

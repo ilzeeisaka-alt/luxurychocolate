@@ -40,11 +40,11 @@ const content: Record<Lang, {
 }> = {
   lv: {
     sectionTitle: "Ikdienas šokolādes uzņēmumiem",
-    subtitle: "Padariet kafijas pasniegšanu un vizītkaršu izgatavošanu korporatīvāku, brendotāku, izsmalcinātāku un garšīgāku",
-    coffeeTitle: "☕ Logo šokolādes pie kafijas",
-    coffeeDesc: "Neliela šokolāde ar jūsu uzņēmuma logo pie katras kafijas tasītes — elegants un neaizmirstams veids, kā izcelt zīmolu ikdienas biznesa tikšanās, konferencēs un viesu uzņemšanā.",
-    cardTitle: "💼 Logo šokolādes pie vizītkartes",
-    cardDesc: "Pievienojiet šokolādi ar logo savai vizītkartei — tā kļūst par neaizmirstamu komplimentu, kas atšķir jūs no konkurentiem un atstāj garšīgu iespaidu.",
+    subtitle: "Maza šokolāde ar logo pie kafijas pasūtīšana, šokolādes vizītkartes ar uzņēmuma apdruku un individuāla dizaina šokolādes dekori desertiem",
+    coffeeTitle: "☕ Maza šokolāde ar logo pie kafijas",
+    coffeeDesc: "Maza šokolāde ar logo pie kafijas pasūtīšana — elegants veids, kā izcelt zīmolu ikdienas biznesa tikšanās. Personalizētas šokolādes tāfelītes viesnīcu viesiem, restorāniem un korporatīvajām tikšanām.",
+    cardTitle: "💼 Šokolādes vizītkartes ar uzņēmuma apdruku",
+    cardDesc: "Šokolādes vizītkartes ar uzņēmuma apdruku — neaizmirstams kompliments, kas atšķir jūs no konkurentiem. Individuāla dizaina šokolādes dekori desertiem un biznesa tikšanām.",
     chocolateTitle: "Beļģijas šokolādes",
     chocolateStandard: "Standarta garšas",
     chocolateSpecial: "Nestandarta garšas",

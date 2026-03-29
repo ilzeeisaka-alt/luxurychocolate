@@ -67,16 +67,18 @@ const SokoladeVizitkarte = () => (
 `}
     cta="Saņemiet savu personalizēto dizaina skici bez maksas!"
     keywords={[
+      "šokolādes vizītkartes ar uzņēmuma apdruku",
+      "ekskluzīvas korporatīvās dāvanas klientiem ar logo",
+      "personalizēta šokolāde biznesa partneru sveikšanai",
+      "reklāmas saldumi izstādēm un konferencēm",
+      "šokolāde ar logo pasūtījums no 1 gabala",
+      "ātra korporatīvo dāvanu izgatavošana 3 darba dienās",
+      "bezmaksas dizaina skices korporatīvajām dāvanām",
       "šokolāde ar logo",
       "personalizēta šokolāde",
       "biznesa dāvanas",
-      "reklāmas saldumi",
       "korporatīvās dāvanas",
-      "ekskluzīvas dāvanas klientiem",
-      "šokolādes druka",
       "Beļģu šokolāde",
-      "mārketinga suvenīri",
-      "luksusa dāvanas",
       "šokolāde vizītkarte",
     ]}
     faqs={[

@@ -72,17 +72,20 @@ const SokoladePieKafijas = () => (
 `}
     cta="Sāciet veidot sava zīmola saldos mirkļus jau šodien!"
     keywords={[
+      "maza šokolāde ar logo pie kafijas pasūtīšana",
+      "personalizētas šokolādes tāfelītes viesnīcu viesiem",
+      "individuāla dizaina šokolādes dekori desertiem",
+      "reklāmas saldumi izstādēm un konferencēm",
+      "šokolāde ar logo pasūtījums no 1 gabala",
+      "ātra korporatīvo dāvanu izgatavošana 3 darba dienās",
+      "beļģu šokolādes dāvanu komplekti ar piegādi visā Latvijā",
+      "bezmaksas dizaina skices korporatīvajām dāvanām",
       "šokolāde ar logo",
       "šokolāde pie kafijas",
       "reklāmas saldumi",
       "korporatīvās dāvanas",
       "beļģu šokolāde",
       "personalizētas dāvanas uzņēmumiem",
-      "biznesa dāvanas",
-      "luksusa saldumi",
-      "mārketinga dāvanas",
-      "dāvanas klientiem",
-      "šokolādes druka",
     ]}
     faqs={[
       {
