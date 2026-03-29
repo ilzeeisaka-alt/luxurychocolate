@@ -19,6 +19,7 @@ const KorporativoDavanuCelvedis = lazy(() => import("./pages/KorporativoDavanuCe
 const KorporativoDavanuIdejas = lazy(() => import("./pages/KorporativoDavanuIdejas.tsx"));
 const SokoladesGramata = lazy(() => import("./pages/SokoladesGramata.tsx"));
 const SokoladePieKafijas = lazy(() => import("./pages/SokoladePieKafijas.tsx"));
+const SokoladeVizitkarte = lazy(() => import("./pages/SokoladeVizitkarte.tsx"));
 const EnIndex = lazy(() => import("./pages/EnIndex.tsx"));
 const RuIndex = lazy(() => import("./pages/RuIndex.tsx"));
 const EtIndex = lazy(() => import("./pages/EtIndex.tsx"));
@@ -58,6 +59,7 @@ const App = () => (
             <Route path="/korporativo-davanu-celvedis" element={<KorporativoDavanuCelvedis />} />
             <Route path="/sokolades-gramata" element={<SokoladesGramata />} />
             <Route path="/sokolade-pie-kafijas" element={<SokoladePieKafijas />} />
+            <Route path="/sokolade-vizitkarte" element={<SokoladeVizitkarte />} />
             {/* EN routes */}
             <Route path="/en" element={<EnIndex />} />
             <Route path="/en/corporate-gift-ideas" element={<EnGiftIdeas />} />

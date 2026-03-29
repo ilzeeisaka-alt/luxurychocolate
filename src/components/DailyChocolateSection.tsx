@@ -354,6 +354,14 @@ const DailyChocolateSection = ({ lang = "lv" }: DailyChocolateSectionProps) => {
                 />
               ))}
             </div>
+            {lang === "lv" && (
+              <Link
+                to="/sokolade-vizitkarte"
+                className="inline-block mt-4 text-primary text-sm font-medium hover:underline"
+              >
+                Lasīt vairāk par šokolādi kā vizītkarti →
+              </Link>
+            )}
           </motion.div>
         </div>
 
