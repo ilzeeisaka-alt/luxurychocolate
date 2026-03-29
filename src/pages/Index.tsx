@@ -28,8 +28,8 @@ const Index = () => {
   const t = heroContent.lv;
 
   useSeo({
-    title: "Šokolādes ar logo uzņēmumiem | Premium korporatīvās dāvanas",
-    description: "Ekskluzīvas šokolādes ar logo uzņēmumiem. Premium korporatīvās dāvanas klientiem, partneriem un pasākumiem ar personalizētu šokolādes apdruku.",
+    title: "Šokolāde ar logo & Korporatīvās dāvanas",
+    description: "Premium korporatīvās dāvanas un personalizēta šokolāde ar logo. Ekskluzīvi dāvanu komplekti uzņēmumiem. Beļģu šokolāde, ātra izpilde, pasūtījumi jau no 1 gab.",
     path: "/",
   });
 
