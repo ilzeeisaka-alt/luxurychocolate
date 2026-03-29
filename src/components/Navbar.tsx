@@ -13,6 +13,7 @@ interface NavItem {
 const navItems: Record<Lang, NavItem[]> = {
   lv: [
     { label: "Šokolādes ar logo", to: "/sokolades-ar-logo" },
+    { label: "Ikdienas", to: "#ikdienas" },
     { label: "Klientu dāvanas", to: "/sokolades-klientu-davanam" },
     { label: "Reklāmas šokolāde", to: "/reklamas-sokolade" },
     { label: "Restorāniem", to: "#restoraniem" },
@@ -25,6 +26,7 @@ const navItems: Record<Lang, NavItem[]> = {
   ],
   en: [
     { label: "Chocolate with Logo", to: "/en/chocolate-with-logo" },
+    { label: "Daily", to: "#ikdienas" },
     { label: "Client Gifts", to: "/en/client-gifts" },
     { label: "Promotional", to: "/en/promotional-chocolate" },
     { label: "For Restaurants", to: "#restoraniem" },
@@ -37,6 +39,7 @@ const navItems: Record<Lang, NavItem[]> = {
   ],
   ru: [
     { label: "Шоколад с логотипом", to: "/ru/shokolad-s-logotipom" },
+    { label: "Ежедневные", to: "#ikdienas" },
     { label: "Подарки клиентам", to: "/ru/podarki-klientam" },
     { label: "Рекламный", to: "/ru/reklamniy-shokolad" },
     { label: "Для ресторанов", to: "#restoraniem" },
@@ -49,6 +52,7 @@ const navItems: Record<Lang, NavItem[]> = {
   ],
   et: [
     { label: "Šokolaad logoga", to: "/et/sokolaad-logoga" },
+    { label: "Igapäevane", to: "#ikdienas" },
     { label: "Kliendikingitused", to: "/et/kingitused-klientidele" },
     { label: "Reklaamšokolaad", to: "/et/reklaam-sokolaad" },
     { label: "Restoranidele", to: "#restoraniem" },
@@ -61,6 +65,7 @@ const navItems: Record<Lang, NavItem[]> = {
   ],
   lt: [
     { label: "Šokoladas su logotipu", to: "/lt/sokoladas-su-logotipu" },
+    { label: "Kasdieniai", to: "#ikdienas" },
     { label: "Dovanos klientams", to: "/lt/dovanos-klientams" },
     { label: "Reklaminis", to: "/lt/reklaminis-sokoladas" },
     { label: "Restoranams", to: "#restoraniem" },
@@ -73,6 +78,7 @@ const navItems: Record<Lang, NavItem[]> = {
   ],
   sv: [
     { label: "Choklad med logotyp", to: "/en/chocolate-with-logo" },
+    { label: "Daglig", to: "#ikdienas" },
     { label: "Kundpresenter", to: "/en/client-gifts" },
     { label: "Reklam", to: "/en/promotional-chocolate" },
     { label: "Restauranger", to: "#restoraniem" },
@@ -85,6 +91,7 @@ const navItems: Record<Lang, NavItem[]> = {
   ],
   no: [
     { label: "Sjokolade med logo", to: "/en/chocolate-with-logo" },
+    { label: "Daglig", to: "#ikdienas" },
     { label: "Kundegaver", to: "/en/client-gifts" },
     { label: "Reklame", to: "/en/promotional-chocolate" },
     { label: "Restauranter", to: "#restoraniem" },
@@ -97,6 +104,7 @@ const navItems: Record<Lang, NavItem[]> = {
   ],
   fi: [
     { label: "Suklaa logolla", to: "/en/chocolate-with-logo" },
+    { label: "Päivittäiset", to: "#ikdienas" },
     { label: "Asiakaslahjat", to: "/en/client-gifts" },
     { label: "Mainonta", to: "/en/promotional-chocolate" },
     { label: "Ravintolat", to: "#restoraniem" },

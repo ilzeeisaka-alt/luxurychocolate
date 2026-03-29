@@ -8,6 +8,7 @@ import TrustSection from "@/components/TrustSection";
 import ProductsSection from "@/components/ProductsSection";
 import CakeChocolateSection from "@/components/CakeChocolateSection";
 import RestaurantChocolateSection from "@/components/RestaurantChocolateSection";
+import DailyChocolateSection from "@/components/DailyChocolateSection";
 import BookBoxSection from "@/components/BookBoxSection";
 import SeoContentSection from "@/components/SeoContentSection";
 import FaqSection from "@/components/FaqSection";
@@ -46,6 +47,7 @@ const Index = () => {
       <TrustSection />
       <ProductsSection />
       <ShopSection onCtaClick={() => setModalOpen(true)} />
+      <DailyChocolateSection lang="lv" onCtaClick={() => setModalOpen(true)} />
       <CakeChocolateSection />
       <RestaurantChocolateSection />
       <BookBoxSection />
