@@ -138,7 +138,7 @@ export const relatedPages: Record<string, RelatedPage[]> = {
 
 // Mapping of equivalent pages across languages for hreflang
 export const hreflangMap: Record<string, Record<string, string>> = {
-  "/": { lv: "/", en: "/en", ru: "/ru", et: "/et", lt: "/lt" },
+  "/": { lv: "/", en: "/en", ru: "/ru", et: "/et", lt: "/lt", sv: "/sv", no: "/no", fi: "/fi" },
   "/sokolades-ar-logo": { lv: "/sokolades-ar-logo", en: "/en/chocolate-with-logo", ru: "/ru/shokolad-s-logotipom", et: "/et/sokolaad-logoga", lt: "/lt/sokoladas-su-logotipu" },
   "/ziemassvetku-korporativas-sokolades": { lv: "/ziemassvetku-korporativas-sokolades", en: "/en/christmas-corporate-chocolate", ru: "/ru/rozhdestvenskij-shokolad", et: "/et/joulu-sokolaad", lt: "/lt/kaledinis-sokoladas" },
   "/reklamas-sokolade": { lv: "/reklamas-sokolade", en: "/en/promotional-chocolate", ru: "/ru/reklamniy-shokolad", et: "/et/reklaam-sokolaad", lt: "/lt/reklaminis-sokoladas" },

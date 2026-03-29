@@ -22,6 +22,9 @@ const EnIndex = lazy(() => import("./pages/EnIndex.tsx"));
 const RuIndex = lazy(() => import("./pages/RuIndex.tsx"));
 const EtIndex = lazy(() => import("./pages/EtIndex.tsx"));
 const LtIndex = lazy(() => import("./pages/LtIndex.tsx"));
+const SvIndex = lazy(() => import("./pages/SvIndex.tsx"));
+const NoIndex = lazy(() => import("./pages/NoIndex.tsx"));
+const FiIndex = lazy(() => import("./pages/FiIndex.tsx"));
 const EnGiftIdeas = lazy(() => import("./pages/EnGiftIdeas.tsx"));
 const RuGiftIdeas = lazy(() => import("./pages/RuGiftIdeas.tsx"));
 const EtGiftIdeas = lazy(() => import("./pages/EtGiftIdeas.tsx"));
@@ -78,12 +81,15 @@ const App = () => (
             <Route path="/lt/blogas/:slug" element={<BlogPostPage lang="lt" />} />
             <Route path="/lt/:slug" element={<LangPage lang="lt" />} />
             {/* SV routes */}
+            <Route path="/sv" element={<SvIndex />} />
             <Route path="/sv/blogg" element={<BlogPage lang="sv" />} />
             <Route path="/sv/blogg/:slug" element={<BlogPostPage lang="sv" />} />
             {/* NO routes */}
+            <Route path="/no" element={<NoIndex />} />
             <Route path="/no/blogg" element={<BlogPage lang="no" />} />
             <Route path="/no/blogg/:slug" element={<BlogPostPage lang="no" />} />
             {/* FI routes */}
+            <Route path="/fi" element={<FiIndex />} />
             <Route path="/fi/blogi" element={<BlogPage lang="fi" />} />
             <Route path="/fi/blogi/:slug" element={<BlogPostPage lang="fi" />} />
             {/* LV blog */}

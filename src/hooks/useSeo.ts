@@ -17,6 +17,9 @@ const seoKeywords: Record<string, string> = {
   "/ru": "печать на шоколаде, персонализированный рекламный шоколад, бельгийский шоколад, шоколадные подарки, корпоративные подарки, промо подарки, корпоративные шоколадные подарки, промо шоколадные подарки, нанесение на шоколад",
   "/et": "šokolaadi trükk, personaliseeritud reklaamšokolaad, Belgia šokolaad, šokolaadi kingitused, korporatiivsed kingitused, reklaamkingitused, korporatiivsed šokolaadi kingitused, reklaam šokolaadi kingitused, trükk šokolaadile",
   "/lt": "šokolado spauda, personalizuotas reklaminis šokoladas, belgiškas šokoladas, šokolado dovanos, korporatyvinės dovanos, reklaminės dovanos, korporatyvinės šokolado dovanos, reklaminės šokolado dovanos, spauda ant šokolado",
+  "/sv": "chokladtryck, personlig reklamchoklad, belgisk choklad, chokladpresenter, företagspresenter, reklamgåvor, choklad med logotyp, presentförpackningar",
+  "/no": "sjokoladetrykk, personlig reklamesjokolade, belgisk sjokolade, sjokoladegaver, bedriftsgaver, reklamegaver, sjokolade med logo, gavesett",
+  "/fi": "suklaapaino, personoitu mainossuklaa, belgialainen suklaa, suklaalahja, yrityslahjat, mainoslahjat, suklaa logolla, lahjapakkaukset",
 };
 
 function setMeta(name: string, content: string, attribute = "name") {
