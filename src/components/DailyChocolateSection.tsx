@@ -14,7 +14,7 @@ import img8 from "@/assets/daily-chocolate-8.jpg";
 import img9 from "@/assets/daily-chocolate-9.jpg";
 import type { Lang } from "@/i18n/types";
 
-const images = [img1, img2, img3, img4, img5, img6, img7, img8, img9];
+const images = [coffeeHero, cardHero, img1, img2, img3, img4, img5, img6];
 
 const content: Record<Lang, {
   sectionTitle: string;
