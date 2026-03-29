@@ -9,6 +9,8 @@ import img5 from "@/assets/daily-chocolate-5.jpg";
 import img6 from "@/assets/daily-chocolate-6.jpg";
 import coffeeHero from "@/assets/daily-chocolate-coffee-hero.jpg";
 import cardHero from "@/assets/daily-chocolate-card-hero.jpg";
+import cardImg2 from "@/assets/daily-chocolate-card-2.jpg";
+import cardImg3 from "@/assets/daily-chocolate-card-3.jpg";
 import img7 from "@/assets/daily-chocolate-7.jpg";
 import img8 from "@/assets/daily-chocolate-8.jpg";
 import img9 from "@/assets/daily-chocolate-9.jpg";
@@ -16,7 +18,7 @@ import img10 from "@/assets/daily-chocolate-10.jpg";
 import img11 from "@/assets/daily-chocolate-11.jpg";
 import type { Lang } from "@/i18n/types";
 
-const images = [coffeeHero, cardHero, img1, img2, img3, img4, img5, img6, img10, img11];
+const images = [coffeeHero, cardHero, cardImg2, cardImg3, img1, img2, img3, img4, img5, img6, img10, img11];
 
 const content: Record<Lang, {
   sectionTitle: string;
