@@ -18,6 +18,7 @@ import FooterSection from "@/components/FooterSection";
 import ContactSection from "@/components/ContactSection";
 import ShopSection from "@/components/ShopSection";
 import RestaurantChocolateSection from "@/components/RestaurantChocolateSection";
+import DailyChocolateSection from "@/components/DailyChocolateSection";
 import OfferModal from "@/components/OfferModal";
 import { useSeo } from "@/hooks/useSeo";
 import { heroContent } from "@/i18n/content";
@@ -47,6 +48,7 @@ const SvIndex = () => {
       <ProductsSection lang="sv" />
       <ShopSection lang="sv" onCtaClick={() => setModalOpen(true)} />
       <BookBoxSection lang="sv" />
+      <DailyChocolateSection lang="sv" onCtaClick={() => setModalOpen(true)} />
       <RestaurantChocolateSection lang="sv" />
       <FaqSection lang="sv" />
       <IdeasSection lang="sv" />
