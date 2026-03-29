@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import Lightbox from "@/components/Lightbox";
 import img1 from "@/assets/daily-chocolate-1.jpg";
@@ -322,6 +323,14 @@ const DailyChocolateSection = ({ lang = "lv" }: DailyChocolateSectionProps) => {
                 loading="lazy"
               />
             </div>
+            {lang === "lv" && (
+              <Link
+                to="/sokolade-pie-kafijas"
+                className="inline-block mt-4 text-primary text-sm font-medium hover:underline"
+              >
+                Lasīt vairāk par šokolādi pie kafijas →
+              </Link>
+            )}
           </motion.div>
 
           <motion.div
