@@ -199,13 +199,13 @@ export const trust: Record<Lang, { heading: string; stats: { value: string; labe
 
 export const products: Record<Lang, { heading: string; subtitle: string; items: { title: string; description: string; alt: string }[] }> = {
   lv: {
-    heading: "Mūsu šokolādes",
+    heading: "Mūsu piedāvājums: No personalizētām šokolādes tāfelītēm līdz dāvanu komplektiem",
     subtitle: "Katrs produkts tiek pielāgots Jūsu zīmolam — no dizaina līdz garšai.",
     items: [
-      { title: "Šokolādes tāfelītes", description: "Ar Jūsu uzņēmuma logo un individuālu iepakojumu.", alt: "Personalizēta šokolādes tāfelīte ar uzņēmuma logo un individuālu iepakojumu" },
-      { title: "Dāvanu komplekti", description: "Eleganta kastīte ar 5 rokām gatavotām konfektēm.", alt: "Eleganta korporatīvā šokolādes dāvanu kastīte ar konfektēm" },
-      { title: "Šokolādes konfektes", description: "Pralines ar krēma pildījumu un personalizētu dizainu.", alt: "Premium šokolādes pralines ar krēma pildījumu un personalizētu dizainu" },
-      { title: "Šokolādes grāmata", description: "Dāvanu kastīte grāmatas formā ar magnētisku aizdari — ideāla bibliotēkām un pasākumiem.", alt: "Šokolādes grāmata — dāvanu kastīte ar magnētisku aizdari" },
+      { title: "Šokolādes tāfelītes", description: "Ar Jūsu uzņēmuma logo un individuālu iepakojumu.", alt: "Personalizēta beļģu šokolāde ar uzņēmuma logo — dāvana klientiem" },
+      { title: "Dāvanu komplekti", description: "Eleganta kastīte ar 5 rokām gatavotām konfektēm.", alt: "Ekskluzīva dāvanu kaste 'Chocolate Book' ar magnētisko aizdari" },
+      { title: "Šokolādes konfektes", description: "Pralines ar krēma pildījumu un personalizētu dizainu.", alt: "Šokolādes logo druka uz luksusa konfektēm" },
+      { title: "Šokolādes grāmata", description: "Dāvanu kastīte grāmatas formā ar magnētisku aizdari — ideāla bibliotēkām un pasākumiem.", alt: "Ekskluzīva šokolādes grāmata — dāvanu kastīte grāmatas formā ar magnētisku aizdari" },
     ],
   },
   en: {
@@ -593,7 +593,7 @@ export const ctaContent: Record<Lang, { heading: string; description: string; bu
 
 export const seoContent: Record<Lang, { heading: string; paragraphs: { text: string; links?: { text: string; to: string }[] }[] }> = {
   lv: {
-    heading: "Šokolādes ar logo uzņēmumiem",
+    heading: "Kāpēc izvēlēties Luxury Chocolate savam uzņēmumam?",
     paragraphs: [
       { text: "Mūsu {link1} ir viena no populārākajām korporatīvajām dāvanām, kas vēlas radīt pozitīvu iespaidu uz klientiem un partneriem. Personalizēta šokolāde ar uzņēmuma logo apvieno izsmalcinātu garšu ar efektīvu zīmola komunikāciju.", links: [{ text: "šokolādes ar logo uzņēmumiem", to: "/sokolades-ar-logo" }] },
       { text: "Uzņēmumi bieži izmanto šokolādes ar apdruku dažādos biznesa pasākumos — konferencēs, izstādēs, klientu tikšanās reizēs. Īpaši populāras ir {link1} izstādēm un pasākumiem, kā arī {link2} svētku sezonā.", links: [{ text: "reklāmas šokolādes ar logo", to: "/reklamas-sokolade" }, { text: "Ziemassvētku korporatīvās šokolādes", to: "/ziemassvetku-korporativas-sokolades" }] },
@@ -666,7 +666,7 @@ export const seoContent: Record<Lang, { heading: string; paragraphs: { text: str
 };
 
 export const heroContent: Record<Lang, { title1: string; title2: string; subtitle: string; ctaButton: string; formButton: string; pricesButton: string }> = {
-  lv: { title1: "Ekskluzīva šokolāde ar logo", title2: "un korporatīvās dāvanas", subtitle: "Personalizētas reklāmas šokolādes — roku darbs no Beļģu šokolādes", ctaButton: "Bezmaksas dizaina apskate", formButton: "Aizpildīt pieteikumu", pricesButton: "Cenas" },
+  lv: { title1: "Ekskluzīva šokolāde ar logo", title2: "un premium korporatīvās dāvanas", subtitle: "Personalizētas reklāmas šokolādes — roku darbs no Beļģu šokolādes", ctaButton: "Bezmaksas dizaina apskate", formButton: "Aizpildīt pieteikumu", pricesButton: "Cenas" },
   en: { title1: "Exclusive Chocolate with Logo", title2: "& Corporate Gifts", subtitle: "Personalized Promotional Chocolates — Custom Hand Made from Belgian Chocolate", ctaButton: "Free design preview", formButton: "Fill in the form", pricesButton: "Prices" },
   ru: { title1: "Эксклюзивный шоколад с логотипом", title2: "и корпоративные подарки", subtitle: "Персонализированный рекламный шоколад — ручная работа из бельгийского шоколада", ctaButton: "Бесплатный макет дизайна", formButton: "Заполнить заявку", pricesButton: "Цены" },
   et: { title1: "Eksklusiivne šokolaad logoga", title2: "ja ärikingitused", subtitle: "Personaliseeritud reklaamšokolaad — käsitööna valmistatud Belgia šokolaadist", ctaButton: "Tasuta disaini eelvaade", formButton: "Täida taotlus", pricesButton: "Hinnad" },
