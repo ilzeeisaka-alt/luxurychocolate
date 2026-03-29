@@ -182,19 +182,12 @@ const DailyChocolateSection = ({ lang = "lv" }: DailyChocolateSectionProps) => {
           >
             <h3 className="text-xl font-semibold text-foreground mb-3">{t.coffeeTitle}</h3>
             <p className="text-muted-foreground leading-relaxed">{t.coffeeDesc}</p>
-            <div className="mt-6 grid grid-cols-2 gap-3">
+            <div className="mt-6">
               <img
-                src={img3}
+                src={coffeeHero}
                 alt="Logo chocolate with coffee"
-                className="rounded-xl w-full h-40 object-cover cursor-pointer hover:scale-105 transition-transform"
-                onClick={() => setLightboxIdx(2)}
-                loading="lazy"
-              />
-              <img
-                src={img4}
-                alt="Branded chocolate with coffee"
-                className="rounded-xl w-full h-40 object-cover cursor-pointer hover:scale-105 transition-transform"
-                onClick={() => setLightboxIdx(3)}
+                className="rounded-xl w-full h-56 object-cover cursor-pointer hover:scale-[1.02] transition-transform"
+                onClick={() => setLightboxIdx(0)}
                 loading="lazy"
               />
             </div>
@@ -209,19 +202,12 @@ const DailyChocolateSection = ({ lang = "lv" }: DailyChocolateSectionProps) => {
           >
             <h3 className="text-xl font-semibold text-foreground mb-3">{t.cardTitle}</h3>
             <p className="text-muted-foreground leading-relaxed">{t.cardDesc}</p>
-            <div className="mt-6 grid grid-cols-2 gap-3">
+            <div className="mt-6">
               <img
-                src={img5}
+                src={cardHero}
                 alt="Chocolate business card"
-                className="rounded-xl w-full h-40 object-cover cursor-pointer hover:scale-105 transition-transform"
-                onClick={() => setLightboxIdx(4)}
-                loading="lazy"
-              />
-              <img
-                src={img6}
-                alt="Chocolate compliment card"
-                className="rounded-xl w-full h-40 object-cover cursor-pointer hover:scale-105 transition-transform"
-                onClick={() => setLightboxIdx(5)}
+                className="rounded-xl w-full h-56 object-cover cursor-pointer hover:scale-[1.02] transition-transform"
+                onClick={() => setLightboxIdx(1)}
                 loading="lazy"
               />
             </div>
