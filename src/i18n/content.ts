@@ -12,7 +12,7 @@ const withNordics = <T>(base: Record<BaseLang, T>): Record<Lang, T> => ({
 export const quickFacts: Record<Lang, { heading: string; facts: string[] }> = {
   lv: {
     heading: "Kāpēc izvēlēties mūs",
-    facts: ["Minimālais pasūtījums: no 50 gab.", "Izgatavošana: 3–10 darba dienas", "Premium Beļģu šokolāde", "Individuāls dizains ar Jūsu logo"],
+    facts: ["Šokolāde ar logo pasūtījums no 1 gabala", "Ātra korporatīvo dāvanu izgatavošana 3 darba dienās", "Premium Beļģu šokolāde (Barry Callebaut)", "Bezmaksas dizaina skices korporatīvajām dāvanām"],
   },
   en: {
     heading: "Why choose us",
@@ -200,12 +200,12 @@ export const trust: Record<Lang, { heading: string; stats: { value: string; labe
 export const products: Record<Lang, { heading: string; subtitle: string; items: { title: string; description: string; alt: string }[] }> = {
   lv: {
     heading: "Mūsu piedāvājums: No personalizētām šokolādes tāfelītēm līdz dāvanu komplektiem",
-    subtitle: "Katrs produkts tiek pielāgots Jūsu zīmolam — no dizaina līdz garšai.",
+    subtitle: "Katrs produkts tiek pielāgots Jūsu zīmolam — no dizaina līdz garšai. Pasūtījumi no 1 gabala, ātra izgatavošana 3–10 darba dienās.",
     items: [
-      { title: "Šokolādes tāfelītes", description: "Ar Jūsu uzņēmuma logo un individuālu iepakojumu.", alt: "Personalizēta beļģu šokolāde ar uzņēmuma logo — dāvana klientiem" },
-      { title: "Dāvanu komplekti", description: "Eleganta kastīte ar 5 rokām gatavotām konfektēm.", alt: "Ekskluzīva dāvanu kaste 'Chocolate Book' ar magnētisko aizdari" },
-      { title: "Šokolādes konfektes", description: "Pralines ar krēma pildījumu un personalizētu dizainu.", alt: "Šokolādes logo druka uz luksusa konfektēm" },
-      { title: "Šokolādes grāmata", description: "Dāvanu kastīte grāmatas formā ar magnētisku aizdari — ideāla bibliotēkām un pasākumiem.", alt: "Ekskluzīva šokolādes grāmata — dāvanu kastīte grāmatas formā ar magnētisku aizdari" },
+      { title: "Šokolādes tāfelītes", description: "Personalizētas šokolādes tāfelītes ar Jūsu uzņēmuma logo — ideālas viesnīcu viesiem un biznesa tikšanām.", alt: "Personalizēta beļģu šokolāde ar uzņēmuma logo — dāvana klientiem" },
+      { title: "Dāvanu komplekti", description: "Beļģu šokolādes dāvanu komplekti ar piegādi visā Latvijā — premium dāvanu grozi ar personalizētu dizainu.", alt: "Ekskluzīva dāvanu kaste 'Chocolate Book' ar magnētisko aizdari" },
+      { title: "Šokolādes konfektes", description: "Personalizētas konfekšu kastes uzņēmuma jubilejai, partneru sveikšanai un ekskluzīvām korporatīvajām dāvanām.", alt: "Šokolādes logo druka uz luksusa konfektēm" },
+      { title: "Šokolādes grāmata", description: "Šokolādes grāmata ar magnētisko aizdari un logo — ekskluzīva dāvanu kastīte bibliotēkām, konkursiem un pasākumiem.", alt: "Ekskluzīva šokolādes grāmata — dāvanu kastīte grāmatas formā ar magnētisku aizdari" },
     ],
   },
   en: {
@@ -283,12 +283,14 @@ export const faqContent: Record<Lang, { heading: string; items: { q: string; a: 
   lv: {
     heading: "Biežāk uzdotie jautājumi",
     items: [
-      { q: "Kāds ir minimālais pasūtījums personalizētām šokolādēm?", a: "Minimālais pasūtījums ir no 50 gab. Tas ir ērts apjoms gan mazākiem pasākumiem, gan lielām korporatīvajām kampaņām." },
-      { q: "Cik ilgi aizņem šokolādes ar logo izgatavošana?", a: "Standarta izgatavošanas laiks ir 3–10 darba dienas no dizaina apstiprināšanas brīža. Steidzamiem pasūtījumiem iespējama ātrāka izpilde." },
-      { q: "Kāda kvalitātes šokolāde tiek izmantota?", a: "Mēs izmantojam tikai premium Beļģu šokolādi — piena, tumšo un balto šokolādi no sertificētām ražotnēm." },
-      { q: "Vai ir iespējams pasūtīt šokolādes ar pilnkrāsu apdruku?", a: "Jā, mēs piedāvājam pilnkrāsu apdruku tieši uz šokolādes virsmas — Jūsu logo, dizains vai jebkurš grafisks motīvs. Apdruka ir pārtikas droša." },
-      { q: "Kādiem pasākumiem piemērotas korporatīvās šokolādes?", a: "Personalizētas šokolādes ir ideālas konferencēm, izstādēm, klientu tikšanām, Ziemassvētku dāvanām, uzņēmuma jubileju pasākumiem, produktu prezentācijām un VIP viesmīlībai." },
-      { q: "Vai piedāvājat piegādi ārpus Latvijas?", a: "Jā, mēs piegādājam personalizētās šokolādes uz vairāk nekā 30 valstīm visā pasaulē." },
+      { q: "Kāds ir minimālais pasūtījums personalizētām šokolādēm?", a: "Minimālais pasūtījums ir no 50 gab. Taču šokolāde ar logo pasūtījums iespējams jau no 1 gabala — ideāli prototipēšanai vai ekskluzīvām dāvanām." },
+      { q: "Cik ātra ir korporatīvo dāvanu izgatavošana?", a: "Ātra korporatīvo dāvanu izgatavošana 3 darba dienās ir mūsu standarts. Pilns izpildes cikls — 3–10 darba dienas no dizaina apstiprināšanas brīža." },
+      { q: "Kāda kvalitātes šokolāde tiek izmantota?", a: "Mēs izmantojam tikai premium Beļģu šokolādi — piena, tumšo un balto šokolādi no sertificētām ražotnēm (Barry Callebaut)." },
+      { q: "Vai ir iespējams pasūtīt šokolādes ar pilnkrāsu apdruku?", a: "Jā, mēs piedāvājam pilnkrāsu apdruku tieši uz šokolādes virsmas — Jūsu logo, dizains vai jebkurš grafisks motīvs. Ideāli piemērots šokolādes vizītkartēm ar uzņēmuma apdruku un individuāla dizaina šokolādes dekoriem desertiem." },
+      { q: "Kādiem pasākumiem piemērotas korporatīvās šokolādes?", a: "Reklāmas saldumi izstādēm un konferencēm, ekskluzīvas korporatīvās dāvanas klientiem ar logo, personalizēta šokolāde biznesa partneru sveikšanai, oriģinālas dāvanas sadarbības partneriem svētkos, personalizētas konfekšu kastes uzņēmuma jubilejai un maza šokolāde ar logo pie kafijas." },
+      { q: "Vai piedāvājat piegādi ārpus Latvijas?", a: "Jā, mēs piegādājam beļģu šokolādes dāvanu komplektus ar piegādi visā Latvijā un uz vairāk nekā 30 valstīm pasaulē." },
+      { q: "Vai piedāvājat bezmaksas dizaina skices?", a: "Jā, mēs piedāvājam bezmaksas dizaina skices korporatīvajām dāvanām 24 stundu laikā. Sazinieties ar mums un saņemiet vizualizāciju bez maksas." },
+      { q: "Kādi specifiski produkti ir pieejami?", a: "Piedāvājam šokolādes grāmatu ar magnētisko aizdari un logo, personalizētas šokolādes tāfelītes viesnīcu viesiem, premium dāvanu grozus ar beļģu šokolādi, kā arī individuāla dizaina šokolādes dekorus desertiem." },
     ],
   },
   en: {
@@ -457,10 +459,10 @@ export const useCasesContent: Record<Lang, { subtitle: string; heading: string; 
     heading: "Kur uzņēmumi izmanto šokolādes ar logo",
     ctaLabel: "Saņemt piedāvājumu",
     items: [
-      { title: "Klientu dāvanām", desc: "Eleganta šokolāde ar Jūsu logo — lai klienti atceras Jūsu uzņēmumu ar pozitīvām emocijām.", link: "/sokolades-klientu-davanam", linkLabel: "Uzzināt vairāk →" },
-      { title: "Konferencēm un pasākumiem", desc: "Kompaktas šokolādes tāfelītes ar logo — ideālas izstādēm, semināriem un biznesa pasākumiem.", link: "/sokolades-konferencem", linkLabel: "Uzzināt vairāk →" },
-      { title: "Partneru sveicieniem", desc: "Premium šokolādes dāvanu komplekti, kas stiprina biznesa attiecības un rada profesionālu iespaidu.", link: "/sokolades-partneru-davanam", linkLabel: "Uzzināt vairāk →" },
-      { title: "Ziemassvētku dāvanām", desc: "Svētku dizains ar Jūsu logo — populārākā korporatīvā dāvana gada nogalē klientiem un darbiniekiem.", link: "/ziemassvetku-korporativas-sokolades", linkLabel: "Uzzināt vairāk →" },
+      { title: "Ekskluzīvas korporatīvās dāvanas klientiem", desc: "Ekskluzīvas korporatīvās dāvanas klientiem ar logo — lai klienti atceras Jūsu uzņēmumu ar pozitīvām emocijām.", link: "/sokolades-klientu-davanam", linkLabel: "Uzzināt vairāk →" },
+      { title: "Reklāmas saldumi izstādēm un konferencēm", desc: "Kompaktas šokolādes tāfelītes ar logo — ideāli reklāmas saldumi izstādēm un konferencēm, semināriem un biznesa pasākumiem.", link: "/sokolades-konferencem", linkLabel: "Uzzināt vairāk →" },
+      { title: "Personalizēta šokolāde partneru sveikšanai", desc: "Personalizēta šokolāde biznesa partneru sveikšanai — premium dāvanu komplekti, kas stiprina attiecības. Oriģinālas dāvanas sadarbības partneriem svētkos.", link: "/sokolades-partneru-davanam", linkLabel: "Uzzināt vairāk →" },
+      { title: "Ziemassvētku dāvanām", desc: "Svētku dizains ar Jūsu logo — populārākā korporatīvā dāvana gada nogalē. Personalizētas konfekšu kastes uzņēmuma jubilejai un svētkiem.", link: "/ziemassvetku-korporativas-sokolades", linkLabel: "Uzzināt vairāk →" },
     ],
   },
   en: {
