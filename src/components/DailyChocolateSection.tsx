@@ -33,6 +33,9 @@ const content: Record<Lang, {
   standardList: string[];
   specialList: string[];
   galleryTitle: string;
+  coffeeAlt: string;
+  cardAlts: string[];
+  galleryAlts: string[];
 }> = {
   lv: {
     sectionTitle: "Ikdienas šokolādes uzņēmumiem",
@@ -47,6 +50,26 @@ const content: Record<Lang, {
     standardList: ["Piena šokolāde", "Baltā šokolāde", "Tumšā šokolāde"],
     specialList: ["Vegāniskā", "Apelsīnu", "Laima", "Zemeņu", "Kapučino", "Karameļu", "Medus"],
     galleryTitle: "Mūsu darbu piemēri",
+    coffeeAlt: "Brendēta šokolāde ar uzņēmuma logo pie kafijas tasītes — korporatīvā viesmīlība",
+    cardAlts: [
+      "Šokolāde ar logo pie vizītkartes — elegants biznesa kompliments",
+      "Personalizēta šokolādes konfekte ar logo pie vizītkartes",
+      "Korporatīvā šokolāde ar logo — vizītkaršu kompliments klientiem",
+    ],
+    galleryAlts: [
+      "Brendēta šokolāde pie kafijas — korporatīvā viesmīlība",
+      "Logo šokolāde pie vizītkartes — biznesa kompliments",
+      "Personalizēta šokolādes konfekte ar vizītkarti",
+      "Korporatīvā šokolāde ar logo — klientu kompliments",
+      "Beļģu šokolāde ar uzņēmuma logo — ikdienas dāvana",
+      "Šokolādes konfektes ar logo drukas piemērs",
+      "Personalizēta šokolāde korporatīvai kafijas pasniegšanai",
+      "Brendēta beļģu šokolāde — dāvana partneriem",
+      "Šokolāde ar logo — konferenču un pasākumu kompliments",
+      "Luksusa šokolādes konfektes ar individuālu logo druku",
+      "Korporatīvā šokolāde ar logo — ikdienas biznesa risinājums",
+      "Ekskluzīva šokolāde ar logo — premium biznesa dāvana",
+    ],
   },
   en: {
     sectionTitle: "Daily Chocolates for Business",
@@ -61,6 +84,26 @@ const content: Record<Lang, {
     standardList: ["Milk chocolate", "White chocolate", "Dark chocolate"],
     specialList: ["Vegan", "Orange", "Lime", "Strawberry", "Cappuccino", "Caramel", "Honey"],
     galleryTitle: "Our Work Examples",
+    coffeeAlt: "Branded chocolate with company logo served with coffee — corporate hospitality",
+    cardAlts: [
+      "Logo chocolate with business card — elegant corporate compliment",
+      "Personalized chocolate with logo paired with business card",
+      "Corporate chocolate with logo — business card compliment for clients",
+    ],
+    galleryAlts: [
+      "Branded chocolate with coffee — corporate hospitality",
+      "Logo chocolate with business card — business compliment",
+      "Personalized chocolate with business card",
+      "Corporate chocolate with logo — client compliment",
+      "Belgian chocolate with company logo — daily gift",
+      "Chocolate with logo print example",
+      "Personalized chocolate for corporate coffee service",
+      "Branded Belgian chocolate — gift for partners",
+      "Logo chocolate — conference and event compliment",
+      "Luxury chocolate with custom logo print",
+      "Corporate logo chocolate — daily business solution",
+      "Exclusive chocolate with logo — premium business gift",
+    ],
   },
   ru: {
     sectionTitle: "Ежедневные шоколадки для бизнеса",
@@ -75,6 +118,20 @@ const content: Record<Lang, {
     standardList: ["Молочный шоколад", "Белый шоколад", "Тёмный шоколад"],
     specialList: ["Веганский", "Апельсиновый", "Лаймовый", "Клубничный", "Капучино", "Карамельный", "Медовый"],
     galleryTitle: "Примеры наших работ",
+    coffeeAlt: "Брендированный шоколад с логотипом компании к кофе — корпоративное гостеприимство",
+    cardAlts: [
+      "Шоколад с логотипом к визитке — элегантный деловой комплимент",
+      "Персонализированная шоколадная конфета с логотипом к визитке",
+      "Корпоративный шоколад с логотипом — комплимент к визиткам для клиентов",
+    ],
+    galleryAlts: [
+      "Брендированный шоколад к кофе", "Шоколад с логотипом к визитке",
+      "Персонализированный шоколад с визиткой", "Корпоративный шоколад — комплимент клиентам",
+      "Бельгийский шоколад с логотипом", "Печать логотипа на шоколаде",
+      "Шоколад для корпоративной подачи кофе", "Брендированный бельгийский шоколад — подарок партнёрам",
+      "Шоколад с логотипом для конференций", "Люксовые конфеты с логотипом",
+      "Корпоративный шоколад — ежедневное решение", "Эксклюзивный шоколад с логотипом — премиум подарок",
+    ],
   },
   et: {
     sectionTitle: "Igapäevane šokolaad ettevõtetele",
@@ -89,6 +146,20 @@ const content: Record<Lang, {
     standardList: ["Piimašokolaad", "Valge šokolaad", "Tume šokolaad"],
     specialList: ["Vegan", "Apelsin", "Laim", "Maasikas", "Cappuccino", "Karamell", "Mesi"],
     galleryTitle: "Meie tööde näited",
+    coffeeAlt: "Logoga šokolaad kohvi kõrval — korporatiivne külalislahkus",
+    cardAlts: [
+      "Logoga šokolaad visiitkaardi juures — elegantne ärikompliment",
+      "Personaliseeritud šokolaad logoga visiitkaardi kõrval",
+      "Korporatiivne logoga šokolaad — visiitkaardi kompliment klientidele",
+    ],
+    galleryAlts: [
+      "Logoga šokolaad kohvi juures", "Logoga šokolaad visiitkaardiga",
+      "Personaliseeritud šokolaad visiitkaardiga", "Korporatiivne šokolaad klientidele",
+      "Belgia šokolaad ettevõtte logoga", "Logo trükk šokolaadil",
+      "Šokolaad korporatiivseks kohviteenuseks", "Brändi šokolaad partneritele",
+      "Logoga šokolaad konverentsidel", "Luksusšokolaad logoga",
+      "Korporatiivne šokolaad igapäevaseks kasutuseks", "Eksklusiivne logoga šokolaad",
+    ],
   },
   lt: {
     sectionTitle: "Kasdieniai šokoladai verslui",
@@ -103,6 +174,20 @@ const content: Record<Lang, {
     standardList: ["Pieninis šokoladas", "Baltasis šokoladas", "Juodasis šokoladas"],
     specialList: ["Veganiškas", "Apelsinų", "Laimų", "Braškių", "Kapučino", "Karamelės", "Medaus"],
     galleryTitle: "Mūsų darbų pavyzdžiai",
+    coffeeAlt: "Šokoladas su logotipu prie kavos — korporatyvinis svetingumas",
+    cardAlts: [
+      "Šokoladas su logotipu prie vizitinės — elegantiškas verslo komplimentas",
+      "Personalizuotas šokoladas su logotipu prie vizitinės kortelės",
+      "Korporatyvinis šokoladas su logotipu — komplimentas klientams",
+    ],
+    galleryAlts: [
+      "Šokoladas su logotipu prie kavos", "Šokoladas su logotipu prie vizitinės",
+      "Personalizuotas šokoladas su vizitine", "Korporatyvinis šokoladas klientams",
+      "Belgiškas šokoladas su logotipu", "Logotipo spauda ant šokolado",
+      "Šokoladas korporatyviniam kavos patiekimui", "Firminis šokoladas partneriams",
+      "Šokoladas su logotipu konferencijoms", "Prabangus šokoladas su logotipu",
+      "Korporatyvinis šokoladas kasdieniam naudojimui", "Ekskluzyvus šokoladas su logotipu",
+    ],
   },
   sv: {
     sectionTitle: "Daglig choklad för företag",
@@ -117,6 +202,20 @@ const content: Record<Lang, {
     standardList: ["Mjölkchoklad", "Vit choklad", "Mörk choklad"],
     specialList: ["Vegansk", "Apelsin", "Lime", "Jordgubb", "Cappuccino", "Karamell", "Honung"],
     galleryTitle: "Exempel på våra arbeten",
+    coffeeAlt: "Choklad med företagslogotyp serverad med kaffe — företagsgästfrihet",
+    cardAlts: [
+      "Logochoklad med visitkort — elegant företagskomplimang",
+      "Personlig choklad med logotyp vid visitkort",
+      "Företagschoklad med logotyp — visitkortskomplimang för kunder",
+    ],
+    galleryAlts: [
+      "Logochoklad till kaffe", "Logochoklad med visitkort",
+      "Personlig choklad med visitkort", "Företagschoklad för kunder",
+      "Belgisk choklad med företagslogotyp", "Logotyptryck på choklad",
+      "Choklad för företagets kaffeservering", "Varumärkeschoklad för partners",
+      "Logochoklad för konferenser", "Lyxchoklad med logotyp",
+      "Företagschoklad för dagligt bruk", "Exklusiv logochoklad",
+    ],
   },
   no: {
     sectionTitle: "Daglig sjokolade for bedrifter",
@@ -131,6 +230,20 @@ const content: Record<Lang, {
     standardList: ["Melkesjokolade", "Hvit sjokolade", "Mørk sjokolade"],
     specialList: ["Vegansk", "Appelsin", "Lime", "Jordbær", "Cappuccino", "Karamell", "Honning"],
     galleryTitle: "Eksempler på våre arbeider",
+    coffeeAlt: "Sjokolade med bedriftslogo servert med kaffe — bedriftens gjestfrihet",
+    cardAlts: [
+      "Logosjokolade med visittkort — elegant bedriftskompliment",
+      "Personlig sjokolade med logo ved visittkort",
+      "Bedriftssjokolade med logo — visittkort-kompliment for kunder",
+    ],
+    galleryAlts: [
+      "Logosjokolade til kaffe", "Logosjokolade med visittkort",
+      "Personlig sjokolade med visittkort", "Bedriftssjokolade for kunder",
+      "Belgisk sjokolade med bedriftslogo", "Logotrykk på sjokolade",
+      "Sjokolade for bedriftens kaffeservering", "Merkevare-sjokolade for partnere",
+      "Logosjokolade for konferanser", "Luksussjokolade med logo",
+      "Bedriftssjokolade for daglig bruk", "Eksklusiv logosjokolade",
+    ],
   },
   fi: {
     sectionTitle: "Päivittäiset suklaatyrityksille",
@@ -145,6 +258,20 @@ const content: Record<Lang, {
     standardList: ["Maitosuklaa", "Valkosuklaa", "Tumma suklaa"],
     specialList: ["Vegaaninen", "Appelsiini", "Lime", "Mansikka", "Cappuccino", "Karamelli", "Hunaja"],
     galleryTitle: "Esimerkkejä töistämme",
+    coffeeAlt: "Logosuklaa kahvin kanssa — yrityksen vieraanvaraisuus",
+    cardAlts: [
+      "Logosuklaa käyntikortin kanssa — elegantti yrityskohteliaisuus",
+      "Personoitu suklaa logolla käyntikortin vieressä",
+      "Yrityssuklaa logolla — käyntikorttikohteliaisuus asiakkaille",
+    ],
+    galleryAlts: [
+      "Logosuklaa kahvin kanssa", "Logosuklaa käyntikortin kanssa",
+      "Personoitu suklaa käyntikortin kanssa", "Yrityssuklaa asiakkaille",
+      "Belgialainen suklaa yrityksen logolla", "Logopainatus suklaassa",
+      "Suklaa yrityksen kahvitarjoiluun", "Brändisuklaa kumppaneille",
+      "Logosuklaa konferensseihin", "Luksussuklaa logolla",
+      "Yrityssuklaa päivittäiseen käyttöön", "Eksklusiivinen logosuklaa",
+    ],
   },
 };
 
