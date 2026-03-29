@@ -394,7 +394,7 @@ const DailyChocolateSection = ({ lang = "lv" }: DailyChocolateSectionProps) => {
               <img
                 key={i}
                 src={src}
-                alt={`Daily chocolate example ${i + 1}`}
+                alt={t.galleryAlts[i] || `Daily chocolate example ${i + 1}`}
                 className="rounded-xl w-full h-48 object-cover cursor-pointer hover:scale-105 transition-transform border border-border"
                 onClick={() => setLightboxIdx(i)}
                 loading="lazy"
