@@ -27,8 +27,8 @@ const EnIndex = () => {
   const t = heroContent.en;
 
   useSeo({
-    title: "Chocolate with Logo for Companies | Premium Corporate Gifts",
-    description: "Exclusive chocolate with your company logo. Premium corporate gifts for clients, partners and events with personalized chocolate printing.",
+    title: "Chocolate with Logo & Corporate Gifts",
+    description: "Premium corporate gifts and personalized chocolate with your logo. Exclusive gift sets for companies. Belgian chocolate, fast production, orders from 1 piece.",
     path: "/en",
   });
 
