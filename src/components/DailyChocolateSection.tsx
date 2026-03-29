@@ -285,8 +285,9 @@ const DailyChocolateSection = ({ lang = "lv" }: DailyChocolateSectionProps) => {
       {lightboxIdx !== null && (
         <Lightbox
           images={images}
-          currentIndex={lightboxIdx}
+          index={lightboxIdx}
           onClose={() => setLightboxIdx(null)}
+          onChangeIndex={setLightboxIdx}
         />
       )}
     </section>
