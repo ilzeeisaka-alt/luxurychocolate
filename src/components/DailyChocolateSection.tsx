@@ -316,7 +316,7 @@ const DailyChocolateSection = ({ lang = "lv" }: DailyChocolateSectionProps) => {
             <div className="mt-6">
               <img
                 src={coffeeHero}
-                alt="Logo chocolate with coffee"
+                alt={t.coffeeAlt}
                 className="rounded-xl w-full h-56 object-cover cursor-pointer hover:scale-[1.02] transition-transform"
                 onClick={() => setLightboxIdx(0)}
                 loading="lazy"
@@ -333,14 +333,17 @@ const DailyChocolateSection = ({ lang = "lv" }: DailyChocolateSectionProps) => {
           >
             <h3 className="text-xl font-semibold text-foreground mb-3">{t.cardTitle}</h3>
             <p className="text-muted-foreground leading-relaxed">{t.cardDesc}</p>
-            <div className="mt-6">
-              <img
-                src={cardHero}
-                alt="Chocolate business card"
-                className="rounded-xl w-full h-56 object-cover cursor-pointer hover:scale-[1.02] transition-transform"
-                onClick={() => setLightboxIdx(1)}
-                loading="lazy"
-              />
+            <div className="mt-6 grid grid-cols-3 gap-2">
+              {[cardHero, cardImg2, cardImg3].map((src, i) => (
+                <img
+                  key={i}
+                  src={src}
+                  alt={t.cardAlts[i]}
+                  className="rounded-xl w-full h-40 object-cover cursor-pointer hover:scale-[1.02] transition-transform"
+                  onClick={() => setLightboxIdx(i + 1)}
+                  loading="lazy"
+                />
+              ))}
             </div>
           </motion.div>
         </div>
