@@ -7,6 +7,8 @@ import img3 from "@/assets/daily-chocolate-3.jpg";
 import img4 from "@/assets/daily-chocolate-4.jpg";
 import img5 from "@/assets/daily-chocolate-5.jpg";
 import img6 from "@/assets/daily-chocolate-6.jpg";
+import coffeeHero from "@/assets/daily-chocolate-coffee-hero.jpg";
+import cardHero from "@/assets/daily-chocolate-card-hero.jpg";
 import img7 from "@/assets/daily-chocolate-7.jpg";
 import img8 from "@/assets/daily-chocolate-8.jpg";
 import img9 from "@/assets/daily-chocolate-9.jpg";
