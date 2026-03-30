@@ -249,7 +249,7 @@ export const etPages: Record<string, PageContent> = {
     emoji: "🍫",
     title: "Personaliseeritud maiustused messistendidele ja konverentsidele",
     metaDescription: "Personaliseeritud maiustused ja logoga šokolaad messidele, konverentsidele ja äriüritustele. Premium Belgia šokolaad, küpsised, makroonid ja cupcake'id teie logoga.",
-    intro: "Muutke oma messistend kontaktide magnetiks personaliseeritud premium maiustustega. Logoga šokolaad, küpsised, makroonid ja cupcake'id — strateegiline turundusinstrument, mis „murrab jää" ja meelitab väärtuslikke ärikontakte.",
+    intro: "Muutke oma messistend kontaktide magnetiks personaliseeritud premium maiustustega. Logoga šokolaad, küpsised, makroonid ja cupcake'id \u2014 strateegiline turundusinstrument, mis murrab jää ja meelitab väärtuslikke ärikontakte.",
     benefits: [
       "Logoga šokolaad — klassikalised tahvlid ja pralineekompvekid otsetrükiga",
       "Personaliseeritud küpsised, makroonid ja cupcake'id teie brändi disainiga",

@@ -249,7 +249,7 @@ export const ltPages: Record<string, PageContent> = {
     emoji: "🍫",
     title: "Personalizuoti saldumynai parodų stendams ir konferencijoms",
     metaDescription: "Personalizuoti saldumynai ir šokoladas su logotipu parodoms, konferencijoms ir verslo renginiams. Premium belgiškas šokoladas, sausainiai, makaronai ir keksiukai su jūsų prekės ženklu.",
-    intro: "Paverskite savo parodų stendą kontaktų magnetu su personalizuotais premium saldumynais. Šokoladas su logotipu, sausainiai, makaronai ir keksiukai — strateginis rinkodaros įrankis, kuris „laužo ledus" ir pritraukia vertingus verslo kontaktus.",
+    intro: "Paverskite savo parodu stenda kontaktu magnetu su personalizuotais premium saldumynais. Šokoladas su logotipu, sausainiai, makaronai ir keksiukai \u2014 strateginis rinkodaros irankis, kuris laužo ledus ir pritraukia vertingus verslo kontaktus.",
     benefits: [
       "Šokoladas su logotipu — klasikiniai plytelės ir pralinė su tiesioginiu spausdinimu",
       "Personalizuoti sausainiai, makaronai ir keksiukai su jūsų prekės ženklo dizainu",

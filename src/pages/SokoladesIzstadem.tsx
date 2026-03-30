@@ -5,7 +5,7 @@ const SokoladesIzstadem = () => (
     emoji="🍫"
     title="Personalizēti saldumi izstādēm un konferenču stendiem"
     metaDescription="Personalizēti saldumi un šokolāde ar logo izstādēm, konferencēm un biznesa pasākumiem. Premium beļģu šokolāde, cepumi, makarūni un kapkeiki ar Jūsu zīmolu."
-    intro="Pārvērtiet savu izstādes stendu par kontaktu magnētu ar personalizētiem premium saldumiem. Šokolāde ar logo, cepumi, makarūni un kapkeiki — stratēģisks mārketinga rīks, kas „lauž ledu" un piesaista vērtīgus biznesa kontaktus."
+    intro="Pārvērtiet savu izstādes stendu par kontaktu magnētu ar personalizētiem premium saldumiem. Šokolāde ar logo, cepumi, makarūni un kapkeiki — stratēģisks mārketinga rīks, kas &laquo;lauž ledu&raquo; un piesaista vērtīgus biznesa kontaktus."
     benefits={[
       "Šokolāde ar logo — klasiskas tāfelītes un pralinē ar tiešo druku uz šokolādes",
       "Personalizēti cepumi, makarūni un kapkeiki ar Jūsu zīmola dizainu",
