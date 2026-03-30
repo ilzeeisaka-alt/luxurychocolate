@@ -244,4 +244,34 @@ export const enPages: Record<string, PageContent> = {
       { q: "Can the box be kept as a keepsake?", a: "Yes, the magnetic closure allows easy reopening and resealing. Many recipients keep the box as a decorative keepsake." },
     ],
   },
+  "exhibition-stand-chocolate": {
+    slug: "exhibition-stand-chocolate",
+    emoji: "🍫",
+    title: "Personalized Sweets for Exhibition Stands & Conferences",
+    metaDescription: "Personalized sweets and branded chocolate for exhibition stands, conferences and business events. Premium Belgian chocolate, cookies, macarons and cupcakes with your logo.",
+    intro: "Turn your exhibition stand into a lead magnet with personalized premium sweets. Logo chocolate, cookies, macarons and cupcakes — a strategic marketing tool that breaks the ice and attracts valuable business contacts.",
+    benefits: [
+      "Logo chocolate — classic bars and pralines with direct printing on chocolate",
+      "Personalized cookies, macarons and cupcakes with your brand design",
+      "Fortune cookies with custom messages — an interactive marketing tool",
+      "Design mockup within 24 hours, production from 3 business days",
+      "Minimum order from 50 pcs — suitable for any event size",
+      "Safe delivery with temperature-resistant packaging across the Baltics",
+    ],
+    body: `
+      <h3 class="text-xl font-medium text-foreground mb-3">Why do personalized sweets work at exhibitions?</h3>
+      <p>At conferences and exhibitions, the fight for visitor attention is fierce. <strong class="text-foreground">Premium Belgian chocolate with your logo</strong> creates an instant positive association with your brand — visitors stop for the aesthetics and stay for the taste. This moment is your "golden window" for conversation.</p>
+      <h3 class="text-xl font-medium text-foreground mb-3 mt-6">Strategy: From sweet to contact</h3>
+      <p>Offer an exclusive chocolate set in exchange for a business card or QR code scan. Use <strong class="text-foreground">fortune cookies</strong> as a lottery element or display branded cupcakes on multi-tier stands as a visual magnet.</p>
+    `,
+    cta: "Order personalized sweets for your stand",
+    keywords: ["exhibition stand chocolate", "personalized sweets for conferences", "branded chocolate events", "trade show marketing sweets", "logo cookies", "fortune cookies branding", "macarons with logo", "cupcakes exhibitions", "lead generation exhibition"],
+    faqs: [
+      { q: "How early should I order before the exhibition?", a: "We recommend contacting us at least 2–3 weeks in advance. For urgent cases, we can handle faster orders." },
+      { q: "What is the minimum order?", a: "Depends on product type. Logo chocolate is available from 50–100 units." },
+      { q: "Won't the sweets melt in a warm exhibition hall?", a: "We use special temperature-resistant packaging and provide storage recommendations for your stand." },
+      { q: "Can you personalize the packaging too?", a: "Yes, we offer direct printing on sweets as well as fully customized boxes, labels and ribbons in your brand colors." },
+      { q: "What types of sweets do you offer for exhibitions?", a: "Logo chocolates, personalized cookies, macarons, cupcakes and fortune cookies with custom messages." },
+    ],
+  },
 };

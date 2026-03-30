@@ -244,4 +244,34 @@ export const etPages: Record<string, PageContent> = {
       { q: "Kas karpi saab hoida mälestusesemena?", a: "Jah, magnetiline sulguir võimaldab kerget avamist ja sulgemist. Paljud saajad hoiavad karpi dekoratiivse mälestusesemena." },
     ],
   },
+  "maiustused-messidele": {
+    slug: "maiustused-messidele",
+    emoji: "🍫",
+    title: "Personaliseeritud maiustused messistendidele ja konverentsidele",
+    metaDescription: "Personaliseeritud maiustused ja logoga šokolaad messidele, konverentsidele ja äriüritustele. Premium Belgia šokolaad, küpsised, makroonid ja cupcake'id teie logoga.",
+    intro: "Muutke oma messistend kontaktide magnetiks personaliseeritud premium maiustustega. Logoga šokolaad, küpsised, makroonid ja cupcake'id — strateegiline turundusinstrument, mis „murrab jää" ja meelitab väärtuslikke ärikontakte.",
+    benefits: [
+      "Logoga šokolaad — klassikalised tahvlid ja pralineekompvekid otsetrükiga",
+      "Personaliseeritud küpsised, makroonid ja cupcake'id teie brändi disainiga",
+      "Õnneküpsised individuaalsete sõnumitega — interaktiivne turundusvahend",
+      "Disainimaketi valmistamine 24 tunni jooksul, tootmine alates 3 tööpäevast",
+      "Minimaalne tellimus alates 50 tk — sobib igale ürituse suurusele",
+      "Turvaline tarne temperatuurikindla pakendiga üle kogu Baltikumi",
+    ],
+    body: `
+      <h3 class="text-xl font-medium text-foreground mb-3">Miks personaliseeritud maiustused messidel töötavad?</h3>
+      <p>Konverentsidel ja messidel on võitlus külastajate tähelepanu eest äge. <strong class="text-foreground">Premium Belgia šokolaad teie logoga</strong> loob kohese positiivse seose teie brändiga — külastaja peatub esteetika pärast ja jääb maitse pärast.</p>
+      <h3 class="text-xl font-medium text-foreground mb-3 mt-6">Strateegia: Maiustusest kontaktini</h3>
+      <p>Pakkuge eksklusiivset šokolaadikit visiitkaardi või QR-koodi skaneerimise vastu. Kasutage <strong class="text-foreground">õnneküpsiseid</strong> loterii elemendina või paigutage bränditud cupcake'id mitmekorralisel alusel visuaalse magnetina.</p>
+    `,
+    cta: "Tellige personaliseeritud maiustused oma stendile",
+    keywords: ["maiustused messidele", "logoga šokolaad konverentsidele", "reklaam maiustused", "messturundus", "logoga küpsised", "õnneküpsised", "makroonid logoga"],
+    faqs: [
+      { q: "Kui varakult tuleb enne messi tellida?", a: "Soovitame ühendust võtta vähemalt 2–3 nädalat ette. Kiireloomulistel juhtudel suudame ka kiiremini." },
+      { q: "Milline on minimaalne tellimus?", a: "Sõltub toote tüübist. Logoga šokolaad on saadaval alates 50–100 ühikust." },
+      { q: "Kas maiustused ei sula soojeas messisaalis?", a: "Kasutame spetsiaalset temperatuurikindlat pakendit ja anname soovitusi stendil hoiustamiseks." },
+      { q: "Kas saab personaliseerida ka pakendit?", a: "Jah, pakume otsetrükki maiustustele ja täielikult kohandatud karbikesi, etikette ja paelaid teie brändi värvides." },
+      { q: "Milliseid maiustusi pakute messidele?", a: "Logoga šokolaade, personaliseeritud küpsiseid, makroone, cupcake'e ja õnneküpsiseid individuaalsete sõnumitega." },
+    ],
+  },
 };

@@ -244,4 +244,34 @@ export const ltPages: Record<string, PageContent> = {
       { q: "Ar galima dėžutę saugoti kaip suvenyrą?", a: "Taip, magnetinis užsegimas leidžia lengvai atidaryti ir uždaryti pakartotinai. Daugelis gavėjų saugo dėžutę kaip dekoratyvinį suvenyrą." },
     ],
   },
+  "saldainiai-parodoms": {
+    slug: "saldainiai-parodoms",
+    emoji: "🍫",
+    title: "Personalizuoti saldumynai parodų stendams ir konferencijoms",
+    metaDescription: "Personalizuoti saldumynai ir šokoladas su logotipu parodoms, konferencijoms ir verslo renginiams. Premium belgiškas šokoladas, sausainiai, makaronai ir keksiukai su jūsų prekės ženklu.",
+    intro: "Paverskite savo parodų stendą kontaktų magnetu su personalizuotais premium saldumynais. Šokoladas su logotipu, sausainiai, makaronai ir keksiukai — strateginis rinkodaros įrankis, kuris „laužo ledus" ir pritraukia vertingus verslo kontaktus.",
+    benefits: [
+      "Šokoladas su logotipu — klasikiniai plytelės ir pralinė su tiesioginiu spausdinimu",
+      "Personalizuoti sausainiai, makaronai ir keksiukai su jūsų prekės ženklo dizainu",
+      "Laimės sausainiai su individualiais pranešimais — interaktyvus rinkodaros įrankis",
+      "Dizaino maketas per 24 valandas, gamyba nuo 3 darbo dienų",
+      "Minimalus užsakymas nuo 50 vnt. — tinka bet kokio dydžio renginiui",
+      "Saugus pristatymas su temperatūrai atspariu pakuote visoje Baltijoje",
+    ],
+    body: `
+      <h3 class="text-xl font-medium text-foreground mb-3">Kodėl personalizuoti saldumynai veikia parodose?</h3>
+      <p>Konferencijose ir parodose kova dėl lankytojų dėmesio yra arši. <strong class="text-foreground">Premium belgiškas šokoladas su jūsų logotipu</strong> sukuria momentinę teigiamą asociaciją su jūsų prekės ženklu — lankytojas sustoja dėl estetikos ir pasilieka dėl skonio.</p>
+      <h3 class="text-xl font-medium text-foreground mb-3 mt-6">Strategija: Nuo saldumyno iki kontakto</h3>
+      <p>Pasiūlykite ekskliuzyvų šokolado rinkinį mainais už vizitinę kortelę ar QR kodo nuskaitymą. Naudokite <strong class="text-foreground">laimės sausainius</strong> kaip loterijos elementą arba išdėliokite firminius keksiukus ant daugiaaukščių stovų kaip vizualinį magnetą.</p>
+    `,
+    cta: "Užsakyti personalizuotus saldumynus savo stendui",
+    keywords: ["saldumynai parodoms", "šokoladas su logotipu konferencijoms", "reklaminiai saldumynai", "parodų rinkodara", "sausainiai su logotipu", "laimės sausainiai", "makaronai su logotipu"],
+    faqs: [
+      { q: "Kiek iš anksto reikia užsakyti prieš parodą?", a: "Rekomenduojame susisiekti bent 2–3 savaites iš anksto. Skubiems atvejams galime apdoroti ir greičiau." },
+      { q: "Koks minimalus užsakymas?", a: "Priklauso nuo produkto tipo. Šokoladas su logotipu prieinamas nuo 50–100 vienetų." },
+      { q: "Ar saldumynai neištirps šiltoje parodų salėje?", a: "Naudojame specialią temperatūrai atsparią pakuotę ir pateikiame rekomendacijas dėl laikymo stende." },
+      { q: "Ar galima personalizuoti ir pakuotę?", a: "Taip, siūlome tiesioginį spausdinimą ant saldumynų ir visiškai pritaikytas dėžutes, etiketes bei juosteles jūsų prekės ženklo spalvomis." },
+      { q: "Kokius saldumynų tipus siūlote parodoms?", a: "Šokoladus su logotipu, personalizuotus sausainius, makaronus, keksiukus ir laimės sausainius su individualiais pranešimais." },
+    ],
+  },
 };
