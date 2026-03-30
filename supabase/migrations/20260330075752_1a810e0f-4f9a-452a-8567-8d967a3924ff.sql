@@ -1,0 +1,1 @@
+UPDATE public.blog_posts SET cover_image = 'https://cdn.marblism.com/N8Z0W_SDOL0.webp' WHERE slug = 'ekskluzivas-biznesa-davanas-personalizeta-pieeja';
