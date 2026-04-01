@@ -1048,6 +1048,8 @@ export const restaurantChocolateContent: Record<Lang, { heading: string; subtitl
     subtitle: "Kuvittele — ravintolasi logo tai kokin allekirjoitus suklaassa jokaisella jälkiruoalla, kahvikupilla tai samppanjalasilla. Me teemme sen. Tilauksesta, sinun suunnittelullasi, sinun brändilläsi.",
     benefits: ["Vahvistaa brändin tunnettuutta", "Yllättää vieraat harkitulla yksityiskohdalla", "Kannustaa jakamaan kuvia sosiaalisessa mediassa"],
     usageNote: "Ne voidaan asettaa kakuille, jälkiruoille, jäätelöön, laskun kanssa, kahvi- tai cocktaillasille.",
+    coffeeHeading: "Logosuklaa kahvin kanssa",
+    coffeeSubtitle: "Pieni yksityiskohta, joka tekee suuren vaikutuksen — personoitu belgialainen suklaa logollasi jokaisen kahvikupin kanssa hotelleissa, ravintoloissa ja toimistoissa.",
     items: [
       { title: "Suklaa jälkiruoille ja kakuille", description: "Logosuklaa premium-jälkiruoilla — hienostunut yksityiskohta jokaiselle lautaselle.", alt: "Premium-jälkiruoka personoidulla logosuklaalla ravintolalle" },
       { title: "Logosuklaa VIP-lahjoille", description: "Eksklusiiviset brändisuklaat elegantissa pakkauksessa.", alt: "Chopard brändisuklapraliinit elegantissa sinisessä laatikossa" },
@@ -1055,6 +1057,11 @@ export const restaurantChocolateContent: Record<Lang, { heading: string; subtitl
       { title: "Suklaa TripAdvisor-kutsulla", description: "Logosuklaakoriste jälkiruoissa TripAdvisor-arvostelukutsulla.", alt: "Ravintolan jälkiruoka TripAdvisor-logosuklaalla" },
       { title: "Suklaa samppanjalaseille", description: "Logosuklaamedaljonki samppanja- tai viinilasilla.", alt: "Olympic Voodoo Casino logosuklaat samppanjalaseilla" },
       { title: "Suklaa cocktaillaseille", description: "Personoitu suklaa cocktail- tai kahvilasin reunalla.", alt: "Personoidut logosuklaat cocktaillaseilla" },
+      { title: "MasterCard suklaa espresson kanssa", description: "Premium belgialainen suklaa MasterCard-logolla, tarjoiltu espressokupin kanssa.", alt: "MasterCard-logosuklaa espressokahvikupin kanssa" },
+      { title: "Gmoa Keller suklaa cappuccinon kanssa", description: "Personoitu suklaa ravintolan logolla cappuccinon kanssa — tyylikäs vieraanvaraisuusele.", alt: "Gmoa Keller ravintolan suklaa cappuccinokupin kanssa" },
+      { title: "Sirowa suklaa kahvin kanssa", description: "Suklaa luovalla suunnittelulla ja viestillä kahvin kanssa — unohtumaton hetki.", alt: "Sirowa personoitu suklaa viestillä kahvikupin kanssa" },
+      { title: "Cabot suklaa eksklusiivisessa pakkauksessa", description: "Premium suklaa Cabot-logolla elegantissa lahjapakkauksessa tryffelihatuilla.", alt: "Cabot brändisuklaa eksklusiivisessa lahjapakkauksessa" },
+      { title: "Grenardi juhlasuklaita", description: "Monen makuisia belgialaisia suklaita kulta- ja marjakoristeilla — täydellinen juhlakautta varten.", alt: "Grenardi premium suklaat erilaisilla koristeilla juhlallisissa pakkaukissa" },
     ],
   },
 };
