@@ -960,6 +960,8 @@ export const restaurantChocolateContent: Record<Lang, { heading: string; subtitl
       "Innustab jagama fotosid sotsiaalmeedias",
     ],
     usageNote: "Neid saab asetada kookidele, dessertidele, jäätisele, arve juurde, kohvi- või kokteiliklaasidele.",
+    coffeeHeading: "Logo šokolaad kohvi kõrvale",
+    coffeeSubtitle: "Väike detail, mis jätab suure mulje — personaliseeritud Belgia šokolaad teie logoga iga kohvitassi kõrvale hotellides, restoranides ja kontorites.",
     items: [
       { title: "Šokolaad dessertidele ja kookidele", description: "Logo šokolaad premium dessertidel — rafineeritud aktsent igale taldrikule.", alt: "Premium dessert personaliseeritud logo šokolaadiga restoranile" },
       { title: "Logo šokolaad VIP kingitusteks", description: "Eksklusiivne bränditud šokolaad elegantsest pakendis külalislahkuseks.", alt: "Chopard bränditud šokolaadipralineed elegantsest sinises karbis" },
@@ -967,6 +969,11 @@ export const restaurantChocolateContent: Record<Lang, { heading: string; subtitl
       { title: "Šokolaad TripAdvisori arvustuse kutsega", description: "Logo šokolaadi dekoratsioon dessertidel TripAdvisori arvustuse kutsega.", alt: "Restorani dessert TripAdvisori logo šokolaadiga ja arvustuse kutsega" },
       { title: "Šokolaad šampanjaklaasidele", description: "Logo šokolaadi medaljon šampanja- või veiniklaasil.", alt: "Olympic Voodoo Casino logo šokolaadid šampanjaklaasidel" },
       { title: "Šokolaad kokteiliklaasidele", description: "Personaliseeritud šokolaad kokteili- või kohviklaasi serval.", alt: "Personaliseeritud logo šokolaadid kokteiliklaasidel" },
+      { title: "MasterCard šokolaad espresso kõrvale", description: "Premium Belgia šokolaad MasterCardi logoga, serveeritud espressotassi kõrvale.", alt: "MasterCardi logo šokolaad espresso kohvitassi kõrvale" },
+      { title: "Gmoa Keller šokolaad cappuccino kõrvale", description: "Personaliseeritud šokolaad restorani logoga cappuccino kõrvale — elegantne külalislahkuse žest.", alt: "Gmoa Kelleri restorani šokolaad cappuccino tassi kõrvale" },
+      { title: "Sirowa šokolaad kohvi kõrvale", description: "Šokolaad loomingulise disaini ja sõnumiga kohvi kõrvale — unustamatu hetk.", alt: "Sirowa personaliseeritud šokolaad sõnumiga kohvitassi kõrvale" },
+      { title: "Cabot šokolaad eksklusiivses pakendis", description: "Premium šokolaad Caboti logoga elegantses kingituspakendis trühvlikarpidega.", alt: "Caboti brändi šokolaad eksklusiivses kingituspakendis" },
+      { title: "Grenardi pidulikud šokolaadid", description: "Erinevate maitsetega Belgia šokolaadid kulla ja marjadekoriga — ideaalne pühade hooajaks.", alt: "Grenardi premium šokolaadid erinevate dekoratsioonidega pidulikul pakendis" },
     ],
   },
   lt: {
