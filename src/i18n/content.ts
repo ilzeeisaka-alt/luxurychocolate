@@ -910,6 +910,8 @@ export const restaurantChocolateContent: Record<Lang, { heading: string; subtitl
       "Encourages sharing photos on social media",
     ],
     usageNote: "They can be placed on cakes, desserts, ice cream, with the bill, on coffee or cocktail glasses.",
+    coffeeHeading: "Logo chocolate with coffee",
+    coffeeSubtitle: "The small detail that makes a big impression — personalized Belgian chocolate with your logo served with every coffee cup in hotels, restaurants, and offices.",
     items: [
       { title: "Chocolate for desserts & cakes", description: "Logo chocolate on premium desserts — a refined accent for every plate.", alt: "Premium dessert with personalized logo chocolate for restaurants" },
       { title: "Logo chocolate for VIP gifts", description: "Exclusive branded chocolates in elegant packaging for hospitality.", alt: "Chopard branded chocolate pralines in elegant blue box" },
@@ -917,6 +919,11 @@ export const restaurantChocolateContent: Record<Lang, { heading: string; subtitl
       { title: "Chocolate with TripAdvisor review invitation", description: "Logo chocolate decoration on desserts inviting guests to leave a TripAdvisor review.", alt: "Restaurant dessert with TripAdvisor logo chocolate and review invitation" },
       { title: "Chocolate for champagne glasses", description: "Logo chocolate medallion on champagne or wine glasses.", alt: "Olympic Voodoo Casino logo chocolates on champagne glasses" },
       { title: "Chocolate for cocktail glasses", description: "Personalized chocolate on the rim of cocktail or coffee glasses.", alt: "Personalized logo chocolates on cocktail glasses" },
+      { title: "MasterCard chocolate with espresso", description: "Premium Belgian chocolate with MasterCard logo, served with an espresso cup.", alt: "MasterCard logo chocolate with espresso coffee cup" },
+      { title: "Gmoa Keller chocolate with cappuccino", description: "Personalized chocolate with restaurant logo alongside cappuccino — an elegant hospitality gesture.", alt: "Gmoa Keller restaurant chocolate with cappuccino cup" },
+      { title: "Sirowa chocolate with coffee", description: "Chocolate with creative design and message served with coffee — an unforgettable moment.", alt: "Sirowa personalized chocolate with message alongside coffee cup" },
+      { title: "Cabot chocolate in exclusive packaging", description: "Premium chocolate with Cabot logo in elegant gift packaging with truffle boxes.", alt: "Cabot branded chocolate in exclusive gift packaging" },
+      { title: "Grenardi festive chocolates", description: "Multi-flavored Belgian chocolates with gold and berry décor — ideal for the holiday season.", alt: "Grenardi premium chocolates with various decorations in festive packaging" },
     ],
   },
   ru: {
