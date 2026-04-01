@@ -875,7 +875,7 @@ export const cakeChocolateContent: Record<Lang, { heading: string; subtitle: str
   },
 };
 
-export const restaurantChocolateContent: Record<Lang, { heading: string; subtitle: string; benefits: string[]; usageNote: string; items: { title: string; description: string; alt: string }[] }> = {
+export const restaurantChocolateContent: Record<Lang, { heading: string; subtitle: string; benefits: string[]; usageNote: string; coffeeHeading: string; coffeeSubtitle: string; items: { title: string; description: string; alt: string }[] }> = {
   lv: {
     heading: "Restorānu šokolādes",
     subtitle: "Iedomājieties — jūsu restorāna logotips vai šefpavāra paraksts šokolādē uz katra deserta, kafijas tases vai šampanieša glāzes. Mēs to darām. Pēc pasūtījuma, jūsu dizainā, jūsu zīmolā.",
@@ -885,6 +885,8 @@ export const restaurantChocolateContent: Record<Lang, { heading: string; subtitl
       "Mudina dalīties ar fotogrāfijām sociālajos tīklos",
     ],
     usageNote: "Tās var likt uz kūkām, desertiem, saldējuma, pie čeka, pie kafijas vai kokteiļa glāzes.",
+    coffeeHeading: "Logo šokolāde pie kafijas",
+    coffeeSubtitle: "Mazā detaļa, kas veido lielu iespaidu — personalizēta beļģu šokolāde ar Jūsu logo pie katras kafijas tases viesnīcās, restorānos un birojos.",
     items: [
       { title: "Šokolāde desertiem un kūkām", description: "Logo šokolāde uz premium desertiem — izsmalcināts akcents katram šķīvim.", alt: "Premium deserts ar personalizētu logo šokolādi restorānam" },
       { title: "Logo šokolāde VIP dāvanām", description: "Ekskluzīvas šokolādes ar zīmola logo elegantā iepakojumā viesmīlībai.", alt: "Chopard zīmola šokolādes konfektes elegantā zilā kastītē" },
@@ -892,6 +894,11 @@ export const restaurantChocolateContent: Record<Lang, { heading: string; subtitl
       { title: "Šokolāde ar aicinājumu atstāt TripAdvisor atsauksmi", description: "Logo šokolādes dekorācija uz desertiem ar TripAdvisor vērtējuma aicinājumu.", alt: "Restorāna deserts ar TripAdvisor logo šokolādi un aicinājumu atstāt atsauksmi" },
       { title: "Šokolāde šampanieša glāzēm", description: "Logo šokolādes medaljons uz šampanieša vai vīna glāzes.", alt: "Olympic Voodoo Casino logo šokolādes uz šampanieša glāzēm" },
       { title: "Šokolāde kokteiļu glāzēm", description: "Personalizēta šokolāde uz kokteiļa vai kafijas glāzes malas.", alt: "Personalizētas logo šokolādes uz kokteiļu glāzēm" },
+      { title: "MasterCard šokolāde pie espresso", description: "Premium beļģu šokolāde ar MasterCard logo, pasniegta pie espresso tasītes.", alt: "MasterCard logo šokolāde pie espresso kafijas tases" },
+      { title: "Gmoa Keller šokolāde pie kapučīno", description: "Personalizēta šokolāde ar restorāna logo pie kapučīno — elegants viesmīlības žests.", alt: "Gmoa Keller restorāna šokolāde pie kapučīno tases" },
+      { title: "Sirowa šokolāde pie kafijas", description: "Šokolāde ar radošu dizainu un vēstījumu pie kafijas — neaizmirstams mirklis.", alt: "Sirowa personalizēta šokolāde ar vēstījumu pie kafijas tases" },
+      { title: "Cabot šokolāde ekskluzīvā iepakojumā", description: "Premium šokolāde ar Cabot logo elegantā dāvanu iepakojumā ar trifeļu kastītēm.", alt: "Cabot zīmola šokolāde ekskluzīvā dāvanu iepakojumā" },
+      { title: "Grenardi svētku šokolādes", description: "Dažādu garšu beļģu šokolādes ar zelta un ogu dekoru — ideāli svētku sezonai.", alt: "Grenardi premium šokolādes ar dažādiem dekoriem svētku iepakojumā" },
     ],
   },
   en: {
