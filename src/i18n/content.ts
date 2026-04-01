@@ -1027,6 +1027,8 @@ export const restaurantChocolateContent: Record<Lang, { heading: string; subtitl
     subtitle: "Forestill deg — din restaurants logo eller kokkens signatur i sjokolade på hver dessert, kaffekopp eller champagneglass. Vi gjør det. Skreddersydd, i din design, i din merkevare.",
     benefits: ["Styrker merkevarebevissthet", "Overrasker gjester med en gjennomtenkt detalj", "Oppmuntrer til å dele bilder på sosiale medier"],
     usageNote: "De kan plasseres på kaker, desserter, iskrem, ved regningen, på kaffe- eller cocktailglass.",
+    coffeeHeading: "Logo sjokolade til kaffen",
+    coffeeSubtitle: "Den lille detaljen som gjør stort inntrykk — personlig belgisk sjokolade med din logo til hver kaffekopp på hoteller, restauranter og kontorer.",
     items: [
       { title: "Sjokolade for desserter og kaker", description: "Logo sjokolade på premiumdesserter — en raffinert aksent for hver tallerken.", alt: "Premiumdessert med personlig logo sjokolade for restauranter" },
       { title: "Logo sjokolade for VIP-gaver", description: "Eksklusive merkevare-sjokolader i elegant emballasje.", alt: "Chopard merkevare sjokoladepraliner i elegant blå eske" },
@@ -1034,6 +1036,11 @@ export const restaurantChocolateContent: Record<Lang, { heading: string; subtitl
       { title: "Sjokolade med TripAdvisor-invitasjon", description: "Logo sjokoladedekorasjon på desserter med invitasjon til å legge igjen TripAdvisor-anmeldelse.", alt: "Restaurantdessert med TripAdvisor logo sjokolade" },
       { title: "Sjokolade for champagneglass", description: "Logo sjokolademedaljong på champagne- eller vinglass.", alt: "Olympic Voodoo Casino logo sjokolade på champagneglass" },
       { title: "Sjokolade for cocktailglass", description: "Personlig sjokolade på cocktail- eller kaffeglasskanten.", alt: "Personlige logo sjokolader på cocktailglass" },
+      { title: "MasterCard sjokolade til espresso", description: "Premium belgisk sjokolade med MasterCard-logo, servert til espressokopp.", alt: "MasterCard logo sjokolade til espressokopp" },
+      { title: "Gmoa Keller sjokolade til cappuccino", description: "Personlig sjokolade med restaurantens logo til cappuccino — en elegant gjestfrihetsgest.", alt: "Gmoa Keller restaurantsjokolade til cappuccinokopp" },
+      { title: "Sirowa sjokolade til kaffe", description: "Sjokolade med kreativt design og budskap til kaffen — et uforglemmelig øyeblikk.", alt: "Sirowa personlig sjokolade med budskap til kaffekopp" },
+      { title: "Cabot sjokolade i eksklusiv emballasje", description: "Premium sjokolade med Cabot-logo i elegant gaveemballasje med trøffelessker.", alt: "Cabot merkevare sjokolade i eksklusiv gaveemballasje" },
+      { title: "Grenardi festsjokolade", description: "Belgisk sjokolade i flere smaker med gull- og bærdekor — perfekt for høytidssesongen.", alt: "Grenardi premium sjokolade med ulike dekorasjoner i festlig emballasje" },
     ],
   },
   fi: {
