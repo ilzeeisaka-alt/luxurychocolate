@@ -10,8 +10,13 @@ import billChocolate from "@/assets/restaurant/restaurant-bill-chocolate.jpg";
 import dessertTripadvisor from "@/assets/restaurant/dessert-tripadvisor.jpg";
 import champagneGlass from "@/assets/restaurant/champagne-glass-chocolate.jpg";
 import cocktailGlass from "@/assets/restaurant/cocktail-glass-chocolate.jpg";
+import mastercardCoffee from "@/assets/restaurant/mastercard-coffee-chocolate.jpg";
+import gmoaKellerCoffee from "@/assets/restaurant/gmoa-keller-coffee-chocolate.jpg";
+import sirowaCoffee from "@/assets/restaurant/sirowa-coffee-chocolate.jpg";
+import cabotChocolate from "@/assets/restaurant/cabot-chocolate.jpg";
+import grenardiChristmas from "@/assets/restaurant/grenardi-christmas-chocolate.jpg";
 
-const images = [cakeLogo, chopard, billChocolate, dessertTripadvisor, champagneGlass, cocktailGlass];
+const images = [cakeLogo, chopard, billChocolate, dessertTripadvisor, champagneGlass, cocktailGlass, mastercardCoffee, gmoaKellerCoffee, sirowaCoffee, cabotChocolate, grenardiChristmas];
 
 const vp = { once: true, margin: "-50px" as const };
 
