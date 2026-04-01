@@ -985,6 +985,8 @@ export const restaurantChocolateContent: Record<Lang, { heading: string; subtitl
       "Skatina dalintis nuotraukomis socialiniuose tinkluose",
     ],
     usageNote: "Juos galima dėti ant tortų, desertų, ledų, prie sąskaitos, ant kavos ar kokteilių taurių.",
+    coffeeHeading: "Logo šokoladas prie kavos",
+    coffeeSubtitle: "Maža detalė, kuri daro didelį įspūdį — personalizuotas belgiškas šokoladas su jūsų logotipu prie kiekvieno kavos puodelio viešbučiuose, restoranuose ir biuruose.",
     items: [
       { title: "Šokoladas desertams ir tortams", description: "Logotipo šokoladas ant premium desertų — rafinuotas akcentas kiekvienai lėkštei.", alt: "Premium desertas su personalizuotu logotipo šokoladu restoranui" },
       { title: "Logotipo šokoladas VIP dovanoms", description: "Eksklusiviniai firminio šokolado saldainiai elegantiskoje pakuotėje.", alt: "Chopard firminio šokolado pralinė elegantiskoje mėlynoje dėžutėje" },
@@ -992,6 +994,11 @@ export const restaurantChocolateContent: Record<Lang, { heading: string; subtitl
       { title: "Šokoladas su kvietimu palikti TripAdvisor atsiliepimą", description: "Logotipo šokolado dekoracija ant desertų su kvietimu palikti TripAdvisor atsiliepimą.", alt: "Restorano desertas su TripAdvisor logotipo šokoladu ir kvietimu palikti atsiliepimą" },
       { title: "Šokoladas šampano taurėms", description: "Logotipo šokolado medalionas ant šampano ar vyno taurės.", alt: "Olympic Voodoo Casino logotipo šokoladai ant šampano taurių" },
       { title: "Šokoladas kokteilių taurėms", description: "Personalizuotas šokoladas ant kokteilių ar kavos taurės krašto.", alt: "Personalizuoti logotipo šokoladai ant kokteilių taurių" },
+      { title: "MasterCard šokoladas prie espreso", description: "Premium belgiškas šokoladas su MasterCard logotipu, patiekiamas prie espreso puodelio.", alt: "MasterCard logotipo šokoladas prie espreso kavos puodelio" },
+      { title: "Gmoa Keller šokoladas prie kapučino", description: "Personalizuotas šokoladas su restorano logotipu prie kapučino — elegantiškas svetingumo gestas.", alt: "Gmoa Keller restorano šokoladas prie kapučino puodelio" },
+      { title: "Sirowa šokoladas prie kavos", description: "Šokoladas su kūrybišku dizainu ir žinute prie kavos — nepamirštamas momentas.", alt: "Sirowa personalizuotas šokoladas su žinute prie kavos puodelio" },
+      { title: "Cabot šokoladas eksklusivioje pakuotėje", description: "Premium šokoladas su Cabot logotipu elegantiskoje dovanų pakuotėje su triufelių dėžutėmis.", alt: "Cabot firminis šokoladas eksklusivioje dovanų pakuotėje" },
+      { title: "Grenardi šventiniai šokoladai", description: "Įvairių skonių belgiški šokoladai su aukso ir uogų dekoru — idealūs šventiniam sezonui.", alt: "Grenardi premium šokoladai su įvairiais dekorais šventinėje pakuotėje" },
     ],
   },
   sv: {
