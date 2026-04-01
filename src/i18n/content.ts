@@ -875,7 +875,7 @@ export const cakeChocolateContent: Record<Lang, { heading: string; subtitle: str
   },
 };
 
-export const restaurantChocolateContent: Record<Lang, { heading: string; subtitle: string; benefits: string[]; usageNote: string; items: { title: string; description: string; alt: string }[] }> = {
+export const restaurantChocolateContent: Record<Lang, { heading: string; subtitle: string; benefits: string[]; usageNote: string; coffeeHeading: string; coffeeSubtitle: string; items: { title: string; description: string; alt: string }[] }> = {
   lv: {
     heading: "Restorānu šokolādes",
     subtitle: "Iedomājieties — jūsu restorāna logotips vai šefpavāra paraksts šokolādē uz katra deserta, kafijas tases vai šampanieša glāzes. Mēs to darām. Pēc pasūtījuma, jūsu dizainā, jūsu zīmolā.",
@@ -885,6 +885,8 @@ export const restaurantChocolateContent: Record<Lang, { heading: string; subtitl
       "Mudina dalīties ar fotogrāfijām sociālajos tīklos",
     ],
     usageNote: "Tās var likt uz kūkām, desertiem, saldējuma, pie čeka, pie kafijas vai kokteiļa glāzes.",
+    coffeeHeading: "Logo šokolāde pie kafijas",
+    coffeeSubtitle: "Mazā detaļa, kas veido lielu iespaidu — personalizēta beļģu šokolāde ar Jūsu logo pie katras kafijas tases viesnīcās, restorānos un birojos.",
     items: [
       { title: "Šokolāde desertiem un kūkām", description: "Logo šokolāde uz premium desertiem — izsmalcināts akcents katram šķīvim.", alt: "Premium deserts ar personalizētu logo šokolādi restorānam" },
       { title: "Logo šokolāde VIP dāvanām", description: "Ekskluzīvas šokolādes ar zīmola logo elegantā iepakojumā viesmīlībai.", alt: "Chopard zīmola šokolādes konfektes elegantā zilā kastītē" },
@@ -892,6 +894,11 @@ export const restaurantChocolateContent: Record<Lang, { heading: string; subtitl
       { title: "Šokolāde ar aicinājumu atstāt TripAdvisor atsauksmi", description: "Logo šokolādes dekorācija uz desertiem ar TripAdvisor vērtējuma aicinājumu.", alt: "Restorāna deserts ar TripAdvisor logo šokolādi un aicinājumu atstāt atsauksmi" },
       { title: "Šokolāde šampanieša glāzēm", description: "Logo šokolādes medaljons uz šampanieša vai vīna glāzes.", alt: "Olympic Voodoo Casino logo šokolādes uz šampanieša glāzēm" },
       { title: "Šokolāde kokteiļu glāzēm", description: "Personalizēta šokolāde uz kokteiļa vai kafijas glāzes malas.", alt: "Personalizētas logo šokolādes uz kokteiļu glāzēm" },
+      { title: "MasterCard šokolāde pie espresso", description: "Premium beļģu šokolāde ar MasterCard logo, pasniegta pie espresso tasītes.", alt: "MasterCard logo šokolāde pie espresso kafijas tases" },
+      { title: "Gmoa Keller šokolāde pie kapučīno", description: "Personalizēta šokolāde ar restorāna logo pie kapučīno — elegants viesmīlības žests.", alt: "Gmoa Keller restorāna šokolāde pie kapučīno tases" },
+      { title: "Sirowa šokolāde pie kafijas", description: "Šokolāde ar radošu dizainu un vēstījumu pie kafijas — neaizmirstams mirklis.", alt: "Sirowa personalizēta šokolāde ar vēstījumu pie kafijas tases" },
+      { title: "Cabot šokolāde ekskluzīvā iepakojumā", description: "Premium šokolāde ar Cabot logo elegantā dāvanu iepakojumā ar trifeļu kastītēm.", alt: "Cabot zīmola šokolāde ekskluzīvā dāvanu iepakojumā" },
+      { title: "Grenardi svētku šokolādes", description: "Dažādu garšu beļģu šokolādes ar zelta un ogu dekoru — ideāli svētku sezonai.", alt: "Grenardi premium šokolādes ar dažādiem dekoriem svētku iepakojumā" },
     ],
   },
   en: {
@@ -903,6 +910,8 @@ export const restaurantChocolateContent: Record<Lang, { heading: string; subtitl
       "Encourages sharing photos on social media",
     ],
     usageNote: "They can be placed on cakes, desserts, ice cream, with the bill, on coffee or cocktail glasses.",
+    coffeeHeading: "Logo chocolate with coffee",
+    coffeeSubtitle: "The small detail that makes a big impression — personalized Belgian chocolate with your logo served with every coffee cup in hotels, restaurants, and offices.",
     items: [
       { title: "Chocolate for desserts & cakes", description: "Logo chocolate on premium desserts — a refined accent for every plate.", alt: "Premium dessert with personalized logo chocolate for restaurants" },
       { title: "Logo chocolate for VIP gifts", description: "Exclusive branded chocolates in elegant packaging for hospitality.", alt: "Chopard branded chocolate pralines in elegant blue box" },
@@ -910,6 +919,11 @@ export const restaurantChocolateContent: Record<Lang, { heading: string; subtitl
       { title: "Chocolate with TripAdvisor review invitation", description: "Logo chocolate decoration on desserts inviting guests to leave a TripAdvisor review.", alt: "Restaurant dessert with TripAdvisor logo chocolate and review invitation" },
       { title: "Chocolate for champagne glasses", description: "Logo chocolate medallion on champagne or wine glasses.", alt: "Olympic Voodoo Casino logo chocolates on champagne glasses" },
       { title: "Chocolate for cocktail glasses", description: "Personalized chocolate on the rim of cocktail or coffee glasses.", alt: "Personalized logo chocolates on cocktail glasses" },
+      { title: "MasterCard chocolate with espresso", description: "Premium Belgian chocolate with MasterCard logo, served with an espresso cup.", alt: "MasterCard logo chocolate with espresso coffee cup" },
+      { title: "Gmoa Keller chocolate with cappuccino", description: "Personalized chocolate with restaurant logo alongside cappuccino — an elegant hospitality gesture.", alt: "Gmoa Keller restaurant chocolate with cappuccino cup" },
+      { title: "Sirowa chocolate with coffee", description: "Chocolate with creative design and message served with coffee — an unforgettable moment.", alt: "Sirowa personalized chocolate with message alongside coffee cup" },
+      { title: "Cabot chocolate in exclusive packaging", description: "Premium chocolate with Cabot logo in elegant gift packaging with truffle boxes.", alt: "Cabot branded chocolate in exclusive gift packaging" },
+      { title: "Grenardi festive chocolates", description: "Multi-flavored Belgian chocolates with gold and berry décor — ideal for the holiday season.", alt: "Grenardi premium chocolates with various decorations in festive packaging" },
     ],
   },
   ru: {
@@ -921,6 +935,8 @@ export const restaurantChocolateContent: Record<Lang, { heading: string; subtitl
       "Мотивирует делиться фото в социальных сетях",
     ],
     usageNote: "Их можно размещать на тортах, десертах, мороженом, у счёта, на кофейных или коктейльных бокалах.",
+    coffeeHeading: "Шоколад с логотипом к кофе",
+    coffeeSubtitle: "Маленькая деталь, которая создаёт большое впечатление — персонализированный бельгийский шоколад с вашим логотипом к каждой чашке кофе в отелях, ресторанах и офисах.",
     items: [
       { title: "Шоколад для десертов и тортов", description: "Логотип на шоколаде для премиум десертов — изысканный акцент для каждой тарелки.", alt: "Премиум десерт с персонализированным логотипом на шоколаде" },
       { title: "Логотип-шоколад для VIP подарков", description: "Эксклюзивные брендированные шоколадки в элегантной упаковке.", alt: "Шоколадные конфеты Chopard в элегантной синей коробке" },
@@ -928,6 +944,11 @@ export const restaurantChocolateContent: Record<Lang, { heading: string; subtitl
       { title: "Шоколад с приглашением оставить отзыв на TripAdvisor", description: "Декорация десертов шоколадом с логотипом и приглашением оставить отзыв на TripAdvisor.", alt: "Десерт ресторана с логотипом TripAdvisor и приглашением оставить отзыв" },
       { title: "Шоколад для бокалов шампанского", description: "Шоколадный медальон с логотипом на бокале шампанского или вина.", alt: "Шоколад с логотипом Olympic Voodoo Casino на бокалах шампанского" },
       { title: "Шоколад для коктейльных бокалов", description: "Персонализированный шоколад на краю коктейльного или кофейного бокала.", alt: "Персонализированные шоколадки с логотипом на коктейльных бокалах" },
+      { title: "MasterCard шоколад к эспрессо", description: "Премиум бельгийский шоколад с логотипом MasterCard, поданный к чашке эспрессо.", alt: "Шоколад с логотипом MasterCard к чашке эспрессо" },
+      { title: "Gmoa Keller шоколад к капучино", description: "Персонализированный шоколад с логотипом ресторана к капучино — элегантный жест гостеприимства.", alt: "Шоколад ресторана Gmoa Keller к чашке капучино" },
+      { title: "Sirowa шоколад к кофе", description: "Шоколад с творческим дизайном и посланием к кофе — незабываемый момент.", alt: "Персонализированный шоколад Sirowa с посланием к чашке кофе" },
+      { title: "Cabot шоколад в эксклюзивной упаковке", description: "Премиум шоколад с логотипом Cabot в элегантной подарочной упаковке с трюфелями.", alt: "Шоколад Cabot в эксклюзивной подарочной упаковке" },
+      { title: "Grenardi праздничный шоколад", description: "Бельгийский шоколад разных вкусов с золотым и ягодным декором — идеально для праздничного сезона.", alt: "Премиум шоколад Grenardi с разными декорами в праздничной упаковке" },
     ],
   },
   et: {
@@ -939,6 +960,8 @@ export const restaurantChocolateContent: Record<Lang, { heading: string; subtitl
       "Innustab jagama fotosid sotsiaalmeedias",
     ],
     usageNote: "Neid saab asetada kookidele, dessertidele, jäätisele, arve juurde, kohvi- või kokteiliklaasidele.",
+    coffeeHeading: "Logo šokolaad kohvi kõrvale",
+    coffeeSubtitle: "Väike detail, mis jätab suure mulje — personaliseeritud Belgia šokolaad teie logoga iga kohvitassi kõrvale hotellides, restoranides ja kontorites.",
     items: [
       { title: "Šokolaad dessertidele ja kookidele", description: "Logo šokolaad premium dessertidel — rafineeritud aktsent igale taldrikule.", alt: "Premium dessert personaliseeritud logo šokolaadiga restoranile" },
       { title: "Logo šokolaad VIP kingitusteks", description: "Eksklusiivne bränditud šokolaad elegantsest pakendis külalislahkuseks.", alt: "Chopard bränditud šokolaadipralineed elegantsest sinises karbis" },
@@ -946,6 +969,11 @@ export const restaurantChocolateContent: Record<Lang, { heading: string; subtitl
       { title: "Šokolaad TripAdvisori arvustuse kutsega", description: "Logo šokolaadi dekoratsioon dessertidel TripAdvisori arvustuse kutsega.", alt: "Restorani dessert TripAdvisori logo šokolaadiga ja arvustuse kutsega" },
       { title: "Šokolaad šampanjaklaasidele", description: "Logo šokolaadi medaljon šampanja- või veiniklaasil.", alt: "Olympic Voodoo Casino logo šokolaadid šampanjaklaasidel" },
       { title: "Šokolaad kokteiliklaasidele", description: "Personaliseeritud šokolaad kokteili- või kohviklaasi serval.", alt: "Personaliseeritud logo šokolaadid kokteiliklaasidel" },
+      { title: "MasterCard šokolaad espresso kõrvale", description: "Premium Belgia šokolaad MasterCardi logoga, serveeritud espressotassi kõrvale.", alt: "MasterCardi logo šokolaad espresso kohvitassi kõrvale" },
+      { title: "Gmoa Keller šokolaad cappuccino kõrvale", description: "Personaliseeritud šokolaad restorani logoga cappuccino kõrvale — elegantne külalislahkuse žest.", alt: "Gmoa Kelleri restorani šokolaad cappuccino tassi kõrvale" },
+      { title: "Sirowa šokolaad kohvi kõrvale", description: "Šokolaad loomingulise disaini ja sõnumiga kohvi kõrvale — unustamatu hetk.", alt: "Sirowa personaliseeritud šokolaad sõnumiga kohvitassi kõrvale" },
+      { title: "Cabot šokolaad eksklusiivses pakendis", description: "Premium šokolaad Caboti logoga elegantses kingituspakendis trühvlikarpidega.", alt: "Caboti brändi šokolaad eksklusiivses kingituspakendis" },
+      { title: "Grenardi pidulikud šokolaadid", description: "Erinevate maitsetega Belgia šokolaadid kulla ja marjadekoriga — ideaalne pühade hooajaks.", alt: "Grenardi premium šokolaadid erinevate dekoratsioonidega pidulikul pakendis" },
     ],
   },
   lt: {
@@ -957,6 +985,8 @@ export const restaurantChocolateContent: Record<Lang, { heading: string; subtitl
       "Skatina dalintis nuotraukomis socialiniuose tinkluose",
     ],
     usageNote: "Juos galima dėti ant tortų, desertų, ledų, prie sąskaitos, ant kavos ar kokteilių taurių.",
+    coffeeHeading: "Logo šokoladas prie kavos",
+    coffeeSubtitle: "Maža detalė, kuri daro didelį įspūdį — personalizuotas belgiškas šokoladas su jūsų logotipu prie kiekvieno kavos puodelio viešbučiuose, restoranuose ir biuruose.",
     items: [
       { title: "Šokoladas desertams ir tortams", description: "Logotipo šokoladas ant premium desertų — rafinuotas akcentas kiekvienai lėkštei.", alt: "Premium desertas su personalizuotu logotipo šokoladu restoranui" },
       { title: "Logotipo šokoladas VIP dovanoms", description: "Eksklusiviniai firminio šokolado saldainiai elegantiskoje pakuotėje.", alt: "Chopard firminio šokolado pralinė elegantiskoje mėlynoje dėžutėje" },
@@ -964,6 +994,11 @@ export const restaurantChocolateContent: Record<Lang, { heading: string; subtitl
       { title: "Šokoladas su kvietimu palikti TripAdvisor atsiliepimą", description: "Logotipo šokolado dekoracija ant desertų su kvietimu palikti TripAdvisor atsiliepimą.", alt: "Restorano desertas su TripAdvisor logotipo šokoladu ir kvietimu palikti atsiliepimą" },
       { title: "Šokoladas šampano taurėms", description: "Logotipo šokolado medalionas ant šampano ar vyno taurės.", alt: "Olympic Voodoo Casino logotipo šokoladai ant šampano taurių" },
       { title: "Šokoladas kokteilių taurėms", description: "Personalizuotas šokoladas ant kokteilių ar kavos taurės krašto.", alt: "Personalizuoti logotipo šokoladai ant kokteilių taurių" },
+      { title: "MasterCard šokoladas prie espreso", description: "Premium belgiškas šokoladas su MasterCard logotipu, patiekiamas prie espreso puodelio.", alt: "MasterCard logotipo šokoladas prie espreso kavos puodelio" },
+      { title: "Gmoa Keller šokoladas prie kapučino", description: "Personalizuotas šokoladas su restorano logotipu prie kapučino — elegantiškas svetingumo gestas.", alt: "Gmoa Keller restorano šokoladas prie kapučino puodelio" },
+      { title: "Sirowa šokoladas prie kavos", description: "Šokoladas su kūrybišku dizainu ir žinute prie kavos — nepamirštamas momentas.", alt: "Sirowa personalizuotas šokoladas su žinute prie kavos puodelio" },
+      { title: "Cabot šokoladas eksklusivioje pakuotėje", description: "Premium šokoladas su Cabot logotipu elegantiskoje dovanų pakuotėje su triufelių dėžutėmis.", alt: "Cabot firminis šokoladas eksklusivioje dovanų pakuotėje" },
+      { title: "Grenardi šventiniai šokoladai", description: "Įvairių skonių belgiški šokoladai su aukso ir uogų dekoru — idealūs šventiniam sezonui.", alt: "Grenardi premium šokoladai su įvairiais dekorais šventinėje pakuotėje" },
     ],
   },
   sv: {
@@ -971,6 +1006,8 @@ export const restaurantChocolateContent: Record<Lang, { heading: string; subtitl
     subtitle: "Föreställ dig — din restaurangs logotyp eller kockens signatur i choklad på varje dessert, kaffekopp eller champagneglas. Vi gör det. Skräddarsytt, i din design, i ditt varumärke.",
     benefits: ["Stärker varumärkeskännedomen", "Överraskar gäster med en genomtänkt detalj", "Uppmuntrar till att dela foton på sociala medier"],
     usageNote: "De kan placeras på tårtor, desserter, glass, med notan, på kaffe- eller cocktailglas.",
+    coffeeHeading: "Logotypchoklad till kaffet",
+    coffeeSubtitle: "Den lilla detaljen som gör stort intryck — personlig belgisk choklad med din logotyp till varje kaffekopp på hotell, restauranger och kontor.",
     items: [
       { title: "Choklad för desserter och tårtor", description: "Logotypchoklad på premiumdesserter — en raffinerad accent för varje tallrik.", alt: "Premiumdessert med personlig logotypchoklad för restauranger" },
       { title: "Logotypchoklad för VIP-presenter", description: "Exklusiva varumärkeschoklader i elegant förpackning.", alt: "Chopard varumärkeschokladpraliner i elegant blå låda" },
@@ -978,6 +1015,11 @@ export const restaurantChocolateContent: Record<Lang, { heading: string; subtitl
       { title: "Choklad med TripAdvisor-inbjudan", description: "Logotypchokladdekoration på desserter med inbjudan att lämna TripAdvisor-recension.", alt: "Restaurangdessert med TripAdvisor logotypchoklad" },
       { title: "Choklad för champagneglas", description: "Logotypchokladmedalj på champagne- eller vinglas.", alt: "Olympic Voodoo Casino logotypchoklad på champagneglas" },
       { title: "Choklad för cocktailglas", description: "Personlig choklad på cocktail- eller kaffeglasets kant.", alt: "Personliga logotypchoklader på cocktailglas" },
+      { title: "MasterCard choklad till espresso", description: "Premium belgisk choklad med MasterCard-logotyp, serverad till espressokopp.", alt: "MasterCard logotypchoklad till espressokopp" },
+      { title: "Gmoa Keller choklad till cappuccino", description: "Personlig choklad med restaurangens logotyp till cappuccino — en elegant gästfrihetsgest.", alt: "Gmoa Keller restaurangchoklad till cappuccinokopp" },
+      { title: "Sirowa choklad till kaffe", description: "Choklad med kreativ design och budskap till kaffet — ett oförglömligt ögonblick.", alt: "Sirowa personlig choklad med budskap till kaffekopp" },
+      { title: "Cabot choklad i exklusiv förpackning", description: "Premiumchoklad med Cabot-logotyp i elegant presentförpackning med tryffelaskar.", alt: "Cabot varumärkeschoklad i exklusiv presentförpackning" },
+      { title: "Grenardi festchoklad", description: "Belgisk choklad i flera smaker med guld- och bärdekor — perfekt för högtidssäsongen.", alt: "Grenardi premiumchoklad med olika dekorationer i festlig förpackning" },
     ],
   },
   no: {
@@ -985,6 +1027,8 @@ export const restaurantChocolateContent: Record<Lang, { heading: string; subtitl
     subtitle: "Forestill deg — din restaurants logo eller kokkens signatur i sjokolade på hver dessert, kaffekopp eller champagneglass. Vi gjør det. Skreddersydd, i din design, i din merkevare.",
     benefits: ["Styrker merkevarebevissthet", "Overrasker gjester med en gjennomtenkt detalj", "Oppmuntrer til å dele bilder på sosiale medier"],
     usageNote: "De kan plasseres på kaker, desserter, iskrem, ved regningen, på kaffe- eller cocktailglass.",
+    coffeeHeading: "Logo sjokolade til kaffen",
+    coffeeSubtitle: "Den lille detaljen som gjør stort inntrykk — personlig belgisk sjokolade med din logo til hver kaffekopp på hoteller, restauranter og kontorer.",
     items: [
       { title: "Sjokolade for desserter og kaker", description: "Logo sjokolade på premiumdesserter — en raffinert aksent for hver tallerken.", alt: "Premiumdessert med personlig logo sjokolade for restauranter" },
       { title: "Logo sjokolade for VIP-gaver", description: "Eksklusive merkevare-sjokolader i elegant emballasje.", alt: "Chopard merkevare sjokoladepraliner i elegant blå eske" },
@@ -992,6 +1036,11 @@ export const restaurantChocolateContent: Record<Lang, { heading: string; subtitl
       { title: "Sjokolade med TripAdvisor-invitasjon", description: "Logo sjokoladedekorasjon på desserter med invitasjon til å legge igjen TripAdvisor-anmeldelse.", alt: "Restaurantdessert med TripAdvisor logo sjokolade" },
       { title: "Sjokolade for champagneglass", description: "Logo sjokolademedaljong på champagne- eller vinglass.", alt: "Olympic Voodoo Casino logo sjokolade på champagneglass" },
       { title: "Sjokolade for cocktailglass", description: "Personlig sjokolade på cocktail- eller kaffeglasskanten.", alt: "Personlige logo sjokolader på cocktailglass" },
+      { title: "MasterCard sjokolade til espresso", description: "Premium belgisk sjokolade med MasterCard-logo, servert til espressokopp.", alt: "MasterCard logo sjokolade til espressokopp" },
+      { title: "Gmoa Keller sjokolade til cappuccino", description: "Personlig sjokolade med restaurantens logo til cappuccino — en elegant gjestfrihetsgest.", alt: "Gmoa Keller restaurantsjokolade til cappuccinokopp" },
+      { title: "Sirowa sjokolade til kaffe", description: "Sjokolade med kreativt design og budskap til kaffen — et uforglemmelig øyeblikk.", alt: "Sirowa personlig sjokolade med budskap til kaffekopp" },
+      { title: "Cabot sjokolade i eksklusiv emballasje", description: "Premium sjokolade med Cabot-logo i elegant gaveemballasje med trøffelessker.", alt: "Cabot merkevare sjokolade i eksklusiv gaveemballasje" },
+      { title: "Grenardi festsjokolade", description: "Belgisk sjokolade i flere smaker med gull- og bærdekor — perfekt for høytidssesongen.", alt: "Grenardi premium sjokolade med ulike dekorasjoner i festlig emballasje" },
     ],
   },
   fi: {
@@ -999,6 +1048,8 @@ export const restaurantChocolateContent: Record<Lang, { heading: string; subtitl
     subtitle: "Kuvittele — ravintolasi logo tai kokin allekirjoitus suklaassa jokaisella jälkiruoalla, kahvikupilla tai samppanjalasilla. Me teemme sen. Tilauksesta, sinun suunnittelullasi, sinun brändilläsi.",
     benefits: ["Vahvistaa brändin tunnettuutta", "Yllättää vieraat harkitulla yksityiskohdalla", "Kannustaa jakamaan kuvia sosiaalisessa mediassa"],
     usageNote: "Ne voidaan asettaa kakuille, jälkiruoille, jäätelöön, laskun kanssa, kahvi- tai cocktaillasille.",
+    coffeeHeading: "Logosuklaa kahvin kanssa",
+    coffeeSubtitle: "Pieni yksityiskohta, joka tekee suuren vaikutuksen — personoitu belgialainen suklaa logollasi jokaisen kahvikupin kanssa hotelleissa, ravintoloissa ja toimistoissa.",
     items: [
       { title: "Suklaa jälkiruoille ja kakuille", description: "Logosuklaa premium-jälkiruoilla — hienostunut yksityiskohta jokaiselle lautaselle.", alt: "Premium-jälkiruoka personoidulla logosuklaalla ravintolalle" },
       { title: "Logosuklaa VIP-lahjoille", description: "Eksklusiiviset brändisuklaat elegantissa pakkauksessa.", alt: "Chopard brändisuklapraliinit elegantissa sinisessä laatikossa" },
@@ -1006,6 +1057,11 @@ export const restaurantChocolateContent: Record<Lang, { heading: string; subtitl
       { title: "Suklaa TripAdvisor-kutsulla", description: "Logosuklaakoriste jälkiruoissa TripAdvisor-arvostelukutsulla.", alt: "Ravintolan jälkiruoka TripAdvisor-logosuklaalla" },
       { title: "Suklaa samppanjalaseille", description: "Logosuklaamedaljonki samppanja- tai viinilasilla.", alt: "Olympic Voodoo Casino logosuklaat samppanjalaseilla" },
       { title: "Suklaa cocktaillaseille", description: "Personoitu suklaa cocktail- tai kahvilasin reunalla.", alt: "Personoidut logosuklaat cocktaillaseilla" },
+      { title: "MasterCard suklaa espresson kanssa", description: "Premium belgialainen suklaa MasterCard-logolla, tarjoiltu espressokupin kanssa.", alt: "MasterCard-logosuklaa espressokahvikupin kanssa" },
+      { title: "Gmoa Keller suklaa cappuccinon kanssa", description: "Personoitu suklaa ravintolan logolla cappuccinon kanssa — tyylikäs vieraanvaraisuusele.", alt: "Gmoa Keller ravintolan suklaa cappuccinokupin kanssa" },
+      { title: "Sirowa suklaa kahvin kanssa", description: "Suklaa luovalla suunnittelulla ja viestillä kahvin kanssa — unohtumaton hetki.", alt: "Sirowa personoitu suklaa viestillä kahvikupin kanssa" },
+      { title: "Cabot suklaa eksklusiivisessa pakkauksessa", description: "Premium suklaa Cabot-logolla elegantissa lahjapakkauksessa tryffelihatuilla.", alt: "Cabot brändisuklaa eksklusiivisessa lahjapakkauksessa" },
+      { title: "Grenardi juhlasuklaita", description: "Monen makuisia belgialaisia suklaita kulta- ja marjakoristeilla — täydellinen juhlakautta varten.", alt: "Grenardi premium suklaat erilaisilla koristeilla juhlallisissa pakkaukissa" },
     ],
   },
 };

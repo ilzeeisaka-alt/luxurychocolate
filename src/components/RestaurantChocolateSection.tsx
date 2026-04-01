@@ -10,8 +10,13 @@ import billChocolate from "@/assets/restaurant/restaurant-bill-chocolate.jpg";
 import dessertTripadvisor from "@/assets/restaurant/dessert-tripadvisor.jpg";
 import champagneGlass from "@/assets/restaurant/champagne-glass-chocolate.jpg";
 import cocktailGlass from "@/assets/restaurant/cocktail-glass-chocolate.jpg";
+import mastercardCoffee from "@/assets/restaurant/mastercard-coffee-chocolate.jpg";
+import gmoaKellerCoffee from "@/assets/restaurant/gmoa-keller-coffee-chocolate.jpg";
+import sirowaCoffee from "@/assets/restaurant/sirowa-coffee-chocolate.jpg";
+import cabotChocolate from "@/assets/restaurant/cabot-chocolate.jpg";
+import grenardiChristmas from "@/assets/restaurant/grenardi-christmas-chocolate.jpg";
 
-const images = [cakeLogo, chopard, billChocolate, dessertTripadvisor, champagneGlass, cocktailGlass];
+const images = [cakeLogo, chopard, billChocolate, dessertTripadvisor, champagneGlass, cocktailGlass, mastercardCoffee, gmoaKellerCoffee, sirowaCoffee, cabotChocolate, grenardiChristmas];
 
 const vp = { once: true, margin: "-50px" as const };
 
@@ -90,9 +95,9 @@ const RestaurantChocolateSection = ({ lang = "lv" }: RestaurantChocolateSectionP
             ))}
           </div>
 
-          {/* Bottom row: 3 images */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-            {t.items.slice(3).map((item, i) => (
+          {/* Second row: 3 images */}
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-6">
+            {t.items.slice(3, 6).map((item, i) => (
               <motion.div
                 key={item.title}
                 initial={{ opacity: 0, y: 32, scale: 0.95 }}
@@ -108,6 +113,84 @@ const RestaurantChocolateSection = ({ lang = "lv" }: RestaurantChocolateSectionP
                   <div className="aspect-[4/3] overflow-hidden relative photo-vignette">
                     <img
                       src={images[i + 3]}
+                      alt={item.alt}
+                      loading="lazy"
+                      className="w-full h-full object-cover transition-all duration-700 ease-out group-hover:scale-110 group-hover:brightness-110 group-hover:saturate-[1.1]"
+                    />
+                    <div className="absolute inset-0 ring-0 ring-primary/0 group-hover:ring-2 group-hover:ring-primary/30 transition-all duration-500 z-[3] pointer-events-none" />
+                  </div>
+                  <div className="p-5 relative z-[3]">
+                    <h3 className="text-sm font-bold text-foreground mb-1">{item.title}</h3>
+                    <p className="text-xs text-muted-foreground">{item.description}</p>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+
+          {/* Coffee chocolate row heading */}
+          <motion.div
+            className="text-center my-10"
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={vp}
+            transition={{ duration: 0.5 }}
+          >
+            <h3 className="text-2xl sm:text-3xl text-foreground mb-2">☕ {t.coffeeHeading}</h3>
+            <p className="text-muted-foreground max-w-2xl mx-auto text-sm">{t.coffeeSubtitle}</p>
+          </motion.div>
+
+          {/* Coffee row: 3 images */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-6">
+            {t.items.slice(6, 9).map((item, i) => (
+              <motion.div
+                key={item.title}
+                initial={{ opacity: 0, y: 40, scale: 0.92 }}
+                whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                viewport={vp}
+                transition={{ duration: 0.6, delay: i * 0.12 }}
+              >
+                <div
+                  className="photo-card relative bg-card rounded-xl overflow-hidden cursor-pointer group"
+                  style={{ boxShadow: "var(--shadow-card)" }}
+                  onClick={() => setLightboxIndex(i + 6)}
+                >
+                  <div className="aspect-[4/3] overflow-hidden relative photo-vignette photo-gradient-gold">
+                    <img
+                      src={images[i + 6]}
+                      alt={item.alt}
+                      loading="lazy"
+                      className="w-full h-full object-cover transition-all duration-700 ease-out group-hover:scale-110 group-hover:brightness-110 group-hover:saturate-[1.15]"
+                    />
+                    <div className="absolute inset-0 ring-0 ring-primary/0 group-hover:ring-2 group-hover:ring-primary/30 transition-all duration-500 z-[3] pointer-events-none" />
+                  </div>
+                  <div className="p-5 relative z-[3] transition-transform duration-300 group-hover:-translate-y-0.5">
+                    <h3 className="text-lg font-bold text-foreground mb-1">{item.title}</h3>
+                    <p className="text-sm text-muted-foreground">{item.description}</p>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+
+          {/* Coffee row bottom: 2 images */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-3xl mx-auto">
+            {t.items.slice(9).map((item, i) => (
+              <motion.div
+                key={item.title}
+                initial={{ opacity: 0, y: 32, scale: 0.95 }}
+                whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                viewport={vp}
+                transition={{ duration: 0.5, delay: (i + 9) * 0.08 }}
+              >
+                <div
+                  className="photo-card relative bg-card rounded-xl overflow-hidden cursor-pointer group"
+                  style={{ boxShadow: "var(--shadow-card)" }}
+                  onClick={() => setLightboxIndex(i + 9)}
+                >
+                  <div className="aspect-[4/3] overflow-hidden relative photo-vignette photo-gradient-gold">
+                    <img
+                      src={images[i + 9]}
                       alt={item.alt}
                       loading="lazy"
                       className="w-full h-full object-cover transition-all duration-700 ease-out group-hover:scale-110 group-hover:brightness-110 group-hover:saturate-[1.1]"
