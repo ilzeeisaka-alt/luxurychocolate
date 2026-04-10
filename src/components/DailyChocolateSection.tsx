@@ -42,7 +42,7 @@ const content: Record<Lang, {
   coffeeAlt: string;
   cardAlts: string[];
   galleryAlts: string[];
-}> = {
+}> = _addLangs({
   lv: {
     sectionTitle: "Ikdienas šokolādes uzņēmumiem",
     subtitle: "Maza šokolāde ar logo pie kafijas pasūtīšana, šokolādes vizītkartes ar uzņēmuma apdruku un individuāla dizaina šokolādes dekori desertiem",
@@ -307,7 +307,7 @@ const content: Record<Lang, {
       "Firmachokolade til daglig brug", "Eksklusiv logochokolade",
     ],
   },
-};
+});
 
 const vp = { once: true, margin: "-50px" as const };
 
