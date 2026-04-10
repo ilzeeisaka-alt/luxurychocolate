@@ -89,6 +89,15 @@ const shopContent: Record<
     badge3: "🏷️ Logollasi",
     uploadBtn: "Lataa logosi tai kuva",
   },
+  da: {
+    heading: "Webshop",
+    subtitle: "Vælg fra vores brede sortiment og bestil chokolade med dit logo online.",
+    cta: "Bestil nu med dit logo",
+    badge1: "🍫 Premium chokolade",
+    badge2: "🎁 Gaveæsker",
+    badge3: "🏷️ Med dit logo",
+    uploadBtn: "Upload dit logo eller billede",
+  },
 };
 
 interface ShopSectionProps {

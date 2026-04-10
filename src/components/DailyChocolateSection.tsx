@@ -274,6 +274,34 @@ const content: Record<Lang, {
       "Yrityssuklaa päivittäiseen käyttöön", "Eksklusiivinen logosuklaa",
     ],
   },
+  da: {
+    sectionTitle: "Daglig chokolade til virksomheder",
+    subtitle: "Gør kaffeserveringen og visitkortene mere virksomhedsmæssige, brandede, raffinerede og velsmagende",
+    coffeeTitle: "☕ Logochokolade til kaffe",
+    coffeeDesc: "En lille chokolade med dit firmalogo til hver kaffekop — en elegant og uforglemmelig måde at fremhæve dit brand ved daglige møder, konferencer og receptioner.",
+    cardTitle: "💼 Logochokolade med visitkort",
+    cardDesc: "Tilføj en logochokolade til dit visitkort — det bliver en mindeværdig kompliment, der adskiller dig fra konkurrenterne og efterlader et velsmagende indtryk.",
+    chocolateTitle: "Belgisk chokolade",
+    chocolateStandard: "Standardsmage",
+    chocolateSpecial: "Specialsmage",
+    standardList: ["Mælkechokolade", "Hvid chokolade", "Mørk chokolade"],
+    specialList: ["Vegansk", "Appelsin", "Lime", "Jordbær", "Cappuccino", "Karamel", "Honning"],
+    galleryTitle: "Eksempler på vores arbejde",
+    coffeeAlt: "Chokolade med firmalogo serveret med kaffe — firmavenlighed",
+    cardAlts: [
+      "Logochokolade med visitkort — elegant firmakompliment",
+      "Personlig chokolade med logo ved visitkort",
+      "Firmachokolade med logo — visitkortskompliment til kunder",
+    ],
+    galleryAlts: [
+      "Logochokolade til kaffe", "Logochokolade med visitkort",
+      "Personlig chokolade med visitkort", "Firmachokolade til kunder",
+      "Belgisk chokolade med firmalogo", "Logotryk på chokolade",
+      "Chokolade til firmakaffeservering", "Brandchokolade til partnere",
+      "Logochokolade til konferencer", "Luksurchokolade med logo",
+      "Firmachokolade til daglig brug", "Eksklusiv logochokolade",
+    ],
+  },
 };
 
 const vp = { once: true, margin: "-50px" as const };
