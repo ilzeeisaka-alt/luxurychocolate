@@ -98,6 +98,10 @@ const App = () => (
             <Route path="/fi" element={<FiIndex />} />
             <Route path="/fi/blogi" element={<BlogPage lang="fi" />} />
             <Route path="/fi/blogi/:slug" element={<BlogPostPage lang="fi" />} />
+            {/* DA routes */}
+            <Route path="/da" element={<LangPage lang="da" />} />
+            <Route path="/da/blog" element={<BlogPage lang="da" />} />
+            <Route path="/da/blog/:slug" element={<BlogPostPage lang="da" />} />
             {/* LV blog */}
             <Route path="/blogs" element={<BlogPage lang="lv" />} />
             <Route path="/blogs/:slug" element={<BlogPostPage lang="lv" />} />
