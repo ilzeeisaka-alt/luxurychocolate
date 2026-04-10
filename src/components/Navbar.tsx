@@ -123,6 +123,20 @@ const navItems: Record<Lang, NavItem[]> = {
     { label: "Kauppa", to: "https://www.luxurychocolatesia.lv/online-shop-products/" },
     { label: "Yhteystiedot", to: "#kontakti" },
   ],
+  da: [
+    { label: "Chokolade med logo", to: "/en/chocolate-with-logo" },
+    { label: "Daglig", to: "#ikdienas" },
+    { label: "Kundegaver", to: "/en/client-gifts" },
+    { label: "Reklame", to: "/en/promotional-chocolate" },
+    { label: "Messer", to: "/en/exhibition-stand-chocolate" },
+    { label: "Restauranter", to: "#restoraniem" },
+    { label: "Jul", to: "/en/christmas-corporate-chocolate" },
+    { label: "Chokoladebog", to: "/en/chocolate-book-box" },
+    { label: "Gaveidéer", to: "/en/corporate-gift-ideas" },
+    { label: "Blog", to: "/da/blog" },
+    { label: "Butik", to: "https://www.luxurychocolatesia.lv/online-shop-products/" },
+    { label: "Kontakt", to: "#kontakti" },
+  ],
 };
 
 const homePaths: Record<Lang, string> = {
@@ -134,6 +148,7 @@ const homePaths: Record<Lang, string> = {
   sv: "/sv",
   no: "/no",
   fi: "/fi",
+  da: "/da",
 };
 
 interface NavbarProps {
