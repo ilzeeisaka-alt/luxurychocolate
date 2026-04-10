@@ -1,4 +1,7 @@
 import type { Lang } from "./types";
+import * as nl from "./nl";
+import * as pl from "./pl";
+import * as cs from "./cs";
 
 const NEW_LANGS = ["de","fr","it","es","ar","nl","pl","cs","pt","el","tr","hu","ro","bg","hr","sk","sl","uk","sr","bs","mk","sq","is"] as const;
 
