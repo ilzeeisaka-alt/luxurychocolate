@@ -34,6 +34,24 @@ const FrIndex = lazy(() => import("./pages/FrIndex.tsx"));
 const ItIndex = lazy(() => import("./pages/ItIndex.tsx"));
 const EsIndex = lazy(() => import("./pages/EsIndex.tsx"));
 const ArIndex = lazy(() => import("./pages/ArIndex.tsx"));
+const NlIndex = lazy(() => import("./pages/NlIndex.tsx"));
+const PlIndex = lazy(() => import("./pages/PlIndex.tsx"));
+const CsIndex = lazy(() => import("./pages/CsIndex.tsx"));
+const PtIndex = lazy(() => import("./pages/PtIndex.tsx"));
+const ElIndex = lazy(() => import("./pages/ElIndex.tsx"));
+const TrIndex = lazy(() => import("./pages/TrIndex.tsx"));
+const HuIndex = lazy(() => import("./pages/HuIndex.tsx"));
+const RoIndex = lazy(() => import("./pages/RoIndex.tsx"));
+const BgIndex = lazy(() => import("./pages/BgIndex.tsx"));
+const HrIndex = lazy(() => import("./pages/HrIndex.tsx"));
+const SkIndex = lazy(() => import("./pages/SkIndex.tsx"));
+const SlIndex = lazy(() => import("./pages/SlIndex.tsx"));
+const UkIndex = lazy(() => import("./pages/UkIndex.tsx"));
+const SrIndex = lazy(() => import("./pages/SrIndex.tsx"));
+const BsIndex = lazy(() => import("./pages/BsIndex.tsx"));
+const MkIndex = lazy(() => import("./pages/MkIndex.tsx"));
+const SqIndex = lazy(() => import("./pages/SqIndex.tsx"));
+const IsIndex = lazy(() => import("./pages/IsIndex.tsx"));
 const EnGiftIdeas = lazy(() => import("./pages/EnGiftIdeas.tsx"));
 const RuGiftIdeas = lazy(() => import("./pages/RuGiftIdeas.tsx"));
 const EtGiftIdeas = lazy(() => import("./pages/EtGiftIdeas.tsx"));
@@ -128,6 +146,78 @@ const App = () => (
             <Route path="/ar" element={<ArIndex />} />
             <Route path="/ar/blog" element={<BlogPage lang="ar" />} />
             <Route path="/ar/blog/:slug" element={<BlogPostPage lang="ar" />} />
+            {/* NL routes */}
+            <Route path="/nl" element={<NlIndex />} />
+            <Route path="/nl/blog" element={<BlogPage lang="nl" />} />
+            <Route path="/nl/blog/:slug" element={<BlogPostPage lang="nl" />} />
+            {/* PL routes */}
+            <Route path="/pl" element={<PlIndex />} />
+            <Route path="/pl/blog" element={<BlogPage lang="pl" />} />
+            <Route path="/pl/blog/:slug" element={<BlogPostPage lang="pl" />} />
+            {/* CS routes */}
+            <Route path="/cs" element={<CsIndex />} />
+            <Route path="/cs/blog" element={<BlogPage lang="cs" />} />
+            <Route path="/cs/blog/:slug" element={<BlogPostPage lang="cs" />} />
+            {/* PT routes */}
+            <Route path="/pt" element={<PtIndex />} />
+            <Route path="/pt/blog" element={<BlogPage lang="pt" />} />
+            <Route path="/pt/blog/:slug" element={<BlogPostPage lang="pt" />} />
+            {/* EL routes */}
+            <Route path="/el" element={<ElIndex />} />
+            <Route path="/el/blog" element={<BlogPage lang="el" />} />
+            <Route path="/el/blog/:slug" element={<BlogPostPage lang="el" />} />
+            {/* TR routes */}
+            <Route path="/tr" element={<TrIndex />} />
+            <Route path="/tr/blog" element={<BlogPage lang="tr" />} />
+            <Route path="/tr/blog/:slug" element={<BlogPostPage lang="tr" />} />
+            {/* HU routes */}
+            <Route path="/hu" element={<HuIndex />} />
+            <Route path="/hu/blog" element={<BlogPage lang="hu" />} />
+            <Route path="/hu/blog/:slug" element={<BlogPostPage lang="hu" />} />
+            {/* RO routes */}
+            <Route path="/ro" element={<RoIndex />} />
+            <Route path="/ro/blog" element={<BlogPage lang="ro" />} />
+            <Route path="/ro/blog/:slug" element={<BlogPostPage lang="ro" />} />
+            {/* BG routes */}
+            <Route path="/bg" element={<BgIndex />} />
+            <Route path="/bg/blog" element={<BlogPage lang="bg" />} />
+            <Route path="/bg/blog/:slug" element={<BlogPostPage lang="bg" />} />
+            {/* HR routes */}
+            <Route path="/hr" element={<HrIndex />} />
+            <Route path="/hr/blog" element={<BlogPage lang="hr" />} />
+            <Route path="/hr/blog/:slug" element={<BlogPostPage lang="hr" />} />
+            {/* SK routes */}
+            <Route path="/sk" element={<SkIndex />} />
+            <Route path="/sk/blog" element={<BlogPage lang="sk" />} />
+            <Route path="/sk/blog/:slug" element={<BlogPostPage lang="sk" />} />
+            {/* SL routes */}
+            <Route path="/sl" element={<SlIndex />} />
+            <Route path="/sl/blog" element={<BlogPage lang="sl" />} />
+            <Route path="/sl/blog/:slug" element={<BlogPostPage lang="sl" />} />
+            {/* UK routes */}
+            <Route path="/uk" element={<UkIndex />} />
+            <Route path="/uk/blog" element={<BlogPage lang="uk" />} />
+            <Route path="/uk/blog/:slug" element={<BlogPostPage lang="uk" />} />
+            {/* SR routes */}
+            <Route path="/sr" element={<SrIndex />} />
+            <Route path="/sr/blog" element={<BlogPage lang="sr" />} />
+            <Route path="/sr/blog/:slug" element={<BlogPostPage lang="sr" />} />
+            {/* BS routes */}
+            <Route path="/bs" element={<BsIndex />} />
+            <Route path="/bs/blog" element={<BlogPage lang="bs" />} />
+            <Route path="/bs/blog/:slug" element={<BlogPostPage lang="bs" />} />
+            {/* MK routes */}
+            <Route path="/mk" element={<MkIndex />} />
+            <Route path="/mk/blog" element={<BlogPage lang="mk" />} />
+            <Route path="/mk/blog/:slug" element={<BlogPostPage lang="mk" />} />
+            {/* SQ routes */}
+            <Route path="/sq" element={<SqIndex />} />
+            <Route path="/sq/blog" element={<BlogPage lang="sq" />} />
+            <Route path="/sq/blog/:slug" element={<BlogPostPage lang="sq" />} />
+            {/* IS routes */}
+            <Route path="/is" element={<IsIndex />} />
+            <Route path="/is/blog" element={<BlogPage lang="is" />} />
+            <Route path="/is/blog/:slug" element={<BlogPostPage lang="is" />} />
             {/* LV blog */}
             <Route path="/blogs" element={<BlogPage lang="lv" />} />
             <Route path="/blogs/:slug" element={<BlogPostPage lang="lv" />} />
