@@ -15,6 +15,11 @@ const blogStrings: Record<Lang, { title: string; subtitle: string; readMore: str
   no: { title: "Blogg", subtitle: "Siste nyheter og tips om bedriftssjokolade", readMore: "Les mer", noPostsYet: "Ingen publiserte innlegg ennå.", loading: "Laster..." },
   fi: { title: "Blogi", subtitle: "Uusimmat uutiset ja vinkit yrityslahja suklaasta", readMore: "Lue lisää", noPostsYet: "Ei vielä julkaistuja artikkeleita.", loading: "Ladataan..." },
   da: { title: "Blog", subtitle: "Seneste nyheder og tips om firmachokolade", readMore: "Læs mere", noPostsYet: "Ingen publicerede indlæg endnu.", loading: "Indlæser..." },
+  de: { title: "Blog", subtitle: "Neueste Nachrichten und Tipps zu Firmenschokolade", readMore: "Weiterlesen", noPostsYet: "Noch keine veröffentlichten Beiträge.", loading: "Laden..." },
+  fr: { title: "Blog", subtitle: "Dernières nouvelles et conseils sur le chocolat d'entreprise", readMore: "Lire la suite", noPostsYet: "Aucun article publié pour le moment.", loading: "Chargement..." },
+  it: { title: "Blog", subtitle: "Ultime notizie e consigli sul cioccolato aziendale", readMore: "Leggi di più", noPostsYet: "Nessun articolo pubblicato ancora.", loading: "Caricamento..." },
+  es: { title: "Blog", subtitle: "Últimas noticias y consejos sobre chocolate corporativo", readMore: "Leer más", noPostsYet: "Aún no hay publicaciones.", loading: "Cargando..." },
+  ar: { title: "مدونة", subtitle: "آخر الأخبار والنصائح حول شوكولاتة الشركات", readMore: "اقرأ المزيد", noPostsYet: "لا توجد مقالات منشورة بعد.", loading: "جاري التحميل..." },
 };
 
 const blogBasePaths: Record<Lang, string> = {
@@ -27,6 +32,11 @@ const blogBasePaths: Record<Lang, string> = {
   no: "/no/blogg",
   fi: "/fi/blogi",
   da: "/da/blog",
+  de: "/de/blog",
+  fr: "/fr/blog",
+  it: "/it/blog",
+  es: "/es/blog",
+  ar: "/ar/blog",
 };
 
 interface BlogPageProps {

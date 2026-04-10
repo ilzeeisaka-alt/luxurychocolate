@@ -19,6 +19,11 @@ import img10 from "@/assets/daily-chocolate-10.jpg";
 import img11 from "@/assets/daily-chocolate-11.jpg";
 import type { Lang } from "@/i18n/types";
 
+type OldLang9 = Exclude<Lang, "de" | "fr" | "it" | "es" | "ar">;
+const _addLangs = <T,>(base: Record<OldLang9, T>): Record<Lang, T> => ({
+  ...base, de: base.en, fr: base.en, it: base.en, es: base.en, ar: base.en,
+});
+
 const images = [coffeeHero, cardHero, cardImg2, cardImg3, img1, img2, img3, img4, img5, img6, img10, img11];
 
 const content: Record<Lang, {
@@ -37,7 +42,7 @@ const content: Record<Lang, {
   coffeeAlt: string;
   cardAlts: string[];
   galleryAlts: string[];
-}> = {
+}> = _addLangs({
   lv: {
     sectionTitle: "Ikdienas šokolādes uzņēmumiem",
     subtitle: "Maza šokolāde ar logo pie kafijas pasūtīšana, šokolādes vizītkartes ar uzņēmuma apdruku un individuāla dizaina šokolādes dekori desertiem",
@@ -302,7 +307,7 @@ const content: Record<Lang, {
       "Firmachokolade til daglig brug", "Eksklusiv logochokolade",
     ],
   },
-};
+});
 
 const vp = { once: true, margin: "-50px" as const };
 

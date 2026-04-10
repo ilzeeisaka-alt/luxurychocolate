@@ -13,6 +13,11 @@ const contactContent: Record<Lang, { heading: string; subtitle: string; role: st
   no: { heading: "Kontakt oss", subtitle: "Vi hjelper deg å velge den perfekte sjokoladegaven for din bedrift", role: "Leder", cta: "Send e-post", ctaOffer: "Send forespørsel" },
   fi: { heading: "Ota yhteyttä", subtitle: "Autamme valitsemaan täydellisen suklaalalahjan yrityksellesi", role: "Johtaja", cta: "Lähetä sähköposti", ctaOffer: "Lähetä tiedustelu" },
   da: { heading: "Kontakt os", subtitle: "Vi hjælper dig med at vælge den perfekte chokoladegave til din virksomhed", role: "Leder", cta: "Send e-mail", ctaOffer: "Send forespørgsel" },
+  de: { heading: "Kontaktieren Sie uns", subtitle: "Wir helfen Ihnen, das perfekte Schokoladengeschenk für Ihr Unternehmen zu wählen", role: "Geschäftsführerin", cta: "E-Mail senden", ctaOffer: "Anfrage senden" },
+  fr: { heading: "Contactez-nous", subtitle: "Nous vous aidons à choisir le cadeau chocolat parfait pour votre entreprise", role: "Directrice", cta: "Envoyer un e-mail", ctaOffer: "Soumettre une demande" },
+  it: { heading: "Contattaci", subtitle: "Ti aiutiamo a scegliere il regalo di cioccolato perfetto per la tua azienda", role: "Direttrice", cta: "Invia e-mail", ctaOffer: "Invia richiesta" },
+  es: { heading: "Contáctenos", subtitle: "Le ayudamos a elegir el regalo de chocolate perfecto para su empresa", role: "Directora", cta: "Enviar correo", ctaOffer: "Enviar consulta" },
+  ar: { heading: "اتصل بنا", subtitle: "سنساعدك في اختيار هدية الشوكولاتة المثالية لشركتك", role: "المديرة", cta: "إرسال بريد إلكتروني", ctaOffer: "إرسال استفسار" },
 };
 
 interface ContactSectionProps {
@@ -80,7 +85,7 @@ const ContactSection = ({ lang = "lv", onCtaClick }: ContactSectionProps) => {
               </li>
               <li className="flex items-center gap-3 justify-center sm:justify-start">
                 <MapPin size={18} className="text-primary shrink-0" />
-                <span>Kandavas iela 29a, Rīga, LV-1083, {lang === "lv" ? "Latvija" : lang === "ru" ? "Латвия" : lang === "et" ? "Läti" : lang === "lt" ? "Latvija" : lang === "da" ? "Letland" : lang === "sv" ? "Lettland" : lang === "no" ? "Latvia" : lang === "fi" ? "Latvia" : "Latvia"}</span>
+                <span>Kandavas iela 29a, Rīga, LV-1083, {lang === "lv" ? "Latvija" : lang === "ru" ? "Латвия" : lang === "et" ? "Läti" : lang === "lt" ? "Latvija" : lang === "da" ? "Letland" : lang === "sv" ? "Lettland" : lang === "no" ? "Latvia" : lang === "fi" ? "Latvia" : lang === "de" ? "Lettland" : lang === "fr" ? "Lettonie" : lang === "it" ? "Lettonia" : lang === "es" ? "Letonia" : lang === "ar" ? "لاتفيا" : "Latvia"}</span>
               </li>
             </ul>
 

@@ -12,6 +12,11 @@ const shopUrls: Record<Lang, string> = {
   no: "https://www.luxurychocolatesia.lv/online-shop-products/",
   fi: "https://www.luxurychocolatesia.lv/online-shop-products/",
   da: "https://www.luxurychocolatesia.lv/online-shop-products/",
+  de: "https://www.luxurychocolatesia.lv/online-shop-products/",
+  fr: "https://www.luxurychocolatesia.lv/online-shop-products/",
+  it: "https://www.luxurychocolatesia.lv/online-shop-products/",
+  es: "https://www.luxurychocolatesia.lv/online-shop-products/",
+  ar: "https://www.luxurychocolatesia.lv/online-shop-products/",
 };
 
 const shopContent: Record<
@@ -98,6 +103,51 @@ const shopContent: Record<
     badge2: "🎁 Gaveæsker",
     badge3: "🏷️ Med dit logo",
     uploadBtn: "Upload dit logo eller billede",
+  },
+  de: {
+    heading: "Online-Shop",
+    subtitle: "Wählen Sie aus unserem breiten Sortiment und bestellen Sie Schokolade mit Ihrem Logo online.",
+    cta: "Jetzt mit Ihrem Logo bestellen",
+    badge1: "🍫 Premium Schokolade",
+    badge2: "🎁 Geschenkboxen",
+    badge3: "🏷️ Mit Ihrem Logo",
+    uploadBtn: "Laden Sie Ihr Logo oder Foto hoch",
+  },
+  fr: {
+    heading: "Boutique en ligne",
+    subtitle: "Choisissez parmi notre large sélection et commandez du chocolat avec votre logo en ligne.",
+    cta: "Commander avec votre logo",
+    badge1: "🍫 Chocolats premium",
+    badge2: "🎁 Coffrets cadeaux",
+    badge3: "🏷️ Avec votre logo",
+    uploadBtn: "Téléchargez votre logo ou photo",
+  },
+  it: {
+    heading: "Negozio online",
+    subtitle: "Scegli dalla nostra ampia selezione e ordina cioccolato con il tuo logo online.",
+    cta: "Ordina ora con il tuo logo",
+    badge1: "🍫 Cioccolato premium",
+    badge2: "🎁 Confezioni regalo",
+    badge3: "🏷️ Con il tuo logo",
+    uploadBtn: "Carica il tuo logo o foto",
+  },
+  es: {
+    heading: "Tienda online",
+    subtitle: "Elija de nuestra amplia selección y pida chocolate con su logo en línea.",
+    cta: "Pedir ahora con su logo",
+    badge1: "🍫 Chocolate premium",
+    badge2: "🎁 Cajas de regalo",
+    badge3: "🏷️ Con su logo",
+    uploadBtn: "Suba su logo o foto",
+  },
+  ar: {
+    heading: "المتجر الإلكتروني",
+    subtitle: "اختر من مجموعتنا الواسعة واطلب الشوكولاتة بشعارك عبر الإنترنت.",
+    cta: "اطلب الآن بشعارك",
+    badge1: "🍫 شوكولاتة فاخرة",
+    badge2: "🎁 علب هدايا",
+    badge3: "🏷️ بشعارك",
+    uploadBtn: "حمّل شعارك أو صورتك",
   },
 };
 

@@ -12,6 +12,11 @@ const shopUrls: Record<Lang, string> = {
   no: "https://www.luxurychocolatesia.lv/online-shop-products/",
   fi: "https://www.luxurychocolatesia.lv/online-shop-products/",
   da: "https://www.luxurychocolatesia.lv/online-shop-products/",
+  de: "https://www.luxurychocolatesia.lv/online-shop-products/",
+  fr: "https://www.luxurychocolatesia.lv/online-shop-products/",
+  it: "https://www.luxurychocolatesia.lv/online-shop-products/",
+  es: "https://www.luxurychocolatesia.lv/online-shop-products/",
+  ar: "https://www.luxurychocolatesia.lv/online-shop-products/",
 };
 
 interface HeroSectionProps {
