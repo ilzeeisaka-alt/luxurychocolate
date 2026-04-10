@@ -7,7 +7,12 @@ const langLabels: Record<string, string> = {
   lv: "LV", en: "EN", ru: "RU", et: "ET", lt: "LT",
   sv: "SV", no: "NO", fi: "FI", da: "DA", de: "DE",
   fr: "FR", it: "IT", es: "ES", ar: "AR",
+  nl: "NL", pl: "PL", cs: "CS", pt: "PT", el: "EL", tr: "TR",
+  hu: "HU", ro: "RO", bg: "BG", hr: "HR", sk: "SK", sl: "SL",
+  uk: "UK", sr: "SR", bs: "BS", mk: "MK", sq: "SQ", is: "IS",
 };
+
+const langPrefixes = ["nl","pl","cs","pt","el","tr","hu","ro","bg","hr","sk","sl","uk","sr","bs","mk","sq","is","de","fr","it","es","ar","sv","no","fi","da","et","lt","ru","en"];
 
 const LanguageSwitcher = () => {
   const { pathname } = useLocation();
@@ -25,20 +30,10 @@ const LanguageSwitcher = () => {
 
   if (!alternatives) return null;
 
-  const currentLang = pathname.startsWith("/de") ? "de"
-    : pathname.startsWith("/fr") ? "fr"
-    : pathname.startsWith("/it") ? "it"
-    : pathname.startsWith("/es") ? "es"
-    : pathname.startsWith("/ar") ? "ar"
-    : pathname.startsWith("/sv") ? "sv"
-    : pathname.startsWith("/no") ? "no"
-    : pathname.startsWith("/fi") ? "fi"
-    : pathname.startsWith("/da") ? "da"
-    : pathname.startsWith("/et") ? "et"
-    : pathname.startsWith("/lt") ? "lt"
-    : pathname.startsWith("/ru") ? "ru"
-    : pathname.startsWith("/en") ? "en"
-    : "lv";
+  let currentLang = "lv";
+  for (const p of langPrefixes) {
+    if (pathname.startsWith(`/${p}`)) { currentLang = p; break; }
+  }
 
   return (
     <div className="relative" ref={ref}>
@@ -52,7 +47,7 @@ const LanguageSwitcher = () => {
       </button>
 
       {open && (
-        <div className="absolute right-0 top-full mt-1 bg-foreground border border-white/10 rounded-lg shadow-xl py-1 grid grid-cols-2 gap-0 min-w-[120px] z-50">
+        <div className="absolute right-0 top-full mt-1 bg-foreground border border-white/10 rounded-lg shadow-xl py-1 grid grid-cols-4 gap-0 min-w-[200px] max-h-[320px] overflow-y-auto z-50">
           {Object.entries(alternatives).map(([lang, path]) => (
             <Link
               key={lang}
