@@ -1201,3 +1201,60 @@ export const restaurantChocolateContent: Record<Lang, { heading: string; subtitl
     ],
   },
 });
+
+// ── Apply NL / PL / CS native translations ──
+quickFacts.nl = nl.nlQuickFacts;
+quickFacts.pl = pl.plQuickFacts;
+quickFacts.cs = cs.csQuickFacts;
+
+clientExamples.nl = nl.nlClientExamples;
+clientExamples.pl = pl.plClientExamples;
+clientExamples.cs = cs.csClientExamples;
+
+howToOrder.nl = nl.nlHowToOrder;
+howToOrder.pl = pl.plHowToOrder;
+howToOrder.cs = cs.csHowToOrder;
+
+trust.nl = nl.nlTrust;
+trust.pl = pl.plTrust;
+trust.cs = cs.csTrust;
+
+products.nl = nl.nlProducts;
+products.pl = pl.plProducts;
+products.cs = cs.csProducts;
+
+faqContent.nl = nl.nlFaqContent;
+faqContent.pl = pl.plFaqContent;
+faqContent.cs = cs.csFaqContent;
+
+ideasContent.nl = nl.nlIdeasContent;
+ideasContent.pl = pl.plIdeasContent;
+ideasContent.cs = cs.csIdeasContent;
+
+useCasesContent.nl = nl.nlUseCasesContent;
+useCasesContent.pl = pl.plUseCasesContent;
+useCasesContent.cs = cs.csUseCasesContent;
+
+ctaContent.nl = nl.nlCtaContent;
+ctaContent.pl = pl.plCtaContent;
+ctaContent.cs = cs.csCtaContent;
+
+seoContent.nl = nl.nlSeoContent;
+seoContent.pl = pl.plSeoContent;
+seoContent.cs = cs.csSeoContent;
+
+heroContent.nl = nl.nlHeroContent;
+heroContent.pl = pl.plHeroContent;
+heroContent.cs = cs.csHeroContent;
+
+bookBoxContent.nl = nl.nlBookBoxContent;
+bookBoxContent.pl = pl.plBookBoxContent;
+bookBoxContent.cs = cs.csBookBoxContent;
+
+cakeChocolateContent.nl = nl.nlDailyChocolateContent;
+cakeChocolateContent.pl = pl.plDailyChocolateContent;
+cakeChocolateContent.cs = cs.csDailyChocolateContent;
+
+restaurantChocolateContent.nl = nl.nlRestaurantChocolateContent;
+restaurantChocolateContent.pl = pl.plRestaurantChocolateContent;
+restaurantChocolateContent.cs = cs.csRestaurantChocolateContent;
