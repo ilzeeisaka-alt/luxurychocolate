@@ -1,28 +1,20 @@
 import type { Lang } from "./types";
 
-type BaseLang = "lv" | "en" | "ru" | "et" | "lt";
-const withNordics = <T>(base: Record<BaseLang, T>): Record<Lang, T> => ({
-  ...base,
-  sv: base.en,
-  no: base.en,
-  fi: base.en,
-  da: base.en,
-  de: base.en,
-  fr: base.en,
-  it: base.en,
-  es: base.en,
-  ar: base.en,
-});
+const NEW_LANGS = ["de","fr","it","es","ar","nl","pl","cs","pt","el","tr","hu","ro","bg","hr","sk","sl","uk","sr","bs","mk","sq","is"] as const;
 
-type OldLang = Exclude<Lang, "de" | "fr" | "it" | "es" | "ar">;
-const addNewLangs = <T>(base: Record<OldLang, T>): Record<Lang, T> => ({
-  ...base,
-  de: base.en,
-  fr: base.en,
-  it: base.en,
-  es: base.en,
-  ar: base.en,
-});
+type BaseLang = "lv" | "en" | "ru" | "et" | "lt";
+const withNordics = <T>(base: Record<BaseLang, T>): Record<Lang, T> => {
+  const result: any = { ...base, sv: base.en, no: base.en, fi: base.en, da: base.en };
+  for (const l of NEW_LANGS) result[l] = base.en;
+  return result;
+};
+
+type OldLang = "lv" | "en" | "ru" | "et" | "lt" | "sv" | "no" | "fi" | "da";
+const addNewLangs = <T>(base: Record<OldLang, T>): Record<Lang, T> => {
+  const result: any = { ...base };
+  for (const l of NEW_LANGS) result[l] = base.en;
+  return result;
+};
 
 
 export const quickFacts: Record<Lang, { heading: string; facts: string[] }> = addNewLangs({

@@ -17,6 +17,7 @@ const shopUrls: Record<Lang, string> = {
   it: "https://www.luxurychocolatesia.lv/online-shop-products/",
   es: "https://www.luxurychocolatesia.lv/online-shop-products/",
   ar: "https://www.luxurychocolatesia.lv/online-shop-products/",
+  nl: "https://www.luxurychocolatesia.lv/online-shop-products/", pl: "https://www.luxurychocolatesia.lv/online-shop-products/", cs: "https://www.luxurychocolatesia.lv/online-shop-products/", pt: "https://www.luxurychocolatesia.lv/online-shop-products/", el: "https://www.luxurychocolatesia.lv/online-shop-products/", tr: "https://www.luxurychocolatesia.lv/online-shop-products/", hu: "https://www.luxurychocolatesia.lv/online-shop-products/", ro: "https://www.luxurychocolatesia.lv/online-shop-products/", bg: "https://www.luxurychocolatesia.lv/online-shop-products/", hr: "https://www.luxurychocolatesia.lv/online-shop-products/", sk: "https://www.luxurychocolatesia.lv/online-shop-products/", sl: "https://www.luxurychocolatesia.lv/online-shop-products/", uk: "https://www.luxurychocolatesia.lv/online-shop-products/", sr: "https://www.luxurychocolatesia.lv/online-shop-products/", bs: "https://www.luxurychocolatesia.lv/online-shop-products/", mk: "https://www.luxurychocolatesia.lv/online-shop-products/", sq: "https://www.luxurychocolatesia.lv/online-shop-products/", is: "https://www.luxurychocolatesia.lv/online-shop-products/",
 };
 
 interface HeroSectionProps {

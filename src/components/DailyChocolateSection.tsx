@@ -19,10 +19,13 @@ import img10 from "@/assets/daily-chocolate-10.jpg";
 import img11 from "@/assets/daily-chocolate-11.jpg";
 import type { Lang } from "@/i18n/types";
 
-type OldLang9 = Exclude<Lang, "de" | "fr" | "it" | "es" | "ar">;
-const _addLangs = <T,>(base: Record<OldLang9, T>): Record<Lang, T> => ({
-  ...base, de: base.en, fr: base.en, it: base.en, es: base.en, ar: base.en,
-});
+const _NEW = ["de","fr","it","es","ar","nl","pl","cs","pt","el","tr","hu","ro","bg","hr","sk","sl","uk","sr","bs","mk","sq","is"] as const;
+type OldLang9 = "lv" | "en" | "ru" | "et" | "lt" | "sv" | "no" | "fi" | "da";
+const _addLangs = <T,>(base: Record<OldLang9, T>): Record<Lang, T> => {
+  const r: any = { ...base };
+  for (const l of _NEW) r[l] = base.en;
+  return r;
+};
 
 const images = [coffeeHero, cardHero, cardImg2, cardImg3, img1, img2, img3, img4, img5, img6, img10, img11];
 
