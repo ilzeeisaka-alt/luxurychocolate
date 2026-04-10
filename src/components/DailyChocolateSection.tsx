@@ -24,6 +24,8 @@ const _addLangs = <T,>(base: Record<OldLang9, T>): Record<Lang, T> => ({
   ...base, de: base.en, fr: base.en, it: base.en, es: base.en, ar: base.en,
 });
 
+const images = [coffeeHero, cardHero, cardImg2, cardImg3, img1, img2, img3, img4, img5, img6, img10, img11];
+
 const content: Record<Lang, {
   sectionTitle: string;
   subtitle: string;
