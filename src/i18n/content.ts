@@ -7,10 +7,25 @@ const withNordics = <T>(base: Record<BaseLang, T>): Record<Lang, T> => ({
   no: base.en,
   fi: base.en,
   da: base.en,
+  de: base.en,
+  fr: base.en,
+  it: base.en,
+  es: base.en,
+  ar: base.en,
+});
+
+type OldLang = Exclude<Lang, "de" | "fr" | "it" | "es" | "ar">;
+const addNewLangs = <T>(base: Record<OldLang, T>): Record<Lang, T> => ({
+  ...base,
+  de: base.en,
+  fr: base.en,
+  it: base.en,
+  es: base.en,
+  ar: base.en,
 });
 
 
-export const quickFacts: Record<Lang, { heading: string; facts: string[] }> = {
+export const quickFacts: Record<Lang, { heading: string; facts: string[] }> = addNewLangs({
   lv: {
     heading: "Kāpēc izvēlēties mūs",
     facts: ["Šokolāde ar logo pasūtījums no 1 gabala", "Ātra korporatīvo dāvanu izgatavošana 3 darba dienās", "Premium Beļģu šokolāde (Barry Callebaut)", "Bezmaksas dizaina skices korporatīvajām dāvanām"],
@@ -47,9 +62,9 @@ export const quickFacts: Record<Lang, { heading: string; facts: string[] }> = {
     heading: "Hvorfor velge oss",
     facts: ["Minste bestilling: fra 50 stk", "Produksjon: 3–10 virkedager", "Premium belgisk sjokolade", "Individuell design med din logo"],
   },
-};
+});
 
-export const clientExamples: Record<Lang, { subtitle: string; heading: string; srOnly: string }> = {
+export const clientExamples: Record<Lang, { subtitle: string; heading: string; srOnly: string }> = addNewLangs({
   lv: { subtitle: "Klientu piemēri", heading: "Pasaules zīmoli uzticas mums", srOnly: "Klientu piemēri — pasaules zīmoli, kas uzticas Luxury Chocolate: MasterCard, Bosch, Chopard, Samsung, Vodafone, Volkswagen." },
   en: { subtitle: "Client examples", heading: "World brands trust us", srOnly: "Client examples — world brands that trust Luxury Chocolate: MasterCard, Bosch, Chopard, Samsung, Vodafone, Volkswagen." },
   ru: { subtitle: "Примеры клиентов", heading: "Мировые бренды доверяют нам", srOnly: "Примеры клиентов — мировые бренды, которые доверяют Luxury Chocolate: MasterCard, Bosch, Chopard, Samsung, Vodafone, Volkswagen." },
@@ -59,9 +74,9 @@ export const clientExamples: Record<Lang, { subtitle: string; heading: string; s
   no: { subtitle: "Kundeeksempler", heading: "Verdens merkevarer stoler på oss", srOnly: "Kundeeksempler — verdens merkevarer som stoler på Luxury Chocolate: MasterCard, Bosch, Chopard, Samsung, Vodafone, Volkswagen." },
   fi: { subtitle: "Asiakasesimerkkejä", heading: "Maailman brändit luottavat meihin", srOnly: "Asiakasesimerkkejä — maailman brändit, jotka luottavat Luxury Chocolateen: MasterCard, Bosch, Chopard, Samsung, Vodafone, Volkswagen." },
   da: { subtitle: "Kundeeksempler", heading: "Verdens brands stoler på os", srOnly: "Kundeeksempler — verdens brands, der stoler på Luxury Chocolate: MasterCard, Bosch, Chopard, Samsung, Vodafone, Volkswagen." },
-};
+});
 
-export const howToOrder: Record<Lang, { heading: string; steps: string[]; footer: string; srOnly: string }> = {
+export const howToOrder: Record<Lang, { heading: string; steps: string[]; footer: string; srOnly: string }> = addNewLangs({
   lv: {
     heading: "Kā pasūtīt personalizētās šokolādes",
     steps: ["Atsūtiet savu logo vai ideju", "Mēs izveidosim dizaina paraugu", "Apstipriniet dizainu", "Mēs izgatavosim un piegādāsim"],
@@ -116,9 +131,9 @@ export const howToOrder: Record<Lang, { heading: string; steps: string[]; footer
     footer: "⏱ Produksjon: <strong>3–10 virkedager</strong>",
     srOnly: "Hvordan bestille: 1) Send logo, 2) Vi lager designforhåndsvisning, 3) Godkjenn, 4) Vi produserer og leverer.",
   },
-};
+});
 
-export const trust: Record<Lang, { heading: string; stats: { value: string; label: string }[]; clientsLabel: string; testimonials: { quote: string; author: string; company: string }[]; guarantees: string[] }> = {
+export const trust: Record<Lang, { heading: string; stats: { value: string; label: string }[]; clientsLabel: string; testimonials: { quote: string; author: string; company: string }[]; guarantees: string[] }> = addNewLangs({
   lv: {
     heading: "Kāpēc mums uzticas",
     stats: [{ value: "500+", label: "Izpildīti pasūtījumi" }, { value: "10+", label: "Gadu pieredze" }, { value: "98%", label: "Klientu apmierinātība" }, { value: "30+", label: "Valstis" }],
@@ -218,9 +233,9 @@ export const trust: Record<Lang, { heading: string; stats: { value: string; labe
     ],
     guarantees: ["Kvalitetsgaranti", "Sertifisert produksjon", "Levering over hele verden", "Levering innen 14 dager"],
   },
-};
+});
 
-export const products: Record<Lang, { heading: string; subtitle: string; items: { title: string; description: string; alt: string }[] }> = {
+export const products: Record<Lang, { heading: string; subtitle: string; items: { title: string; description: string; alt: string }[] }> = addNewLangs({
   lv: {
     heading: "Mūsu piedāvājums: No personalizētām šokolādes tāfelītēm līdz dāvanu komplektiem",
     subtitle: "Katrs produkts tiek pielāgots Jūsu zīmolam — no dizaina līdz garšai. Pasūtījumi no 1 gabala, ātra izgatavošana 3–10 darba dienās.",
@@ -310,9 +325,9 @@ export const products: Record<Lang, { heading: string; subtitle: string; items: 
       { title: "Sjokoladebok", description: "Gaveeske i bokform med magnetlukking.", alt: "Sjokoladebok med magnetlukking" },
     ],
   },
-};
+});
 
-export const faqContent: Record<Lang, { heading: string; items: { q: string; a: string }[] }> = {
+export const faqContent: Record<Lang, { heading: string; items: { q: string; a: string }[] }> = addNewLangs({
   lv: {
     heading: "Biežāk uzdotie jautājumi",
     items: [
@@ -413,9 +428,9 @@ export const faqContent: Record<Lang, { heading: string; items: { q: string; a: 
       { q: "Leverer dere utenfor Latvia?", a: "Ja, til over 30 land." },
     ],
   },
-};
+});
 
-export const ideasContent: Record<Lang, { subtitle: string; heading: string; items: { emoji: string; title: string; description: string; path: string }[] }> = {
+export const ideasContent: Record<Lang, { subtitle: string; heading: string; items: { emoji: string; title: string; description: string; path: string }[] }> = addNewLangs({
   lv: {
     subtitle: "Idejas un risinājumi",
     heading: "Idejas korporatīvajām dāvanām",
@@ -505,9 +520,9 @@ export const ideasContent: Record<Lang, { subtitle: string; heading: string; ite
       { emoji: "🏢", title: "Kundegaver", description: "Premium idéer for forretningspartnere.", path: "/en/client-gifts" },
     ],
   },
-};
+});
 
-export const useCasesContent: Record<Lang, { subtitle: string; heading: string; ctaLabel: string; items: { title: string; desc: string; link: string; linkLabel: string }[] }> = {
+export const useCasesContent: Record<Lang, { subtitle: string; heading: string; ctaLabel: string; items: { title: string; desc: string; link: string; linkLabel: string }[] }> = addNewLangs({
   lv: {
     subtitle: "Lietojuma scenāriji",
     heading: "Kur uzņēmumi izmanto šokolādes ar logo",
@@ -606,9 +621,9 @@ export const useCasesContent: Record<Lang, { subtitle: string; heading: string; 
       { title: "Julegaver", desc: "Festlig design — mest populære bedriftsgaven.", link: "/en/christmas-corporate-chocolate", linkLabel: "Les mer →" },
     ],
   },
-};
+});
 
-export const ctaContent: Record<Lang, { heading: string; description: string; button: string; inquiryButton: string }> = {
+export const ctaContent: Record<Lang, { heading: string; description: string; button: string; inquiryButton: string }> = addNewLangs({
   lv: {
     heading: "Saņemiet bezmaksas dizaina apskati",
     description: "Nosūtiet mums savu logo, un mēs sagatavosim personalizētu šokolādes dizaina apskati 24h laikā — pilnīgi bez maksas.",
@@ -662,9 +677,9 @@ export const ctaContent: Record<Lang, { heading: string; description: string; bu
     button: "Få gratis forhåndsvisning",
     inquiryButton: "Send forespørsel",
   },
-};
+});
 
-export const seoContent: Record<Lang, { heading: string; paragraphs: { text: string; links?: { text: string; to: string }[] }[] }> = {
+export const seoContent: Record<Lang, { heading: string; paragraphs: { text: string; links?: { text: string; to: string }[] }[] }> = addNewLangs({
   lv: {
     heading: "Kāpēc izvēlēties Luxury Chocolate savam uzņēmumam?",
     paragraphs: [
@@ -746,9 +761,9 @@ export const seoContent: Record<Lang, { heading: string; paragraphs: { text: str
       { text: "Sjokolade med logo — en effektiv måte å gjøre bedriftsgaven uforglemmelig." },
     ],
   },
-};
+});
 
-export const heroContent: Record<Lang, { title1: string; title2: string; subtitle: string; ctaButton: string; formButton: string; pricesButton: string }> = {
+export const heroContent: Record<Lang, { title1: string; title2: string; subtitle: string; ctaButton: string; formButton: string; pricesButton: string }> = addNewLangs({
   lv: { title1: "Ekskluzīva šokolāde ar logo", title2: "un premium korporatīvās dāvanas", subtitle: "Personalizētas reklāmas šokolādes — roku darbs no Beļģu šokolādes", ctaButton: "Bezmaksas dizaina apskate", formButton: "Aizpildīt pieteikumu", pricesButton: "Cenas" },
   en: { title1: "Exclusive Chocolate with Logo", title2: "& Corporate Gifts", subtitle: "Personalized Promotional Chocolates — Custom Hand Made from Belgian Chocolate", ctaButton: "Free design preview", formButton: "Fill in the form", pricesButton: "Prices" },
   ru: { title1: "Эксклюзивный шоколад с логотипом", title2: "и корпоративные подарки", subtitle: "Персонализированный рекламный шоколад — ручная работа из бельгийского шоколада", ctaButton: "Бесплатный макет дизайна", formButton: "Заполнить заявку", pricesButton: "Цены" },
@@ -758,9 +773,9 @@ export const heroContent: Record<Lang, { title1: string; title2: string; subtitl
   no: { title1: "Eksklusiv sjokolade med logo", title2: "& bedriftsgaver", subtitle: "Personlig reklamesjokolade — håndlaget av belgisk sjokolade", ctaButton: "Gratis designforhåndsvisning", formButton: "Fyll ut skjemaet", pricesButton: "Priser" },
   fi: { title1: "Eksklusiivinen suklaa logolla", title2: "& yrityslahjat", subtitle: "Personoitu mainossuklaa — käsintehtyä belgialaisesta suklaasta", ctaButton: "Ilmainen esikatselu", formButton: "Täytä lomake", pricesButton: "Hinnat" },
   da: { title1: "Eksklusiv chokolade med logo", title2: "& firmapresenter", subtitle: "Personlig reklamechokolade — håndlavet af belgisk chokolade", ctaButton: "Gratis designforhåndsvisning", formButton: "Udfyld formularen", pricesButton: "Priser" },
-};
+});
 
-export const bookBoxContent: Record<Lang, { heading: string; subtitle: string; items: { title: string; description: string; alt: string }[] }> = {
+export const bookBoxContent: Record<Lang, { heading: string; subtitle: string; items: { title: string; description: string; alt: string }[] }> = addNewLangs({
   lv: {
     heading: "Šokolādes grāmata",
     subtitle: "Ekskluzīva dāvanu kastīte grāmatas formā ar magnētisku aizdari — personalizējama pilnībā.",
@@ -859,9 +874,9 @@ export const bookBoxContent: Record<Lang, { heading: string; subtitle: string; i
       { title: "Konkurransepremie", description: "Eksklusiv premie for konkurranser.", alt: "Konkurransepremie sjokoladebok" },
     ],
   },
-};
+});
 
-export const cakeChocolateContent: Record<Lang, { heading: string; subtitle: string; items: { title: string; description: string; alt: string }[] }> = {
+export const cakeChocolateContent: Record<Lang, { heading: string; subtitle: string; items: { title: string; description: string; alt: string }[] }> = addNewLangs({
   lv: {
     heading: "Šokolādes kūkām un konditorejai",
     subtitle: "Logo šokolādes dekorācijas kūkām, cupcakes, eklēriem un citiem konditorejas izstrādājumiem.",
@@ -978,9 +993,9 @@ export const cakeChocolateContent: Record<Lang, { heading: string; subtitle: str
       { title: "Sjokoladedekor", description: "Spesialformet sjokolade for desserter.", alt: "Sjokoladedessert med logo" },
     ],
   },
-};
+});
 
-export const restaurantChocolateContent: Record<Lang, { heading: string; subtitle: string; benefits: string[]; usageNote: string; coffeeHeading: string; coffeeSubtitle: string; items: { title: string; description: string; alt: string }[] }> = {
+export const restaurantChocolateContent: Record<Lang, { heading: string; subtitle: string; benefits: string[]; usageNote: string; coffeeHeading: string; coffeeSubtitle: string; items: { title: string; description: string; alt: string }[] }> = addNewLangs({
   lv: {
     heading: "Restorānu šokolādes",
     subtitle: "Iedomājieties — jūsu restorāna logotips vai šefpavāra paraksts šokolādē uz katra deserta, kafijas tases vai šampanieša glāzes. Mēs to darām. Pēc pasūtījuma, jūsu dizainā, jūsu zīmolā.",
@@ -1190,4 +1205,4 @@ export const restaurantChocolateContent: Record<Lang, { heading: string; subtitl
       { title: "Grenardi festsjokolade", description: "Belgisk sjokolade i flere smaker med gull- og bærdekor — perfekt for høytidssesongen.", alt: "Grenardi premium sjokolade med ulike dekorasjoner i festlig emballasje" },
     ],
   },
-};
+});

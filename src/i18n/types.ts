@@ -1,4 +1,4 @@
-export type Lang = "lv" | "en" | "ru" | "et" | "lt" | "sv" | "no" | "fi" | "da";
+export type Lang = "lv" | "en" | "ru" | "et" | "lt" | "sv" | "no" | "fi" | "da" | "de" | "fr" | "it" | "es" | "ar";
 
 export interface PageContent {
   slug: string;
