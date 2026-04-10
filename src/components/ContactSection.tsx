@@ -18,6 +18,24 @@ const contactContent: Record<Lang, { heading: string; subtitle: string; role: st
   it: { heading: "Contattaci", subtitle: "Ti aiutiamo a scegliere il regalo di cioccolato perfetto per la tua azienda", role: "Direttrice", cta: "Invia e-mail", ctaOffer: "Invia richiesta" },
   es: { heading: "Contáctenos", subtitle: "Le ayudamos a elegir el regalo de chocolate perfecto para su empresa", role: "Directora", cta: "Enviar correo", ctaOffer: "Enviar consulta" },
   ar: { heading: "اتصل بنا", subtitle: "سنساعدك في اختيار هدية الشوكولاتة المثالية لشركتك", role: "المديرة", cta: "إرسال بريد إلكتروني", ctaOffer: "إرسال استفسار" },
+  nl: { heading: "Contact us", subtitle: "We'll help you choose the perfect chocolate gift for your company", role: "Manager", cta: "Send email", ctaOffer: "Submit inquiry" },
+  pl: { heading: "Contact us", subtitle: "We'll help you choose the perfect chocolate gift for your company", role: "Manager", cta: "Send email", ctaOffer: "Submit inquiry" },
+  cs: { heading: "Contact us", subtitle: "We'll help you choose the perfect chocolate gift for your company", role: "Manager", cta: "Send email", ctaOffer: "Submit inquiry" },
+  pt: { heading: "Contact us", subtitle: "We'll help you choose the perfect chocolate gift for your company", role: "Manager", cta: "Send email", ctaOffer: "Submit inquiry" },
+  el: { heading: "Contact us", subtitle: "We'll help you choose the perfect chocolate gift for your company", role: "Manager", cta: "Send email", ctaOffer: "Submit inquiry" },
+  tr: { heading: "Contact us", subtitle: "We'll help you choose the perfect chocolate gift for your company", role: "Manager", cta: "Send email", ctaOffer: "Submit inquiry" },
+  hu: { heading: "Contact us", subtitle: "We'll help you choose the perfect chocolate gift for your company", role: "Manager", cta: "Send email", ctaOffer: "Submit inquiry" },
+  ro: { heading: "Contact us", subtitle: "We'll help you choose the perfect chocolate gift for your company", role: "Manager", cta: "Send email", ctaOffer: "Submit inquiry" },
+  bg: { heading: "Contact us", subtitle: "We'll help you choose the perfect chocolate gift for your company", role: "Manager", cta: "Send email", ctaOffer: "Submit inquiry" },
+  hr: { heading: "Contact us", subtitle: "We'll help you choose the perfect chocolate gift for your company", role: "Manager", cta: "Send email", ctaOffer: "Submit inquiry" },
+  sk: { heading: "Contact us", subtitle: "We'll help you choose the perfect chocolate gift for your company", role: "Manager", cta: "Send email", ctaOffer: "Submit inquiry" },
+  sl: { heading: "Contact us", subtitle: "We'll help you choose the perfect chocolate gift for your company", role: "Manager", cta: "Send email", ctaOffer: "Submit inquiry" },
+  uk: { heading: "Contact us", subtitle: "We'll help you choose the perfect chocolate gift for your company", role: "Manager", cta: "Send email", ctaOffer: "Submit inquiry" },
+  sr: { heading: "Contact us", subtitle: "We'll help you choose the perfect chocolate gift for your company", role: "Manager", cta: "Send email", ctaOffer: "Submit inquiry" },
+  bs: { heading: "Contact us", subtitle: "We'll help you choose the perfect chocolate gift for your company", role: "Manager", cta: "Send email", ctaOffer: "Submit inquiry" },
+  mk: { heading: "Contact us", subtitle: "We'll help you choose the perfect chocolate gift for your company", role: "Manager", cta: "Send email", ctaOffer: "Submit inquiry" },
+  sq: { heading: "Contact us", subtitle: "We'll help you choose the perfect chocolate gift for your company", role: "Manager", cta: "Send email", ctaOffer: "Submit inquiry" },
+  is: { heading: "Contact us", subtitle: "We'll help you choose the perfect chocolate gift for your company", role: "Manager", cta: "Send email", ctaOffer: "Submit inquiry" },
 };
 
 interface ContactSectionProps {
@@ -85,7 +103,7 @@ const ContactSection = ({ lang = "lv", onCtaClick }: ContactSectionProps) => {
               </li>
               <li className="flex items-center gap-3 justify-center sm:justify-start">
                 <MapPin size={18} className="text-primary shrink-0" />
-                <span>Kandavas iela 29a, Rīga, LV-1083, {lang === "lv" ? "Latvija" : lang === "ru" ? "Латвия" : lang === "et" ? "Läti" : lang === "lt" ? "Latvija" : lang === "da" ? "Letland" : lang === "sv" ? "Lettland" : lang === "no" ? "Latvia" : lang === "fi" ? "Latvia" : lang === "de" ? "Lettland" : lang === "fr" ? "Lettonie" : lang === "it" ? "Lettonia" : lang === "es" ? "Letonia" : lang === "ar" ? "لاتفيا" : "Latvia"}</span>
+                <span>Kandavas iela 29a, Rīga, LV-1083, {lang === "lv" ? "Latvija" : lang === "ru" ? "Латвия" : lang === "et" ? "Läti" : lang === "lt" ? "Latvija" : lang === "da" ? "Letland" : lang === "sv" ? "Lettland" : lang === "no" ? "Latvia" : lang === "fi" ? "Latvia" : lang === "de" ? "Lettland" : lang === "fr" ? "Lettonie" : lang === "it" ? "Lettonia" : lang === "es" ? "Letonia" : lang === "nl" ? "Letland" : lang === "pl" ? "Łotwa" : lang === "cs" ? "Lotyšsko" : lang === "pt" ? "Letónia" : lang === "el" ? "Λετονία" : lang === "tr" ? "Letonya" : lang === "hu" ? "Lettország" : lang === "ro" ? "Letonia" : lang === "bg" ? "Латвия" : lang === "hr" ? "Latvija" : lang === "sk" ? "Lotyšsko" : lang === "sl" ? "Latvija" : lang === "uk" ? "Латвія" : lang === "sr" ? "Letonija" : lang === "bs" ? "Latvija" : lang === "mk" ? "Латвија" : lang === "sq" ? "Letonia" : lang === "is" ? "Lettland" : "Latvia"}</span>
               </li>
             </ul>
 
