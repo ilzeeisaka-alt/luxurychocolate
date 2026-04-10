@@ -7,6 +7,10 @@ const langLabels: Record<string, string> = {
   ru: "RU",
   et: "ET",
   lt: "LT",
+  sv: "SV",
+  no: "NO",
+  fi: "FI",
+  da: "DA",
 };
 
 const LanguageSwitcher = () => {
@@ -16,15 +20,31 @@ const LanguageSwitcher = () => {
   if (!alternatives) return null;
 
   // Determine current language
-  const currentLang = pathname.startsWith("/et") ? "et" : pathname.startsWith("/lt") ? "lt" : pathname.startsWith("/ru") ? "ru" : pathname.startsWith("/en") ? "en" : "lv";
+  const currentLang = pathname.startsWith("/sv")
+    ? "sv"
+    : pathname.startsWith("/no")
+    ? "no"
+    : pathname.startsWith("/fi")
+    ? "fi"
+    : pathname.startsWith("/da")
+    ? "da"
+    : pathname.startsWith("/et")
+    ? "et"
+    : pathname.startsWith("/lt")
+    ? "lt"
+    : pathname.startsWith("/ru")
+    ? "ru"
+    : pathname.startsWith("/en")
+    ? "en"
+    : "lv";
 
   return (
-    <div className="flex items-center gap-1 text-xs">
+    <div className="flex items-center gap-0.5 text-xs flex-wrap">
       {Object.entries(alternatives).map(([lang, path]) => (
         <Link
           key={lang}
           to={path}
-          className={`px-2 py-1 rounded transition-colors ${
+          className={`px-1.5 py-1 rounded transition-colors ${
             lang === currentLang
               ? "bg-primary/10 text-primary font-medium"
               : "text-muted-foreground hover:text-foreground"
