@@ -15,6 +15,11 @@ const postStrings: Record<Lang, { backToBlog: string; notFound: string; loading:
   no: { backToBlog: "← Tilbake til bloggen", notFound: "Innlegget ble ikke funnet.", loading: "Laster..." },
   fi: { backToBlog: "← Takaisin blogiin", notFound: "Artikkelia ei löytynyt.", loading: "Ladataan..." },
   da: { backToBlog: "← Tilbage til bloggen", notFound: "Indlægget blev ikke fundet.", loading: "Indlæser..." },
+  de: { backToBlog: "← Zurück zum Blog", notFound: "Beitrag nicht gefunden.", loading: "Laden..." },
+  fr: { backToBlog: "← Retour au blog", notFound: "Article non trouvé.", loading: "Chargement..." },
+  it: { backToBlog: "← Torna al blog", notFound: "Articolo non trovato.", loading: "Caricamento..." },
+  es: { backToBlog: "← Volver al blog", notFound: "Publicación no encontrada.", loading: "Cargando..." },
+  ar: { backToBlog: "← العودة إلى المدونة", notFound: "المقال غير موجود.", loading: "جاري التحميل..." },
 };
 
 const blogBasePaths: Record<Lang, string> = {
@@ -27,6 +32,11 @@ const blogBasePaths: Record<Lang, string> = {
   no: "/no/blogg",
   fi: "/fi/blogi",
   da: "/da/blog",
+  de: "/de/blog",
+  fr: "/fr/blog",
+  it: "/it/blog",
+  es: "/es/blog",
+  ar: "/ar/blog",
 };
 
 interface BlogPostPageProps {
