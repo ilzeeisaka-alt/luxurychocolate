@@ -76,6 +76,21 @@ export const uiStrings: Record<string, UiStrings> = {
     freePreviewButton: "Gauti dizaino peržiūrą",
     freePreviewInquiryButton: "Pildyti užklausą",
   },
+  da: {
+    backLabel: "Forside",
+    ctaButton: "Få et tilbud",
+    benefitsHeading: "Hvorfor vælge os",
+    faqHeading: "Ofte stillede spørgsmål",
+    relatedHeading: "Se også",
+    ctaSubtext: "Mindste bestilling fra 50 stk. Produktionstid 3–10 arbejdsdage.",
+    freePreviewHeading: "Få en gratis designforhåndsvisning",
+    freePreviewDesc: "Send os dit logo, og vi forbereder en gratis chokoladedesign med dit firmalogo.",
+    freePreviewBadge1: "✔ Gratis designforhåndsvisning",
+    freePreviewBadge2: "✔ Ingen forpligtelse",
+    freePreviewBadge3: "✔ Svar inden for 24 timer",
+    freePreviewButton: "Få designforhåndsvisning",
+    freePreviewInquiryButton: "Send forespørgsel",
+  },
 };
 
 export const relatedPages: Record<string, RelatedPage[]> = {
