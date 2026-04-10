@@ -11,6 +11,11 @@ const langLabels: Record<string, string> = {
   no: "NO",
   fi: "FI",
   da: "DA",
+  de: "DE",
+  fr: "FR",
+  it: "IT",
+  es: "ES",
+  ar: "AR",
 };
 
 const LanguageSwitcher = () => {
@@ -20,7 +25,17 @@ const LanguageSwitcher = () => {
   if (!alternatives) return null;
 
   // Determine current language
-  const currentLang = pathname.startsWith("/sv")
+  const currentLang = pathname.startsWith("/de")
+    ? "de"
+    : pathname.startsWith("/fr")
+    ? "fr"
+    : pathname.startsWith("/it")
+    ? "it"
+    : pathname.startsWith("/es")
+    ? "es"
+    : pathname.startsWith("/ar")
+    ? "ar"
+    : pathname.startsWith("/sv")
     ? "sv"
     : pathname.startsWith("/no")
     ? "no"

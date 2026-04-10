@@ -29,6 +29,11 @@ const SvIndex = lazy(() => import("./pages/SvIndex.tsx"));
 const NoIndex = lazy(() => import("./pages/NoIndex.tsx"));
 const FiIndex = lazy(() => import("./pages/FiIndex.tsx"));
 const DaIndex = lazy(() => import("./pages/DaIndex.tsx"));
+const DeIndex = lazy(() => import("./pages/DeIndex.tsx"));
+const FrIndex = lazy(() => import("./pages/FrIndex.tsx"));
+const ItIndex = lazy(() => import("./pages/ItIndex.tsx"));
+const EsIndex = lazy(() => import("./pages/EsIndex.tsx"));
+const ArIndex = lazy(() => import("./pages/ArIndex.tsx"));
 const EnGiftIdeas = lazy(() => import("./pages/EnGiftIdeas.tsx"));
 const RuGiftIdeas = lazy(() => import("./pages/RuGiftIdeas.tsx"));
 const EtGiftIdeas = lazy(() => import("./pages/EtGiftIdeas.tsx"));
@@ -103,6 +108,26 @@ const App = () => (
             <Route path="/da" element={<DaIndex />} />
             <Route path="/da/blog" element={<BlogPage lang="da" />} />
             <Route path="/da/blog/:slug" element={<BlogPostPage lang="da" />} />
+            {/* DE routes */}
+            <Route path="/de" element={<DeIndex />} />
+            <Route path="/de/blog" element={<BlogPage lang="de" />} />
+            <Route path="/de/blog/:slug" element={<BlogPostPage lang="de" />} />
+            {/* FR routes */}
+            <Route path="/fr" element={<FrIndex />} />
+            <Route path="/fr/blog" element={<BlogPage lang="fr" />} />
+            <Route path="/fr/blog/:slug" element={<BlogPostPage lang="fr" />} />
+            {/* IT routes */}
+            <Route path="/it" element={<ItIndex />} />
+            <Route path="/it/blog" element={<BlogPage lang="it" />} />
+            <Route path="/it/blog/:slug" element={<BlogPostPage lang="it" />} />
+            {/* ES routes */}
+            <Route path="/es" element={<EsIndex />} />
+            <Route path="/es/blog" element={<BlogPage lang="es" />} />
+            <Route path="/es/blog/:slug" element={<BlogPostPage lang="es" />} />
+            {/* AR routes */}
+            <Route path="/ar" element={<ArIndex />} />
+            <Route path="/ar/blog" element={<BlogPage lang="ar" />} />
+            <Route path="/ar/blog/:slug" element={<BlogPostPage lang="ar" />} />
             {/* LV blog */}
             <Route path="/blogs" element={<BlogPage lang="lv" />} />
             <Route path="/blogs/:slug" element={<BlogPostPage lang="lv" />} />
