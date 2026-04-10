@@ -6,6 +6,7 @@ const withNordics = <T>(base: Record<BaseLang, T>): Record<Lang, T> => ({
   sv: base.en,
   no: base.en,
   fi: base.en,
+  da: base.en,
 });
 
 
