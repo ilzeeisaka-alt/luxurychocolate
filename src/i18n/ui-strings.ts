@@ -76,6 +76,21 @@ export const uiStrings: Record<string, UiStrings> = {
     freePreviewButton: "Gauti dizaino peržiūrą",
     freePreviewInquiryButton: "Pildyti užklausą",
   },
+  da: {
+    backLabel: "Forside",
+    ctaButton: "Få et tilbud",
+    benefitsHeading: "Hvorfor vælge os",
+    faqHeading: "Ofte stillede spørgsmål",
+    relatedHeading: "Se også",
+    ctaSubtext: "Mindste bestilling fra 50 stk. Produktionstid 3–10 arbejdsdage.",
+    freePreviewHeading: "Få en gratis designforhåndsvisning",
+    freePreviewDesc: "Send os dit logo, og vi forbereder en gratis chokoladedesign med dit firmalogo.",
+    freePreviewBadge1: "✔ Gratis designforhåndsvisning",
+    freePreviewBadge2: "✔ Ingen forpligtelse",
+    freePreviewBadge3: "✔ Svar inden for 24 timer",
+    freePreviewButton: "Få designforhåndsvisning",
+    freePreviewInquiryButton: "Send forespørgsel",
+  },
 };
 
 export const relatedPages: Record<string, RelatedPage[]> = {
@@ -138,7 +153,7 @@ export const relatedPages: Record<string, RelatedPage[]> = {
 
 // Mapping of equivalent pages across languages for hreflang
 export const hreflangMap: Record<string, Record<string, string>> = {
-  "/": { lv: "/", en: "/en", ru: "/ru", et: "/et", lt: "/lt", sv: "/sv", no: "/no", fi: "/fi" },
+  "/": { lv: "/", en: "/en", ru: "/ru", et: "/et", lt: "/lt", sv: "/sv", no: "/no", fi: "/fi", da: "/da" },
   "/sokolades-ar-logo": { lv: "/sokolades-ar-logo", en: "/en/chocolate-with-logo", ru: "/ru/shokolad-s-logotipom", et: "/et/sokolaad-logoga", lt: "/lt/sokoladas-su-logotipu" },
   "/ziemassvetku-korporativas-sokolades": { lv: "/ziemassvetku-korporativas-sokolades", en: "/en/christmas-corporate-chocolate", ru: "/ru/rozhdestvenskij-shokolad", et: "/et/joulu-sokolaad", lt: "/lt/kaledinis-sokoladas" },
   "/reklamas-sokolade": { lv: "/reklamas-sokolade", en: "/en/promotional-chocolate", ru: "/ru/reklamniy-shokolad", et: "/et/reklaam-sokolaad", lt: "/lt/reklaminis-sokoladas" },
@@ -149,7 +164,7 @@ export const hreflangMap: Record<string, Record<string, string>> = {
   "/korporativo-davanu-idejas": { lv: "/korporativo-davanu-idejas", en: "/en/corporate-gift-ideas", ru: "/ru/idei-korporativnyh-podarkov", et: "/et/korporatiiv-kingituste-ideed", lt: "/lt/korporatyviniu-dovanu-idejos" },
   "/sokolades-gramata": { lv: "/sokolades-gramata", en: "/en/chocolate-book-box", ru: "/ru/shokoladnaya-kniga", et: "/et/sokolaadi-raamat", lt: "/lt/sokolado-knyga" },
   // EN keys
-  "/en": { lv: "/", en: "/en", ru: "/ru", et: "/et", lt: "/lt", sv: "/sv", no: "/no", fi: "/fi" },
+  "/en": { lv: "/", en: "/en", ru: "/ru", et: "/et", lt: "/lt", sv: "/sv", no: "/no", fi: "/fi", da: "/da" },
   "/en/chocolate-with-logo": { lv: "/sokolades-ar-logo", en: "/en/chocolate-with-logo", ru: "/ru/shokolad-s-logotipom", et: "/et/sokolaad-logoga", lt: "/lt/sokoladas-su-logotipu" },
   "/en/christmas-corporate-chocolate": { lv: "/ziemassvetku-korporativas-sokolades", en: "/en/christmas-corporate-chocolate", ru: "/ru/rozhdestvenskij-shokolad", et: "/et/joulu-sokolaad", lt: "/lt/kaledinis-sokoladas" },
   "/en/promotional-chocolate": { lv: "/reklamas-sokolade", en: "/en/promotional-chocolate", ru: "/ru/reklamniy-shokolad", et: "/et/reklaam-sokolaad", lt: "/lt/reklaminis-sokoladas" },
@@ -160,7 +175,7 @@ export const hreflangMap: Record<string, Record<string, string>> = {
   "/en/corporate-gift-ideas": { lv: "/korporativo-davanu-idejas", en: "/en/corporate-gift-ideas", ru: "/ru/idei-korporativnyh-podarkov", et: "/et/korporatiiv-kingituste-ideed", lt: "/lt/korporatyviniu-dovanu-idejos" },
   "/en/chocolate-book-box": { lv: "/sokolades-gramata", en: "/en/chocolate-book-box", ru: "/ru/shokoladnaya-kniga", et: "/et/sokolaadi-raamat", lt: "/lt/sokolado-knyga" },
   // RU keys
-  "/ru": { lv: "/", en: "/en", ru: "/ru", et: "/et", lt: "/lt", sv: "/sv", no: "/no", fi: "/fi" },
+  "/ru": { lv: "/", en: "/en", ru: "/ru", et: "/et", lt: "/lt", sv: "/sv", no: "/no", fi: "/fi", da: "/da" },
   "/ru/shokolad-s-logotipom": { lv: "/sokolades-ar-logo", en: "/en/chocolate-with-logo", ru: "/ru/shokolad-s-logotipom", et: "/et/sokolaad-logoga", lt: "/lt/sokoladas-su-logotipu" },
   "/ru/rozhdestvenskij-shokolad": { lv: "/ziemassvetku-korporativas-sokolades", en: "/en/christmas-corporate-chocolate", ru: "/ru/rozhdestvenskij-shokolad", et: "/et/joulu-sokolaad", lt: "/lt/kaledinis-sokoladas" },
   "/ru/reklamniy-shokolad": { lv: "/reklamas-sokolade", en: "/en/promotional-chocolate", ru: "/ru/reklamniy-shokolad", et: "/et/reklaam-sokolaad", lt: "/lt/reklaminis-sokoladas" },
@@ -171,7 +186,7 @@ export const hreflangMap: Record<string, Record<string, string>> = {
   "/ru/idei-korporativnyh-podarkov": { lv: "/korporativo-davanu-idejas", en: "/en/corporate-gift-ideas", ru: "/ru/idei-korporativnyh-podarkov", et: "/et/korporatiiv-kingituste-ideed", lt: "/lt/korporatyviniu-dovanu-idejos" },
   "/ru/shokoladnaya-kniga": { lv: "/sokolades-gramata", en: "/en/chocolate-book-box", ru: "/ru/shokoladnaya-kniga", et: "/et/sokolaadi-raamat", lt: "/lt/sokolado-knyga" },
   // ET keys
-  "/et": { lv: "/", en: "/en", ru: "/ru", et: "/et", lt: "/lt", sv: "/sv", no: "/no", fi: "/fi" },
+  "/et": { lv: "/", en: "/en", ru: "/ru", et: "/et", lt: "/lt", sv: "/sv", no: "/no", fi: "/fi", da: "/da" },
   "/et/sokolaad-logoga": { lv: "/sokolades-ar-logo", en: "/en/chocolate-with-logo", ru: "/ru/shokolad-s-logotipom", et: "/et/sokolaad-logoga", lt: "/lt/sokoladas-su-logotipu" },
   "/et/joulu-sokolaad": { lv: "/ziemassvetku-korporativas-sokolades", en: "/en/christmas-corporate-chocolate", ru: "/ru/rozhdestvenskij-shokolad", et: "/et/joulu-sokolaad", lt: "/lt/kaledinis-sokoladas" },
   "/et/reklaam-sokolaad": { lv: "/reklamas-sokolade", en: "/en/promotional-chocolate", ru: "/ru/reklamniy-shokolad", et: "/et/reklaam-sokolaad", lt: "/lt/reklaminis-sokoladas" },
@@ -182,7 +197,7 @@ export const hreflangMap: Record<string, Record<string, string>> = {
   "/et/korporatiiv-kingituste-ideed": { lv: "/korporativo-davanu-idejas", en: "/en/corporate-gift-ideas", ru: "/ru/idei-korporativnyh-podarkov", et: "/et/korporatiiv-kingituste-ideed", lt: "/lt/korporatyviniu-dovanu-idejos" },
   "/et/sokolaadi-raamat": { lv: "/sokolades-gramata", en: "/en/chocolate-book-box", ru: "/ru/shokoladnaya-kniga", et: "/et/sokolaadi-raamat", lt: "/lt/sokolado-knyga" },
   // LT keys
-  "/lt": { lv: "/", en: "/en", ru: "/ru", et: "/et", lt: "/lt", sv: "/sv", no: "/no", fi: "/fi" },
+  "/lt": { lv: "/", en: "/en", ru: "/ru", et: "/et", lt: "/lt", sv: "/sv", no: "/no", fi: "/fi", da: "/da" },
   "/lt/sokoladas-su-logotipu": { lv: "/sokolades-ar-logo", en: "/en/chocolate-with-logo", ru: "/ru/shokolad-s-logotipom", et: "/et/sokolaad-logoga", lt: "/lt/sokoladas-su-logotipu" },
   "/lt/kaledinis-sokoladas": { lv: "/ziemassvetku-korporativas-sokolades", en: "/en/christmas-corporate-chocolate", ru: "/ru/rozhdestvenskij-shokolad", et: "/et/joulu-sokolaad", lt: "/lt/kaledinis-sokoladas" },
   "/lt/reklaminis-sokoladas": { lv: "/reklamas-sokolade", en: "/en/promotional-chocolate", ru: "/ru/reklamniy-shokolad", et: "/et/reklaam-sokolaad", lt: "/lt/reklaminis-sokoladas" },
@@ -193,9 +208,9 @@ export const hreflangMap: Record<string, Record<string, string>> = {
   "/lt/korporatyviniu-dovanu-idejos": { lv: "/korporativo-davanu-idejas", en: "/en/corporate-gift-ideas", ru: "/ru/idei-korporativnyh-podarkov", et: "/et/korporatiiv-kingituste-ideed", lt: "/lt/korporatyviniu-dovanu-idejos" },
   "/lt/sokolado-knyga": { lv: "/sokolades-gramata", en: "/en/chocolate-book-box", ru: "/ru/shokoladnaya-kniga", et: "/et/sokolaadi-raamat", lt: "/lt/sokolado-knyga" },
   // SV keys
-  "/sv": { lv: "/", en: "/en", ru: "/ru", et: "/et", lt: "/lt", sv: "/sv", no: "/no", fi: "/fi" },
+  "/sv": { lv: "/", en: "/en", ru: "/ru", et: "/et", lt: "/lt", sv: "/sv", no: "/no", fi: "/fi", da: "/da" },
   // NO keys
-  "/no": { lv: "/", en: "/en", ru: "/ru", et: "/et", lt: "/lt", sv: "/sv", no: "/no", fi: "/fi" },
+  "/no": { lv: "/", en: "/en", ru: "/ru", et: "/et", lt: "/lt", sv: "/sv", no: "/no", fi: "/fi", da: "/da" },
   // FI keys
-  "/fi": { lv: "/", en: "/en", ru: "/ru", et: "/et", lt: "/lt", sv: "/sv", no: "/no", fi: "/fi" },
+  "/fi": { lv: "/", en: "/en", ru: "/ru", et: "/et", lt: "/lt", sv: "/sv", no: "/no", fi: "/fi", da: "/da" },
 };

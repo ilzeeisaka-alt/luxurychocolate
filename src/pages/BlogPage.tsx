@@ -14,6 +14,7 @@ const blogStrings: Record<Lang, { title: string; subtitle: string; readMore: str
   sv: { title: "Blogg", subtitle: "Senaste nyheter och tips om företagschoklad", readMore: "Läs mer", noPostsYet: "Inga publicerade inlägg ännu.", loading: "Laddar..." },
   no: { title: "Blogg", subtitle: "Siste nyheter og tips om bedriftssjokolade", readMore: "Les mer", noPostsYet: "Ingen publiserte innlegg ennå.", loading: "Laster..." },
   fi: { title: "Blogi", subtitle: "Uusimmat uutiset ja vinkit yrityslahja suklaasta", readMore: "Lue lisää", noPostsYet: "Ei vielä julkaistuja artikkeleita.", loading: "Ladataan..." },
+  da: { title: "Blog", subtitle: "Seneste nyheder og tips om firmachokolade", readMore: "Læs mere", noPostsYet: "Ingen publicerede indlæg endnu.", loading: "Indlæser..." },
 };
 
 const blogBasePaths: Record<Lang, string> = {
@@ -25,6 +26,7 @@ const blogBasePaths: Record<Lang, string> = {
   sv: "/sv/blogg",
   no: "/no/blogg",
   fi: "/fi/blogi",
+  da: "/da/blog",
 };
 
 interface BlogPageProps {

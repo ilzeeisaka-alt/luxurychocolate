@@ -11,6 +11,7 @@ const shopUrls: Record<Lang, string> = {
   sv: "https://www.luxurychocolatesia.lv/online-shop-products/",
   no: "https://www.luxurychocolatesia.lv/online-shop-products/",
   fi: "https://www.luxurychocolatesia.lv/online-shop-products/",
+  da: "https://www.luxurychocolatesia.lv/online-shop-products/",
 };
 
 const shopContent: Record<
@@ -88,6 +89,15 @@ const shopContent: Record<
     badge2: "🎁 Lahjapaketit",
     badge3: "🏷️ Logollasi",
     uploadBtn: "Lataa logosi tai kuva",
+  },
+  da: {
+    heading: "Webshop",
+    subtitle: "Vælg fra vores brede sortiment og bestil chokolade med dit logo online.",
+    cta: "Bestil nu med dit logo",
+    badge1: "🍫 Premium chokolade",
+    badge2: "🎁 Gaveæsker",
+    badge3: "🏷️ Med dit logo",
+    uploadBtn: "Upload dit logo eller billede",
   },
 };
 

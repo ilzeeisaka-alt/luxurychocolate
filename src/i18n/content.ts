@@ -6,6 +6,7 @@ const withNordics = <T>(base: Record<BaseLang, T>): Record<Lang, T> => ({
   sv: base.en,
   no: base.en,
   fi: base.en,
+  da: base.en,
 });
 
 
@@ -42,6 +43,10 @@ export const quickFacts: Record<Lang, { heading: string; facts: string[] }> = {
     heading: "Miksi valita meidät",
     facts: ["Minimitilaus: alkaen 50 kpl", "Tuotanto: 3–10 arkipäivää", "Premium belgialainen suklaa", "Yksilöllinen suunnittelu logollasi"],
   },
+  da: {
+    heading: "Hvorfor velge oss",
+    facts: ["Minste bestilling: fra 50 stk", "Produksjon: 3–10 virkedager", "Premium belgisk sjokolade", "Individuell design med din logo"],
+  },
 };
 
 export const clientExamples: Record<Lang, { subtitle: string; heading: string; srOnly: string }> = {
@@ -53,6 +58,7 @@ export const clientExamples: Record<Lang, { subtitle: string; heading: string; s
   sv: { subtitle: "Kundexempel", heading: "Världens varumärken litar på oss", srOnly: "Kundexempel — världens varumärken som litar på Luxury Chocolate: MasterCard, Bosch, Chopard, Samsung, Vodafone, Volkswagen." },
   no: { subtitle: "Kundeeksempler", heading: "Verdens merkevarer stoler på oss", srOnly: "Kundeeksempler — verdens merkevarer som stoler på Luxury Chocolate: MasterCard, Bosch, Chopard, Samsung, Vodafone, Volkswagen." },
   fi: { subtitle: "Asiakasesimerkkejä", heading: "Maailman brändit luottavat meihin", srOnly: "Asiakasesimerkkejä — maailman brändit, jotka luottavat Luxury Chocolateen: MasterCard, Bosch, Chopard, Samsung, Vodafone, Volkswagen." },
+  da: { subtitle: "Kundeeksempler", heading: "Verdens brands stoler på os", srOnly: "Kundeeksempler — verdens brands, der stoler på Luxury Chocolate: MasterCard, Bosch, Chopard, Samsung, Vodafone, Volkswagen." },
 };
 
 export const howToOrder: Record<Lang, { heading: string; steps: string[]; footer: string; srOnly: string }> = {
@@ -103,6 +109,12 @@ export const howToOrder: Record<Lang, { heading: string; steps: string[]; footer
     steps: ["Lähetä logosi tai ideasi", "Luomme suunnitelman esikatselun", "Hyväksy suunnitelma", "Valmistamme ja toimitamme"],
     footer: "⏱ Tuotanto: <strong>3–10 arkipäivää</strong>",
     srOnly: "Miten tilata: 1) Lähetä logo, 2) Luomme esikatselun, 3) Hyväksy, 4) Valmistamme ja toimitamme.",
+  },
+  da: {
+    heading: "Hvordan bestille personlig sjokolade",
+    steps: ["Send din logo eller idé", "Vi lager en designforhåndsvisning", "Godkjenn designet", "Vi produserer og leverer"],
+    footer: "⏱ Produksjon: <strong>3–10 virkedager</strong>",
+    srOnly: "Hvordan bestille: 1) Send logo, 2) Vi lager designforhåndsvisning, 3) Godkjenn, 4) Vi produserer og leverer.",
   },
 };
 
@@ -195,6 +207,17 @@ export const trust: Record<Lang, { heading: string; stats: { value: string; labe
     ],
     guarantees: ["Laatutakuu", "Sertifioitu tuotanto", "Toimitus maailmanlaajuisesti", "Toimitus 14 päivän kuluessa"],
   },
+  da: {
+    heading: "Hvorfor kundene stoler på oss",
+    stats: [{ value: "500+", label: "Gjennomførte bestillinger" }, { value: "10+", label: "Års erfaring" }, { value: "98%", label: "Kundetilfredshet" }, { value: "30+", label: "Land" }],
+    clientsLabel: "Ledende bedrifter stoler på oss",
+    testimonials: [
+      { quote: "Utmerket kvalitet og rask levering!", author: "Anna K.", company: "SIA MarketPro" },
+      { quote: "Luxury Chocolate hjalp oss med en uforglemmelig bedriftsgave.", author: "Mārtiņš B.", company: "Tech Solutions" },
+      { quote: "Tredje året vi bestiller — alltid topp kvalitet.", author: "Ieva L.", company: "Baltic Events" },
+    ],
+    guarantees: ["Kvalitetsgaranti", "Sertifisert produksjon", "Levering over hele verden", "Levering innen 14 dager"],
+  },
 };
 
 export const products: Record<Lang, { heading: string; subtitle: string; items: { title: string; description: string; alt: string }[] }> = {
@@ -275,6 +298,16 @@ export const products: Record<Lang, { heading: string; subtitle: string; items: 
       { title: "Lahjasetit", description: "Elegantti laatikko 5 käsintehdyllä pralineella.", alt: "Elegantti yrityslahjasuklaarasia" },
       { title: "Suklaapraliinit", description: "Praliinit kermatäytteellä ja personoidulla designilla.", alt: "Premium suklaapraliinit kermatäytteellä" },
       { title: "Suklaakirja", description: "Kirjanmuotoinen lahjalaatikko magneettisuljolla.", alt: "Suklaakirja magneettisuljolla" },
+    ],
+  },
+  da: {
+    heading: "Våre sjokolader",
+    subtitle: "Hvert produkt tilpasses ditt merke — fra design til smak.",
+    items: [
+      { title: "Sjokoladeplater", description: "Med din bedrifts logo og tilpasset emballasje.", alt: "Personlig sjokoladeplate med bedriftslogo" },
+      { title: "Gavesett", description: "Elegant eske med 5 håndlagde praliner.", alt: "Elegant bedrifts sjokoladegaveeske" },
+      { title: "Sjokoladepraliner", description: "Praliner med kremfyll og personlig design.", alt: "Premium sjokoladepraliner med kremfyll" },
+      { title: "Sjokoladebok", description: "Gaveeske i bokform med magnetlukking.", alt: "Sjokoladebok med magnetlukking" },
     ],
   },
 };
@@ -369,6 +402,17 @@ export const faqContent: Record<Lang, { heading: string; items: { q: string; a: 
       { q: "Toimitatteko Latvian ulkopuolelle?", a: "Kyllä, yli 30 maahan." },
     ],
   },
+  da: {
+    heading: "Ofte stilte spørsmål",
+    items: [
+      { q: "Hva er minstebestillingen?", a: "Minstebestillingen er 50 stykker." },
+      { q: "Hvor lang tid tar produksjonen?", a: "3–10 virkedager fra designgodkjenning." },
+      { q: "Hvilken kvalitet på sjokolade brukes?", a: "Premium belgisk sjokolade — melk, mørk og hvit." },
+      { q: "Kan jeg bestille med fullfarge trykk?", a: "Ja, fullfarge trykk direkte på sjokoladen. Matsikkert." },
+      { q: "Hvilke arrangementer passer det for?", a: "Konferanser, utstillinger, kundemøter, julegaver, jubileer." },
+      { q: "Leverer dere utenfor Latvia?", a: "Ja, til over 30 land." },
+    ],
+  },
 };
 
 export const ideasContent: Record<Lang, { subtitle: string; heading: string; items: { emoji: string; title: string; description: string; path: string }[] }> = {
@@ -449,6 +493,16 @@ export const ideasContent: Record<Lang, { subtitle: string; heading: string; ite
       { emoji: "🎄", title: "Joulusuklaa", description: "Eksklusiiviset joululahjat logolla.", path: "/en/christmas-corporate-chocolate" },
       { emoji: "🎁", title: "Mainossuklaa", description: "Tehokas messuille ja tapahtumiin.", path: "/en/promotional-chocolate" },
       { emoji: "🏢", title: "Asiakaslahjat", description: "Premium ideat liikekumppaneille.", path: "/en/client-gifts" },
+    ],
+  },
+  da: {
+    subtitle: "Ideer og løsninger",
+    heading: "Bedriftsgaveidéer",
+    items: [
+      { emoji: "🍫", title: "Sjokolade med logo", description: "Personlig sjokolade — elegant merkevarebygging.", path: "/en/chocolate-with-logo" },
+      { emoji: "🎄", title: "Julesjokolade", description: "Eksklusive julegaver med logo.", path: "/en/christmas-corporate-chocolate" },
+      { emoji: "🎁", title: "Reklamesjokolade", description: "Effektivt for messer og arrangementer.", path: "/en/promotional-chocolate" },
+      { emoji: "🏢", title: "Kundegaver", description: "Premium idéer for forretningspartnere.", path: "/en/client-gifts" },
     ],
   },
 };
@@ -541,6 +595,17 @@ export const useCasesContent: Record<Lang, { subtitle: string; heading: string; 
       { title: "Joululahjat", desc: "Juhlasuunnittelu — suosituin yrityslahja.", link: "/en/christmas-corporate-chocolate", linkLabel: "Lue lisää →" },
     ],
   },
+  da: {
+    subtitle: "Bruksområder",
+    heading: "Hvor bedrifter bruker sjokolade med logo",
+    ctaLabel: "Be om tilbud",
+    items: [
+      { title: "Kundegaver", desc: "Elegant sjokolade med logo for positive minner.", link: "/en/client-gifts", linkLabel: "Les mer →" },
+      { title: "Konferanser", desc: "Kompakte sjokoladeplater for messer og seminarer.", link: "/en/conference-chocolate", linkLabel: "Les mer →" },
+      { title: "Partnerhilsener", desc: "Premium gavesett som styrker forretningsrelasjoner.", link: "/en/partner-gifts", linkLabel: "Les mer →" },
+      { title: "Julegaver", desc: "Festlig design — mest populære bedriftsgaven.", link: "/en/christmas-corporate-chocolate", linkLabel: "Les mer →" },
+    ],
+  },
 };
 
 export const ctaContent: Record<Lang, { heading: string; description: string; button: string; inquiryButton: string }> = {
@@ -590,6 +655,12 @@ export const ctaContent: Record<Lang, { heading: string; description: string; bu
     description: "Lähetä meille logosi ja valmistelemme personoidun suklaadesignin 24 tunnissa — täysin ilmaiseksi.",
     button: "Saa ilmainen esikatselu",
     inquiryButton: "Lähetä tiedustelu",
+  },
+  da: {
+    heading: "Få en gratis designforhåndsvisning",
+    description: "Send oss logoen din, og vi forbereder en personlig sjokoladedesign innen 24 timer — helt gratis.",
+    button: "Få gratis forhåndsvisning",
+    inquiryButton: "Send forespørsel",
   },
 };
 
@@ -666,6 +737,15 @@ export const seoContent: Record<Lang, { heading: string; paragraphs: { text: str
       { text: "Suklaa logolla — tehokas tapa tehdä yrityslahjasta unohtumaton." },
     ],
   },
+  da: {
+    heading: "Tilpasset sjokolade med logo for bedrifter",
+    paragraphs: [
+      { text: "Vår {link1} er en av de mest populære bedriftsgavene.", links: [{ text: "tilpasset sjokolade med logo", to: "/en/chocolate-with-logo" }] },
+      { text: "Bedrifter bruker merkevare-sjokolade på arrangementer. Populært er {link1} samt {link2}.", links: [{ text: "reklamesjokolade", to: "/en/promotional-chocolate" }, { text: "julesjokolade", to: "/en/christmas-corporate-chocolate" }] },
+      { text: "Premium sjokolade med personlig trykk. Både reklamegaver og eksklusive {link1}.", links: [{ text: "bedriftsgaver", to: "/en/client-gifts" }] },
+      { text: "Sjokolade med logo — en effektiv måte å gjøre bedriftsgaven uforglemmelig." },
+    ],
+  },
 };
 
 export const heroContent: Record<Lang, { title1: string; title2: string; subtitle: string; ctaButton: string; formButton: string; pricesButton: string }> = {
@@ -677,6 +757,7 @@ export const heroContent: Record<Lang, { title1: string; title2: string; subtitl
   sv: { title1: "Exklusiv choklad med logotyp", title2: "& företagspresenter", subtitle: "Personlig reklamchoklad — handgjord av belgisk choklad", ctaButton: "Gratis designförhandsvisning", formButton: "Fyll i formuläret", pricesButton: "Priser" },
   no: { title1: "Eksklusiv sjokolade med logo", title2: "& bedriftsgaver", subtitle: "Personlig reklamesjokolade — håndlaget av belgisk sjokolade", ctaButton: "Gratis designforhåndsvisning", formButton: "Fyll ut skjemaet", pricesButton: "Priser" },
   fi: { title1: "Eksklusiivinen suklaa logolla", title2: "& yrityslahjat", subtitle: "Personoitu mainossuklaa — käsintehtyä belgialaisesta suklaasta", ctaButton: "Ilmainen esikatselu", formButton: "Täytä lomake", pricesButton: "Hinnat" },
+  da: { title1: "Eksklusiv chokolade med logo", title2: "& firmapresenter", subtitle: "Personlig reklamechokolade — håndlavet af belgisk chokolade", ctaButton: "Gratis designforhåndsvisning", formButton: "Udfyld formularen", pricesButton: "Priser" },
 };
 
 export const bookBoxContent: Record<Lang, { heading: string; subtitle: string; items: { title: string; description: string; alt: string }[] }> = {
@@ -765,6 +846,17 @@ export const bookBoxContent: Record<Lang, { heading: string; subtitle: string; i
       { title: "Avoin laatikko", description: "Magneettisuljin luo kirjan avaamiskokemuksen.", alt: "Avoin suklaakirja" },
       { title: "Praliinit sisällä", description: "Suklaapraliinit erilaisilla täytteillä.", alt: "Suklaakirja praliineilla" },
       { title: "Kilpailupalkinto", description: "Eksklusiivinen palkinto kilpailuihin.", alt: "Kilpailupalkinto suklaakirja" },
+    ],
+  },
+  da: {
+    heading: "Sjokoladebok",
+    subtitle: "Eksklusiv gaveeske i bokform med magnetlukking — fullt tilpassbar.",
+    items: [
+      { title: "Sjokoladebok", description: "Elegant gaveeske med fullfarge trykk og magnetlukking.", alt: "Sjokoladebok med personlig omslag" },
+      { title: "Elegant design", description: "Fullt tilpassbart omslag.", alt: "Elegant designet sjokoladebok" },
+      { title: "Åpen eske", description: "Magnetlukkingen skaper en bokopplevelse.", alt: "Åpen sjokoladebok" },
+      { title: "Praliner inni", description: "Sjokoladepraliner med ulike fyllinger.", alt: "Sjokoladebok med praliner" },
+      { title: "Konkurransepremie", description: "Eksklusiv premie for konkurranser.", alt: "Konkurransepremie sjokoladebok" },
     ],
   },
 };
@@ -871,6 +963,19 @@ export const cakeChocolateContent: Record<Lang, { heading: string; subtitle: str
       { title: "Kakut logolla", description: "Suklaalevy kakkukoristella.", alt: "Kakku suklaologolla" },
       { title: "Juhlakakut", description: "Logokoriste juhlakakuille.", alt: "Juhlakakku logolla" },
       { title: "Suklaakoristeet", description: "Erikoismuotoinen suklaa jälkiruoille.", alt: "Suklaajälkiruoka logolla" },
+    ],
+  },
+  da: {
+    heading: "Sjokolade for kaker og konditori",
+    subtitle: "Logo sjokoladedekorasjoner for kaker, cupcakes og konditoriprodukter.",
+    items: [
+      { title: "Logo-cupcakes", description: "Sjokoladedekorasjoner med logo for cupcakes.", alt: "Cupcakes med sjokoladelogo" },
+      { title: "Mini sjokolade", description: "Små sjokoladeplater med logo.", alt: "Mini sjokoladedekorasjon" },
+      { title: "Terter og bakverk", description: "Sjokoladelogo på terter.", alt: "Sjokoladetert med logo" },
+      { title: "Premiumdesserter", description: "Eksklusiv sjokoladedekorasjon på desserter.", alt: "Premium dessert med logo" },
+      { title: "Kaker med logo", description: "Sjokoladeplate som kakeaksent.", alt: "Kake med sjokoladelogo" },
+      { title: "Festkaker", description: "Logodekorasjon for festkaker.", alt: "Festkake med logo" },
+      { title: "Sjokoladedekor", description: "Spesialformet sjokolade for desserter.", alt: "Sjokoladedessert med logo" },
     ],
   },
 };
@@ -1062,6 +1167,27 @@ export const restaurantChocolateContent: Record<Lang, { heading: string; subtitl
       { title: "Sirowa suklaa kahvin kanssa", description: "Suklaa luovalla suunnittelulla ja viestillä kahvin kanssa — unohtumaton hetki.", alt: "Sirowa personoitu suklaa viestillä kahvikupin kanssa" },
       { title: "Cabot suklaa eksklusiivisessa pakkauksessa", description: "Premium suklaa Cabot-logolla elegantissa lahjapakkauksessa tryffelihatuilla.", alt: "Cabot brändisuklaa eksklusiivisessa lahjapakkauksessa" },
       { title: "Grenardi juhlasuklaita", description: "Monen makuisia belgialaisia suklaita kulta- ja marjakoristeilla — täydellinen juhlakautta varten.", alt: "Grenardi premium suklaat erilaisilla koristeilla juhlallisissa pakkaukissa" },
+    ],
+  },
+  da: {
+    heading: "Restaurantsjokolade",
+    subtitle: "Forestill deg — din restaurants logo eller kokkens signatur i sjokolade på hver dessert, kaffekopp eller champagneglass. Vi gjør det. Skreddersydd, i din design, i din merkevare.",
+    benefits: ["Styrker merkevarebevissthet", "Overrasker gjester med en gjennomtenkt detalj", "Oppmuntrer til å dele bilder på sosiale medier"],
+    usageNote: "De kan plasseres på kaker, desserter, iskrem, ved regningen, på kaffe- eller cocktailglass.",
+    coffeeHeading: "Logo sjokolade til kaffen",
+    coffeeSubtitle: "Den lille detaljen som gjør stort inntrykk — personlig belgisk sjokolade med din logo til hver kaffekopp på hoteller, restauranter og kontorer.",
+    items: [
+      { title: "Sjokolade for desserter og kaker", description: "Logo sjokolade på premiumdesserter — en raffinert aksent for hver tallerken.", alt: "Premiumdessert med personlig logo sjokolade for restauranter" },
+      { title: "Logo sjokolade for VIP-gaver", description: "Eksklusive merkevare-sjokolader i elegant emballasje.", alt: "Chopard merkevare sjokoladepraliner i elegant blå eske" },
+      { title: "Sjokolade med regningen", description: "Personlig sjokolade med restaurantregningen — et uforglemmelig siste inntrykk.", alt: "Fellini restaurant logo sjokolade med regningen" },
+      { title: "Sjokolade med TripAdvisor-invitasjon", description: "Logo sjokoladedekorasjon på desserter med invitasjon til å legge igjen TripAdvisor-anmeldelse.", alt: "Restaurantdessert med TripAdvisor logo sjokolade" },
+      { title: "Sjokolade for champagneglass", description: "Logo sjokolademedaljong på champagne- eller vinglass.", alt: "Olympic Voodoo Casino logo sjokolade på champagneglass" },
+      { title: "Sjokolade for cocktailglass", description: "Personlig sjokolade på cocktail- eller kaffeglasskanten.", alt: "Personlige logo sjokolader på cocktailglass" },
+      { title: "MasterCard sjokolade til espresso", description: "Premium belgisk sjokolade med MasterCard-logo, servert til espressokopp.", alt: "MasterCard logo sjokolade til espressokopp" },
+      { title: "Gmoa Keller sjokolade til cappuccino", description: "Personlig sjokolade med restaurantens logo til cappuccino — en elegant gjestfrihetsgest.", alt: "Gmoa Keller restaurantsjokolade til cappuccinokopp" },
+      { title: "Sirowa sjokolade til kaffe", description: "Sjokolade med kreativt design og budskap til kaffen — et uforglemmelig øyeblikk.", alt: "Sirowa personlig sjokolade med budskap til kaffekopp" },
+      { title: "Cabot sjokolade i eksklusiv emballasje", description: "Premium sjokolade med Cabot-logo i elegant gaveemballasje med trøffelessker.", alt: "Cabot merkevare sjokolade i eksklusiv gaveemballasje" },
+      { title: "Grenardi festsjokolade", description: "Belgisk sjokolade i flere smaker med gull- og bærdekor — perfekt for høytidssesongen.", alt: "Grenardi premium sjokolade med ulike dekorasjoner i festlig emballasje" },
     ],
   },
 };
