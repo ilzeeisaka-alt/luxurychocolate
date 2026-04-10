@@ -58,6 +58,7 @@ export const clientExamples: Record<Lang, { subtitle: string; heading: string; s
   sv: { subtitle: "Kundexempel", heading: "Världens varumärken litar på oss", srOnly: "Kundexempel — världens varumärken som litar på Luxury Chocolate: MasterCard, Bosch, Chopard, Samsung, Vodafone, Volkswagen." },
   no: { subtitle: "Kundeeksempler", heading: "Verdens merkevarer stoler på oss", srOnly: "Kundeeksempler — verdens merkevarer som stoler på Luxury Chocolate: MasterCard, Bosch, Chopard, Samsung, Vodafone, Volkswagen." },
   fi: { subtitle: "Asiakasesimerkkejä", heading: "Maailman brändit luottavat meihin", srOnly: "Asiakasesimerkkejä — maailman brändit, jotka luottavat Luxury Chocolateen: MasterCard, Bosch, Chopard, Samsung, Vodafone, Volkswagen." },
+  da: { subtitle: "Kundeeksempler", heading: "Verdens brands stoler på os", srOnly: "Kundeeksempler — verdens brands, der stoler på Luxury Chocolate: MasterCard, Bosch, Chopard, Samsung, Vodafone, Volkswagen." },
 };
 
 export const howToOrder: Record<Lang, { heading: string; steps: string[]; footer: string; srOnly: string }> = {
@@ -756,6 +757,7 @@ export const heroContent: Record<Lang, { title1: string; title2: string; subtitl
   sv: { title1: "Exklusiv choklad med logotyp", title2: "& företagspresenter", subtitle: "Personlig reklamchoklad — handgjord av belgisk choklad", ctaButton: "Gratis designförhandsvisning", formButton: "Fyll i formuläret", pricesButton: "Priser" },
   no: { title1: "Eksklusiv sjokolade med logo", title2: "& bedriftsgaver", subtitle: "Personlig reklamesjokolade — håndlaget av belgisk sjokolade", ctaButton: "Gratis designforhåndsvisning", formButton: "Fyll ut skjemaet", pricesButton: "Priser" },
   fi: { title1: "Eksklusiivinen suklaa logolla", title2: "& yrityslahjat", subtitle: "Personoitu mainossuklaa — käsintehtyä belgialaisesta suklaasta", ctaButton: "Ilmainen esikatselu", formButton: "Täytä lomake", pricesButton: "Hinnat" },
+  da: { title1: "Eksklusiv chokolade med logo", title2: "& firmapresenter", subtitle: "Personlig reklamechokolade — håndlavet af belgisk chokolade", ctaButton: "Gratis designforhåndsvisning", formButton: "Udfyld formularen", pricesButton: "Priser" },
 };
 
 export const bookBoxContent: Record<Lang, { heading: string; subtitle: string; items: { title: string; description: string; alt: string }[] }> = {
