@@ -26,6 +26,7 @@ const navItems: Record<Lang, NavItem[]> = {
     { label: "VIP dāvanas", to: "#vip" },
     { label: "Suvenīri", to: "#suveniri" },
     { label: "Cienasts", to: "#cienasts" },
+    { label: "Galda kartes", to: "#galda-kartes" },
     { label: "Kontakti", to: "#kontakti" },
   ],
   en: [
@@ -43,6 +44,7 @@ const navItems: Record<Lang, NavItem[]> = {
     { label: "VIP Gifts", to: "#vip" },
     { label: "Souvenirs", to: "#suveniri" },
     { label: "Serving", to: "#cienasts" },
+    { label: "Table Cards", to: "#galda-kartes" },
     { label: "Contact", to: "#kontakti" },
   ],
   ru: [
@@ -60,6 +62,7 @@ const navItems: Record<Lang, NavItem[]> = {
     { label: "VIP Подарки", to: "#vip" },
     { label: "Сувениры", to: "#suveniri" },
     { label: "Угощение", to: "#cienasts" },
+    { label: "Карточки", to: "#galda-kartes" },
     { label: "Контакты", to: "#kontakti" },
   ],
   et: [
@@ -77,6 +80,7 @@ const navItems: Record<Lang, NavItem[]> = {
     { label: "VIP Kingitused", to: "#vip" },
     { label: "Suveniirid", to: "#suveniri" },
     { label: "Serveerimine", to: "#cienasts" },
+    { label: "Lauakaardid", to: "#galda-kartes" },
     { label: "Kontakt", to: "#kontakti" },
   ],
   lt: [
@@ -94,6 +98,7 @@ const navItems: Record<Lang, NavItem[]> = {
     { label: "VIP Dovanos", to: "#vip" },
     { label: "Suvenyrai", to: "#suveniri" },
     { label: "Serviravimas", to: "#cienasts" },
+    { label: "Kortelės", to: "#galda-kartes" },
     { label: "Kontaktai", to: "#kontakti" },
   ],
   sv: [
@@ -111,6 +116,7 @@ const navItems: Record<Lang, NavItem[]> = {
     { label: "VIP Presenter", to: "#vip" },
     { label: "Souvenirer", to: "#suveniri" },
     { label: "Servering", to: "#cienasts" },
+    { label: "Bordskort", to: "#galda-kartes" },
     { label: "Kontakt", to: "#kontakti" },
   ],
   no: [
@@ -128,6 +134,7 @@ const navItems: Record<Lang, NavItem[]> = {
     { label: "VIP Gaver", to: "#vip" },
     { label: "Suvenirer", to: "#suveniri" },
     { label: "Servering", to: "#cienasts" },
+    { label: "Bordkort", to: "#galda-kartes" },
     { label: "Kontakt", to: "#kontakti" },
   ],
   fi: [
@@ -145,6 +152,7 @@ const navItems: Record<Lang, NavItem[]> = {
     { label: "VIP Lahjat", to: "#vip" },
     { label: "Matkamuistot", to: "#suveniri" },
     { label: "Tarjoilu", to: "#cienasts" },
+    { label: "Pöytäkortit", to: "#galda-kartes" },
     { label: "Yhteystiedot", to: "#kontakti" },
   ],
   da: [
@@ -162,6 +170,7 @@ const navItems: Record<Lang, NavItem[]> = {
     { label: "VIP Gaver", to: "#vip" },
     { label: "Souvenirs", to: "#suveniri" },
     { label: "Servering", to: "#cienasts" },
+    { label: "Bordkort", to: "#galda-kartes" },
     { label: "Kontakt", to: "#kontakti" },
   ],
   de: [
@@ -179,6 +188,7 @@ const navItems: Record<Lang, NavItem[]> = {
     { label: "VIP Geschenke", to: "#vip" },
     { label: "Souvenirs", to: "#suveniri" },
     { label: "Servierung", to: "#cienasts" },
+    { label: "Tischkarten", to: "#galda-kartes" },
     { label: "Kontakt", to: "#kontakti" },
   ],
   fr: [
@@ -196,6 +206,7 @@ const navItems: Record<Lang, NavItem[]> = {
     { label: "VIP Cadeaux", to: "#vip" },
     { label: "Souvenirs", to: "#suveniri" },
     { label: "Service", to: "#cienasts" },
+    { label: "Marque-places", to: "#galda-kartes" },
     { label: "Contact", to: "#kontakti" },
   ],
   it: [
@@ -213,6 +224,7 @@ const navItems: Record<Lang, NavItem[]> = {
     { label: "VIP Regali", to: "#vip" },
     { label: "Souvenir", to: "#suveniri" },
     { label: "Servizio", to: "#cienasts" },
+    { label: "Segnaposto", to: "#galda-kartes" },
     { label: "Contatti", to: "#kontakti" },
   ],
   es: [
@@ -230,6 +242,7 @@ const navItems: Record<Lang, NavItem[]> = {
     { label: "VIP Regalos", to: "#vip" },
     { label: "Recuerdos", to: "#suveniri" },
     { label: "Servicio", to: "#cienasts" },
+    { label: "Tarjetas", to: "#galda-kartes" },
     { label: "Contacto", to: "#kontakti" },
   ],
   ar: [
@@ -247,6 +260,7 @@ const navItems: Record<Lang, NavItem[]> = {
     { label: "هدايا VIP", to: "#vip" },
     { label: "تذكارات", to: "#suveniri" },
     { label: "تقديم", to: "#cienasts" },
+    { label: "بطاقات", to: "#galda-kartes" },
     { label: "اتصل بنا", to: "#kontakti" },
   ],
   nl: [
@@ -264,6 +278,7 @@ const navItems: Record<Lang, NavItem[]> = {
     { label: "VIP Geschenken", to: "#vip" },
     { label: "Souvenirs", to: "#suveniri" },
     { label: "Serveren", to: "#cienasts" },
+    { label: "Tafelkaarten", to: "#galda-kartes" },
     { label: "Contact", to: "#kontakti" },
   ],
   pl: [
@@ -281,6 +296,7 @@ const navItems: Record<Lang, NavItem[]> = {
     { label: "VIP Prezenty", to: "#vip" },
     { label: "Pamiątki", to: "#suveniri" },
     { label: "Serwowanie", to: "#cienasts" },
+    { label: "Wizytówki", to: "#galda-kartes" },
     { label: "Kontakt", to: "#kontakti" },
   ],
   cs: [
@@ -298,6 +314,7 @@ const navItems: Record<Lang, NavItem[]> = {
     { label: "VIP Dárky", to: "#vip" },
     { label: "Suvenýry", to: "#suveniri" },
     { label: "Servírování", to: "#cienasts" },
+    { label: "Jmenovky", to: "#galda-kartes" },
     { label: "Kontakt", to: "#kontakti" },
   ],
   pt: [
@@ -315,6 +332,7 @@ const navItems: Record<Lang, NavItem[]> = {
     { label: "VIP Presentes", to: "#vip" },
     { label: "Lembranças", to: "#suveniri" },
     { label: "Serviço", to: "#cienasts" },
+    { label: "Marcadores", to: "#galda-kartes" },
     { label: "Contacto", to: "#kontakti" },
   ],
   el: [
@@ -332,6 +350,7 @@ const navItems: Record<Lang, NavItem[]> = {
     { label: "VIP Δώρα", to: "#vip" },
     { label: "Σουβενίρ", to: "#suveniri" },
     { label: "Σερβίρισμα", to: "#cienasts" },
+    { label: "Καρτελάκια", to: "#galda-kartes" },
     { label: "Επικοινωνία", to: "#kontakti" },
   ],
   tr: [
@@ -349,6 +368,7 @@ const navItems: Record<Lang, NavItem[]> = {
     { label: "VIP Hediyeler", to: "#vip" },
     { label: "Hediyelik", to: "#suveniri" },
     { label: "Servis", to: "#cienasts" },
+    { label: "Masa kartları", to: "#galda-kartes" },
     { label: "İletişim", to: "#kontakti" },
   ],
   hu: [
@@ -366,6 +386,7 @@ const navItems: Record<Lang, NavItem[]> = {
     { label: "VIP Ajándékok", to: "#vip" },
     { label: "Szuvenírek", to: "#suveniri" },
     { label: "Tálalás", to: "#cienasts" },
+    { label: "Ültetőkártyák", to: "#galda-kartes" },
     { label: "Kapcsolat", to: "#kontakti" },
   ],
   ro: [
@@ -383,6 +404,7 @@ const navItems: Record<Lang, NavItem[]> = {
     { label: "VIP Cadouri", to: "#vip" },
     { label: "Suveniruri", to: "#suveniri" },
     { label: "Servire", to: "#cienasts" },
+    { label: "Carduri", to: "#galda-kartes" },
     { label: "Contact", to: "#kontakti" },
   ],
   bg: [
@@ -400,6 +422,7 @@ const navItems: Record<Lang, NavItem[]> = {
     { label: "VIP Подаръци", to: "#vip" },
     { label: "Сувенири", to: "#suveniri" },
     { label: "Сервиране", to: "#cienasts" },
+    { label: "Картички", to: "#galda-kartes" },
     { label: "Контакти", to: "#kontakti" },
   ],
   hr: [
@@ -417,6 +440,7 @@ const navItems: Record<Lang, NavItem[]> = {
     { label: "VIP Darovi", to: "#vip" },
     { label: "Suveniri", to: "#suveniri" },
     { label: "Posluživanje", to: "#cienasts" },
+    { label: "Kartice", to: "#galda-kartes" },
     { label: "Kontakt", to: "#kontakti" },
   ],
   sk: [
@@ -434,6 +458,7 @@ const navItems: Record<Lang, NavItem[]> = {
     { label: "VIP Darčeky", to: "#vip" },
     { label: "Suveníry", to: "#suveniri" },
     { label: "Servírovanie", to: "#cienasts" },
+    { label: "Menovky", to: "#galda-kartes" },
     { label: "Kontakt", to: "#kontakti" },
   ],
   sl: [
@@ -451,6 +476,7 @@ const navItems: Record<Lang, NavItem[]> = {
     { label: "VIP Darila", to: "#vip" },
     { label: "Spominki", to: "#suveniri" },
     { label: "Serviranje", to: "#cienasts" },
+    { label: "Kartice", to: "#galda-kartes" },
     { label: "Kontakt", to: "#kontakti" },
   ],
   uk: [
@@ -468,6 +494,7 @@ const navItems: Record<Lang, NavItem[]> = {
     { label: "VIP Подарунки", to: "#vip" },
     { label: "Сувеніри", to: "#suveniri" },
     { label: "Сервіровка", to: "#cienasts" },
+    { label: "Картки", to: "#galda-kartes" },
     { label: "Контакти", to: "#kontakti" },
   ],
   sr: [
@@ -485,6 +512,7 @@ const navItems: Record<Lang, NavItem[]> = {
     { label: "VIP Поклони", to: "#vip" },
     { label: "Сувенири", to: "#suveniri" },
     { label: "Сервирање", to: "#cienasts" },
+    { label: "Картице", to: "#galda-kartes" },
     { label: "Kontakt", to: "#kontakti" },
   ],
   bs: [
@@ -502,6 +530,7 @@ const navItems: Record<Lang, NavItem[]> = {
     { label: "VIP Pokloni", to: "#vip" },
     { label: "Suveniri", to: "#suveniri" },
     { label: "Posluživanje", to: "#cienasts" },
+    { label: "Kartice", to: "#galda-kartes" },
     { label: "Kontakt", to: "#kontakti" },
   ],
   mk: [
@@ -519,6 +548,7 @@ const navItems: Record<Lang, NavItem[]> = {
     { label: "VIP Подароци", to: "#vip" },
     { label: "Сувенири", to: "#suveniri" },
     { label: "Сервирање", to: "#cienasts" },
+    { label: "Картички", to: "#galda-kartes" },
     { label: "Контакт", to: "#kontakti" },
   ],
   sq: [
@@ -536,6 +566,7 @@ const navItems: Record<Lang, NavItem[]> = {
     { label: "VIP Dhurata", to: "#vip" },
     { label: "Suvenire", to: "#suveniri" },
     { label: "Servimi", to: "#cienasts" },
+    { label: "Kartat", to: "#galda-kartes" },
     { label: "Kontakt", to: "#kontakti" },
   ],
   is: [
@@ -553,6 +584,7 @@ const navItems: Record<Lang, NavItem[]> = {
     { label: "VIP Gjafir", to: "#vip" },
     { label: "Minjagripir", to: "#suveniri" },
     { label: "Framreiðsla", to: "#cienasts" },
+    { label: "Borðspjöld", to: "#galda-kartes" },
     { label: "Samband", to: "#kontakti" },
   ],
 };
