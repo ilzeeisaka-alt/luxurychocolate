@@ -56,7 +56,6 @@ const SvIndex = () => {
       <SouvenirSection lang="sv" onCtaClick={() => setModalOpen(true)} />
       <CienastsSection lang="sv" onCtaClick={() => setModalOpen(true)} />
       <TableCardsSection lang="sv" onCtaClick={() => setModalOpen(true)} />
-      <CelebrationCakeSection lang={<TableCardsSection lang="sv" onCtaClick={() => setModalOpen(true)} />.match(/lang="([^"]+)"/)?.[1] || "lv"} onCtaClick={() => setModalOpen(true)} />
       <BookBoxSection lang="sv" />
       <DailyChocolateSection lang="sv" onCtaClick={() => setModalOpen(true)} />
       <RestaurantChocolateSection lang="sv" />

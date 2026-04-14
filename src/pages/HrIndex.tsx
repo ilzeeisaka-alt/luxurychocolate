@@ -55,7 +55,6 @@ const HrIndex = () => {
       <SouvenirSection lang="hr" onCtaClick={() => setModalOpen(true)} />
       <CienastsSection lang="hr" onCtaClick={() => setModalOpen(true)} />
       <TableCardsSection lang="hr" onCtaClick={() => setModalOpen(true)} />
-      <CelebrationCakeSection lang={<TableCardsSection lang="hr" onCtaClick={() => setModalOpen(true)} />.match(/lang="([^"]+)"/)?.[1] || "lv"} onCtaClick={() => setModalOpen(true)} />
       <BookBoxSection lang="hr" />
       <DailyChocolateSection lang="hr" onCtaClick={() => setModalOpen(true)} />
       <RestaurantChocolateSection lang="hr" />

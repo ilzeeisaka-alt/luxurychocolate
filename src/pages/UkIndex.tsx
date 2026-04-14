@@ -55,7 +55,6 @@ const UkIndex = () => {
       <SouvenirSection lang="uk" onCtaClick={() => setModalOpen(true)} />
       <CienastsSection lang="uk" onCtaClick={() => setModalOpen(true)} />
       <TableCardsSection lang="uk" onCtaClick={() => setModalOpen(true)} />
-      <CelebrationCakeSection lang={<TableCardsSection lang="uk" onCtaClick={() => setModalOpen(true)} />.match(/lang="([^"]+)"/)?.[1] || "lv"} onCtaClick={() => setModalOpen(true)} />
       <BookBoxSection lang="uk" />
       <DailyChocolateSection lang="uk" onCtaClick={() => setModalOpen(true)} />
       <RestaurantChocolateSection lang="uk" />

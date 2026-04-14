@@ -56,7 +56,6 @@ const FiIndex = () => {
       <SouvenirSection lang="fi" onCtaClick={() => setModalOpen(true)} />
       <CienastsSection lang="fi" onCtaClick={() => setModalOpen(true)} />
       <TableCardsSection lang="fi" onCtaClick={() => setModalOpen(true)} />
-      <CelebrationCakeSection lang={<TableCardsSection lang="fi" onCtaClick={() => setModalOpen(true)} />.match(/lang="([^"]+)"/)?.[1] || "lv"} onCtaClick={() => setModalOpen(true)} />
       <BookBoxSection lang="fi" />
       <DailyChocolateSection lang="fi" onCtaClick={() => setModalOpen(true)} />
       <RestaurantChocolateSection lang="fi" />

@@ -56,7 +56,6 @@ const RuIndex = () => {
       <SouvenirSection lang="ru" onCtaClick={() => setModalOpen(true)} />
       <CienastsSection lang="ru" onCtaClick={() => setModalOpen(true)} />
       <TableCardsSection lang="ru" onCtaClick={() => setModalOpen(true)} />
-      <CelebrationCakeSection lang={<TableCardsSection lang="ru" onCtaClick={() => setModalOpen(true)} />.match(/lang="([^"]+)"/)?.[1] || "lv"} onCtaClick={() => setModalOpen(true)} />
       <BookBoxSection lang="ru" />
       <DailyChocolateSection lang="ru" onCtaClick={() => setModalOpen(true)} />
       <RestaurantChocolateSection lang="ru" />

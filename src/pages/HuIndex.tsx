@@ -55,7 +55,6 @@ const HuIndex = () => {
       <SouvenirSection lang="hu" onCtaClick={() => setModalOpen(true)} />
       <CienastsSection lang="hu" onCtaClick={() => setModalOpen(true)} />
       <TableCardsSection lang="hu" onCtaClick={() => setModalOpen(true)} />
-      <CelebrationCakeSection lang={<TableCardsSection lang="hu" onCtaClick={() => setModalOpen(true)} />.match(/lang="([^"]+)"/)?.[1] || "lv"} onCtaClick={() => setModalOpen(true)} />
       <BookBoxSection lang="hu" />
       <DailyChocolateSection lang="hu" onCtaClick={() => setModalOpen(true)} />
       <RestaurantChocolateSection lang="hu" />

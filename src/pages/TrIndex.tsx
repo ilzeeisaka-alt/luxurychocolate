@@ -55,7 +55,6 @@ const TrIndex = () => {
       <SouvenirSection lang="tr" onCtaClick={() => setModalOpen(true)} />
       <CienastsSection lang="tr" onCtaClick={() => setModalOpen(true)} />
       <TableCardsSection lang="tr" onCtaClick={() => setModalOpen(true)} />
-      <CelebrationCakeSection lang={<TableCardsSection lang="tr" onCtaClick={() => setModalOpen(true)} />.match(/lang="([^"]+)"/)?.[1] || "lv"} onCtaClick={() => setModalOpen(true)} />
       <BookBoxSection lang="tr" />
       <DailyChocolateSection lang="tr" onCtaClick={() => setModalOpen(true)} />
       <RestaurantChocolateSection lang="tr" />

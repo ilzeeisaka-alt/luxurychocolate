@@ -55,7 +55,6 @@ const IsIndex = () => {
       <SouvenirSection lang="is" onCtaClick={() => setModalOpen(true)} />
       <CienastsSection lang="is" onCtaClick={() => setModalOpen(true)} />
       <TableCardsSection lang="is" onCtaClick={() => setModalOpen(true)} />
-      <CelebrationCakeSection lang={<TableCardsSection lang="is" onCtaClick={() => setModalOpen(true)} />.match(/lang="([^"]+)"/)?.[1] || "lv"} onCtaClick={() => setModalOpen(true)} />
       <BookBoxSection lang="is" />
       <DailyChocolateSection lang="is" onCtaClick={() => setModalOpen(true)} />
       <RestaurantChocolateSection lang="is" />
