@@ -10,6 +10,7 @@ import FreePreviewSection from "@/components/FreePreviewSection";
 import TrustSection from "@/components/TrustSection";
 import ProductsSection from "@/components/ProductsSection";
 import BookBoxSection from "@/components/BookBoxSection";
+import MagnetBoxSection from "@/components/MagnetBoxSection";
 import FaqSection from "@/components/FaqSection";
 import IdeasSection from "@/components/IdeasSection";
 import RelatedPagesSection from "@/components/RelatedPagesSection";
@@ -57,6 +58,7 @@ const DaIndex = () => {
       <CienastsSection lang="da" onCtaClick={() => setModalOpen(true)} />
       <TableCardsSection lang="da" onCtaClick={() => setModalOpen(true)} />
       <CelebrationCakeSection lang="da" onCtaClick={() => setModalOpen(true)} />
+      <MagnetBoxSection lang="da" />
       <BookBoxSection lang="da" />
       <DailyChocolateSection lang="da" onCtaClick={() => setModalOpen(true)} />
       <RestaurantChocolateSection lang="da" />

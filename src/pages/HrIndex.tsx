@@ -10,6 +10,7 @@ import FreePreviewSection from "@/components/FreePreviewSection";
 import TrustSection from "@/components/TrustSection";
 import ProductsSection from "@/components/ProductsSection";
 import BookBoxSection from "@/components/BookBoxSection";
+import MagnetBoxSection from "@/components/MagnetBoxSection";
 import FaqSection from "@/components/FaqSection";
 import IdeasSection from "@/components/IdeasSection";
 import RelatedPagesSection from "@/components/RelatedPagesSection";
@@ -56,6 +57,7 @@ const HrIndex = () => {
       <CienastsSection lang="hr" onCtaClick={() => setModalOpen(true)} />
       <TableCardsSection lang="hr" onCtaClick={() => setModalOpen(true)} />
       <CelebrationCakeSection lang="hr" onCtaClick={() => setModalOpen(true)} />
+      <MagnetBoxSection lang="hr" />
       <BookBoxSection lang="hr" />
       <DailyChocolateSection lang="hr" onCtaClick={() => setModalOpen(true)} />
       <RestaurantChocolateSection lang="hr" />
