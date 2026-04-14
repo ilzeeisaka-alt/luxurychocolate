@@ -5,11 +5,16 @@ import type { Lang } from "@/i18n/types";
 import { vipGiftContent } from "@/i18n/content";
 import Lightbox from "@/components/Lightbox";
 
+import horseshoePullman from "@/assets/vip-horseshoe-pullman.jpeg";
+import horseshoeClose from "@/assets/vip-horseshoe-close.jpeg";
+import musicChocolate from "@/assets/vip-music-chocolate.jpg";
+import musicClose from "@/assets/vip-music-close.jpg";
+import strawberryBox from "@/assets/vip-strawberry-box.jpg";
 import acrylicBoxImg from "@/assets/vip-gift-acrylic-box.jpg";
 import flavorsImg from "@/assets/vip-chocolate-flavors.jpg";
 import logoBoxImg from "@/assets/vip-acrylic-logo-box.jpg";
 
-const images = [acrylicBoxImg, logoBoxImg, flavorsImg];
+const images = [horseshoePullman, horseshoeClose, musicChocolate, musicClose, strawberryBox, acrylicBoxImg, logoBoxImg, flavorsImg];
 
 interface VipGiftSectionProps {
   lang?: Lang;
@@ -45,7 +50,7 @@ const VipGiftSection = ({ lang = "lv", onCtaClick }: VipGiftSectionProps) => {
           </div>
 
           {/* Images grid */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
             {t.items.map((item, i) => (
               <motion.div
                 key={item.title}
