@@ -55,6 +55,7 @@ const DeIndex = () => {
       <SouvenirSection lang="de" onCtaClick={() => setModalOpen(true)} />
       <CienastsSection lang="de" onCtaClick={() => setModalOpen(true)} />
       <TableCardsSection lang="de" onCtaClick={() => setModalOpen(true)} />
+      <CelebrationCakeSection lang="de" onCtaClick={() => setModalOpen(true)} />
       <BookBoxSection lang="de" />
       <DailyChocolateSection lang="de" onCtaClick={() => setModalOpen(true)} />
       <RestaurantChocolateSection lang="de" />

@@ -55,6 +55,7 @@ const EsIndex = () => {
       <SouvenirSection lang="es" onCtaClick={() => setModalOpen(true)} />
       <CienastsSection lang="es" onCtaClick={() => setModalOpen(true)} />
       <TableCardsSection lang="es" onCtaClick={() => setModalOpen(true)} />
+      <CelebrationCakeSection lang="es" onCtaClick={() => setModalOpen(true)} />
       <BookBoxSection lang="es" />
       <DailyChocolateSection lang="es" onCtaClick={() => setModalOpen(true)} />
       <RestaurantChocolateSection lang="es" />

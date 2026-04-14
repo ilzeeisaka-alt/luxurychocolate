@@ -55,6 +55,7 @@ const BsIndex = () => {
       <SouvenirSection lang="bs" onCtaClick={() => setModalOpen(true)} />
       <CienastsSection lang="bs" onCtaClick={() => setModalOpen(true)} />
       <TableCardsSection lang="bs" onCtaClick={() => setModalOpen(true)} />
+      <CelebrationCakeSection lang="bs" onCtaClick={() => setModalOpen(true)} />
       <BookBoxSection lang="bs" />
       <DailyChocolateSection lang="bs" onCtaClick={() => setModalOpen(true)} />
       <RestaurantChocolateSection lang="bs" />

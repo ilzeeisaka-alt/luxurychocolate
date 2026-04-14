@@ -56,6 +56,7 @@ const NoIndex = () => {
       <SouvenirSection lang="no" onCtaClick={() => setModalOpen(true)} />
       <CienastsSection lang="no" onCtaClick={() => setModalOpen(true)} />
       <TableCardsSection lang="no" onCtaClick={() => setModalOpen(true)} />
+      <CelebrationCakeSection lang="no" onCtaClick={() => setModalOpen(true)} />
       <BookBoxSection lang="no" />
       <DailyChocolateSection lang="no" onCtaClick={() => setModalOpen(true)} />
       <RestaurantChocolateSection lang="no" />

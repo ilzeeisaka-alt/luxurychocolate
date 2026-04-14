@@ -55,6 +55,7 @@ const SqIndex = () => {
       <SouvenirSection lang="sq" onCtaClick={() => setModalOpen(true)} />
       <CienastsSection lang="sq" onCtaClick={() => setModalOpen(true)} />
       <TableCardsSection lang="sq" onCtaClick={() => setModalOpen(true)} />
+      <CelebrationCakeSection lang="sq" onCtaClick={() => setModalOpen(true)} />
       <BookBoxSection lang="sq" />
       <DailyChocolateSection lang="sq" onCtaClick={() => setModalOpen(true)} />
       <RestaurantChocolateSection lang="sq" />

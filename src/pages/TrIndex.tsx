@@ -55,6 +55,7 @@ const TrIndex = () => {
       <SouvenirSection lang="tr" onCtaClick={() => setModalOpen(true)} />
       <CienastsSection lang="tr" onCtaClick={() => setModalOpen(true)} />
       <TableCardsSection lang="tr" onCtaClick={() => setModalOpen(true)} />
+      <CelebrationCakeSection lang="tr" onCtaClick={() => setModalOpen(true)} />
       <BookBoxSection lang="tr" />
       <DailyChocolateSection lang="tr" onCtaClick={() => setModalOpen(true)} />
       <RestaurantChocolateSection lang="tr" />

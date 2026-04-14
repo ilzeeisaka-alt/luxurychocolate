@@ -55,6 +55,7 @@ const NlIndex = () => {
       <SouvenirSection lang="nl" onCtaClick={() => setModalOpen(true)} />
       <CienastsSection lang="nl" onCtaClick={() => setModalOpen(true)} />
       <TableCardsSection lang="nl" onCtaClick={() => setModalOpen(true)} />
+      <CelebrationCakeSection lang="nl" onCtaClick={() => setModalOpen(true)} />
       <BookBoxSection lang="nl" />
       <DailyChocolateSection lang="nl" onCtaClick={() => setModalOpen(true)} />
       <RestaurantChocolateSection lang="nl" />

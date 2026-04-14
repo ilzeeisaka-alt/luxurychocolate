@@ -56,6 +56,7 @@ const SvIndex = () => {
       <SouvenirSection lang="sv" onCtaClick={() => setModalOpen(true)} />
       <CienastsSection lang="sv" onCtaClick={() => setModalOpen(true)} />
       <TableCardsSection lang="sv" onCtaClick={() => setModalOpen(true)} />
+      <CelebrationCakeSection lang="sv" onCtaClick={() => setModalOpen(true)} />
       <BookBoxSection lang="sv" />
       <DailyChocolateSection lang="sv" onCtaClick={() => setModalOpen(true)} />
       <RestaurantChocolateSection lang="sv" />

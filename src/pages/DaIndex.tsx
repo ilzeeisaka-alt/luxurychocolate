@@ -56,6 +56,7 @@ const DaIndex = () => {
       <SouvenirSection lang="da" onCtaClick={() => setModalOpen(true)} />
       <CienastsSection lang="da" onCtaClick={() => setModalOpen(true)} />
       <TableCardsSection lang="da" onCtaClick={() => setModalOpen(true)} />
+      <CelebrationCakeSection lang="da" onCtaClick={() => setModalOpen(true)} />
       <BookBoxSection lang="da" />
       <DailyChocolateSection lang="da" onCtaClick={() => setModalOpen(true)} />
       <RestaurantChocolateSection lang="da" />

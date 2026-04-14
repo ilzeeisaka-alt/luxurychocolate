@@ -55,6 +55,7 @@ const ArIndex = () => {
       <SouvenirSection lang="ar" onCtaClick={() => setModalOpen(true)} />
       <CienastsSection lang="ar" onCtaClick={() => setModalOpen(true)} />
       <TableCardsSection lang="ar" onCtaClick={() => setModalOpen(true)} />
+      <CelebrationCakeSection lang="ar" onCtaClick={() => setModalOpen(true)} />
       <BookBoxSection lang="ar" />
       <DailyChocolateSection lang="ar" onCtaClick={() => setModalOpen(true)} />
       <RestaurantChocolateSection lang="ar" />

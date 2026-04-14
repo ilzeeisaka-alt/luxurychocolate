@@ -55,6 +55,7 @@ const RoIndex = () => {
       <SouvenirSection lang="ro" onCtaClick={() => setModalOpen(true)} />
       <CienastsSection lang="ro" onCtaClick={() => setModalOpen(true)} />
       <TableCardsSection lang="ro" onCtaClick={() => setModalOpen(true)} />
+      <CelebrationCakeSection lang="ro" onCtaClick={() => setModalOpen(true)} />
       <BookBoxSection lang="ro" />
       <DailyChocolateSection lang="ro" onCtaClick={() => setModalOpen(true)} />
       <RestaurantChocolateSection lang="ro" />

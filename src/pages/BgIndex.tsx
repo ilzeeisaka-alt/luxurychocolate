@@ -55,6 +55,7 @@ const BgIndex = () => {
       <SouvenirSection lang="bg" onCtaClick={() => setModalOpen(true)} />
       <CienastsSection lang="bg" onCtaClick={() => setModalOpen(true)} />
       <TableCardsSection lang="bg" onCtaClick={() => setModalOpen(true)} />
+      <CelebrationCakeSection lang="bg" onCtaClick={() => setModalOpen(true)} />
       <BookBoxSection lang="bg" />
       <DailyChocolateSection lang="bg" onCtaClick={() => setModalOpen(true)} />
       <RestaurantChocolateSection lang="bg" />

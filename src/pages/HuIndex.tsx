@@ -55,6 +55,7 @@ const HuIndex = () => {
       <SouvenirSection lang="hu" onCtaClick={() => setModalOpen(true)} />
       <CienastsSection lang="hu" onCtaClick={() => setModalOpen(true)} />
       <TableCardsSection lang="hu" onCtaClick={() => setModalOpen(true)} />
+      <CelebrationCakeSection lang="hu" onCtaClick={() => setModalOpen(true)} />
       <BookBoxSection lang="hu" />
       <DailyChocolateSection lang="hu" onCtaClick={() => setModalOpen(true)} />
       <RestaurantChocolateSection lang="hu" />

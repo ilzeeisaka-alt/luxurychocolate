@@ -55,6 +55,7 @@ const MkIndex = () => {
       <SouvenirSection lang="mk" onCtaClick={() => setModalOpen(true)} />
       <CienastsSection lang="mk" onCtaClick={() => setModalOpen(true)} />
       <TableCardsSection lang="mk" onCtaClick={() => setModalOpen(true)} />
+      <CelebrationCakeSection lang="mk" onCtaClick={() => setModalOpen(true)} />
       <BookBoxSection lang="mk" />
       <DailyChocolateSection lang="mk" onCtaClick={() => setModalOpen(true)} />
       <RestaurantChocolateSection lang="mk" />

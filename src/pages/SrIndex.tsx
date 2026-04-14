@@ -55,6 +55,7 @@ const SrIndex = () => {
       <SouvenirSection lang="sr" onCtaClick={() => setModalOpen(true)} />
       <CienastsSection lang="sr" onCtaClick={() => setModalOpen(true)} />
       <TableCardsSection lang="sr" onCtaClick={() => setModalOpen(true)} />
+      <CelebrationCakeSection lang="sr" onCtaClick={() => setModalOpen(true)} />
       <BookBoxSection lang="sr" />
       <DailyChocolateSection lang="sr" onCtaClick={() => setModalOpen(true)} />
       <RestaurantChocolateSection lang="sr" />
