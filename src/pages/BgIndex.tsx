@@ -21,6 +21,7 @@ import RestaurantChocolateSection from "@/components/RestaurantChocolateSection"
 import DailyChocolateSection from "@/components/DailyChocolateSection";
 import VipGiftSection from "@/components/VipGiftSection";
 import SouvenirSection from "@/components/SouvenirSection";
+import CienastsSection from "@/components/CienastsSection";
 import OfferModal from "@/components/OfferModal";
 import { useSeo } from "@/hooks/useSeo";
 import { heroContent } from "@/i18n/content";
@@ -50,6 +51,7 @@ const BgIndex = () => {
       <ShopSection lang="bg" onCtaClick={() => setModalOpen(true)} />
       <VipGiftSection lang="bg" onCtaClick={() => setModalOpen(true)} />
       <SouvenirSection lang="bg" onCtaClick={() => setModalOpen(true)} />
+      <CienastsSection lang="bg" onCtaClick={() => setModalOpen(true)} />
       <BookBoxSection lang="bg" />
       <DailyChocolateSection lang="bg" onCtaClick={() => setModalOpen(true)} />
       <RestaurantChocolateSection lang="bg" />
