@@ -20,6 +20,7 @@ import ShopSection from "@/components/ShopSection";
 import RestaurantChocolateSection from "@/components/RestaurantChocolateSection";
 import DailyChocolateSection from "@/components/DailyChocolateSection";
 import VipGiftSection from "@/components/VipGiftSection";
+import SouvenirSection from "@/components/SouvenirSection";
 import OfferModal from "@/components/OfferModal";
 import { useSeo } from "@/hooks/useSeo";
 import { heroContent } from "@/i18n/content";
@@ -48,6 +49,7 @@ const DeIndex = () => {
       <ProductsSection lang="de" />
       <ShopSection lang="de" onCtaClick={() => setModalOpen(true)} />
       <VipGiftSection lang="de" onCtaClick={() => setModalOpen(true)} />
+      <SouvenirSection lang="de" onCtaClick={() => setModalOpen(true)} />
       <BookBoxSection lang="de" />
       <DailyChocolateSection lang="de" onCtaClick={() => setModalOpen(true)} />
       <RestaurantChocolateSection lang="de" />

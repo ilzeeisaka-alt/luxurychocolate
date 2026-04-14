@@ -20,6 +20,7 @@ import ShopSection from "@/components/ShopSection";
 import RestaurantChocolateSection from "@/components/RestaurantChocolateSection";
 import DailyChocolateSection from "@/components/DailyChocolateSection";
 import VipGiftSection from "@/components/VipGiftSection";
+import SouvenirSection from "@/components/SouvenirSection";
 import OfferModal from "@/components/OfferModal";
 import { useSeo } from "@/hooks/useSeo";
 import { heroContent } from "@/i18n/content";
@@ -48,6 +49,7 @@ const IsIndex = () => {
       <ProductsSection lang="is" />
       <ShopSection lang="is" onCtaClick={() => setModalOpen(true)} />
       <VipGiftSection lang="is" onCtaClick={() => setModalOpen(true)} />
+      <SouvenirSection lang="is" onCtaClick={() => setModalOpen(true)} />
       <BookBoxSection lang="is" />
       <DailyChocolateSection lang="is" onCtaClick={() => setModalOpen(true)} />
       <RestaurantChocolateSection lang="is" />
