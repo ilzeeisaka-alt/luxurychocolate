@@ -19,6 +19,7 @@ import ContactSection from "@/components/ContactSection";
 import ShopSection from "@/components/ShopSection";
 import RestaurantChocolateSection from "@/components/RestaurantChocolateSection";
 import DailyChocolateSection from "@/components/DailyChocolateSection";
+import VipGiftSection from "@/components/VipGiftSection";
 import OfferModal from "@/components/OfferModal";
 import { useSeo } from "@/hooks/useSeo";
 import { heroContent } from "@/i18n/content";
@@ -46,6 +47,7 @@ const PlIndex = () => {
       <TrustSection lang="pl" />
       <ProductsSection lang="pl" />
       <ShopSection lang="pl" onCtaClick={() => setModalOpen(true)} />
+      <VipGiftSection lang="pl" onCtaClick={() => setModalOpen(true)} />
       <BookBoxSection lang="pl" />
       <DailyChocolateSection lang="pl" onCtaClick={() => setModalOpen(true)} />
       <RestaurantChocolateSection lang="pl" />

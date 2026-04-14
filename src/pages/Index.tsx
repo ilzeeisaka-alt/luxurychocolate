@@ -10,6 +10,7 @@ import CakeChocolateSection from "@/components/CakeChocolateSection";
 import RestaurantChocolateSection from "@/components/RestaurantChocolateSection";
 import DailyChocolateSection from "@/components/DailyChocolateSection";
 import BookBoxSection from "@/components/BookBoxSection";
+import VipGiftSection from "@/components/VipGiftSection";
 import SeoContentSection from "@/components/SeoContentSection";
 import FaqSection from "@/components/FaqSection";
 import IdeasSection from "@/components/IdeasSection";
@@ -47,6 +48,7 @@ const Index = () => {
       <TrustSection />
       <ProductsSection />
       <ShopSection onCtaClick={() => setModalOpen(true)} />
+      <VipGiftSection lang="lv" onCtaClick={() => setModalOpen(true)} />
       <DailyChocolateSection lang="lv" onCtaClick={() => setModalOpen(true)} />
       <CakeChocolateSection />
       <RestaurantChocolateSection />
