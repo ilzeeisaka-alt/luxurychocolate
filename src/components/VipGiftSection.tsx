@@ -50,7 +50,7 @@ const VipGiftSection = ({ lang = "lv", onCtaClick }: VipGiftSectionProps) => {
           </div>
 
           {/* Images grid */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
             {t.items.map((item, i) => (
               <motion.div
                 key={item.title}
