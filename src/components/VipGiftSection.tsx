@@ -5,11 +5,16 @@ import type { Lang } from "@/i18n/types";
 import { vipGiftContent } from "@/i18n/content";
 import Lightbox from "@/components/Lightbox";
 
+import horseshoePullman from "@/assets/vip-horseshoe-pullman.jpeg";
+import horseshoeClose from "@/assets/vip-horseshoe-close.jpeg";
+import musicChocolate from "@/assets/vip-music-chocolate.jpg";
+import musicClose from "@/assets/vip-music-close.jpg";
+import strawberryBox from "@/assets/vip-strawberry-box.jpg";
 import acrylicBoxImg from "@/assets/vip-gift-acrylic-box.jpg";
 import flavorsImg from "@/assets/vip-chocolate-flavors.jpg";
 import logoBoxImg from "@/assets/vip-acrylic-logo-box.jpg";
 
-const images = [acrylicBoxImg, logoBoxImg, flavorsImg];
+const images = [horseshoePullman, horseshoeClose, musicChocolate, musicClose, strawberryBox, acrylicBoxImg, logoBoxImg, flavorsImg];
 
 interface VipGiftSectionProps {
   lang?: Lang;
