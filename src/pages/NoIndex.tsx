@@ -23,6 +23,7 @@ import VipGiftSection from "@/components/VipGiftSection";
 import SouvenirSection from "@/components/SouvenirSection";
 import CienastsSection from "@/components/CienastsSection";
 import TableCardsSection from "@/components/TableCardsSection";
+import CelebrationCakeSection from "@/components/CelebrationCakeSection";
 import OfferModal from "@/components/OfferModal";
 import { useSeo } from "@/hooks/useSeo";
 import { heroContent } from "@/i18n/content";
@@ -55,6 +56,7 @@ const NoIndex = () => {
       <SouvenirSection lang="no" onCtaClick={() => setModalOpen(true)} />
       <CienastsSection lang="no" onCtaClick={() => setModalOpen(true)} />
       <TableCardsSection lang="no" onCtaClick={() => setModalOpen(true)} />
+      <CelebrationCakeSection lang={<TableCardsSection lang="no" onCtaClick={() => setModalOpen(true)} />.match(/lang="([^"]+)"/)?.[1] || "lv"} onCtaClick={() => setModalOpen(true)} />
       <BookBoxSection lang="no" />
       <DailyChocolateSection lang="no" onCtaClick={() => setModalOpen(true)} />
       <RestaurantChocolateSection lang="no" />

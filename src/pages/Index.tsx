@@ -14,6 +14,7 @@ import VipGiftSection from "@/components/VipGiftSection";
 import SouvenirSection from "@/components/SouvenirSection";
 import CienastsSection from "@/components/CienastsSection";
 import TableCardsSection from "@/components/TableCardsSection";
+import CelebrationCakeSection from "@/components/CelebrationCakeSection";
 import SeoContentSection from "@/components/SeoContentSection";
 import FaqSection from "@/components/FaqSection";
 import IdeasSection from "@/components/IdeasSection";
@@ -55,6 +56,7 @@ const Index = () => {
       <SouvenirSection lang="lv" onCtaClick={() => setModalOpen(true)} />
       <CienastsSection lang="lv" onCtaClick={() => setModalOpen(true)} />
       <TableCardsSection lang="lv" onCtaClick={() => setModalOpen(true)} />
+      <CelebrationCakeSection lang={<TableCardsSection lang="lv" onCtaClick={() => setModalOpen(true)} />.match(/lang="([^"]+)"/)?.[1] || "lv"} onCtaClick={() => setModalOpen(true)} />
       <DailyChocolateSection lang="lv" onCtaClick={() => setModalOpen(true)} />
       <CakeChocolateSection />
       <RestaurantChocolateSection />
