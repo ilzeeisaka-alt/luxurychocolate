@@ -520,6 +520,7 @@ const navItems: Record<Lang, NavItem[]> = {
     { label: "Blogg", to: "/is/blog" },
     { label: "Verslun", to: "https://www.luxurychocolatesia.lv/online-shop-products/" },
     { label: "VIP Gjafir", to: "#vip" },
+    { label: "Minjagripir", to: "#suveniri" },
     { label: "Samband", to: "#kontakti" },
   ],
 };
