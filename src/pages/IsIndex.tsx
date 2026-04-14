@@ -10,6 +10,7 @@ import FreePreviewSection from "@/components/FreePreviewSection";
 import TrustSection from "@/components/TrustSection";
 import ProductsSection from "@/components/ProductsSection";
 import BookBoxSection from "@/components/BookBoxSection";
+import MagnetBoxSection from "@/components/MagnetBoxSection";
 import FaqSection from "@/components/FaqSection";
 import IdeasSection from "@/components/IdeasSection";
 import RelatedPagesSection from "@/components/RelatedPagesSection";
@@ -56,6 +57,7 @@ const IsIndex = () => {
       <CienastsSection lang="is" onCtaClick={() => setModalOpen(true)} />
       <TableCardsSection lang="is" onCtaClick={() => setModalOpen(true)} />
       <CelebrationCakeSection lang="is" onCtaClick={() => setModalOpen(true)} />
+      <MagnetBoxSection lang="is" />
       <BookBoxSection lang="is" />
       <DailyChocolateSection lang="is" onCtaClick={() => setModalOpen(true)} />
       <RestaurantChocolateSection lang="is" />

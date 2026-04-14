@@ -28,6 +28,7 @@ const navItems: Record<Lang, NavItem[]> = {
     { label: "Cienasts", to: "#cienasts" },
     { label: "Galda kartes", to: "#galda-kartes" },
     { label: "Tortes", to: "#tortes" },
+    { label: "Kastes", to: "#magnets" },
     { label: "Kontakti", to: "#kontakti" },
   ],
   en: [
@@ -47,6 +48,7 @@ const navItems: Record<Lang, NavItem[]> = {
     { label: "Serving", to: "#cienasts" },
     { label: "Table Cards", to: "#galda-kartes" },
     { label: "Cakes", to: "#tortes" },
+    { label: "Gift Boxes", to: "#magnets" },
     { label: "Contact", to: "#kontakti" },
   ],
   ru: [
@@ -66,6 +68,7 @@ const navItems: Record<Lang, NavItem[]> = {
     { label: "Угощение", to: "#cienasts" },
     { label: "Карточки", to: "#galda-kartes" },
     { label: "Торты", to: "#tortes" },
+    { label: "Коробки", to: "#magnets" },
     { label: "Контакты", to: "#kontakti" },
   ],
   et: [
@@ -85,6 +88,7 @@ const navItems: Record<Lang, NavItem[]> = {
     { label: "Serveerimine", to: "#cienasts" },
     { label: "Lauakaardid", to: "#galda-kartes" },
     { label: "Torte", to: "#tortes" },
+    { label: "Karbid", to: "#magnets" },
     { label: "Kontakt", to: "#kontakti" },
   ],
   lt: [
@@ -104,6 +108,7 @@ const navItems: Record<Lang, NavItem[]> = {
     { label: "Serviravimas", to: "#cienasts" },
     { label: "Kortelės", to: "#galda-kartes" },
     { label: "Tortai", to: "#tortes" },
+    { label: "Dėžutės", to: "#magnets" },
     { label: "Kontaktai", to: "#kontakti" },
   ],
   sv: [
@@ -123,6 +128,7 @@ const navItems: Record<Lang, NavItem[]> = {
     { label: "Servering", to: "#cienasts" },
     { label: "Bordskort", to: "#galda-kartes" },
     { label: "Torte", to: "#tortes" },
+    { label: "Lådor", to: "#magnets" },
     { label: "Kontakt", to: "#kontakti" },
   ],
   no: [
@@ -142,6 +148,7 @@ const navItems: Record<Lang, NavItem[]> = {
     { label: "Servering", to: "#cienasts" },
     { label: "Bordkort", to: "#galda-kartes" },
     { label: "Torte", to: "#tortes" },
+    { label: "Esker", to: "#magnets" },
     { label: "Kontakt", to: "#kontakti" },
   ],
   fi: [
@@ -161,6 +168,7 @@ const navItems: Record<Lang, NavItem[]> = {
     { label: "Tarjoilu", to: "#cienasts" },
     { label: "Pöytäkortit", to: "#galda-kartes" },
     { label: "Kakut", to: "#tortes" },
+    { label: "Rasiat", to: "#magnets" },
     { label: "Yhteystiedot", to: "#kontakti" },
   ],
   da: [
@@ -180,6 +188,7 @@ const navItems: Record<Lang, NavItem[]> = {
     { label: "Servering", to: "#cienasts" },
     { label: "Bordkort", to: "#galda-kartes" },
     { label: "Torte", to: "#tortes" },
+    { label: "Æsker", to: "#magnets" },
     { label: "Kontakt", to: "#kontakti" },
   ],
   de: [
@@ -199,6 +208,7 @@ const navItems: Record<Lang, NavItem[]> = {
     { label: "Servierung", to: "#cienasts" },
     { label: "Tischkarten", to: "#galda-kartes" },
     { label: "Torte", to: "#tortes" },
+    { label: "Geschenkboxen", to: "#magnets" },
     { label: "Kontakt", to: "#kontakti" },
   ],
   fr: [
@@ -218,6 +228,7 @@ const navItems: Record<Lang, NavItem[]> = {
     { label: "Service", to: "#cienasts" },
     { label: "Marque-places", to: "#galda-kartes" },
     { label: "Cakes", to: "#tortes" },
+    { label: "Coffrets", to: "#magnets" },
     { label: "Contact", to: "#kontakti" },
   ],
   it: [
@@ -237,6 +248,7 @@ const navItems: Record<Lang, NavItem[]> = {
     { label: "Servizio", to: "#cienasts" },
     { label: "Segnaposto", to: "#galda-kartes" },
     { label: "Torte", to: "#tortes" },
+    { label: "Scatole", to: "#magnets" },
     { label: "Contatti", to: "#kontakti" },
   ],
   es: [
@@ -256,6 +268,7 @@ const navItems: Record<Lang, NavItem[]> = {
     { label: "Servicio", to: "#cienasts" },
     { label: "Tarjetas", to: "#galda-kartes" },
     { label: "Pasteles", to: "#tortes" },
+    { label: "Cajas", to: "#magnets" },
     { label: "Contacto", to: "#kontakti" },
   ],
   ar: [
@@ -275,6 +288,7 @@ const navItems: Record<Lang, NavItem[]> = {
     { label: "تقديم", to: "#cienasts" },
     { label: "بطاقات", to: "#galda-kartes" },
     { label: "كعك", to: "#tortes" },
+    { label: "صناديق", to: "#magnets" },
     { label: "اتصل بنا", to: "#kontakti" },
   ],
   nl: [
@@ -294,6 +308,7 @@ const navItems: Record<Lang, NavItem[]> = {
     { label: "Serveren", to: "#cienasts" },
     { label: "Tafelkaarten", to: "#galda-kartes" },
     { label: "Cakes", to: "#tortes" },
+    { label: "Dozen", to: "#magnets" },
     { label: "Contact", to: "#kontakti" },
   ],
   pl: [
@@ -313,6 +328,7 @@ const navItems: Record<Lang, NavItem[]> = {
     { label: "Serwowanie", to: "#cienasts" },
     { label: "Wizytówki", to: "#galda-kartes" },
     { label: "Torte", to: "#tortes" },
+    { label: "Pudełka", to: "#magnets" },
     { label: "Kontakt", to: "#kontakti" },
   ],
   cs: [
@@ -332,6 +348,7 @@ const navItems: Record<Lang, NavItem[]> = {
     { label: "Servírování", to: "#cienasts" },
     { label: "Jmenovky", to: "#galda-kartes" },
     { label: "Torte", to: "#tortes" },
+    { label: "Krabičky", to: "#magnets" },
     { label: "Kontakt", to: "#kontakti" },
   ],
   pt: [
@@ -351,6 +368,7 @@ const navItems: Record<Lang, NavItem[]> = {
     { label: "Serviço", to: "#cienasts" },
     { label: "Marcadores", to: "#galda-kartes" },
     { label: "Pasteles", to: "#tortes" },
+    { label: "Caixas", to: "#magnets" },
     { label: "Contacto", to: "#kontakti" },
   ],
   el: [
@@ -370,6 +388,7 @@ const navItems: Record<Lang, NavItem[]> = {
     { label: "Σερβίρισμα", to: "#cienasts" },
     { label: "Καρτελάκια", to: "#galda-kartes" },
     { label: "Τούρτες", to: "#tortes" },
+    { label: "Κουτιά", to: "#magnets" },
     { label: "Επικοινωνία", to: "#kontakti" },
   ],
   tr: [
@@ -389,6 +408,7 @@ const navItems: Record<Lang, NavItem[]> = {
     { label: "Servis", to: "#cienasts" },
     { label: "Masa kartları", to: "#galda-kartes" },
     { label: "Pastalar", to: "#tortes" },
+    { label: "Kutular", to: "#magnets" },
     { label: "İletişim", to: "#kontakti" },
   ],
   hu: [
@@ -408,6 +428,7 @@ const navItems: Record<Lang, NavItem[]> = {
     { label: "Tálalás", to: "#cienasts" },
     { label: "Ültetőkártyák", to: "#galda-kartes" },
     { label: "Torták", to: "#tortes" },
+    { label: "Dobozok", to: "#magnets" },
     { label: "Kapcsolat", to: "#kontakti" },
   ],
   ro: [
@@ -427,6 +448,7 @@ const navItems: Record<Lang, NavItem[]> = {
     { label: "Servire", to: "#cienasts" },
     { label: "Carduri", to: "#galda-kartes" },
     { label: "Cakes", to: "#tortes" },
+    { label: "Cutii", to: "#magnets" },
     { label: "Contact", to: "#kontakti" },
   ],
   bg: [
@@ -446,6 +468,7 @@ const navItems: Record<Lang, NavItem[]> = {
     { label: "Сервиране", to: "#cienasts" },
     { label: "Картички", to: "#galda-kartes" },
     { label: "Торти", to: "#tortes" },
+    { label: "Кутии", to: "#magnets" },
     { label: "Контакти", to: "#kontakti" },
   ],
   hr: [
@@ -465,6 +488,7 @@ const navItems: Record<Lang, NavItem[]> = {
     { label: "Posluživanje", to: "#cienasts" },
     { label: "Kartice", to: "#galda-kartes" },
     { label: "Torte", to: "#tortes" },
+    { label: "Kutije", to: "#magnets" },
     { label: "Kontakt", to: "#kontakti" },
   ],
   sk: [
@@ -484,6 +508,7 @@ const navItems: Record<Lang, NavItem[]> = {
     { label: "Servírovanie", to: "#cienasts" },
     { label: "Menovky", to: "#galda-kartes" },
     { label: "Torte", to: "#tortes" },
+    { label: "Krabičky", to: "#magnets" },
     { label: "Kontakt", to: "#kontakti" },
   ],
   sl: [
@@ -503,6 +528,7 @@ const navItems: Record<Lang, NavItem[]> = {
     { label: "Serviranje", to: "#cienasts" },
     { label: "Kartice", to: "#galda-kartes" },
     { label: "Torte", to: "#tortes" },
+    { label: "Škatle", to: "#magnets" },
     { label: "Kontakt", to: "#kontakti" },
   ],
   uk: [
@@ -522,6 +548,7 @@ const navItems: Record<Lang, NavItem[]> = {
     { label: "Сервіровка", to: "#cienasts" },
     { label: "Картки", to: "#galda-kartes" },
     { label: "Торти", to: "#tortes" },
+    { label: "Коробки", to: "#magnets" },
     { label: "Контакти", to: "#kontakti" },
   ],
   sr: [
@@ -541,6 +568,7 @@ const navItems: Record<Lang, NavItem[]> = {
     { label: "Сервирање", to: "#cienasts" },
     { label: "Картице", to: "#galda-kartes" },
     { label: "Torte", to: "#tortes" },
+    { label: "Кутије", to: "#magnets" },
     { label: "Kontakt", to: "#kontakti" },
   ],
   bs: [
@@ -560,6 +588,7 @@ const navItems: Record<Lang, NavItem[]> = {
     { label: "Posluživanje", to: "#cienasts" },
     { label: "Kartice", to: "#galda-kartes" },
     { label: "Torte", to: "#tortes" },
+    { label: "Kutije", to: "#magnets" },
     { label: "Kontakt", to: "#kontakti" },
   ],
   mk: [
@@ -579,6 +608,7 @@ const navItems: Record<Lang, NavItem[]> = {
     { label: "Сервирање", to: "#cienasts" },
     { label: "Картички", to: "#galda-kartes" },
     { label: "Торти", to: "#tortes" },
+    { label: "Кутии", to: "#magnets" },
     { label: "Контакт", to: "#kontakti" },
   ],
   sq: [
@@ -598,6 +628,7 @@ const navItems: Record<Lang, NavItem[]> = {
     { label: "Servimi", to: "#cienasts" },
     { label: "Kartat", to: "#galda-kartes" },
     { label: "Torte", to: "#tortes" },
+    { label: "Kuti", to: "#magnets" },
     { label: "Kontakt", to: "#kontakti" },
   ],
   is: [
@@ -617,6 +648,7 @@ const navItems: Record<Lang, NavItem[]> = {
     { label: "Framreiðsla", to: "#cienasts" },
     { label: "Borðspjöld", to: "#galda-kartes" },
     { label: "Tærtur", to: "#tortes" },
+    { label: "Kassar", to: "#magnets" },
     { label: "Samband", to: "#kontakti" },
   ],
 };
