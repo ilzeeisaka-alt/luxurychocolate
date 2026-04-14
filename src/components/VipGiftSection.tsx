@@ -49,12 +49,22 @@ const VipGiftSection = ({ lang = "lv", onCtaClick }: VipGiftSectionProps) => {
             </p>
           </div>
 
-          {/* YouTube Video */}
-          <div className="max-w-3xl mx-auto mb-16">
+          {/* YouTube Videos */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto mb-16">
             <div className="relative w-full aspect-video rounded-xl overflow-hidden" style={{ boxShadow: "var(--shadow-card)" }}>
               <iframe
                 src="https://www.youtube.com/embed/KOY8Knb2OaU"
                 title="VIP dāvanas — organiskā stikla kastes ar šokolādi"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                loading="lazy"
+                className="absolute inset-0 w-full h-full border-0"
+              />
+            </div>
+            <div className="relative w-full aspect-video rounded-xl overflow-hidden" style={{ boxShadow: "var(--shadow-card)" }}>
+              <iframe
+                src="https://www.youtube.com/embed/-doVOpcsHhw"
+                title="VIP dāvanas — šokolādes apdruka"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
                 loading="lazy"
