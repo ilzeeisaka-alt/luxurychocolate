@@ -23,6 +23,7 @@ import VipGiftSection from "@/components/VipGiftSection";
 import SouvenirSection from "@/components/SouvenirSection";
 import CienastsSection from "@/components/CienastsSection";
 import TableCardsSection from "@/components/TableCardsSection";
+import CelebrationCakeSection from "@/components/CelebrationCakeSection";
 import OfferModal from "@/components/OfferModal";
 import { useSeo } from "@/hooks/useSeo";
 import { heroContent } from "@/i18n/content";
@@ -55,6 +56,7 @@ const EtIndex = () => {
       <SouvenirSection lang="et" onCtaClick={() => setModalOpen(true)} />
       <CienastsSection lang="et" onCtaClick={() => setModalOpen(true)} />
       <TableCardsSection lang="et" onCtaClick={() => setModalOpen(true)} />
+      <CelebrationCakeSection lang="et" onCtaClick={() => setModalOpen(true)} />
       <BookBoxSection lang="et" />
       <DailyChocolateSection lang="et" onCtaClick={() => setModalOpen(true)} />
       <RestaurantChocolateSection lang="et" />
