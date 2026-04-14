@@ -456,6 +456,7 @@ const navItems: Record<Lang, NavItem[]> = {
     { label: "Blog", to: "/sr/blog" },
     { label: "Prodavnica", to: "https://www.luxurychocolatesia.lv/online-shop-products/" },
     { label: "VIP Поклони", to: "#vip" },
+    { label: "Сувенири", to: "#suveniri" },
     { label: "Kontakt", to: "#kontakti" },
   ],
   bs: [
@@ -471,6 +472,7 @@ const navItems: Record<Lang, NavItem[]> = {
     { label: "Blog", to: "/bs/blog" },
     { label: "Trgovina", to: "https://www.luxurychocolatesia.lv/online-shop-products/" },
     { label: "VIP Pokloni", to: "#vip" },
+    { label: "Suveniri", to: "#suveniri" },
     { label: "Kontakt", to: "#kontakti" },
   ],
   mk: [
@@ -486,6 +488,7 @@ const navItems: Record<Lang, NavItem[]> = {
     { label: "Блог", to: "/mk/blog" },
     { label: "Продавница", to: "https://www.luxurychocolatesia.lv/online-shop-products/" },
     { label: "VIP Подароци", to: "#vip" },
+    { label: "Сувенири", to: "#suveniri" },
     { label: "Контакт", to: "#kontakti" },
   ],
   sq: [
@@ -501,6 +504,7 @@ const navItems: Record<Lang, NavItem[]> = {
     { label: "Blog", to: "/sq/blog" },
     { label: "Dyqan", to: "https://www.luxurychocolatesia.lv/online-shop-products/" },
     { label: "VIP Dhurata", to: "#vip" },
+    { label: "Suvenire", to: "#suveniri" },
     { label: "Kontakt", to: "#kontakti" },
   ],
   is: [
