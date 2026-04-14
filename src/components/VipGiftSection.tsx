@@ -28,6 +28,7 @@ const VipGiftSection = ({ lang = "lv", onCtaClick }: VipGiftSectionProps) => {
   return (
     <>
       <motion.section
+        id="vip"
         className="py-24"
         initial={{ opacity: 0, y: 8 }}
         whileInView={{ opacity: 1, y: 0 }}
