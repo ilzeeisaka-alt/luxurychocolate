@@ -56,6 +56,7 @@ const navItems: Record<Lang, NavItem[]> = {
     { label: "Блог", to: "/ru/blog" },
     { label: "Магазин", to: "https://www.luxurychocolatesia.lv/internet-magazin-produkti/" },
     { label: "VIP Подарки", to: "#vip" },
+    { label: "Сувениры", to: "#suveniri" },
     { label: "Контакты", to: "#kontakti" },
   ],
   et: [
