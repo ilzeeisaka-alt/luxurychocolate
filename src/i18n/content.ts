@@ -1258,3 +1258,104 @@ cakeChocolateContent.cs = cs.csDailyChocolateContent;
 restaurantChocolateContent.nl = nl.nlRestaurantChocolateContent;
 restaurantChocolateContent.pl = pl.plRestaurantChocolateContent;
 restaurantChocolateContent.cs = cs.csRestaurantChocolateContent;
+
+// ── VIP Gift Section ──
+export const vipGiftContent: Record<Lang, {
+  badge: string;
+  heading: string;
+  subtitle: string;
+  items: { title: string; description: string; alt: string }[];
+  standardHeading: string;
+  standardBrand: string;
+  standardFlavors: string[];
+  specialHeading: string;
+  specialBrand: string;
+  specialFlavors: string[];
+  ctaButton: string;
+}> = withNordics({
+  lv: {
+    badge: "VIP Dāvanas",
+    heading: "Ekskluzīvas VIP dāvanas",
+    subtitle: "Īpašas organiskā stikla kastes ar iegravētu vai izgrieztu logo un apdrukātu šokolādi jūsu korporatīvajā stilā — izcila dāvana VIP klientiem un partneriem.",
+    items: [
+      { title: "Organiskā stikla kaste ar logo", description: "Eleganta caurspīdīga kaste ar iegravētu vai izgrieztu uzņēmuma logo, piepildīta ar premium šokolādi.", alt: "VIP dāvana — organiskā stikla kaste ar iegravētu logo un Beļģu šokolādi" },
+      { title: "Kaste ar zelta akcentiem", description: "Ekskluzīva prezentācijas kaste ar logo un zelta iesaiņojuma šokolādēm — ideāla korporatīvajām dāvanām.", alt: "Organiskā stikla dāvanu kaste ar logo un zelta šokolādēm" },
+      { title: "Īpašo garšu kolekcija", description: "Beļģu šokolāde ar apelsīnu, zemeņu, kapučino, karameļu, medus un laima garšām — katrai gaumei.", alt: "Premium Beļģu šokolādes kolekcija ar īpašām garšām" },
+    ],
+    standardHeading: "Standarta Beļģu šokolāde",
+    standardBrand: "Belcolade — premium Beļģu šokolāde",
+    standardFlavors: ["Piena šokolāde", "Baltā šokolāde", "Tumšā šokolāde"],
+    specialHeading: "Īpašo garšu šokolāde",
+    specialBrand: "Callebaut — pasaules klases Beļģu šokolāde",
+    specialFlavors: ["Apelsīnu šokolāde", "Zemeņu šokolāde", "Kapučino šokolāde", "Karameļu šokolāde", "Medus šokolāde", "Laima šokolāde"],
+    ctaButton: "Pieprasīt VIP piedāvājumu",
+  },
+  en: {
+    badge: "VIP Gifts",
+    heading: "Exclusive VIP Gifts",
+    subtitle: "Custom acrylic boxes with engraved or laser-cut logo and printed chocolate in your corporate style — the ultimate gift for VIP clients and partners.",
+    items: [
+      { title: "Acrylic box with logo", description: "Elegant transparent box with engraved or cut-out company logo, filled with premium chocolate.", alt: "VIP gift — acrylic box with engraved logo and Belgian chocolate" },
+      { title: "Box with gold accents", description: "Exclusive presentation box with logo and gold-wrapped chocolates — perfect for corporate gifts.", alt: "Acrylic gift box with logo and gold chocolates" },
+      { title: "Special flavors collection", description: "Belgian chocolate in orange, strawberry, cappuccino, caramel, honey and lime flavors — for every taste.", alt: "Premium Belgian chocolate collection with special flavors" },
+    ],
+    standardHeading: "Standard Belgian chocolate",
+    standardBrand: "Belcolade — premium Belgian chocolate",
+    standardFlavors: ["Milk chocolate", "White chocolate", "Dark chocolate"],
+    specialHeading: "Special flavor chocolate",
+    specialBrand: "Callebaut — world-class Belgian chocolate",
+    specialFlavors: ["Orange chocolate", "Strawberry chocolate", "Cappuccino chocolate", "Caramel chocolate", "Honey chocolate", "Lime chocolate"],
+    ctaButton: "Request VIP offer",
+  },
+  ru: {
+    badge: "VIP Подарки",
+    heading: "Эксклюзивные VIP подарки",
+    subtitle: "Особые коробки из оргстекла с гравировкой или вырезанным логотипом и печатным шоколадом в вашем корпоративном стиле — идеальный подарок для VIP-клиентов и партнёров.",
+    items: [
+      { title: "Коробка из оргстекла с логотипом", description: "Элегантная прозрачная коробка с гравировкой или вырезанным логотипом компании, наполненная премиум шоколадом.", alt: "VIP подарок — коробка из оргстекла с логотипом и бельгийским шоколадом" },
+      { title: "Коробка с золотыми акцентами", description: "Эксклюзивная презентационная коробка с логотипом и шоколадом в золотой упаковке.", alt: "Подарочная коробка из оргстекла с логотипом и золотыми шоколадками" },
+      { title: "Коллекция особых вкусов", description: "Бельгийский шоколад с апельсиновым, клубничным, капучино, карамельным, медовым и лаймовым вкусами.", alt: "Премиум коллекция бельгийского шоколада с особыми вкусами" },
+    ],
+    standardHeading: "Стандартный бельгийский шоколад",
+    standardBrand: "Belcolade — премиум бельгийский шоколад",
+    standardFlavors: ["Молочный шоколад", "Белый шоколад", "Тёмный шоколад"],
+    specialHeading: "Шоколад особых вкусов",
+    specialBrand: "Callebaut — бельгийский шоколад мирового класса",
+    specialFlavors: ["Апельсиновый шоколад", "Клубничный шоколад", "Капучино шоколад", "Карамельный шоколад", "Медовый шоколад", "Лаймовый шоколад"],
+    ctaButton: "Запросить VIP предложение",
+  },
+  et: {
+    badge: "VIP Kingitused",
+    heading: "Eksklusiivsed VIP kingitused",
+    subtitle: "Erilised akrüülkarbid graveeritud või lõigatud logoga ja trükitud šokolaadiga teie ettevõtte stiilis — ülim kingitus VIP klientidele.",
+    items: [
+      { title: "Akrüülkarp logoga", description: "Elegantne läbipaistev karp graveeritud ettevõtte logoga, täidetud premium šokolaadiga.", alt: "VIP kingitus — akrüülkarp logoga ja Belgia šokolaadiga" },
+      { title: "Karp kuldse aktsendiga", description: "Eksklusiivne esitluskarp logoga ja kuldselt pakendatud šokolaadidega.", alt: "Akrüül kingituskarp logoga ja kuldsete šokolaadidega" },
+      { title: "Erimaitsete kollektsioon", description: "Belgia šokolaad apelsini, maasika, cappuccino, karamelli, mee ja laimi maitsetega.", alt: "Premium Belgia šokolaadikogu erimaistega" },
+    ],
+    standardHeading: "Standardne Belgia šokolaad",
+    standardBrand: "Belcolade — premium Belgia šokolaad",
+    standardFlavors: ["Piimašokolaad", "Valge šokolaad", "Tume šokolaad"],
+    specialHeading: "Erimaitseline šokolaad",
+    specialBrand: "Callebaut — maailmatasemel Belgia šokolaad",
+    specialFlavors: ["Apelsini šokolaad", "Maasika šokolaad", "Cappuccino šokolaad", "Karamelli šokolaad", "Mee šokolaad", "Laimi šokolaad"],
+    ctaButton: "Küsi VIP pakkumist",
+  },
+  lt: {
+    badge: "VIP Dovanos",
+    heading: "Ekskliuzyvios VIP dovanos",
+    subtitle: "Ypatingos akrilinės dėžutės su graviruotu ar išpjautu logotipu ir atspaustu šokoladu jūsų korporatyviniu stiliumi — puiki dovana VIP klientams.",
+    items: [
+      { title: "Akrilinė dėžutė su logotipu", description: "Elegantiška permatoma dėžutė su graviruotu įmonės logotipu, pripildyta premium šokolado.", alt: "VIP dovana — akrilinė dėžutė su logotipu ir belgiško šokolado" },
+      { title: "Dėžutė su aukso akcentais", description: "Eksklusivinė prezentacinė dėžutė su logotipu ir aukso įpakavimo šokoladais.", alt: "Akrilinė dovanų dėžutė su logotipu ir aukso šokoladais" },
+      { title: "Specialių skonių kolekcija", description: "Belgiškas šokoladas apelsinų, braškių, cappuccino, karamelės, medaus ir laimų skoniais.", alt: "Premium belgiško šokolado kolekcija su specialiais skoniais" },
+    ],
+    standardHeading: "Standartinis belgiškas šokoladas",
+    standardBrand: "Belcolade — premium belgiškas šokoladas",
+    standardFlavors: ["Pieninis šokoladas", "Baltasis šokoladas", "Juodasis šokoladas"],
+    specialHeading: "Specialių skonių šokoladas",
+    specialBrand: "Callebaut — pasaulinio lygio belgiškas šokoladas",
+    specialFlavors: ["Apelsinų šokoladas", "Braškių šokoladas", "Cappuccino šokoladas", "Karamelės šokoladas", "Medaus šokoladas", "Laimų šokoladas"],
+    ctaButton: "Užklausti VIP pasiūlymą",
+  },
+});
