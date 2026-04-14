@@ -445,6 +445,7 @@ const navItems: Record<Lang, NavItem[]> = {
     { label: "Сувенири", to: "#suveniri" },
     { label: "Сервиране", to: "#cienasts" },
     { label: "Картички", to: "#galda-kartes" },
+    { label: "Торти", to: "#tortes" },
     { label: "Контакти", to: "#kontakti" },
   ],
   hr: [
@@ -520,6 +521,7 @@ const navItems: Record<Lang, NavItem[]> = {
     { label: "Сувеніри", to: "#suveniri" },
     { label: "Сервіровка", to: "#cienasts" },
     { label: "Картки", to: "#galda-kartes" },
+    { label: "Торти", to: "#tortes" },
     { label: "Контакти", to: "#kontakti" },
   ],
   sr: [
@@ -576,6 +578,7 @@ const navItems: Record<Lang, NavItem[]> = {
     { label: "Сувенири", to: "#suveniri" },
     { label: "Сервирање", to: "#cienasts" },
     { label: "Картички", to: "#galda-kartes" },
+    { label: "Торти", to: "#tortes" },
     { label: "Контакт", to: "#kontakti" },
   ],
   sq: [
