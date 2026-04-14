@@ -136,6 +136,7 @@ const navItems: Record<Lang, NavItem[]> = {
     { label: "Blogi", to: "/fi/blogi" },
     { label: "Kauppa", to: "https://www.luxurychocolatesia.lv/online-shop-products/" },
     { label: "VIP Lahjat", to: "#vip" },
+    { label: "Matkamuistot", to: "#suveniri" },
     { label: "Yhteystiedot", to: "#kontakti" },
   ],
   da: [
@@ -151,6 +152,7 @@ const navItems: Record<Lang, NavItem[]> = {
     { label: "Blog", to: "/da/blog" },
     { label: "Butik", to: "https://www.luxurychocolatesia.lv/online-shop-products/" },
     { label: "VIP Gaver", to: "#vip" },
+    { label: "Souvenirs", to: "#suveniri" },
     { label: "Kontakt", to: "#kontakti" },
   ],
   de: [
@@ -166,6 +168,7 @@ const navItems: Record<Lang, NavItem[]> = {
     { label: "Blog", to: "/de/blog" },
     { label: "Shop", to: "https://www.luxurychocolatesia.lv/online-shop-products/" },
     { label: "VIP Geschenke", to: "#vip" },
+    { label: "Souvenirs", to: "#suveniri" },
     { label: "Kontakt", to: "#kontakti" },
   ],
   fr: [
@@ -181,6 +184,7 @@ const navItems: Record<Lang, NavItem[]> = {
     { label: "Blog", to: "/fr/blog" },
     { label: "Boutique", to: "https://www.luxurychocolatesia.lv/online-shop-products/" },
     { label: "VIP Cadeaux", to: "#vip" },
+    { label: "Souvenirs", to: "#suveniri" },
     { label: "Contact", to: "#kontakti" },
   ],
   it: [
