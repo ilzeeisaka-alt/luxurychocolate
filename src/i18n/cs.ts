@@ -97,6 +97,7 @@ export const csHeroContent = {
   title1: "Exkluzivní čokoláda s logem",
   title2: "a firemní dárky",
   subtitle: "Personalizovaná propagační čokoláda — ručně vyrobená z belgické čokolády",
+  tagline: "Přímý tisk na čokoládu pro propagaci firemní značky — tisk čokoládovými barvami na čokoládu",
   ctaButton: "Bezplatný náhled designu",
   formButton: "Vyplnit formulář",
   pricesButton: "Ceny",
