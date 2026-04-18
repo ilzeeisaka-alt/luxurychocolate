@@ -45,7 +45,23 @@ const HeroSection = ({
   pricesButton,
   logoAlt = "Luxury Chocolate — ekskluzīvas korporatīvās šokolādes ar logo",
 }: HeroSectionProps) => {
-...
+  return (
+    <section className="flex flex-col">
+      <div className="relative bg-foreground py-16 sm:py-20 text-center">
+        <div className="container mx-auto">
+          <div
+            className="mx-auto mb-10 w-[180px] sm:w-[220px] h-[180px] sm:h-[220px] rounded-full bg-white overflow-hidden flex items-center justify-center"
+            style={{ boxShadow: "0 0 40px rgba(196,163,90,0.15), 0 0 80px rgba(0,0,0,0.3)" }}
+          >
+            <img src={logo} alt={logoAlt} className="w-[85%] h-[85%] object-contain" />
+          </div>
+
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl text-white mb-5 leading-[1.1] tracking-tight font-normal">
+            {title1}
+            <br />
+            <span className="text-primary">{title2}</span>
+          </h1>
+
           <p className="text-lg sm:text-xl text-white/60 mb-4 max-w-xl mx-auto leading-relaxed tracking-wide font-normal">
             {subtitle}
           </p>
