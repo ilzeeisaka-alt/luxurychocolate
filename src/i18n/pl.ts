@@ -97,6 +97,7 @@ export const plHeroContent = {
   title1: "Ekskluzywna czekolada z logo",
   title2: "i prezenty firmowe",
   subtitle: "Spersonalizowana czekolada reklamowa — ręcznie robiona z belgijskiej czekolady",
+  tagline: "Bezpośredni nadruk na czekoladzie do promocji marki firmy — nadruk kolorami czekolady na czekoladzie",
   ctaButton: "Bezpłatny podgląd projektu",
   formButton: "Wypełnij formularz",
   pricesButton: "Ceny",

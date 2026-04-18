@@ -26,6 +26,7 @@ interface HeroSectionProps {
   title1: string;
   title2: string;
   subtitle: string;
+  tagline?: string;
   ctaButton: string;
   formButton: string;
   pricesButton: string;
@@ -38,6 +39,7 @@ const HeroSection = ({
   title1,
   title2,
   subtitle,
+  tagline,
   ctaButton,
   formButton,
   pricesButton,
@@ -60,9 +62,15 @@ const HeroSection = ({
             <span className="text-primary">{title2}</span>
           </h1>
 
-          <p className="text-lg sm:text-xl text-white/60 mb-10 max-w-xl mx-auto leading-relaxed tracking-wide font-normal">
+          <p className="text-lg sm:text-xl text-white/60 mb-4 max-w-xl mx-auto leading-relaxed tracking-wide font-normal">
             {subtitle}
           </p>
+
+          {tagline && (
+            <p className="text-base sm:text-lg text-primary/90 mb-10 max-w-2xl mx-auto leading-relaxed tracking-wide font-normal italic">
+              {tagline}
+            </p>
+          )}
 
           <div className="flex flex-wrap justify-center gap-4">
             <button

@@ -97,6 +97,7 @@ export const nlHeroContent = {
   title1: "Exclusieve chocolade met logo",
   title2: "& zakelijke geschenken",
   subtitle: "Gepersonaliseerde promotionele chocolade — handgemaakt van Belgische chocolade",
+  tagline: "Directe chocoladebedrukking voor merkpromotie van bedrijven — bedrukt met chocoladekleuren op chocolade",
   ctaButton: "Gratis ontwerpvoorbeeld",
   formButton: "Formulier invullen",
   pricesButton: "Prijzen",
