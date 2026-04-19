@@ -750,7 +750,7 @@ const Navbar = ({ lang = "lv" }: NavbarProps) => {
           : "bg-foreground"
       }`}
     >
-      <div className="container mx-auto flex items-center justify-between h-14 px-4">
+      <div className="container mx-auto flex items-center justify-between gap-3 py-2 px-4 min-h-14">
         {/* Logo */}
         <Link to={homePath} className="flex items-center gap-2 shrink-0">
           <img
