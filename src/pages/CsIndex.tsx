@@ -41,7 +41,7 @@ const CsIndex = () => {
   });
 
   return (
-    <main className="bg-background pt-14">
+    <main className="bg-background pt-14 lg:pt-24">
       <Navbar lang="cs" />
       <HeroSection onCtaClick={() => setModalOpen(true)} lang="cs" {...t} logoAlt="Luxury Chocolate — exkluzivní firemní čokoláda s logem" />
       <SeoContentSection lang="cs" />

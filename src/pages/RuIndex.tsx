@@ -41,7 +41,7 @@ const RuIndex = () => {
   });
 
   return (
-    <main className="bg-background pt-14">
+    <main className="bg-background pt-14 lg:pt-24">
       <Navbar lang="ru" />
       <HeroSection onCtaClick={() => setModalOpen(true)} lang="ru" {...t} logoAlt="Luxury Chocolate — эксклюзивный корпоративный шоколад с логотипом" />
 

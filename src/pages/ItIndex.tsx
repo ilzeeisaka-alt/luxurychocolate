@@ -41,7 +41,7 @@ const ItIndex = () => {
   });
 
   return (
-    <main className="bg-background pt-14">
+    <main className="bg-background pt-14 lg:pt-24">
       <Navbar lang="it" />
       <HeroSection onCtaClick={() => setModalOpen(true)} lang="it" {...t} logoAlt="Luxury Chocolate — cioccolato aziendale esclusivo con logo" />
       <SeoContentSection lang="it" />

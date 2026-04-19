@@ -41,7 +41,7 @@ const SqIndex = () => {
   });
 
   return (
-    <main className="bg-background pt-14">
+    <main className="bg-background pt-14 lg:pt-24">
       <Navbar lang="sq" />
       <HeroSection onCtaClick={() => setModalOpen(true)} lang="sq" {...t} logoAlt="Luxury Chocolate — çokollatë ekskluzive korporative me logo" />
       <SeoContentSection lang="sq" />

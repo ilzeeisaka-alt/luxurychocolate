@@ -41,7 +41,7 @@ const NlIndex = () => {
   });
 
   return (
-    <main className="bg-background pt-14">
+    <main className="bg-background pt-14 lg:pt-24">
       <Navbar lang="nl" />
       <HeroSection onCtaClick={() => setModalOpen(true)} lang="nl" {...t} logoAlt="Luxury Chocolate — exclusieve zakelijke chocolade met logo" />
       <SeoContentSection lang="nl" />

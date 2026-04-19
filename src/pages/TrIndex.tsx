@@ -41,7 +41,7 @@ const TrIndex = () => {
   });
 
   return (
-    <main className="bg-background pt-14">
+    <main className="bg-background pt-14 lg:pt-24">
       <Navbar lang="tr" />
       <HeroSection onCtaClick={() => setModalOpen(true)} lang="tr" {...t} logoAlt="Luxury Chocolate — logolu özel kurumsal çikolata" />
       <SeoContentSection lang="tr" />

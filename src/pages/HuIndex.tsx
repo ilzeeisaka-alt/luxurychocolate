@@ -41,7 +41,7 @@ const HuIndex = () => {
   });
 
   return (
-    <main className="bg-background pt-14">
+    <main className="bg-background pt-14 lg:pt-24">
       <Navbar lang="hu" />
       <HeroSection onCtaClick={() => setModalOpen(true)} lang="hu" {...t} logoAlt="Luxury Chocolate — exkluzív céges csokoládé logóval" />
       <SeoContentSection lang="hu" />

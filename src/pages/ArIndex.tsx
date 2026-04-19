@@ -41,7 +41,7 @@ const ArIndex = () => {
   });
 
   return (
-    <main className="bg-background pt-14">
+    <main className="bg-background pt-14 lg:pt-24">
       <Navbar lang="ar" />
       <HeroSection onCtaClick={() => setModalOpen(true)} lang="ar" {...t} logoAlt="Luxury Chocolate — exclusive corporate chocolate with logo" />
       <SeoContentSection lang="ar" />

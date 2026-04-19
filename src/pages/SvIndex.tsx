@@ -41,7 +41,7 @@ const SvIndex = () => {
   });
 
   return (
-    <main className="bg-background pt-14">
+    <main className="bg-background pt-14 lg:pt-24">
       <Navbar lang="sv" />
       <HeroSection onCtaClick={() => setModalOpen(true)} lang="sv" {...t} logoAlt="Luxury Chocolate — exklusiv företagschoklad med logotyp" />
 

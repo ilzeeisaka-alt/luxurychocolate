@@ -41,7 +41,7 @@ const HrIndex = () => {
   });
 
   return (
-    <main className="bg-background pt-14">
+    <main className="bg-background pt-14 lg:pt-24">
       <Navbar lang="hr" />
       <HeroSection onCtaClick={() => setModalOpen(true)} lang="hr" {...t} logoAlt="Luxury Chocolate — ekskluzivna korporativna čokolada s logom" />
       <SeoContentSection lang="hr" />

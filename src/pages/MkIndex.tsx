@@ -41,7 +41,7 @@ const MkIndex = () => {
   });
 
   return (
-    <main className="bg-background pt-14">
+    <main className="bg-background pt-14 lg:pt-24">
       <Navbar lang="mk" />
       <HeroSection onCtaClick={() => setModalOpen(true)} lang="mk" {...t} logoAlt="Luxury Chocolate — ексклузивно корпоративно чоколадо со лого" />
       <SeoContentSection lang="mk" />

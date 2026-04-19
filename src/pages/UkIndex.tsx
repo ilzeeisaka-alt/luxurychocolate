@@ -41,7 +41,7 @@ const UkIndex = () => {
   });
 
   return (
-    <main className="bg-background pt-14">
+    <main className="bg-background pt-14 lg:pt-24">
       <Navbar lang="uk" />
       <HeroSection onCtaClick={() => setModalOpen(true)} lang="uk" {...t} logoAlt="Luxury Chocolate — ексклюзивний корпоративний шоколад з логотипом" />
       <SeoContentSection lang="uk" />

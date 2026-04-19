@@ -41,7 +41,7 @@ const IsIndex = () => {
   });
 
   return (
-    <main className="bg-background pt-14">
+    <main className="bg-background pt-14 lg:pt-24">
       <Navbar lang="is" />
       <HeroSection onCtaClick={() => setModalOpen(true)} lang="is" {...t} logoAlt="Luxury Chocolate — einstakt fyrirtækjasúkkulaði með merki" />
       <SeoContentSection lang="is" />
