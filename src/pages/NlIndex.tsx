@@ -11,6 +11,7 @@ import TrustSection from "@/components/TrustSection";
 import ProductsSection from "@/components/ProductsSection";
 import BookBoxSection from "@/components/BookBoxSection";
 import MagnetBoxSection from "@/components/MagnetBoxSection";
+import CoinsCardsSection from "@/components/CoinsCardsSection";
 import FaqSection from "@/components/FaqSection";
 import IdeasSection from "@/components/IdeasSection";
 import RelatedPagesSection from "@/components/RelatedPagesSection";
@@ -58,6 +59,7 @@ const NlIndex = () => {
       <TableCardsSection lang="nl" onCtaClick={() => setModalOpen(true)} />
       <CelebrationCakeSection lang="nl" onCtaClick={() => setModalOpen(true)} />
       <MagnetBoxSection lang="nl" />
+      <CoinsCardsSection lang="nl" onCtaClick={() => setModalOpen(true)} />
       <BookBoxSection lang="nl" />
       <DailyChocolateSection lang="nl" onCtaClick={() => setModalOpen(true)} />
       <RestaurantChocolateSection lang="nl" />
