@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Phone, Mail, MapPin } from "lucide-react";
+import { Phone, Mail, MapPin, Linkedin } from "lucide-react";
 import ilzePhoto from "@/assets/ilze-eisaka.jpg";
 import type { Lang } from "@/i18n/types";
 
@@ -99,6 +99,17 @@ const ContactSection = ({ lang = "lv", onCtaClick }: ContactSectionProps) => {
                 <Mail size={18} className="text-primary shrink-0" />
                 <a href="mailto:info@luxurychocolate.lv" className="hover:text-primary transition-colors">
                   info@luxurychocolate.lv
+                </a>
+              </li>
+              <li className="flex items-center gap-3 justify-center sm:justify-start">
+                <Linkedin size={18} className="text-primary shrink-0" />
+                <a
+                  href="https://www.linkedin.com/in/ilze-eisaka-luxury-chocolate/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-primary transition-colors"
+                >
+                  linkedin.com/in/ilze-eisaka-luxury-chocolate
                 </a>
               </li>
               <li className="flex items-center gap-3 justify-center sm:justify-start">
