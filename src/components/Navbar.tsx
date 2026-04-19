@@ -764,7 +764,7 @@ const Navbar = ({ lang = "lv" }: NavbarProps) => {
         </Link>
 
         {/* Desktop nav links */}
-        <div className="hidden lg:flex items-center gap-1">
+        <div className="hidden lg:flex flex-1 flex-wrap items-center justify-center gap-x-1 gap-y-1 min-w-0">
           {items.map((item) =>
             item.to.startsWith("#") ? (
               <a
