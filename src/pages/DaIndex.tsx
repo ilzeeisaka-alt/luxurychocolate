@@ -41,7 +41,7 @@ const DaIndex = () => {
   });
 
   return (
-    <main className="bg-background pt-14">
+    <main className="bg-background pt-14 lg:pt-24">
       <Navbar lang="da" />
       <HeroSection onCtaClick={() => setModalOpen(true)} lang="da" {...t} logoAlt="Luxury Chocolate — eksklusiv firmachokolade med logo" />
 

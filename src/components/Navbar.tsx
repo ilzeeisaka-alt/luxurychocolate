@@ -750,7 +750,7 @@ const Navbar = ({ lang = "lv" }: NavbarProps) => {
           : "bg-foreground"
       }`}
     >
-      <div className="container mx-auto flex items-center justify-between h-14 px-4">
+      <div className="container mx-auto flex items-center justify-between gap-3 py-2 px-4 min-h-14">
         {/* Logo */}
         <Link to={homePath} className="flex items-center gap-2 shrink-0">
           <img
@@ -764,7 +764,7 @@ const Navbar = ({ lang = "lv" }: NavbarProps) => {
         </Link>
 
         {/* Desktop nav links */}
-        <div className="hidden lg:flex items-center gap-1">
+        <div className="hidden lg:flex flex-1 flex-wrap items-center justify-center gap-x-1 gap-y-1 min-w-0">
           {items.map((item) =>
             item.to.startsWith("#") ? (
               <a

@@ -42,7 +42,7 @@ const Index = () => {
   });
 
   return (
-    <main className="bg-background pt-14">
+    <main className="bg-background pt-14 lg:pt-24">
       <Navbar />
       <HeroSection onCtaClick={() => setModalOpen(true)} lang="lv" {...t} />
       <SeoContentSection />

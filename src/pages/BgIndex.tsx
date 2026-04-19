@@ -41,7 +41,7 @@ const BgIndex = () => {
   });
 
   return (
-    <main className="bg-background pt-14">
+    <main className="bg-background pt-14 lg:pt-24">
       <Navbar lang="bg" />
       <HeroSection onCtaClick={() => setModalOpen(true)} lang="bg" {...t} logoAlt="Luxury Chocolate — ексклузивен корпоративен шоколад с лого" />
       <SeoContentSection lang="bg" />

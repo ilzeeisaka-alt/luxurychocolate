@@ -41,7 +41,7 @@ const EnIndex = () => {
   });
 
   return (
-    <main className="bg-background pt-14">
+    <main className="bg-background pt-14 lg:pt-24">
       <Navbar lang="en" />
       <HeroSection onCtaClick={() => setModalOpen(true)} lang="en" {...t} logoAlt="Luxury Chocolate — custom corporate chocolate with logo" />
 

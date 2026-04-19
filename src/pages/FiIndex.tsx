@@ -41,7 +41,7 @@ const FiIndex = () => {
   });
 
   return (
-    <main className="bg-background pt-14">
+    <main className="bg-background pt-14 lg:pt-24">
       <Navbar lang="fi" />
       <HeroSection onCtaClick={() => setModalOpen(true)} lang="fi" {...t} logoAlt="Luxury Chocolate — eksklusiivinen yrityssuklaa logolla" />
 

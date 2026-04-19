@@ -41,7 +41,7 @@ const NoIndex = () => {
   });
 
   return (
-    <main className="bg-background pt-14">
+    <main className="bg-background pt-14 lg:pt-24">
       <Navbar lang="no" />
       <HeroSection onCtaClick={() => setModalOpen(true)} lang="no" {...t} logoAlt="Luxury Chocolate — eksklusiv bedriftssjokolade med logo" />
 

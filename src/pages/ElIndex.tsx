@@ -41,7 +41,7 @@ const ElIndex = () => {
   });
 
   return (
-    <main className="bg-background pt-14">
+    <main className="bg-background pt-14 lg:pt-24">
       <Navbar lang="el" />
       <HeroSection onCtaClick={() => setModalOpen(true)} lang="el" {...t} logoAlt="Luxury Chocolate — αποκλειστική εταιρική σοκολάτα με λογότυπο" />
       <SeoContentSection lang="el" />

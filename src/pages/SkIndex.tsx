@@ -41,7 +41,7 @@ const SkIndex = () => {
   });
 
   return (
-    <main className="bg-background pt-14">
+    <main className="bg-background pt-14 lg:pt-24">
       <Navbar lang="sk" />
       <HeroSection onCtaClick={() => setModalOpen(true)} lang="sk" {...t} logoAlt="Luxury Chocolate — exkluzívna firemná čokoláda s logom" />
       <SeoContentSection lang="sk" />

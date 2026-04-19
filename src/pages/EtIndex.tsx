@@ -41,7 +41,7 @@ const EtIndex = () => {
   });
 
   return (
-    <main className="bg-background pt-14">
+    <main className="bg-background pt-14 lg:pt-24">
       <Navbar lang="et" />
       <HeroSection onCtaClick={() => setModalOpen(true)} lang="et" {...t} logoAlt="Luxury Chocolate — eksklusiivne korporatiivne šokolaad logoga" />
 

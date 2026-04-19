@@ -41,7 +41,7 @@ const RoIndex = () => {
   });
 
   return (
-    <main className="bg-background pt-14">
+    <main className="bg-background pt-14 lg:pt-24">
       <Navbar lang="ro" />
       <HeroSection onCtaClick={() => setModalOpen(true)} lang="ro" {...t} logoAlt="Luxury Chocolate — ciocolată corporativă exclusivă cu logo" />
       <SeoContentSection lang="ro" />

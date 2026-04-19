@@ -41,7 +41,7 @@ const DeIndex = () => {
   });
 
   return (
-    <main className="bg-background pt-14">
+    <main className="bg-background pt-14 lg:pt-24">
       <Navbar lang="de" />
       <HeroSection onCtaClick={() => setModalOpen(true)} lang="de" {...t} logoAlt="Luxury Chocolate — exklusive Firmenschokolade mit Logo" />
       <SeoContentSection lang="de" />

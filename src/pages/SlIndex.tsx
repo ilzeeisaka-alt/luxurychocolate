@@ -41,7 +41,7 @@ const SlIndex = () => {
   });
 
   return (
-    <main className="bg-background pt-14">
+    <main className="bg-background pt-14 lg:pt-24">
       <Navbar lang="sl" />
       <HeroSection onCtaClick={() => setModalOpen(true)} lang="sl" {...t} logoAlt="Luxury Chocolate — ekskluzivna poslovna čokolada z logotipom" />
       <SeoContentSection lang="sl" />
