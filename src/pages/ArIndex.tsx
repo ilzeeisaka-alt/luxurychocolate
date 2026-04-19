@@ -11,6 +11,7 @@ import TrustSection from "@/components/TrustSection";
 import ProductsSection from "@/components/ProductsSection";
 import BookBoxSection from "@/components/BookBoxSection";
 import MagnetBoxSection from "@/components/MagnetBoxSection";
+import CoinsCardsSection from "@/components/CoinsCardsSection";
 import FaqSection from "@/components/FaqSection";
 import IdeasSection from "@/components/IdeasSection";
 import RelatedPagesSection from "@/components/RelatedPagesSection";
@@ -58,6 +59,7 @@ const ArIndex = () => {
       <TableCardsSection lang="ar" onCtaClick={() => setModalOpen(true)} />
       <CelebrationCakeSection lang="ar" onCtaClick={() => setModalOpen(true)} />
       <MagnetBoxSection lang="ar" />
+      <CoinsCardsSection lang="ar" onCtaClick={() => setModalOpen(true)} />
       <BookBoxSection lang="ar" />
       <DailyChocolateSection lang="ar" onCtaClick={() => setModalOpen(true)} />
       <RestaurantChocolateSection lang="ar" />

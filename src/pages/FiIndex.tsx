@@ -11,6 +11,7 @@ import TrustSection from "@/components/TrustSection";
 import ProductsSection from "@/components/ProductsSection";
 import BookBoxSection from "@/components/BookBoxSection";
 import MagnetBoxSection from "@/components/MagnetBoxSection";
+import CoinsCardsSection from "@/components/CoinsCardsSection";
 import FaqSection from "@/components/FaqSection";
 import IdeasSection from "@/components/IdeasSection";
 import RelatedPagesSection from "@/components/RelatedPagesSection";
@@ -59,6 +60,7 @@ const FiIndex = () => {
       <TableCardsSection lang="fi" onCtaClick={() => setModalOpen(true)} />
       <CelebrationCakeSection lang="fi" onCtaClick={() => setModalOpen(true)} />
       <MagnetBoxSection lang="fi" />
+      <CoinsCardsSection lang="fi" onCtaClick={() => setModalOpen(true)} />
       <BookBoxSection lang="fi" />
       <DailyChocolateSection lang="fi" onCtaClick={() => setModalOpen(true)} />
       <RestaurantChocolateSection lang="fi" />

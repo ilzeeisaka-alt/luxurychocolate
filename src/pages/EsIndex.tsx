@@ -11,6 +11,7 @@ import TrustSection from "@/components/TrustSection";
 import ProductsSection from "@/components/ProductsSection";
 import BookBoxSection from "@/components/BookBoxSection";
 import MagnetBoxSection from "@/components/MagnetBoxSection";
+import CoinsCardsSection from "@/components/CoinsCardsSection";
 import FaqSection from "@/components/FaqSection";
 import IdeasSection from "@/components/IdeasSection";
 import RelatedPagesSection from "@/components/RelatedPagesSection";
@@ -58,6 +59,7 @@ const EsIndex = () => {
       <TableCardsSection lang="es" onCtaClick={() => setModalOpen(true)} />
       <CelebrationCakeSection lang="es" onCtaClick={() => setModalOpen(true)} />
       <MagnetBoxSection lang="es" />
+      <CoinsCardsSection lang="es" onCtaClick={() => setModalOpen(true)} />
       <BookBoxSection lang="es" />
       <DailyChocolateSection lang="es" onCtaClick={() => setModalOpen(true)} />
       <RestaurantChocolateSection lang="es" />
