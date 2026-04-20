@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X } from "lucide-react";
+import { Menu, X, User, LogIn } from "lucide-react";
 import logo from "@/assets/logo-transparent.png";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
 import type { Lang } from "@/i18n/types";
+import { useAuth } from "@/hooks/useAuth";
 
 interface NavItem {
   label: string;
@@ -728,6 +729,7 @@ const Navbar = ({ lang = "lv" }: NavbarProps) => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const { pathname } = useLocation();
+  const { user } = useAuth();
   const items = navItems[lang];
   const homePath = homePaths[lang];
 
@@ -801,8 +803,16 @@ const Navbar = ({ lang = "lv" }: NavbarProps) => {
           )}
         </div>
 
-        {/* Right side: language + mobile toggle */}
+        {/* Right side: auth + language + mobile toggle */}
         <div className="flex items-center gap-2">
+          <Link
+            to={user ? "/account" : "/auth"}
+            className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-medium text-white/80 hover:text-white hover:bg-white/5 transition-colors border border-white/15"
+            aria-label={user ? "Mans konts" : "Pieslēgties"}
+          >
+            {user ? <User size={14} /> : <LogIn size={14} />}
+            <span>{user ? "Mans konts" : "Pieslēgties"}</span>
+          </Link>
           <LanguageSwitcher />
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
