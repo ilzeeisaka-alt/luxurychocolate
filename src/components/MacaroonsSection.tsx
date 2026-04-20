@@ -20,7 +20,6 @@ const items = [
 ];
 
 const videos = [
-  { src: "/video/macaroons-video.mp4", title: "Makarūni ar logo — process" },
   { src: "/video/lmt-logo-macaroons.mp4", title: "LMT logo makarūni" },
   { src: "/video/makaruni-kastite.mp4", title: "Individuālais iepakojums" },
 ];
