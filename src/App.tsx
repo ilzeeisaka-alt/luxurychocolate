@@ -5,9 +5,12 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import CookieConsent from "./components/CookieConsent.tsx";
+import { AuthProvider } from "./hooks/useAuth";
 
 // Lazy-loaded pages — each gets its own JS chunk
 const Index = lazy(() => import("./pages/Index.tsx"));
+const Auth = lazy(() => import("./pages/Auth.tsx"));
+const Account = lazy(() => import("./pages/Account.tsx"));
 const SokoladesArLogo = lazy(() => import("./pages/SokoladesArLogo.tsx"));
 const ZiemassvētkuSokolades = lazy(() => import("./pages/ZiemassvētkuSokolades.tsx"));
 const ReklamasSokolade = lazy(() => import("./pages/ReklamasSokolade.tsx"));
@@ -69,8 +72,12 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
+        <AuthProvider>
         <Suspense fallback={<div className="min-h-screen bg-background" />}>
           <Routes>
+            {/* Auth */}
+            <Route path="/auth" element={<Auth />} />
+            <Route path="/account" element={<Account />} />
             {/* LV routes */}
             <Route path="/" element={<Index />} />
             <Route path="/sokolades-ar-logo" element={<SokoladesArLogo />} />
@@ -225,6 +232,7 @@ const App = () => (
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Suspense>
+        </AuthProvider>
       </BrowserRouter>
       <CookieConsent />
     </TooltipProvider>
