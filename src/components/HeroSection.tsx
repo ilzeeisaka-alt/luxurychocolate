@@ -1,5 +1,6 @@
+import { Link } from "react-router-dom";
 import logo from "@/assets/logo-transparent.png";
-import { ExternalLink } from "lucide-react";
+import { ExternalLink, ShoppingBag } from "lucide-react";
 import type { Lang } from "@/i18n/types";
 
 const shopUrls: Record<Lang, string> = {
@@ -93,6 +94,14 @@ const HeroSection = ({
             >
               {ctaButton}
             </button>
+            <Link
+              to="/kuku-sokolades-veikals"
+              className="group inline-flex items-center gap-2 justify-center rounded-lg bg-primary/10 border border-primary text-primary px-10 py-4 font-medium tracking-wider text-base uppercase transition-all duration-300 active:scale-[0.97] hover:bg-primary hover:text-primary-foreground"
+              style={{ letterSpacing: "0.12em" }}
+            >
+              <ShoppingBag size={18} />
+              Pasūti tagad
+            </Link>
             <button
               onClick={onCtaClick}
               className="inline-flex items-center justify-center rounded-lg border border-primary text-primary px-10 py-4 font-medium tracking-wider text-base uppercase transition-all duration-300 active:scale-[0.97] hover:bg-primary hover:text-primary-foreground"

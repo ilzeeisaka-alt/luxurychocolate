@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
+import ShopBanner from "@/components/ShopBanner";
 import ClientExamplesSection from "@/components/ClientExamplesSection";
 import QuickFactsSection from "@/components/QuickFactsSection";
 import HowToOrderSection from "@/components/HowToOrderSection";
@@ -45,6 +46,7 @@ const Index = () => {
     <main className="bg-background pt-14 lg:pt-24">
       <Navbar />
       <HeroSection onCtaClick={() => setModalOpen(true)} lang="lv" {...t} />
+      <ShopBanner />
       <SeoContentSection />
       <QuickFactsSection />
       <ClientExamplesSection />
