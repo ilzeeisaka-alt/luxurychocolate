@@ -494,30 +494,6 @@ const Admin = () => {
                             )}
                           </SelectContent>
                         </Select>
-                      </div>
-
-                      <div>
-                        <h4 className="font-semibold text-sm mb-2">Statuss</h4>
-                        <Select
-                          value={order.status}
-                          onValueChange={(v) =>
-                            updateStatus(order.id, v as OrderStatus)
-                          }
-                          disabled={savingId === order.id}
-                        >
-                          <SelectTrigger>
-                            <SelectValue />
-                          </SelectTrigger>
-                          <SelectContent>
-                            {(Object.keys(STATUS_LABELS) as OrderStatus[]).map(
-                              (s) => (
-                                <SelectItem key={s} value={s}>
-                                  {STATUS_LABELS[s]}
-                                </SelectItem>
-                              ),
-                            )}
-                          </SelectContent>
-                        </Select>
 
                         {order.status === "shipped" && (
                           <div className="mt-3">
