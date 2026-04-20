@@ -54,7 +54,7 @@ const MacaroonsSection = () => {
           </div>
 
           {/* Videos row */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12 max-w-4xl mx-auto">
             {videos.map((v, i) => (
               <motion.div
                 key={v.src}
