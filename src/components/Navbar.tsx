@@ -14,6 +14,7 @@ interface NavItem {
 const navItems: Record<Lang, NavItem[]> = {
   lv: [
     { label: "Šokolādes ar logo", to: "/sokolades-ar-logo" },
+    { label: "Makarūni", to: "#makaruni" },
     { label: "Ikdienas", to: "#ikdienas" },
     { label: "Klientu dāvanas", to: "/sokolades-klientu-davanam" },
     { label: "Reklāmas šokolāde", to: "/reklamas-sokolade" },
