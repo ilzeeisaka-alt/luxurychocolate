@@ -1,5 +1,6 @@
+import { Link } from "react-router-dom";
 import logo from "@/assets/logo-transparent.png";
-import { ExternalLink } from "lucide-react";
+import { ExternalLink, ShoppingBag } from "lucide-react";
 import type { Lang } from "@/i18n/types";
 
 const shopUrls: Record<Lang, string> = {
