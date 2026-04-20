@@ -35,8 +35,8 @@ const NoIndex = () => {
   const t = heroContent.no;
 
   useSeo({
-    title: "Sjokolade med logo & Bedriftsgaver",
-    description: "Premium bedriftsgaver og personlig sjokolade med logo. Eksklusive gavesett for bedrifter. Belgisk sjokolade, rask produksjon, bestillinger fra 1 stk.",
+    title: "Sjokoladetrykk & Personlig sjokolade med logo",
+    description: "Sjokoladetrykk — fullfargetrykk direkte på belgisk sjokolade. Personlig sjokolade med logo, bedriftsgaver. Bestillinger fra 1 stk.",
     path: "/no",
   });
 

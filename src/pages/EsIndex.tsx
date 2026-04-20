@@ -35,8 +35,8 @@ const EsIndex = () => {
   const t = heroContent.es;
 
   useSeo({
-    title: "Chocolate con logo & Regalos corporativos",
-    description: "Regalos corporativos premium y chocolate personalizado con logo. Cajas de regalo exclusivas. Chocolate belga, producción rápida.",
+    title: "Impresión en chocolate & Chocolate personalizado con logo",
+    description: "Impresión en chocolate — impresión a todo color directamente sobre chocolate belga. Chocolate personalizado con logo, regalos corporativos.",
     path: "/es",
   });
 

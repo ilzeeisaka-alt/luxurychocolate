@@ -35,8 +35,8 @@ const SrIndex = () => {
   const t = heroContent.sr;
 
   useSeo({
-    title: "Čokolada sa logom & Korporativni pokloni",
-    description: "Premium korporativni pokloni i personalizovana čokolada sa logom. Belgijska čokolada, brza proizvodnja.",
+    title: "Štampa na čokoladi & Personalizovana čokolada sa logom",
+    description: "Štampa na čokoladi — full-color štampa direktno na belgijsku čokoladu. Personalizovana čokolada sa logom, korporativni pokloni.",
     path: "/sr",
   });
 

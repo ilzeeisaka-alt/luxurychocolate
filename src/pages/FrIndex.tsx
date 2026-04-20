@@ -35,8 +35,8 @@ const FrIndex = () => {
   const t = heroContent.fr;
 
   useSeo({
-    title: "Chocolat avec logo & Cadeaux d'entreprise",
-    description: "Cadeaux d'entreprise premium et chocolat personnalisé avec logo. Coffrets cadeaux exclusifs. Chocolat belge, production rapide.",
+    title: "Impression sur chocolat & Chocolat personnalisé avec logo",
+    description: "Impression sur chocolat — impression pleine couleur directement sur chocolat belge. Chocolat personnalisé avec logo, cadeaux d'entreprise.",
     path: "/fr",
   });
 

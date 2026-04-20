@@ -35,8 +35,8 @@ const RoIndex = () => {
   const t = heroContent.ro;
 
   useSeo({
-    title: "Ciocolată cu logo & Cadouri corporative",
-    description: "Cadouri corporative premium și ciocolată personalizată cu logo. Ciocolată belgiană, producție rapidă.",
+    title: "Imprimare pe ciocolată & Ciocolată personalizată cu logo",
+    description: "Imprimare pe ciocolată — imprimare full-color direct pe ciocolată belgiană. Ciocolată personalizată cu logo, cadouri corporate.",
     path: "/ro",
   });
 

@@ -35,8 +35,8 @@ const SvIndex = () => {
   const t = heroContent.sv;
 
   useSeo({
-    title: "Choklad med logotyp & Företagspresenter",
-    description: "Premium företagspresenter och personlig choklad med logotyp. Exklusiva presentförpackningar för företag. Belgisk choklad, snabb produktion, beställningar från 1 st.",
+    title: "Chokladtryck & Personlig choklad med logotyp",
+    description: "Chokladtryck — fullfärgstryck direkt på belgisk choklad. Personlig choklad med logotyp, företagspresenter. Beställningar från 1 st.",
     path: "/sv",
   });
 

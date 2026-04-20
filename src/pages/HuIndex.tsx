@@ -35,8 +35,8 @@ const HuIndex = () => {
   const t = heroContent.hu;
 
   useSeo({
-    title: "Logós csokoládé & Céges ajándékok",
-    description: "Prémium céges ajándékok és személyre szabott logós csokoládé. Belga csokoládé, gyors gyártás.",
+    title: "Csokoládé nyomtatás & Személyre szabott csokoládé logóval",
+    description: "Csokoládé nyomtatás — teljes színes nyomtatás közvetlenül belga csokoládéra. Személyre szabott csokoládé logóval, céges ajándékok.",
     path: "/hu",
   });
 

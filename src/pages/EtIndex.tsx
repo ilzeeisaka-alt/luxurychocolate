@@ -35,8 +35,8 @@ const EtIndex = () => {
   const t = heroContent.et;
 
   useSeo({
-    title: "Šokolaad logoga & Korporatiivsed kingitused",
-    description: "Premium korporatiivsed kingitused ja personaliseeritud šokolaad logoga. Eksklusiivsed kinkekomplektid ettevõtetele. Belgia šokolaad, kiire valmistamine, tellimused alates 1 tk.",
+    title: "Šokolaadi trükk & Personaliseeritud šokolaad logoga",
+    description: "Šokolaadi trükk — täisvärviline trükk otse Belgia šokolaadile. Personaliseeritud šokolaad logoga, korporatiivsed kingitused.",
     path: "/et",
   });
 

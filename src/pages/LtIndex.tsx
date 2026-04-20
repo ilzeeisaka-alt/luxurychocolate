@@ -35,8 +35,8 @@ const LtIndex = () => {
   const t = heroContent.lt;
 
   useSeo({
-    title: "Šokoladas su logotipu & Korporatyvinės dovanos",
-    description: "Premium korporatyvinės dovanos ir personalizuotas šokoladas su logotipu. Ekskliuzyvūs dovanų rinkiniai įmonėms. Belgiškas šokoladas, greitas gamyba, užsakymai nuo 1 vnt.",
+    title: "Šokolado spauda & Personalizuotas šokoladas su logotipu",
+    description: "Šokolado spauda — pilnaspalvė spauda tiesiai ant belgiško šokolado. Personalizuotas šokoladas su logotipu, korporatyvinės dovanos.",
     path: "/lt",
   });
 
