@@ -56,15 +56,274 @@ export type Database = {
         }
         Relationships: []
       }
+      order_items: {
+        Row: {
+          area_cm2: number | null
+          chocolate_type: string | null
+          created_at: string
+          custom_text: string | null
+          height_mm: number | null
+          id: string
+          logo_filename: string | null
+          logo_url: string | null
+          notes: string | null
+          order_id: string
+          product_name: string
+          product_type: string
+          quantity: number
+          shape: string | null
+          total_price_cents: number
+          unit_price_cents: number
+          width_mm: number | null
+        }
+        Insert: {
+          area_cm2?: number | null
+          chocolate_type?: string | null
+          created_at?: string
+          custom_text?: string | null
+          height_mm?: number | null
+          id?: string
+          logo_filename?: string | null
+          logo_url?: string | null
+          notes?: string | null
+          order_id: string
+          product_name: string
+          product_type: string
+          quantity?: number
+          shape?: string | null
+          total_price_cents: number
+          unit_price_cents: number
+          width_mm?: number | null
+        }
+        Update: {
+          area_cm2?: number | null
+          chocolate_type?: string | null
+          created_at?: string
+          custom_text?: string | null
+          height_mm?: number | null
+          id?: string
+          logo_filename?: string | null
+          logo_url?: string | null
+          notes?: string | null
+          order_id?: string
+          product_name?: string
+          product_type?: string
+          quantity?: number
+          shape?: string | null
+          total_price_cents?: number
+          unit_price_cents?: number
+          width_mm?: number | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "order_items_order_id_fkey"
+            columns: ["order_id"]
+            isOneToOne: false
+            referencedRelation: "orders"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      orders: {
+        Row: {
+          admin_notes: string | null
+          company_name: string | null
+          created_at: string
+          currency: string
+          customer_email: string
+          customer_name: string | null
+          customer_phone: string | null
+          id: string
+          notes: string | null
+          order_number: string
+          paid_at: string | null
+          shipping_address: string | null
+          shipping_cents: number
+          shipping_city: string | null
+          shipping_country: string | null
+          shipping_method: string | null
+          shipping_postal_code: string | null
+          status: Database["public"]["Enums"]["order_status"]
+          stripe_payment_intent_id: string | null
+          stripe_session_id: string | null
+          subtotal_cents: number
+          tax_cents: number
+          total_cents: number
+          updated_at: string
+          user_id: string | null
+          vat_number: string | null
+        }
+        Insert: {
+          admin_notes?: string | null
+          company_name?: string | null
+          created_at?: string
+          currency?: string
+          customer_email: string
+          customer_name?: string | null
+          customer_phone?: string | null
+          id?: string
+          notes?: string | null
+          order_number?: string
+          paid_at?: string | null
+          shipping_address?: string | null
+          shipping_cents?: number
+          shipping_city?: string | null
+          shipping_country?: string | null
+          shipping_method?: string | null
+          shipping_postal_code?: string | null
+          status?: Database["public"]["Enums"]["order_status"]
+          stripe_payment_intent_id?: string | null
+          stripe_session_id?: string | null
+          subtotal_cents?: number
+          tax_cents?: number
+          total_cents?: number
+          updated_at?: string
+          user_id?: string | null
+          vat_number?: string | null
+        }
+        Update: {
+          admin_notes?: string | null
+          company_name?: string | null
+          created_at?: string
+          currency?: string
+          customer_email?: string
+          customer_name?: string | null
+          customer_phone?: string | null
+          id?: string
+          notes?: string | null
+          order_number?: string
+          paid_at?: string | null
+          shipping_address?: string | null
+          shipping_cents?: number
+          shipping_city?: string | null
+          shipping_country?: string | null
+          shipping_method?: string | null
+          shipping_postal_code?: string | null
+          status?: Database["public"]["Enums"]["order_status"]
+          stripe_payment_intent_id?: string | null
+          stripe_session_id?: string | null
+          subtotal_cents?: number
+          tax_cents?: number
+          total_cents?: number
+          updated_at?: string
+          user_id?: string | null
+          vat_number?: string | null
+        }
+        Relationships: []
+      }
+      profiles: {
+        Row: {
+          company_name: string | null
+          created_at: string
+          email: string
+          first_name: string | null
+          id: string
+          last_name: string | null
+          legal_address: string | null
+          legal_city: string | null
+          legal_country: string | null
+          legal_postal_code: string | null
+          phone: string | null
+          preferred_language: string | null
+          registration_number: string | null
+          shipping_address: string | null
+          shipping_city: string | null
+          shipping_country: string | null
+          shipping_postal_code: string | null
+          updated_at: string
+          user_id: string
+          vat_number: string | null
+        }
+        Insert: {
+          company_name?: string | null
+          created_at?: string
+          email: string
+          first_name?: string | null
+          id?: string
+          last_name?: string | null
+          legal_address?: string | null
+          legal_city?: string | null
+          legal_country?: string | null
+          legal_postal_code?: string | null
+          phone?: string | null
+          preferred_language?: string | null
+          registration_number?: string | null
+          shipping_address?: string | null
+          shipping_city?: string | null
+          shipping_country?: string | null
+          shipping_postal_code?: string | null
+          updated_at?: string
+          user_id: string
+          vat_number?: string | null
+        }
+        Update: {
+          company_name?: string | null
+          created_at?: string
+          email?: string
+          first_name?: string | null
+          id?: string
+          last_name?: string | null
+          legal_address?: string | null
+          legal_city?: string | null
+          legal_country?: string | null
+          legal_postal_code?: string | null
+          phone?: string | null
+          preferred_language?: string | null
+          registration_number?: string | null
+          shipping_address?: string | null
+          shipping_city?: string | null
+          shipping_country?: string | null
+          shipping_postal_code?: string | null
+          updated_at?: string
+          user_id?: string
+          vat_number?: string | null
+        }
+        Relationships: []
+      }
+      user_roles: {
+        Row: {
+          created_at: string
+          id: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          role?: Database["public"]["Enums"]["app_role"]
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      has_role: {
+        Args: {
+          _role: Database["public"]["Enums"]["app_role"]
+          _user_id: string
+        }
+        Returns: boolean
+      }
     }
     Enums: {
-      [_ in never]: never
+      app_role: "admin" | "customer"
+      order_status:
+        | "pending"
+        | "paid"
+        | "in_production"
+        | "shipped"
+        | "delivered"
+        | "cancelled"
+        | "refunded"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -191,6 +450,17 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {},
+    Enums: {
+      app_role: ["admin", "customer"],
+      order_status: [
+        "pending",
+        "paid",
+        "in_production",
+        "shipped",
+        "delivered",
+        "cancelled",
+        "refunded",
+      ],
+    },
   },
 } as const
