@@ -12,6 +12,8 @@ const Index = lazy(() => import("./pages/Index.tsx"));
 const Auth = lazy(() => import("./pages/Auth.tsx"));
 const Account = lazy(() => import("./pages/Account.tsx"));
 const SokoladesArLogo = lazy(() => import("./pages/SokoladesArLogo.tsx"));
+const KukuSokoladesVeikals = lazy(() => import("./pages/KukuSokoladesVeikals.tsx"));
+const CheckoutReturn = lazy(() => import("./pages/CheckoutReturn.tsx"));
 const ZiemassvētkuSokolades = lazy(() => import("./pages/ZiemassvētkuSokolades.tsx"));
 const ReklamasSokolade = lazy(() => import("./pages/ReklamasSokolade.tsx"));
 const KlientuDavanas = lazy(() => import("./pages/KlientuDavanas.tsx"));
@@ -80,6 +82,8 @@ const App = () => (
             <Route path="/account" element={<Account />} />
             {/* LV routes */}
             <Route path="/" element={<Index />} />
+            <Route path="/kuku-sokolades-veikals" element={<KukuSokoladesVeikals />} />
+            <Route path="/checkout/return" element={<CheckoutReturn />} />
             <Route path="/sokolades-ar-logo" element={<SokoladesArLogo />} />
             <Route path="/ziemassvetku-korporativas-sokolades" element={<ZiemassvētkuSokolades />} />
             <Route path="/reklamas-sokolade" element={<ReklamasSokolade />} />
