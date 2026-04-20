@@ -35,8 +35,8 @@ const FiIndex = () => {
   const t = heroContent.fi;
 
   useSeo({
-    title: "Suklaa logolla & Yrityslahjat",
-    description: "Premium yrityslahjat ja personoitu suklaa logolla. Eksklusiiviset lahjapakkaukset yrityksille. Belgialainen suklaa, nopea tuotanto, tilaukset alkaen 1 kpl.",
+    title: "Suklaapaino & Personoitu suklaa logolla",
+    description: "Suklaapaino — täysvärinen painatus suoraan belgialaiselle suklaalle. Personoitu suklaa logolla, yrityslahjat. Tilaukset 1 kpl alkaen.",
     path: "/fi",
   });
 

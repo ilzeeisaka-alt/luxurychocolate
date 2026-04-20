@@ -35,8 +35,8 @@ const DaIndex = () => {
   const t = heroContent.da;
 
   useSeo({
-    title: "Chokolade med logo & Firmagaver",
-    description: "Premium firmagaver og personlig chokolade med logo. Eksklusive gaveæsker til virksomheder. Belgisk chokolade, hurtig produktion, bestillinger fra 1 stk.",
+    title: "Chokoladetryk & Personlig chokolade med logo",
+    description: "Chokoladetryk — fuldfarvetryk direkte på belgisk chokolade. Personlig chokolade med logo, firmagaver. Bestillinger fra 1 stk.",
     path: "/da",
   });
 

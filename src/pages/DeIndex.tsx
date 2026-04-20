@@ -35,8 +35,8 @@ const DeIndex = () => {
   const t = heroContent.de;
 
   useSeo({
-    title: "Schokolade mit Logo & Firmengeschenke",
-    description: "Premium Firmengeschenke und personalisierte Schokolade mit Logo. Exklusive Geschenkboxen für Unternehmen. Belgische Schokolade, schnelle Produktion.",
+    title: "Schokoladendruck & Personalisierte Schokolade mit Logo",
+    description: "Schokoladendruck — Vollfarbdruck direkt auf belgische Schokolade. Personalisierte Schokolade mit Logo, Firmengeschenke. Bestellungen ab 1 Stück.",
     path: "/de",
   });
 

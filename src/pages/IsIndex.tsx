@@ -35,8 +35,8 @@ const IsIndex = () => {
   const t = heroContent.is;
 
   useSeo({
-    title: "Súkkulaði með merki & Fyrirtækjagjafir",
-    description: "Premium fyrirtækjagjafir og sérsniðið súkkulaði með merki. Belgískt súkkulaði, hröð framleiðsla.",
+    title: "Súkkulaðiprentun & Sérsniðið súkkulaði með merki",
+    description: "Súkkulaðiprentun — fullir litir prentaðir beint á belgískt súkkulaði. Sérsniðið súkkulaði með merki, fyrirtækjagjafir.",
     path: "/is",
   });
 

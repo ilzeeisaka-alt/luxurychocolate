@@ -35,8 +35,8 @@ const HrIndex = () => {
   const t = heroContent.hr;
 
   useSeo({
-    title: "Čokolada s logom & Korporativni darovi",
-    description: "Premium korporativni darovi i personalizirana čokolada s logom. Belgijska čokolada, brza proizvodnja.",
+    title: "Tisak na čokoladi & Personalizirana čokolada s logom",
+    description: "Tisak na čokoladi — full-color tisak izravno na belgijsku čokoladu. Personalizirana čokolada s logom, korporativni pokloni.",
     path: "/hr",
   });
 

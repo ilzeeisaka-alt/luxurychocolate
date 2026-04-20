@@ -35,8 +35,8 @@ const SqIndex = () => {
   const t = heroContent.sq;
 
   useSeo({
-    title: "Çokollatë me logo & Dhurata korporative",
-    description: "Dhurata korporative premium dhe çokollatë e personalizuar me logo. Çokollatë belge, prodhim i shpejtë.",
+    title: "Shtypje në çokollatë & Çokollatë e personalizuar me logo",
+    description: "Shtypje në çokollatë — shtypje me ngjyra të plota direkt në çokollatë belge. Çokollatë e personalizuar me logo, dhurata korporative.",
     path: "/sq",
   });
 

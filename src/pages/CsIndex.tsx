@@ -35,8 +35,8 @@ const CsIndex = () => {
   const t = heroContent.cs;
 
   useSeo({
-    title: "Čokoláda s logem & Firemní dárky",
-    description: "Prémiové firemní dárky a personalizovaná čokoláda s logem. Belgická čokoláda, rychlá výroba.",
+    title: "Potisk čokolády & Personalizovaná čokoláda s logem",
+    description: "Potisk čokolády — plnobarevný tisk přímo na belgickou čokoládu. Personalizovaná čokoláda s logem, firemní dárky. Objednávky od 1 ks.",
     path: "/cs",
   });
 

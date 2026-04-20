@@ -35,8 +35,8 @@ const PtIndex = () => {
   const t = heroContent.pt;
 
   useSeo({
-    title: "Chocolate com logo & Presentes corporativos",
-    description: "Presentes corporativos premium e chocolate personalizado com logo. Chocolate belga, produção rápida.",
+    title: "Impressão em chocolate & Chocolate personalizado com logo",
+    description: "Impressão em chocolate — impressão a cores diretamente em chocolate belga. Chocolate personalizado com logo, presentes corporativos.",
     path: "/pt",
   });
 

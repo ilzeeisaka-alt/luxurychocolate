@@ -35,8 +35,8 @@ const TrIndex = () => {
   const t = heroContent.tr;
 
   useSeo({
-    title: "Logolu çikolata & Kurumsal hediyeler",
-    description: "Premium kurumsal hediyeler ve logolu kişiselleştirilmiş çikolata. Belçika çikolatası, hızlı üretim.",
+    title: "Çikolata baskı & Logolu kişiselleştirilmiş çikolata",
+    description: "Çikolata baskı — Belçika çikolatası üzerine doğrudan tam renkli baskı. Logolu kişiselleştirilmiş çikolata, kurumsal hediyeler.",
     path: "/tr",
   });
 

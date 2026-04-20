@@ -35,8 +35,8 @@ const PlIndex = () => {
   const t = heroContent.pl;
 
   useSeo({
-    title: "Czekolada z logo & Prezenty firmowe",
-    description: "Ekskluzywne prezenty firmowe i spersonalizowana czekolada z logo. Belgijska czekolada, szybka produkcja.",
+    title: "Nadruk na czekoladzie & Personalizowana czekolada z logo",
+    description: "Nadruk na czekoladzie — pełnokolorowy druk bezpośrednio na belgijskiej czekoladzie. Personalizowana czekolada z logo, prezenty firmowe.",
     path: "/pl",
   });
 

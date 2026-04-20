@@ -35,8 +35,8 @@ const SkIndex = () => {
   const t = heroContent.sk;
 
   useSeo({
-    title: "Čokoláda s logom & Firemné darčeky",
-    description: "Prémiové firemné darčeky a personalizovaná čokoláda s logom. Belgická čokoláda, rýchla výroba.",
+    title: "Potlač na čokoláde & Personalizovaná čokoláda s logom",
+    description: "Potlač na čokoláde — plnofarebná tlač priamo na belgickú čokoládu. Personalizovaná čokoláda s logom, firemné darčeky.",
     path: "/sk",
   });
 

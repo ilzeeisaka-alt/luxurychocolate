@@ -35,8 +35,8 @@ const ItIndex = () => {
   const t = heroContent.it;
 
   useSeo({
-    title: "Cioccolato con logo & Regali aziendali",
-    description: "Regali aziendali premium e cioccolato personalizzato con logo. Confezioni regalo esclusive. Cioccolato belga, produzione rapida.",
+    title: "Stampa su cioccolato & Cioccolato personalizzato con logo",
+    description: "Stampa su cioccolato — stampa a colori direttamente su cioccolato belga. Cioccolato personalizzato con logo, regali aziendali.",
     path: "/it",
   });
 

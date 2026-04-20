@@ -35,8 +35,8 @@ const NlIndex = () => {
   const t = heroContent.nl;
 
   useSeo({
-    title: "Chocolade met logo & Zakelijke geschenken",
-    description: "Premium zakelijke geschenken en gepersonaliseerde chocolade met logo. Exclusieve geschenksets. Belgische chocolade, snelle productie.",
+    title: "Chocoladedruk & Gepersonaliseerde chocolade met logo",
+    description: "Chocoladedruk — full-color bedrukking direct op Belgische chocolade. Gepersonaliseerde chocolade met logo, zakelijke geschenken.",
     path: "/nl",
   });
 
