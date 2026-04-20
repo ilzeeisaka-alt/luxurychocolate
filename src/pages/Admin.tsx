@@ -497,6 +497,69 @@ const Admin = () => {
                       </div>
 
                       <div>
+                        <h4 className="font-semibold text-sm mb-2">Statuss</h4>
+                        <Select
+                          value={order.status}
+                          onValueChange={(v) =>
+                            updateStatus(order.id, v as OrderStatus)
+                          }
+                          disabled={savingId === order.id}
+                        >
+                          <SelectTrigger>
+                            <SelectValue />
+                          </SelectTrigger>
+                          <SelectContent>
+                            {(Object.keys(STATUS_LABELS) as OrderStatus[]).map(
+                              (s) => (
+                                <SelectItem key={s} value={s}>
+                                  {STATUS_LABELS[s]}
+                                </SelectItem>
+                              ),
+                            )}
+                          </SelectContent>
+                        </Select>
+
+                        {order.status === "shipped" && (
+                          <div className="mt-3">
+                            <label className="text-xs text-muted-foreground block mb-1">
+                              Izsekošanas numurs (neobligāts)
+                            </label>
+                            <Input
+                              placeholder="Piem. LV123456789LV"
+                              value={
+                                trackingDraft[order.id] ??
+                                order.tracking_number ??
+                                ""
+                              }
+                              onChange={(e) =>
+                                setTrackingDraft((p) => ({
+                                  ...p,
+                                  [order.id]: e.target.value,
+                                }))
+                              }
+                            />
+                          </div>
+                        )}
+
+                        <Button
+                          size="sm"
+                          variant="secondary"
+                          className="mt-3 w-full"
+                          onClick={() => sendStatusEmail(order.id, order.status)}
+                          disabled={emailingId === order.id}
+                        >
+                          {emailingId === order.id ? (
+                            <Loader2 className="h-4 w-4 animate-spin" />
+                          ) : (
+                            "📧 Sūtīt e-pastu klientam"
+                          )}
+                        </Button>
+                        <p className="text-xs text-muted-foreground mt-1">
+                          Klientam tiks nosūtīts paziņojums par pašreizējo statusu.
+                        </p>
+                      </div>
+
+                      <div>
                         <h4 className="font-semibold text-sm mb-2">
                           Iekšējās piezīmes
                         </h4>
