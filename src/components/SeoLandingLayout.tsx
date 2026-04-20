@@ -34,6 +34,7 @@ interface SeoLandingPageProps {
   relatedPages?: RelatedPage[];
   productImage?: string;
   priceFrom?: string;
+  extraSection?: React.ReactNode;
 }
 
 const vp = { once: true, margin: "-50px" as const };
