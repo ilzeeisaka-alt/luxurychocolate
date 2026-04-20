@@ -34,6 +34,7 @@ interface SeoLandingPageProps {
   relatedPages?: RelatedPage[];
   productImage?: string;
   priceFrom?: string;
+  extraSection?: React.ReactNode;
 }
 
 const vp = { once: true, margin: "-50px" as const };
@@ -52,6 +53,7 @@ const SeoLandingLayout = ({
   relatedPages,
   productImage,
   priceFrom = "3.50",
+  extraSection,
 }: SeoLandingPageProps) => {
   const [modalOpen, setModalOpen] = useState(false);
   const { pathname } = useLocation();
@@ -261,6 +263,8 @@ const SeoLandingLayout = ({
           />
         </div>
       </section>
+
+      {extraSection}
 
       {/* FAQ */}
       {faqs && faqs.length > 0 && (

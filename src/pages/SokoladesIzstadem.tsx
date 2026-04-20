@@ -1,7 +1,9 @@
 import SeoLandingLayout from "@/components/SeoLandingLayout";
+import RealClientStandsGallery from "@/components/RealClientStandsGallery";
 
 const SokoladesIzstadem = () => (
   <SeoLandingLayout
+    extraSection={<RealClientStandsGallery />}
     emoji="🍫"
     title="Personalizēti saldumi izstādēm un konferenču stendiem"
     metaDescription="Personalizēti saldumi un šokolāde ar logo izstādēm, konferencēm un biznesa pasākumiem. Premium beļģu šokolāde, cepumi, makarūni un kapkeiki ar Jūsu zīmolu."
