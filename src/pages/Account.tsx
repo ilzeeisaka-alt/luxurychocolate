@@ -10,9 +10,10 @@ import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { toast } from "sonner";
-import { Loader2, LogOut, User, Package } from "lucide-react";
+import { Loader2, LogOut, User, Package, ShieldCheck } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import OrdersList from "@/components/account/OrdersList";
+import { Link } from "react-router-dom";
 
 const profileSchema = z.object({
   first_name: z.string().trim().max(100).optional().or(z.literal("")),
@@ -46,6 +47,20 @@ const Account = () => {
   const [profile, setProfile] = useState<ProfileForm>(emptyProfile);
   const [loadingProfile, setLoadingProfile] = useState(true);
   const [saving, setSaving] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(false);
+
+  useEffect(() => {
+    if (!user) return;
+    (async () => {
+      const { data } = await supabase
+        .from("user_roles")
+        .select("role")
+        .eq("user_id", user.id)
+        .eq("role", "admin")
+        .maybeSingle();
+      setIsAdmin(!!data);
+    })();
+  }, [user]);
 
   useSeo({
     title: "Mans konts | Luxury Chocolate",
@@ -149,6 +164,16 @@ const Account = () => {
             Iziet
           </Button>
         </div>
+
+        {isAdmin && (
+          <Link
+            to="/admin"
+            className="inline-flex items-center gap-2 mb-6 px-4 py-2 rounded-lg border border-primary/30 bg-primary/5 text-primary hover:bg-primary/10 transition-colors text-sm font-medium"
+          >
+            <ShieldCheck className="h-4 w-4" />
+            Atvērt admin paneli
+          </Link>
+        )}
 
         <Tabs defaultValue="profile">
           <TabsList>
