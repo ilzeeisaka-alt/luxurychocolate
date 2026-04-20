@@ -12,6 +12,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { toast } from "sonner";
 import { Loader2, LogOut, User, Package } from "lucide-react";
 import Navbar from "@/components/Navbar";
+import OrdersList from "@/components/account/OrdersList";
 
 const profileSchema = z.object({
   first_name: z.string().trim().max(100).optional().or(z.literal("")),
@@ -246,13 +247,7 @@ const Account = () => {
           </TabsContent>
 
           <TabsContent value="orders">
-            <Card className="mt-6">
-              <CardContent className="py-12 text-center">
-                <Package className="h-12 w-12 mx-auto text-muted-foreground mb-4" />
-                <p className="text-muted-foreground">Vēl nav neviena pasūtījuma.</p>
-                <p className="text-sm text-muted-foreground mt-2">Pasūtījumu saraksts parādīsies pēc Posma 3 (e-veikals).</p>
-              </CardContent>
-            </Card>
+            <OrdersList userId={user.id} />
           </TabsContent>
         </Tabs>
       </div>
