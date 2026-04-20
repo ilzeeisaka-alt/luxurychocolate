@@ -87,6 +87,7 @@ interface Order {
   shipping_country: string | null;
   notes: string | null;
   admin_notes: string | null;
+  tracking_number: string | null;
   created_at: string;
   paid_at: string | null;
   order_items: OrderItem[];
@@ -108,6 +109,8 @@ const Admin = () => {
   const [search, setSearch] = useState("");
   const [savingId, setSavingId] = useState<string | null>(null);
   const [adminNotesDraft, setAdminNotesDraft] = useState<Record<string, string>>({});
+  const [trackingDraft, setTrackingDraft] = useState<Record<string, string>>({});
+  const [emailingId, setEmailingId] = useState<string | null>(null);
 
   useSeo({
     title: "Admin — Pasūtījumi | Luxury Chocolate",
@@ -174,6 +177,37 @@ const Admin = () => {
         prev.map((o) => (o.id === orderId ? { ...o, status } : o)),
       );
     }
+  };
+
+  const sendStatusEmail = async (orderId: string, status: OrderStatus) => {
+    setEmailingId(orderId);
+    const trackingNumber = trackingDraft[orderId];
+    const { data, error } = await supabase.functions.invoke(
+      "send-order-status-email",
+      { body: { orderId, status, trackingNumber } },
+    );
+    setEmailingId(null);
+    if (error || (data as any)?.error) {
+      toast.error("Neizdevās nosūtīt e-pastu");
+      return;
+    }
+    if ((data as any)?.skipped) {
+      toast.info("Šim statusam e-pasts netiek sūtīts");
+      return;
+    }
+    // If shipped + tracking provided, persist it
+    if (status === "shipped" && trackingNumber) {
+      await supabase
+        .from("orders")
+        .update({ tracking_number: trackingNumber })
+        .eq("id", orderId);
+      setOrders((prev) =>
+        prev.map((o) =>
+          o.id === orderId ? { ...o, tracking_number: trackingNumber } : o,
+        ),
+      );
+    }
+    toast.success("E-pasts klientam nosūtīts");
   };
 
   const saveAdminNotes = async (orderId: string) => {
