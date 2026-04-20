@@ -11,6 +11,7 @@ import { AuthProvider } from "./hooks/useAuth";
 const Index = lazy(() => import("./pages/Index.tsx"));
 const Auth = lazy(() => import("./pages/Auth.tsx"));
 const Account = lazy(() => import("./pages/Account.tsx"));
+const Admin = lazy(() => import("./pages/Admin.tsx"));
 const SokoladesArLogo = lazy(() => import("./pages/SokoladesArLogo.tsx"));
 const KukuSokoladesVeikals = lazy(() => import("./pages/KukuSokoladesVeikals.tsx"));
 const CheckoutReturn = lazy(() => import("./pages/CheckoutReturn.tsx"));
@@ -80,6 +81,7 @@ const App = () => (
             {/* Auth */}
             <Route path="/auth" element={<Auth />} />
             <Route path="/account" element={<Account />} />
+            <Route path="/admin" element={<Admin />} />
             {/* LV routes */}
             <Route path="/" element={<Index />} />
             <Route path="/kuku-sokolades-veikals" element={<KukuSokoladesVeikals />} />
