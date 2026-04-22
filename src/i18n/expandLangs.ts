@@ -6,6 +6,7 @@ import type { Lang } from "./types";
 const FALLBACK_LANGS: Lang[] = [
   "zh", "ja", "ko", "hi", "bn", "ur", "fa", "he", "th", "vi",
   "id", "ms", "tl", "sw", "am", "ka", "az", "kk", "hy", "be",
+  "ta", "km", "mn",
 ];
 
 export function expandLangs<T>(map: Partial<Record<Lang, T>> & { en: T }): Record<Lang, T> {
