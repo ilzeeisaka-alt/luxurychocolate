@@ -631,4 +631,188 @@
     <priority>0.7</priority>
     <changefreq>monthly</changefreq>
   </url>
+  <url>
+    <loc>https://luxurychocolate.lv/zh</loc>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://luxurychocolate.lv/zh" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://luxurychocolate.lv/" />
+    <lastmod>2026-04-22</lastmod>
+    <priority>0.8</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://luxurychocolate.lv/ja</loc>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://luxurychocolate.lv/ja" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://luxurychocolate.lv/" />
+    <lastmod>2026-04-22</lastmod>
+    <priority>0.8</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://luxurychocolate.lv/ko</loc>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://luxurychocolate.lv/ko" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://luxurychocolate.lv/" />
+    <lastmod>2026-04-22</lastmod>
+    <priority>0.8</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://luxurychocolate.lv/hi</loc>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://luxurychocolate.lv/hi" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://luxurychocolate.lv/" />
+    <lastmod>2026-04-22</lastmod>
+    <priority>0.8</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://luxurychocolate.lv/bn</loc>
+    <xhtml:link rel="alternate" hreflang="bn" href="https://luxurychocolate.lv/bn" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://luxurychocolate.lv/" />
+    <lastmod>2026-04-22</lastmod>
+    <priority>0.8</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://luxurychocolate.lv/ur</loc>
+    <xhtml:link rel="alternate" hreflang="ur" href="https://luxurychocolate.lv/ur" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://luxurychocolate.lv/" />
+    <lastmod>2026-04-22</lastmod>
+    <priority>0.8</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://luxurychocolate.lv/fa</loc>
+    <xhtml:link rel="alternate" hreflang="fa" href="https://luxurychocolate.lv/fa" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://luxurychocolate.lv/" />
+    <lastmod>2026-04-22</lastmod>
+    <priority>0.8</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://luxurychocolate.lv/he</loc>
+    <xhtml:link rel="alternate" hreflang="he" href="https://luxurychocolate.lv/he" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://luxurychocolate.lv/" />
+    <lastmod>2026-04-22</lastmod>
+    <priority>0.8</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://luxurychocolate.lv/th</loc>
+    <xhtml:link rel="alternate" hreflang="th" href="https://luxurychocolate.lv/th" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://luxurychocolate.lv/" />
+    <lastmod>2026-04-22</lastmod>
+    <priority>0.8</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://luxurychocolate.lv/vi</loc>
+    <xhtml:link rel="alternate" hreflang="vi" href="https://luxurychocolate.lv/vi" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://luxurychocolate.lv/" />
+    <lastmod>2026-04-22</lastmod>
+    <priority>0.8</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://luxurychocolate.lv/id</loc>
+    <xhtml:link rel="alternate" hreflang="id" href="https://luxurychocolate.lv/id" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://luxurychocolate.lv/" />
+    <lastmod>2026-04-22</lastmod>
+    <priority>0.8</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://luxurychocolate.lv/ms</loc>
+    <xhtml:link rel="alternate" hreflang="ms" href="https://luxurychocolate.lv/ms" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://luxurychocolate.lv/" />
+    <lastmod>2026-04-22</lastmod>
+    <priority>0.8</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://luxurychocolate.lv/tl</loc>
+    <xhtml:link rel="alternate" hreflang="tl" href="https://luxurychocolate.lv/tl" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://luxurychocolate.lv/" />
+    <lastmod>2026-04-22</lastmod>
+    <priority>0.8</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://luxurychocolate.lv/sw</loc>
+    <xhtml:link rel="alternate" hreflang="sw" href="https://luxurychocolate.lv/sw" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://luxurychocolate.lv/" />
+    <lastmod>2026-04-22</lastmod>
+    <priority>0.8</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://luxurychocolate.lv/am</loc>
+    <xhtml:link rel="alternate" hreflang="am" href="https://luxurychocolate.lv/am" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://luxurychocolate.lv/" />
+    <lastmod>2026-04-22</lastmod>
+    <priority>0.8</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://luxurychocolate.lv/ka</loc>
+    <xhtml:link rel="alternate" hreflang="ka" href="https://luxurychocolate.lv/ka" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://luxurychocolate.lv/" />
+    <lastmod>2026-04-22</lastmod>
+    <priority>0.8</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://luxurychocolate.lv/az</loc>
+    <xhtml:link rel="alternate" hreflang="az" href="https://luxurychocolate.lv/az" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://luxurychocolate.lv/" />
+    <lastmod>2026-04-22</lastmod>
+    <priority>0.8</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://luxurychocolate.lv/kk</loc>
+    <xhtml:link rel="alternate" hreflang="kk" href="https://luxurychocolate.lv/kk" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://luxurychocolate.lv/" />
+    <lastmod>2026-04-22</lastmod>
+    <priority>0.8</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://luxurychocolate.lv/hy</loc>
+    <xhtml:link rel="alternate" hreflang="hy" href="https://luxurychocolate.lv/hy" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://luxurychocolate.lv/" />
+    <lastmod>2026-04-22</lastmod>
+    <priority>0.8</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://luxurychocolate.lv/be</loc>
+    <xhtml:link rel="alternate" hreflang="be" href="https://luxurychocolate.lv/be" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://luxurychocolate.lv/" />
+    <lastmod>2026-04-22</lastmod>
+    <priority>0.8</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://luxurychocolate.lv/ta</loc>
+    <xhtml:link rel="alternate" hreflang="ta" href="https://luxurychocolate.lv/ta" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://luxurychocolate.lv/" />
+    <lastmod>2026-04-22</lastmod>
+    <priority>0.8</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://luxurychocolate.lv/km</loc>
+    <xhtml:link rel="alternate" hreflang="km" href="https://luxurychocolate.lv/km" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://luxurychocolate.lv/" />
+    <lastmod>2026-04-22</lastmod>
+    <priority>0.8</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://luxurychocolate.lv/mn</loc>
+    <xhtml:link rel="alternate" hreflang="mn" href="https://luxurychocolate.lv/mn" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://luxurychocolate.lv/" />
+    <lastmod>2026-04-22</lastmod>
+    <priority>0.8</priority>
+    <changefreq>weekly</changefreq>
+  </url>
 </urlset>
