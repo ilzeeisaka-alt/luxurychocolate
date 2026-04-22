@@ -10,9 +10,18 @@ const langLabels: Record<string, string> = {
   nl: "NL", pl: "PL", cs: "CS", pt: "PT", el: "EL", tr: "TR",
   hu: "HU", ro: "RO", bg: "BG", hr: "HR", sk: "SK", sl: "SL",
   uk: "UK", sr: "SR", bs: "BS", mk: "MK", sq: "SQ", is: "IS",
+  zh: "ZH", ja: "JA", ko: "KO", hi: "HI", bn: "BN", ur: "UR",
+  fa: "FA", he: "HE", th: "TH", vi: "VI", id: "ID", ms: "MS",
+  tl: "TL", sw: "SW", am: "AM", ka: "KA", az: "AZ", kk: "KK",
+  hy: "HY", be: "BE", ta: "TA", km: "KM", mn: "MN",
 };
 
-const langPrefixes = ["nl","pl","cs","pt","el","tr","hu","ro","bg","hr","sk","sl","uk","sr","bs","mk","sq","is","de","fr","it","es","ar","sv","no","fi","da","et","lt","ru","en"];
+const langPrefixes = [
+  "nl","pl","cs","pt","el","tr","hu","ro","bg","hr","sk","sl","uk","sr","bs","mk","sq","is",
+  "de","fr","it","es","ar","sv","no","fi","da","et","lt","ru","en",
+  "zh","ja","ko","hi","bn","ur","fa","he","th","vi","id","ms","tl","sw","am","ka","az","kk","hy","be",
+  "ta","km","mn",
+];
 
 const LanguageSwitcher = () => {
   const { pathname } = useLocation();
@@ -47,13 +56,13 @@ const LanguageSwitcher = () => {
       </button>
 
       {open && (
-        <div className="absolute right-0 top-full mt-1 bg-foreground border border-white/10 rounded-lg shadow-xl py-1 grid grid-cols-4 gap-0 min-w-[200px] max-h-[320px] overflow-y-auto z-50">
+        <div className="absolute right-0 top-full mt-1 bg-foreground border border-white/10 rounded-lg shadow-xl py-1 grid grid-cols-5 gap-0 min-w-[260px] max-h-[360px] overflow-y-auto z-50">
           {Object.entries(alternatives).map(([lang, path]) => (
             <Link
               key={lang}
               to={path}
               onClick={() => setOpen(false)}
-              className={`px-3 py-1.5 text-xs text-center transition-colors ${
+              className={`px-2 py-1.5 text-xs text-center transition-colors ${
                 lang === currentLang
                   ? "bg-primary/10 text-primary font-medium"
                   : "text-white/70 hover:text-white hover:bg-white/5"
