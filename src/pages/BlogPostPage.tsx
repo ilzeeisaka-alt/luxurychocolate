@@ -2,10 +2,11 @@ import { useParams, Link } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
 import type { Lang } from "@/i18n/types";
+import { expandLangs } from "@/i18n/expandLangs";
 import Navbar from "@/components/Navbar";
 import FooterSection from "@/components/FooterSection";
 
-const postStrings: Record<Lang, { backToBlog: string; notFound: string; loading: string }> = {
+const postStrings: Record<Lang, { backToBlog: string; notFound: string; loading: string }> = expandLangs({
   lv: { backToBlog: "← Atpakaļ uz blogu", notFound: "Raksts nav atrasts.", loading: "Ielādē..." },
   en: { backToBlog: "← Back to blog", notFound: "Post not found.", loading: "Loading..." },
   ru: { backToBlog: "← Назад в блог", notFound: "Статья не найдена.", loading: "Загрузка..." },
@@ -38,9 +39,9 @@ const postStrings: Record<Lang, { backToBlog: string; notFound: string; loading:
   mk: { backToBlog: "← Back to blog", notFound: "Post not found.", loading: "Loading..." },
   sq: { backToBlog: "← Back to blog", notFound: "Post not found.", loading: "Loading..." },
   is: { backToBlog: "← Back to blog", notFound: "Post not found.", loading: "Loading..." },
-};
+});
 
-const blogBasePaths: Record<Lang, string> = {
+const blogBasePaths: Record<Lang, string> = expandLangs({
   lv: "/blogs",
   en: "/en/blog",
   ru: "/ru/blog",

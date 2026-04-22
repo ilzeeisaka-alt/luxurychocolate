@@ -2,8 +2,9 @@ import { motion } from "framer-motion";
 import { Phone, Mail, MapPin, Linkedin } from "lucide-react";
 import ilzePhoto from "@/assets/ilze-eisaka.jpg";
 import type { Lang } from "@/i18n/types";
+import { expandLangs } from "@/i18n/expandLangs";
 
-const contactContent: Record<Lang, { heading: string; subtitle: string; role: string; cta: string; ctaOffer: string }> = {
+const contactContent: Record<Lang, { heading: string; subtitle: string; role: string; cta: string; ctaOffer: string }> = expandLangs({
   lv: { heading: "Sazinies ar mums", subtitle: "Mēs palīdzēsim izvēlēties ideālo šokolādes dāvanu Jūsu uzņēmumam", role: "Vadītāja", cta: "Rakstīt e-pastu", ctaOffer: "Aizpildīt pieteikumu" },
   en: { heading: "Contact us", subtitle: "We'll help you choose the perfect chocolate gift for your company", role: "Manager", cta: "Send email", ctaOffer: "Submit inquiry" },
   ru: { heading: "Свяжитесь с нами", subtitle: "Мы поможем выбрать идеальный шоколадный подарок для вашей компании", role: "Руководитель", cta: "Написать", ctaOffer: "Заполнить заявку" },
@@ -36,7 +37,7 @@ const contactContent: Record<Lang, { heading: string; subtitle: string; role: st
   mk: { heading: "Contact us", subtitle: "We'll help you choose the perfect chocolate gift for your company", role: "Manager", cta: "Send email", ctaOffer: "Submit inquiry" },
   sq: { heading: "Contact us", subtitle: "We'll help you choose the perfect chocolate gift for your company", role: "Manager", cta: "Send email", ctaOffer: "Submit inquiry" },
   is: { heading: "Contact us", subtitle: "We'll help you choose the perfect chocolate gift for your company", role: "Manager", cta: "Send email", ctaOffer: "Submit inquiry" },
-};
+});
 
 interface ContactSectionProps {
   lang?: Lang;

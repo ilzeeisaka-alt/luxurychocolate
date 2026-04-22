@@ -4,6 +4,7 @@ import { Menu, X, User, LogIn } from "lucide-react";
 import logo from "@/assets/logo-transparent.png";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
 import type { Lang } from "@/i18n/types";
+import { expandLangs } from "@/i18n/expandLangs";
 import { useAuth } from "@/hooks/useAuth";
 
 interface NavItem {
@@ -11,7 +12,7 @@ interface NavItem {
   to: string;
 }
 
-const navItems: Record<Lang, NavItem[]> = {
+const navItems: Record<Lang, NavItem[]> = expandLangs({
   lv: [
     { label: "Šokolādes ar logo", to: "/sokolades-ar-logo" },
     { label: "Makarūni", to: "#makaruni" },
@@ -685,9 +686,9 @@ const navItems: Record<Lang, NavItem[]> = {
     { label: "Myntir", to: "#monetas" },
     { label: "Samband", to: "#kontakti" },
   ],
-};
+});
 
-const homePaths: Record<Lang, string> = {
+const homePaths: Record<Lang, string> = expandLangs({
   lv: "/",
   en: "/en",
   ru: "/ru",
@@ -720,7 +721,7 @@ const homePaths: Record<Lang, string> = {
   mk: "/mk",
   sq: "/sq",
   is: "/is",
-};
+});
 
 interface NavbarProps {
   lang?: Lang;

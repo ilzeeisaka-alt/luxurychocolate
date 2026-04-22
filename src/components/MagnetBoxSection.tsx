@@ -2,6 +2,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { Magnet, Gift, Sparkles } from "lucide-react";
 import type { Lang } from "@/i18n/types";
+import { expandLangs } from "@/i18n/expandLangs";
 import Lightbox from "@/components/Lightbox";
 
 import bookBox1 from "@/assets/bookbox-1.jpg";
@@ -20,7 +21,7 @@ interface MagnetBoxContent {
   features: { magnet: { title: string; desc: string }; print: { title: string; desc: string }; pack: { title: string; desc: string } };
 }
 
-const magnetBoxContent: Record<Lang, MagnetBoxContent> = {
+const magnetBoxContent: Record<Lang, MagnetBoxContent> = expandLangs({
   lv: {
     badge: "Kastes ar magnētu",
     heading: "Elegantas dāvanu kastes ar magnētisku aizdari",
