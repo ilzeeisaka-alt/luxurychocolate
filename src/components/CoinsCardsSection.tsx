@@ -2,6 +2,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { Coins, CreditCard, Banknote } from "lucide-react";
 import type { Lang } from "@/i18n/types";
+import { expandLangs } from "@/i18n/expandLangs";
 import Lightbox from "@/components/Lightbox";
 
 import coinMonaco from "@/assets/sokolades-monetas-monaco.jpg";
@@ -84,12 +85,12 @@ const ru: CoinsCardsContent = {
   },
 };
 
-const coinsCardsContent: Record<Lang, CoinsCardsContent> = {
+const coinsCardsContent: Record<Lang, CoinsCardsContent> = expandLangs({
   lv, en, ru,
   et: en, lt: en, sv: en, no: en, fi: en, da: en, de: en, fr: en, it: en, es: en,
   ar: en, nl: en, pl: en, cs: en, pt: en, el: en, tr: en, hu: en, ro: en, bg: en,
   hr: en, sk: en, sl: en, uk: en, sr: en, bs: en, mk: en, sq: en, is: en,
-};
+});
 
 interface CoinsCardsSectionProps {
   lang?: Lang;

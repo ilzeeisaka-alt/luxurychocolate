@@ -1,8 +1,9 @@
 import { motion } from "framer-motion";
 import { ShoppingBag, ExternalLink, Upload } from "lucide-react";
 import type { Lang } from "@/i18n/types";
+import { expandLangs } from "@/i18n/expandLangs";
 
-const shopUrls: Record<Lang, string> = {
+const shopUrls: Record<Lang, string> = expandLangs({
   lv: "https://www.luxurychocolatesia.lv/interneta-veikals-produkti/",
   en: "https://www.luxurychocolatesia.lv/online-shop-products/",
   ru: "https://www.luxurychocolatesia.lv/internet-magazin-produkti/",
@@ -18,12 +19,12 @@ const shopUrls: Record<Lang, string> = {
   es: "https://www.luxurychocolatesia.lv/online-shop-products/",
   ar: "https://www.luxurychocolatesia.lv/online-shop-products/",
   nl: "https://www.luxurychocolatesia.lv/online-shop-products/", pl: "https://www.luxurychocolatesia.lv/online-shop-products/", cs: "https://www.luxurychocolatesia.lv/online-shop-products/", pt: "https://www.luxurychocolatesia.lv/online-shop-products/", el: "https://www.luxurychocolatesia.lv/online-shop-products/", tr: "https://www.luxurychocolatesia.lv/online-shop-products/", hu: "https://www.luxurychocolatesia.lv/online-shop-products/", ro: "https://www.luxurychocolatesia.lv/online-shop-products/", bg: "https://www.luxurychocolatesia.lv/online-shop-products/", hr: "https://www.luxurychocolatesia.lv/online-shop-products/", sk: "https://www.luxurychocolatesia.lv/online-shop-products/", sl: "https://www.luxurychocolatesia.lv/online-shop-products/", uk: "https://www.luxurychocolatesia.lv/online-shop-products/", sr: "https://www.luxurychocolatesia.lv/online-shop-products/", bs: "https://www.luxurychocolatesia.lv/online-shop-products/", mk: "https://www.luxurychocolatesia.lv/online-shop-products/", sq: "https://www.luxurychocolatesia.lv/online-shop-products/", is: "https://www.luxurychocolatesia.lv/online-shop-products/",
-};
+});
 
 const shopContent: Record<
   Lang,
   { heading: string; subtitle: string; cta: string; badge1: string; badge2: string; badge3: string; uploadBtn: string }
-> = {
+> = expandLangs({
   lv: {
     heading: "Interneta veikals",
     subtitle: "Izvēlieties no mūsu plašā sortimenta un pasūtiet šokolādes ar savu logo tiešsaistē.",
@@ -312,7 +313,7 @@ const shopContent: Record<
     badge3: "🏷️ With your logo",
     uploadBtn: "Upload your logo or photo",
   },
-};
+});
 
 interface ShopSectionProps {
   lang?: Lang;

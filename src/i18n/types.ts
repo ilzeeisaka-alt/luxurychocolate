@@ -1,4 +1,4 @@
-export type Lang = "lv" | "en" | "ru" | "et" | "lt" | "sv" | "no" | "fi" | "da" | "de" | "fr" | "it" | "es" | "ar" | "nl" | "pl" | "cs" | "pt" | "el" | "tr" | "hu" | "ro" | "bg" | "hr" | "sk" | "sl" | "uk" | "sr" | "bs" | "mk" | "sq" | "is";
+export type Lang = "lv" | "en" | "ru" | "et" | "lt" | "sv" | "no" | "fi" | "da" | "de" | "fr" | "it" | "es" | "ar" | "nl" | "pl" | "cs" | "pt" | "el" | "tr" | "hu" | "ro" | "bg" | "hr" | "sk" | "sl" | "uk" | "sr" | "bs" | "mk" | "sq" | "is" | "zh" | "ja" | "ko" | "hi" | "bn" | "ur" | "fa" | "he" | "th" | "vi" | "id" | "ms" | "tl" | "sw" | "am" | "ka" | "az" | "kk" | "hy" | "be";
 
 export interface PageContent {
   slug: string;

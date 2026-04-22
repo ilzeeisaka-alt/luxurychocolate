@@ -2,10 +2,11 @@ import { useQuery } from "@tanstack/react-query";
 import { Link } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import type { Lang } from "@/i18n/types";
+import { expandLangs } from "@/i18n/expandLangs";
 import Navbar from "@/components/Navbar";
 import FooterSection from "@/components/FooterSection";
 
-const blogStrings: Record<Lang, { title: string; subtitle: string; readMore: string; noPostsYet: string; loading: string }> = {
+const blogStrings: Record<Lang, { title: string; subtitle: string; readMore: string; noPostsYet: string; loading: string }> = expandLangs({
   lv: { title: "Blogs", subtitle: "Jaunākās ziņas un padomi par korporatīvajām šokolādēm", readMore: "Lasīt vairāk", noPostsYet: "Pagaidām nav publicētu rakstu.", loading: "Ielādē..." },
   en: { title: "Blog", subtitle: "Latest news and tips about corporate chocolates", readMore: "Read more", noPostsYet: "No published posts yet.", loading: "Loading..." },
   ru: { title: "Блог", subtitle: "Последние новости и советы о корпоративном шоколаде", readMore: "Читать далее", noPostsYet: "Пока нет опубликованных статей.", loading: "Загрузка..." },
@@ -38,9 +39,9 @@ const blogStrings: Record<Lang, { title: string; subtitle: string; readMore: str
   mk: { title: "Blog", subtitle: "Latest news and tips about corporate chocolates", readMore: "Read more", noPostsYet: "No published posts yet.", loading: "Loading..." },
   sq: { title: "Blog", subtitle: "Latest news and tips about corporate chocolates", readMore: "Read more", noPostsYet: "No published posts yet.", loading: "Loading..." },
   is: { title: "Blog", subtitle: "Latest news and tips about corporate chocolates", readMore: "Read more", noPostsYet: "No published posts yet.", loading: "Loading..." },
-};
+});
 
-const blogBasePaths: Record<Lang, string> = {
+const blogBasePaths: Record<Lang, string> = expandLangs({
   lv: "/blogs",
   en: "/en/blog",
   ru: "/ru/blog",
@@ -73,7 +74,7 @@ const blogBasePaths: Record<Lang, string> = {
   mk: "/mk/blog",
   sq: "/sq/blog",
   is: "/is/blog",
-};
+});
 
 interface BlogPageProps {
   lang?: Lang;

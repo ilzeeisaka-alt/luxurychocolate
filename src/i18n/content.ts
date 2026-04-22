@@ -3,7 +3,7 @@ import * as nl from "./nl";
 import * as pl from "./pl";
 import * as cs from "./cs";
 
-const NEW_LANGS = ["de","fr","it","es","ar","nl","pl","cs","pt","el","tr","hu","ro","bg","hr","sk","sl","uk","sr","bs","mk","sq","is"] as const;
+const NEW_LANGS = ["de","fr","it","es","ar","nl","pl","cs","pt","el","tr","hu","ro","bg","hr","sk","sl","uk","sr","bs","mk","sq","is","zh","ja","ko","hi","bn","ur","fa","he","th","vi","id","ms","tl","sw","am","ka","az","kk","hy","be"] as const;
 
 type BaseLang = "lv" | "en" | "ru" | "et" | "lt";
 const withNordics = <T>(base: Record<BaseLang, T>): Record<Lang, T> => {
