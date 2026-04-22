@@ -566,7 +566,7 @@ const magnetBoxContent: Record<Lang, MagnetBoxContent> = expandLangs({
       pack: { title: "Premium Packaging", desc: "Quality cardboard with ribbon and decorative elements" },
     },
   },
-};
+});
 
 interface MagnetBoxSectionProps {
   lang?: Lang;

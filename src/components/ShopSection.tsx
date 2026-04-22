@@ -313,7 +313,7 @@ const shopContent: Record<
     badge3: "🏷️ With your logo",
     uploadBtn: "Upload your logo or photo",
   },
-};
+});
 
 interface ShopSectionProps {
   lang?: Lang;

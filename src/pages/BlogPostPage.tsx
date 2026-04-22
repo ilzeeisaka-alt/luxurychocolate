@@ -74,7 +74,7 @@ const blogBasePaths: Record<Lang, string> = expandLangs({
   mk: "/mk/blog",
   sq: "/sq/blog",
   is: "/is/blog",
-};
+});
 
 interface BlogPostPageProps {
   lang?: Lang;
