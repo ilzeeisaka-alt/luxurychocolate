@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Phone, Mail, MapPin, Linkedin } from "lucide-react";
+import { Phone, Mail, MapPin, Linkedin, Youtube } from "lucide-react";
 import ilzePhoto from "@/assets/ilze-eisaka.jpg";
 import type { Lang } from "@/i18n/types";
 import { expandLangs } from "@/i18n/expandLangs";
@@ -111,6 +111,17 @@ const ContactSection = ({ lang = "lv", onCtaClick }: ContactSectionProps) => {
                   className="hover:text-primary transition-colors"
                 >
                   linkedin.com/in/ilze-eisaka-luxury-chocolate
+                </a>
+              </li>
+              <li className="flex items-center gap-3 justify-center sm:justify-start">
+                <Youtube size={18} className="text-primary shrink-0" />
+                <a
+                  href="https://www.youtube.com/@LuxuryChocolateLV"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-primary transition-colors"
+                >
+                  youtube.com/@LuxuryChocolateLV
                 </a>
               </li>
               <li className="flex items-center gap-3 justify-center sm:justify-start">

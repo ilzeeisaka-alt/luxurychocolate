@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { Youtube, Linkedin } from "lucide-react";
 
 const footerLinks = [
   { to: "/sokolades-ar-logo", label: "Šokolādes ar logo" },
@@ -49,6 +50,35 @@ const FooterSection = () => {
               </li>
               <li>Kandavas iela 29a, Rīga, LV-1083</li>
             </ul>
+            <div className="mt-4">
+              <p className="text-sm font-medium text-foreground mb-2">Sociālie tīkli</p>
+              <ul className="space-y-1.5 text-sm text-muted-foreground">
+                <li>
+                  <a
+                    href="https://www.youtube.com/@LuxuryChocolateLV"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 hover:text-primary transition-colors duration-200"
+                    aria-label="YouTube — Luxury Chocolate"
+                  >
+                    <Youtube size={16} className="text-primary" />
+                    youtube.com/@LuxuryChocolateLV
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="https://www.linkedin.com/in/ilze-eisaka-luxury-chocolate/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 hover:text-primary transition-colors duration-200"
+                    aria-label="LinkedIn — Ilze Eisaka"
+                  >
+                    <Linkedin size={16} className="text-primary" />
+                    linkedin.com/in/ilze-eisaka-luxury-chocolate
+                  </a>
+                </li>
+              </ul>
+            </div>
           </div>
 
           {/* Company */}
