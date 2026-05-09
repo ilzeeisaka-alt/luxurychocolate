@@ -10,6 +10,7 @@ import ProductsSection from "@/components/ProductsSection";
 import CakeChocolateSection from "@/components/CakeChocolateSection";
 import MacaroonsSection from "@/components/MacaroonsSection";
 import FortuneCookieSection from "@/components/FortuneCookieSection";
+import StrawberryRosesSection from "@/components/StrawberryRosesSection";
 import RestaurantChocolateSection from "@/components/RestaurantChocolateSection";
 import DailyChocolateSection from "@/components/DailyChocolateSection";
 import BookBoxSection from "@/components/BookBoxSection";
@@ -60,6 +61,7 @@ const Index = () => {
       <ShopSection onCtaClick={() => setModalOpen(true)} />
       <MacaroonsSection />
       <FortuneCookieSection />
+      <StrawberryRosesSection />
       <VipGiftSection lang="lv" onCtaClick={() => setModalOpen(true)} />
       <SouvenirSection lang="lv" onCtaClick={() => setModalOpen(true)} />
       <CienastsSection lang="lv" onCtaClick={() => setModalOpen(true)} />
