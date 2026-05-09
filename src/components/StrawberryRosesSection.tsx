@@ -111,6 +111,181 @@ const StrawberryRosesSection = () => {
               </div>
             ))}
           </div>
+
+          {/* Story / Copywriting */}
+          <div className="max-w-4xl mx-auto mt-20 space-y-12">
+            <div className="text-center">
+              <h3 className="text-2xl sm:text-3xl text-foreground mb-3">
+                🍓 Dāvanu kastes ar Grieķu svaigām zemenēm Beļģu piena šokolādē
+                <br />
+                <span className="text-primary">🌹 & sarkani Kenijas / Ekvadoras rožu pušķi</span>
+              </h3>
+              <p className="text-lg text-muted-foreground italic">
+                Zemene + Šokolāde + Roze = Matemātika, kas strādā
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {[
+                {
+                  text: "Mūsu dāvanu kaste ir kā supervaroņa apmetnis — izskatās lieliski, glābj situāciju un padara tevi par iecienītāko cilvēku telpā.",
+                },
+                {
+                  text: "Brīdinājums: Pēc šīs kastes pasniegšanas vari sagaidīt apmulsušu smaidu, pāris asaras un jautājumu „Kur tu to dabūji?!\"",
+                },
+                {
+                  text: "Blakusparādības: Neizbēgama mīlestība, pacilāts garastāvoklis un vēlme pasūtīt vēlreiz. Mātes dienai. Dzimšanas/vārda dienai. Vai vienkārši — jo vari. 🎁",
+                },
+                {
+                  text: "Viņa gaida kaut ko īpašu. Tu zini, ko darīt. Sulīga zemene, kas kūst šokolādē, un roze, kas smaržo pēc tālas saules. Tas vienkārši jājūt.",
+                },
+              ].map((q, i) => (
+                <div
+                  key={i}
+                  className="bg-card rounded-xl p-6"
+                  style={{ boxShadow: "var(--shadow-card)" }}
+                >
+                  <p className="text-foreground leading-relaxed">{q.text}</p>
+                </div>
+              ))}
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="bg-card rounded-xl p-6" style={{ boxShadow: "var(--shadow-card)" }}>
+                <h4 className="text-xl font-bold text-foreground mb-2">🍓 Grieķu zemenes</h4>
+                <p className="text-muted-foreground leading-relaxed">
+                  Svaigākās zemenes no Grieķijas saulainajiem laukiem, iemērktas Beļģijas piena
+                  šokolādē tā, ka pat Grieķu dievi gribētu pieteikties uz abonementu.
+                </p>
+              </div>
+              <div className="bg-card rounded-xl p-6" style={{ boxShadow: "var(--shadow-card)" }}>
+                <h4 className="text-xl font-bold text-foreground mb-2">🌹 Kenijas & Ekvadoras rozes</h4>
+                <p className="text-muted-foreground leading-relaxed">
+                  Audzētas tur, kur neviens netaisa selfijus ar laistīšanas kannu. Nogādātas šeit,
+                  lai tas svarīgais cilvēks zinātu: tu pēcpusdienu pavadīji domājot par viņu, nevis
+                  Netflix.
+                </p>
+              </div>
+            </div>
+
+            <div>
+              <h3 className="text-2xl sm:text-3xl text-foreground text-center mb-2">
+                Ko saka tie, kas jau pasniedza
+              </h3>
+              <p className="text-center text-muted-foreground mb-8 italic">
+                Dāvana, ko sajutīs ar visām maņām — svaigums, smarža un baudījums.
+              </p>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {[
+                  {
+                    quote:
+                      "Iedevu kastīti ar zemenēm šokolādē. Viņa teica: „Tu esi labākais.\" Nekad nav bijis labākais. Zemenes Šokolādē darbojas.",
+                    author: "Raimonds, 41 g., pārliecināts skeptiķis (bija)",
+                  },
+                  {
+                    quote:
+                      "Rozes no Ekvadoras. Partnere jautāja, vai esmu pats audzējis. Teicu — gandrīz. Attiecības uzlabojās.",
+                    author: "Jānis, projektmenedžeris, pilsētas cilvēks",
+                  },
+                  {
+                    quote:
+                      "Pasūtīju sev pašai. Nav kauna. Beļģu šokolāde + grieķu zemenes = vakara plāns ar grāmatu. Ieteicams.",
+                    author: "Kristīne, 34 g., neatkarīga domātāja",
+                  },
+                  {
+                    quote:
+                      "Māte atvēra kastīti, ieraudzīja zemenes šokolādē un rozes — un teica: „Tu beidzot esi pieaudzis.\" 38 gadus gaidīju šos vārdus. Paldies jums.",
+                    author: "Edgars, 38 g., beidzot pieaudzis dēls",
+                  },
+                  {
+                    quote:
+                      "Iedevu mammai rozes un zemenes šokolādē. Viņa raudāja. Es raudāju. Kaķis skatījās. Mātes diena izdevās.",
+                    author: "Lauma, 31 g., sentimentāla, bet neatzīst to",
+                  },
+                  {
+                    quote:
+                      "Katru gadu pirku ziedus no veikala pie izejas. Šogad — rozes no Kenijas un zemenes Beļģu šokolādē. Māte jautāja, vai esmu mainījis darbu uz labāku. Nē. Vienkārši zināju, kur pasūtīt.",
+                    author: "Kārlis, 44 g., optimizē visu, arī mīlestību",
+                  },
+                  {
+                    quote:
+                      "Mamma teica: „Nekādas dāvanas nevajag, man neko nevajag.\" Tad apēda pusi kastes viena pati. Vajadzēja pasūtīt divas.",
+                    author: "Ilze, 29 g., iemācījusies pasūtīt rezerves kastīti",
+                  },
+                  {
+                    quote:
+                      "Biju muļķis. Rozes to zina. Zemenes šokolādē arī. Ceru, ka tu arī drīz zināsi.",
+                    author: "Mārtiņš, 35 g., mācās no kļūdām (lēni, bet mācās)",
+                  },
+                  {
+                    quote:
+                      "Teicu „atvainojos\" trīs reizes. Nepalīdzēja. Iedevu kastīti ar zemenēm un rozēm. Viņa teica — „nu labi.\" Divas kastes — un mēs atkal runājam normāli. Šokolāde ir labāka diplomāte nekā es.",
+                    author: "Roberts, 41 g., atklājis, ka beļģi saprot attiecības",
+                  },
+                  {
+                    quote:
+                      "Viņa man teica: „Man no Tevis vairs neko nevajag.\" Es tomēr pasūtīju. Viņa apēda visas zemenes. Tad teica: „Nu labi, piedodu.\" Nekad neesmu bijis tik priecīgs par to, ka kāds saka „nevajag.\"",
+                    author: "Andris, 37 g., iemācījies lasīt starp rindiņām",
+                  },
+                  {
+                    quote: "Vārdi beigušies. Rozes — nav. Zemenes šokolādē — arī nav. Bet piedošana — ir.",
+                    author: "Toms, 29 g., lakonisks, bet nopietns",
+                  },
+                ].map((t, i) => (
+                  <figure
+                    key={i}
+                    className="bg-card rounded-xl p-6 flex flex-col justify-between"
+                    style={{ boxShadow: "var(--shadow-card)" }}
+                  >
+                    <blockquote className="text-foreground leading-relaxed italic mb-3">
+                      „{t.quote}"
+                    </blockquote>
+                    <figcaption className="text-sm text-primary font-medium">— {t.author}</figcaption>
+                  </figure>
+                ))}
+              </div>
+            </div>
+
+            <div className="bg-card rounded-xl p-8 text-center" style={{ boxShadow: "var(--shadow-card)" }}>
+              <p className="text-foreground text-lg mb-2">
+                Uzmanību: Ražotājs neuzņemas atbildību par pārāk ilgu smaidu, mēmām sajūsmām vai
+                nekontrolējamu vēlmi apskaut dāvinātāju.
+              </p>
+              <p className="text-primary text-xl font-semibold mt-4">
+                Dāvini tā, lai atceras. 🌹🍫
+              </p>
+              <p className="text-muted-foreground mt-2">
+                Mātes dienai. Dzimšanas/vārda dienai. Vai tad, kad vārdi nepietiek.
+              </p>
+              <div className="flex flex-wrap justify-center gap-3 mt-6">
+                <a
+                  href="https://www.zemenessokolade-sarkanasrozes.lv/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-5 py-2.5 rounded-lg bg-primary text-primary-foreground font-medium hover:opacity-90 transition"
+                >
+                  Pasūtīt mājaslapā
+                </a>
+                <a
+                  href="https://wolt.com/lv/lva/riga/venue/zemenes-okold"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-5 py-2.5 rounded-lg border border-primary text-primary font-medium hover:bg-primary/10 transition"
+                >
+                  Wolt
+                </a>
+                <a
+                  href="https://food.bolt.eu/lv-lv/3-riga/p/46277-zemenes-sokolade/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-5 py-2.5 rounded-lg border border-primary text-primary font-medium hover:bg-primary/10 transition"
+                >
+                  Bolt Food
+                </a>
+              </div>
+            </div>
+          </div>
         </div>
       </motion.section>
 
