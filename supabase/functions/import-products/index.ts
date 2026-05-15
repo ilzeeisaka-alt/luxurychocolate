@@ -81,7 +81,7 @@ async function importOne(supabase: ReturnType<typeof createClient>, url: string)
       url,
       formats: [{
         type: "json",
-        prompt: "Extract product info as JSON: name (string), price (number in EUR, no currency symbol), currency (default EUR), short_description (string, 1 sentence), full_description (string, full text), image_urls (array of high-resolution image URLs from the product gallery), category_name (string), weight_in_grams (integer or 0), ingredients (string or empty), in_stock (true/false).",
+        prompt: "Extract product info as JSON: name (string), price (number in EUR INCLUDING VAT, no currency symbol), currency (default EUR), short_description (string, 1 sentence), full_description (string, full text in Latvian), image_urls (array of high-resolution image URLs from the product gallery), category_name (string), weight_in_grams (integer or 0), ingredients (string or empty), in_stock (true/false), preparation_days (integer, production/making time in business days, default 3 if not stated), delivery_days (integer, shipping/courier delivery time in business days, default 2 if not stated).",
       }],
       onlyMainContent: true,
     });
@@ -118,6 +118,10 @@ async function importOne(supabase: ReturnType<typeof createClient>, url: string)
       weight_grams: j.weight_in_grams || null,
       ingredients: j.ingredients || null,
       in_stock: j.in_stock !== false,
+      preparation_days: j.preparation_days ?? 3,
+      delivery_days: j.delivery_days ?? 2,
+      prices_include_vat: true,
+      vat_rate: 21,
       source_url: url,
       published: true,
     }, { onConflict: "slug" }).select("id").single();
