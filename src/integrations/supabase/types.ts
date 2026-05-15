@@ -335,6 +335,7 @@ export type Database = {
           category_id: string | null
           created_at: string
           currency: string
+          delivery_days: number | null
           description: string | null
           featured: boolean
           id: string
@@ -342,19 +343,23 @@ export type Database = {
           ingredients: string | null
           metadata: Json | null
           name: string
+          preparation_days: number | null
           price_cents: number
+          prices_include_vat: boolean
           published: boolean
           short_description: string | null
           slug: string
           source_url: string | null
           stock_quantity: number | null
           updated_at: string
+          vat_rate: number
           weight_grams: number | null
         }
         Insert: {
           category_id?: string | null
           created_at?: string
           currency?: string
+          delivery_days?: number | null
           description?: string | null
           featured?: boolean
           id?: string
@@ -362,19 +367,23 @@ export type Database = {
           ingredients?: string | null
           metadata?: Json | null
           name: string
+          preparation_days?: number | null
           price_cents?: number
+          prices_include_vat?: boolean
           published?: boolean
           short_description?: string | null
           slug: string
           source_url?: string | null
           stock_quantity?: number | null
           updated_at?: string
+          vat_rate?: number
           weight_grams?: number | null
         }
         Update: {
           category_id?: string | null
           created_at?: string
           currency?: string
+          delivery_days?: number | null
           description?: string | null
           featured?: boolean
           id?: string
@@ -382,13 +391,16 @@ export type Database = {
           ingredients?: string | null
           metadata?: Json | null
           name?: string
+          preparation_days?: number | null
           price_cents?: number
+          prices_include_vat?: boolean
           published?: boolean
           short_description?: string | null
           slug?: string
           source_url?: string | null
           stock_quantity?: number | null
           updated_at?: string
+          vat_rate?: number
           weight_grams?: number | null
         }
         Relationships: [
