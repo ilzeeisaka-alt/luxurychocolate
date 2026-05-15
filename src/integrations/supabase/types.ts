@@ -56,6 +56,41 @@ export type Database = {
         }
         Relationships: []
       }
+      cart_items: {
+        Row: {
+          created_at: string
+          id: string
+          product_id: string
+          quantity: number
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          product_id: string
+          quantity?: number
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          product_id?: string
+          quantity?: number
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "cart_items_product_id_fkey"
+            columns: ["product_id"]
+            isOneToOne: false
+            referencedRelation: "products"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       order_items: {
         Row: {
           area_cm2: number | null
@@ -68,7 +103,9 @@ export type Database = {
           logo_url: string | null
           notes: string | null
           order_id: string
+          product_id: string | null
           product_name: string
+          product_slug: string | null
           product_type: string
           quantity: number
           shape: string | null
@@ -87,7 +124,9 @@ export type Database = {
           logo_url?: string | null
           notes?: string | null
           order_id: string
+          product_id?: string | null
           product_name: string
+          product_slug?: string | null
           product_type: string
           quantity?: number
           shape?: string | null
@@ -106,7 +145,9 @@ export type Database = {
           logo_url?: string | null
           notes?: string | null
           order_id?: string
+          product_id?: string | null
           product_name?: string
+          product_slug?: string | null
           product_type?: string
           quantity?: number
           shape?: string | null
@@ -120,6 +161,13 @@ export type Database = {
             columns: ["order_id"]
             isOneToOne: false
             referencedRelation: "orders"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "order_items_product_id_fkey"
+            columns: ["product_id"]
+            isOneToOne: false
+            referencedRelation: "products"
             referencedColumns: ["id"]
           },
         ]
@@ -213,6 +261,145 @@ export type Database = {
           vat_number?: string | null
         }
         Relationships: []
+      }
+      product_categories: {
+        Row: {
+          created_at: string
+          description: string | null
+          id: string
+          name: string
+          slug: string
+          sort_order: number
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          description?: string | null
+          id?: string
+          name: string
+          slug: string
+          sort_order?: number
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          description?: string | null
+          id?: string
+          name?: string
+          slug?: string
+          sort_order?: number
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      product_images: {
+        Row: {
+          alt_text: string | null
+          created_at: string
+          id: string
+          is_primary: boolean
+          product_id: string
+          sort_order: number
+          url: string
+        }
+        Insert: {
+          alt_text?: string | null
+          created_at?: string
+          id?: string
+          is_primary?: boolean
+          product_id: string
+          sort_order?: number
+          url: string
+        }
+        Update: {
+          alt_text?: string | null
+          created_at?: string
+          id?: string
+          is_primary?: boolean
+          product_id?: string
+          sort_order?: number
+          url?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "product_images_product_id_fkey"
+            columns: ["product_id"]
+            isOneToOne: false
+            referencedRelation: "products"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      products: {
+        Row: {
+          category_id: string | null
+          created_at: string
+          currency: string
+          description: string | null
+          featured: boolean
+          id: string
+          in_stock: boolean
+          ingredients: string | null
+          metadata: Json | null
+          name: string
+          price_cents: number
+          published: boolean
+          short_description: string | null
+          slug: string
+          source_url: string | null
+          stock_quantity: number | null
+          updated_at: string
+          weight_grams: number | null
+        }
+        Insert: {
+          category_id?: string | null
+          created_at?: string
+          currency?: string
+          description?: string | null
+          featured?: boolean
+          id?: string
+          in_stock?: boolean
+          ingredients?: string | null
+          metadata?: Json | null
+          name: string
+          price_cents?: number
+          published?: boolean
+          short_description?: string | null
+          slug: string
+          source_url?: string | null
+          stock_quantity?: number | null
+          updated_at?: string
+          weight_grams?: number | null
+        }
+        Update: {
+          category_id?: string | null
+          created_at?: string
+          currency?: string
+          description?: string | null
+          featured?: boolean
+          id?: string
+          in_stock?: boolean
+          ingredients?: string | null
+          metadata?: Json | null
+          name?: string
+          price_cents?: number
+          published?: boolean
+          short_description?: string | null
+          slug?: string
+          source_url?: string | null
+          stock_quantity?: number | null
+          updated_at?: string
+          weight_grams?: number | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "products_category_id_fkey"
+            columns: ["category_id"]
+            isOneToOne: false
+            referencedRelation: "product_categories"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       profiles: {
         Row: {
