@@ -29,7 +29,13 @@ serve(async (req) => {
     console.log("Webhook event:", event.type, "env:", env);
 
     if (event.type === "checkout.session.completed") {
-      await handleCheckoutCompleted(event.data.object, env);
+      const session = event.data.object;
+      const productType = (session.metadata || {}).product_type;
+      if (productType === "shop_order") {
+        await handleShopOrderCompleted(session, env);
+      } else {
+        await handleCheckoutCompleted(session, env);
+      }
     } else {
       console.log("Unhandled event type:", event.type);
     }
