@@ -90,7 +90,10 @@ async function importOne(supabase: ReturnType<typeof createClient>, url: string)
 
     const baseSlug = slugify(j.name) || urlSlug(url);
     const urlPart = slugify(urlSlug(url));
-    const slug = `${baseSlug}-${urlPart}`.replace(/-+/g, "-").slice(0, 120);
+    // hash for uniqueness
+    let h = 0; for (let i = 0; i < url.length; i++) h = (h * 31 + url.charCodeAt(i)) | 0;
+    const hashSuffix = Math.abs(h).toString(36).slice(0, 6);
+    const slug = `${baseSlug}-${urlPart}-${hashSuffix}`.replace(/-+/g, "-").slice(0, 140);
 
     // Resolve category
     let categoryId: string | null = null;
