@@ -176,7 +176,130 @@ async function handleCheckoutCompleted(session: any, env: StripeEnv) {
   }
 }
 
-const escapeHtml = (v: unknown) =>
+async function handleShopOrderCompleted(session: any, env: StripeEnv) {
+  const sessionId: string = session.id;
+  const md = (session.metadata || {}) as Record<string, string>;
+  const orderId = md.order_id;
+  if (!orderId) {
+    console.error("shop_order missing order_id metadata");
+    return;
+  }
+
+  // Idempotency
+  const { data: existing } = await supabase
+    .from("orders")
+    .select("id, status")
+    .eq("id", orderId)
+    .maybeSingle();
+  if (!existing) {
+    console.error("Order not found:", orderId);
+    return;
+  }
+  if (existing.status === "paid") {
+    console.log("Order already paid:", orderId);
+    return;
+  }
+
+  // Fetch full session for shipping/customer details + totals
+  const stripe = createStripeClient(env);
+  const fullSession = await stripe.checkout.sessions.retrieve(sessionId, {
+    expand: ["customer_details", "shipping_details"],
+  });
+  const cd = fullSession.customer_details;
+  const shipping = (fullSession as any).shipping_details || (fullSession as any).shipping;
+  const shippingAddr = shipping?.address || cd?.address;
+
+  // Update order to paid
+  const { data: order, error: updErr } = await supabase
+    .from("orders")
+    .update({
+      status: "paid",
+      stripe_session_id: sessionId,
+      stripe_payment_intent_id:
+        typeof fullSession.payment_intent === "string"
+          ? fullSession.payment_intent
+          : (fullSession.payment_intent as any)?.id || null,
+      customer_email: cd?.email || fullSession.customer_email || "",
+      customer_name: cd?.name || shipping?.name || null,
+      customer_phone: cd?.phone || null,
+      total_cents: fullSession.amount_total || 0,
+      subtotal_cents: fullSession.amount_subtotal || fullSession.amount_total || 0,
+      tax_cents: fullSession.total_details?.amount_tax || 0,
+      shipping_cents: fullSession.total_details?.amount_shipping || 0,
+      shipping_address: shippingAddr?.line1
+        ? [shippingAddr.line1, shippingAddr.line2].filter(Boolean).join(", ")
+        : null,
+      shipping_city: shippingAddr?.city || null,
+      shipping_postal_code: shippingAddr?.postal_code || null,
+      shipping_country: shippingAddr?.country || null,
+      paid_at: new Date().toISOString(),
+    })
+    .eq("id", orderId)
+    .select()
+    .single();
+
+  if (updErr || !order) {
+    throw new Error(`Failed to update shop order: ${updErr?.message}`);
+  }
+
+  // Clear user's cart
+  if (order.user_id) {
+    await supabase.from("cart_items").delete().eq("user_id", order.user_id);
+  }
+
+  // Load items for confirmation email
+  const { data: items } = await supabase
+    .from("order_items")
+    .select("product_name, quantity, unit_price_cents, total_price_cents")
+    .eq("order_id", order.id);
+
+  console.log("Shop order paid:", order.order_number);
+
+  // Email (reuse existing helper format — simplified for shop orders)
+  try {
+    await sendShopOrderEmail(order, items || []);
+  } catch (e) {
+    console.error("Shop order email failed:", (e as Error).message);
+  }
+}
+
+async function sendShopOrderEmail(order: any, items: any[]) {
+  const resendApiKey = Deno.env.get("RESEND_API_KEY");
+  if (!resendApiKey) return;
+  const fromEmail = Deno.env.get("RESEND_FROM_EMAIL") ?? "Luxury Chocolate <onboarding@resend.dev>";
+
+  const itemsHtml = items.map((i) => `
+    <tr>
+      <td style="padding:8px 0;border-bottom:1px solid #eee;">${escapeHtml(i.product_name)} × ${i.quantity}</td>
+      <td style="padding:8px 0;border-bottom:1px solid #eee;text-align:right;">${formatPrice(i.total_price_cents, order.currency)}</td>
+    </tr>
+  `).join("");
+
+  const html = `
+    <div style="font-family:Arial,sans-serif;max-width:600px;margin:0 auto;padding:24px;color:#222;">
+      <h1 style="color:#c4a35a;margin:0 0 8px;">Paldies par pasūtījumu!</h1>
+      <p style="margin:0 0 16px;color:#666;">Pasūtījums Nr. <strong>${escapeHtml(order.order_number)}</strong></p>
+      <table style="width:100%;border-collapse:collapse;margin:16px 0;">${itemsHtml}</table>
+      <p style="text-align:right;font-weight:700;font-size:16px;">Kopā: ${formatPrice(order.total_cents, order.currency)}</p>
+      ${order.shipping_address ? `<p style="margin:16px 0;color:#666;font-size:14px;"><strong>Piegādes adrese:</strong><br>${escapeHtml(order.shipping_address)}${order.shipping_city ? `, ${escapeHtml(order.shipping_city)}` : ""}${order.shipping_postal_code ? `, ${escapeHtml(order.shipping_postal_code)}` : ""}${order.shipping_country ? `, ${escapeHtml(order.shipping_country)}` : ""}</p>` : ""}
+      <p style="margin:24px 0 0;color:#999;font-size:12px;">Luxury Chocolate</p>
+    </div>
+  `;
+
+  const send = async (to: string[], subject: string) => {
+    await fetch("https://api.resend.com/emails", {
+      method: "POST",
+      headers: { "Content-Type": "application/json", Authorization: `Bearer ${resendApiKey}` },
+      body: JSON.stringify({ from: fromEmail, to, subject, html }),
+    });
+  };
+
+  if (order.customer_email) {
+    await send([order.customer_email], `Pasūtījuma apstiprinājums ${order.order_number} — Luxury Chocolate`);
+  }
+  await send(["ilze.eisaka@gmail.com", "info@luxurychocolate.lv"], `Jauns veikala pasūtījums ${order.order_number}`);
+}
+
   String(v ?? "")
     .replaceAll("&", "&amp;")
     .replaceAll("<", "&lt;")
