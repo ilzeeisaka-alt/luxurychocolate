@@ -45,9 +45,12 @@ const VeikalsProduct = () => {
   });
 
   useSeo({
-    title: data?.product ? `${data.product.name} — Luxury Chocolate` : "Produkts",
+    title: data?.product?.name ?? "Produkts",
     description:
-      data?.product?.short_description ?? data?.product?.description?.slice(0, 160) ?? undefined,
+      data?.product?.short_description ??
+      data?.product?.description?.slice(0, 160) ??
+      "Premium šokolāde ar Jūsu logo.",
+    path: `/veikals/${slug ?? ""}`,
   });
 
   if (isLoading) {

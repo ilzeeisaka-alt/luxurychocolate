@@ -40,10 +40,10 @@ const Veikals = () => {
   const [searchInput, setSearchInput] = useState(search);
 
   useSeo({
-    title: "Šokolādes veikals — Luxury Chocolate",
+    title: "Šokolādes veikals",
     description:
       "Pasūti premium šokolādes ar savu logo, dāvanu kastes, makarūnus un saldumus tiešsaistē. Bezmaksas skice 24h laikā.",
-    canonical: "https://luxurychocolate.lv/veikals",
+    path: "/veikals",
   });
 
   useEffect(() => setSearchInput(search), [search]);
