@@ -89,7 +89,11 @@ async function importOne(supabase: ReturnType<typeof createClient>, url: string)
     if (!j || !j.name) return { url, ok: false, error: "no data extracted" };
 
     const baseSlug = slugify(j.name) || urlSlug(url);
-    const slug = `${baseSlug}-${urlSlug(url).slice(0, 8)}`.replace(/-+/g, "-").slice(0, 90);
+    const urlPart = slugify(urlSlug(url));
+    // hash for uniqueness
+    let h = 0; for (let i = 0; i < url.length; i++) h = (h * 31 + url.charCodeAt(i)) | 0;
+    const hashSuffix = Math.abs(h).toString(36).slice(0, 6);
+    const slug = `${baseSlug}-${urlPart}-${hashSuffix}`.replace(/-+/g, "-").slice(0, 140);
 
     // Resolve category
     let categoryId: string | null = null;
@@ -124,7 +128,7 @@ async function importOne(supabase: ReturnType<typeof createClient>, url: string)
       vat_rate: 21,
       source_url: url,
       published: true,
-    }, { onConflict: "slug" }).select("id").single();
+    }, { onConflict: "source_url" }).select("id").single();
 
     if (pErr || !product) return { url, ok: false, error: pErr?.message || "insert failed" };
 

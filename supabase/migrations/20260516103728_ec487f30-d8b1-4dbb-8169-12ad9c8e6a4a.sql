@@ -1,0 +1,1 @@
+ALTER TABLE public.products ADD CONSTRAINT products_source_url_unique UNIQUE (source_url);
