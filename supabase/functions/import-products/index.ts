@@ -128,7 +128,7 @@ async function importOne(supabase: ReturnType<typeof createClient>, url: string)
       vat_rate: 21,
       source_url: url,
       published: true,
-    }, { onConflict: "slug" }).select("id").single();
+    }, { onConflict: "source_url" }).select("id").single();
 
     if (pErr || !product) return { url, ok: false, error: pErr?.message || "insert failed" };
 
