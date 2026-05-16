@@ -22,8 +22,10 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import AdminProducts from "@/components/admin/AdminProducts";
 import { toast } from "sonner";
-import { Loader2, Package, Search, ShieldAlert } from "lucide-react";
+import { Loader2, Package, Search, ShieldAlert, ShoppingBag } from "lucide-react";
 
 type OrderStatus =
   | "pending"
@@ -277,13 +279,29 @@ const Admin = () => {
     <main className="min-h-screen bg-background pt-14 lg:pt-24">
       <Navbar />
       <div className="max-w-7xl mx-auto px-4 py-12">
+        <h1 className="text-3xl font-bold flex items-center gap-2 mb-6">
+          <Package className="h-7 w-7 text-primary" />
+          Admin panelis
+        </h1>
+
+        <Tabs defaultValue="orders" className="w-full">
+          <TabsList className="mb-6">
+            <TabsTrigger value="orders" className="gap-2">
+              <ShoppingBag className="w-4 h-4" /> Pasūtījumi
+            </TabsTrigger>
+            <TabsTrigger value="products" className="gap-2">
+              <Package className="w-4 h-4" /> Produkti
+            </TabsTrigger>
+          </TabsList>
+
+          <TabsContent value="products">
+            <AdminProducts />
+          </TabsContent>
+
+          <TabsContent value="orders">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
           <div>
-            <h1 className="text-3xl font-bold flex items-center gap-2">
-              <Package className="h-7 w-7 text-primary" />
-              Pasūtījumi
-            </h1>
-            <p className="text-muted-foreground mt-1">
+            <p className="text-muted-foreground">
               Kopā: {orders.length} • Filtrēti: {filtered.length}
             </p>
           </div>
@@ -614,6 +632,8 @@ const Admin = () => {
             ))}
           </Accordion>
         )}
+          </TabsContent>
+        </Tabs>
       </div>
     </main>
   );

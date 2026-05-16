@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X, User, LogIn } from "lucide-react";
+import { Menu, X, User, LogIn, ShoppingCart } from "lucide-react";
 import logo from "@/assets/logo-transparent.png";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
 import type { Lang } from "@/i18n/types";
@@ -807,8 +807,16 @@ const Navbar = ({ lang = "lv" }: NavbarProps) => {
           )}
         </div>
 
-        {/* Right side: auth + language + mobile toggle */}
+        {/* Right side: cart + auth + language + mobile toggle */}
         <div className="flex items-center gap-2">
+          <Link
+            to="/grozs"
+            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-medium text-white/80 hover:text-white hover:bg-white/5 transition-colors border border-white/15"
+            aria-label="Grozs"
+          >
+            <ShoppingCart size={14} />
+            <span className="hidden sm:inline">Grozs</span>
+          </Link>
           <Link
             to={user ? "/account" : "/auth"}
             className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-medium text-white/80 hover:text-white hover:bg-white/5 transition-colors border border-white/15"
