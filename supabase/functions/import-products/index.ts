@@ -89,7 +89,8 @@ async function importOne(supabase: ReturnType<typeof createClient>, url: string)
     if (!j || !j.name) return { url, ok: false, error: "no data extracted" };
 
     const baseSlug = slugify(j.name) || urlSlug(url);
-    const slug = `${baseSlug}-${urlSlug(url).slice(0, 8)}`.replace(/-+/g, "-").slice(0, 90);
+    const urlPart = slugify(urlSlug(url));
+    const slug = `${baseSlug}-${urlPart}`.replace(/-+/g, "-").slice(0, 120);
 
     // Resolve category
     let categoryId: string | null = null;
