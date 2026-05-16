@@ -1,0 +1,242 @@
+import { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { Minus, Plus, Trash2, ShoppingBag, ChevronLeft } from "lucide-react";
+import Navbar from "@/components/Navbar";
+import FooterSection from "@/components/FooterSection";
+import { supabase } from "@/integrations/supabase/client";
+import { useAuth } from "@/hooks/useAuth";
+import { useSeo } from "@/hooks/useSeo";
+import { useToast } from "@/hooks/use-toast";
+
+interface CartLine {
+  id: string;
+  quantity: number;
+  product: {
+    id: string;
+    slug: string;
+    name: string;
+    price_cents: number;
+    currency: string;
+    in_stock: boolean;
+    image_url: string | null;
+  };
+}
+
+const formatPrice = (cents: number, currency = "EUR") =>
+  new Intl.NumberFormat("lv-LV", { style: "currency", currency }).format(cents / 100);
+
+const Grozs = () => {
+  const { user, loading: authLoading } = useAuth();
+  const navigate = useNavigate();
+  const { toast } = useToast();
+  const [items, setItems] = useState<CartLine[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [busyId, setBusyId] = useState<string | null>(null);
+
+  useSeo({
+    title: "Grozs — Luxury Chocolate",
+    description: "Tavs šokolādes grozs. Pārskati produktus un dodies uz kasi.",
+    path: "/grozs",
+  });
+
+  useEffect(() => {
+    if (!authLoading && !user) navigate("/auth?redirect=/grozs", { replace: true });
+  }, [authLoading, user, navigate]);
+
+  const load = async () => {
+    if (!user) return;
+    setLoading(true);
+    const { data, error } = await supabase
+      .from("cart_items")
+      .select("id, quantity, product:products(id, slug, name, price_cents, currency, in_stock)")
+      .eq("user_id", user.id)
+      .order("created_at", { ascending: false });
+    if (error) {
+      toast({ title: "Kļūda", description: error.message, variant: "destructive" });
+      setLoading(false);
+      return;
+    }
+    const rows = (data ?? []).filter((r: any) => r.product);
+    const productIds = rows.map((r: any) => r.product.id);
+    let imageMap = new Map<string, string>();
+    if (productIds.length) {
+      const { data: imgs } = await supabase
+        .from("product_images")
+        .select("product_id, url, is_primary, sort_order")
+        .in("product_id", productIds)
+        .order("is_primary", { ascending: false })
+        .order("sort_order", { ascending: true });
+      (imgs ?? []).forEach((i) => {
+        if (!imageMap.has(i.product_id)) imageMap.set(i.product_id, i.url);
+      });
+    }
+    setItems(
+      rows.map((r: any) => ({
+        id: r.id,
+        quantity: r.quantity,
+        product: { ...r.product, image_url: imageMap.get(r.product.id) ?? null },
+      })),
+    );
+    setLoading(false);
+  };
+
+  useEffect(() => {
+    if (user) load();
+  }, [user]);
+
+  const updateQty = async (id: string, qty: number) => {
+    if (qty < 1) return;
+    setBusyId(id);
+    setItems((prev) => prev.map((i) => (i.id === id ? { ...i, quantity: qty } : i)));
+    await supabase.from("cart_items").update({ quantity: qty }).eq("id", id);
+    setBusyId(null);
+  };
+
+  const remove = async (id: string) => {
+    setBusyId(id);
+    await supabase.from("cart_items").delete().eq("id", id);
+    setItems((prev) => prev.filter((i) => i.id !== id));
+    setBusyId(null);
+  };
+
+  const subtotal = items.reduce((s, i) => s + i.product.price_cents * i.quantity, 0);
+  const currency = items[0]?.product.currency ?? "EUR";
+
+  return (
+    <div className="min-h-screen bg-background">
+      <Navbar />
+      <main className="container mx-auto px-4 pt-28 pb-16 max-w-5xl">
+        <Link
+          to="/veikals"
+          className="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-primary mb-6 transition-colors"
+        >
+          <ChevronLeft className="w-4 h-4" /> Turpināt iepirkties
+        </Link>
+
+        <h1 className="text-3xl sm:text-4xl text-foreground mb-8 flex items-center gap-3">
+          <ShoppingBag className="w-7 h-7 text-primary" />
+          Tavs grozs
+        </h1>
+
+        {loading ? (
+          <div className="space-y-3">
+            {Array.from({ length: 3 }).map((_, i) => (
+              <div key={i} className="h-28 bg-card rounded-xl animate-pulse" />
+            ))}
+          </div>
+        ) : items.length === 0 ? (
+          <div className="text-center py-20 bg-card rounded-xl border border-border">
+            <p className="text-lg text-muted-foreground mb-4">Grozs ir tukšs</p>
+            <Link
+              to="/veikals"
+              className="inline-flex items-center gap-2 bg-primary text-primary-foreground rounded-lg px-6 h-11 text-sm font-medium uppercase tracking-wide hover:brightness-110 transition-all"
+            >
+              Doties uz veikalu
+            </Link>
+          </div>
+        ) : (
+          <div className="grid lg:grid-cols-[1fr_360px] gap-8">
+            <div className="space-y-3">
+              {items.map((item) => (
+                <div
+                  key={item.id}
+                  className="flex gap-4 bg-card rounded-xl p-4 border border-border/50"
+                >
+                  <Link
+                    to={`/veikals/${item.product.slug}`}
+                    className="w-24 h-24 shrink-0 bg-muted rounded-lg overflow-hidden"
+                  >
+                    {item.product.image_url ? (
+                      <img
+                        src={item.product.image_url}
+                        alt={item.product.name}
+                        className="w-full h-full object-cover"
+                      />
+                    ) : (
+                      <div className="w-full h-full flex items-center justify-center text-xs text-muted-foreground">
+                        —
+                      </div>
+                    )}
+                  </Link>
+                  <div className="flex-1 min-w-0">
+                    <Link
+                      to={`/veikals/${item.product.slug}`}
+                      className="text-sm font-medium text-foreground hover:text-primary line-clamp-2"
+                    >
+                      {item.product.name}
+                    </Link>
+                    <p className="text-sm text-primary mt-1">
+                      {formatPrice(item.product.price_cents, item.product.currency)}
+                    </p>
+                    <div className="flex items-center justify-between mt-3">
+                      <div className="flex items-center border border-border rounded-md">
+                        <button
+                          type="button"
+                          disabled={busyId === item.id || item.quantity <= 1}
+                          onClick={() => updateQty(item.id, item.quantity - 1)}
+                          className="w-8 h-8 flex items-center justify-center hover:bg-muted disabled:opacity-30"
+                        >
+                          <Minus className="w-3.5 h-3.5" />
+                        </button>
+                        <span className="w-10 text-center text-sm">{item.quantity}</span>
+                        <button
+                          type="button"
+                          disabled={busyId === item.id}
+                          onClick={() => updateQty(item.id, item.quantity + 1)}
+                          className="w-8 h-8 flex items-center justify-center hover:bg-muted"
+                        >
+                          <Plus className="w-3.5 h-3.5" />
+                        </button>
+                      </div>
+                      <button
+                        type="button"
+                        onClick={() => remove(item.id)}
+                        disabled={busyId === item.id}
+                        className="text-muted-foreground hover:text-destructive transition-colors p-2"
+                        aria-label="Noņemt"
+                      >
+                        <Trash2 className="w-4 h-4" />
+                      </button>
+                    </div>
+                  </div>
+                  <div className="text-right text-sm font-medium text-foreground shrink-0">
+                    {formatPrice(item.product.price_cents * item.quantity, item.product.currency)}
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <aside className="bg-card rounded-xl p-6 border border-border h-fit lg:sticky lg:top-24">
+              <h2 className="text-lg text-foreground mb-4">Pasūtījuma kopsavilkums</h2>
+              <div className="space-y-2 text-sm">
+                <div className="flex justify-between text-muted-foreground">
+                  <span>Starpsumma ({items.reduce((s, i) => s + i.quantity, 0)} preces)</span>
+                  <span>{formatPrice(subtotal, currency)}</span>
+                </div>
+                <div className="flex justify-between text-muted-foreground">
+                  <span>Piegāde</span>
+                  <span className="text-xs">aprēķina kasē</span>
+                </div>
+                <div className="flex justify-between text-base font-medium text-foreground pt-3 border-t border-border">
+                  <span>Kopā</span>
+                  <span className="text-primary">{formatPrice(subtotal, currency)}</span>
+                </div>
+                <p className="text-xs text-muted-foreground">PVN iekļauts</p>
+              </div>
+              <button
+                type="button"
+                onClick={() => navigate("/kase")}
+                className="w-full mt-6 bg-primary text-primary-foreground rounded-lg h-12 text-sm font-medium uppercase tracking-wide hover:brightness-110 active:scale-[0.98] transition-all"
+              >
+                Doties uz kasi
+              </button>
+            </aside>
+          </div>
+        )}
+      </main>
+      <FooterSection />
+    </div>
+  );
+};
+
+export default Grozs;
