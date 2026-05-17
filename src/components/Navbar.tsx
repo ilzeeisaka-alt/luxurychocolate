@@ -736,6 +736,7 @@ const Navbar = ({ lang = "lv" }: NavbarProps) => {
   const { user } = useAuth();
   const items = navItems[lang];
   const homePath = homePaths[lang];
+  const shopItem = items.find((i) => i.to === "/veikals");
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
