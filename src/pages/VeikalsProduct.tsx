@@ -4,6 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 import { ChevronLeft, ShoppingCart, Upload, Check } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import FooterSection from "@/components/FooterSection";
+import OfferModal from "@/components/OfferModal";
 import { supabase } from "@/integrations/supabase/client";
 import { useSeo } from "@/hooks/useSeo";
 import { useAuth } from "@/hooks/useAuth";
@@ -21,6 +22,7 @@ const VeikalsProduct = () => {
   const [activeImg, setActiveImg] = useState(0);
   const [qty, setQty] = useState(1);
   const [adding, setAdding] = useState(false);
+  const [offerOpen, setOfferOpen] = useState(false);
 
   const { data, isLoading } = useQuery({
     queryKey: ["product-detail", slug],
@@ -248,6 +250,7 @@ const VeikalsProduct = () => {
 
             <button
               type="button"
+              onClick={() => setOfferOpen(true)}
               className="w-full inline-flex items-center justify-center gap-2 border border-primary text-primary rounded-lg h-11 px-6 text-sm font-medium tracking-wide transition-colors hover:bg-primary hover:text-primary-foreground"
             >
               <Upload className="w-4 h-4" />
@@ -273,6 +276,7 @@ const VeikalsProduct = () => {
         </div>
       </main>
       <FooterSection />
+      <OfferModal open={offerOpen} onOpenChange={setOfferOpen} />
     </div>
   );
 };
