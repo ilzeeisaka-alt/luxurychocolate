@@ -276,6 +276,7 @@ const VeikalsProduct = () => {
         </div>
       </main>
       <FooterSection />
+      <OfferModal open={offerOpen} onOpenChange={setOfferOpen} />
     </div>
   );
 };
