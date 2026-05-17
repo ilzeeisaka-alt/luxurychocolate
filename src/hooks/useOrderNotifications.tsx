@@ -59,7 +59,25 @@ export const useOrderNotifications = () => {
             tracking: next.tracking_number,
           });
 
-          if (prev && prev.status !== next.status) {
+          const statusChanged = prev && prev.status !== next.status;
+          // Trigger when tracking number first appears — even if we have no
+          // prior snapshot cached yet (prev undefined) or status also changed.
+          const trackingAppeared =
+            !!next.tracking_number &&
+            (!prev || prev.tracking !== next.tracking_number) &&
+            (!prev || !prev.tracking);
+
+          if (trackingAppeared) {
+            toast.success(`Pasūtījums ${next.order_number} nosūtīts`, {
+              description: `Izsekošanas nr.: ${next.tracking_number}`,
+              action: {
+                label: "Sekot",
+                onClick: () =>
+                  (window.location.href = `/track/${next.order_number}`),
+              },
+              duration: 9000,
+            });
+          } else if (statusChanged) {
             const label = STATUS_LABELS[next.status] || next.status;
             toast.success(`Pasūtījums ${next.order_number}: ${label}`, {
               description:
@@ -68,20 +86,6 @@ export const useOrderNotifications = () => {
                   : "Statuss atjaunināts",
               action: {
                 label: "Skatīt",
-                onClick: () =>
-                  (window.location.href = `/track/${next.order_number}`),
-              },
-              duration: 8000,
-            });
-          } else if (
-            prev &&
-            prev.tracking !== next.tracking_number &&
-            next.tracking_number
-          ) {
-            toast.success(`Pasūtījums ${next.order_number} nosūtīts`, {
-              description: `Izsekošanas nr.: ${next.tracking_number}`,
-              action: {
-                label: "Sekot",
                 onClick: () =>
                   (window.location.href = `/track/${next.order_number}`),
               },
