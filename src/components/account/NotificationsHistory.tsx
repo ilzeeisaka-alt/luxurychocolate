@@ -1,7 +1,8 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Bell, ExternalLink, Trash2, Truck } from "lucide-react";
+import { Input } from "@/components/ui/input";
+import { Bell, ExternalLink, Trash2, Truck, Search, Calendar } from "lucide-react";
 import { Link } from "react-router-dom";
 import {
   loadNotifications,
@@ -21,6 +22,23 @@ const formatDate = (iso: string) => {
   } catch {
     return iso;
   }
+};
+
+type DateFilter = "all" | "7days" | "30days" | "90days";
+
+const DATE_FILTERS: { value: DateFilter; label: string }[] = [
+  { value: "all", label: "Visi laiki" },
+  { value: "7days", label: "Pēdējās 7 dienas" },
+  { value: "30days", label: "Pēdējās 30 dienas" },
+  { value: "90days", label: "Pēdējās 90 dienas" },
+];
+
+const isWithinDays = (iso: string, days: number) => {
+  if (!iso) return false;
+  const date = new Date(iso);
+  const now = new Date();
+  const diffMs = now.getTime() - date.getTime();
+  return diffMs >= 0 && diffMs <= days * 24 * 60 * 60 * 1000;
 };
 
 const NotificationsHistory = ({ userId }: Props) => {
