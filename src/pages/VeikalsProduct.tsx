@@ -22,6 +22,7 @@ const VeikalsProduct = () => {
   const [activeImg, setActiveImg] = useState(0);
   const [qty, setQty] = useState(1);
   const [adding, setAdding] = useState(false);
+  const [offerOpen, setOfferOpen] = useState(false);
 
   const { data, isLoading } = useQuery({
     queryKey: ["product-detail", slug],
