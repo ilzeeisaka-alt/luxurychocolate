@@ -10,9 +10,10 @@ import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { toast } from "sonner";
-import { Loader2, LogOut, User, Package, ShieldCheck } from "lucide-react";
+import { Loader2, LogOut, User, Package, ShieldCheck, Bell } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import OrdersList from "@/components/account/OrdersList";
+import NotificationsHistory from "@/components/account/NotificationsHistory";
 import { Link } from "react-router-dom";
 
 const profileSchema = z.object({
