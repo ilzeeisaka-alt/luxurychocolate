@@ -22,7 +22,10 @@ const Auth = () => {
   const [searchParams] = useSearchParams();
   const { user, loading: authLoading } = useAuth();
   const [loading, setLoading] = useState(false);
-  const redirectPath = searchParams.get("redirect") || "/account";
+  const requestedRedirect = searchParams.get("redirect");
+  const redirectPath = requestedRedirect?.startsWith("/") && !requestedRedirect.startsWith("//")
+    ? requestedRedirect
+    : "/account";
 
   // Login state
   const [loginEmail, setLoginEmail] = useState("");
