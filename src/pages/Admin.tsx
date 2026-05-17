@@ -166,18 +166,40 @@ const Admin = () => {
 
   const updateStatus = async (orderId: string, status: OrderStatus) => {
     setSavingId(orderId);
+    const trackingNumber = trackingDraft[orderId];
+    const updates: Record<string, any> = { status };
+    if (status === "shipped" && trackingNumber) {
+      updates.tracking_number = trackingNumber;
+    }
     const { error } = await supabase
       .from("orders")
-      .update({ status })
+      .update(updates)
       .eq("id", orderId);
     setSavingId(null);
     if (error) {
       toast.error("Neizdevās atjaunināt: " + error.message);
-    } else {
-      toast.success("Statuss atjaunināts");
-      setOrders((prev) =>
-        prev.map((o) => (o.id === orderId ? { ...o, status } : o)),
-      );
+      return;
+    }
+    toast.success("Statuss atjaunināts");
+    setOrders((prev) =>
+      prev.map((o) =>
+        o.id === orderId
+          ? { ...o, status, ...(updates.tracking_number ? { tracking_number: updates.tracking_number } : {}) }
+          : o,
+      ),
+    );
+
+    // Auto-notify customer via email
+    setEmailingId(orderId);
+    const { data, error: emailErr } = await supabase.functions.invoke(
+      "send-order-status-email",
+      { body: { orderId, status, trackingNumber } },
+    );
+    setEmailingId(null);
+    if (emailErr || (data as any)?.error) {
+      toast.error("Statuss atjaunināts, bet e-pasts nenosūtīts");
+    } else if (!(data as any)?.skipped) {
+      toast.success("Klientam nosūtīts paziņojums");
     }
   };
 
