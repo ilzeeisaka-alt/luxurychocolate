@@ -567,11 +567,11 @@ const Admin = () => {
                           {emailingId === order.id ? (
                             <Loader2 className="h-4 w-4 animate-spin" />
                           ) : (
-                            "📧 Sūtīt e-pastu klientam"
+                            "📧 Atkārtoti nosūtīt e-pastu"
                           )}
                         </Button>
                         <p className="text-xs text-muted-foreground mt-1">
-                          Klientam tiks nosūtīts paziņojums par pašreizējo statusu.
+                          E-pasts tiek nosūtīts automātiski, mainot statusu. Šeit vari nosūtīt to atkārtoti.
                         </p>
                       </div>
 
