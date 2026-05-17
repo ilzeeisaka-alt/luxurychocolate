@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Loader2, Package, ChevronDown, ChevronUp } from "lucide-react";
+import { Loader2, Package, ChevronDown, ChevronUp, ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 interface OrderItem {
@@ -34,6 +34,7 @@ interface Order {
   shipping_city: string | null;
   shipping_postal_code: string | null;
   shipping_country: string | null;
+  tracking_number: string | null;
   order_items: OrderItem[];
 }
 
@@ -207,6 +208,21 @@ const OrdersList = ({ userId }: OrdersListProps) => {
                         {order.shipping_postal_code && `, ${order.shipping_postal_code}`}
                         {order.shipping_country && `, ${order.shipping_country}`}
                       </div>
+                    </div>
+                  )}
+
+                  {order.tracking_number && (
+                    <div className="pt-3 border-t text-sm">
+                      <div className="text-muted-foreground mb-1">Sūtījuma izsekošana:</div>
+                      <a
+                        href={`https://www.venipak.com/tracking/?code=${encodeURIComponent(order.tracking_number)}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1.5 font-mono hover:text-primary hover:underline"
+                      >
+                        {order.tracking_number}
+                        <ExternalLink className="h-3.5 w-3.5" />
+                      </a>
                     </div>
                   )}
                 </div>

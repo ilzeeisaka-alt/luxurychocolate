@@ -7,7 +7,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Loader2, Package, CheckCircle2, Truck, Factory, Clock, XCircle, Bell, BellOff, Search } from "lucide-react";
+import { Loader2, Package, CheckCircle2, Truck, Factory, Clock, XCircle, Bell, BellOff, Search, ExternalLink } from "lucide-react";
 import { toast } from "sonner";
 
 interface Order {
@@ -289,7 +289,18 @@ const OrderTracking = () => {
                   <CardTitle className="text-base">Sūtījuma izsekošanas numurs</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="font-mono text-sm">{order.tracking_number}</p>
+                  <a
+                    href={`https://www.venipak.com/tracking/?code=${encodeURIComponent(order.tracking_number)}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 font-mono text-sm hover:text-primary hover:underline"
+                  >
+                    {order.tracking_number}
+                    <ExternalLink className="h-3.5 w-3.5" />
+                  </a>
+                  <p className="text-xs text-muted-foreground mt-2">
+                    Sekot sūtījumam Venipak vietnē
+                  </p>
                 </CardContent>
               </Card>
             )}
