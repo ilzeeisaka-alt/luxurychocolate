@@ -64,8 +64,9 @@ const Veikals = () => {
     queryFn: async () => {
       const { data: cats } = await supabase
         .from("product_categories")
-        .select("id, slug, name")
-        .order("name");
+        .select("id, slug, name, sort_order")
+        .order("sort_order", { ascending: true })
+        .order("name", { ascending: true });
       const { data: prods } = await supabase
         .from("products")
         .select("category_id")
