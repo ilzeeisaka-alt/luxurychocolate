@@ -26,14 +26,38 @@ export const useOrderNotifications = () => {
     // Cache last-known status/tracking per order id to detect real changes
     const cache = new Map<string, { status: string; tracking: string | null }>();
 
+    // Persistent set of "tracking numbers we've already notified about" — keyed
+    // per user so the same tracking nr never re-notifies across reloads/tabs.
+    const seenKey = `seen-tracking-${user.id}`;
+    const loadSeen = (): Set<string> => {
+      try {
+        const raw = localStorage.getItem(seenKey);
+        return new Set(raw ? (JSON.parse(raw) as string[]) : []);
+      } catch {
+        return new Set();
+      }
+    };
+    const markSeen = (tracking: string) => {
+      const s = loadSeen();
+      s.add(tracking);
+      try {
+        localStorage.setItem(seenKey, JSON.stringify([...s]));
+      } catch {
+        /* ignore quota */
+      }
+    };
+
     supabase
       .from("orders")
       .select("id,status,tracking_number")
       .eq("user_id", user.id)
       .then(({ data }) => {
-        data?.forEach((o) =>
-          cache.set(o.id, { status: o.status, tracking: o.tracking_number }),
-        );
+        data?.forEach((o) => {
+          cache.set(o.id, { status: o.status, tracking: o.tracking_number });
+          // Pre-seed seen set with existing tracking numbers so we don't
+          // re-notify for orders that already had tracking before this session.
+          if (o.tracking_number) markSeen(o.tracking_number);
+        });
       });
 
     const channel = supabase
