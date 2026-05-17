@@ -276,6 +276,10 @@ const Account = () => {
           <TabsContent value="orders">
             <OrdersList userId={user.id} />
           </TabsContent>
+
+          <TabsContent value="notifications">
+            <NotificationsHistory userId={user.id} />
+          </TabsContent>
         </Tabs>
       </div>
     </main>
