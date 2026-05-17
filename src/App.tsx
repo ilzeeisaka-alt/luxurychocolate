@@ -105,6 +105,7 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <AuthProvider>
+        <OrderNotificationsListener />
         <Suspense fallback={<div className="min-h-screen bg-background" />}>
           <Routes>
             {/* Auth */}
