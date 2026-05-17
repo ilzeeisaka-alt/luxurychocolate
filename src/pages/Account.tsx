@@ -180,6 +180,7 @@ const Account = () => {
           <TabsList>
             <TabsTrigger value="profile"><User className="h-4 w-4 mr-2" />Profils</TabsTrigger>
             <TabsTrigger value="orders"><Package className="h-4 w-4 mr-2" />Pasūtījumi</TabsTrigger>
+            <TabsTrigger value="notifications"><Bell className="h-4 w-4 mr-2" />Paziņojumi</TabsTrigger>
           </TabsList>
 
           <TabsContent value="profile">
