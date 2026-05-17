@@ -119,11 +119,14 @@ const OfferModal = ({ open, onOpenChange }: OfferModalProps) => {
 
         const { error: uploadError } = await supabase.storage
           .from('client-logos')
-          .upload(fileName, logoFile);
+          .upload(fileName, logoFile, {
+            contentType: logoFile.type || 'application/octet-stream',
+            upsert: false,
+          });
 
         if (uploadError) {
           console.error('Upload error:', uploadError);
-          toast.error("Neizdevās augšupielādēt logo. Mēģiniet vēlreiz.");
+          toast.error(`Neizdevās augšupielādēt logo: ${uploadError.message}`);
           setLoading(false);
           return;
         }
