@@ -34,6 +34,7 @@ interface Order {
   shipping_city: string | null;
   shipping_postal_code: string | null;
   shipping_country: string | null;
+  tracking_number: string | null;
   order_items: OrderItem[];
 }
 
