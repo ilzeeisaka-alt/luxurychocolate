@@ -250,6 +250,7 @@ const VeikalsProduct = () => {
 
             <button
               type="button"
+              onClick={() => setOfferOpen(true)}
               className="w-full inline-flex items-center justify-center gap-2 border border-primary text-primary rounded-lg h-11 px-6 text-sm font-medium tracking-wide transition-colors hover:bg-primary hover:text-primary-foreground"
             >
               <Upload className="w-4 h-4" />
