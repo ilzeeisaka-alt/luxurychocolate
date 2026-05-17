@@ -6,6 +6,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import CookieConsent from "./components/CookieConsent.tsx";
 import { AuthProvider } from "./hooks/useAuth";
+import { OrderNotificationsListener } from "./hooks/useOrderNotifications";
 
 // Lazy-loaded pages — each gets its own JS chunk
 const Index = lazy(() => import("./pages/Index.tsx"));
@@ -104,6 +105,7 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <AuthProvider>
+        <OrderNotificationsListener />
         <Suspense fallback={<div className="min-h-screen bg-background" />}>
           <Routes>
             {/* Auth */}
