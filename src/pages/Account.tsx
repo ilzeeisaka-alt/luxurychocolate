@@ -10,9 +10,10 @@ import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { toast } from "sonner";
-import { Loader2, LogOut, User, Package, ShieldCheck } from "lucide-react";
+import { Loader2, LogOut, User, Package, ShieldCheck, Bell } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import OrdersList from "@/components/account/OrdersList";
+import NotificationsHistory from "@/components/account/NotificationsHistory";
 import { Link } from "react-router-dom";
 
 const profileSchema = z.object({
@@ -179,6 +180,7 @@ const Account = () => {
           <TabsList>
             <TabsTrigger value="profile"><User className="h-4 w-4 mr-2" />Profils</TabsTrigger>
             <TabsTrigger value="orders"><Package className="h-4 w-4 mr-2" />Pasūtījumi</TabsTrigger>
+            <TabsTrigger value="notifications"><Bell className="h-4 w-4 mr-2" />Paziņojumi</TabsTrigger>
           </TabsList>
 
           <TabsContent value="profile">
@@ -273,6 +275,10 @@ const Account = () => {
 
           <TabsContent value="orders">
             <OrdersList userId={user.id} />
+          </TabsContent>
+
+          <TabsContent value="notifications">
+            <NotificationsHistory userId={user.id} />
           </TabsContent>
         </Tabs>
       </div>
