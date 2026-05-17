@@ -167,7 +167,7 @@ const Admin = () => {
   const updateStatus = async (orderId: string, status: OrderStatus) => {
     setSavingId(orderId);
     const trackingNumber = trackingDraft[orderId];
-    const updates: Record<string, any> = { status };
+    const updates: { status: OrderStatus; tracking_number?: string } = { status };
     if (status === "shipped" && trackingNumber) {
       updates.tracking_number = trackingNumber;
     }
