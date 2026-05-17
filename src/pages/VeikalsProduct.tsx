@@ -94,37 +94,45 @@ const VeikalsProduct = () => {
 
   const handleAddToCart = async () => {
     if (!user) {
+      const redirectPath = `/veikals/${slug ?? ""}`;
       toast({
         title: "Nepieciešama autentifikācija",
         description: "Lūdzu pieslēdzieties, lai pievienotu grozam.",
       });
-      navigate("/auth?redirect=/veikals/" + slug);
+      navigate(`/auth?redirect=${encodeURIComponent(redirectPath)}`);
       return;
     }
     setAdding(true);
     try {
-      const { data: existing } = await supabase
+      const { data: existing, error: fetchError } = await supabase
         .from("cart_items")
         .select("id, quantity")
         .eq("user_id", user.id)
         .eq("product_id", product.id)
         .maybeSingle();
+      if (fetchError) throw fetchError;
 
       if (existing) {
-        await supabase
+        const { error: updateError } = await supabase
           .from("cart_items")
           .update({ quantity: existing.quantity + qty })
           .eq("id", existing.id);
+        if (updateError) throw updateError;
       } else {
-        await supabase.from("cart_items").insert({
+        const { error: insertError } = await supabase.from("cart_items").insert({
           user_id: user.id,
           product_id: product.id,
           quantity: qty,
         });
+        if (insertError) throw insertError;
       }
       toast({ title: "Pievienots grozam", description: product.name });
     } catch (e) {
-      toast({ title: "Kļūda", description: "Neizdevās pievienot grozam.", variant: "destructive" });
+      toast({
+        title: "Kļūda",
+        description: (e as Error).message || "Neizdevās pievienot grozam.",
+        variant: "destructive",
+      });
     } finally {
       setAdding(false);
     }
@@ -204,7 +212,7 @@ const VeikalsProduct = () => {
             <div className="flex items-center gap-2 text-sm text-muted-foreground mb-8">
               <Check className="w-4 h-4 text-primary" />
               <span>
-                {product.in_stock ? "Pieejams" : "Nav noliktavā"}
+                {product.in_stock ? "Pieejams" : "Izgatavojam pēc pasūtījuma"}
                 {product.preparation_days
                   ? ` · sagatavošana ${product.preparation_days} d.`
                   : ""}
@@ -240,7 +248,7 @@ const VeikalsProduct = () => {
               <button
                 type="button"
                 onClick={handleAddToCart}
-                disabled={adding || !product.in_stock}
+                disabled={adding}
                 className="flex-1 inline-flex items-center justify-center gap-2 bg-primary text-primary-foreground rounded-lg h-11 px-6 text-sm font-medium tracking-wide uppercase transition-all hover:brightness-110 active:scale-[0.98] disabled:opacity-50"
               >
                 <ShoppingCart className="w-4 h-4" />

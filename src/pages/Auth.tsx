@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate, Link, useSearchParams } from "react-router-dom";
 import { z } from "zod";
 import { supabase } from "@/integrations/supabase/client";
 import { lovable } from "@/integrations/lovable";
@@ -19,8 +19,13 @@ const nameSchema = z.string().trim().min(1, "Lauks obligāts").max(100);
 
 const Auth = () => {
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
   const { user, loading: authLoading } = useAuth();
   const [loading, setLoading] = useState(false);
+  const requestedRedirect = searchParams.get("redirect");
+  const redirectPath = requestedRedirect?.startsWith("/") && !requestedRedirect.startsWith("//")
+    ? requestedRedirect
+    : "/account";
 
   // Login state
   const [loginEmail, setLoginEmail] = useState("");
@@ -40,9 +45,9 @@ const Auth = () => {
 
   useEffect(() => {
     if (!authLoading && user) {
-      navigate("/account", { replace: true });
+      navigate(redirectPath, { replace: true });
     }
-  }, [user, authLoading, navigate]);
+  }, [user, authLoading, navigate, redirectPath]);
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -74,7 +79,7 @@ const Auth = () => {
       return;
     }
     toast.success("Veiksmīgi pieslēdzies!");
-    navigate("/account");
+    navigate(redirectPath);
   };
 
   const handleSignup = async (e: React.FormEvent) => {
@@ -119,7 +124,7 @@ const Auth = () => {
   const handleGoogleLogin = async () => {
     setLoading(true);
     const result = await lovable.auth.signInWithOAuth("google", {
-      redirect_uri: `${window.location.origin}/account`,
+      redirect_uri: `${window.location.origin}${redirectPath}`,
     });
     if (result.error) {
       toast.error("Google pieslēgšanās neizdevās");
