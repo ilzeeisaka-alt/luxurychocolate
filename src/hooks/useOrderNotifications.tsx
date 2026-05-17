@@ -71,12 +71,15 @@ export const useOrderNotifications = () => {
           const statusChanged = prev && prev.status !== next.status;
           // Trigger when a *new* tracking number appears that we have never
           // notified about before (deduped across reloads via localStorage).
-          const seen = loadSeen();
           const trackingAppeared =
-            !!next.tracking_number && !seen.has(next.tracking_number);
+            !!next.tracking_number &&
+            !hasSeenTracking(user.id, next.tracking_number);
 
           if (trackingAppeared) {
-            markSeen(next.tracking_number!);
+            addNotification(user.id, {
+              tracking: next.tracking_number!,
+              orderNumber: next.order_number,
+            });
             toast.success(`Pasūtījums ${next.order_number} nosūtīts`, {
               description: `Izsekošanas nr.: ${next.tracking_number}`,
               action: {
