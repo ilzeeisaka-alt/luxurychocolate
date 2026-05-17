@@ -4,6 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 import { ChevronLeft, ShoppingCart, Upload, Check } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import FooterSection from "@/components/FooterSection";
+import OfferModal from "@/components/OfferModal";
 import { supabase } from "@/integrations/supabase/client";
 import { useSeo } from "@/hooks/useSeo";
 import { useAuth } from "@/hooks/useAuth";
