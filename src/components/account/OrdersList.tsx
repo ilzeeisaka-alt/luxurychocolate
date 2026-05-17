@@ -210,6 +210,21 @@ const OrdersList = ({ userId }: OrdersListProps) => {
                       </div>
                     </div>
                   )}
+
+                  {order.tracking_number && (
+                    <div className="pt-3 border-t text-sm">
+                      <div className="text-muted-foreground mb-1">Sūtījuma izsekošana:</div>
+                      <a
+                        href={`https://www.venipak.com/tracking/?code=${encodeURIComponent(order.tracking_number)}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1.5 font-mono hover:text-primary hover:underline"
+                      >
+                        {order.tracking_number}
+                        <ExternalLink className="h-3.5 w-3.5" />
+                      </a>
+                    </div>
+                  )}
                 </div>
               )}
             </CardContent>
