@@ -811,6 +811,14 @@ const Navbar = ({ lang = "lv" }: NavbarProps) => {
         {/* Right side: cart + auth + language + mobile toggle */}
         <div className="flex items-center gap-2">
           <Link
+            to="/veikals"
+            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-medium text-primary bg-primary/10 border border-primary/30 hover:bg-primary/20 transition-colors"
+            aria-label={shopItem?.label ?? "Veikals"}
+          >
+            <Store size={14} />
+            <span className="hidden sm:inline">{shopItem?.label ?? "Veikals"}</span>
+          </Link>
+          <Link
             to="/grozs"
             className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-medium text-white/80 hover:text-white hover:bg-white/5 transition-colors border border-white/15"
             aria-label="Grozs"
