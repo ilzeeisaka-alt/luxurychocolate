@@ -60,18 +60,17 @@ const OfferModal = ({ open, onOpenChange }: OfferModalProps) => {
     const file = e.target.files?.[0];
     if (!file) return;
 
-    // Validate file type
-    const allowedTypes = ['image/png', 'image/jpeg', 'image/svg+xml', 'image/webp', 'application/pdf', 'application/postscript', 'application/illustrator', 'application/x-cdr'];
-    const allowedExtensions = ['.png', '.jpg', '.jpeg', '.svg', '.webp', '.pdf', '.cdr', '.eps', '.ai'];
-    const ext = '.' + file.name.split('.').pop()?.toLowerCase();
-    if (!allowedTypes.includes(file.type) && !allowedExtensions.includes(ext)) {
-      toast.error("Atbalstītie formāti: PNG, JPG, SVG, WebP, PDF, CDR, EPS, AI");
+    // Validate file extension (broad support for design files)
+    const allowedExtensions = ['.png', '.jpg', '.jpeg', '.gif', '.svg', '.webp', '.pdf', '.cdr', '.eps', '.ai', '.tiff', '.tif', '.bmp', '.psd', '.heic', '.heif'];
+    const ext = '.' + (file.name.split('.').pop()?.toLowerCase() ?? '');
+    if (!allowedExtensions.includes(ext)) {
+      toast.error("Atbalstītie formāti: PNG, JPG, GIF, SVG, WebP, PDF, CDR, EPS, AI, TIFF, BMP, PSD");
       return;
     }
 
-    // Validate file size (max 10MB)
-    if (file.size > 10 * 1024 * 1024) {
-      toast.error("Fails nedrīkst pārsniegt 10MB");
+    // Validate file size (max 20MB)
+    if (file.size > 20 * 1024 * 1024) {
+      toast.error("Fails nedrīkst pārsniegt 20MB");
       return;
     }
 
