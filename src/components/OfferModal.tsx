@@ -38,26 +38,39 @@ const OfferModal = ({ open, onOpenChange, autoOpenUpload, initialFile }: OfferMo
   const [loading, setLoading] = useState(false);
   const [logoFile, setLogoFile] = useState<File | null>(null);
   const [logoPreview, setLogoPreview] = useState<string | null>(null);
+  const [logoPdfPreview, setLogoPdfPreview] = useState<string | null>(null);
   const [usageType, setUsageType] = useState<string>("");
   const [eventDate, setEventDate] = useState<Date | undefined>();
   const fileInputRef = useRef<HTMLInputElement>(null);
 
+  const generatePreview = (file: File) => {
+    const ext = '.' + (file.name.split('.').pop()?.toLowerCase() ?? '');
+    const imageExtensions = ['.png', '.jpg', '.jpeg', '.gif', '.svg', '.webp', '.bmp', '.heic', '.heif', '.tiff', '.tif'];
+    const isImage = file.type.startsWith('image/') || imageExtensions.includes(ext);
+    const isPdf = file.type === 'application/pdf' || ext === '.pdf';
+    if (isImage) {
+      const reader = new FileReader();
+      reader.onload = (ev) => setLogoPreview(ev.target?.result as string);
+      reader.readAsDataURL(file);
+    } else if (isPdf) {
+      const url = URL.createObjectURL(file);
+      setLogoPdfPreview(url);
+    }
+  };
+
   useEffect(() => {
     if (open && initialFile) {
       setLogoFile(initialFile);
-      const imageExtensions = ['.png', '.jpg', '.jpeg', '.gif', '.svg', '.webp', '.bmp', '.heic', '.heif', '.tiff', '.tif'];
-      const imgExt = '.' + (initialFile.name.split('.').pop()?.toLowerCase() ?? '');
-      const isImage = initialFile.type.startsWith('image/') || imageExtensions.includes(imgExt);
-      if (isImage) {
-        const reader = new FileReader();
-        reader.onload = (ev) => setLogoPreview(ev.target?.result as string);
-        reader.readAsDataURL(initialFile);
-      }
+      generatePreview(initialFile);
     } else if (open && autoOpenUpload) {
       const t = setTimeout(() => fileInputRef.current?.click(), 250);
       return () => clearTimeout(t);
     }
   }, [open, autoOpenUpload, initialFile]);
+
+  useEffect(() => {
+    return () => { if (logoPdfPreview) URL.revokeObjectURL(logoPdfPreview); };
+  }, [logoPdfPreview]);
 
   const resetAll = () => {
     removeLogo();
