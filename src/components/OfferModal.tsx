@@ -365,8 +365,6 @@ const OfferModal = ({ open, onOpenChange }: OfferModalProps) => {
                 {loading ? "Nosūta…" : "Nosūtīt pieprasījumu"}
               </button>
             </form>
-          </>
-        )}
       </DialogContent>
     </Dialog>
   );
