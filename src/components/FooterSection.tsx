@@ -93,6 +93,10 @@ const FooterSection = () => {
         </div>
 
         <div className="border-t border-border pt-6">
+          <NewsletterSignup />
+        </div>
+
+        <div className="border-t border-border pt-6">
           <p className="text-sm text-muted-foreground text-center">
             © {new Date().getFullYear()} Luxury Chocolate SIA. Visas tiesības aizsargātas.
           </p>
