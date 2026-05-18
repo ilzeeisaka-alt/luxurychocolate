@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { format } from "date-fns";
 import { CalendarIcon, FileIcon, X, Upload } from "lucide-react";
 import {
@@ -21,6 +21,7 @@ import {
 interface OfferModalProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
+  autoOpenUpload?: boolean;
 }
 
 const inputClasses =
@@ -32,13 +33,20 @@ const quantityOptions = [
   { value: "500+", label: "500+ gab." },
 ];
 
-const OfferModal = ({ open, onOpenChange }: OfferModalProps) => {
+const OfferModal = ({ open, onOpenChange, autoOpenUpload }: OfferModalProps) => {
   const [loading, setLoading] = useState(false);
   const [logoFile, setLogoFile] = useState<File | null>(null);
   const [logoPreview, setLogoPreview] = useState<string | null>(null);
   const [usageType, setUsageType] = useState<string>("");
   const [eventDate, setEventDate] = useState<Date | undefined>();
   const fileInputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    if (open && autoOpenUpload) {
+      const t = setTimeout(() => fileInputRef.current?.click(), 250);
+      return () => clearTimeout(t);
+    }
+  }, [open, autoOpenUpload]);
 
   const resetAll = () => {
     removeLogo();

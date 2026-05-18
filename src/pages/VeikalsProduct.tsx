@@ -284,7 +284,7 @@ const VeikalsProduct = () => {
         </div>
       </main>
       <FooterSection />
-      <OfferModal open={offerOpen} onOpenChange={setOfferOpen} />
+      <OfferModal open={offerOpen} onOpenChange={setOfferOpen} autoOpenUpload />
     </div>
   );
 };
