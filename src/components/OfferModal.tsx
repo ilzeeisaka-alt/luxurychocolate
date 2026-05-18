@@ -41,6 +41,13 @@ const OfferModal = ({ open, onOpenChange, autoOpenUpload }: OfferModalProps) => 
   const [eventDate, setEventDate] = useState<Date | undefined>();
   const fileInputRef = useRef<HTMLInputElement>(null);
 
+  useEffect(() => {
+    if (open && autoOpenUpload) {
+      const t = setTimeout(() => fileInputRef.current?.click(), 250);
+      return () => clearTimeout(t);
+    }
+  }, [open, autoOpenUpload]);
+
   const resetAll = () => {
     removeLogo();
     setUsageType("");
