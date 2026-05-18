@@ -33,8 +33,6 @@ const quantityOptions = [
 ];
 
 const OfferModal = ({ open, onOpenChange }: OfferModalProps) => {
-  const [step, setStep] = useState<1 | 2>(1);
-  const [selectedQuantity, setSelectedQuantity] = useState<string>("");
   const [loading, setLoading] = useState(false);
   const [logoFile, setLogoFile] = useState<File | null>(null);
   const [logoPreview, setLogoPreview] = useState<string | null>(null);
@@ -43,8 +41,6 @@ const OfferModal = ({ open, onOpenChange }: OfferModalProps) => {
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const resetAll = () => {
-    setStep(1);
-    setSelectedQuantity("");
     removeLogo();
     setUsageType("");
     setEventDate(undefined);
