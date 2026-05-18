@@ -1,6 +1,6 @@
 import { useState, useRef } from "react";
 import { format } from "date-fns";
-import { CalendarIcon } from "lucide-react";
+import { CalendarIcon, FileIcon, X, Upload } from "lucide-react";
 import {
   Dialog,
   DialogContent,
@@ -8,7 +8,6 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { toast } from "sonner";
-import { Upload, X } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
@@ -76,8 +75,11 @@ const OfferModal = ({ open, onOpenChange }: OfferModalProps) => {
 
     setLogoFile(file);
 
-    // Create preview for images
-    if (file.type.startsWith('image/')) {
+    // Create preview for images (check extension too for files without proper MIME type)
+    const imageExtensions = ['.png', '.jpg', '.jpeg', '.gif', '.svg', '.webp', '.bmp', '.heic', '.heif', '.tiff', '.tif'];
+    const imgExt = '.' + (file.name.split('.').pop()?.toLowerCase() ?? '');
+    const isImage = file.type.startsWith('image/') || imageExtensions.includes(imgExt);
+    if (isImage) {
       const reader = new FileReader();
       reader.onload = (ev) => setLogoPreview(ev.target?.result as string);
       reader.readAsDataURL(file);
@@ -348,33 +350,48 @@ const OfferModal = ({ open, onOpenChange }: OfferModalProps) => {
                   >
                     <Upload className="w-6 h-6" />
                     <span className="text-sm">Augšupielādēt logo</span>
-                    <span className="text-xs">PNG, JPG, SVG, WebP, PDF, CDR, EPS, AI — maks. 10MB</span>
+                    <span className="text-xs">PNG, JPG, GIF, SVG, WebP, PDF, CDR, EPS, AI, TIFF, BMP, PSD — maks. 20MB</span>
                   </button>
                 ) : (
-                  <div className="rounded-lg border border-border p-3 flex items-center gap-3">
-                    {logoPreview && (
-                      <img
-                        src={logoPreview}
-                        alt="Logo preview"
-                        className="w-12 h-12 object-contain rounded"
-                      />
-                    )}
-                    <span className="text-sm text-foreground flex-1 truncate">
-                      {logoFile.name}
-                    </span>
-                    <button
-                      type="button"
-                      onClick={removeLogo}
-                      className="p-1 rounded-full hover:bg-muted transition-colors text-muted-foreground hover:text-foreground"
-                    >
-                      <X className="w-4 h-4" />
-                    </button>
+                  <div className="rounded-lg border border-border p-3">
+                    <p className="text-xs text-muted-foreground mb-2">Priekšskatījums:</p>
+                    <div className="flex items-center gap-3">
+                      {logoPreview ? (
+                        <div className="w-16 h-16 rounded bg-background flex items-center justify-center overflow-hidden shrink-0">
+                          <img
+                            src={logoPreview}
+                            alt="Logo preview"
+                            className="w-full h-full object-contain"
+                          />
+                        </div>
+                      ) : (
+                        <div className="w-16 h-16 rounded bg-muted flex items-center justify-center shrink-0">
+                          <FileIcon className="w-7 h-7 text-muted-foreground" />
+                        </div>
+                      )}
+                      <div className="flex-1 min-w-0">
+                        <p className="text-sm text-foreground truncate font-medium">
+                          {logoFile.name}
+                        </p>
+                        <p className="text-xs text-muted-foreground">
+                          {(logoFile.size / 1024 / 1024).toFixed(2)} MB · {logoFile.name.split('.').pop()?.toUpperCase()}
+                        </p>
+                      </div>
+                      <button
+                        type="button"
+                        onClick={removeLogo}
+                        className="p-1.5 rounded-full hover:bg-muted transition-colors text-muted-foreground hover:text-foreground shrink-0"
+                        title="Noņemt failu"
+                      >
+                        <X className="w-4 h-4" />
+                      </button>
+                    </div>
                   </div>
                 )}
                 <input
                   ref={fileInputRef}
                   type="file"
-                  accept=".png,.gif,.jpg,.jpeg,.svg,.webp,.pdf,.cdr,.eps,.ai,.tiff,.tif,.bmp,.psd"
+                  accept=".png,.gif,.jpg,.jpeg,.svg,.webp,.pdf,.cdr,.eps,.ai,.tiff,.tif,.bmp,.psd,.heic,.heif"
                   onChange={handleFileChange}
                   className="hidden"
                 />
