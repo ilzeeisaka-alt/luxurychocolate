@@ -38,26 +38,39 @@ const OfferModal = ({ open, onOpenChange, autoOpenUpload, initialFile }: OfferMo
   const [loading, setLoading] = useState(false);
   const [logoFile, setLogoFile] = useState<File | null>(null);
   const [logoPreview, setLogoPreview] = useState<string | null>(null);
+  const [logoPdfPreview, setLogoPdfPreview] = useState<string | null>(null);
   const [usageType, setUsageType] = useState<string>("");
   const [eventDate, setEventDate] = useState<Date | undefined>();
   const fileInputRef = useRef<HTMLInputElement>(null);
 
+  const generatePreview = (file: File) => {
+    const ext = '.' + (file.name.split('.').pop()?.toLowerCase() ?? '');
+    const imageExtensions = ['.png', '.jpg', '.jpeg', '.gif', '.svg', '.webp', '.bmp', '.heic', '.heif', '.tiff', '.tif'];
+    const isImage = file.type.startsWith('image/') || imageExtensions.includes(ext);
+    const isPdf = file.type === 'application/pdf' || ext === '.pdf';
+    if (isImage) {
+      const reader = new FileReader();
+      reader.onload = (ev) => setLogoPreview(ev.target?.result as string);
+      reader.readAsDataURL(file);
+    } else if (isPdf) {
+      const url = URL.createObjectURL(file);
+      setLogoPdfPreview(url);
+    }
+  };
+
   useEffect(() => {
     if (open && initialFile) {
       setLogoFile(initialFile);
-      const imageExtensions = ['.png', '.jpg', '.jpeg', '.gif', '.svg', '.webp', '.bmp', '.heic', '.heif', '.tiff', '.tif'];
-      const imgExt = '.' + (initialFile.name.split('.').pop()?.toLowerCase() ?? '');
-      const isImage = initialFile.type.startsWith('image/') || imageExtensions.includes(imgExt);
-      if (isImage) {
-        const reader = new FileReader();
-        reader.onload = (ev) => setLogoPreview(ev.target?.result as string);
-        reader.readAsDataURL(initialFile);
-      }
+      generatePreview(initialFile);
     } else if (open && autoOpenUpload) {
       const t = setTimeout(() => fileInputRef.current?.click(), 250);
       return () => clearTimeout(t);
     }
   }, [open, autoOpenUpload, initialFile]);
+
+  useEffect(() => {
+    return () => { if (logoPdfPreview) URL.revokeObjectURL(logoPdfPreview); };
+  }, [logoPdfPreview]);
 
   const resetAll = () => {
     removeLogo();
@@ -89,23 +102,15 @@ const OfferModal = ({ open, onOpenChange, autoOpenUpload, initialFile }: OfferMo
     }
 
     setLogoFile(file);
-
-    // Create preview for images (check extension too for files without proper MIME type)
-    const imageExtensions = ['.png', '.jpg', '.jpeg', '.gif', '.svg', '.webp', '.bmp', '.heic', '.heif', '.tiff', '.tif'];
-    const imgExt = '.' + (file.name.split('.').pop()?.toLowerCase() ?? '');
-    const isImage = file.type.startsWith('image/') || imageExtensions.includes(imgExt);
-    if (isImage) {
-      const reader = new FileReader();
-      reader.onload = (ev) => setLogoPreview(ev.target?.result as string);
-      reader.readAsDataURL(file);
-    } else {
-      setLogoPreview(null);
-    }
+    setLogoPreview(null);
+    if (logoPdfPreview) { URL.revokeObjectURL(logoPdfPreview); setLogoPdfPreview(null); }
+    generatePreview(file);
   };
 
   const removeLogo = () => {
     setLogoFile(null);
     setLogoPreview(null);
+    if (logoPdfPreview) { URL.revokeObjectURL(logoPdfPreview); setLogoPdfPreview(null); }
     if (fileInputRef.current) fileInputRef.current.value = '';
   };
 
@@ -369,9 +374,18 @@ const OfferModal = ({ open, onOpenChange, autoOpenUpload, initialFile }: OfferMo
                         className="p-1.5 rounded-full hover:bg-muted transition-colors text-muted-foreground hover:text-foreground shrink-0"
                         title="Noņemt failu"
                       >
-                        <X className="w-4 h-4" />
+                       <X className="w-4 h-4" />
                       </button>
                     </div>
+                    {logoPdfPreview && (
+                      <div className="mt-3 rounded overflow-hidden border border-border bg-background">
+                        <iframe
+                          src={logoPdfPreview}
+                          title="PDF priekšskatījums"
+                          className="w-full h-64"
+                        />
+                      </div>
+                    )}
                   </div>
                 )}
                 <input
