@@ -300,7 +300,12 @@ const VeikalsProduct = () => {
         </div>
       </main>
       <FooterSection />
-      <OfferModal open={offerOpen} onOpenChange={setOfferOpen} autoOpenUpload />
+      <OfferModal
+        open={offerOpen}
+        onOpenChange={(v) => { setOfferOpen(v); if (!v) setPendingLogo(null); }}
+        initialFile={pendingLogo}
+      />
+
     </div>
   );
 };
