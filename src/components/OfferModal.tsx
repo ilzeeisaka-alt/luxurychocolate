@@ -179,23 +179,56 @@ const OfferModal = ({ open, onOpenChange }: OfferModalProps) => {
               </p>
             </DialogHeader>
             <div className="flex flex-col gap-3 mt-4">
-              {quantityOptions.map((opt) => (
-                <button
-                  key={opt.value}
-                  type="button"
-                  onClick={() => {
-                    setSelectedQuantity(opt.value);
-                    setStep(2);
-                  }}
-                  className="w-full rounded-lg px-5 py-4 text-left text-base font-medium transition-all duration-200 bg-background text-foreground hover:bg-primary hover:text-primary-foreground group"
-                  style={{ boxShadow: "0 0 0 1px hsl(var(--border))" }}
-                >
-                  <span className="flex items-center justify-between">
+              <div className="grid grid-cols-3 gap-2">
+                {quantityOptions.map((opt) => (
+                  <button
+                    key={opt.value}
+                    type="button"
+                    onClick={() => {
+                      setSelectedQuantity(opt.value);
+                      setStep(2);
+                    }}
+                    className="rounded-lg px-3 py-3 text-sm font-medium transition-all duration-200 bg-background text-foreground hover:bg-primary hover:text-primary-foreground"
+                    style={{ boxShadow: "0 0 0 1px hsl(var(--border))" }}
+                  >
                     {opt.label}
-                    <span className="text-muted-foreground group-hover:text-primary-foreground/70 text-sm">→</span>
-                  </span>
-                </button>
-              ))}
+                  </button>
+                ))}
+              </div>
+              <form
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  const fd = new FormData(e.currentTarget);
+                  const custom = ((fd.get("custom") as string) || "").trim();
+                  if (!custom) {
+                    toast.error("Lūdzu ievadiet skaitu");
+                    return;
+                  }
+                  setSelectedQuantity(`${custom} gab.`);
+                  setStep(2);
+                }}
+                className="flex flex-col gap-2 pt-2 border-t border-border"
+              >
+                <label className="text-sm text-muted-foreground">
+                  Vai ievadiet savu skaitu:
+                </label>
+                <div className="flex gap-2">
+                  <input
+                    name="custom"
+                    type="number"
+                    min={1}
+                    placeholder="Piem., 250"
+                    className={`${inputClasses} flex-1`}
+                    style={{ boxShadow: "0 0 0 1px hsl(var(--border))" }}
+                  />
+                  <button
+                    type="submit"
+                    className="rounded-lg bg-primary text-primary-foreground px-5 font-medium transition-all hover:brightness-110 active:scale-[0.98]"
+                  >
+                    →
+                  </button>
+                </div>
+              </form>
             </div>
           </>
         ) : (
