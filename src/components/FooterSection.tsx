@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { Youtube, Linkedin } from "lucide-react";
+import NewsletterSignup from "./NewsletterSignup";
 
 const footerLinks = [
   { to: "/sokolades-ar-logo", label: "Šokolādes ar logo" },
@@ -89,6 +90,10 @@ const FooterSection = () => {
               <li>PVN Reģ.nr. LV40103921954</li>
             </ul>
           </div>
+        </div>
+
+        <div className="border-t border-border pt-6">
+          <NewsletterSignup />
         </div>
 
         <div className="border-t border-border pt-6">
