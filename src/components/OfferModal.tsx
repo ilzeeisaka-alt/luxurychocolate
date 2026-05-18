@@ -33,7 +33,7 @@ const quantityOptions = [
   { value: "500+", label: "500+ gab." },
 ];
 
-const OfferModal = ({ open, onOpenChange }: OfferModalProps) => {
+const OfferModal = ({ open, onOpenChange, autoOpenUpload }: OfferModalProps) => {
   const [loading, setLoading] = useState(false);
   const [logoFile, setLogoFile] = useState<File | null>(null);
   const [logoPreview, setLogoPreview] = useState<string | null>(null);
