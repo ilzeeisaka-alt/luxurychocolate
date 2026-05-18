@@ -887,6 +887,9 @@ const Navbar = ({ lang = "lv" }: NavbarProps) => {
               </Link>
             )
           )}
+          <div className="mt-4 pt-4 border-t border-white/10">
+            <NewsletterSignup lang={lang} source="navbar-mobile" />
+          </div>
         </div>
       )}
     </nav>
