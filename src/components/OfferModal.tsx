@@ -102,23 +102,15 @@ const OfferModal = ({ open, onOpenChange, autoOpenUpload, initialFile }: OfferMo
     }
 
     setLogoFile(file);
-
-    // Create preview for images (check extension too for files without proper MIME type)
-    const imageExtensions = ['.png', '.jpg', '.jpeg', '.gif', '.svg', '.webp', '.bmp', '.heic', '.heif', '.tiff', '.tif'];
-    const imgExt = '.' + (file.name.split('.').pop()?.toLowerCase() ?? '');
-    const isImage = file.type.startsWith('image/') || imageExtensions.includes(imgExt);
-    if (isImage) {
-      const reader = new FileReader();
-      reader.onload = (ev) => setLogoPreview(ev.target?.result as string);
-      reader.readAsDataURL(file);
-    } else {
-      setLogoPreview(null);
-    }
+    setLogoPreview(null);
+    if (logoPdfPreview) { URL.revokeObjectURL(logoPdfPreview); setLogoPdfPreview(null); }
+    generatePreview(file);
   };
 
   const removeLogo = () => {
     setLogoFile(null);
     setLogoPreview(null);
+    if (logoPdfPreview) { URL.revokeObjectURL(logoPdfPreview); setLogoPdfPreview(null); }
     if (fileInputRef.current) fileInputRef.current.value = '';
   };
 
