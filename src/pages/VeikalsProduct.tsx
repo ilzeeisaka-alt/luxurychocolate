@@ -23,6 +23,8 @@ const VeikalsProduct = () => {
   const [qty, setQty] = useState(1);
   const [adding, setAdding] = useState(false);
   const [offerOpen, setOfferOpen] = useState(false);
+  const [pendingLogo, setPendingLogo] = useState<File | null>(null);
+  const logoInputRef = useRef<HTMLInputElement>(null);
 
   const { data, isLoading } = useQuery({
     queryKey: ["product-detail", slug],
