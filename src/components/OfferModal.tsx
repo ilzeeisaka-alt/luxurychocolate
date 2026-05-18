@@ -75,8 +75,11 @@ const OfferModal = ({ open, onOpenChange }: OfferModalProps) => {
 
     setLogoFile(file);
 
-    // Create preview for images
-    if (file.type.startsWith('image/')) {
+    // Create preview for images (check extension too for files without proper MIME type)
+    const imageExtensions = ['.png', '.jpg', '.jpeg', '.gif', '.svg', '.webp', '.bmp', '.heic', '.heif', '.tiff', '.tif'];
+    const ext = '.' + (file.name.split('.').pop()?.toLowerCase() ?? '');
+    const isImage = file.type.startsWith('image/') || imageExtensions.includes(ext);
+    if (isImage) {
       const reader = new FileReader();
       reader.onload = (ev) => setLogoPreview(ev.target?.result as string);
       reader.readAsDataURL(file);
