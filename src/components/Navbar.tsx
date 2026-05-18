@@ -3,6 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import { Menu, X, User, LogIn, ShoppingCart, Store } from "lucide-react";
 import logo from "@/assets/logo-transparent.png";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
+import NewsletterSignup from "@/components/NewsletterSignup";
 import type { Lang } from "@/i18n/types";
 import { expandLangs } from "@/i18n/expandLangs";
 import { useAuth } from "@/hooks/useAuth";
