@@ -172,6 +172,14 @@ const OfferModal = ({ open, onOpenChange }: OfferModalProps) => {
         </DialogHeader>
         <form onSubmit={handleSubmit} className="flex flex-col gap-4 mt-2">
               <input
+                name="quantity"
+                type="text"
+                placeholder="Aptuvenais skaits (neobligāti, piem., 250)"
+                maxLength={50}
+                className={inputClasses}
+                style={{ boxShadow: "0 0 0 1px hsl(var(--border))" }}
+              />
+              <input
                 name="name"
                 type="text"
                 placeholder="Jūsu vārds"
