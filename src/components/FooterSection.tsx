@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { Youtube, Linkedin } from "lucide-react";
+import NewsletterSignup from "./NewsletterSignup";
 
 const footerLinks = [
   { to: "/sokolades-ar-logo", label: "Šokolādes ar logo" },
