@@ -374,9 +374,18 @@ const OfferModal = ({ open, onOpenChange, autoOpenUpload, initialFile }: OfferMo
                         className="p-1.5 rounded-full hover:bg-muted transition-colors text-muted-foreground hover:text-foreground shrink-0"
                         title="Noņemt failu"
                       >
-                        <X className="w-4 h-4" />
+                       <X className="w-4 h-4" />
                       </button>
                     </div>
+                    {logoPdfPreview && (
+                      <div className="mt-3 rounded overflow-hidden border border-border bg-background">
+                        <iframe
+                          src={logoPdfPreview}
+                          title="PDF priekšskatījums"
+                          className="w-full h-64"
+                        />
+                      </div>
+                    )}
                   </div>
                 )}
                 <input
