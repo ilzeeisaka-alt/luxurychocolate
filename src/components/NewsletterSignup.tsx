@@ -9,9 +9,10 @@ const emailSchema = z.string().trim().email({ message: "Lūdzu, ievadi derīgu e
 interface NewsletterSignupProps {
   lang?: string;
   source?: string;
+  compact?: boolean;
 }
 
-const NewsletterSignup = ({ lang = "lv", source = "footer" }: NewsletterSignupProps) => {
+const NewsletterSignup = ({ lang = "lv", source = "footer", compact = false }: NewsletterSignupProps) => {
   const [email, setEmail] = useState("");
   const [loading, setLoading] = useState(false);
   const [done, setDone] = useState(false);
@@ -42,6 +43,39 @@ const NewsletterSignup = ({ lang = "lv", source = "footer" }: NewsletterSignupPr
     setDone(true);
     setEmail("");
   };
+
+  if (compact) {
+    if (done) {
+      return (
+        <div className="inline-flex items-center gap-1.5 text-xs text-emerald-400">
+          <Check size={14} /> Paldies!
+        </div>
+      );
+    }
+    return (
+      <form onSubmit={handleSubmit} className="flex items-center gap-1.5">
+        <div className="relative">
+          <Mail size={12} className="absolute left-2 top-1/2 -translate-y-1/2 text-white/50" />
+          <input
+            type="email"
+            required
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            placeholder="E-pasts"
+            className="w-40 xl:w-48 pl-7 pr-2 py-1.5 text-xs rounded-md border border-white/20 bg-white/10 text-white placeholder:text-white/50 focus:outline-none focus:ring-1 focus:ring-primary"
+            disabled={loading}
+          />
+        </div>
+        <button
+          type="submit"
+          disabled={loading}
+          className="px-2.5 py-1.5 text-xs rounded-md bg-primary text-primary-foreground font-medium hover:brightness-110 transition disabled:opacity-50"
+        >
+          {loading ? <Loader2 size={12} className="animate-spin" /> : "Pierakstīties"}
+        </button>
+      </form>
+    );
+  }
 
   return (
     <div>
