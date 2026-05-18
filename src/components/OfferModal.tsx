@@ -21,6 +21,7 @@ import {
 interface OfferModalProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
+  autoOpenUpload?: boolean;
 }
 
 const inputClasses =
