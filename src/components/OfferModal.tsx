@@ -229,6 +229,57 @@ const OfferModal = ({ open, onOpenChange }: OfferModalProps) => {
                   </button>
                 </div>
               </form>
+
+              {/* Logo upload — pieejams uzreiz */}
+              <div className="pt-2 border-t border-border">
+                {!logoFile ? (
+                  <button
+                    type="button"
+                    onClick={() => fileInputRef.current?.click()}
+                    className="w-full rounded-lg border-2 border-dashed border-border px-4 py-4 flex flex-col items-center gap-1.5 text-muted-foreground hover:border-primary/50 hover:text-foreground transition-colors"
+                  >
+                    <Upload className="w-5 h-5" />
+                    <span className="text-sm font-medium">Augšupielādēt logo uzreiz</span>
+                    <span className="text-xs">PNG, JPG, SVG, PDF, AI, EPS, CDR — maks. 20MB</span>
+                  </button>
+                ) : (
+                  <div className="rounded-lg border border-border p-3">
+                    <p className="text-xs text-muted-foreground mb-2">Logo pievienots — turpiniet ar skaitu:</p>
+                    <div className="flex items-center gap-3">
+                      {logoPreview ? (
+                        <div className="w-14 h-14 rounded bg-background flex items-center justify-center overflow-hidden shrink-0">
+                          <img src={logoPreview} alt="Logo preview" className="w-full h-full object-contain" />
+                        </div>
+                      ) : (
+                        <div className="w-14 h-14 rounded bg-muted flex items-center justify-center shrink-0">
+                          <FileIcon className="w-6 h-6 text-muted-foreground" />
+                        </div>
+                      )}
+                      <div className="flex-1 min-w-0">
+                        <p className="text-sm text-foreground truncate font-medium">{logoFile.name}</p>
+                        <p className="text-xs text-muted-foreground">
+                          {(logoFile.size / 1024 / 1024).toFixed(2)} MB
+                        </p>
+                      </div>
+                      <button
+                        type="button"
+                        onClick={removeLogo}
+                        className="p-1.5 rounded-full hover:bg-muted transition-colors text-muted-foreground hover:text-foreground shrink-0"
+                        title="Noņemt failu"
+                      >
+                        <X className="w-4 h-4" />
+                      </button>
+                    </div>
+                  </div>
+                )}
+                <input
+                  ref={fileInputRef}
+                  type="file"
+                  accept=".png,.gif,.jpg,.jpeg,.svg,.webp,.pdf,.cdr,.eps,.ai,.tiff,.tif,.bmp,.psd,.heic,.heif"
+                  onChange={handleFileChange}
+                  className="hidden"
+                />
+              </div>
             </div>
           </>
         ) : (
