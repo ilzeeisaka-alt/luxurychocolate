@@ -3,6 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import { Menu, X, User, LogIn, ShoppingCart, Store } from "lucide-react";
 import logo from "@/assets/logo-transparent.png";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
+import NewsletterSignup from "@/components/NewsletterSignup";
 import type { Lang } from "@/i18n/types";
 import { expandLangs } from "@/i18n/expandLangs";
 import { useAuth } from "@/hooks/useAuth";
@@ -808,8 +809,11 @@ const Navbar = ({ lang = "lv" }: NavbarProps) => {
           )}
         </div>
 
-        {/* Right side: cart + auth + language + mobile toggle */}
+        {/* Right side: newsletter + cart + auth + language + mobile toggle */}
         <div className="flex items-center gap-2">
+          <div className="hidden xl:flex items-center">
+            <NewsletterSignup lang={lang} source="navbar" compact />
+          </div>
           <Link
             to="/veikals"
             className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-medium text-primary bg-primary/10 border border-primary/30 hover:bg-primary/20 transition-colors"
@@ -883,6 +887,9 @@ const Navbar = ({ lang = "lv" }: NavbarProps) => {
               </Link>
             )
           )}
+          <div className="mt-4 pt-4 border-t border-white/10">
+            <NewsletterSignup lang={lang} source="navbar-mobile" />
+          </div>
         </div>
       )}
     </nav>
