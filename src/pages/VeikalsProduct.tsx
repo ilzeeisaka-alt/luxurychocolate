@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { Link, useParams, useNavigate } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { ChevronLeft, ShoppingCart, Upload, Check } from "lucide-react";
@@ -23,6 +23,8 @@ const VeikalsProduct = () => {
   const [qty, setQty] = useState(1);
   const [adding, setAdding] = useState(false);
   const [offerOpen, setOfferOpen] = useState(false);
+  const [pendingLogo, setPendingLogo] = useState<File | null>(null);
+  const logoInputRef = useRef<HTMLInputElement>(null);
 
   const { data, isLoading } = useQuery({
     queryKey: ["product-detail", slug],
@@ -258,12 +260,26 @@ const VeikalsProduct = () => {
 
             <button
               type="button"
-              onClick={() => setOfferOpen(true)}
+              onClick={() => logoInputRef.current?.click()}
               className="w-full inline-flex items-center justify-center gap-2 border border-primary text-primary rounded-lg h-11 px-6 text-sm font-medium tracking-wide transition-colors hover:bg-primary hover:text-primary-foreground"
             >
               <Upload className="w-4 h-4" />
               Augšupielādēt logo / individuāls pasūtījums
             </button>
+            <input
+              ref={logoInputRef}
+              type="file"
+              accept=".png,.gif,.jpg,.jpeg,.svg,.webp,.pdf,.cdr,.eps,.ai,.tiff,.tif,.bmp,.psd,.heic,.heif"
+              className="hidden"
+              onChange={(e) => {
+                const file = e.target.files?.[0];
+                if (!file) return;
+                setPendingLogo(file);
+                setOfferOpen(true);
+                if (logoInputRef.current) logoInputRef.current.value = '';
+              }}
+            />
+
 
             {product.description && (
               <div className="mt-10 pt-8 border-t border-border">
@@ -284,7 +300,12 @@ const VeikalsProduct = () => {
         </div>
       </main>
       <FooterSection />
-      <OfferModal open={offerOpen} onOpenChange={setOfferOpen} autoOpenUpload />
+      <OfferModal
+        open={offerOpen}
+        onOpenChange={(v) => { setOfferOpen(v); if (!v) setPendingLogo(null); }}
+        initialFile={pendingLogo}
+      />
+
     </div>
   );
 };

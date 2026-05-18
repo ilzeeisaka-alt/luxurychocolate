@@ -22,6 +22,7 @@ interface OfferModalProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
   autoOpenUpload?: boolean;
+  initialFile?: File | null;
 }
 
 const inputClasses =
@@ -33,7 +34,7 @@ const quantityOptions = [
   { value: "500+", label: "500+ gab." },
 ];
 
-const OfferModal = ({ open, onOpenChange, autoOpenUpload }: OfferModalProps) => {
+const OfferModal = ({ open, onOpenChange, autoOpenUpload, initialFile }: OfferModalProps) => {
   const [loading, setLoading] = useState(false);
   const [logoFile, setLogoFile] = useState<File | null>(null);
   const [logoPreview, setLogoPreview] = useState<string | null>(null);
@@ -42,11 +43,21 @@ const OfferModal = ({ open, onOpenChange, autoOpenUpload }: OfferModalProps) => 
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
-    if (open && autoOpenUpload) {
+    if (open && initialFile) {
+      setLogoFile(initialFile);
+      const imageExtensions = ['.png', '.jpg', '.jpeg', '.gif', '.svg', '.webp', '.bmp', '.heic', '.heif', '.tiff', '.tif'];
+      const imgExt = '.' + (initialFile.name.split('.').pop()?.toLowerCase() ?? '');
+      const isImage = initialFile.type.startsWith('image/') || imageExtensions.includes(imgExt);
+      if (isImage) {
+        const reader = new FileReader();
+        reader.onload = (ev) => setLogoPreview(ev.target?.result as string);
+        reader.readAsDataURL(initialFile);
+      }
+    } else if (open && autoOpenUpload) {
       const t = setTimeout(() => fileInputRef.current?.click(), 250);
       return () => clearTimeout(t);
     }
-  }, [open, autoOpenUpload]);
+  }, [open, autoOpenUpload, initialFile]);
 
   const resetAll = () => {
     removeLogo();
