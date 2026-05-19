@@ -22,6 +22,17 @@ const EU_COUNTRIES = [
   "CZ","SK","HU","RO","BG","HR","SI","GR","PT","IE","LU","MT","CY","IS","GB",
 ];
 
+const SHIPPING_OPTIONS: Record<string, { label: string; cents: number }> = {
+  pickup: { label: "Izņemt uz vietas — Kandavas iela 29A, Rīga", cents: 0 },
+  venipak_pakomats: { label: "Venipak pakomāts", cents: 1000 },
+  courier_riga: { label: "Mūsu piegāde Rīgā", cents: 3000 },
+  venipak_lv: { label: "Venipak Latvija", cents: 5500 },
+  venipak_baltic: { label: "Venipak Baltija", cents: 6000 },
+  venipak_scandi: { label: "Venipak Skandināvija", cents: 8000 },
+  venipak_eu: { label: "Venipak Eiropa", cents: 10000 },
+  venipak_world: { label: "Venipak Pasaule", cents: 20000 },
+};
+
 serve(async (req) => {
   if (req.method === "OPTIONS") return new Response(null, { headers: corsHeaders });
 
@@ -34,8 +45,10 @@ serve(async (req) => {
     if (authErr || !userData.user) throw new Error("Unauthorized");
     const user = userData.user;
 
-    const { environment, returnUrl } = await req.json();
+    const { environment, returnUrl, shippingId } = await req.json();
     const env = (environment || "sandbox") as StripeEnv;
+    const shipping = SHIPPING_OPTIONS[shippingId as string] ?? SHIPPING_OPTIONS.pickup;
+    const isPickup = (shippingId ?? "pickup") === "pickup";
 
     // Load cart
     const { data: cart, error: cartErr } = await supabaseAdmin
@@ -93,8 +106,9 @@ serve(async (req) => {
         customer_phone: profile?.phone || null,
         currency,
         subtotal_cents: subtotalCents,
-        total_cents: subtotalCents,
-      })
+        shipping_cents: shipping.cents,
+        shipping_method: shipping.label,
+        total_cents: subtotalCents + shipping.cents,
       .select()
       .single();
 
@@ -133,11 +147,25 @@ serve(async (req) => {
       };
     });
 
+    if (shipping.cents > 0) {
+      stripeLineItems.push({
+        price_data: {
+          currency: (currency || "EUR").toLowerCase(),
+          product_data: { name: `Piegāde: ${shipping.label}` },
+          unit_amount: shipping.cents,
+          tax_behavior: "inclusive" as const,
+        },
+        quantity: 1,
+      });
+    }
+
     const session = await stripe.checkout.sessions.create({
       line_items: stripeLineItems,
       mode: "payment",
       ui_mode: "embedded",
-      shipping_address_collection: { allowed_countries: EU_COUNTRIES as any },
+      ...(isPickup
+        ? {}
+        : { shipping_address_collection: { allowed_countries: EU_COUNTRIES as any } }),
       phone_number_collection: { enabled: true },
       return_url:
         returnUrl ||
@@ -147,6 +175,8 @@ serve(async (req) => {
         userId: user.id,
         order_id: order.id,
         product_type: "shop_order",
+        shipping_id: shippingId ?? "pickup",
+        shipping_label: shipping.label,
       },
     });
 

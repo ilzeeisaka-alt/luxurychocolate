@@ -25,6 +25,17 @@ interface CartLine {
 const formatPrice = (cents: number, currency = "EUR") =>
   new Intl.NumberFormat("lv-LV", { style: "currency", currency }).format(cents / 100);
 
+export const SHIPPING_OPTIONS = [
+  { id: "pickup", label: "Izņemt uz vietas — Kandavas iela 29A, Rīga", cents: 0 },
+  { id: "venipak_pakomats", label: "Venipak pakomāts", cents: 1000 },
+  { id: "courier_riga", label: "Mūsu piegāde Rīgā", cents: 3000 },
+  { id: "venipak_lv", label: "Venipak Latvija", cents: 5500 },
+  { id: "venipak_baltic", label: "Venipak Baltija", cents: 6000 },
+  { id: "venipak_scandi", label: "Venipak Skandināvija", cents: 8000 },
+  { id: "venipak_eu", label: "Venipak Eiropa", cents: 10000 },
+  { id: "venipak_world", label: "Venipak Pasaule", cents: 20000 },
+] as const;
+
 const Grozs = () => {
   const { user, loading: authLoading } = useAuth();
   const navigate = useNavigate();
@@ -32,6 +43,9 @@ const Grozs = () => {
   const [items, setItems] = useState<CartLine[]>([]);
   const [loading, setLoading] = useState(true);
   const [busyId, setBusyId] = useState<string | null>(null);
+  const [shippingId, setShippingId] = useState<string>(() =>
+    sessionStorage.getItem("shipping_id") || "pickup"
+  );
 
   useSeo({
     title: "Grozs — Luxury Chocolate",
@@ -42,6 +56,8 @@ const Grozs = () => {
   useEffect(() => {
     if (!authLoading && !user) navigate("/auth?redirect=/grozs", { replace: true });
   }, [authLoading, user, navigate]);
+
+  const shipping = SHIPPING_OPTIONS.find((o) => o.id === shippingId) ?? SHIPPING_OPTIONS[0];
 
   const load = async () => {
     if (!user) return;
@@ -210,6 +226,41 @@ const Grozs = () => {
 
             <aside className="bg-card rounded-xl p-6 border border-border h-fit lg:sticky lg:top-24">
               <h2 className="text-lg text-foreground mb-4">Pasūtījuma kopsavilkums</h2>
+
+              <div className="mb-4">
+                <label className="block text-sm font-medium text-foreground mb-2">Piegāde</label>
+                <div className="space-y-1.5">
+                  {SHIPPING_OPTIONS.map((o) => (
+                    <label
+                      key={o.id}
+                      className={`flex items-start gap-2 p-2 rounded-md border cursor-pointer text-xs transition-colors ${
+                        shippingId === o.id
+                          ? "border-primary bg-primary/5"
+                          : "border-border hover:bg-muted"
+                      }`}
+                    >
+                      <input
+                        type="radio"
+                        name="shipping"
+                        value={o.id}
+                        checked={shippingId === o.id}
+                        onChange={() => {
+                          setShippingId(o.id);
+                          sessionStorage.setItem("shipping_id", o.id);
+                        }}
+                        className="mt-0.5"
+                      />
+                      <span className="flex-1 flex justify-between gap-2">
+                        <span>{o.label}</span>
+                        <span className="font-medium whitespace-nowrap">
+                          {o.cents === 0 ? "Bezmaksas" : formatPrice(o.cents, currency)}
+                        </span>
+                      </span>
+                    </label>
+                  ))}
+                </div>
+              </div>
+
               <div className="space-y-2 text-sm">
                 <div className="flex justify-between text-muted-foreground">
                   <span>Starpsumma ({items.reduce((s, i) => s + i.quantity, 0)} preces)</span>
@@ -217,11 +268,11 @@ const Grozs = () => {
                 </div>
                 <div className="flex justify-between text-muted-foreground">
                   <span>Piegāde</span>
-                  <span className="text-xs">aprēķina kasē</span>
+                  <span>{shipping.cents === 0 ? "Bezmaksas" : formatPrice(shipping.cents, currency)}</span>
                 </div>
                 <div className="flex justify-between text-base font-medium text-foreground pt-3 border-t border-border">
                   <span>Kopā</span>
-                  <span className="text-primary">{formatPrice(subtotal, currency)}</span>
+                  <span className="text-primary">{formatPrice(subtotal + shipping.cents, currency)}</span>
                 </div>
                 <p className="text-xs text-muted-foreground">PVN iekļauts</p>
               </div>
