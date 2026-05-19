@@ -152,7 +152,7 @@ const Account = () => {
   if (!user) return null;
 
   return (
-    <main className="min-h-screen bg-background pt-14 lg:pt-24">
+    <main className="min-h-screen bg-background pt-32 lg:pt-40">
       <Navbar />
       <div className="max-w-4xl mx-auto px-4 py-12">
         <div className="flex justify-between items-center mb-8">
