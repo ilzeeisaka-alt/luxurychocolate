@@ -89,6 +89,7 @@ const Grozs = () => {
     setBusyId(id);
     setItems((prev) => prev.map((i) => (i.id === id ? { ...i, quantity: qty } : i)));
     await supabase.from("cart_items").update({ quantity: qty }).eq("id", id);
+    window.dispatchEvent(new Event("cart-updated"));
     setBusyId(null);
   };
 
@@ -96,6 +97,7 @@ const Grozs = () => {
     setBusyId(id);
     await supabase.from("cart_items").delete().eq("id", id);
     setItems((prev) => prev.filter((i) => i.id !== id));
+    window.dispatchEvent(new Event("cart-updated"));
     setBusyId(null);
   };
 
