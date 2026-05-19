@@ -398,6 +398,19 @@ const OfferModal = ({ open, onOpenChange, autoOpenUpload, initialFile }: OfferMo
                         />
                       </div>
                     )}
+                    {logoObjectUrl && (
+                      <div className="mt-3 rounded overflow-hidden border border-border bg-background">
+                        <object
+                          data={logoObjectUrl}
+                          type={logoObjectMime}
+                          className="w-full h-64"
+                        >
+                          <div className="p-4 text-xs text-muted-foreground text-center">
+                            Šim formātam ({logoFile.name.split('.').pop()?.toUpperCase()}) nav iespējams parādīt priekšskatījumu pārlūkā. Fails tiks nosūtīts mūsu dizaina komandai apstrādei.
+                          </div>
+                        </object>
+                      </div>
+                    )}
                   </div>
                 )}
                 <input
