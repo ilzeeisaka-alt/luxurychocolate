@@ -129,6 +129,7 @@ const VeikalsProduct = () => {
         if (insertError) throw insertError;
       }
       toast({ title: "Pievienots grozam", description: product.name });
+      window.dispatchEvent(new Event("cart-updated"));
     } catch (e) {
       toast({
         title: "Kļūda",

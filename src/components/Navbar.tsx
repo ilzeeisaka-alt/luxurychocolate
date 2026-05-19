@@ -7,6 +7,7 @@ import NewsletterSignup from "@/components/NewsletterSignup";
 import type { Lang } from "@/i18n/types";
 import { expandLangs } from "@/i18n/expandLangs";
 import { useAuth } from "@/hooks/useAuth";
+import { supabase } from "@/integrations/supabase/client";
 
 interface NavItem {
   label: string;
@@ -750,6 +751,26 @@ const Navbar = ({ lang = "lv" }: NavbarProps) => {
     setMobileOpen(false);
   }, [pathname]);
 
+  // Cart count
+  const [cartCount, setCartCount] = useState(0);
+  useEffect(() => {
+    if (!user) { setCartCount(0); return; }
+    let cancelled = false;
+    const fetchCount = async () => {
+      const { data } = await supabase
+        .from("cart_items")
+        .select("quantity")
+        .eq("user_id", user.id);
+      if (cancelled) return;
+      const total = (data ?? []).reduce((s, r: { quantity: number }) => s + (r.quantity || 0), 0);
+      setCartCount(total);
+    };
+    fetchCount();
+    const onUpdate = () => fetchCount();
+    window.addEventListener("cart-updated", onUpdate);
+    return () => { cancelled = true; window.removeEventListener("cart-updated", onUpdate); };
+  }, [user]);
+
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
@@ -824,11 +845,16 @@ const Navbar = ({ lang = "lv" }: NavbarProps) => {
           </Link>
           <Link
             to="/grozs"
-            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-medium text-white/80 hover:text-white hover:bg-white/5 transition-colors border border-white/15"
+            className="relative inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-medium text-white/80 hover:text-white hover:bg-white/5 transition-colors border border-white/15"
             aria-label="Grozs"
           >
             <ShoppingCart size={14} />
             <span className="hidden sm:inline">Grozs</span>
+            {cartCount > 0 && (
+              <span className="absolute -top-1.5 -right-1.5 min-w-[18px] h-[18px] px-1 rounded-full bg-primary text-primary-foreground text-[10px] font-semibold flex items-center justify-center leading-none">
+                {cartCount}
+              </span>
+            )}
           </Link>
           <Link
             to={user ? "/account" : "/auth"}
