@@ -25,6 +25,17 @@ interface CartLine {
 const formatPrice = (cents: number, currency = "EUR") =>
   new Intl.NumberFormat("lv-LV", { style: "currency", currency }).format(cents / 100);
 
+export const SHIPPING_OPTIONS = [
+  { id: "pickup", label: "Izņemt uz vietas — Kandavas iela 29A, Rīga", cents: 0 },
+  { id: "venipak_pakomats", label: "Venipak pakomāts", cents: 1000 },
+  { id: "courier_riga", label: "Mūsu piegāde Rīgā", cents: 3000 },
+  { id: "venipak_lv", label: "Venipak Latvija", cents: 5500 },
+  { id: "venipak_baltic", label: "Venipak Baltija", cents: 6000 },
+  { id: "venipak_scandi", label: "Venipak Skandināvija", cents: 8000 },
+  { id: "venipak_eu", label: "Venipak Eiropa", cents: 10000 },
+  { id: "venipak_world", label: "Venipak Pasaule", cents: 20000 },
+] as const;
+
 const Grozs = () => {
   const { user, loading: authLoading } = useAuth();
   const navigate = useNavigate();
@@ -32,6 +43,9 @@ const Grozs = () => {
   const [items, setItems] = useState<CartLine[]>([]);
   const [loading, setLoading] = useState(true);
   const [busyId, setBusyId] = useState<string | null>(null);
+  const [shippingId, setShippingId] = useState<string>(() =>
+    sessionStorage.getItem("shipping_id") || "pickup"
+  );
 
   useSeo({
     title: "Grozs — Luxury Chocolate",
@@ -42,6 +56,8 @@ const Grozs = () => {
   useEffect(() => {
     if (!authLoading && !user) navigate("/auth?redirect=/grozs", { replace: true });
   }, [authLoading, user, navigate]);
+
+  const shipping = SHIPPING_OPTIONS.find((o) => o.id === shippingId) ?? SHIPPING_OPTIONS[0];
 
   const load = async () => {
     if (!user) return;
