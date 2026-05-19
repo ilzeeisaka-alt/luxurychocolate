@@ -29,6 +29,7 @@ const navItems: Record<Lang, NavItem[]> = expandLangs({
     { label: "Šokolādes grāmata", to: "/sokolades-gramata" },
     { label: "Dāvanu idejas", to: "/korporativo-davanu-idejas" },
     { label: "Blogs", to: "/blogs" },
+    { label: "Atsauksmes", to: "/atsauksmes" },
     { label: "Veikals", to: "/veikals" },
     { label: "VIP dāvanas", to: "#vip" },
     { label: "Suvenīri", to: "#suveniri" },

@@ -18,6 +18,7 @@ const KukuSokoladesVeikals = lazy(() => import("./pages/KukuSokoladesVeikals.tsx
 const Veikals = lazy(() => import("./pages/Veikals.tsx"));
 const VeikalsProduct = lazy(() => import("./pages/VeikalsProduct.tsx"));
 const Grozs = lazy(() => import("./pages/Grozs.tsx"));
+const Atsauksmes = lazy(() => import("./pages/Atsauksmes.tsx"));
 const Kase = lazy(() => import("./pages/Kase.tsx"));
 const CheckoutReturn = lazy(() => import("./pages/CheckoutReturn.tsx"));
 const OrderTracking = lazy(() => import("./pages/OrderTracking.tsx"));
@@ -118,6 +119,7 @@ const App = () => (
             <Route path="/veikals" element={<Veikals />} />
             <Route path="/veikals/:slug" element={<VeikalsProduct />} />
             <Route path="/grozs" element={<Grozs />} />
+            <Route path="/atsauksmes" element={<Atsauksmes />} />
             <Route path="/kase" element={<Kase />} />
             <Route path="/checkout/return" element={<CheckoutReturn />} />
             <Route path="/track" element={<OrderTracking />} />
