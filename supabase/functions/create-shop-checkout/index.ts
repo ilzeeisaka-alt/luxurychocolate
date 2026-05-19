@@ -175,6 +175,8 @@ serve(async (req) => {
         userId: user.id,
         order_id: order.id,
         product_type: "shop_order",
+        shipping_id: shippingId ?? "pickup",
+        shipping_label: shipping.label,
       },
     });
 
