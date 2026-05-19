@@ -22,6 +22,17 @@ const EU_COUNTRIES = [
   "CZ","SK","HU","RO","BG","HR","SI","GR","PT","IE","LU","MT","CY","IS","GB",
 ];
 
+const SHIPPING_OPTIONS: Record<string, { label: string; cents: number }> = {
+  pickup: { label: "Izņemt uz vietas — Kandavas iela 29A, Rīga", cents: 0 },
+  venipak_pakomats: { label: "Venipak pakomāts", cents: 1000 },
+  courier_riga: { label: "Mūsu piegāde Rīgā", cents: 3000 },
+  venipak_lv: { label: "Venipak Latvija", cents: 5500 },
+  venipak_baltic: { label: "Venipak Baltija", cents: 6000 },
+  venipak_scandi: { label: "Venipak Skandināvija", cents: 8000 },
+  venipak_eu: { label: "Venipak Eiropa", cents: 10000 },
+  venipak_world: { label: "Venipak Pasaule", cents: 20000 },
+};
+
 serve(async (req) => {
   if (req.method === "OPTIONS") return new Response(null, { headers: corsHeaders });
 
