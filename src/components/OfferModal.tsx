@@ -199,7 +199,7 @@ const OfferModal = ({ open, onOpenChange, autoOpenUpload, initialFile }: OfferMo
 
   return (
     <Dialog open={open} onOpenChange={handleOpenChange}>
-      <DialogContent className="sm:max-w-md bg-card border-border">
+      <DialogContent className="sm:max-w-md bg-card border-border max-h-[90vh] overflow-y-auto">
         <DialogHeader>
           <DialogTitle className="text-2xl text-foreground">Saņemt piedāvājumu</DialogTitle>
           <p className="text-sm text-muted-foreground mt-1">
