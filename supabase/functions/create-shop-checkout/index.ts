@@ -45,8 +45,10 @@ serve(async (req) => {
     if (authErr || !userData.user) throw new Error("Unauthorized");
     const user = userData.user;
 
-    const { environment, returnUrl } = await req.json();
+    const { environment, returnUrl, shippingId } = await req.json();
     const env = (environment || "sandbox") as StripeEnv;
+    const shipping = SHIPPING_OPTIONS[shippingId as string] ?? SHIPPING_OPTIONS.pickup;
+    const isPickup = (shippingId ?? "pickup") === "pickup";
 
     // Load cart
     const { data: cart, error: cartErr } = await supabaseAdmin
