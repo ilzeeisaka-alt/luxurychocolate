@@ -106,8 +106,8 @@ serve(async (req) => {
         customer_phone: profile?.phone || null,
         currency,
         subtotal_cents: subtotalCents,
-        total_cents: subtotalCents,
-      })
+        total_cents: subtotalCents + shipping.cents,
+        notes: `Piegāde: ${shipping.label}`,
       .select()
       .single();
 
