@@ -751,6 +751,26 @@ const Navbar = ({ lang = "lv" }: NavbarProps) => {
     setMobileOpen(false);
   }, [pathname]);
 
+  // Cart count
+  const [cartCount, setCartCount] = useState(0);
+  useEffect(() => {
+    if (!user) { setCartCount(0); return; }
+    let cancelled = false;
+    const fetchCount = async () => {
+      const { data } = await supabase
+        .from("cart_items")
+        .select("quantity")
+        .eq("user_id", user.id);
+      if (cancelled) return;
+      const total = (data ?? []).reduce((s, r: { quantity: number }) => s + (r.quantity || 0), 0);
+      setCartCount(total);
+    };
+    fetchCount();
+    const onUpdate = () => fetchCount();
+    window.addEventListener("cart-updated", onUpdate);
+    return () => { cancelled = true; window.removeEventListener("cart-updated", onUpdate); };
+  }, [user]);
+
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
