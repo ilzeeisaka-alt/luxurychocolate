@@ -57,6 +57,11 @@ const OfferModal = ({ open, onOpenChange, autoOpenUpload, initialFile }: OfferMo
     } else if (isPdf) {
       const url = URL.createObjectURL(file);
       setLogoPdfPreview(url);
+    } else {
+      // Generic fallback: let browser try to render (works for many formats, falls back gracefully)
+      const url = URL.createObjectURL(file);
+      setLogoObjectUrl(url);
+      setLogoObjectMime(file.type || 'application/octet-stream');
     }
   };
 
