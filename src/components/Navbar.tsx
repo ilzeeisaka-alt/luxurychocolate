@@ -7,6 +7,7 @@ import NewsletterSignup from "@/components/NewsletterSignup";
 import type { Lang } from "@/i18n/types";
 import { expandLangs } from "@/i18n/expandLangs";
 import { useAuth } from "@/hooks/useAuth";
+import { supabase } from "@/integrations/supabase/client";
 
 interface NavItem {
   label: string;
