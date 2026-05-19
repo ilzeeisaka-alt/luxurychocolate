@@ -845,11 +845,16 @@ const Navbar = ({ lang = "lv" }: NavbarProps) => {
           </Link>
           <Link
             to="/grozs"
-            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-medium text-white/80 hover:text-white hover:bg-white/5 transition-colors border border-white/15"
+            className="relative inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-medium text-white/80 hover:text-white hover:bg-white/5 transition-colors border border-white/15"
             aria-label="Grozs"
           >
             <ShoppingCart size={14} />
             <span className="hidden sm:inline">Grozs</span>
+            {cartCount > 0 && (
+              <span className="absolute -top-1.5 -right-1.5 min-w-[18px] h-[18px] px-1 rounded-full bg-primary text-primary-foreground text-[10px] font-semibold flex items-center justify-center leading-none">
+                {cartCount}
+              </span>
+            )}
           </Link>
           <Link
             to={user ? "/account" : "/auth"}
