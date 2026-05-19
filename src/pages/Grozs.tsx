@@ -226,6 +226,41 @@ const Grozs = () => {
 
             <aside className="bg-card rounded-xl p-6 border border-border h-fit lg:sticky lg:top-24">
               <h2 className="text-lg text-foreground mb-4">Pasūtījuma kopsavilkums</h2>
+
+              <div className="mb-4">
+                <label className="block text-sm font-medium text-foreground mb-2">Piegāde</label>
+                <div className="space-y-1.5">
+                  {SHIPPING_OPTIONS.map((o) => (
+                    <label
+                      key={o.id}
+                      className={`flex items-start gap-2 p-2 rounded-md border cursor-pointer text-xs transition-colors ${
+                        shippingId === o.id
+                          ? "border-primary bg-primary/5"
+                          : "border-border hover:bg-muted"
+                      }`}
+                    >
+                      <input
+                        type="radio"
+                        name="shipping"
+                        value={o.id}
+                        checked={shippingId === o.id}
+                        onChange={() => {
+                          setShippingId(o.id);
+                          sessionStorage.setItem("shipping_id", o.id);
+                        }}
+                        className="mt-0.5"
+                      />
+                      <span className="flex-1 flex justify-between gap-2">
+                        <span>{o.label}</span>
+                        <span className="font-medium whitespace-nowrap">
+                          {o.cents === 0 ? "Bezmaksas" : formatPrice(o.cents, currency)}
+                        </span>
+                      </span>
+                    </label>
+                  ))}
+                </div>
+              </div>
+
               <div className="space-y-2 text-sm">
                 <div className="flex justify-between text-muted-foreground">
                   <span>Starpsumma ({items.reduce((s, i) => s + i.quantity, 0)} preces)</span>
@@ -233,11 +268,11 @@ const Grozs = () => {
                 </div>
                 <div className="flex justify-between text-muted-foreground">
                   <span>Piegāde</span>
-                  <span className="text-xs">aprēķina kasē</span>
+                  <span>{shipping.cents === 0 ? "Bezmaksas" : formatPrice(shipping.cents, currency)}</span>
                 </div>
                 <div className="flex justify-between text-base font-medium text-foreground pt-3 border-t border-border">
                   <span>Kopā</span>
-                  <span className="text-primary">{formatPrice(subtotal, currency)}</span>
+                  <span className="text-primary">{formatPrice(subtotal + shipping.cents, currency)}</span>
                 </div>
                 <p className="text-xs text-muted-foreground">PVN iekļauts</p>
               </div>
