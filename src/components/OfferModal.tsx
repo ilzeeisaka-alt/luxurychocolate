@@ -39,6 +39,8 @@ const OfferModal = ({ open, onOpenChange, autoOpenUpload, initialFile }: OfferMo
   const [logoFile, setLogoFile] = useState<File | null>(null);
   const [logoPreview, setLogoPreview] = useState<string | null>(null);
   const [logoPdfPreview, setLogoPdfPreview] = useState<string | null>(null);
+  const [logoObjectUrl, setLogoObjectUrl] = useState<string | null>(null);
+  const [logoObjectMime, setLogoObjectMime] = useState<string>("");
   const [usageType, setUsageType] = useState<string>("");
   const [eventDate, setEventDate] = useState<Date | undefined>();
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -55,6 +57,11 @@ const OfferModal = ({ open, onOpenChange, autoOpenUpload, initialFile }: OfferMo
     } else if (isPdf) {
       const url = URL.createObjectURL(file);
       setLogoPdfPreview(url);
+    } else {
+      // Generic fallback: let browser try to render (works for many formats, falls back gracefully)
+      const url = URL.createObjectURL(file);
+      setLogoObjectUrl(url);
+      setLogoObjectMime(file.type || 'application/octet-stream');
     }
   };
 
@@ -69,8 +76,11 @@ const OfferModal = ({ open, onOpenChange, autoOpenUpload, initialFile }: OfferMo
   }, [open, autoOpenUpload, initialFile]);
 
   useEffect(() => {
-    return () => { if (logoPdfPreview) URL.revokeObjectURL(logoPdfPreview); };
-  }, [logoPdfPreview]);
+    return () => {
+      if (logoPdfPreview) URL.revokeObjectURL(logoPdfPreview);
+      if (logoObjectUrl) URL.revokeObjectURL(logoObjectUrl);
+    };
+  }, [logoPdfPreview, logoObjectUrl]);
 
   const resetAll = () => {
     removeLogo();
@@ -104,6 +114,7 @@ const OfferModal = ({ open, onOpenChange, autoOpenUpload, initialFile }: OfferMo
     setLogoFile(file);
     setLogoPreview(null);
     if (logoPdfPreview) { URL.revokeObjectURL(logoPdfPreview); setLogoPdfPreview(null); }
+    if (logoObjectUrl) { URL.revokeObjectURL(logoObjectUrl); setLogoObjectUrl(null); setLogoObjectMime(""); }
     generatePreview(file);
   };
 
@@ -111,6 +122,7 @@ const OfferModal = ({ open, onOpenChange, autoOpenUpload, initialFile }: OfferMo
     setLogoFile(null);
     setLogoPreview(null);
     if (logoPdfPreview) { URL.revokeObjectURL(logoPdfPreview); setLogoPdfPreview(null); }
+    if (logoObjectUrl) { URL.revokeObjectURL(logoObjectUrl); setLogoObjectUrl(null); setLogoObjectMime(""); }
     if (fileInputRef.current) fileInputRef.current.value = '';
   };
 
@@ -384,6 +396,19 @@ const OfferModal = ({ open, onOpenChange, autoOpenUpload, initialFile }: OfferMo
                           title="PDF priekšskatījums"
                           className="w-full h-64"
                         />
+                      </div>
+                    )}
+                    {logoObjectUrl && (
+                      <div className="mt-3 rounded overflow-hidden border border-border bg-background">
+                        <object
+                          data={logoObjectUrl}
+                          type={logoObjectMime}
+                          className="w-full h-64"
+                        >
+                          <div className="p-4 text-xs text-muted-foreground text-center">
+                            Šim formātam ({logoFile.name.split('.').pop()?.toUpperCase()}) nav iespējams parādīt priekšskatījumu pārlūkā. Fails tiks nosūtīts mūsu dizaina komandai apstrādei.
+                          </div>
+                        </object>
                       </div>
                     )}
                   </div>
