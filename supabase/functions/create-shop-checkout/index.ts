@@ -147,11 +147,25 @@ serve(async (req) => {
       };
     });
 
+    if (shipping.cents > 0) {
+      stripeLineItems.push({
+        price_data: {
+          currency: (currency || "EUR").toLowerCase(),
+          product_data: { name: `Piegāde: ${shipping.label}` },
+          unit_amount: shipping.cents,
+          tax_behavior: "inclusive" as const,
+        },
+        quantity: 1,
+      });
+    }
+
     const session = await stripe.checkout.sessions.create({
       line_items: stripeLineItems,
       mode: "payment",
       ui_mode: "embedded",
-      shipping_address_collection: { allowed_countries: EU_COUNTRIES as any },
+      ...(isPickup
+        ? {}
+        : { shipping_address_collection: { allowed_countries: EU_COUNTRIES as any } }),
       phone_number_collection: { enabled: true },
       return_url:
         returnUrl ||
