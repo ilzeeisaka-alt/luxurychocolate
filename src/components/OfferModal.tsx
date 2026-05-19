@@ -76,8 +76,11 @@ const OfferModal = ({ open, onOpenChange, autoOpenUpload, initialFile }: OfferMo
   }, [open, autoOpenUpload, initialFile]);
 
   useEffect(() => {
-    return () => { if (logoPdfPreview) URL.revokeObjectURL(logoPdfPreview); };
-  }, [logoPdfPreview]);
+    return () => {
+      if (logoPdfPreview) URL.revokeObjectURL(logoPdfPreview);
+      if (logoObjectUrl) URL.revokeObjectURL(logoObjectUrl);
+    };
+  }, [logoPdfPreview, logoObjectUrl]);
 
   const resetAll = () => {
     removeLogo();
@@ -111,6 +114,7 @@ const OfferModal = ({ open, onOpenChange, autoOpenUpload, initialFile }: OfferMo
     setLogoFile(file);
     setLogoPreview(null);
     if (logoPdfPreview) { URL.revokeObjectURL(logoPdfPreview); setLogoPdfPreview(null); }
+    if (logoObjectUrl) { URL.revokeObjectURL(logoObjectUrl); setLogoObjectUrl(null); setLogoObjectMime(""); }
     generatePreview(file);
   };
 
@@ -118,6 +122,7 @@ const OfferModal = ({ open, onOpenChange, autoOpenUpload, initialFile }: OfferMo
     setLogoFile(null);
     setLogoPreview(null);
     if (logoPdfPreview) { URL.revokeObjectURL(logoPdfPreview); setLogoPdfPreview(null); }
+    if (logoObjectUrl) { URL.revokeObjectURL(logoObjectUrl); setLogoObjectUrl(null); setLogoObjectMime(""); }
     if (fileInputRef.current) fileInputRef.current.value = '';
   };
 
