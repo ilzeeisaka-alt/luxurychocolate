@@ -105,14 +105,8 @@ const ProductLogoModal = ({ open, onOpenChange, productId, productName, initialF
     setLoading(true);
     try {
       const formData = new FormData(e.currentTarget);
-      const notesParts: string[] = [];
-      const size = (formData.get('size') as string || '').trim();
-      const packaging = (formData.get('packaging') as string || '').trim();
       const message = (formData.get('message') as string || '').trim();
-      if (size) notesParts.push(`Izmērs: ${size}`);
-      if (packaging) notesParts.push(`Iepakojums: ${packaging}`);
-      if (message) notesParts.push(`Piezīmes: ${message}`);
-      const notes = notesParts.join(' | ');
+      const notes = message ? `Piezīmes: ${message}` : '';
 
       // Upload logo
       const fileExt = logoFile.name.split('.').pop();
@@ -240,22 +234,6 @@ const ProductLogoModal = ({ open, onOpenChange, productId, productName, initialF
             </div>
           </div>
 
-          <input
-            name="size"
-            type="text"
-            placeholder="Vēlamais izmērs (neobligāti, piem., 5×5 cm)"
-            maxLength={50}
-            className={inputClasses}
-            style={{ boxShadow: "0 0 0 1px hsl(var(--border))" }}
-          />
-          <input
-            name="packaging"
-            type="text"
-            placeholder="Vēlamais iepakojums (neobligāti)"
-            maxLength={200}
-            className={inputClasses}
-            style={{ boxShadow: "0 0 0 1px hsl(var(--border))" }}
-          />
           <textarea
             name="message"
             placeholder="Piezīmes pasūtījumam (neobligāti)"
