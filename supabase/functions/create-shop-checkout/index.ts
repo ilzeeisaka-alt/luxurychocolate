@@ -179,6 +179,9 @@ serve(async (req) => {
         ? {}
         : { shipping_address_collection: { allowed_countries: EU_COUNTRIES as any } }),
       phone_number_collection: { enabled: true },
+      billing_address_collection: "required",
+      tax_id_collection: { enabled: true, required: "if_supported" },
+      invoice_creation: { enabled: true },
       return_url:
         returnUrl ||
         `${req.headers.get("origin")}/checkout/return?session_id={CHECKOUT_SESSION_ID}`,
