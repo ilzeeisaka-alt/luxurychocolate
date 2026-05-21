@@ -203,7 +203,7 @@ serve(async (req) => {
     const offerSend = await sendEmail(
       resendApiKey,
       fromEmail,
-      ["ilze.eisaka@gmail.com"],
+      ["info@luxurychocolate.lv", "ilze.eisaka@gmail.com"],
       `Jauns pieprasījums no ${safeCompany} — ${safeName}`,
       htmlBody,
       email,
