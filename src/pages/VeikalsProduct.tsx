@@ -4,7 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 import { ChevronLeft, ShoppingCart, Upload, Check } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import FooterSection from "@/components/FooterSection";
-import OfferModal from "@/components/OfferModal";
+import ProductLogoModal from "@/components/ProductLogoModal";
 import { supabase } from "@/integrations/supabase/client";
 import { useSeo } from "@/hooks/useSeo";
 import { useAuth } from "@/hooks/useAuth";
@@ -301,9 +301,11 @@ const VeikalsProduct = () => {
         </div>
       </main>
       <FooterSection />
-      <OfferModal
+      <ProductLogoModal
         open={offerOpen}
         onOpenChange={(v) => { setOfferOpen(v); if (!v) setPendingLogo(null); }}
+        productId={product.id}
+        productName={product.name}
         initialFile={pendingLogo}
       />
 

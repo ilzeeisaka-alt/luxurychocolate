@@ -60,6 +60,9 @@ export type Database = {
         Row: {
           created_at: string
           id: string
+          logo_filename: string | null
+          logo_url: string | null
+          notes: string | null
           product_id: string
           quantity: number
           updated_at: string
@@ -68,6 +71,9 @@ export type Database = {
         Insert: {
           created_at?: string
           id?: string
+          logo_filename?: string | null
+          logo_url?: string | null
+          notes?: string | null
           product_id: string
           quantity?: number
           updated_at?: string
@@ -76,6 +82,9 @@ export type Database = {
         Update: {
           created_at?: string
           id?: string
+          logo_filename?: string | null
+          logo_url?: string | null
+          notes?: string | null
           product_id?: string
           quantity?: number
           updated_at?: string
