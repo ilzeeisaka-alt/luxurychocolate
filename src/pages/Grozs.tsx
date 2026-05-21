@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Minus, Plus, Trash2, ShoppingBag, ChevronLeft } from "lucide-react";
 import Navbar from "@/components/Navbar";
@@ -22,10 +22,23 @@ interface CartLine {
   };
 }
 
+type ProductFromCart = Omit<CartLine["product"], "image_url">;
+
+interface CartQueryRow {
+  id: string;
+  quantity: number;
+  product: ProductFromCart | null;
+}
+
+interface ProductImageRow {
+  product_id: string;
+  url: string;
+}
+
 const formatPrice = (cents: number, currency = "EUR") =>
   new Intl.NumberFormat("lv-LV", { style: "currency", currency }).format(cents / 100);
 
-export const SHIPPING_OPTIONS = [
+const SHIPPING_OPTIONS = [
   { id: "pickup", label: "Izņemt uz vietas — Kandavas iela 29A, Rīga", cents: 0 },
   { id: "venipak_pakomats", label: "Venipak pakomāts", cents: 1000 },
   { id: "courier_riga", label: "Mūsu piegāde Rīgā", cents: 3000 },
@@ -59,7 +72,7 @@ const Grozs = () => {
 
   const shipping = SHIPPING_OPTIONS.find((o) => o.id === shippingId) ?? SHIPPING_OPTIONS[0];
 
-  const load = async () => {
+  const load = useCallback(async () => {
     if (!user) return;
     setLoading(true);
     const { data, error } = await supabase
@@ -72,9 +85,11 @@ const Grozs = () => {
       setLoading(false);
       return;
     }
-    const rows = (data ?? []).filter((r: any) => r.product);
-    const productIds = rows.map((r: any) => r.product.id);
-    let imageMap = new Map<string, string>();
+    const rows = ((data ?? []) as CartQueryRow[]).filter(
+      (r): r is CartQueryRow & { product: ProductFromCart } => Boolean(r.product),
+    );
+    const productIds = rows.map((r) => r.product.id);
+    const imageMap = new Map<string, string>();
     if (productIds.length) {
       const { data: imgs } = await supabase
         .from("product_images")
@@ -82,23 +97,23 @@ const Grozs = () => {
         .in("product_id", productIds)
         .order("is_primary", { ascending: false })
         .order("sort_order", { ascending: true });
-      (imgs ?? []).forEach((i) => {
+      ((imgs ?? []) as ProductImageRow[]).forEach((i) => {
         if (!imageMap.has(i.product_id)) imageMap.set(i.product_id, i.url);
       });
     }
     setItems(
-      rows.map((r: any) => ({
+      rows.map((r) => ({
         id: r.id,
         quantity: r.quantity,
         product: { ...r.product, image_url: imageMap.get(r.product.id) ?? null },
       })),
     );
     setLoading(false);
-  };
+  }, [toast, user]);
 
   useEffect(() => {
     if (user) load();
-  }, [user]);
+  }, [load, user]);
 
   const updateQty = async (id: string, qty: number) => {
     if (qty < 1) return;
@@ -119,6 +134,8 @@ const Grozs = () => {
 
   const subtotal = items.reduce((s, i) => s + i.product.price_cents * i.quantity, 0);
   const currency = items[0]?.product.currency ?? "EUR";
+  const total = subtotal + shipping.cents;
+  const isBelowPaymentMinimum = total > 0 && total < 50;
 
   return (
     <div className="min-h-screen bg-background">
@@ -272,14 +289,30 @@ const Grozs = () => {
                 </div>
                 <div className="flex justify-between text-base font-medium text-foreground pt-3 border-t border-border">
                   <span>Kopā</span>
-                  <span className="text-primary">{formatPrice(subtotal + shipping.cents, currency)}</span>
+                  <span className="text-primary">{formatPrice(total, currency)}</span>
                 </div>
                 <p className="text-xs text-muted-foreground">PVN iekļauts</p>
+                {isBelowPaymentMinimum && (
+                  <p className="rounded-md border border-destructive/30 bg-destructive/10 p-3 text-xs text-destructive">
+                    Kartes maksājuma minimums ir €0.50. Pievieno vēl preces vai izvēlies piegādi.
+                  </p>
+                )}
               </div>
               <button
                 type="button"
-                onClick={() => navigate("/kase")}
-                className="w-full mt-6 bg-primary text-primary-foreground rounded-lg h-12 text-sm font-medium uppercase tracking-wide hover:brightness-110 active:scale-[0.98] transition-all"
+                disabled={isBelowPaymentMinimum}
+                onClick={() => {
+                  if (isBelowPaymentMinimum) {
+                    toast({
+                      title: "Maksājums nav pieejams",
+                      description: "Kartes maksājuma minimums ir €0.50.",
+                      variant: "destructive",
+                    });
+                    return;
+                  }
+                  navigate("/kase");
+                }}
+                className="w-full mt-6 bg-primary text-primary-foreground rounded-lg h-12 text-sm font-medium uppercase tracking-wide hover:brightness-110 active:scale-[0.98] transition-all disabled:cursor-not-allowed disabled:opacity-50"
               >
                 Doties uz kasi
               </button>

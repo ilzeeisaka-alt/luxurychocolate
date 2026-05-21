@@ -10,6 +10,23 @@ import { useSeo } from "@/hooks/useSeo";
 import { getStripe, stripeEnvironment } from "@/lib/stripe";
 import { PaymentTestModeBanner } from "@/components/PaymentTestModeBanner";
 
+const getCheckoutErrorMessage = async (data: unknown, error: unknown) => {
+  const dataError = (data as { error?: string } | null)?.error;
+  if (dataError) return dataError;
+
+  const response = (error as { context?: Response } | null)?.context;
+  if (response?.clone) {
+    try {
+      const body = (await response.clone().json()) as { error?: string };
+      if (body?.error) return body.error;
+    } catch {
+      // Fall back to the generic SDK message below.
+    }
+  }
+
+  return (error as Error | null)?.message || "Neizdevās izveidot maksājuma sesiju";
+};
+
 const Kase = () => {
   const { user, loading: authLoading } = useAuth();
   const navigate = useNavigate();
@@ -39,7 +56,7 @@ const Kase = () => {
           },
         });
         if (error || !data?.clientSecret) {
-          const msg = (data as any)?.error || error?.message || "Neizdevās izveidot maksājuma sesiju";
+          const msg = await getCheckoutErrorMessage(data, error);
           setError(msg);
           throw new Error(msg);
         }
