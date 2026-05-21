@@ -306,6 +306,7 @@ const App = () => (
         </AuthProvider>
       </BrowserRouter>
       <CookieConsent />
+      <ExitIntentPopup />
     </TooltipProvider>
   </QueryClientProvider>
 );
