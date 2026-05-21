@@ -5,6 +5,7 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import CookieConsent from "./components/CookieConsent.tsx";
+import ExitIntentPopup from "./components/ExitIntentPopup.tsx";
 import { AuthProvider } from "./hooks/useAuth";
 import { OrderNotificationsListener } from "./hooks/useOrderNotifications";
 
