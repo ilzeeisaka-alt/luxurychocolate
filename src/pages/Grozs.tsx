@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Minus, Plus, Trash2, ShoppingBag, ChevronLeft } from "lucide-react";
 import Navbar from "@/components/Navbar";
@@ -22,10 +22,23 @@ interface CartLine {
   };
 }
 
+type ProductFromCart = Omit<CartLine["product"], "image_url">;
+
+interface CartQueryRow {
+  id: string;
+  quantity: number;
+  product: ProductFromCart | null;
+}
+
+interface ProductImageRow {
+  product_id: string;
+  url: string;
+}
+
 const formatPrice = (cents: number, currency = "EUR") =>
   new Intl.NumberFormat("lv-LV", { style: "currency", currency }).format(cents / 100);
 
-export const SHIPPING_OPTIONS = [
+const SHIPPING_OPTIONS = [
   { id: "pickup", label: "Izņemt uz vietas — Kandavas iela 29A, Rīga", cents: 0 },
   { id: "venipak_pakomats", label: "Venipak pakomāts", cents: 1000 },
   { id: "courier_riga", label: "Mūsu piegāde Rīgā", cents: 3000 },
@@ -59,7 +72,7 @@ const Grozs = () => {
 
   const shipping = SHIPPING_OPTIONS.find((o) => o.id === shippingId) ?? SHIPPING_OPTIONS[0];
 
-  const load = async () => {
+  const load = useCallback(async () => {
     if (!user) return;
     setLoading(true);
     const { data, error } = await supabase
@@ -72,9 +85,11 @@ const Grozs = () => {
       setLoading(false);
       return;
     }
-    const rows = (data ?? []).filter((r: any) => r.product);
-    const productIds = rows.map((r: any) => r.product.id);
-    let imageMap = new Map<string, string>();
+    const rows = ((data ?? []) as CartQueryRow[]).filter(
+      (r): r is CartQueryRow & { product: ProductFromCart } => Boolean(r.product),
+    );
+    const productIds = rows.map((r) => r.product.id);
+    const imageMap = new Map<string, string>();
     if (productIds.length) {
       const { data: imgs } = await supabase
         .from("product_images")
@@ -82,23 +97,23 @@ const Grozs = () => {
         .in("product_id", productIds)
         .order("is_primary", { ascending: false })
         .order("sort_order", { ascending: true });
-      (imgs ?? []).forEach((i) => {
+      ((imgs ?? []) as ProductImageRow[]).forEach((i) => {
         if (!imageMap.has(i.product_id)) imageMap.set(i.product_id, i.url);
       });
     }
     setItems(
-      rows.map((r: any) => ({
+      rows.map((r) => ({
         id: r.id,
         quantity: r.quantity,
         product: { ...r.product, image_url: imageMap.get(r.product.id) ?? null },
       })),
     );
     setLoading(false);
-  };
+  }, [toast, user]);
 
   useEffect(() => {
     if (user) load();
-  }, [user]);
+  }, [load, user]);
 
   const updateQty = async (id: string, qty: number) => {
     if (qty < 1) return;
