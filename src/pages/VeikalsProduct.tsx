@@ -111,6 +111,7 @@ const VeikalsProduct = () => {
         .select("id, quantity")
         .eq("user_id", user.id)
         .eq("product_id", product.id)
+        .is("logo_url", null)
         .maybeSingle();
       if (fetchError) throw fetchError;
 
