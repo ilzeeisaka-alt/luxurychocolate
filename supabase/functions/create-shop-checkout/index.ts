@@ -53,7 +53,7 @@ serve(async (req) => {
     // Load cart
     const { data: cart, error: cartErr } = await supabaseAdmin
       .from("cart_items")
-      .select("id, quantity, product:products(id, slug, name, price_cents, currency, in_stock, published)")
+      .select("id, quantity, logo_url, logo_filename, product:products(id, slug, name, price_cents, currency, in_stock, published)")
       .eq("user_id", user.id);
 
     if (cartErr) throw cartErr;
