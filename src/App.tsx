@@ -20,6 +20,7 @@ const VeikalsProduct = lazy(() => import("./pages/VeikalsProduct.tsx"));
 const Grozs = lazy(() => import("./pages/Grozs.tsx"));
 const Atsauksmes = lazy(() => import("./pages/Atsauksmes.tsx"));
 const Kase = lazy(() => import("./pages/Kase.tsx"));
+const Rekins = lazy(() => import("./pages/Rekins.tsx"));
 const CheckoutReturn = lazy(() => import("./pages/CheckoutReturn.tsx"));
 const OrderTracking = lazy(() => import("./pages/OrderTracking.tsx"));
 const ZiemassvētkuSokolades = lazy(() => import("./pages/ZiemassvētkuSokolades.tsx"));
