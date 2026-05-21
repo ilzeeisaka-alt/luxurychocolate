@@ -140,16 +140,19 @@ serve(async (req) => {
     // Build Stripe line items with price_data (one-off prices)
     const stripe = createStripeClient(env);
     const stripeLineItems = lines.map((l: any) => {
-      const image = imageMap.get(l.product.id);
+      const productImage = imageMap.get(l.product.id);
+      const image = l.logo_url || productImage;
+      const name = l.logo_url ? `${l.product.name} (ar Jūsu logo)` : l.product.name;
+      const description = l.logo_filename ? `Logo: ${l.logo_filename}` : undefined;
       return {
         price_data: {
           currency: (currency || "EUR").toLowerCase(),
           product_data: {
-            name: l.product.name,
+            name,
+            ...(description && { description }),
             ...(image && { images: [image] }),
           },
           unit_amount: l.product.price_cents,
-          // PVN ir iekļauts cenā
           tax_behavior: "inclusive" as const,
         },
         quantity: l.quantity,
