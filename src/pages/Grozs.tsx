@@ -316,6 +316,13 @@ const Grozs = () => {
               >
                 Doties uz kasi
               </button>
+              <button
+                type="button"
+                onClick={() => navigate("/rekins")}
+                className="w-full mt-2 bg-card border border-border text-foreground rounded-lg h-11 text-sm font-medium hover:bg-muted transition-all"
+              >
+                Izveidot / apskatīt rēķinu
+              </button>
             </aside>
           </div>
         )}
