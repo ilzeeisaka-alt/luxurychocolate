@@ -95,6 +95,14 @@ serve(async (req) => {
     const customerName =
       [profile?.first_name, profile?.last_name].filter(Boolean).join(" ").trim() || null;
 
+    const totalCents = subtotalCents + shipping.cents;
+    if (totalCents < 50) {
+      return new Response(
+        JSON.stringify({ error: "Pasūtījuma summa ir pārāk maza (minimums €0.50). Lūdzu pievienojiet vairāk preču vai izvēlieties piegādes veidu." }),
+        { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } },
+      );
+    }
+
     // Create pending order
     const { data: order, error: orderErr } = await supabaseAdmin
       .from("orders")
@@ -108,7 +116,8 @@ serve(async (req) => {
         subtotal_cents: subtotalCents,
         shipping_cents: shipping.cents,
         shipping_method: shipping.label,
-        total_cents: subtotalCents + shipping.cents,
+        total_cents: totalCents,
+      })
       .select()
       .single();
 
