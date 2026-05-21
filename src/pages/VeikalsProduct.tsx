@@ -301,9 +301,11 @@ const VeikalsProduct = () => {
         </div>
       </main>
       <FooterSection />
-      <OfferModal
+      <ProductLogoModal
         open={offerOpen}
         onOpenChange={(v) => { setOfferOpen(v); if (!v) setPendingLogo(null); }}
+        productId={product.id}
+        productName={product.name}
         initialFile={pendingLogo}
       />
 
