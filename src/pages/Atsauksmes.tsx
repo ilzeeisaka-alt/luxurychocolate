@@ -87,6 +87,9 @@ const Atsauksmes = () => {
       return;
     }
     toast({ title: "Paldies!", description: "Tava atsauksme tiks publicēta pēc apstiprināšanas." });
+    supabase.functions.invoke("notify-admin", {
+      body: { type: "review", data: parsed.data },
+    }).catch(() => {});
     setForm({ author_name: "", author_email: "", rating: 5, title: "", content: "" });
   };
 

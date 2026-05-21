@@ -42,6 +42,9 @@ const NewsletterSignup = ({ lang = "lv", source = "footer", compact = false }: N
     toast.success("Paldies! Esi pierakstījies jaunumiem.");
     setDone(true);
     setEmail("");
+    supabase.functions.invoke("notify-admin", {
+      body: { type: "newsletter", data: { email: parsed.data.toLowerCase(), lang, source } },
+    }).catch(() => {});
   };
 
   if (compact) {
