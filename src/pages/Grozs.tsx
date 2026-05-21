@@ -119,6 +119,8 @@ const Grozs = () => {
 
   const subtotal = items.reduce((s, i) => s + i.product.price_cents * i.quantity, 0);
   const currency = items[0]?.product.currency ?? "EUR";
+  const total = subtotal + shipping.cents;
+  const isBelowPaymentMinimum = total > 0 && total < 50;
 
   return (
     <div className="min-h-screen bg-background">
@@ -272,14 +274,30 @@ const Grozs = () => {
                 </div>
                 <div className="flex justify-between text-base font-medium text-foreground pt-3 border-t border-border">
                   <span>Kopā</span>
-                  <span className="text-primary">{formatPrice(subtotal + shipping.cents, currency)}</span>
+                  <span className="text-primary">{formatPrice(total, currency)}</span>
                 </div>
                 <p className="text-xs text-muted-foreground">PVN iekļauts</p>
+                {isBelowPaymentMinimum && (
+                  <p className="rounded-md border border-destructive/30 bg-destructive/10 p-3 text-xs text-destructive">
+                    Kartes maksājuma minimums ir €0.50. Pievieno vēl preces vai izvēlies piegādi.
+                  </p>
+                )}
               </div>
               <button
                 type="button"
-                onClick={() => navigate("/kase")}
-                className="w-full mt-6 bg-primary text-primary-foreground rounded-lg h-12 text-sm font-medium uppercase tracking-wide hover:brightness-110 active:scale-[0.98] transition-all"
+                disabled={isBelowPaymentMinimum}
+                onClick={() => {
+                  if (isBelowPaymentMinimum) {
+                    toast({
+                      title: "Maksājums nav pieejams",
+                      description: "Kartes maksājuma minimums ir €0.50.",
+                      variant: "destructive",
+                    });
+                    return;
+                  }
+                  navigate("/kase");
+                }}
+                className="w-full mt-6 bg-primary text-primary-foreground rounded-lg h-12 text-sm font-medium uppercase tracking-wide hover:brightness-110 active:scale-[0.98] transition-all disabled:cursor-not-allowed disabled:opacity-50"
               >
                 Doties uz kasi
               </button>
