@@ -310,18 +310,22 @@ const Grozs = () => {
                     });
                     return;
                   }
-                  navigate("/kase");
+                  navigate("/rekins");
                 }}
                 className="w-full mt-6 bg-primary text-primary-foreground rounded-lg h-12 text-sm font-medium uppercase tracking-wide hover:brightness-110 active:scale-[0.98] transition-all disabled:cursor-not-allowed disabled:opacity-50"
               >
-                Doties uz kasi
+                Apskatīt rēķinu un apmaksāt
               </button>
+              <p className="text-xs text-muted-foreground text-center mt-2">
+                Pirms apmaksas tiks parādīts rēķins, ko vari saglabāt PDF formātā vai izdrukāt.
+              </p>
               <button
                 type="button"
-                onClick={() => navigate("/rekins")}
-                className="w-full mt-2 bg-card border border-border text-foreground rounded-lg h-11 text-sm font-medium hover:bg-muted transition-all"
+                onClick={() => navigate("/kase")}
+                disabled={isBelowPaymentMinimum}
+                className="w-full mt-3 bg-card border border-border text-muted-foreground rounded-lg h-10 text-xs font-medium hover:bg-muted transition-all disabled:opacity-50"
               >
-                Izveidot / apskatīt rēķinu
+                Izlaist rēķinu un doties tieši uz apmaksu
               </button>
             </aside>
           </div>
