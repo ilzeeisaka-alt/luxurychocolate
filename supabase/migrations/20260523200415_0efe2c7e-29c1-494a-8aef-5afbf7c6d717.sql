@@ -1,0 +1,1 @@
+ALTER TABLE public.newsletter_subscribers ADD COLUMN gdpr_consent BOOLEAN NOT NULL DEFAULT false;

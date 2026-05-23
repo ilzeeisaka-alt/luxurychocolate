@@ -13,6 +13,7 @@ const emailSchema = z.string().trim().email({ message: "Lūdzu, ievadi derīgu e
 const ExitIntentPopup = () => {
   const [open, setOpen] = useState(false);
   const [email, setEmail] = useState("");
+  const [consent, setConsent] = useState(false);
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const [copied, setCopied] = useState(false);
@@ -70,12 +71,16 @@ const ExitIntentPopup = () => {
       toast.error(parsed.error.errors[0].message);
       return;
     }
+    if (!consent) {
+      toast.error("Lūdzu, apstiprini piekrišanu e-pasta saņemšanai.");
+      return;
+    }
     setLoading(true);
     const normalized = parsed.data.toLowerCase();
     const lang = window.location.pathname.split("/")[1] || "lv";
     const { error } = await supabase
       .from("newsletter_subscribers")
-      .insert({ email: normalized, lang, source: "exit-intent" });
+      .insert({ email: normalized, lang, source: "exit-intent", gdpr_consent: true });
     setLoading(false);
 
     if (error && error.code !== "23505") {
@@ -155,6 +160,18 @@ const ExitIntentPopup = () => {
                       disabled={loading}
                     />
                   </div>
+                  <label className="flex items-start gap-2 cursor-pointer select-none">
+                    <input
+                      type="checkbox"
+                      checked={consent}
+                      onChange={(e) => setConsent(e.target.checked)}
+                      className="mt-0.5 h-4 w-4 rounded border-border text-primary focus:ring-primary bg-background"
+                      disabled={loading}
+                    />
+                    <span className="text-xs text-muted-foreground leading-relaxed">
+                      Piekrītu, ka manu e-pasta adresi izmanto, lai sūtītu jaunumus un atlaides piedāvājumus. Varu atrakstīties jebkurā brīdī.
+                    </span>
+                  </label>
                   <button
                     type="submit"
                     disabled={loading}
