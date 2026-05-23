@@ -71,12 +71,16 @@ const ExitIntentPopup = () => {
       toast.error(parsed.error.errors[0].message);
       return;
     }
+    if (!consent) {
+      toast.error("Lūdzu, apstiprini piekrišanu e-pasta saņemšanai.");
+      return;
+    }
     setLoading(true);
     const normalized = parsed.data.toLowerCase();
     const lang = window.location.pathname.split("/")[1] || "lv";
     const { error } = await supabase
       .from("newsletter_subscribers")
-      .insert({ email: normalized, lang, source: "exit-intent" });
+      .insert({ email: normalized, lang, source: "exit-intent", gdpr_consent: true });
     setLoading(false);
 
     if (error && error.code !== "23505") {
