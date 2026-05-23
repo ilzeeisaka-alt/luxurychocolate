@@ -105,6 +105,7 @@ export type Database = {
           confirmed: boolean
           created_at: string
           email: string
+          gdpr_consent: boolean
           id: string
           lang: string
           source: string | null
@@ -114,6 +115,7 @@ export type Database = {
           confirmed?: boolean
           created_at?: string
           email: string
+          gdpr_consent?: boolean
           id?: string
           lang?: string
           source?: string | null
@@ -123,6 +125,7 @@ export type Database = {
           confirmed?: boolean
           created_at?: string
           email?: string
+          gdpr_consent?: boolean
           id?: string
           lang?: string
           source?: string | null
