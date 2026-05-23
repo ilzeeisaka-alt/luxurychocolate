@@ -160,6 +160,18 @@ const ExitIntentPopup = () => {
                       disabled={loading}
                     />
                   </div>
+                  <label className="flex items-start gap-2 cursor-pointer select-none">
+                    <input
+                      type="checkbox"
+                      checked={consent}
+                      onChange={(e) => setConsent(e.target.checked)}
+                      className="mt-0.5 h-4 w-4 rounded border-border text-primary focus:ring-primary bg-background"
+                      disabled={loading}
+                    />
+                    <span className="text-xs text-muted-foreground leading-relaxed">
+                      Piekrītu, ka manu e-pasta adresi izmanto, lai sūtītu jaunumus un atlaides piedāvājumus. Varu atrakstīties jebkurā brīdī.
+                    </span>
+                  </label>
                   <button
                     type="submit"
                     disabled={loading}
