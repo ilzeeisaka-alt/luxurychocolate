@@ -13,6 +13,7 @@ const emailSchema = z.string().trim().email({ message: "Lūdzu, ievadi derīgu e
 const ExitIntentPopup = () => {
   const [open, setOpen] = useState(false);
   const [email, setEmail] = useState("");
+  const [consent, setConsent] = useState(false);
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const [copied, setCopied] = useState(false);
