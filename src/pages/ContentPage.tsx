@@ -28,6 +28,7 @@ const ContentPage = ({ slug: slugProp }: ContentPageProps) => {
   useSeo({
     title: page ? `${page.title} | Luxury Chocolate` : "Luxury Chocolate",
     description: page?.description ?? "Personalizēta šokolāde ar logo - Luxury Chocolate SIA",
+    path: `/${slug}`,
   });
 
   useEffect(() => {
