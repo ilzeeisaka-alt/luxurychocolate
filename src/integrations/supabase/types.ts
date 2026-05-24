@@ -309,6 +309,7 @@ export type Database = {
           created_at: string
           description: string | null
           id: string
+          image_url: string | null
           name: string
           slug: string
           sort_order: number
@@ -318,6 +319,7 @@ export type Database = {
           created_at?: string
           description?: string | null
           id?: string
+          image_url?: string | null
           name: string
           slug: string
           sort_order?: number
@@ -327,6 +329,7 @@ export type Database = {
           created_at?: string
           description?: string | null
           id?: string
+          image_url?: string | null
           name?: string
           slug?: string
           sort_order?: number
@@ -391,6 +394,7 @@ export type Database = {
           published: boolean
           short_description: string | null
           slug: string
+          source_external_id: string | null
           source_url: string | null
           stock_quantity: number | null
           updated_at: string
@@ -415,6 +419,7 @@ export type Database = {
           published?: boolean
           short_description?: string | null
           slug: string
+          source_external_id?: string | null
           source_url?: string | null
           stock_quantity?: number | null
           updated_at?: string
@@ -439,6 +444,7 @@ export type Database = {
           published?: boolean
           short_description?: string | null
           slug?: string
+          source_external_id?: string | null
           source_url?: string | null
           stock_quantity?: number | null
           updated_at?: string
