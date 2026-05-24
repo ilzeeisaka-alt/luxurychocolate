@@ -55,7 +55,7 @@ const ContentPage = ({ slug: slugProp }: ContentPageProps) => {
 
   return (
     <div className="min-h-screen bg-background">
-      <Navbar lang="lv" />
+      <Navbar />
       <main className="container mx-auto px-4 py-16 max-w-3xl">
         {loading && <div className="text-muted-foreground">Ielādē…</div>}
         {notFound && !loading && (
