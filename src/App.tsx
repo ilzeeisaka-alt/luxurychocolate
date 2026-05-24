@@ -36,6 +36,8 @@ const KorporativoDavanuIdejas = lazy(() => import("./pages/KorporativoDavanuIdej
 const SokoladesGramata = lazy(() => import("./pages/SokoladesGramata.tsx"));
 const SokoladePieKafijas = lazy(() => import("./pages/SokoladePieKafijas.tsx"));
 const SokoladeVizitkarte = lazy(() => import("./pages/SokoladeVizitkarte.tsx"));
+const ContentPage = lazy(() => import("./pages/ContentPage.tsx"));
+
 const EnIndex = lazy(() => import("./pages/EnIndex.tsx"));
 const RuIndex = lazy(() => import("./pages/RuIndex.tsx"));
 const EtIndex = lazy(() => import("./pages/EtIndex.tsx"));
