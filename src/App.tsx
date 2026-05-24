@@ -142,6 +142,16 @@ const App = () => (
             <Route path="/sokolades-gramata" element={<SokoladesGramata />} />
             <Route path="/sokolade-pie-kafijas" element={<SokoladePieKafijas />} />
             <Route path="/sokolade-vizitkarte" element={<SokoladeVizitkarte />} />
+            {/* Imported content pages */}
+            <Route path="/par-mums" element={<ContentPage slug="par-mums" />} />
+            <Route path="/ko-mes-daram" element={<ContentPage slug="ko-mes-daram" />} />
+            <Route path="/cenu-lapa" element={<ContentPage slug="cenu-lapa" />} />
+            <Route path="/ligums" element={<ContentPage slug="ligums" />} />
+            <Route path="/agents-007" element={<ContentPage slug="agents-007" />} />
+            <Route path="/engelu-birojs" element={<ContentPage slug="engelu-birojs" />} />
+            <Route path="/milestiba-ir-ka-uguns" element={<ContentPage slug="milestiba-ir-ka-uguns" />} />
+            <Route path="/glabasana" element={<ContentPage slug="glabasana" />} />
+            <Route path="/drukasanas-noteikumi" element={<ContentPage slug="drukasanas-noteikumi" />} />
             {/* EN routes */}
             <Route path="/en" element={<EnIndex />} />
             <Route path="/en/corporate-gift-ideas" element={<EnGiftIdeas />} />
