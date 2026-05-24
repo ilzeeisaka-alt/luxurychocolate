@@ -73,7 +73,7 @@ const ContentPage = ({ slug: slugProp }: ContentPageProps) => {
           </article>
         )}
       </main>
-      <FooterSection lang="lv" />
+      <FooterSection />
     </div>
   );
 };
