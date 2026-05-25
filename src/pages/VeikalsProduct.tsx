@@ -95,6 +95,13 @@ const VeikalsProduct = () => {
 
   const { product, images } = data;
   const mainImage = images[activeImg]?.url;
+  const localizedName = pickI18n(product.name_i18n as Record<string, unknown> | null, lang, product.name);
+  const localizedShort = pickI18n(product.short_description_i18n as Record<string, unknown> | null, lang, product.short_description ?? "");
+  const localizedDesc = pickI18n(product.description_i18n as Record<string, unknown> | null, lang, product.description ?? "");
+  const localizedIngredients = pickI18n(product.ingredients_i18n as Record<string, unknown> | null, lang, product.ingredients ?? "");
+  const localizedCatName = product.product_categories
+    ? pickI18n((product.product_categories as { name_i18n?: Record<string, unknown> | null }).name_i18n ?? null, lang, product.product_categories.name)
+    : "";
 
   const handleAddToCart = async () => {
     if (!user) {
