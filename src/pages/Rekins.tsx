@@ -239,7 +239,7 @@ const Rekins = () => {
             Grozs ir tukšs. <button onClick={() => navigate("/veikals")} className="text-primary underline">Doties uz veikalu</button>
           </div>
         ) : (
-          <div className="print-area bg-white text-black rounded-xl border border-border p-10 shadow-sm">
+          <div ref={invoiceRef} className="print-area bg-white text-black rounded-xl border border-border p-10 shadow-sm">
             <div className="flex justify-between items-start mb-8">
               <div>
                 <h1 className="text-2xl font-bold">Priekšapmaksas rēķins</h1>
