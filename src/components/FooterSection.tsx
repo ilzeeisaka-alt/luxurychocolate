@@ -50,6 +50,11 @@ const FooterSection = () => {
                 </a>
               </li>
               <li>Kandavas iela 29a, Rīga, LV-1083</li>
+              <li>
+                <Link to="/kontakti" className="hover:text-primary transition-colors duration-200 font-medium">
+                  Visi kontakti un rekvizīti →
+                </Link>
+              </li>
             </ul>
             <div className="mt-4">
               <p className="text-sm font-medium text-foreground mb-2">Sociālie tīkli</p>
