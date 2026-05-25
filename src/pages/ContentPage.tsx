@@ -72,14 +72,23 @@ const ContentPage = ({ slug: slugProp }: ContentPageProps) => {
             <ReactMarkdown
               remarkPlugins={[remarkGfm]}
               components={{
-                img: ({ node, ...props }) => (
-                  <img
-                    {...props}
-                    loading="lazy"
-                    className="w-full max-w-2xl rounded-lg mx-auto my-8 shadow-lg"
-                    alt={props.alt || ""}
-                  />
-                ),
+                img: ({ node, ...props }) => {
+                  const src = String(props.src || "");
+                  const alt = String(props.alt || "");
+                  const isLogo = /logo/i.test(src) || /logo/i.test(alt);
+                  return (
+                    <img
+                      {...props}
+                      loading="lazy"
+                      className={
+                        isLogo
+                          ? "max-w-[180px] w-full mx-auto my-8 object-contain"
+                          : "w-full max-w-2xl rounded-lg mx-auto my-8 shadow-lg"
+                      }
+                      alt={alt}
+                    />
+                  );
+                },
                 a: ({ node, ...props }) => (
                   <a {...props} target={props.href?.startsWith("http") ? "_blank" : undefined} rel="noopener noreferrer" />
                 ),
