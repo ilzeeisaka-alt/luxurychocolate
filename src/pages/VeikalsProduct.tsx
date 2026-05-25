@@ -139,7 +139,7 @@ const VeikalsProduct = () => {
         });
         if (insertError) throw insertError;
       }
-      toast({ title: "Pievienots grozam", description: product.name });
+      toast({ title: "Pievienots grozam", description: localizedName });
       window.dispatchEvent(new Event("cart-updated"));
     } catch (e) {
       toast({
