@@ -116,7 +116,52 @@ const Rekins = () => {
   const totalExVat = Math.round(total / (1 + vatRate));
   const vatAmount = total - totalExVat;
 
+  const invoiceRef = useRef<HTMLDivElement | null>(null);
+  const [savingPdf, setSavingPdf] = useState(false);
+  const [paying, setPaying] = useState(false);
+
   const handlePrint = () => window.print();
+
+  const handleSavePdf = async () => {
+    if (!invoiceRef.current) return;
+    setSavingPdf(true);
+    try {
+      const canvas = await html2canvas(invoiceRef.current, { scale: 2, backgroundColor: "#ffffff" });
+      const imgData = canvas.toDataURL("image/png");
+      const pdf = new jsPDF({ unit: "mm", format: "a4", orientation: "portrait" });
+      const pageW = pdf.internal.pageSize.getWidth();
+      const pageH = pdf.internal.pageSize.getHeight();
+      const imgW = pageW;
+      const imgH = (canvas.height * imgW) / canvas.width;
+      let heightLeft = imgH;
+      let y = 0;
+      pdf.addImage(imgData, "PNG", 0, y, imgW, imgH);
+      heightLeft -= pageH;
+      while (heightLeft > 0) {
+        y = heightLeft - imgH;
+        pdf.addPage();
+        pdf.addImage(imgData, "PNG", 0, y, imgW, imgH);
+        heightLeft -= pageH;
+      }
+      pdf.save(`Rekins_${invoiceNumber}.pdf`);
+    } finally {
+      setSavingPdf(false);
+    }
+  };
+
+  const handlePay = async () => {
+    setPaying(true);
+    try {
+      sessionStorage.setItem("invoice_buyer", JSON.stringify({
+        company: buyerCompany, vat: buyerVat, regNr: buyerRegNr,
+        address: buyerAddress, email: buyerEmail, phone: buyerPhone,
+        invoiceNumber,
+      }));
+      navigate("/kase");
+    } finally {
+      setPaying(false);
+    }
+  };
 
   return (
     <div className="min-h-screen bg-background">
