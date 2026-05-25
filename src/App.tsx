@@ -154,6 +154,7 @@ const App = () => (
             <Route path="/drukasanas-noteikumi" element={<ContentPage slug="drukasanas-noteikumi" />} />
             <Route path="/edamie-druki" element={<ContentPage slug="edamie-druki" />} />
             <Route path="/edible-prints" element={<ContentPage slug="edamie-druki" />} />
+            <Route path="/privatuma-politika" element={<ContentPage slug="privatuma-politika" />} />
             {/* EN routes */}
             <Route path="/en" element={<EnIndex />} />
             <Route path="/en/corporate-gift-ideas" element={<EnGiftIdeas />} />
