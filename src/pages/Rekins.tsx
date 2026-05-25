@@ -178,18 +178,28 @@ const Rekins = () => {
           <button onClick={() => navigate("/grozs")} className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground">
             <ChevronLeft className="w-4 h-4" /> Atpakaļ uz grozu
           </button>
-          <div className="flex gap-2">
+          <div className="flex flex-wrap gap-2">
             <button
               onClick={handlePrint}
-              className="flex items-center gap-2 rounded-lg bg-primary text-primary-foreground px-5 py-2.5 text-sm font-medium hover:brightness-110"
+              className="flex items-center gap-2 rounded-lg border border-border bg-card text-foreground px-4 py-2.5 text-sm font-medium hover:bg-muted"
             >
-              <Printer className="w-4 h-4" /> Drukāt / Saglabāt PDF
+              <Printer className="w-4 h-4" /> Drukāt
             </button>
             <button
-              onClick={() => navigate("/kase")}
-              className="rounded-lg border border-border bg-card text-foreground px-5 py-2.5 text-sm font-medium hover:bg-muted"
+              onClick={handleSavePdf}
+              disabled={savingPdf || validItems.length === 0}
+              className="flex items-center gap-2 rounded-lg border border-border bg-card text-foreground px-4 py-2.5 text-sm font-medium hover:bg-muted disabled:opacity-50"
             >
-              Doties uz apmaksu
+              {savingPdf ? <Loader2 className="w-4 h-4 animate-spin" /> : <Download className="w-4 h-4" />}
+              Saglabāt PDF
+            </button>
+            <button
+              onClick={handlePay}
+              disabled={paying || validItems.length === 0}
+              className="flex items-center gap-2 rounded-lg bg-primary text-primary-foreground px-5 py-2.5 text-sm font-medium hover:brightness-110 disabled:opacity-50"
+            >
+              {paying ? <Loader2 className="w-4 h-4 animate-spin" /> : <CreditCard className="w-4 h-4" />}
+              Maksāt tagad
             </button>
           </div>
         </div>
