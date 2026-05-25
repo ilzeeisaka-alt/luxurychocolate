@@ -1,6 +1,6 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X, User, LogIn, ShoppingCart, Store } from "lucide-react";
+import { Menu, X, User, LogIn, ShoppingCart, Store, ChevronDown } from "lucide-react";
 import logo from "@/assets/logo-transparent.png";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
 import NewsletterSignup from "@/components/NewsletterSignup";
@@ -8,6 +8,18 @@ import type { Lang } from "@/i18n/types";
 import { expandLangs } from "@/i18n/expandLangs";
 import { useAuth } from "@/hooks/useAuth";
 import { supabase } from "@/integrations/supabase/client";
+
+const infoPages: { label: string; to: string }[] = [
+  { label: "Par mums", to: "/par-mums" },
+  { label: "Ko mēs darām", to: "/ko-mes-daram" },
+  { label: "Cenu lapa", to: "/cenu-lapa" },
+  { label: "Līgums", to: "/ligums" },
+  { label: "Aģents 007", to: "/agents-007" },
+  { label: "Eņģeļu Birojs", to: "/engelu-birojs" },
+  { label: "Mīlestība ir kā uguns", to: "/milestiba-ir-ka-uguns" },
+  { label: "Glabāšana", to: "/glabasana" },
+  { label: "Drukāšanas noteikumi", to: "/drukasanas-noteikumi" },
+];
 
 interface NavItem {
   label: string;
