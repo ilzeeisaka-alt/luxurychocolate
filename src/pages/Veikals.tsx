@@ -7,6 +7,7 @@ import FooterSection from "@/components/FooterSection";
 import { supabase } from "@/integrations/supabase/client";
 import { useSeo } from "@/hooks/useSeo";
 import { cn } from "@/lib/utils";
+import { useCurrentLang, pickI18n } from "@/i18n/useCurrentLang";
 
 const PAGE_SIZE = 24;
 
@@ -33,6 +34,7 @@ const formatPrice = (cents: number, currency = "EUR") =>
 
 const Veikals = () => {
   const [params, setParams] = useSearchParams();
+  const lang = useCurrentLang();
   const category = params.get("category") ?? "";
   const search = params.get("q") ?? "";
   const page = Math.max(1, parseInt(params.get("page") ?? "1", 10) || 1);
@@ -60,11 +62,11 @@ const Veikals = () => {
 
   // Categories with counts
   const { data: categories = [] } = useQuery<CategoryRow[]>({
-    queryKey: ["catalog-categories"],
+    queryKey: ["catalog-categories", lang],
     queryFn: async () => {
       const { data: cats } = await supabase
         .from("product_categories")
-        .select("id, slug, name, sort_order")
+        .select("id, slug, name, name_i18n, sort_order")
         .order("sort_order", { ascending: true })
         .order("name", { ascending: true });
       const { data: prods } = await supabase
@@ -78,7 +80,12 @@ const Veikals = () => {
         if (p.category_id) counts.set(p.category_id, (counts.get(p.category_id) ?? 0) + 1);
       });
       return (cats ?? [])
-        .map((c) => ({ ...c, product_count: counts.get(c.id) ?? 0 }))
+        .map((c) => ({
+          id: c.id,
+          slug: c.slug,
+          name: pickI18n(c.name_i18n as Record<string, unknown> | null, lang, c.name),
+          product_count: counts.get(c.id) ?? 0,
+        }))
         .filter((c) => c.product_count > 0);
     },
   });
@@ -89,16 +96,19 @@ const Veikals = () => {
   );
 
   const { data, isLoading } = useQuery({
-    queryKey: ["catalog-products", currentCategoryId, search, page, sort, category],
+    queryKey: ["catalog-products", currentCategoryId, search, page, sort, category, lang],
     enabled: !category || currentCategoryId !== null || categories.length === 0,
     queryFn: async () => {
       let q = supabase
         .from("products")
-        .select("id, slug, name, price_cents, currency, short_description, category_id", { count: "exact" })
+        .select(
+          "id, slug, name, name_i18n, price_cents, currency, short_description, short_description_i18n, category_id",
+          { count: "exact" }
+        )
         .eq("published", true);
 
       if (currentCategoryId) q = q.eq("category_id", currentCategoryId);
-      if (search) q = q.ilike("name", `%${search}%`);
+      if (search) q = q.or(`name.ilike.%${search}%,name_i18n->>${lang}.ilike.%${search}%`);
 
       // Vienmēr produkti ar bildēm pirmie
       q = q.order("has_image", { ascending: false });
@@ -135,7 +145,17 @@ const Veikals = () => {
       }
 
       const items: ProductRow[] = (prods ?? []).map((p) => ({
-        ...p,
+        id: p.id,
+        slug: p.slug,
+        name: pickI18n(p.name_i18n as Record<string, unknown> | null, lang, p.name),
+        price_cents: p.price_cents,
+        currency: p.currency,
+        short_description: pickI18n(
+          p.short_description_i18n as Record<string, unknown> | null,
+          lang,
+          p.short_description ?? ""
+        ),
+        category_id: p.category_id,
         image_url: images.get(p.id) ?? null,
       }));
 

@@ -10,6 +10,7 @@ import { useSeo } from "@/hooks/useSeo";
 import { useAuth } from "@/hooks/useAuth";
 import { useToast } from "@/hooks/use-toast";
 import { cn } from "@/lib/utils";
+import { useCurrentLang, pickI18n } from "@/i18n/useCurrentLang";
 
 const formatPrice = (cents: number, currency = "EUR") =>
   new Intl.NumberFormat("lv-LV", { style: "currency", currency }).format(cents / 100);
@@ -19,6 +20,7 @@ const VeikalsProduct = () => {
   const navigate = useNavigate();
   const { user } = useAuth();
   const { toast } = useToast();
+  const lang = useCurrentLang();
   const [activeImg, setActiveImg] = useState(0);
   const [qty, setQty] = useState(1);
   const [adding, setAdding] = useState(false);
@@ -32,7 +34,7 @@ const VeikalsProduct = () => {
     queryFn: async () => {
       const { data: product, error } = await supabase
         .from("products")
-        .select("*, product_categories(slug, name)")
+        .select("*, product_categories(slug, name, name_i18n)")
         .eq("slug", slug!)
         .eq("published", true)
         .maybeSingle();
@@ -48,14 +50,15 @@ const VeikalsProduct = () => {
     },
   });
 
-  useSeo({
-    title: data?.product?.name ?? "Produkts",
-    description:
-      data?.product?.short_description ??
-      data?.product?.description?.slice(0, 160) ??
-      "Premium šokolāde ar Jūsu logo.",
-    path: `/veikals/${slug ?? ""}`,
-  });
+  const seoTitle = data?.product
+    ? pickI18n(data.product.name_i18n as Record<string, unknown> | null, lang, data.product.name)
+    : "Produkts";
+  const seoDesc = data?.product
+    ? (pickI18n(data.product.short_description_i18n as Record<string, unknown> | null, lang, data.product.short_description ?? "") ||
+       (pickI18n(data.product.description_i18n as Record<string, unknown> | null, lang, data.product.description ?? "") || "").slice(0, 160) ||
+       "Premium šokolāde ar Jūsu logo.")
+    : "Premium šokolāde ar Jūsu logo.";
+  useSeo({ title: seoTitle, description: seoDesc, path: `/veikals/${slug ?? ""}` });
 
   if (isLoading) {
     return (
@@ -93,6 +96,13 @@ const VeikalsProduct = () => {
 
   const { product, images } = data;
   const mainImage = images[activeImg]?.url;
+  const localizedName = pickI18n(product.name_i18n as Record<string, unknown> | null, lang, product.name);
+  const localizedShort = pickI18n(product.short_description_i18n as Record<string, unknown> | null, lang, product.short_description ?? "");
+  const localizedDesc = pickI18n(product.description_i18n as Record<string, unknown> | null, lang, product.description ?? "");
+  const localizedIngredients = pickI18n(product.ingredients_i18n as Record<string, unknown> | null, lang, product.ingredients ?? "");
+  const localizedCatName = product.product_categories
+    ? pickI18n((product.product_categories as { name_i18n?: Record<string, unknown> | null }).name_i18n ?? null, lang, product.product_categories.name)
+    : "";
 
   const handleAddToCart = async () => {
     if (!user) {
@@ -129,7 +139,7 @@ const VeikalsProduct = () => {
         });
         if (insertError) throw insertError;
       }
-      toast({ title: "Pievienots grozam", description: product.name });
+      toast({ title: "Pievienots grozam", description: localizedName });
       window.dispatchEvent(new Event("cart-updated"));
     } catch (e) {
       toast({
@@ -160,7 +170,7 @@ const VeikalsProduct = () => {
               {mainImage ? (
                 <img
                   src={mainImage}
-                  alt={images[activeImg]?.alt_text || product.name}
+                  alt={images[activeImg]?.alt_text || localizedName}
                   className="w-full h-full object-cover"
                 />
               ) : (
@@ -195,10 +205,10 @@ const VeikalsProduct = () => {
                 to={`/veikals?category=${product.product_categories.slug}`}
                 className="inline-block text-xs uppercase tracking-[0.15em] text-primary mb-3 hover:underline"
               >
-                {product.product_categories.name}
+                {localizedCatName}
               </Link>
             )}
-            <h1 className="text-3xl sm:text-4xl text-foreground mb-4">{product.name}</h1>
+            <h1 className="text-3xl sm:text-4xl text-foreground mb-4">{localizedName}</h1>
 
             <div className="flex items-baseline gap-3 mb-6">
               <span className="text-3xl font-medium text-primary">
@@ -209,8 +219,8 @@ const VeikalsProduct = () => {
               )}
             </div>
 
-            {product.short_description && (
-              <p className="text-muted-foreground mb-6 leading-relaxed">{product.short_description}</p>
+            {localizedShort && (
+              <p className="text-muted-foreground mb-6 leading-relaxed">{localizedShort}</p>
             )}
 
             <div className="flex items-center gap-2 text-sm text-muted-foreground mb-8">
@@ -283,19 +293,19 @@ const VeikalsProduct = () => {
             />
 
 
-            {product.description && (
+            {localizedDesc && (
               <div className="mt-10 pt-8 border-t border-border">
                 <h2 className="text-lg text-foreground mb-3">Apraksts</h2>
                 <div className="text-sm text-muted-foreground leading-relaxed whitespace-pre-line">
-                  {product.description}
+                  {localizedDesc}
                 </div>
               </div>
             )}
 
-            {product.ingredients && (
+            {localizedIngredients && (
               <div className="mt-6">
                 <h3 className="text-sm font-medium text-foreground mb-2">Sastāvs</h3>
-                <p className="text-sm text-muted-foreground">{product.ingredients}</p>
+                <p className="text-sm text-muted-foreground">{localizedIngredients}</p>
               </div>
             )}
           </div>
@@ -306,7 +316,7 @@ const VeikalsProduct = () => {
         open={offerOpen}
         onOpenChange={(v) => { setOfferOpen(v); if (!v) setPendingLogo(null); }}
         productId={product.id}
-        productName={product.name}
+        productName={localizedName}
         initialFile={pendingLogo}
       />
 
