@@ -34,7 +34,7 @@ const VeikalsProduct = () => {
     queryFn: async () => {
       const { data: product, error } = await supabase
         .from("products")
-        .select("*, product_categories(slug, name)")
+        .select("*, product_categories(slug, name, name_i18n)")
         .eq("slug", slug!)
         .eq("published", true)
         .maybeSingle();
