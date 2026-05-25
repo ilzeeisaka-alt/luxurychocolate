@@ -104,37 +104,46 @@ export type Database = {
         Row: {
           created_at: string
           description: string | null
+          description_i18n_jsonb: Json
           id: string
           lang: string
           markdown: string
+          markdown_i18n: Json
           published: boolean
           slug: string
           source_url: string | null
           title: string
+          title_i18n: Json
           updated_at: string
         }
         Insert: {
           created_at?: string
           description?: string | null
+          description_i18n_jsonb?: Json
           id?: string
           lang?: string
           markdown?: string
+          markdown_i18n?: Json
           published?: boolean
           slug: string
           source_url?: string | null
           title: string
+          title_i18n?: Json
           updated_at?: string
         }
         Update: {
           created_at?: string
           description?: string | null
+          description_i18n_jsonb?: Json
           id?: string
           lang?: string
           markdown?: string
+          markdown_i18n?: Json
           published?: boolean
           slug?: string
           source_url?: string | null
           title?: string
+          title_i18n?: Json
           updated_at?: string
         }
         Relationships: []
@@ -347,9 +356,11 @@ export type Database = {
         Row: {
           created_at: string
           description: string | null
+          description_i18n: Json
           id: string
           image_url: string | null
           name: string
+          name_i18n: Json
           slug: string
           sort_order: number
           updated_at: string
@@ -357,9 +368,11 @@ export type Database = {
         Insert: {
           created_at?: string
           description?: string | null
+          description_i18n?: Json
           id?: string
           image_url?: string | null
           name: string
+          name_i18n?: Json
           slug: string
           sort_order?: number
           updated_at?: string
@@ -367,9 +380,11 @@ export type Database = {
         Update: {
           created_at?: string
           description?: string | null
+          description_i18n?: Json
           id?: string
           image_url?: string | null
           name?: string
+          name_i18n?: Json
           slug?: string
           sort_order?: number
           updated_at?: string
@@ -421,17 +436,21 @@ export type Database = {
           currency: string
           delivery_days: number | null
           description: string | null
+          description_i18n: Json
           featured: boolean
           id: string
           in_stock: boolean
           ingredients: string | null
+          ingredients_i18n: Json
           metadata: Json | null
           name: string
+          name_i18n: Json
           preparation_days: number | null
           price_cents: number
           prices_include_vat: boolean
           published: boolean
           short_description: string | null
+          short_description_i18n: Json
           slug: string
           source_external_id: string | null
           source_url: string | null
@@ -446,17 +465,21 @@ export type Database = {
           currency?: string
           delivery_days?: number | null
           description?: string | null
+          description_i18n?: Json
           featured?: boolean
           id?: string
           in_stock?: boolean
           ingredients?: string | null
+          ingredients_i18n?: Json
           metadata?: Json | null
           name: string
+          name_i18n?: Json
           preparation_days?: number | null
           price_cents?: number
           prices_include_vat?: boolean
           published?: boolean
           short_description?: string | null
+          short_description_i18n?: Json
           slug: string
           source_external_id?: string | null
           source_url?: string | null
@@ -471,17 +494,21 @@ export type Database = {
           currency?: string
           delivery_days?: number | null
           description?: string | null
+          description_i18n?: Json
           featured?: boolean
           id?: string
           in_stock?: boolean
           ingredients?: string | null
+          ingredients_i18n?: Json
           metadata?: Json | null
           name?: string
+          name_i18n?: Json
           preparation_days?: number | null
           price_cents?: number
           prices_include_vat?: boolean
           published?: boolean
           short_description?: string | null
+          short_description_i18n?: Json
           slug?: string
           source_external_id?: string | null
           source_url?: string | null
