@@ -170,7 +170,7 @@ const VeikalsProduct = () => {
               {mainImage ? (
                 <img
                   src={mainImage}
-                  alt={images[activeImg]?.alt_text || product.name}
+                  alt={images[activeImg]?.alt_text || localizedName}
                   className="w-full h-full object-cover"
                 />
               ) : (
