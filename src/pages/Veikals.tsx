@@ -149,7 +149,7 @@ const Veikals = () => {
     <div className="min-h-screen bg-background">
       <Navbar />
 
-      <main className="container mx-auto px-4 pt-28 pb-16">
+      <main className="container mx-auto px-4 pt-44 md:pt-48 pb-16">
         <header className="mb-10">
           <p className="text-xs uppercase tracking-[0.2em] text-primary mb-3">Katalogs</p>
           <h1 className="text-4xl sm:text-5xl text-foreground mb-3">Šokolādes veikals</h1>
