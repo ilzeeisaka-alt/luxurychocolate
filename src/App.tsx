@@ -159,6 +159,20 @@ const App = () => (
             <Route path="/christmas-chocolate-gifts" element={<ContentPage slug="ziemassvetku-sokolades-davanas" />} />
             <Route path="/kontakti" element={<ContentPage slug="kontakti" />} />
             <Route path="/contacts" element={<ContentPage slug="kontakti" />} />
+            {/* Luxus Chocolate migrētās lapas */}
+            <Route path="/luxuschocolate/par-mums" element={<ContentPage slug="luxuschocolate-about" />} />
+            <Route path="/luxuschocolate/kontakti" element={<ContentPage slug="luxuschocolate-contacts" />} />
+            <Route path="/luxuschocolate/buj" element={<ContentPage slug="luxuschocolate-faq" />} />
+            <Route path="/luxuschocolate/pakalpojumi" element={<ContentPage slug="luxuschocolate-services" />} />
+            <Route path="/luxuschocolate/partneri" element={<ContentPage slug="luxuschocolate-partner" />} />
+            <Route path="/luxuschocolate/papildu-iespejas" element={<ContentPage slug="luxuschocolate-extras" />} />
+            <Route path="/luxuschocolate/padomi" element={<ContentPage slug="luxuschocolate-tips" />} />
+            <Route path="/luxuschocolate/galerija" element={<ContentPage slug="luxuschocolate-gallery" />} />
+            <Route path="/luxuschocolate/budzets" element={<ContentPage slug="luxuschocolate-budget" />} />
+            <Route path="/luxuschocolate/noteikumi" element={<ContentPage slug="luxuschocolate-terms" />} />
+            <Route path="/luxuschocolate/privatums" element={<ContentPage slug="luxuschocolate-privacy" />} />
+            <Route path="/luxuschocolate/sikdatnes" element={<ContentPage slug="luxuschocolate-cookies" />} />
+            <Route path="/luxuschocolate/raksti" element={<ContentPage slug="luxuschocolate-articles" />} />
             {/* EN routes */}
             <Route path="/en" element={<EnIndex />} />
             <Route path="/en/corporate-gift-ideas" element={<EnGiftIdeas />} />
