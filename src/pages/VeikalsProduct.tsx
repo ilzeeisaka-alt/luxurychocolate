@@ -208,7 +208,7 @@ const VeikalsProduct = () => {
                 {localizedCatName}
               </Link>
             )}
-            <h1 className="text-3xl sm:text-4xl text-foreground mb-4">{product.name}</h1>
+            <h1 className="text-3xl sm:text-4xl text-foreground mb-4">{localizedName}</h1>
 
             <div className="flex items-baseline gap-3 mb-6">
               <span className="text-3xl font-medium text-primary">
