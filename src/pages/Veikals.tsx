@@ -34,6 +34,7 @@ const formatPrice = (cents: number, currency = "EUR") =>
 
 const Veikals = () => {
   const [params, setParams] = useSearchParams();
+  const lang = useCurrentLang();
   const category = params.get("category") ?? "";
   const search = params.get("q") ?? "";
   const page = Math.max(1, parseInt(params.get("page") ?? "1", 10) || 1);
