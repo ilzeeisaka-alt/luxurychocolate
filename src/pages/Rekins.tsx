@@ -264,8 +264,10 @@ const Rekins = () => {
 
             <div className="mt-8 text-xs text-gray-600 border-t border-gray-200 pt-4">
               <p className="font-medium mb-1">Apmaksa ar pārskaitījumu:</p>
-              <p>Saņēmējs: SIA "Lielmeistars"</p>
-              <p>Banka: AS "Swedbank" · Konts: LV.. (lūdzu sazinieties, lai saņemtu rekvizītus)</p>
+              <p>Saņēmējs: Luxury Chocolate SIA</p>
+              <p>Reģ.nr.: LV40103921954</p>
+              <p>Banka: AS Citadele banka · SWIFT: PARXLV22</p>
+              <p>Konts: LV88PARX0032054790002</p>
               <p className="mt-3">Pasūtījumu sāksim gatavot pēc apmaksas saņemšanas. Jautājumu gadījumā: info@luxurychocolate.lv</p>
               <p className="mt-3 italic">Šis ir priekšapmaksas (proforma) rēķins. Galīgais rēķins tiks izsniegts pēc apmaksas.</p>
             </div>
