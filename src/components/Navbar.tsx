@@ -747,6 +747,9 @@ interface NavbarProps {
 const Navbar = ({ lang = "lv" }: NavbarProps) => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [infoOpen, setInfoOpen] = useState(false);
+  const [mobileInfoOpen, setMobileInfoOpen] = useState(false);
+  const infoRef = useRef<HTMLDivElement | null>(null);
   const { pathname } = useLocation();
   const { user } = useAuth();
   const items = navItems[lang];
