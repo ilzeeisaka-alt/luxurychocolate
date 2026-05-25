@@ -191,22 +191,24 @@ const Rekins = () => {
                 <p className="text-sm">Apmaksas termiņš: {dueDate}</p>
               </div>
               <div className="text-right text-sm">
-                <p className="font-bold text-base">Luxury Chocolate</p>
-                <p>SIA "Lielmeistars"</p>
-                <p>Reģ. Nr. 40103928858</p>
-                <p>PVN: LV40103928858</p>
-                <p>Kandavas iela 29A, Rīga, LV-1083</p>
-                <p>info@luxurychocolate.lv</p>
+                <p className="font-bold text-base">Luxury Chocolate SIA</p>
+                <p>PVN Reģ.nr. LV40103921954</p>
+                <p>Jur. adrese: Vircavas iela 9-8, Rīga, LV-1083</p>
+                <p>Fakt. adrese: Kandavas iela 29a-85, Rīga, LV-1083</p>
+                <p>info@luxurychocolate.lv · +371 26 177 853</p>
               </div>
             </div>
 
             <div className="grid grid-cols-2 gap-8 mb-8 text-sm">
               <div>
                 <p className="font-bold mb-1 text-xs uppercase text-gray-500">Pārdevējs</p>
-                <p className="font-medium">SIA "Lielmeistars" / Luxury Chocolate</p>
-                <p>Kandavas iela 29A, Rīga, LV-1083</p>
-                <p>Reģ. Nr. 40103928858 · PVN: LV40103928858</p>
+                <p className="font-medium">Luxury Chocolate SIA</p>
+                <p>Jur. adrese: Vircavas iela 9-8, Rīga, LV-1083</p>
+                <p>Fakt. adrese: Kandavas iela 29a-85, Rīga, LV-1083</p>
+                <p>PVN Reģ.nr. LV40103921954</p>
+                <p>Valdes locekle: Ilze Eisaka</p>
               </div>
+
               <div>
                 <p className="font-bold mb-1 text-xs uppercase text-gray-500">Pircējs</p>
                 <p className="font-medium">{buyerCompany || "—"}</p>
