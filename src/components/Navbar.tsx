@@ -960,6 +960,34 @@ const Navbar = ({ lang = "lv" }: NavbarProps) => {
               </Link>
             )
           )}
+          {lang === "lv" && (
+            <div className="mt-2 pt-2 border-t border-white/10">
+              <button
+                onClick={() => setMobileInfoOpen((v) => !v)}
+                className="w-full flex items-center justify-between py-2.5 px-3 rounded-md text-sm font-medium text-white/80 hover:text-white hover:bg-white/5"
+              >
+                <span>Info</span>
+                <ChevronDown size={14} className={`transition-transform ${mobileInfoOpen ? "rotate-180" : ""}`} />
+              </button>
+              {mobileInfoOpen && (
+                <div className="pl-3">
+                  {infoPages.map((p) => (
+                    <Link
+                      key={p.to}
+                      to={p.to}
+                      className={`block py-2 px-3 rounded-md text-sm transition-colors ${
+                        pathname === p.to
+                          ? "text-primary bg-primary/10"
+                          : "text-white/70 hover:text-white hover:bg-white/5"
+                      }`}
+                    >
+                      {p.label}
+                    </Link>
+                  ))}
+                </div>
+              )}
+            </div>
+          )}
           <div className="mt-4 pt-4 border-t border-white/10">
             <NewsletterSignup lang={lang} source="navbar-mobile" />
           </div>
