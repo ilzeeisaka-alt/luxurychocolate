@@ -1,6 +1,8 @@
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Printer, ChevronLeft, Loader2 } from "lucide-react";
+import { Printer, ChevronLeft, Loader2, Download, CreditCard } from "lucide-react";
+import jsPDF from "jspdf";
+import html2canvas from "html2canvas";
 import Navbar from "@/components/Navbar";
 import FooterSection from "@/components/FooterSection";
 import { supabase } from "@/integrations/supabase/client";
