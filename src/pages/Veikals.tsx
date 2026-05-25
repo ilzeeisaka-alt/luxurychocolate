@@ -62,11 +62,11 @@ const Veikals = () => {
 
   // Categories with counts
   const { data: categories = [] } = useQuery<CategoryRow[]>({
-    queryKey: ["catalog-categories"],
+    queryKey: ["catalog-categories", lang],
     queryFn: async () => {
       const { data: cats } = await supabase
         .from("product_categories")
-        .select("id, slug, name, sort_order")
+        .select("id, slug, name, name_i18n, sort_order")
         .order("sort_order", { ascending: true })
         .order("name", { ascending: true });
       const { data: prods } = await supabase
@@ -80,7 +80,12 @@ const Veikals = () => {
         if (p.category_id) counts.set(p.category_id, (counts.get(p.category_id) ?? 0) + 1);
       });
       return (cats ?? [])
-        .map((c) => ({ ...c, product_count: counts.get(c.id) ?? 0 }))
+        .map((c) => ({
+          id: c.id,
+          slug: c.slug,
+          name: pickI18n(c.name_i18n as Record<string, unknown> | null, lang, c.name),
+          product_count: counts.get(c.id) ?? 0,
+        }))
         .filter((c) => c.product_count > 0);
     },
   });
