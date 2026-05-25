@@ -1,6 +1,6 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X, User, LogIn, ShoppingCart, Store } from "lucide-react";
+import { Menu, X, User, LogIn, ShoppingCart, Store, ChevronDown } from "lucide-react";
 import logo from "@/assets/logo-transparent.png";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
 import NewsletterSignup from "@/components/NewsletterSignup";
@@ -8,6 +8,18 @@ import type { Lang } from "@/i18n/types";
 import { expandLangs } from "@/i18n/expandLangs";
 import { useAuth } from "@/hooks/useAuth";
 import { supabase } from "@/integrations/supabase/client";
+
+const infoPages: { label: string; to: string }[] = [
+  { label: "Par mums", to: "/par-mums" },
+  { label: "Ko mēs darām", to: "/ko-mes-daram" },
+  { label: "Cenu lapa", to: "/cenu-lapa" },
+  { label: "Līgums", to: "/ligums" },
+  { label: "Aģents 007", to: "/agents-007" },
+  { label: "Eņģeļu Birojs", to: "/engelu-birojs" },
+  { label: "Mīlestība ir kā uguns", to: "/milestiba-ir-ka-uguns" },
+  { label: "Glabāšana", to: "/glabasana" },
+  { label: "Drukāšanas noteikumi", to: "/drukasanas-noteikumi" },
+];
 
 interface NavItem {
   label: string;
@@ -735,6 +747,9 @@ interface NavbarProps {
 const Navbar = ({ lang = "lv" }: NavbarProps) => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [infoOpen, setInfoOpen] = useState(false);
+  const [mobileInfoOpen, setMobileInfoOpen] = useState(false);
+  const infoRef = useRef<HTMLDivElement | null>(null);
   const { pathname } = useLocation();
   const { user } = useAuth();
   const items = navItems[lang];
@@ -829,6 +844,37 @@ const Navbar = ({ lang = "lv" }: NavbarProps) => {
               </Link>
             )
           )}
+          {lang === "lv" && (
+            <div className="relative" ref={infoRef}>
+              <button
+                onClick={() => setInfoOpen((v) => !v)}
+                onBlur={() => setTimeout(() => setInfoOpen(false), 150)}
+                className="inline-flex items-center gap-1 px-3 py-1.5 rounded-md text-xs font-medium text-white/70 hover:text-white hover:bg-white/5 transition-colors"
+                aria-haspopup="true"
+                aria-expanded={infoOpen}
+              >
+                Info <ChevronDown size={12} />
+              </button>
+              {infoOpen && (
+                <div className="absolute right-0 mt-2 w-60 rounded-md bg-foreground border border-white/10 shadow-xl py-2 z-50">
+                  {infoPages.map((p) => (
+                    <Link
+                      key={p.to}
+                      to={p.to}
+                      onClick={() => setInfoOpen(false)}
+                      className={`block px-4 py-2 text-xs transition-colors ${
+                        pathname === p.to
+                          ? "text-primary bg-primary/10"
+                          : "text-white/80 hover:text-white hover:bg-white/5"
+                      }`}
+                    >
+                      {p.label}
+                    </Link>
+                  ))}
+                </div>
+              )}
+            </div>
+          )}
         </div>
 
         {/* Right side: newsletter + cart + auth + language + mobile toggle */}
@@ -913,6 +959,34 @@ const Navbar = ({ lang = "lv" }: NavbarProps) => {
                 {item.label}
               </Link>
             )
+          )}
+          {lang === "lv" && (
+            <div className="mt-2 pt-2 border-t border-white/10">
+              <button
+                onClick={() => setMobileInfoOpen((v) => !v)}
+                className="w-full flex items-center justify-between py-2.5 px-3 rounded-md text-sm font-medium text-white/80 hover:text-white hover:bg-white/5"
+              >
+                <span>Info</span>
+                <ChevronDown size={14} className={`transition-transform ${mobileInfoOpen ? "rotate-180" : ""}`} />
+              </button>
+              {mobileInfoOpen && (
+                <div className="pl-3">
+                  {infoPages.map((p) => (
+                    <Link
+                      key={p.to}
+                      to={p.to}
+                      className={`block py-2 px-3 rounded-md text-sm transition-colors ${
+                        pathname === p.to
+                          ? "text-primary bg-primary/10"
+                          : "text-white/70 hover:text-white hover:bg-white/5"
+                      }`}
+                    >
+                      {p.label}
+                    </Link>
+                  ))}
+                </div>
+              )}
+            </div>
           )}
           <div className="mt-4 pt-4 border-t border-white/10">
             <NewsletterSignup lang={lang} source="navbar-mobile" />
