@@ -438,6 +438,7 @@ export type Database = {
           description: string | null
           description_i18n: Json
           featured: boolean
+          has_image: boolean
           id: string
           in_stock: boolean
           ingredients: string | null
@@ -467,6 +468,7 @@ export type Database = {
           description?: string | null
           description_i18n?: Json
           featured?: boolean
+          has_image?: boolean
           id?: string
           in_stock?: boolean
           ingredients?: string | null
@@ -496,6 +498,7 @@ export type Database = {
           description?: string | null
           description_i18n?: Json
           featured?: boolean
+          has_image?: boolean
           id?: string
           in_stock?: boolean
           ingredients?: string | null
