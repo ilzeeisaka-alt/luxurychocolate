@@ -316,7 +316,7 @@ const VeikalsProduct = () => {
         open={offerOpen}
         onOpenChange={(v) => { setOfferOpen(v); if (!v) setPendingLogo(null); }}
         productId={product.id}
-        productName={product.name}
+        productName={localizedName}
         initialFile={pendingLogo}
       />
 
