@@ -52,10 +52,10 @@ const HeroSection = ({
       <div className="relative bg-foreground py-16 sm:py-20 text-center">
         <div className="container mx-auto">
           <div
-            className="mx-auto mb-10 w-[180px] sm:w-[220px] h-[180px] sm:h-[220px] rounded-full bg-white overflow-hidden flex items-center justify-center"
+            className="mx-auto mb-10 w-[200px] sm:w-[240px] h-[200px] sm:h-[240px] rounded-full bg-white flex items-center justify-center"
             style={{ boxShadow: "0 0 40px rgba(196,163,90,0.15), 0 0 80px rgba(0,0,0,0.3)" }}
           >
-            <img src={logo} alt={logoAlt} className="w-[85%] h-[85%] object-contain" />
+            <img src={logo} alt={logoAlt} className="w-[70%] h-[70%] object-contain" />
           </div>
 
           <h1 className="text-4xl sm:text-5xl lg:text-6xl text-white mb-5 leading-[1.1] tracking-tight font-normal">
