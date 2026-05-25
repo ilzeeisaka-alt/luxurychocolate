@@ -56,7 +56,7 @@ const ContentPage = ({ slug: slugProp }: ContentPageProps) => {
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
-      <main className="container mx-auto px-4 py-16 max-w-3xl">
+      <main className="container mx-auto px-4 pt-48 pb-16 max-w-3xl">
         {loading && <div className="text-muted-foreground">Ielādē…</div>}
         {notFound && !loading && (
           <div className="text-center py-20">
@@ -67,9 +67,26 @@ const ContentPage = ({ slug: slugProp }: ContentPageProps) => {
           </div>
         )}
         {page && !loading && (
-          <article className="prose prose-neutral dark:prose-invert max-w-none prose-headings:text-foreground prose-p:text-foreground/90 prose-a:text-primary prose-strong:text-foreground prose-li:text-foreground/90">
+          <article className="prose prose-neutral dark:prose-invert max-w-none prose-headings:text-foreground prose-p:text-foreground/90 prose-a:text-primary prose-strong:text-foreground prose-li:text-foreground/90 prose-img:rounded-lg prose-img:mx-auto prose-img:my-8 prose-img:shadow-lg">
             <h1 className="text-4xl mb-8 text-foreground">{page.title}</h1>
-            <ReactMarkdown remarkPlugins={[remarkGfm]}>{page.markdown}</ReactMarkdown>
+            <ReactMarkdown
+              remarkPlugins={[remarkGfm]}
+              components={{
+                img: ({ node, ...props }) => (
+                  <img
+                    {...props}
+                    loading="lazy"
+                    className="w-full max-w-2xl rounded-lg mx-auto my-8 shadow-lg"
+                    alt={props.alt || ""}
+                  />
+                ),
+                a: ({ node, ...props }) => (
+                  <a {...props} target={props.href?.startsWith("http") ? "_blank" : undefined} rel="noopener noreferrer" />
+                ),
+              }}
+            >
+              {page.markdown}
+            </ReactMarkdown>
           </article>
         )}
       </main>
