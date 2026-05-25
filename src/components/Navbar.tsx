@@ -844,6 +844,37 @@ const Navbar = ({ lang = "lv" }: NavbarProps) => {
               </Link>
             )
           )}
+          {lang === "lv" && (
+            <div className="relative" ref={infoRef}>
+              <button
+                onClick={() => setInfoOpen((v) => !v)}
+                onBlur={() => setTimeout(() => setInfoOpen(false), 150)}
+                className="inline-flex items-center gap-1 px-3 py-1.5 rounded-md text-xs font-medium text-white/70 hover:text-white hover:bg-white/5 transition-colors"
+                aria-haspopup="true"
+                aria-expanded={infoOpen}
+              >
+                Info <ChevronDown size={12} />
+              </button>
+              {infoOpen && (
+                <div className="absolute right-0 mt-2 w-60 rounded-md bg-foreground border border-white/10 shadow-xl py-2 z-50">
+                  {infoPages.map((p) => (
+                    <Link
+                      key={p.to}
+                      to={p.to}
+                      onClick={() => setInfoOpen(false)}
+                      className={`block px-4 py-2 text-xs transition-colors ${
+                        pathname === p.to
+                          ? "text-primary bg-primary/10"
+                          : "text-white/80 hover:text-white hover:bg-white/5"
+                      }`}
+                    >
+                      {p.label}
+                    </Link>
+                  ))}
+                </div>
+              )}
+            </div>
+          )}
         </div>
 
         {/* Right side: newsletter + cart + auth + language + mobile toggle */}
