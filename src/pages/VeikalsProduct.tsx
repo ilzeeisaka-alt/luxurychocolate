@@ -205,7 +205,7 @@ const VeikalsProduct = () => {
                 to={`/veikals?category=${product.product_categories.slug}`}
                 className="inline-block text-xs uppercase tracking-[0.15em] text-primary mb-3 hover:underline"
               >
-                {product.product_categories.name}
+                {localizedCatName}
               </Link>
             )}
             <h1 className="text-3xl sm:text-4xl text-foreground mb-4">{product.name}</h1>
