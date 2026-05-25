@@ -50,14 +50,15 @@ const VeikalsProduct = () => {
     },
   });
 
-  useSeo({
-    title: data?.product?.name ?? "Produkts",
-    description:
-      data?.product?.short_description ??
-      data?.product?.description?.slice(0, 160) ??
-      "Premium šokolāde ar Jūsu logo.",
-    path: `/veikals/${slug ?? ""}`,
-  });
+  const seoTitle = data?.product
+    ? pickI18n(data.product.name_i18n as Record<string, unknown> | null, lang, data.product.name)
+    : "Produkts";
+  const seoDesc = data?.product
+    ? (pickI18n(data.product.short_description_i18n as Record<string, unknown> | null, lang, data.product.short_description ?? "") ||
+       (pickI18n(data.product.description_i18n as Record<string, unknown> | null, lang, data.product.description ?? "") || "").slice(0, 160) ||
+       "Premium šokolāde ar Jūsu logo.")
+    : "Premium šokolāde ar Jūsu logo.";
+  useSeo({ title: seoTitle, description: seoDesc, path: `/veikals/${slug ?? ""}` });
 
   if (isLoading) {
     return (
