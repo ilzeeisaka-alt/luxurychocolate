@@ -191,22 +191,24 @@ const Rekins = () => {
                 <p className="text-sm">Apmaksas termiņš: {dueDate}</p>
               </div>
               <div className="text-right text-sm">
-                <p className="font-bold text-base">Luxury Chocolate</p>
-                <p>SIA "Lielmeistars"</p>
-                <p>Reģ. Nr. 40103928858</p>
-                <p>PVN: LV40103928858</p>
-                <p>Kandavas iela 29A, Rīga, LV-1083</p>
-                <p>info@luxurychocolate.lv</p>
+                <p className="font-bold text-base">Luxury Chocolate SIA</p>
+                <p>PVN Reģ.nr. LV40103921954</p>
+                <p>Jur. adrese: Vircavas iela 9-8, Rīga, LV-1083</p>
+                <p>Fakt. adrese: Kandavas iela 29a-85, Rīga, LV-1083</p>
+                <p>info@luxurychocolate.lv · +371 26 177 853</p>
               </div>
             </div>
 
             <div className="grid grid-cols-2 gap-8 mb-8 text-sm">
               <div>
                 <p className="font-bold mb-1 text-xs uppercase text-gray-500">Pārdevējs</p>
-                <p className="font-medium">SIA "Lielmeistars" / Luxury Chocolate</p>
-                <p>Kandavas iela 29A, Rīga, LV-1083</p>
-                <p>Reģ. Nr. 40103928858 · PVN: LV40103928858</p>
+                <p className="font-medium">Luxury Chocolate SIA</p>
+                <p>Jur. adrese: Vircavas iela 9-8, Rīga, LV-1083</p>
+                <p>Fakt. adrese: Kandavas iela 29a-85, Rīga, LV-1083</p>
+                <p>PVN Reģ.nr. LV40103921954</p>
+                <p>Valdes locekle: Ilze Eisaka</p>
               </div>
+
               <div>
                 <p className="font-bold mb-1 text-xs uppercase text-gray-500">Pircējs</p>
                 <p className="font-medium">{buyerCompany || "—"}</p>
@@ -262,8 +264,10 @@ const Rekins = () => {
 
             <div className="mt-8 text-xs text-gray-600 border-t border-gray-200 pt-4">
               <p className="font-medium mb-1">Apmaksa ar pārskaitījumu:</p>
-              <p>Saņēmējs: SIA "Lielmeistars"</p>
-              <p>Banka: AS "Swedbank" · Konts: LV.. (lūdzu sazinieties, lai saņemtu rekvizītus)</p>
+              <p>Saņēmējs: Luxury Chocolate SIA</p>
+              <p>Reģ.nr.: LV40103921954</p>
+              <p>Banka: AS Citadele banka · SWIFT: PARXLV22</p>
+              <p>Konts: LV88PARX0032054790002</p>
               <p className="mt-3">Pasūtījumu sāksim gatavot pēc apmaksas saņemšanas. Jautājumu gadījumā: info@luxurychocolate.lv</p>
               <p className="mt-3 italic">Šis ir priekšapmaksas (proforma) rēķins. Galīgais rēķins tiks izsniegts pēc apmaksas.</p>
             </div>
