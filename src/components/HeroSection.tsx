@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import logo from "@/assets/logo-transparent.png";
+import logo from "@/assets/logo-nobg.png";
 import { ExternalLink, ShoppingBag } from "lucide-react";
 import type { Lang } from "@/i18n/types";
 import { expandLangs } from "@/i18n/expandLangs";
