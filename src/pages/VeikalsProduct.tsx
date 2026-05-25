@@ -219,8 +219,8 @@ const VeikalsProduct = () => {
               )}
             </div>
 
-            {product.short_description && (
-              <p className="text-muted-foreground mb-6 leading-relaxed">{product.short_description}</p>
+            {localizedShort && (
+              <p className="text-muted-foreground mb-6 leading-relaxed">{localizedShort}</p>
             )}
 
             <div className="flex items-center gap-2 text-sm text-muted-foreground mb-8">
