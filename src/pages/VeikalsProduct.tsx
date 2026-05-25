@@ -293,19 +293,19 @@ const VeikalsProduct = () => {
             />
 
 
-            {product.description && (
+            {localizedDesc && (
               <div className="mt-10 pt-8 border-t border-border">
                 <h2 className="text-lg text-foreground mb-3">Apraksts</h2>
                 <div className="text-sm text-muted-foreground leading-relaxed whitespace-pre-line">
-                  {product.description}
+                  {localizedDesc}
                 </div>
               </div>
             )}
 
-            {product.ingredients && (
+            {localizedIngredients && (
               <div className="mt-6">
                 <h3 className="text-sm font-medium text-foreground mb-2">Sastāvs</h3>
-                <p className="text-sm text-muted-foreground">{product.ingredients}</p>
+                <p className="text-sm text-muted-foreground">{localizedIngredients}</p>
               </div>
             )}
           </div>
