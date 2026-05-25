@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import logo from "@/assets/logo-transparent.png";
+import logo from "@/assets/logo-seal-clean.png";
 import { ExternalLink, ShoppingBag } from "lucide-react";
 import type { Lang } from "@/i18n/types";
 import { expandLangs } from "@/i18n/expandLangs";
@@ -49,7 +49,7 @@ const HeroSection = ({
 }: HeroSectionProps) => {
   return (
     <section className="flex flex-col">
-      <div className="relative bg-foreground py-16 sm:py-20 text-center">
+      <div className="relative bg-foreground pt-24 pb-16 sm:pt-32 sm:pb-20 text-center">
         <div className="container mx-auto">
           <div
             className="mx-auto mb-10 w-[200px] sm:w-[240px] h-[200px] sm:h-[240px] rounded-full bg-white flex items-center justify-center"
