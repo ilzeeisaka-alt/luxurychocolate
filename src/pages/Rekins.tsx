@@ -1,6 +1,8 @@
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Printer, ChevronLeft, Loader2 } from "lucide-react";
+import { Printer, ChevronLeft, Loader2, Download, CreditCard } from "lucide-react";
+import jsPDF from "jspdf";
+import html2canvas from "html2canvas";
 import Navbar from "@/components/Navbar";
 import FooterSection from "@/components/FooterSection";
 import { supabase } from "@/integrations/supabase/client";
@@ -114,7 +116,52 @@ const Rekins = () => {
   const totalExVat = Math.round(total / (1 + vatRate));
   const vatAmount = total - totalExVat;
 
+  const invoiceRef = useRef<HTMLDivElement | null>(null);
+  const [savingPdf, setSavingPdf] = useState(false);
+  const [paying, setPaying] = useState(false);
+
   const handlePrint = () => window.print();
+
+  const handleSavePdf = async () => {
+    if (!invoiceRef.current) return;
+    setSavingPdf(true);
+    try {
+      const canvas = await html2canvas(invoiceRef.current, { scale: 2, backgroundColor: "#ffffff" });
+      const imgData = canvas.toDataURL("image/png");
+      const pdf = new jsPDF({ unit: "mm", format: "a4", orientation: "portrait" });
+      const pageW = pdf.internal.pageSize.getWidth();
+      const pageH = pdf.internal.pageSize.getHeight();
+      const imgW = pageW;
+      const imgH = (canvas.height * imgW) / canvas.width;
+      let heightLeft = imgH;
+      let y = 0;
+      pdf.addImage(imgData, "PNG", 0, y, imgW, imgH);
+      heightLeft -= pageH;
+      while (heightLeft > 0) {
+        y = heightLeft - imgH;
+        pdf.addPage();
+        pdf.addImage(imgData, "PNG", 0, y, imgW, imgH);
+        heightLeft -= pageH;
+      }
+      pdf.save(`Rekins_${invoiceNumber}.pdf`);
+    } finally {
+      setSavingPdf(false);
+    }
+  };
+
+  const handlePay = async () => {
+    setPaying(true);
+    try {
+      sessionStorage.setItem("invoice_buyer", JSON.stringify({
+        company: buyerCompany, vat: buyerVat, regNr: buyerRegNr,
+        address: buyerAddress, email: buyerEmail, phone: buyerPhone,
+        invoiceNumber,
+      }));
+      navigate("/kase");
+    } finally {
+      setPaying(false);
+    }
+  };
 
   return (
     <div className="min-h-screen bg-background">
@@ -131,18 +178,28 @@ const Rekins = () => {
           <button onClick={() => navigate("/grozs")} className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground">
             <ChevronLeft className="w-4 h-4" /> Atpakaļ uz grozu
           </button>
-          <div className="flex gap-2">
+          <div className="flex flex-wrap gap-2">
             <button
               onClick={handlePrint}
-              className="flex items-center gap-2 rounded-lg bg-primary text-primary-foreground px-5 py-2.5 text-sm font-medium hover:brightness-110"
+              className="flex items-center gap-2 rounded-lg border border-border bg-card text-foreground px-4 py-2.5 text-sm font-medium hover:bg-muted"
             >
-              <Printer className="w-4 h-4" /> Drukāt / Saglabāt PDF
+              <Printer className="w-4 h-4" /> Drukāt
             </button>
             <button
-              onClick={() => navigate("/kase")}
-              className="rounded-lg border border-border bg-card text-foreground px-5 py-2.5 text-sm font-medium hover:bg-muted"
+              onClick={handleSavePdf}
+              disabled={savingPdf || validItems.length === 0}
+              className="flex items-center gap-2 rounded-lg border border-border bg-card text-foreground px-4 py-2.5 text-sm font-medium hover:bg-muted disabled:opacity-50"
             >
-              Doties uz apmaksu
+              {savingPdf ? <Loader2 className="w-4 h-4 animate-spin" /> : <Download className="w-4 h-4" />}
+              Saglabāt PDF
+            </button>
+            <button
+              onClick={handlePay}
+              disabled={paying || validItems.length === 0}
+              className="flex items-center gap-2 rounded-lg bg-primary text-primary-foreground px-5 py-2.5 text-sm font-medium hover:brightness-110 disabled:opacity-50"
+            >
+              {paying ? <Loader2 className="w-4 h-4 animate-spin" /> : <CreditCard className="w-4 h-4" />}
+              Maksāt tagad
             </button>
           </div>
         </div>
@@ -182,7 +239,7 @@ const Rekins = () => {
             Grozs ir tukšs. <button onClick={() => navigate("/veikals")} className="text-primary underline">Doties uz veikalu</button>
           </div>
         ) : (
-          <div className="print-area bg-white text-black rounded-xl border border-border p-10 shadow-sm">
+          <div ref={invoiceRef} className="print-area bg-white text-black rounded-xl border border-border p-10 shadow-sm">
             <div className="flex justify-between items-start mb-8">
               <div>
                 <h1 className="text-2xl font-bold">Priekšapmaksas rēķins</h1>
