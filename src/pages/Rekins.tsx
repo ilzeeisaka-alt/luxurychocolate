@@ -8,6 +8,8 @@ import FooterSection from "@/components/FooterSection";
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/hooks/useAuth";
 import { useSeo } from "@/hooks/useSeo";
+import { toast } from "@/hooks/use-toast";
+import { Check } from "lucide-react";
 
 interface CartLine {
   id: string;
@@ -134,6 +136,7 @@ const Rekins = () => {
   const invoiceRef = useRef<HTMLDivElement | null>(null);
   const [savingPdf, setSavingPdf] = useState(false);
   const [paying, setPaying] = useState(false);
+  const [confirming, setConfirming] = useState(false);
 
   const handlePrint = () => window.print();
 
@@ -175,6 +178,32 @@ const Rekins = () => {
       navigate("/kase");
     } finally {
       setPaying(false);
+    }
+  };
+
+  const handleConfirm = async () => {
+    if (!buyerCompany || !buyerEmail) {
+      toast({ title: "Trūkst rekvizītu", description: "Lūdzu, aizpildi vismaz uzņēmuma nosaukumu un e-pastu.", variant: "destructive" });
+      return;
+    }
+    setConfirming(true);
+    try {
+      await supabase.functions.invoke("notify-admin", {
+        body: {
+          type: "invoice_confirmed",
+          data: {
+            invoiceNumber, company: buyerCompany, regNr: buyerRegNr, vat: buyerVat,
+            address: buyerAddress, email: buyerEmail, phone: buyerPhone,
+            shipping: shipping.label, total: total / 100, currency,
+            items: validItems.map((i) => ({ name: i.product!.name, qty: i.quantity, price: i.product!.price_cents / 100 })),
+          },
+        },
+      });
+      toast({ title: "Rēķins apstiprināts", description: "Nosūtīsim apmaksas instrukcijas uz e-pastu. Pasūtījumu sāksim gatavot pēc apmaksas saņemšanas." });
+    } catch (e) {
+      toast({ title: "Kļūda", description: "Neizdevās apstiprināt rēķinu. Lūdzu, mēģini vēlreiz.", variant: "destructive" });
+    } finally {
+      setConfirming(false);
     }
   };
 
@@ -343,6 +372,35 @@ const Rekins = () => {
               <p className="mt-3">Pasūtījumu sāksim gatavot pēc apmaksas saņemšanas. Jautājumu gadījumā: info@luxurychocolate.lv</p>
               <p className="mt-3 italic">Šis ir priekšapmaksas (proforma) rēķins. Galīgais rēķins tiks izsniegts pēc apmaksas.</p>
             </div>
+          </div>
+        )}
+
+        {validItems.length > 0 && (
+          <div className="no-print mt-8 flex flex-wrap gap-3 justify-end">
+            <button
+              onClick={handleSavePdf}
+              disabled={savingPdf}
+              className="flex items-center gap-2 rounded-lg border border-border bg-card text-foreground px-5 py-3 text-sm font-medium hover:bg-muted disabled:opacity-50"
+            >
+              {savingPdf ? <Loader2 className="w-4 h-4 animate-spin" /> : <Download className="w-4 h-4" />}
+              Saglabāt rēķinu
+            </button>
+            <button
+              onClick={handleConfirm}
+              disabled={confirming}
+              className="flex items-center gap-2 rounded-lg border border-primary/40 bg-primary/10 text-foreground px-5 py-3 text-sm font-medium hover:bg-primary/20 disabled:opacity-50"
+            >
+              {confirming ? <Loader2 className="w-4 h-4 animate-spin" /> : <Check className="w-4 h-4" />}
+              Apstiprināt rēķinu
+            </button>
+            <button
+              onClick={handlePay}
+              disabled={paying}
+              className="flex items-center gap-2 rounded-lg bg-primary text-primary-foreground px-6 py-3 text-sm font-medium hover:brightness-110 disabled:opacity-50"
+            >
+              {paying ? <Loader2 className="w-4 h-4 animate-spin" /> : <CreditCard className="w-4 h-4" />}
+              Apmaksāt rēķinu
+            </button>
           </div>
         )}
       </main>
