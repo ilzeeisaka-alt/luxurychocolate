@@ -8,6 +8,8 @@ import FooterSection from "@/components/FooterSection";
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/hooks/useAuth";
 import { useSeo } from "@/hooks/useSeo";
+import { toast } from "@/hooks/use-toast";
+import { Check } from "lucide-react";
 
 interface CartLine {
   id: string;
