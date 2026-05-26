@@ -42,16 +42,31 @@ const Rekins = () => {
   const [items, setItems] = useState<CartLine[]>([]);
   const [loading, setLoading] = useState(true);
 
-  // Buyer (customer) details
-  const [buyerCompany, setBuyerCompany] = useState("");
-  const [buyerVat, setBuyerVat] = useState("");
-  const [buyerRegNr, setBuyerRegNr] = useState("");
-  const [buyerAddress, setBuyerAddress] = useState("");
-  const [buyerEmail, setBuyerEmail] = useState("");
-  const [buyerPhone, setBuyerPhone] = useState("");
+  // Buyer (customer) details — persisted in localStorage so they survive reloads / navigation
+  const STORAGE_KEY = "invoice_buyer_form";
+  const saved = (() => {
+    try { return JSON.parse(localStorage.getItem(STORAGE_KEY) || "{}"); } catch { return {}; }
+  })();
+  const [buyerCompany, setBuyerCompany] = useState<string>(saved.company ?? "");
+  const [buyerVat, setBuyerVat] = useState<string>(saved.vat ?? "");
+  const [buyerRegNr, setBuyerRegNr] = useState<string>(saved.regNr ?? "");
+  const [buyerAddress, setBuyerAddress] = useState<string>(saved.address ?? "");
+  const [buyerEmail, setBuyerEmail] = useState<string>(saved.email ?? "");
+  const [buyerPhone, setBuyerPhone] = useState<string>(saved.phone ?? "");
   const [shippingId, setShippingId] = useState<string>(
     () => sessionStorage.getItem("shipping_id") || "pickup",
   );
+
+  // Persist on every change
+  useEffect(() => {
+    localStorage.setItem(
+      STORAGE_KEY,
+      JSON.stringify({
+        company: buyerCompany, vat: buyerVat, regNr: buyerRegNr,
+        address: buyerAddress, email: buyerEmail, phone: buyerPhone,
+      }),
+    );
+  }, [buyerCompany, buyerVat, buyerRegNr, buyerAddress, buyerEmail, buyerPhone]);
 
   const invoiceNumber = useMemo(() => {
     const d = new Date();
@@ -90,16 +105,16 @@ const Rekins = () => {
       .eq("user_id", user.id)
       .maybeSingle();
     if (profile) {
-      setBuyerCompany(profile.company_name ?? "");
-      setBuyerVat(profile.vat_number ?? "");
-      setBuyerRegNr(profile.registration_number ?? "");
+      setBuyerCompany((v) => v || profile.company_name || "");
+      setBuyerVat((v) => v || profile.vat_number || "");
+      setBuyerRegNr((v) => v || profile.registration_number || "");
       const addr = [profile.legal_address, profile.legal_city, profile.legal_postal_code, profile.legal_country]
         .filter(Boolean).join(", ");
-      setBuyerAddress(addr);
-      setBuyerPhone(profile.phone ?? "");
-      setBuyerEmail(profile.email ?? user.email ?? "");
+      setBuyerAddress((v) => v || addr);
+      setBuyerPhone((v) => v || profile.phone || "");
+      setBuyerEmail((v) => v || profile.email || user.email || "");
     } else {
-      setBuyerEmail(user.email ?? "");
+      setBuyerEmail((v) => v || user.email || "");
     }
     setLoading(false);
   }, [user]);
