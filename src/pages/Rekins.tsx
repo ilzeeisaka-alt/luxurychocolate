@@ -136,6 +136,7 @@ const Rekins = () => {
   const invoiceRef = useRef<HTMLDivElement | null>(null);
   const [savingPdf, setSavingPdf] = useState(false);
   const [paying, setPaying] = useState(false);
+  const [confirming, setConfirming] = useState(false);
 
   const handlePrint = () => window.print();
 
