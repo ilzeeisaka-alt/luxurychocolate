@@ -374,6 +374,35 @@ const Rekins = () => {
             </div>
           </div>
         )}
+
+        {validItems.length > 0 && (
+          <div className="no-print mt-8 flex flex-wrap gap-3 justify-end">
+            <button
+              onClick={handleSavePdf}
+              disabled={savingPdf}
+              className="flex items-center gap-2 rounded-lg border border-border bg-card text-foreground px-5 py-3 text-sm font-medium hover:bg-muted disabled:opacity-50"
+            >
+              {savingPdf ? <Loader2 className="w-4 h-4 animate-spin" /> : <Download className="w-4 h-4" />}
+              Saglabāt rēķinu
+            </button>
+            <button
+              onClick={handleConfirm}
+              disabled={confirming}
+              className="flex items-center gap-2 rounded-lg border border-primary/40 bg-primary/10 text-foreground px-5 py-3 text-sm font-medium hover:bg-primary/20 disabled:opacity-50"
+            >
+              {confirming ? <Loader2 className="w-4 h-4 animate-spin" /> : <Check className="w-4 h-4" />}
+              Apstiprināt rēķinu
+            </button>
+            <button
+              onClick={handlePay}
+              disabled={paying}
+              className="flex items-center gap-2 rounded-lg bg-primary text-primary-foreground px-6 py-3 text-sm font-medium hover:brightness-110 disabled:opacity-50"
+            >
+              {paying ? <Loader2 className="w-4 h-4 animate-spin" /> : <CreditCard className="w-4 h-4" />}
+              Apmaksāt rēķinu
+            </button>
+          </div>
+        )}
       </main>
       <div className="no-print"><FooterSection /></div>
     </div>
