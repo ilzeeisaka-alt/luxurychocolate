@@ -181,6 +181,32 @@ const Rekins = () => {
     }
   };
 
+  const handleConfirm = async () => {
+    if (!buyerCompany || !buyerEmail) {
+      toast({ title: "Trūkst rekvizītu", description: "Lūdzu, aizpildi vismaz uzņēmuma nosaukumu un e-pastu.", variant: "destructive" });
+      return;
+    }
+    setConfirming(true);
+    try {
+      await supabase.functions.invoke("notify-admin", {
+        body: {
+          type: "invoice_confirmed",
+          data: {
+            invoiceNumber, company: buyerCompany, regNr: buyerRegNr, vat: buyerVat,
+            address: buyerAddress, email: buyerEmail, phone: buyerPhone,
+            shipping: shipping.label, total: total / 100, currency,
+            items: validItems.map((i) => ({ name: i.product!.name, qty: i.quantity, price: i.product!.price_cents / 100 })),
+          },
+        },
+      });
+      toast({ title: "Rēķins apstiprināts", description: "Nosūtīsim apmaksas instrukcijas uz e-pastu. Pasūtījumu sāksim gatavot pēc apmaksas saņemšanas." });
+    } catch (e) {
+      toast({ title: "Kļūda", description: "Neizdevās apstiprināt rēķinu. Lūdzu, mēģini vēlreiz.", variant: "destructive" });
+    } finally {
+      setConfirming(false);
+    }
+  };
+
   return (
     <div className="min-h-screen bg-background">
       <style>{`
