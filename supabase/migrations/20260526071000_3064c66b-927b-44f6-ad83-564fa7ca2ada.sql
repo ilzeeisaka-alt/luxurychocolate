@@ -1,0 +1,2 @@
+DELETE FROM public.product_images WHERE product_id IN ('8308e791-0bd5-4d50-a2b7-39909d878cb5','d8dc9641-0a02-4f83-bb77-34089d38b2da');
+DELETE FROM public.products WHERE id IN ('8308e791-0bd5-4d50-a2b7-39909d878cb5','d8dc9641-0a02-4f83-bb77-34089d38b2da');
