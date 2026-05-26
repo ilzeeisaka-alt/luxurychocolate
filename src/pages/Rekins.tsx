@@ -217,6 +217,7 @@ const Rekins = () => {
         order_id: orderData.id,
         product_id: i.product?.id ?? null,
         product_name: i.product?.name ?? "",
+        product_type: "product",
         quantity: i.quantity,
         unit_price_cents: i.product?.price_cents ?? 0,
         total_price_cents: (i.product?.price_cents ?? 0) * i.quantity,
