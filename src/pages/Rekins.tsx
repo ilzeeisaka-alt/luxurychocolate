@@ -445,7 +445,7 @@ const Rekins = () => {
               className="flex items-center gap-2 rounded-lg border border-primary/40 bg-primary/10 text-foreground px-5 py-3 text-sm font-medium hover:bg-primary/20 disabled:opacity-50"
             >
               {confirming ? <Loader2 className="w-4 h-4 animate-spin" /> : <Check className="w-4 h-4" />}
-              Apstiprināt rēķinu
+              Apstiprināt pasūtījumu
             </button>
             <button
               onClick={handlePay}
