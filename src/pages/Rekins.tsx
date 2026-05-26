@@ -105,16 +105,16 @@ const Rekins = () => {
       .eq("user_id", user.id)
       .maybeSingle();
     if (profile) {
-      setBuyerCompany(profile.company_name ?? "");
-      setBuyerVat(profile.vat_number ?? "");
-      setBuyerRegNr(profile.registration_number ?? "");
+      setBuyerCompany((v) => v || profile.company_name || "");
+      setBuyerVat((v) => v || profile.vat_number || "");
+      setBuyerRegNr((v) => v || profile.registration_number || "");
       const addr = [profile.legal_address, profile.legal_city, profile.legal_postal_code, profile.legal_country]
         .filter(Boolean).join(", ");
-      setBuyerAddress(addr);
-      setBuyerPhone(profile.phone ?? "");
-      setBuyerEmail(profile.email ?? user.email ?? "");
+      setBuyerAddress((v) => v || addr);
+      setBuyerPhone((v) => v || profile.phone || "");
+      setBuyerEmail((v) => v || profile.email || user.email || "");
     } else {
-      setBuyerEmail(user.email ?? "");
+      setBuyerEmail((v) => v || user.email || "");
     }
     setLoading(false);
   }, [user]);
