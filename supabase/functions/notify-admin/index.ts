@@ -53,6 +53,29 @@ serve(async (req) => {
         <blockquote style="border-left:3px solid #c9a84c;padding-left:12px;color:#444;">${esc(data?.content)}</blockquote>
         <p style="margin-top:16px;"><a href="https://luxurychocolate.lv/admin">Atvērt admin paneli</a></p>
       `;
+    } else if (type === "order_confirmed") {
+      const items = Array.isArray(data?.items) ? data.items : [];
+      subject = `Jauns pasūtījums ${esc(data?.orderNumber)} — ${esc(data?.company)}`;
+      html = `
+        <h2>Jauns pasūtījums apstiprināts</h2>
+        <p><strong>Pasūtījuma nr.:</strong> ${esc(data?.orderNumber)}</p>
+        <p><strong>Rēķina nr.:</strong> ${esc(data?.invoiceNumber)}</p>
+        <hr style="margin:16px 0;border:0;border-top:1px solid #ddd;" />
+        <p><strong>Uzņēmums:</strong> ${esc(data?.company)}</p>
+        <p><strong>Reģ. Nr.:</strong> ${esc(data?.regNr || "—")}</p>
+        <p><strong>PVN:</strong> ${esc(data?.vat || "—")}</p>
+        <p><strong>Adrese:</strong> ${esc(data?.address)}</p>
+        <p><strong>E-pasts:</strong> ${esc(data?.email)}</p>
+        <p><strong>Tel.:</strong> ${esc(data?.phone || "—")}</p>
+        <p><strong>Piegāde:</strong> ${esc(data?.shipping)}</p>
+        <hr style="margin:16px 0;border:0;border-top:1px solid #ddd;" />
+        <p><strong>Preces:</strong></p>
+        <ul>
+          ${items.map((i: any) => `<li>${esc(i.name)} — ${esc(String(i.qty))} gab. x ${esc(String(i.price))} EUR</li>`).join("")}
+        </ul>
+        <p style="margin-top:12px;font-size:18px;"><strong>Kopā: ${esc(String(data?.total))} ${esc(data?.currency)}</strong></p>
+        <p style="margin-top:16px;"><a href="https://luxurychocolate.lv/admin">Atvērt admin paneli</a></p>
+      `;
     } else {
       subject = `Jauns notikums: ${esc(type)}`;
       html = `<pre>${esc(JSON.stringify(data, null, 2))}</pre>`;

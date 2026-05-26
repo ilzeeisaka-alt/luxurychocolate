@@ -186,22 +186,76 @@ const Rekins = () => {
       toast({ title: "Trūkst rekvizītu", description: "Lūdzu, aizpildi vismaz uzņēmuma nosaukumu un e-pastu.", variant: "destructive" });
       return;
     }
+    if (!user) return;
     setConfirming(true);
     try {
+      // 1. Create order
+      const { data: orderData, error: orderErr } = await supabase
+        .from("orders")
+        .insert({
+          user_id: user.id,
+          customer_email: buyerEmail,
+          customer_name: buyerCompany,
+          customer_phone: buyerPhone,
+          company_name: buyerCompany,
+          vat_number: buyerVat,
+          shipping_address: buyerAddress,
+          shipping_method: shipping.label,
+          subtotal_cents: subtotal,
+          shipping_cents: shipping.cents,
+          tax_cents: vatAmount,
+          total_cents: total,
+          currency,
+          status: "pending",
+        })
+        .select("id, order_number")
+        .single();
+      if (orderErr || !orderData) throw orderErr || new Error("Neizdevās izveidot pasūtījumu");
+
+      // 2. Create order items
+      const orderItems = validItems.map((i) => ({
+        order_id: orderData.id,
+        product_id: i.product?.id ?? null,
+        product_name: i.product?.name ?? "",
+        product_type: "product",
+        quantity: i.quantity,
+        unit_price_cents: i.product?.price_cents ?? 0,
+        total_price_cents: (i.product?.price_cents ?? 0) * i.quantity,
+        logo_url: i.logo_url,
+        logo_filename: i.logo_filename,
+      }));
+      const { error: itemsErr } = await supabase.from("order_items").insert(orderItems);
+      if (itemsErr) console.error("order_items insert error", itemsErr);
+
+      // 3. Clear cart
+      await supabase.from("cart_items").delete().eq("user_id", user.id);
+
+      // 4. Notify admin
       await supabase.functions.invoke("notify-admin", {
         body: {
-          type: "invoice_confirmed",
+          type: "order_confirmed",
           data: {
-            invoiceNumber, company: buyerCompany, regNr: buyerRegNr, vat: buyerVat,
-            address: buyerAddress, email: buyerEmail, phone: buyerPhone,
-            shipping: shipping.label, total: total / 100, currency,
+            orderNumber: orderData.order_number,
+            invoiceNumber,
+            company: buyerCompany,
+            regNr: buyerRegNr,
+            vat: buyerVat,
+            address: buyerAddress,
+            email: buyerEmail,
+            phone: buyerPhone,
+            shipping: shipping.label,
+            total: total / 100,
+            currency,
             items: validItems.map((i) => ({ name: i.product!.name, qty: i.quantity, price: i.product!.price_cents / 100 })),
           },
         },
       });
-      toast({ title: "Rēķins apstiprināts", description: "Nosūtīsim apmaksas instrukcijas uz e-pastu. Pasūtījumu sāksim gatavot pēc apmaksas saņemšanas." });
+
+      toast({ title: "Pasūtījums apstiprināts", description: `Pasūtījuma nr. ${orderData.order_number}. Nosūtīsim apmaksas instrukcijas uz e-pastu.` });
+      navigate("/pasutijumi");
     } catch (e) {
-      toast({ title: "Kļūda", description: "Neizdevās apstiprināt rēķinu. Lūdzu, mēģini vēlreiz.", variant: "destructive" });
+      toast({ title: "Kļūda", description: "Neizdevās apstiprināt pasūtījumu. Lūdzu, mēģini vēlreiz.", variant: "destructive" });
+      console.error(e);
     } finally {
       setConfirming(false);
     }
@@ -391,7 +445,7 @@ const Rekins = () => {
               className="flex items-center gap-2 rounded-lg border border-primary/40 bg-primary/10 text-foreground px-5 py-3 text-sm font-medium hover:bg-primary/20 disabled:opacity-50"
             >
               {confirming ? <Loader2 className="w-4 h-4 animate-spin" /> : <Check className="w-4 h-4" />}
-              Apstiprināt rēķinu
+              Apstiprināt pasūtījumu
             </button>
             <button
               onClick={handlePay}
