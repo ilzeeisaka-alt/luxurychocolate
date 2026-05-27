@@ -8,9 +8,13 @@ import { useAuth } from "@/hooks/useAuth";
 import { useSeo } from "@/hooks/useSeo";
 import { useToast } from "@/hooks/use-toast";
 
+interface LogoRef { url: string; filename: string; quantity?: number }
 interface CartLine {
   id: string;
   quantity: number;
+  logo_url: string | null;
+  logo_filename: string | null;
+  logos: LogoRef[];
   product: {
     id: string;
     slug: string;
@@ -27,6 +31,9 @@ type ProductFromCart = Omit<CartLine["product"], "image_url">;
 interface CartQueryRow {
   id: string;
   quantity: number;
+  logo_url: string | null;
+  logo_filename: string | null;
+  logos: LogoRef[] | null;
   product: ProductFromCart | null;
 }
 
@@ -77,7 +84,7 @@ const Grozs = () => {
     setLoading(true);
     const { data, error } = await supabase
       .from("cart_items")
-      .select("id, quantity, product:products(id, slug, name, price_cents, currency, in_stock)")
+      .select("id, quantity, logo_url, logo_filename, logos, product:products(id, slug, name, price_cents, currency, in_stock)")
       .eq("user_id", user.id)
       .order("created_at", { ascending: false });
     if (error) {
@@ -85,7 +92,7 @@ const Grozs = () => {
       setLoading(false);
       return;
     }
-    const rows = ((data ?? []) as CartQueryRow[]).filter(
+    const rows = ((data ?? []) as unknown as CartQueryRow[]).filter(
       (r): r is CartQueryRow & { product: ProductFromCart } => Boolean(r.product),
     );
     const productIds = rows.map((r) => r.product.id);
@@ -102,11 +109,19 @@ const Grozs = () => {
       });
     }
     setItems(
-      rows.map((r) => ({
-        id: r.id,
-        quantity: r.quantity,
-        product: { ...r.product, image_url: imageMap.get(r.product.id) ?? null },
-      })),
+      rows.map((r) => {
+        const logos: LogoRef[] = Array.isArray(r.logos) && r.logos.length > 0
+          ? r.logos
+          : (r.logo_url ? [{ url: r.logo_url, filename: r.logo_filename ?? "", quantity: r.quantity }] : []);
+        return {
+          id: r.id,
+          quantity: r.quantity,
+          logo_url: r.logo_url,
+          logo_filename: r.logo_filename,
+          logos,
+          product: { ...r.product, image_url: imageMap.get(r.product.id) ?? null },
+        };
+      }),
     );
     setLoading(false);
   }, [toast, user]);
@@ -203,6 +218,35 @@ const Grozs = () => {
                     <p className="text-sm text-primary mt-1">
                       {formatPrice(item.product.price_cents, item.product.currency)}
                     </p>
+                    {item.logos.length > 0 && (
+                      <div className="mt-2 flex flex-wrap gap-2">
+                        {item.logos.map((l, idx) => {
+                          const isImg = /\.(png|jpe?g|gif|svg|webp|bmp)$/i.test(l.filename);
+                          return (
+                            <a
+                              key={idx}
+                              href={l.url}
+                              target="_blank"
+                              rel="noreferrer"
+                              title={l.filename}
+                              className="group flex items-center gap-1.5 max-w-[180px] rounded-md border border-border bg-background px-1.5 py-1 hover:border-primary transition-colors"
+                            >
+                              {isImg ? (
+                                <img src={l.url} alt={l.filename} className="w-8 h-8 object-contain rounded" />
+                              ) : (
+                                <span className="w-8 h-8 flex items-center justify-center rounded bg-muted text-[10px] uppercase text-muted-foreground">
+                                  {l.filename.split('.').pop()?.slice(0, 4) || 'file'}
+                                </span>
+                              )}
+                              <span className="text-xs text-muted-foreground truncate group-hover:text-foreground">
+                                {l.filename}
+                                {l.quantity && l.quantity > 1 ? ` ×${l.quantity}` : ""}
+                              </span>
+                            </a>
+                          );
+                        })}
+                      </div>
+                    )}
                     <div className="flex items-center justify-between mt-3">
                       <div className="flex items-center border border-border rounded-md">
                         <button
