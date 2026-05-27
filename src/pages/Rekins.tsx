@@ -11,11 +11,13 @@ import { useSeo } from "@/hooks/useSeo";
 import { toast } from "@/hooks/use-toast";
 import { Check } from "lucide-react";
 
+interface LogoRef { url: string; filename: string; quantity?: number }
 interface CartLine {
   id: string;
   quantity: number;
   logo_url: string | null;
   logo_filename: string | null;
+  logos: LogoRef[] | null;
   product: {
     id: string;
     name: string;
@@ -97,7 +99,7 @@ const Rekins = () => {
     setLoading(true);
     const { data } = await supabase
       .from("cart_items")
-      .select("id, quantity, logo_url, logo_filename, product:products(id, name, price_cents, currency)")
+      .select("id, quantity, logo_url, logo_filename, logos, product:products(id, name, price_cents, currency)")
       .eq("user_id", user.id);
     setItems((data ?? []) as unknown as CartLine[]);
     // Prefill from profile
@@ -223,6 +225,7 @@ const Rekins = () => {
         total_price_cents: (i.product?.price_cents ?? 0) * i.quantity,
         logo_url: i.logo_url,
         logo_filename: i.logo_filename,
+        logos: i.logos ?? [],
       }));
       const { error: itemsErr } = await supabase.from("order_items").insert(orderItems);
       if (itemsErr) console.error("order_items insert error", itemsErr);
@@ -385,17 +388,28 @@ const Rekins = () => {
                 </tr>
               </thead>
               <tbody>
-                {validItems.map((i) => (
-                  <tr key={i.id} className="border-b border-gray-200">
-                    <td className="py-2">
-                      {i.product!.name}
-                      {i.logo_url && <span className="text-xs text-gray-500"> (ar Jūsu logo{i.logo_filename ? `: ${i.logo_filename}` : ""})</span>}
-                    </td>
-                    <td className="text-right py-2">{i.quantity}</td>
-                    <td className="text-right py-2">{fmt(i.product!.price_cents, currency)}</td>
-                    <td className="text-right py-2">{fmt(i.product!.price_cents * i.quantity, currency)}</td>
-                  </tr>
-                ))}
+                {validItems.map((i) => {
+                  const logos = (i.logos && i.logos.length > 0)
+                    ? i.logos
+                    : (i.logo_url ? [{ url: i.logo_url, filename: i.logo_filename ?? "", quantity: i.quantity }] : []);
+                  return (
+                    <tr key={i.id} className="border-b border-gray-200">
+                      <td className="py-2">
+                        {i.product!.name}
+                        {logos.length > 0 && (
+                          <div className="text-xs text-gray-500 mt-1">
+                            {logos.length === 1
+                              ? `ar Jūsu logo${logos[0].filename ? `: ${logos[0].filename}` : ""}`
+                              : `ar ${logos.length} logo: ${logos.map((l) => l.filename || "—").join(", ")}`}
+                          </div>
+                        )}
+                      </td>
+                      <td className="text-right py-2">{i.quantity}</td>
+                      <td className="text-right py-2">{fmt(i.product!.price_cents, currency)}</td>
+                      <td className="text-right py-2">{fmt(i.product!.price_cents * i.quantity, currency)}</td>
+                    </tr>
+                  );
+                })}
                 {shipping.cents > 0 && (
                   <tr className="border-b border-gray-200">
                     <td className="py-2">Piegāde: {shipping.label}</td>
