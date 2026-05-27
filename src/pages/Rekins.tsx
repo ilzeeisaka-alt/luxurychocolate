@@ -9,6 +9,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/hooks/useAuth";
 import { useSeo } from "@/hooks/useSeo";
 import { toast } from "@/hooks/use-toast";
+import logoUrl from "@/assets/luxury-chocolate-logo.jpg";
 import { Check } from "lucide-react";
 
 interface LogoRef { url: string; filename: string; quantity?: number }
