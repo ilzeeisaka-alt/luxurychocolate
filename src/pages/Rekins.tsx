@@ -225,7 +225,7 @@ const Rekins = () => {
         total_price_cents: (i.product?.price_cents ?? 0) * i.quantity,
         logo_url: i.logo_url,
         logo_filename: i.logo_filename,
-        logos: i.logos ?? [],
+        logos: (i.logos ?? []) as unknown as object[],
       }));
       const { error: itemsErr } = await supabase.from("order_items").insert(orderItems);
       if (itemsErr) console.error("order_items insert error", itemsErr);
