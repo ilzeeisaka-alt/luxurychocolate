@@ -146,6 +146,7 @@ const ProductLogoModal = ({ open, onOpenChange, productId, productName, initialF
       const message = (formData.get('message') as string || '').trim();
       const notes = message ? `Piezīmes: ${message}` : null;
 
+      const uploaded: { url: string; filename: string; quantity: number }[] = [];
       for (const entry of entries) {
         const fileExt = entry.file.name.split('.').pop();
         const fileName = `${Date.now()}-${Math.random().toString(36).substring(2)}.${fileExt}`;
@@ -160,19 +161,25 @@ const ProductLogoModal = ({ open, onOpenChange, productId, productName, initialF
           continue;
         }
         const { data: urlData } = supabase.storage.from('client-logos').getPublicUrl(fileName);
-        const { error: insertError } = await supabase.from('cart_items').insert({
-          user_id: user.id,
-          product_id: productId,
-          quantity: entry.quantity,
-          logo_url: urlData.publicUrl,
-          logo_filename: entry.file.name,
-          notes,
-        });
-        if (insertError) throw insertError;
+        uploaded.push({ url: urlData.publicUrl, filename: entry.file.name, quantity: entry.quantity });
       }
 
+      if (uploaded.length === 0) throw new Error("Neviens logo netika augšupielādēts");
+
+      const totalQty = uploaded.reduce((s, l) => s + l.quantity, 0);
+      const { error: insertError } = await supabase.from('cart_items').insert({
+        user_id: user.id,
+        product_id: productId,
+        quantity: totalQty,
+        logo_url: uploaded[0].url,
+        logo_filename: uploaded[0].filename,
+        logos: uploaded,
+        notes,
+      });
+      if (insertError) throw insertError;
+
       window.dispatchEvent(new Event("cart-updated"));
-      toast.success(`Pievienoti ${entries.length} logo grozam`);
+      toast.success(`Pievienots grozam ar ${uploaded.length} logo`);
       onOpenChange(false);
       reset();
       navigate("/grozs");

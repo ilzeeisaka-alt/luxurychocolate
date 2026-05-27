@@ -62,6 +62,7 @@ export type Database = {
           id: string
           logo_filename: string | null
           logo_url: string | null
+          logos: Json
           notes: string | null
           product_id: string
           quantity: number
@@ -73,6 +74,7 @@ export type Database = {
           id?: string
           logo_filename?: string | null
           logo_url?: string | null
+          logos?: Json
           notes?: string | null
           product_id: string
           quantity?: number
@@ -84,6 +86,7 @@ export type Database = {
           id?: string
           logo_filename?: string | null
           logo_url?: string | null
+          logos?: Json
           notes?: string | null
           product_id?: string
           quantity?: number
@@ -191,6 +194,7 @@ export type Database = {
           id: string
           logo_filename: string | null
           logo_url: string | null
+          logos: Json
           notes: string | null
           order_id: string
           product_id: string | null
@@ -212,6 +216,7 @@ export type Database = {
           id?: string
           logo_filename?: string | null
           logo_url?: string | null
+          logos?: Json
           notes?: string | null
           order_id: string
           product_id?: string | null
@@ -233,6 +238,7 @@ export type Database = {
           id?: string
           logo_filename?: string | null
           logo_url?: string | null
+          logos?: Json
           notes?: string | null
           order_id?: string
           product_id?: string | null
