@@ -255,7 +255,7 @@ const Rekins = () => {
       });
 
       toast({ title: "Pasūtījums apstiprināts", description: `Pasūtījuma nr. ${orderData.order_number}. Nosūtīsim apmaksas instrukcijas uz e-pastu.` });
-      navigate("/pasutijumi");
+      navigate("/account");
     } catch (e) {
       toast({ title: "Kļūda", description: "Neizdevās apstiprināt pasūtījumu. Lūdzu, mēģini vēlreiz.", variant: "destructive" });
       console.error(e);
