@@ -8,9 +8,13 @@ import { useAuth } from "@/hooks/useAuth";
 import { useSeo } from "@/hooks/useSeo";
 import { useToast } from "@/hooks/use-toast";
 
+interface LogoRef { url: string; filename: string; quantity?: number }
 interface CartLine {
   id: string;
   quantity: number;
+  logo_url: string | null;
+  logo_filename: string | null;
+  logos: LogoRef[];
   product: {
     id: string;
     slug: string;
@@ -27,6 +31,9 @@ type ProductFromCart = Omit<CartLine["product"], "image_url">;
 interface CartQueryRow {
   id: string;
   quantity: number;
+  logo_url: string | null;
+  logo_filename: string | null;
+  logos: LogoRef[] | null;
   product: ProductFromCart | null;
 }
 
