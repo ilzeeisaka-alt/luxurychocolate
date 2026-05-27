@@ -166,11 +166,10 @@ const ProductLogoModal = ({ open, onOpenChange, productId, productName, initialF
 
       if (uploaded.length === 0) throw new Error("Neviens logo netika augšupielādēts");
 
-      const totalQty = uploaded.reduce((s, l) => s + l.quantity, 0);
       const { error: insertError } = await supabase.from('cart_items').insert({
         user_id: user.id,
         product_id: productId,
-        quantity: totalQty,
+        quantity: 1,
         logo_url: uploaded[0].url,
         logo_filename: uploaded[0].filename,
         logos: uploaded,
