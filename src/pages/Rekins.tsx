@@ -342,12 +342,15 @@ const Rekins = () => {
           </div>
         ) : (
           <div ref={invoiceRef} className="print-area bg-white text-black rounded-xl border border-border p-10 shadow-sm">
-            <div className="flex justify-between items-start mb-8">
-              <div>
-                <h1 className="text-2xl font-bold">Priekšapmaksas rēķins</h1>
-                <p className="text-sm mt-1">Nr. {invoiceNumber}</p>
-                <p className="text-sm">Izrakstīts: {today}</p>
-                <p className="text-sm">Apmaksas termiņš: {dueDate}</p>
+            <div className="flex justify-between items-start mb-8 gap-6">
+              <div className="flex items-start gap-4">
+                <img src={logoUrl} alt="Luxury Chocolate" className="w-20 h-20 object-contain" crossOrigin="anonymous" />
+                <div>
+                  <h1 className="text-2xl font-bold">Priekšapmaksas rēķins</h1>
+                  <p className="text-sm mt-1">Nr. {invoiceNumber}</p>
+                  <p className="text-sm">Izrakstīts: {today}</p>
+                  <p className="text-sm">Apmaksas termiņš: {dueDate}</p>
+                </div>
               </div>
               <div className="text-right text-sm">
                 <p className="font-bold text-base">Luxury Chocolate SIA</p>
