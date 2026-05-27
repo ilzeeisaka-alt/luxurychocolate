@@ -84,7 +84,7 @@ const Grozs = () => {
     setLoading(true);
     const { data, error } = await supabase
       .from("cart_items")
-      .select("id, quantity, product:products(id, slug, name, price_cents, currency, in_stock)")
+      .select("id, quantity, logo_url, logo_filename, logos, product:products(id, slug, name, price_cents, currency, in_stock)")
       .eq("user_id", user.id)
       .order("created_at", { ascending: false });
     if (error) {
@@ -92,7 +92,7 @@ const Grozs = () => {
       setLoading(false);
       return;
     }
-    const rows = ((data ?? []) as CartQueryRow[]).filter(
+    const rows = ((data ?? []) as unknown as CartQueryRow[]).filter(
       (r): r is CartQueryRow & { product: ProductFromCart } => Boolean(r.product),
     );
     const productIds = rows.map((r) => r.product.id);
@@ -109,11 +109,19 @@ const Grozs = () => {
       });
     }
     setItems(
-      rows.map((r) => ({
-        id: r.id,
-        quantity: r.quantity,
-        product: { ...r.product, image_url: imageMap.get(r.product.id) ?? null },
-      })),
+      rows.map((r) => {
+        const logos: LogoRef[] = Array.isArray(r.logos) && r.logos.length > 0
+          ? r.logos
+          : (r.logo_url ? [{ url: r.logo_url, filename: r.logo_filename ?? "", quantity: r.quantity }] : []);
+        return {
+          id: r.id,
+          quantity: r.quantity,
+          logo_url: r.logo_url,
+          logo_filename: r.logo_filename,
+          logos,
+          product: { ...r.product, image_url: imageMap.get(r.product.id) ?? null },
+        };
+      }),
     );
     setLoading(false);
   }, [toast, user]);
