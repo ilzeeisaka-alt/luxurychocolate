@@ -218,6 +218,35 @@ const Grozs = () => {
                     <p className="text-sm text-primary mt-1">
                       {formatPrice(item.product.price_cents, item.product.currency)}
                     </p>
+                    {item.logos.length > 0 && (
+                      <div className="mt-2 flex flex-wrap gap-2">
+                        {item.logos.map((l, idx) => {
+                          const isImg = /\.(png|jpe?g|gif|svg|webp|bmp)$/i.test(l.filename);
+                          return (
+                            <a
+                              key={idx}
+                              href={l.url}
+                              target="_blank"
+                              rel="noreferrer"
+                              title={l.filename}
+                              className="group flex items-center gap-1.5 max-w-[180px] rounded-md border border-border bg-background px-1.5 py-1 hover:border-primary transition-colors"
+                            >
+                              {isImg ? (
+                                <img src={l.url} alt={l.filename} className="w-8 h-8 object-contain rounded" />
+                              ) : (
+                                <span className="w-8 h-8 flex items-center justify-center rounded bg-muted text-[10px] uppercase text-muted-foreground">
+                                  {l.filename.split('.').pop()?.slice(0, 4) || 'file'}
+                                </span>
+                              )}
+                              <span className="text-xs text-muted-foreground truncate group-hover:text-foreground">
+                                {l.filename}
+                                {l.quantity && l.quantity > 1 ? ` ×${l.quantity}` : ""}
+                              </span>
+                            </a>
+                          );
+                        })}
+                      </div>
+                    )}
                     <div className="flex items-center justify-between mt-3">
                       <div className="flex items-center border border-border rounded-md">
                         <button
