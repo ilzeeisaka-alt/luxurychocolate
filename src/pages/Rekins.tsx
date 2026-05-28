@@ -10,6 +10,7 @@ import { useAuth } from "@/hooks/useAuth";
 import { useSeo } from "@/hooks/useSeo";
 import { toast } from "@/hooks/use-toast";
 import logoUrl from "@/assets/luxury-chocolate-logo.jpg";
+import chocoTimeUrl from "@/assets/its-choco-time.jpg";
 import { Check } from "lucide-react";
 
 interface LogoRef { url: string; filename: string; quantity?: number }
