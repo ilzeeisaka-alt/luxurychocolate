@@ -42,8 +42,12 @@ interface Order {
 const fmt = (cents: number, currency = "EUR") =>
   new Intl.NumberFormat("lv-LV", { style: "currency", currency }).format(cents / 100);
 
+type DocType = "proforma" | "invoice" | "waybill";
+
 const AdminInvoice = () => {
   const { orderId } = useParams<{ orderId: string }>();
+  const [searchParams, setSearchParams] = useSearchParams();
+  const docType = (searchParams.get("type") as DocType) || "proforma";
   const { user, loading: authLoading } = useAuth();
   const navigate = useNavigate();
   const [order, setOrder] = useState<Order | null>(null);
