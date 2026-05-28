@@ -89,10 +89,21 @@ const AdminInvoice = () => {
 
   useEffect(() => { if (isAdmin) load(); }, [isAdmin, load]);
 
+  const docMeta = useMemo(() => {
+    switch (docType) {
+      case "invoice":
+        return { title: "Rēķins", prefix: "INV", filePrefix: "Rekins" };
+      case "waybill":
+        return { title: "Pavadzīme", prefix: "PAV", filePrefix: "Pavadzime" };
+      default:
+        return { title: "Priekšapmaksas rēķins", prefix: "PRO", filePrefix: "Priekapmaksa" };
+    }
+  }, [docType]);
+
   const invoiceNumber = useMemo(() => {
     if (!order) return "";
-    return `PRO-${order.order_number.replace("ORD-", "")}`;
-  }, [order]);
+    return `${docMeta.prefix}-${order.order_number.replace("ORD-", "")}`;
+  }, [order, docMeta]);
 
   const dateStr = order ? new Date(order.created_at).toLocaleDateString("lv-LV") : "";
   const dueDate = useMemo(() => {
