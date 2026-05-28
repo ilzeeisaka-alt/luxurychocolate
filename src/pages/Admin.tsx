@@ -422,15 +422,7 @@ const Admin = () => {
                       rel="noopener noreferrer"
                       className="inline-flex items-center gap-2 rounded-md border border-border bg-card px-3 py-1.5 text-sm font-medium hover:bg-muted"
                     >
-                      🧾 Gala rēķins
-                    </a>
-                    <a
-                      href={`/admin/rekins/${order.id}?type=waybill`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 rounded-md border border-border bg-card px-3 py-1.5 text-sm font-medium hover:bg-muted"
-                    >
-                      🚚 Pavadzīme
+                      🧾 Rēķins-Pavadzīme
                     </a>
                   </div>
                   <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
