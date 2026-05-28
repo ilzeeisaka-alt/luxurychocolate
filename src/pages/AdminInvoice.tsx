@@ -196,8 +196,7 @@ const AdminInvoice = () => {
         <div className="no-print mb-6 flex flex-wrap gap-2">
           {([
             { v: "proforma", l: "Priekšapmaksas rēķins" },
-            { v: "invoice", l: "Gala rēķins" },
-            { v: "waybill", l: "Pavadzīme" },
+            { v: "invoice", l: "Rēķins-Pavadzīme" },
           ] as { v: DocType; l: string }[]).map((t) => (
             <button
               key={t.v}
