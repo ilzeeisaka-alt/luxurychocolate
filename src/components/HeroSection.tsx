@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import logo from "@/assets/logo-seal-clean.png";
-import chocoTimeLogo from "@/assets/its-choco-time.jpg";
+import chocoTimeLogo from "@/assets/its-choco-time.png";
 import { ExternalLink, ShoppingBag } from "lucide-react";
 import type { Lang } from "@/i18n/types";
 import { expandLangs } from "@/i18n/expandLangs";
