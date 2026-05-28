@@ -173,9 +173,17 @@ const AdminInvoice = () => {
     <div className="min-h-screen bg-background">
       <style>{`
         @media print {
+          @page { size: A4; margin: 8mm; }
+          html, body { background: white !important; }
           .no-print { display: none !important; }
-          .print-area { box-shadow: none !important; border: none !important; }
-          body { background: white !important; }
+          .print-area { box-shadow: none !important; border: none !important; padding: 0 !important; }
+          .print-area * { font-size: 11px !important; line-height: 1.35 !important; }
+          .print-area h1 { font-size: 18px !important; }
+          .print-tight { margin-top: 12px !important; }
+          .sig-block { margin-top: 16px !important; padding-top: 10px !important; }
+          .sig-block .h-6 { height: 14px !important; }
+          .sig-block .mb-8 { margin-bottom: 18px !important; }
+          .sig-block .mt-4 { margin-top: 6px !important; }
         }
       `}</style>
       <div className="no-print"><Navbar /></div>
@@ -331,7 +339,7 @@ const AdminInvoice = () => {
                 <p className="mt-3">Maksājuma uzdevumā lūdzam norādīt rēķina numuru {invoiceNumber}.</p>
                 <p className="mt-3 italic">Rēķins-pavadzīme sagatavota elektroniski un ir derīga bez paraksta.</p>
               </div>
-              <div className="mt-10 text-xs text-gray-700 border-t border-gray-200 pt-6">
+              <div className="sig-block mt-10 text-xs text-gray-700 border-t border-gray-200 pt-6">
                 <div className="grid grid-cols-2 gap-10">
                   <div>
                     <p className="font-medium mb-8">Preci nodeva:</p>
