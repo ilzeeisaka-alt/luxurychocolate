@@ -118,6 +118,7 @@ const App = () => (
             <Route path="/auth" element={<Auth />} />
             <Route path="/account" element={<Account />} />
             <Route path="/admin" element={<Admin />} />
+            <Route path="/admin/rekins/:orderId" element={<AdminInvoice />} />
             {/* LV routes */}
             <Route path="/" element={<Index />} />
             <Route path="/kuku-sokolades-veikals" element={<KukuSokoladesVeikals />} />
