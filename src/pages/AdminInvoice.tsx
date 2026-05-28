@@ -42,7 +42,7 @@ interface Order {
 const fmt = (cents: number, currency = "EUR") =>
   new Intl.NumberFormat("lv-LV", { style: "currency", currency }).format(cents / 100);
 
-type DocType = "proforma" | "invoice" | "waybill";
+type DocType = "proforma" | "invoice";
 
 const AdminInvoice = () => {
   const { orderId } = useParams<{ orderId: string }>();
