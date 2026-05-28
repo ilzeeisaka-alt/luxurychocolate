@@ -220,11 +220,11 @@ const AdminInvoice = () => {
             <div className="flex items-start gap-4">
               <img src={logoUrl} alt="Luxury Chocolate" className="w-20 h-20 object-contain" crossOrigin="anonymous" />
               <div>
-                <h1 className="text-2xl font-bold">Priekšapmaksas rēķins</h1>
+                <h1 className="text-2xl font-bold">{docMeta.title}</h1>
                 <p className="text-sm mt-1">Nr. {invoiceNumber}</p>
                 <p className="text-sm">Pasūtījums: {order.order_number}</p>
                 <p className="text-sm">Izrakstīts: {dateStr}</p>
-                <p className="text-sm">Apmaksas termiņš: {dueDate}</p>
+                {docType === "proforma" && <p className="text-sm">Apmaksas termiņš: {dueDate}</p>}
               </div>
             </div>
             <div className="text-right text-sm">
