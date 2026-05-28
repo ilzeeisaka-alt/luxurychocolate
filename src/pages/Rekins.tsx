@@ -10,6 +10,7 @@ import { useAuth } from "@/hooks/useAuth";
 import { useSeo } from "@/hooks/useSeo";
 import { toast } from "@/hooks/use-toast";
 import logoUrl from "@/assets/luxury-chocolate-logo.jpg";
+import chocoTimeUrl from "@/assets/its-choco-time.jpg";
 import { Check } from "lucide-react";
 
 interface LogoRef { url: string; filename: string; quantity?: number }
@@ -345,6 +346,7 @@ const Rekins = () => {
             <div className="flex justify-between items-start mb-8 gap-6">
               <div className="flex items-start gap-4">
                 <img src={logoUrl} alt="Luxury Chocolate" className="w-20 h-20 object-contain" crossOrigin="anonymous" />
+                <img src={chocoTimeUrl} alt="It's choco time" className="w-20 h-20 object-contain" crossOrigin="anonymous" />
                 <div>
                   <h1 className="text-2xl font-bold">Priekšapmaksas rēķins</h1>
                   <p className="text-sm mt-1">Nr. {invoiceNumber}</p>
