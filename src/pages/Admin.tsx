@@ -407,14 +407,30 @@ const Admin = () => {
                   </div>
                 </AccordionTrigger>
                 <AccordionContent className="px-4 pb-4 pt-2">
-                  <div className="mb-4 flex justify-end">
+                  <div className="mb-4 flex flex-wrap justify-end gap-2">
                     <a
-                      href={`/admin/rekins/${order.id}`}
+                      href={`/admin/rekins/${order.id}?type=proforma`}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="inline-flex items-center gap-2 rounded-md border border-border bg-card px-3 py-1.5 text-sm font-medium hover:bg-muted"
                     >
-                      📄 Atvērt rēķinu
+                      📄 Priekšapmaksas rēķins
+                    </a>
+                    <a
+                      href={`/admin/rekins/${order.id}?type=invoice`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 rounded-md border border-border bg-card px-3 py-1.5 text-sm font-medium hover:bg-muted"
+                    >
+                      🧾 Gala rēķins
+                    </a>
+                    <a
+                      href={`/admin/rekins/${order.id}?type=waybill`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 rounded-md border border-border bg-card px-3 py-1.5 text-sm font-medium hover:bg-muted"
+                    >
+                      🚚 Pavadzīme
                     </a>
                   </div>
                   <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
