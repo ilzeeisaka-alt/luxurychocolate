@@ -181,7 +181,7 @@ const AdminInvoice = () => {
       `}</style>
       <div className="no-print"><Navbar /></div>
       <main className="container mx-auto px-4 pt-28 pb-16 max-w-5xl">
-        <div className="no-print flex items-center justify-between mb-6">
+        <div className="no-print flex items-center justify-between mb-4">
           <button onClick={() => navigate("/admin")} className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground">
             <ChevronLeft className="w-4 h-4" /> Atpakaļ uz admin
           </button>
@@ -194,6 +194,25 @@ const AdminInvoice = () => {
               Saglabāt PDF
             </button>
           </div>
+        </div>
+        <div className="no-print mb-6 flex flex-wrap gap-2">
+          {([
+            { v: "proforma", l: "Priekšapmaksas rēķins" },
+            { v: "invoice", l: "Gala rēķins" },
+            { v: "waybill", l: "Pavadzīme" },
+          ] as { v: DocType; l: string }[]).map((t) => (
+            <button
+              key={t.v}
+              onClick={() => setSearchParams({ type: t.v })}
+              className={`rounded-md border px-3 py-1.5 text-sm font-medium transition ${
+                docType === t.v
+                  ? "border-primary bg-primary text-primary-foreground"
+                  : "border-border bg-card text-foreground hover:bg-muted"
+              }`}
+            >
+              {t.l}
+            </button>
+          ))}
         </div>
 
         <div ref={invoiceRef} className="print-area bg-white text-black rounded-xl border border-border p-10 shadow-sm">
