@@ -14,6 +14,7 @@ const Index = lazy(() => import("./pages/Index.tsx"));
 const Auth = lazy(() => import("./pages/Auth.tsx"));
 const Account = lazy(() => import("./pages/Account.tsx"));
 const Admin = lazy(() => import("./pages/Admin.tsx"));
+const AdminInvoice = lazy(() => import("./pages/AdminInvoice.tsx"));
 const SokoladesArLogo = lazy(() => import("./pages/SokoladesArLogo.tsx"));
 const KukuSokoladesVeikals = lazy(() => import("./pages/KukuSokoladesVeikals.tsx"));
 const Veikals = lazy(() => import("./pages/Veikals.tsx"));
