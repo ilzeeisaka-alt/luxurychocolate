@@ -343,9 +343,9 @@ const AdminInvoice = () => {
                 <div className="grid grid-cols-2 gap-10">
                   <div>
                     <p className="font-medium mb-8">Preci nodeva:</p>
-                    <div className="border-b border-black h-6" />
+                    <div className="border-b border-black h-6 flex items-end pb-0.5 font-medium">Ilze Eisaka</div>
                     <p className="mt-1 text-[10px] text-gray-500">Vārds, uzvārds, paraksts</p>
-                    <p className="mt-4">Datums: ____________________</p>
+                    <p className="mt-4">Datums: {new Date().toLocaleDateString("lv-LV")}</p>
                   </div>
                   <div>
                     <p className="font-medium mb-8">Preci saņēma:</p>
