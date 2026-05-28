@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import logo from "@/assets/logo-seal-clean.png";
+import chocoTimeLogo from "@/assets/its-choco-time.jpg";
 import { ExternalLink, ShoppingBag } from "lucide-react";
 import type { Lang } from "@/i18n/types";
 import { expandLangs } from "@/i18n/expandLangs";
@@ -51,11 +52,19 @@ const HeroSection = ({
     <section className="flex flex-col">
       <div className="relative bg-foreground pt-24 pb-16 sm:pt-32 sm:pb-20 text-center">
         <div className="container mx-auto">
-          <div
-            className="mx-auto mb-10 w-[200px] sm:w-[240px] h-[200px] sm:h-[240px] rounded-full bg-white flex items-center justify-center"
-            style={{ boxShadow: "0 0 40px rgba(196,163,90,0.15), 0 0 80px rgba(0,0,0,0.3)" }}
-          >
-            <img src={logo} alt={logoAlt} className="w-[70%] h-[70%] object-contain" />
+          <div className="flex items-center justify-center gap-6 sm:gap-10 mb-10">
+            <div
+              className="w-[160px] sm:w-[200px] h-[160px] sm:h-[200px] rounded-full bg-white flex items-center justify-center flex-shrink-0"
+              style={{ boxShadow: "0 0 40px rgba(196,163,90,0.15), 0 0 80px rgba(0,0,0,0.3)" }}
+            >
+              <img src={logo} alt={logoAlt} className="w-[70%] h-[70%] object-contain" />
+            </div>
+            <img
+              src={chocoTimeLogo}
+              alt="It's Choco Time"
+              className="w-[140px] sm:w-[180px] h-auto object-contain rounded-lg flex-shrink-0"
+              style={{ boxShadow: "0 0 30px rgba(196,163,90,0.1), 0 0 60px rgba(0,0,0,0.2)" }}
+            />
           </div>
 
           <h1 className="text-4xl sm:text-5xl lg:text-6xl text-white mb-5 leading-[1.1] tracking-tight font-normal">
