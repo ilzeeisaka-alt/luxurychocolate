@@ -339,7 +339,7 @@ const AdminInvoice = () => {
                 <p className="mt-3">Maksājuma uzdevumā lūdzam norādīt rēķina numuru {invoiceNumber}.</p>
                 <p className="mt-3 italic">Rēķins-pavadzīme sagatavota elektroniski un ir derīga bez paraksta.</p>
               </div>
-              <div className="mt-10 text-xs text-gray-700 border-t border-gray-200 pt-6">
+              <div className="sig-block mt-10 text-xs text-gray-700 border-t border-gray-200 pt-6">
                 <div className="grid grid-cols-2 gap-10">
                   <div>
                     <p className="font-medium mb-8">Preci nodeva:</p>
