@@ -92,9 +92,7 @@ const AdminInvoice = () => {
   const docMeta = useMemo(() => {
     switch (docType) {
       case "invoice":
-        return { title: "Rēķins", prefix: "INV", filePrefix: "Rekins" };
-      case "waybill":
-        return { title: "Pavadzīme", prefix: "PAV", filePrefix: "Pavadzime" };
+        return { title: "Rēķins-Pavadzīme", prefix: "INV", filePrefix: "Rekins-Pavadzime" };
       default:
         return { title: "Priekšapmaksas rēķins", prefix: "PRO", filePrefix: "Priekapmaksa" };
     }
