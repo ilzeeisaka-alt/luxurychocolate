@@ -138,7 +138,7 @@ const AdminInvoice = () => {
         pdf.addImage(imgData, "PNG", 0, y, imgW, imgH);
         heightLeft -= pageH;
       }
-      pdf.save(`Rekins_${invoiceNumber}.pdf`);
+      pdf.save(`${docMeta.filePrefix}_${invoiceNumber}.pdf`);
     } finally {
       setSavingPdf(false);
     }
