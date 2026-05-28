@@ -258,8 +258,8 @@ const AdminInvoice = () => {
               <tr className="border-b-2 border-black">
                 <th className="text-left py-2">Nosaukums</th>
                 <th className="text-right py-2">Daudz.</th>
-                {docType !== "waybill" && <th className="text-right py-2">Cena</th>}
-                {docType !== "waybill" && <th className="text-right py-2">Summa</th>}
+                <th className="text-right py-2">Cena</th>
+                <th className="text-right py-2">Summa</th>
               </tr>
             </thead>
             <tbody>
@@ -280,12 +280,12 @@ const AdminInvoice = () => {
                       )}
                     </td>
                     <td className="text-right py-2">{i.quantity}</td>
-                    {docType !== "waybill" && <td className="text-right py-2">{fmt(i.unit_price_cents, currency)}</td>}
-                    {docType !== "waybill" && <td className="text-right py-2">{fmt(i.total_price_cents, currency)}</td>}
+                    <td className="text-right py-2">{fmt(i.unit_price_cents, currency)}</td>
+                    <td className="text-right py-2">{fmt(i.total_price_cents, currency)}</td>
                   </tr>
                 );
               })}
-              {order.shipping_cents > 0 && docType !== "waybill" && (
+              {order.shipping_cents > 0 && (
                 <tr className="border-b border-gray-200">
                   <td className="py-2">Piegāde: {order.shipping_method || "—"}</td>
                   <td className="text-right py-2">1</td>
@@ -296,17 +296,15 @@ const AdminInvoice = () => {
             </tbody>
           </table>
 
-          {docType !== "waybill" && (
-            <div className="flex justify-end mt-6">
-              <div className="w-72 text-sm">
-                <div className="flex justify-between py-1"><span>Summa bez PVN:</span><span>{fmt(order.total_cents - order.tax_cents, currency)}</span></div>
-                <div className="flex justify-between py-1"><span>PVN 21%:</span><span>{fmt(order.tax_cents, currency)}</span></div>
-                <div className="flex justify-between py-2 border-t-2 border-black font-bold text-base mt-1">
-                  <span>Kopā apmaksai:</span><span>{fmt(order.total_cents, currency)}</span>
-                </div>
+          <div className="flex justify-end mt-6">
+            <div className="w-72 text-sm">
+              <div className="flex justify-between py-1"><span>Summa bez PVN:</span><span>{fmt(order.total_cents - order.tax_cents, currency)}</span></div>
+              <div className="flex justify-between py-1"><span>PVN 21%:</span><span>{fmt(order.tax_cents, currency)}</span></div>
+              <div className="flex justify-between py-2 border-t-2 border-black font-bold text-base mt-1">
+                <span>Kopā apmaksai:</span><span>{fmt(order.total_cents, currency)}</span>
               </div>
             </div>
-          )}
+          </div>
 
           {docType === "proforma" && (
             <div className="mt-8 text-xs text-gray-600 border-t border-gray-200 pt-4">
@@ -321,35 +319,33 @@ const AdminInvoice = () => {
           )}
 
           {docType === "invoice" && (
-            <div className="mt-8 text-xs text-gray-600 border-t border-gray-200 pt-4">
-              <p className="font-medium mb-1">Apmaksa ar pārskaitījumu:</p>
-              <p>Saņēmējs: Luxury Chocolate SIA</p>
-              <p>Reģ.nr.: LV40103921954</p>
-              <p>Banka: AS Citadele banka · SWIFT: PARXLV22</p>
-              <p>Konts: LV88PARX0032054790002</p>
-              <p className="mt-3">Maksājuma uzdevumā lūdzam norādīt rēķina numuru {invoiceNumber}.</p>
-              <p className="mt-3 italic">Rēķins sagatavots elektroniski un ir derīgs bez paraksta.</p>
-            </div>
-          )}
-
-          {docType === "waybill" && (
-            <div className="mt-10 text-xs text-gray-700 border-t border-gray-200 pt-6">
-              <div className="grid grid-cols-2 gap-10">
-                <div>
-                  <p className="font-medium mb-8">Preci nodeva:</p>
-                  <div className="border-b border-black h-6" />
-                  <p className="mt-1 text-[10px] text-gray-500">Vārds, uzvārds, paraksts</p>
-                  <p className="mt-4">Datums: ____________________</p>
-                </div>
-                <div>
-                  <p className="font-medium mb-8">Preci saņēma:</p>
-                  <div className="border-b border-black h-6" />
-                  <p className="mt-1 text-[10px] text-gray-500">Vārds, uzvārds, paraksts</p>
-                  <p className="mt-4">Datums: ____________________</p>
+            <>
+              <div className="mt-8 text-xs text-gray-600 border-t border-gray-200 pt-4">
+                <p className="font-medium mb-1">Apmaksa ar pārskaitījumu:</p>
+                <p>Saņēmējs: Luxury Chocolate SIA</p>
+                <p>Reģ.nr.: LV40103921954</p>
+                <p>Banka: AS Citadele banka · SWIFT: PARXLV22</p>
+                <p>Konts: LV88PARX0032054790002</p>
+                <p className="mt-3">Maksājuma uzdevumā lūdzam norādīt rēķina numuru {invoiceNumber}.</p>
+                <p className="mt-3 italic">Rēķins-pavadzīme sagatavota elektroniski un ir derīga bez paraksta.</p>
+              </div>
+              <div className="mt-10 text-xs text-gray-700 border-t border-gray-200 pt-6">
+                <div className="grid grid-cols-2 gap-10">
+                  <div>
+                    <p className="font-medium mb-8">Preci nodeva:</p>
+                    <div className="border-b border-black h-6" />
+                    <p className="mt-1 text-[10px] text-gray-500">Vārds, uzvārds, paraksts</p>
+                    <p className="mt-4">Datums: ____________________</p>
+                  </div>
+                  <div>
+                    <p className="font-medium mb-8">Preci saņēma:</p>
+                    <div className="border-b border-black h-6" />
+                    <p className="mt-1 text-[10px] text-gray-500">Vārds, uzvārds, paraksts</p>
+                    <p className="mt-4">Datums: ____________________</p>
+                  </div>
                 </div>
               </div>
-              <p className="mt-6 italic">Pavadzīme sagatavota elektroniski.</p>
-            </div>
+            </>
           )}
         </div>
       </main>
