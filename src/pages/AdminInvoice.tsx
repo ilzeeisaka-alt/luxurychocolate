@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams, useSearchParams } from "react-router-dom";
 import { Printer, ChevronLeft, Loader2, Download } from "lucide-react";
 import jsPDF from "jspdf";
 import html2canvas from "html2canvas";
