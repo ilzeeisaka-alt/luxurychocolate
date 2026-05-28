@@ -8,6 +8,7 @@ import FooterSection from "@/components/FooterSection";
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/hooks/useAuth";
 import logoUrl from "@/assets/luxury-chocolate-logo.jpg";
+import chocoTimeUrl from "@/assets/its-choco-time.jpg";
 
 interface OrderItem {
   id: string;
