@@ -990,13 +990,13 @@ const Navbar = ({ lang = "lv" }: NavbarProps) => {
               </Link>
             )
           )}
-          {lang === "lv" && (
+          {(
             <div className="mt-2 pt-2 border-t border-white/10">
               <button
                 onClick={() => setMobileInfoOpen((v) => !v)}
                 className="w-full flex items-center justify-between py-2.5 px-3 rounded-md text-sm font-medium text-white/80 hover:text-white hover:bg-white/5"
               >
-                <span>Info</span>
+                <span>{infoLabel}</span>
                 <ChevronDown size={14} className={`transition-transform ${mobileInfoOpen ? "rotate-180" : ""}`} />
               </button>
               {mobileInfoOpen && (
