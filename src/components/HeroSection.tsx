@@ -23,6 +23,41 @@ const shopUrls: Record<Lang, string> = expandLangs({
   nl: "https://www.luxurychocolatesia.lv/online-shop-products/", pl: "https://www.luxurychocolatesia.lv/online-shop-products/", cs: "https://www.luxurychocolatesia.lv/online-shop-products/", pt: "https://www.luxurychocolatesia.lv/online-shop-products/", el: "https://www.luxurychocolatesia.lv/online-shop-products/", tr: "https://www.luxurychocolatesia.lv/online-shop-products/", hu: "https://www.luxurychocolatesia.lv/online-shop-products/", ro: "https://www.luxurychocolatesia.lv/online-shop-products/", bg: "https://www.luxurychocolatesia.lv/online-shop-products/", hr: "https://www.luxurychocolatesia.lv/online-shop-products/", sk: "https://www.luxurychocolatesia.lv/online-shop-products/", sl: "https://www.luxurychocolatesia.lv/online-shop-products/", uk: "https://www.luxurychocolatesia.lv/online-shop-products/", sr: "https://www.luxurychocolatesia.lv/online-shop-products/", bs: "https://www.luxurychocolatesia.lv/online-shop-products/", mk: "https://www.luxurychocolatesia.lv/online-shop-products/", sq: "https://www.luxurychocolatesia.lv/online-shop-products/", is: "https://www.luxurychocolatesia.lv/online-shop-products/",
 });
 
+const orderNowLabels: Record<Lang, string> = expandLangs({
+  lv: "Pasūti tagad",
+  en: "Order now",
+  ru: "Заказать сейчас",
+  et: "Telli kohe",
+  lt: "Užsisakyti dabar",
+  sv: "Beställ nu",
+  no: "Bestill nå",
+  fi: "Tilaa nyt",
+  da: "Bestil nu",
+  de: "Jetzt bestellen",
+  fr: "Commander",
+  it: "Ordina ora",
+  es: "Pedir ahora",
+  ar: "اطلب الآن",
+  nl: "Bestel nu",
+  pl: "Zamów teraz",
+  cs: "Objednat",
+  pt: "Encomendar",
+  el: "Παραγγείλτε",
+  tr: "Sipariş ver",
+  hu: "Rendelés",
+  ro: "Comandă acum",
+  bg: "Поръчай сега",
+  hr: "Naruči sada",
+  sk: "Objednať",
+  sl: "Naroči zdaj",
+  uk: "Замовити",
+  sr: "Naruči odmah",
+  bs: "Naruči odmah",
+  mk: "Нарачај сега",
+  sq: "Porosit tani",
+  is: "Panta núna",
+});
+
 interface HeroSectionProps {
   onCtaClick: () => void;
   lang?: Lang;
@@ -110,7 +145,7 @@ const HeroSection = ({
               style={{ letterSpacing: "0.12em" }}
             >
               <ShoppingBag size={18} />
-              Pasūti tagad
+              {orderNowLabels[lang]}
             </Link>
             <button
               onClick={onCtaClick}
