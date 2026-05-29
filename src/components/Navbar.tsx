@@ -9,17 +9,45 @@ import { expandLangs } from "@/i18n/expandLangs";
 import { useAuth } from "@/hooks/useAuth";
 import { supabase } from "@/integrations/supabase/client";
 
-const infoPages: { label: string; to: string }[] = [
-  { label: "Par mums", to: "/par-mums" },
-  { label: "Ko mēs darām", to: "/ko-mes-daram" },
-  { label: "Cenu lapa", to: "/cenu-lapa" },
-  { label: "Līgums", to: "/ligums" },
-  { label: "Aģents 007", to: "/agents-007" },
-  { label: "Eņģeļu Birojs", to: "/engelu-birojs" },
-  { label: "Mīlestība ir kā uguns", to: "/milestiba-ir-ka-uguns" },
-  { label: "Glabāšana", to: "/glabasana" },
-  { label: "Drukāšanas noteikumi", to: "/drukasanas-noteikumi" },
-];
+type InfoLabels = {
+  info: string;
+  about: string;
+  whatWeDo: string;
+  prices: string;
+  contract: string;
+  agent: string;
+  angels: string;
+  love: string;
+  storage: string;
+  printingRules: string;
+};
+
+const infoLabelsByLang: Record<string, InfoLabels> = {
+  lv: { info: "Info", about: "Par mums", whatWeDo: "Ko mēs darām", prices: "Cenu lapa", contract: "Līgums", agent: "Aģents 007", angels: "Eņģeļu Birojs", love: "Mīlestība ir kā uguns", storage: "Glabāšana", printingRules: "Drukāšanas noteikumi" },
+  en: { info: "Info", about: "About us", whatWeDo: "What we do", prices: "Pricing", contract: "Contract", agent: "Agent 007", angels: "Angels Office", love: "Love is like fire", storage: "Storage", printingRules: "Printing rules" },
+  ru: { info: "Инфо", about: "О нас", whatWeDo: "Что мы делаем", prices: "Цены", contract: "Договор", agent: "Агент 007", angels: "Бюро Ангелов", love: "Любовь как огонь", storage: "Хранение", printingRules: "Правила печати" },
+  et: { info: "Info", about: "Meist", whatWeDo: "Mida me teeme", prices: "Hinnad", contract: "Leping", agent: "Agent 007", angels: "Inglite Büroo", love: "Armastus on kui tuli", storage: "Hoiustamine", printingRules: "Trükireeglid" },
+  lt: { info: "Info", about: "Apie mus", whatWeDo: "Ką darome", prices: "Kainos", contract: "Sutartis", agent: "Agentas 007", angels: "Angelų biuras", love: "Meilė kaip ugnis", storage: "Laikymas", printingRules: "Spausdinimo taisyklės" },
+  de: { info: "Info", about: "Über uns", whatWeDo: "Was wir tun", prices: "Preise", contract: "Vertrag", agent: "Agent 007", angels: "Engelsbüro", love: "Liebe wie Feuer", storage: "Lagerung", printingRules: "Druckregeln" },
+  fr: { info: "Info", about: "À propos", whatWeDo: "Ce que nous faisons", prices: "Tarifs", contract: "Contrat", agent: "Agent 007", angels: "Bureau des anges", love: "L'amour comme le feu", storage: "Stockage", printingRules: "Règles d'impression" },
+  it: { info: "Info", about: "Chi siamo", whatWeDo: "Cosa facciamo", prices: "Prezzi", contract: "Contratto", agent: "Agente 007", angels: "Ufficio degli angeli", love: "L'amore è come il fuoco", storage: "Conservazione", printingRules: "Regole di stampa" },
+  es: { info: "Info", about: "Sobre nosotros", whatWeDo: "Qué hacemos", prices: "Precios", contract: "Contrato", agent: "Agente 007", angels: "Oficina de ángeles", love: "El amor es como el fuego", storage: "Almacenamiento", printingRules: "Reglas de impresión" },
+};
+
+function getInfoPages(lang: string): { label: string; to: string }[] {
+  const L = infoLabelsByLang[lang] ?? infoLabelsByLang.en;
+  return [
+    { label: L.about, to: "/par-mums" },
+    { label: L.whatWeDo, to: "/ko-mes-daram" },
+    { label: L.prices, to: "/cenu-lapa" },
+    { label: L.contract, to: "/ligums" },
+    { label: L.agent, to: "/agents-007" },
+    { label: L.angels, to: "/engelu-birojs" },
+    { label: L.love, to: "/milestiba-ir-ka-uguns" },
+    { label: L.storage, to: "/glabasana" },
+    { label: L.printingRules, to: "/drukasanas-noteikumi" },
+  ];
+}
 
 interface NavItem {
   label: string;
@@ -755,6 +783,8 @@ const Navbar = ({ lang = "lv" }: NavbarProps) => {
   const items = navItems[lang];
   const homePath = homePaths[lang];
   const shopItem = items.find((i) => i.to === "/veikals");
+  const infoPages = getInfoPages(lang);
+  const infoLabel = (infoLabelsByLang[lang] ?? infoLabelsByLang.en).info;
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -844,7 +874,7 @@ const Navbar = ({ lang = "lv" }: NavbarProps) => {
               </Link>
             )
           )}
-          {lang === "lv" && (
+          {(
             <div className="relative" ref={infoRef}>
               <button
                 onClick={() => setInfoOpen((v) => !v)}
@@ -853,7 +883,7 @@ const Navbar = ({ lang = "lv" }: NavbarProps) => {
                 aria-haspopup="true"
                 aria-expanded={infoOpen}
               >
-                Info <ChevronDown size={12} />
+                {infoLabel} <ChevronDown size={12} />
               </button>
               {infoOpen && (
                 <div className="absolute right-0 mt-2 w-60 rounded-md bg-foreground border border-white/10 shadow-xl py-2 z-50">
@@ -960,13 +990,13 @@ const Navbar = ({ lang = "lv" }: NavbarProps) => {
               </Link>
             )
           )}
-          {lang === "lv" && (
+          {(
             <div className="mt-2 pt-2 border-t border-white/10">
               <button
                 onClick={() => setMobileInfoOpen((v) => !v)}
                 className="w-full flex items-center justify-between py-2.5 px-3 rounded-md text-sm font-medium text-white/80 hover:text-white hover:bg-white/5"
               >
-                <span>Info</span>
+                <span>{infoLabel}</span>
                 <ChevronDown size={14} className={`transition-transform ${mobileInfoOpen ? "rotate-180" : ""}`} />
               </button>
               {mobileInfoOpen && (
