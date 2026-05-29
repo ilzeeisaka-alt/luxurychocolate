@@ -874,7 +874,7 @@ const Navbar = ({ lang = "lv" }: NavbarProps) => {
               </Link>
             )
           )}
-          {lang === "lv" && (
+          {(
             <div className="relative" ref={infoRef}>
               <button
                 onClick={() => setInfoOpen((v) => !v)}
@@ -883,7 +883,7 @@ const Navbar = ({ lang = "lv" }: NavbarProps) => {
                 aria-haspopup="true"
                 aria-expanded={infoOpen}
               >
-                Info <ChevronDown size={12} />
+                {infoLabel} <ChevronDown size={12} />
               </button>
               {infoOpen && (
                 <div className="absolute right-0 mt-2 w-60 rounded-md bg-foreground border border-white/10 shadow-xl py-2 z-50">
