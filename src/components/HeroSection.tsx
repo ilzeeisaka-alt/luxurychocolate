@@ -145,7 +145,7 @@ const HeroSection = ({
               style={{ letterSpacing: "0.12em" }}
             >
               <ShoppingBag size={18} />
-              Pasūti tagad
+              {orderNowLabels[lang]}
             </Link>
             <button
               onClick={onCtaClick}
