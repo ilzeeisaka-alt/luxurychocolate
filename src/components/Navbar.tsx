@@ -36,16 +36,17 @@ const infoLabelsByLang: Record<string, InfoLabels> = {
 
 function getInfoPages(lang: string): { label: string; to: string }[] {
   const L = infoLabelsByLang[lang] ?? infoLabelsByLang.en;
+  const q = lang && lang !== "lv" ? `?lang=${lang}` : "";
   return [
-    { label: L.about, to: "/par-mums" },
-    { label: L.whatWeDo, to: "/ko-mes-daram" },
-    { label: L.prices, to: "/cenu-lapa" },
-    { label: L.contract, to: "/ligums" },
-    { label: L.agent, to: "/agents-007" },
-    { label: L.angels, to: "/engelu-birojs" },
-    { label: L.love, to: "/milestiba-ir-ka-uguns" },
-    { label: L.storage, to: "/glabasana" },
-    { label: L.printingRules, to: "/drukasanas-noteikumi" },
+    { label: L.about, to: `/par-mums${q}` },
+    { label: L.whatWeDo, to: `/ko-mes-daram${q}` },
+    { label: L.prices, to: `/cenu-lapa${q}` },
+    { label: L.contract, to: `/ligums${q}` },
+    { label: L.agent, to: `/agents-007${q}` },
+    { label: L.angels, to: `/engelu-birojs${q}` },
+    { label: L.love, to: `/milestiba-ir-ka-uguns${q}` },
+    { label: L.storage, to: `/glabasana${q}` },
+    { label: L.printingRules, to: `/drukasanas-noteikumi${q}` },
   ];
 }
 
