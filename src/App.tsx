@@ -114,11 +114,13 @@ const App = () => (
       <BrowserRouter>
         <AuthProvider>
         <OrderNotificationsListener />
+        <ReferralTracker />
         <Suspense fallback={<div className="min-h-screen bg-background" />}>
           <Routes>
             {/* Auth */}
             <Route path="/auth" element={<Auth />} />
             <Route path="/account" element={<Account />} />
+            <Route path="/affiliate" element={<Affiliate />} />
             <Route path="/admin" element={<Admin />} />
             <Route path="/admin/rekins/:orderId" element={<AdminInvoice />} />
             {/* LV routes */}
