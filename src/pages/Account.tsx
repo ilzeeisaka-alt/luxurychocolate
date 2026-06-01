@@ -176,6 +176,14 @@ const Account = () => {
           </Link>
         )}
 
+        <Link
+          to="/affiliate"
+          className="inline-flex items-center gap-2 mb-6 ml-0 sm:ml-3 px-4 py-2 rounded-lg border border-primary/30 bg-primary/5 text-primary hover:bg-primary/10 transition-colors text-sm font-medium"
+        >
+          <Sparkles className="h-4 w-4" />
+          Partneru programma — pelni 10%
+        </Link>
+
         <Tabs defaultValue="profile">
           <TabsList>
             <TabsTrigger value="profile"><User className="h-4 w-4 mr-2" />Profils</TabsTrigger>
