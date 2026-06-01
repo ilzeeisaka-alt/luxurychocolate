@@ -813,9 +813,11 @@ const Navbar = ({ lang = "lv" }: NavbarProps) => {
   const infoRef = useRef<HTMLDivElement | null>(null);
   const { pathname } = useLocation();
   const { user } = useAuth();
-  const items = navItems[lang];
+  const allItems = navItems[lang];
+  const affiliateItem = allItems.find((i) => i.to === "/affiliate");
+  const items = allItems.filter((i) => i.to !== "/affiliate");
   const homePath = homePaths[lang];
-  const shopItem = items.find((i) => i.to === "/veikals");
+  const shopItem = allItems.find((i) => i.to === "/veikals");
   const infoPages = getInfoPages(lang);
   const infoLabel = (infoLabelsByLang[lang] ?? infoLabelsByLang.en).info;
 
@@ -941,47 +943,61 @@ const Navbar = ({ lang = "lv" }: NavbarProps) => {
         </div>
 
         {/* Right side: newsletter + cart + auth + language + mobile toggle */}
-        <div className="flex items-center gap-2">
-          <div className="hidden xl:flex items-center">
-            <NewsletterSignup lang={lang} source="navbar" compact />
+        <div className="flex flex-col items-end gap-1.5">
+          <div className="flex items-center gap-2">
+            <div className="hidden xl:flex items-center">
+              <NewsletterSignup lang={lang} source="navbar" compact />
+            </div>
+            <Link
+              to="/veikals"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-medium text-primary bg-primary/10 border border-primary/30 hover:bg-primary/20 transition-colors"
+              aria-label={shopItem?.label ?? "Veikals"}
+            >
+              <Store size={14} />
+              <span className="hidden sm:inline">{shopItem?.label ?? "Veikals"}</span>
+            </Link>
+            <Link
+              to="/grozs"
+              className="relative inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-medium text-white/80 hover:text-white hover:bg-white/5 transition-colors border border-white/15"
+              aria-label="Grozs"
+            >
+              <ShoppingCart size={14} />
+              <span className="hidden sm:inline">Grozs</span>
+              {cartCount > 0 && (
+                <span className="absolute -top-1.5 -right-1.5 min-w-[18px] h-[18px] px-1 rounded-full bg-primary text-primary-foreground text-[10px] font-semibold flex items-center justify-center leading-none">
+                  {cartCount}
+                </span>
+              )}
+            </Link>
+            <Link
+              to={user ? "/account" : "/auth"}
+              className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-medium text-white/80 hover:text-white hover:bg-white/5 transition-colors border border-white/15"
+              aria-label={user ? "Mans konts" : "Pieslēgties"}
+            >
+              {user ? <User size={14} /> : <LogIn size={14} />}
+              <span>{user ? "Mans konts" : "Pieslēgties"}</span>
+            </Link>
+            <LanguageSwitcher />
+            <button
+              onClick={() => setMobileOpen(!mobileOpen)}
+              className="lg:hidden text-white/70 hover:text-white p-1"
+              aria-label="Toggle menu"
+            >
+              {mobileOpen ? <X size={22} /> : <Menu size={22} />}
+            </button>
           </div>
-          <Link
-            to="/veikals"
-            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-medium text-primary bg-primary/10 border border-primary/30 hover:bg-primary/20 transition-colors"
-            aria-label={shopItem?.label ?? "Veikals"}
-          >
-            <Store size={14} />
-            <span className="hidden sm:inline">{shopItem?.label ?? "Veikals"}</span>
-          </Link>
-          <Link
-            to="/grozs"
-            className="relative inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-medium text-white/80 hover:text-white hover:bg-white/5 transition-colors border border-white/15"
-            aria-label="Grozs"
-          >
-            <ShoppingCart size={14} />
-            <span className="hidden sm:inline">Grozs</span>
-            {cartCount > 0 && (
-              <span className="absolute -top-1.5 -right-1.5 min-w-[18px] h-[18px] px-1 rounded-full bg-primary text-primary-foreground text-[10px] font-semibold flex items-center justify-center leading-none">
-                {cartCount}
-              </span>
-            )}
-          </Link>
-          <Link
-            to={user ? "/account" : "/auth"}
-            className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-medium text-white/80 hover:text-white hover:bg-white/5 transition-colors border border-white/15"
-            aria-label={user ? "Mans konts" : "Pieslēgties"}
-          >
-            {user ? <User size={14} /> : <LogIn size={14} />}
-            <span>{user ? "Mans konts" : "Pieslēgties"}</span>
-          </Link>
-          <LanguageSwitcher />
-          <button
-            onClick={() => setMobileOpen(!mobileOpen)}
-            className="lg:hidden text-white/70 hover:text-white p-1"
-            aria-label="Toggle menu"
-          >
-            {mobileOpen ? <X size={22} /> : <Menu size={22} />}
-          </button>
+          {affiliateItem && (
+            <Link
+              to={affiliateItem.to}
+              className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-md text-[11px] font-medium transition-colors border ${
+                pathname === affiliateItem.to
+                  ? "text-primary bg-primary/10 border-primary/40"
+                  : "text-primary/90 border-primary/30 hover:bg-primary/10"
+              }`}
+            >
+              {affiliateItem.label}
+            </Link>
+          )}
         </div>
       </div>
 
