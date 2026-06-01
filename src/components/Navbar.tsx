@@ -22,16 +22,16 @@ type InfoLabels = {
   printingRules: string;
 };
 
-const infoLabelsByLang: Record<string, InfoLabels> = {
-  lv: { info: "Info", about: "Par mums", whatWeDo: "Ko mēs darām", prices: "Cenu lapa", contract: "Līgums", agent: "Aģents 007", angels: "Eņģeļu Birojs", love: "Mīlestība ir kā uguns", storage: "Glabāšana", printingRules: "Drukāšanas noteikumi" },
-  en: { info: "Info", about: "About us", whatWeDo: "What we do", prices: "Pricing", contract: "Contract", agent: "Agent 007", angels: "Angels Office", love: "Love is like fire", storage: "Storage", printingRules: "Printing rules" },
-  ru: { info: "Инфо", about: "О нас", whatWeDo: "Что мы делаем", prices: "Цены", contract: "Договор", agent: "Агент 007", angels: "Бюро Ангелов", love: "Любовь как огонь", storage: "Хранение", printingRules: "Правила печати" },
-  et: { info: "Info", about: "Meist", whatWeDo: "Mida me teeme", prices: "Hinnad", contract: "Leping", agent: "Agent 007", angels: "Inglite Büroo", love: "Armastus on kui tuli", storage: "Hoiustamine", printingRules: "Trükireeglid" },
-  lt: { info: "Info", about: "Apie mus", whatWeDo: "Ką darome", prices: "Kainos", contract: "Sutartis", agent: "Agentas 007", angels: "Angelų biuras", love: "Meilė kaip ugnis", storage: "Laikymas", printingRules: "Spausdinimo taisyklės" },
-  de: { info: "Info", about: "Über uns", whatWeDo: "Was wir tun", prices: "Preise", contract: "Vertrag", agent: "Agent 007", angels: "Engelsbüro", love: "Liebe wie Feuer", storage: "Lagerung", printingRules: "Druckregeln" },
-  fr: { info: "Info", about: "À propos", whatWeDo: "Ce que nous faisons", prices: "Tarifs", contract: "Contrat", agent: "Agent 007", angels: "Bureau des anges", love: "L'amour comme le feu", storage: "Stockage", printingRules: "Règles d'impression" },
-  it: { info: "Info", about: "Chi siamo", whatWeDo: "Cosa facciamo", prices: "Prezzi", contract: "Contratto", agent: "Agente 007", angels: "Ufficio degli angeli", love: "L'amore è come il fuoco", storage: "Conservazione", printingRules: "Regole di stampa" },
-  es: { info: "Info", about: "Sobre nosotros", whatWeDo: "Qué hacemos", prices: "Precios", contract: "Contrato", agent: "Agente 007", angels: "Oficina de ángeles", love: "El amor es como el fuego", storage: "Almacenamiento", printingRules: "Reglas de impresión" },
+const infoLabelsByLang: Record<string, InfoLabels & { thanks?: string }> = {
+  lv: { info: "Info", about: "Par mums", whatWeDo: "Ko mēs darām", prices: "Cenu lapa", contract: "Līgums", agent: "Aģents 007", angels: "Eņģeļu Birojs", love: "Mīlestība ir kā uguns", storage: "Glabāšana", printingRules: "Drukāšanas noteikumi", thanks: "Paldies" },
+  en: { info: "Info", about: "About us", whatWeDo: "What we do", prices: "Pricing", contract: "Contract", agent: "Agent 007", angels: "Angels Office", love: "Love is like fire", storage: "Storage", printingRules: "Printing rules", thanks: "Thank you" },
+  ru: { info: "Инфо", about: "О нас", whatWeDo: "Что мы делаем", prices: "Цены", contract: "Договор", agent: "Агент 007", angels: "Бюро Ангелов", love: "Любовь как огонь", storage: "Хранение", printingRules: "Правила печати", thanks: "Спасибо" },
+  et: { info: "Info", about: "Meist", whatWeDo: "Mida me teeme", prices: "Hinnad", contract: "Leping", agent: "Agent 007", angels: "Inglite Büroo", love: "Armastus on kui tuli", storage: "Hoiustamine", printingRules: "Trükireeglid", thanks: "Aitäh" },
+  lt: { info: "Info", about: "Apie mus", whatWeDo: "Ką darome", prices: "Kainos", contract: "Sutartis", agent: "Agentas 007", angels: "Angelų biuras", love: "Meilė kaip ugnis", storage: "Laikymas", printingRules: "Spausdinimo taisyklės", thanks: "Ačiū" },
+  de: { info: "Info", about: "Über uns", whatWeDo: "Was wir tun", prices: "Preise", contract: "Vertrag", agent: "Agent 007", angels: "Engelsbüro", love: "Liebe wie Feuer", storage: "Lagerung", printingRules: "Druckregeln", thanks: "Danke" },
+  fr: { info: "Info", about: "À propos", whatWeDo: "Ce que nous faisons", prices: "Tarifs", contract: "Contrat", agent: "Agent 007", angels: "Bureau des anges", love: "L'amour comme le feu", storage: "Stockage", printingRules: "Règles d'impression", thanks: "Merci" },
+  it: { info: "Info", about: "Chi siamo", whatWeDo: "Cosa facciamo", prices: "Prezzi", contract: "Contratto", agent: "Agente 007", angels: "Ufficio degli angeli", love: "L'amore è come il fuoco", storage: "Conservazione", printingRules: "Regole di stampa", thanks: "Grazie" },
+  es: { info: "Info", about: "Sobre nosotros", whatWeDo: "Qué hacemos", prices: "Precios", contract: "Contrato", agent: "Agente 007", angels: "Oficina de ángeles", love: "El amor es como el fuego", storage: "Almacenamiento", printingRules: "Reglas de impresión", thanks: "Gracias" },
 };
 
 function getInfoPages(lang: string): { label: string; to: string }[] {
@@ -47,6 +47,7 @@ function getInfoPages(lang: string): { label: string; to: string }[] {
     { label: L.love, to: `/milestiba-ir-ka-uguns${q}` },
     { label: L.storage, to: `/glabasana${q}` },
     { label: L.printingRules, to: `/drukasanas-noteikumi${q}` },
+    { label: L.thanks ?? "Paldies", to: `/paldies${q}` },
   ];
 }
 

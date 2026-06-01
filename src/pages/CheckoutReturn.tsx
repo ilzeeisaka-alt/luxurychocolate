@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link, useSearchParams } from "react-router-dom";
+import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import { CheckCircle2, Clock, Loader2, Package, XCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Navbar from "@/components/Navbar";
@@ -46,6 +46,7 @@ const STATUS_LABELS: Record<string, string> = {
 
 const CheckoutReturn = () => {
   const [params] = useSearchParams();
+  const navigate = useNavigate();
   const sessionId = params.get("session_id");
   const { user, loading: authLoading } = useAuth();
   const [order, setOrder] = useState<Order | null>(null);
@@ -84,6 +85,14 @@ const CheckoutReturn = () => {
       if (data) {
         setOrder(data as Order);
         setLoading(false);
+        // Auto-redirect to beautiful Paldies page once payment confirmed
+        if (data.status !== "pending" && data.status !== "cancelled") {
+          const qs = new URLSearchParams();
+          if (data.order_number) qs.set("order", data.order_number);
+          if (data.customer_email) qs.set("email", data.customer_email);
+          navigate(`/paldies?${qs.toString()}`, { replace: true });
+          return;
+        }
         if (data.status === "pending" && attempts < 10) {
           setTimeout(() => setAttempts((a) => a + 1), 2000);
         }
@@ -98,7 +107,7 @@ const CheckoutReturn = () => {
     return () => {
       cancelled = true;
     };
-  }, [authLoading, user, sessionId, attempts]);
+  }, [authLoading, user, sessionId, attempts, navigate]);
 
   if (!sessionId) {
     return (
