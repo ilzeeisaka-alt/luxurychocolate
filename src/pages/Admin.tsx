@@ -315,11 +315,19 @@ const Admin = () => {
             <TabsTrigger value="products" className="gap-2">
               <Package className="w-4 h-4" /> Produkti
             </TabsTrigger>
+            <TabsTrigger value="affiliates" className="gap-2">
+              <Users className="w-4 h-4" /> Partneri
+            </TabsTrigger>
           </TabsList>
 
           <TabsContent value="products">
             <AdminProducts />
           </TabsContent>
+
+          <TabsContent value="affiliates">
+            <AdminAffiliates />
+          </TabsContent>
+
 
           <TabsContent value="orders">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
