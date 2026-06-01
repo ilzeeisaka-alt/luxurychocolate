@@ -813,9 +813,11 @@ const Navbar = ({ lang = "lv" }: NavbarProps) => {
   const infoRef = useRef<HTMLDivElement | null>(null);
   const { pathname } = useLocation();
   const { user } = useAuth();
-  const items = navItems[lang];
+  const allItems = navItems[lang];
+  const affiliateItem = allItems.find((i) => i.to === "/affiliate");
+  const items = allItems.filter((i) => i.to !== "/affiliate");
   const homePath = homePaths[lang];
-  const shopItem = items.find((i) => i.to === "/veikals");
+  const shopItem = allItems.find((i) => i.to === "/veikals");
   const infoPages = getInfoPages(lang);
   const infoLabel = (infoLabelsByLang[lang] ?? infoLabelsByLang.en).info;
 
