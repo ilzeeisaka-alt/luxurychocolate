@@ -9,6 +9,7 @@ import { useAuth } from "@/hooks/useAuth";
 import { useSeo } from "@/hooks/useSeo";
 import { getStripe, stripeEnvironment } from "@/lib/stripe";
 import { PaymentTestModeBanner } from "@/components/PaymentTestModeBanner";
+import { getStoredRef } from "@/lib/affiliateRef";
 
 const getCheckoutErrorMessage = async (data: unknown, error: unknown) => {
   const dataError = (data as { error?: string } | null)?.error;
