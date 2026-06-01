@@ -108,13 +108,15 @@ const Rekins = () => {
     // Prefill from profile
     const { data: profile } = await supabase
       .from("profiles")
-      .select("company_name, vat_number, registration_number, legal_address, legal_city, legal_postal_code, legal_country, phone, email")
+      .select("company_name, vat_number, registration_number, legal_address, legal_city, legal_postal_code, legal_country, phone, email, first_name, last_name")
       .eq("user_id", user.id)
       .maybeSingle();
     if (profile) {
       setBuyerCompany((v) => v || profile.company_name || "");
       setBuyerVat((v) => v || profile.vat_number || "");
       setBuyerRegNr((v) => v || profile.registration_number || "");
+      const contact = [profile.first_name, profile.last_name].filter(Boolean).join(" ");
+      setBuyerContact((v) => v || contact);
       const addr = [profile.legal_address, profile.legal_city, profile.legal_postal_code, profile.legal_country]
         .filter(Boolean).join(", ");
       setBuyerAddress((v) => v || addr);
