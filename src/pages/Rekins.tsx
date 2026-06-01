@@ -317,6 +317,7 @@ const Rekins = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
             <input className="rounded-md bg-background border border-border px-3 py-2 text-sm" placeholder="Uzņēmuma / personas nosaukums" value={buyerCompany} onChange={(e) => setBuyerCompany(e.target.value)} />
             <input className="rounded-md bg-background border border-border px-3 py-2 text-sm" placeholder="Reģistrācijas numurs" value={buyerRegNr} onChange={(e) => setBuyerRegNr(e.target.value)} />
+            <input className="md:col-span-2 rounded-md bg-background border border-border px-3 py-2 text-sm" placeholder="Kontaktpersona (vārds, uzvārds)" value={buyerContact} onChange={(e) => setBuyerContact(e.target.value)} />
             <input className="rounded-md bg-background border border-border px-3 py-2 text-sm" placeholder="PVN numurs (neobligāti)" value={buyerVat} onChange={(e) => setBuyerVat(e.target.value)} />
             <input className="rounded-md bg-background border border-border px-3 py-2 text-sm" placeholder="Telefons" value={buyerPhone} onChange={(e) => setBuyerPhone(e.target.value)} />
             <input className="md:col-span-2 rounded-md bg-background border border-border px-3 py-2 text-sm" placeholder="Juridiskā adrese" value={buyerAddress} onChange={(e) => setBuyerAddress(e.target.value)} />
