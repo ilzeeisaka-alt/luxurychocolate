@@ -14,6 +14,169 @@ export type Database = {
   }
   public: {
     Tables: {
+      affiliate_payouts: {
+        Row: {
+          admin_notes: string | null
+          affiliate_id: string
+          amount_cents: number
+          created_at: string
+          id: string
+          paid_at: string | null
+          payout_details: string | null
+          payout_method: string | null
+          requested_at: string
+          status: string
+          updated_at: string
+        }
+        Insert: {
+          admin_notes?: string | null
+          affiliate_id: string
+          amount_cents: number
+          created_at?: string
+          id?: string
+          paid_at?: string | null
+          payout_details?: string | null
+          payout_method?: string | null
+          requested_at?: string
+          status?: string
+          updated_at?: string
+        }
+        Update: {
+          admin_notes?: string | null
+          affiliate_id?: string
+          amount_cents?: number
+          created_at?: string
+          id?: string
+          paid_at?: string | null
+          payout_details?: string | null
+          payout_method?: string | null
+          requested_at?: string
+          status?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "affiliate_payouts_affiliate_id_fkey"
+            columns: ["affiliate_id"]
+            isOneToOne: false
+            referencedRelation: "affiliates"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      affiliate_referrals: {
+        Row: {
+          affiliate_id: string
+          commission_cents: number
+          commission_rate: number
+          created_at: string
+          customer_email: string | null
+          id: string
+          order_id: string | null
+          order_number: string | null
+          order_total_cents: number
+          source: string
+          status: string
+          updated_at: string
+        }
+        Insert: {
+          affiliate_id: string
+          commission_cents?: number
+          commission_rate: number
+          created_at?: string
+          customer_email?: string | null
+          id?: string
+          order_id?: string | null
+          order_number?: string | null
+          order_total_cents?: number
+          source?: string
+          status?: string
+          updated_at?: string
+        }
+        Update: {
+          affiliate_id?: string
+          commission_cents?: number
+          commission_rate?: number
+          created_at?: string
+          customer_email?: string | null
+          id?: string
+          order_id?: string | null
+          order_number?: string | null
+          order_total_cents?: number
+          source?: string
+          status?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "affiliate_referrals_affiliate_id_fkey"
+            columns: ["affiliate_id"]
+            isOneToOne: false
+            referencedRelation: "affiliates"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      affiliates: {
+        Row: {
+          balance_cents: number
+          code: string
+          commission_rate: number
+          contact_email: string | null
+          contact_phone: string | null
+          created_at: string
+          customer_discount_rate: number
+          full_name: string | null
+          id: string
+          notes: string | null
+          payout_details: string | null
+          payout_method: string | null
+          status: string
+          total_earned_cents: number
+          total_paid_cents: number
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          balance_cents?: number
+          code: string
+          commission_rate?: number
+          contact_email?: string | null
+          contact_phone?: string | null
+          created_at?: string
+          customer_discount_rate?: number
+          full_name?: string | null
+          id?: string
+          notes?: string | null
+          payout_details?: string | null
+          payout_method?: string | null
+          status?: string
+          total_earned_cents?: number
+          total_paid_cents?: number
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          balance_cents?: number
+          code?: string
+          commission_rate?: number
+          contact_email?: string | null
+          contact_phone?: string | null
+          created_at?: string
+          customer_discount_rate?: number
+          full_name?: string | null
+          id?: string
+          notes?: string | null
+          payout_details?: string | null
+          payout_method?: string | null
+          status?: string
+          total_earned_cents?: number
+          total_paid_cents?: number
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
       blog_posts: {
         Row: {
           content: string
@@ -271,6 +434,9 @@ export type Database = {
       orders: {
         Row: {
           admin_notes: string | null
+          affiliate_code: string | null
+          affiliate_discount_cents: number
+          affiliate_id: string | null
           company_name: string | null
           created_at: string
           currency: string
@@ -300,6 +466,9 @@ export type Database = {
         }
         Insert: {
           admin_notes?: string | null
+          affiliate_code?: string | null
+          affiliate_discount_cents?: number
+          affiliate_id?: string | null
           company_name?: string | null
           created_at?: string
           currency?: string
@@ -329,6 +498,9 @@ export type Database = {
         }
         Update: {
           admin_notes?: string | null
+          affiliate_code?: string | null
+          affiliate_discount_cents?: number
+          affiliate_id?: string | null
           company_name?: string | null
           created_at?: string
           currency?: string
@@ -676,6 +848,15 @@ export type Database = {
           _user_id: string
         }
         Returns: boolean
+      }
+      validate_affiliate_code: {
+        Args: { _code: string }
+        Returns: {
+          code: string
+          discount_rate: number
+          id: string
+          valid: boolean
+        }[]
       }
     }
     Enums: {

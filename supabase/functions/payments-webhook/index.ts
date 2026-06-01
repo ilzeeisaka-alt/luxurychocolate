@@ -247,6 +247,13 @@ async function handleShopOrderCompleted(session: any, env: StripeEnv) {
     await supabase.from("cart_items").delete().eq("user_id", order.user_id);
   }
 
+  // Create affiliate referral (pending — admin approves manually)
+  try {
+    await createAffiliateReferral(order);
+  } catch (e) {
+    console.error("Affiliate referral failed:", (e as Error).message);
+  }
+
   // Load items for confirmation email
   const { data: items } = await supabase
     .from("order_items")
@@ -261,6 +268,43 @@ async function handleShopOrderCompleted(session: any, env: StripeEnv) {
   } catch (e) {
     console.error("Shop order email failed:", (e as Error).message);
   }
+}
+
+async function createAffiliateReferral(order: any) {
+  if (!order.affiliate_id) return;
+  // Idempotency
+  const { data: existing } = await supabase
+    .from("affiliate_referrals")
+    .select("id")
+    .eq("order_id", order.id)
+    .maybeSingle();
+  if (existing) return;
+
+  // Fetch affiliate to get commission rate
+  const { data: aff } = await supabase
+    .from("affiliates")
+    .select("id, commission_rate")
+    .eq("id", order.affiliate_id)
+    .maybeSingle();
+  if (!aff) return;
+
+  const rate = Number(aff.commission_rate) || 0;
+  // Commission base = subtotal after affiliate discount (excluding shipping)
+  const base = Math.max(0, (order.subtotal_cents || 0) - (order.affiliate_discount_cents || 0));
+  const commission = Math.round(base * (rate / 100));
+
+  await supabase.from("affiliate_referrals").insert({
+    affiliate_id: aff.id,
+    order_id: order.id,
+    order_number: order.order_number,
+    customer_email: order.customer_email,
+    order_total_cents: order.total_cents || 0,
+    commission_cents: commission,
+    commission_rate: rate,
+    source: order.affiliate_code ? "code" : "link",
+    status: "pending",
+  });
+  console.log(`Affiliate referral created: ${commission} cents for affiliate ${aff.id}`);
 }
 
 async function sendShopOrderEmail(order: any, items: any[]) {

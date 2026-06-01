@@ -10,7 +10,7 @@ import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { toast } from "sonner";
-import { Loader2, LogOut, User, Package, ShieldCheck, Bell } from "lucide-react";
+import { Loader2, LogOut, User, Package, ShieldCheck, Bell, Sparkles } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import OrdersList from "@/components/account/OrdersList";
 import NotificationsHistory from "@/components/account/NotificationsHistory";
@@ -175,6 +175,14 @@ const Account = () => {
             Atvērt admin paneli
           </Link>
         )}
+
+        <Link
+          to="/affiliate"
+          className="inline-flex items-center gap-2 mb-6 ml-0 sm:ml-3 px-4 py-2 rounded-lg border border-primary/30 bg-primary/5 text-primary hover:bg-primary/10 transition-colors text-sm font-medium"
+        >
+          <Sparkles className="h-4 w-4" />
+          Partneru programma — pelni 10%
+        </Link>
 
         <Tabs defaultValue="profile">
           <TabsList>

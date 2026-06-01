@@ -3,10 +3,12 @@ import { Link, useNavigate } from "react-router-dom";
 import { Minus, Plus, Trash2, ShoppingBag, ChevronLeft } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import FooterSection from "@/components/FooterSection";
+import AffiliateCodeInput from "@/components/AffiliateCodeInput";
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/hooks/useAuth";
 import { useSeo } from "@/hooks/useSeo";
 import { useToast } from "@/hooks/use-toast";
+import { getStoredRef, type StoredRef } from "@/lib/affiliateRef";
 
 interface LogoRef { url: string; filename: string; quantity?: number }
 interface CartLine {
@@ -66,6 +68,7 @@ const Grozs = () => {
   const [shippingId, setShippingId] = useState<string>(() =>
     sessionStorage.getItem("shipping_id") || "pickup"
   );
+  const [affRef, setAffRef] = useState<StoredRef | null>(() => getStoredRef());
 
   useSeo({
     title: "Grozs — Luxury Chocolate",
@@ -149,7 +152,8 @@ const Grozs = () => {
 
   const subtotal = items.reduce((s, i) => s + i.product.price_cents * i.quantity, 0);
   const currency = items[0]?.product.currency ?? "EUR";
-  const total = subtotal + shipping.cents;
+  const affDiscount = affRef ? Math.round(subtotal * (affRef.discountRate / 100)) : 0;
+  const total = subtotal - affDiscount + shipping.cents;
   const isBelowPaymentMinimum = total > 0 && total < 50;
 
   return (
@@ -322,11 +326,21 @@ const Grozs = () => {
                 </div>
               </div>
 
+              <div className="mb-4">
+                <AffiliateCodeInput onChange={setAffRef} />
+              </div>
+
               <div className="space-y-2 text-sm">
                 <div className="flex justify-between text-muted-foreground">
                   <span>Starpsumma ({items.reduce((s, i) => s + i.quantity, 0)} preces)</span>
                   <span>{formatPrice(subtotal, currency)}</span>
                 </div>
+                {affDiscount > 0 && (
+                  <div className="flex justify-between text-primary">
+                    <span>Partnera atlaide ({affRef?.code})</span>
+                    <span>−{formatPrice(affDiscount, currency)}</span>
+                  </div>
+                )}
                 <div className="flex justify-between text-muted-foreground">
                   <span>Piegāde</span>
                   <span>{shipping.cents === 0 ? "Bezmaksas" : formatPrice(shipping.cents, currency)}</span>

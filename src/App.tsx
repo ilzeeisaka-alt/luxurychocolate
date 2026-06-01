@@ -8,11 +8,13 @@ import CookieConsent from "./components/CookieConsent.tsx";
 import ExitIntentPopup from "./components/ExitIntentPopup.tsx";
 import { AuthProvider } from "./hooks/useAuth";
 import { OrderNotificationsListener } from "./hooks/useOrderNotifications";
+import ReferralTracker from "./components/ReferralTracker";
 
 // Lazy-loaded pages — each gets its own JS chunk
 const Index = lazy(() => import("./pages/Index.tsx"));
 const Auth = lazy(() => import("./pages/Auth.tsx"));
 const Account = lazy(() => import("./pages/Account.tsx"));
+const Affiliate = lazy(() => import("./pages/Affiliate.tsx"));
 const Admin = lazy(() => import("./pages/Admin.tsx"));
 const AdminInvoice = lazy(() => import("./pages/AdminInvoice.tsx"));
 const SokoladesArLogo = lazy(() => import("./pages/SokoladesArLogo.tsx"));
@@ -112,11 +114,13 @@ const App = () => (
       <BrowserRouter>
         <AuthProvider>
         <OrderNotificationsListener />
+        <ReferralTracker />
         <Suspense fallback={<div className="min-h-screen bg-background" />}>
           <Routes>
             {/* Auth */}
             <Route path="/auth" element={<Auth />} />
             <Route path="/account" element={<Account />} />
+            <Route path="/affiliate" element={<Affiliate />} />
             <Route path="/admin" element={<Admin />} />
             <Route path="/admin/rekins/:orderId" element={<AdminInvoice />} />
             {/* LV routes */}

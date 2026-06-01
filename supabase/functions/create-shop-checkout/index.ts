@@ -45,10 +45,22 @@ serve(async (req) => {
     if (authErr || !userData.user) throw new Error("Unauthorized");
     const user = userData.user;
 
-    const { environment, returnUrl, shippingId } = await req.json();
+    const { environment, returnUrl, shippingId, affiliateCode } = await req.json();
     const env = (environment || "sandbox") as StripeEnv;
     const shipping = SHIPPING_OPTIONS[shippingId as string] ?? SHIPPING_OPTIONS.pickup;
     const isPickup = (shippingId ?? "pickup") === "pickup";
+
+    // Validate affiliate code (if any)
+    let affiliate: { id: string; code: string; customer_discount_rate: number } | null = null;
+    if (affiliateCode && typeof affiliateCode === "string") {
+      const { data: a } = await supabaseAdmin
+        .from("affiliates")
+        .select("id, code, customer_discount_rate, status")
+        .ilike("code", affiliateCode.trim())
+        .eq("status", "active")
+        .maybeSingle();
+      if (a) affiliate = a as typeof affiliate;
+    }
 
     // Load cart
     const { data: cart, error: cartErr } = await supabaseAdmin
@@ -95,7 +107,11 @@ serve(async (req) => {
     const customerName =
       [profile?.first_name, profile?.last_name].filter(Boolean).join(" ").trim() || null;
 
-    const totalCents = subtotalCents + shipping.cents;
+    const affDiscountCents = affiliate
+      ? Math.round(subtotalCents * (Number(affiliate.customer_discount_rate) / 100))
+      : 0;
+
+    const totalCents = subtotalCents - affDiscountCents + shipping.cents;
     if (totalCents < 50) {
       return new Response(
         JSON.stringify({ error: "Pasūtījuma summa ir pārāk maza (minimums €0.50). Lūdzu pievienojiet vairāk preču vai izvēlieties piegādes veidu." }),
@@ -117,6 +133,9 @@ serve(async (req) => {
         shipping_cents: shipping.cents,
         shipping_method: shipping.label,
         total_cents: totalCents,
+        affiliate_id: affiliate?.id ?? null,
+        affiliate_code: affiliate?.code ?? null,
+        affiliate_discount_cents: affDiscountCents,
       })
       .select()
       .single();
@@ -171,6 +190,19 @@ serve(async (req) => {
       });
     }
 
+    // Optional affiliate discount — create one-off Stripe coupon for the customer
+    let discountsArg: { coupon: string }[] | undefined;
+    if (affiliate && affDiscountCents > 0) {
+      const coupon = await stripe.coupons.create({
+        amount_off: affDiscountCents,
+        currency: (currency || "EUR").toLowerCase(),
+        duration: "once",
+        name: `Partnera atlaide ${affiliate.code}`,
+        max_redemptions: 1,
+      });
+      discountsArg = [{ coupon: coupon.id }];
+    }
+
     const session = await stripe.checkout.sessions.create({
       line_items: stripeLineItems,
       mode: "payment",
@@ -182,6 +214,7 @@ serve(async (req) => {
       billing_address_collection: "required",
       tax_id_collection: { enabled: true, required: "if_supported" },
       invoice_creation: { enabled: true },
+      ...(discountsArg && { discounts: discountsArg }),
       return_url:
         returnUrl ||
         `${req.headers.get("origin")}/checkout/return?session_id={CHECKOUT_SESSION_ID}`,
@@ -192,6 +225,11 @@ serve(async (req) => {
         product_type: "shop_order",
         shipping_id: shippingId ?? "pickup",
         shipping_label: shipping.label,
+        ...(affiliate && {
+          affiliate_id: affiliate.id,
+          affiliate_code: affiliate.code,
+          affiliate_discount_cents: String(affDiscountCents),
+        }),
       },
     });
 
