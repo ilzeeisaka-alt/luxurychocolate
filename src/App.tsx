@@ -134,6 +134,7 @@ const App = () => (
             <Route path="/kase" element={<Kase />} />
             <Route path="/rekins" element={<Rekins />} />
             <Route path="/checkout/return" element={<CheckoutReturn />} />
+            <Route path="/paldies" element={<Paldies />} />
             <Route path="/track" element={<OrderTracking />} />
             <Route path="/track/:orderNumber" element={<OrderTracking />} />
             <Route path="/sokolades-ar-logo" element={<SokoladesArLogo />} />
