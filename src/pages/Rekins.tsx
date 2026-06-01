@@ -384,6 +384,7 @@ const Rekins = () => {
                 {buyerRegNr && <p>Reģ. Nr. {buyerRegNr}</p>}
                 {buyerVat && <p>PVN: {buyerVat}</p>}
                 {buyerAddress && <p>{buyerAddress}</p>}
+                {buyerContact && <p>Kontaktpersona: {buyerContact}</p>}
                 {buyerEmail && <p>{buyerEmail}</p>}
                 {buyerPhone && <p>{buyerPhone}</p>}
               </div>
