@@ -79,6 +79,7 @@ const navItems: Record<Lang, NavItem[]> = expandLangs({
     { label: "Tortes", to: "#tortes" },
     { label: "Kastes", to: "#magnets" },
     { label: "Monētas", to: "#monetas" },
+    { label: "Partneru programma", to: "/affiliate" },
     { label: "Kontakti", to: "#kontakti" },
   ],
   en: [
@@ -100,6 +101,7 @@ const navItems: Record<Lang, NavItem[]> = expandLangs({
     { label: "Cakes", to: "#tortes" },
     { label: "Gift Boxes", to: "#magnets" },
     { label: "Coins", to: "#monetas" },
+    { label: "Affiliate", to: "/affiliate" },
     { label: "Contact", to: "#kontakti" },
   ],
   ru: [
@@ -121,6 +123,7 @@ const navItems: Record<Lang, NavItem[]> = expandLangs({
     { label: "Торты", to: "#tortes" },
     { label: "Коробки", to: "#magnets" },
     { label: "Монеты", to: "#monetas" },
+    { label: "Affiliate", to: "/affiliate" },
     { label: "Контакты", to: "#kontakti" },
   ],
   et: [
@@ -142,6 +145,7 @@ const navItems: Record<Lang, NavItem[]> = expandLangs({
     { label: "Torte", to: "#tortes" },
     { label: "Karbid", to: "#magnets" },
     { label: "Mündid", to: "#monetas" },
+    { label: "Affiliate", to: "/affiliate" },
     { label: "Kontakt", to: "#kontakti" },
   ],
   lt: [
@@ -163,6 +167,7 @@ const navItems: Record<Lang, NavItem[]> = expandLangs({
     { label: "Tortai", to: "#tortes" },
     { label: "Dėžutės", to: "#magnets" },
     { label: "Monetos", to: "#monetas" },
+    { label: "Affiliate", to: "/affiliate" },
     { label: "Kontaktai", to: "#kontakti" },
   ],
   sv: [
@@ -184,6 +189,7 @@ const navItems: Record<Lang, NavItem[]> = expandLangs({
     { label: "Torte", to: "#tortes" },
     { label: "Lådor", to: "#magnets" },
     { label: "Mynt", to: "#monetas" },
+    { label: "Affiliate", to: "/affiliate" },
     { label: "Kontakt", to: "#kontakti" },
   ],
   no: [
@@ -205,6 +211,7 @@ const navItems: Record<Lang, NavItem[]> = expandLangs({
     { label: "Torte", to: "#tortes" },
     { label: "Esker", to: "#magnets" },
     { label: "Mynter", to: "#monetas" },
+    { label: "Affiliate", to: "/affiliate" },
     { label: "Kontakt", to: "#kontakti" },
   ],
   fi: [
@@ -226,6 +233,7 @@ const navItems: Record<Lang, NavItem[]> = expandLangs({
     { label: "Kakut", to: "#tortes" },
     { label: "Rasiat", to: "#magnets" },
     { label: "Kolikot", to: "#monetas" },
+    { label: "Affiliate", to: "/affiliate" },
     { label: "Yhteystiedot", to: "#kontakti" },
   ],
   da: [
@@ -247,6 +255,7 @@ const navItems: Record<Lang, NavItem[]> = expandLangs({
     { label: "Torte", to: "#tortes" },
     { label: "Æsker", to: "#magnets" },
     { label: "Mønter", to: "#monetas" },
+    { label: "Affiliate", to: "/affiliate" },
     { label: "Kontakt", to: "#kontakti" },
   ],
   de: [
@@ -268,6 +277,7 @@ const navItems: Record<Lang, NavItem[]> = expandLangs({
     { label: "Torte", to: "#tortes" },
     { label: "Geschenkboxen", to: "#magnets" },
     { label: "Münzen", to: "#monetas" },
+    { label: "Affiliate", to: "/affiliate" },
     { label: "Kontakt", to: "#kontakti" },
   ],
   fr: [
@@ -289,6 +299,7 @@ const navItems: Record<Lang, NavItem[]> = expandLangs({
     { label: "Cakes", to: "#tortes" },
     { label: "Coffrets", to: "#magnets" },
     { label: "Pièces", to: "#monetas" },
+    { label: "Affiliate", to: "/affiliate" },
     { label: "Contact", to: "#kontakti" },
   ],
   it: [
@@ -310,6 +321,7 @@ const navItems: Record<Lang, NavItem[]> = expandLangs({
     { label: "Torte", to: "#tortes" },
     { label: "Scatole", to: "#magnets" },
     { label: "Monete", to: "#monetas" },
+    { label: "Affiliate", to: "/affiliate" },
     { label: "Contatti", to: "#kontakti" },
   ],
   es: [
@@ -331,6 +343,7 @@ const navItems: Record<Lang, NavItem[]> = expandLangs({
     { label: "Pasteles", to: "#tortes" },
     { label: "Cajas", to: "#magnets" },
     { label: "Monedas", to: "#monetas" },
+    { label: "Affiliate", to: "/affiliate" },
     { label: "Contacto", to: "#kontakti" },
   ],
   ar: [
@@ -352,6 +365,7 @@ const navItems: Record<Lang, NavItem[]> = expandLangs({
     { label: "كعك", to: "#tortes" },
     { label: "صناديق", to: "#magnets" },
     { label: "عملات", to: "#monetas" },
+    { label: "Affiliate", to: "/affiliate" },
     { label: "اتصل بنا", to: "#kontakti" },
   ],
   nl: [
@@ -373,6 +387,7 @@ const navItems: Record<Lang, NavItem[]> = expandLangs({
     { label: "Cakes", to: "#tortes" },
     { label: "Dozen", to: "#magnets" },
     { label: "Munten", to: "#monetas" },
+    { label: "Affiliate", to: "/affiliate" },
     { label: "Contact", to: "#kontakti" },
   ],
   pl: [
@@ -394,6 +409,7 @@ const navItems: Record<Lang, NavItem[]> = expandLangs({
     { label: "Torte", to: "#tortes" },
     { label: "Pudełka", to: "#magnets" },
     { label: "Monety", to: "#monetas" },
+    { label: "Affiliate", to: "/affiliate" },
     { label: "Kontakt", to: "#kontakti" },
   ],
   cs: [
@@ -415,6 +431,7 @@ const navItems: Record<Lang, NavItem[]> = expandLangs({
     { label: "Torte", to: "#tortes" },
     { label: "Krabičky", to: "#magnets" },
     { label: "Mince", to: "#monetas" },
+    { label: "Affiliate", to: "/affiliate" },
     { label: "Kontakt", to: "#kontakti" },
   ],
   pt: [
@@ -436,6 +453,7 @@ const navItems: Record<Lang, NavItem[]> = expandLangs({
     { label: "Pasteles", to: "#tortes" },
     { label: "Caixas", to: "#magnets" },
     { label: "Moedas", to: "#monetas" },
+    { label: "Affiliate", to: "/affiliate" },
     { label: "Contacto", to: "#kontakti" },
   ],
   el: [
@@ -457,6 +475,7 @@ const navItems: Record<Lang, NavItem[]> = expandLangs({
     { label: "Τούρτες", to: "#tortes" },
     { label: "Κουτιά", to: "#magnets" },
     { label: "Νομίσματα", to: "#monetas" },
+    { label: "Affiliate", to: "/affiliate" },
     { label: "Επικοινωνία", to: "#kontakti" },
   ],
   tr: [
@@ -478,6 +497,7 @@ const navItems: Record<Lang, NavItem[]> = expandLangs({
     { label: "Pastalar", to: "#tortes" },
     { label: "Kutular", to: "#magnets" },
     { label: "Madeni para", to: "#monetas" },
+    { label: "Affiliate", to: "/affiliate" },
     { label: "İletişim", to: "#kontakti" },
   ],
   hu: [
@@ -499,6 +519,7 @@ const navItems: Record<Lang, NavItem[]> = expandLangs({
     { label: "Torták", to: "#tortes" },
     { label: "Dobozok", to: "#magnets" },
     { label: "Érmék", to: "#monetas" },
+    { label: "Affiliate", to: "/affiliate" },
     { label: "Kapcsolat", to: "#kontakti" },
   ],
   ro: [
@@ -520,6 +541,7 @@ const navItems: Record<Lang, NavItem[]> = expandLangs({
     { label: "Cakes", to: "#tortes" },
     { label: "Cutii", to: "#magnets" },
     { label: "Monede", to: "#monetas" },
+    { label: "Affiliate", to: "/affiliate" },
     { label: "Contact", to: "#kontakti" },
   ],
   bg: [
@@ -541,6 +563,7 @@ const navItems: Record<Lang, NavItem[]> = expandLangs({
     { label: "Торти", to: "#tortes" },
     { label: "Кутии", to: "#magnets" },
     { label: "Монети", to: "#monetas" },
+    { label: "Affiliate", to: "/affiliate" },
     { label: "Контакти", to: "#kontakti" },
   ],
   hr: [
@@ -562,6 +585,7 @@ const navItems: Record<Lang, NavItem[]> = expandLangs({
     { label: "Torte", to: "#tortes" },
     { label: "Kutije", to: "#magnets" },
     { label: "Kovanice", to: "#monetas" },
+    { label: "Affiliate", to: "/affiliate" },
     { label: "Kontakt", to: "#kontakti" },
   ],
   sk: [
@@ -583,6 +607,7 @@ const navItems: Record<Lang, NavItem[]> = expandLangs({
     { label: "Torte", to: "#tortes" },
     { label: "Krabičky", to: "#magnets" },
     { label: "Mince", to: "#monetas" },
+    { label: "Affiliate", to: "/affiliate" },
     { label: "Kontakt", to: "#kontakti" },
   ],
   sl: [
@@ -604,6 +629,7 @@ const navItems: Record<Lang, NavItem[]> = expandLangs({
     { label: "Torte", to: "#tortes" },
     { label: "Škatle", to: "#magnets" },
     { label: "Kovanci", to: "#monetas" },
+    { label: "Affiliate", to: "/affiliate" },
     { label: "Kontakt", to: "#kontakti" },
   ],
   uk: [
@@ -625,6 +651,7 @@ const navItems: Record<Lang, NavItem[]> = expandLangs({
     { label: "Торти", to: "#tortes" },
     { label: "Коробки", to: "#magnets" },
     { label: "Монети", to: "#monetas" },
+    { label: "Affiliate", to: "/affiliate" },
     { label: "Контакти", to: "#kontakti" },
   ],
   sr: [
@@ -646,6 +673,7 @@ const navItems: Record<Lang, NavItem[]> = expandLangs({
     { label: "Torte", to: "#tortes" },
     { label: "Кутије", to: "#magnets" },
     { label: "Новчићи", to: "#monetas" },
+    { label: "Affiliate", to: "/affiliate" },
     { label: "Kontakt", to: "#kontakti" },
   ],
   bs: [
@@ -667,6 +695,7 @@ const navItems: Record<Lang, NavItem[]> = expandLangs({
     { label: "Torte", to: "#tortes" },
     { label: "Kutije", to: "#magnets" },
     { label: "Kovanice", to: "#monetas" },
+    { label: "Affiliate", to: "/affiliate" },
     { label: "Kontakt", to: "#kontakti" },
   ],
   mk: [
@@ -688,6 +717,7 @@ const navItems: Record<Lang, NavItem[]> = expandLangs({
     { label: "Торти", to: "#tortes" },
     { label: "Кутии", to: "#magnets" },
     { label: "Монети", to: "#monetas" },
+    { label: "Affiliate", to: "/affiliate" },
     { label: "Контакт", to: "#kontakti" },
   ],
   sq: [
@@ -709,6 +739,7 @@ const navItems: Record<Lang, NavItem[]> = expandLangs({
     { label: "Torte", to: "#tortes" },
     { label: "Kuti", to: "#magnets" },
     { label: "Monedha", to: "#monetas" },
+    { label: "Affiliate", to: "/affiliate" },
     { label: "Kontakt", to: "#kontakti" },
   ],
   is: [
@@ -730,6 +761,7 @@ const navItems: Record<Lang, NavItem[]> = expandLangs({
     { label: "Tærtur", to: "#tortes" },
     { label: "Kassar", to: "#magnets" },
     { label: "Myntir", to: "#monetas" },
+    { label: "Affiliate", to: "/affiliate" },
     { label: "Samband", to: "#kontakti" },
   ],
 });
