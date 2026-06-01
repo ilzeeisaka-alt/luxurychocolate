@@ -107,7 +107,7 @@ const CheckoutReturn = () => {
     return () => {
       cancelled = true;
     };
-  }, [authLoading, user, sessionId, attempts]);
+  }, [authLoading, user, sessionId, attempts, navigate]);
 
   if (!sessionId) {
     return (
