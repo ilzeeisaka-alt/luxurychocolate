@@ -152,7 +152,8 @@ const Grozs = () => {
 
   const subtotal = items.reduce((s, i) => s + i.product.price_cents * i.quantity, 0);
   const currency = items[0]?.product.currency ?? "EUR";
-  const total = subtotal + shipping.cents;
+  const affDiscount = affRef ? Math.round(subtotal * (affRef.discountRate / 100)) : 0;
+  const total = subtotal - affDiscount + shipping.cents;
   const isBelowPaymentMinimum = total > 0 && total < 50;
 
   return (
