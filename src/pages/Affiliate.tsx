@@ -246,6 +246,7 @@ const Affiliate = () => {
               </div>
             </CardContent>
           </Card>
+        </div>
         ) : (
           <div className="space-y-6">
             {/* Stats */}
