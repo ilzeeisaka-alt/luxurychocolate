@@ -85,23 +85,53 @@ const HeroSection = ({
 }: HeroSectionProps) => {
   return (
     <section className="flex flex-col">
-      <div className="relative bg-foreground pt-24 pb-16 sm:pt-32 sm:pb-20 text-center">
-        <div className="container mx-auto">
-          <div className="flex items-center justify-center gap-6 sm:gap-10 mb-10">
-            <div
-              className="w-[160px] sm:w-[200px] h-[160px] sm:h-[200px] rounded-full bg-white flex items-center justify-center flex-shrink-0"
-              style={{ boxShadow: "0 0 40px rgba(196,163,90,0.15), 0 0 80px rgba(0,0,0,0.3)" }}
-            >
-              <img src={logo} alt={logoAlt} className="w-[70%] h-[70%] object-contain" />
-            </div>
-            <img
-              src={chocoTimeLogo}
-              alt="It's Choco Time"
-              className="w-[140px] sm:w-[180px] h-auto object-contain rounded-lg flex-shrink-0"
-              style={{ boxShadow: "0 0 30px rgba(196,163,90,0.1), 0 0 60px rgba(0,0,0,0.2)" }}
-            />
-          </div>
+      {/* Video ar logo abās malās */}
+      <div className="relative w-full h-[55vh] sm:h-[70vh] overflow-hidden bg-foreground">
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="none"
+          poster="/video/hero-poster.webp"
+          className="absolute inset-0 w-full h-full object-cover"
+        >
+          <source src="/video/hero.mp4" type="video/mp4" />
+        </video>
 
+        {/* Maigs gradients malās lai logo labāk redzami */}
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            background:
+              "linear-gradient(90deg, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.15) 20%, rgba(0,0,0,0) 40%, rgba(0,0,0,0) 60%, rgba(0,0,0,0.15) 80%, rgba(0,0,0,0.55) 100%)",
+          }}
+        />
+
+        {/* Kreisais logo */}
+        <div className="absolute top-1/2 -translate-y-1/2 left-4 sm:left-10 z-10">
+          <div
+            className="w-[110px] h-[110px] sm:w-[180px] sm:h-[180px] rounded-full bg-white flex items-center justify-center"
+            style={{ boxShadow: "0 0 40px rgba(196,163,90,0.25), 0 0 80px rgba(0,0,0,0.5)" }}
+          >
+            <img src={logo} alt={logoAlt} className="w-[70%] h-[70%] object-contain" />
+          </div>
+        </div>
+
+        {/* Labais logo */}
+        <div className="absolute top-1/2 -translate-y-1/2 right-4 sm:right-10 z-10">
+          <img
+            src={chocoTimeLogo}
+            alt="It's Choco Time"
+            className="w-[100px] sm:w-[170px] h-auto object-contain rounded-lg"
+            style={{ boxShadow: "0 0 30px rgba(196,163,90,0.2), 0 0 60px rgba(0,0,0,0.4)" }}
+          />
+        </div>
+      </div>
+
+      {/* Teksts un CTA pogas zem video */}
+      <div className="relative bg-foreground pt-12 pb-16 sm:pt-16 sm:pb-20 text-center">
+        <div className="container mx-auto px-4">
           <h1 className="text-4xl sm:text-5xl lg:text-6xl text-white mb-5 leading-[1.1] tracking-tight font-normal">
             {title1}
             <br />
@@ -125,16 +155,6 @@ const HeroSection = ({
               style={{
                 boxShadow: "0 0 0 1px rgba(196,163,90,0.3), 0 4px 20px -4px rgba(196,163,90,0.4), 0 8px 32px -8px rgba(0,0,0,0.3)",
                 letterSpacing: "0.12em",
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.boxShadow =
-                  "0 0 0 1px rgba(196,163,90,0.5), 0 6px 28px -4px rgba(196,163,90,0.5), 0 12px 40px -8px rgba(0,0,0,0.4)";
-                e.currentTarget.style.transform = "translateY(-1px)";
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.boxShadow =
-                  "0 0 0 1px rgba(196,163,90,0.3), 0 4px 20px -4px rgba(196,163,90,0.4), 0 8px 32px -8px rgba(0,0,0,0.3)";
-                e.currentTarget.style.transform = "translateY(0)";
               }}
             >
               {ctaButton}
@@ -166,20 +186,6 @@ const HeroSection = ({
             </a>
           </div>
         </div>
-      </div>
-
-      <div className="relative w-full h-[50vh] sm:h-[60vh] overflow-hidden">
-        <video
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="none"
-          poster="/video/hero-poster.webp"
-          className="absolute inset-0 w-full h-full object-cover"
-        >
-          <source src="/video/hero.mp4" type="video/mp4" />
-        </video>
       </div>
     </section>
   );
