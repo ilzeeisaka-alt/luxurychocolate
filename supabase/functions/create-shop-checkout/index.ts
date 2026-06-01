@@ -107,7 +107,11 @@ serve(async (req) => {
     const customerName =
       [profile?.first_name, profile?.last_name].filter(Boolean).join(" ").trim() || null;
 
-    const totalCents = subtotalCents + shipping.cents;
+    const affDiscountCents = affiliate
+      ? Math.round(subtotalCents * (Number(affiliate.customer_discount_rate) / 100))
+      : 0;
+
+    const totalCents = subtotalCents - affDiscountCents + shipping.cents;
     if (totalCents < 50) {
       return new Response(
         JSON.stringify({ error: "Pasūtījuma summa ir pārāk maza (minimums €0.50). Lūdzu pievienojiet vairāk preču vai izvēlieties piegādes veidu." }),
@@ -129,6 +133,9 @@ serve(async (req) => {
         shipping_cents: shipping.cents,
         shipping_method: shipping.label,
         total_cents: totalCents,
+        affiliate_id: affiliate?.id ?? null,
+        affiliate_code: affiliate?.code ?? null,
+        affiliate_discount_cents: affDiscountCents,
       })
       .select()
       .single();
