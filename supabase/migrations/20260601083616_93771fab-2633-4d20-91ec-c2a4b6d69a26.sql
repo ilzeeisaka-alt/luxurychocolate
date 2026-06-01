@@ -1,0 +1,1 @@
+UPDATE public.products SET price_cents = 67, updated_at = now() WHERE id = '070d4fe5-3c00-46e9-bcc9-93a3b69fce05';
