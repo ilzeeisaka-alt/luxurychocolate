@@ -326,11 +326,21 @@ const Grozs = () => {
                 </div>
               </div>
 
+              <div className="mb-4">
+                <AffiliateCodeInput onChange={setAffRef} />
+              </div>
+
               <div className="space-y-2 text-sm">
                 <div className="flex justify-between text-muted-foreground">
                   <span>Starpsumma ({items.reduce((s, i) => s + i.quantity, 0)} preces)</span>
                   <span>{formatPrice(subtotal, currency)}</span>
                 </div>
+                {affDiscount > 0 && (
+                  <div className="flex justify-between text-primary">
+                    <span>Partnera atlaide ({affRef?.code})</span>
+                    <span>−{formatPrice(affDiscount, currency)}</span>
+                  </div>
+                )}
                 <div className="flex justify-between text-muted-foreground">
                   <span>Piegāde</span>
                   <span>{shipping.cents === 0 ? "Bezmaksas" : formatPrice(shipping.cents, currency)}</span>
