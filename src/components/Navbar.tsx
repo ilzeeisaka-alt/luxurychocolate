@@ -79,7 +79,7 @@ const navItems: Record<Lang, NavItem[]> = expandLangs({
     { label: "Tortes", to: "#tortes" },
     { label: "Kastes", to: "#magnets" },
     { label: "Monētas", to: "#monetas" },
-    { label: "Affiliate", to: "/affiliate" },
+    { label: "Partneru programma", to: "/affiliate" },
     { label: "Kontakti", to: "#kontakti" },
   ],
   en: [
