@@ -202,7 +202,7 @@ const Rekins = () => {
         .insert({
           user_id: user.id,
           customer_email: buyerEmail,
-          customer_name: buyerCompany,
+          customer_name: buyerContact || buyerCompany,
           customer_phone: buyerPhone,
           company_name: buyerCompany,
           vat_number: buyerVat,
