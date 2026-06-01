@@ -45,10 +45,22 @@ serve(async (req) => {
     if (authErr || !userData.user) throw new Error("Unauthorized");
     const user = userData.user;
 
-    const { environment, returnUrl, shippingId } = await req.json();
+    const { environment, returnUrl, shippingId, affiliateCode } = await req.json();
     const env = (environment || "sandbox") as StripeEnv;
     const shipping = SHIPPING_OPTIONS[shippingId as string] ?? SHIPPING_OPTIONS.pickup;
     const isPickup = (shippingId ?? "pickup") === "pickup";
+
+    // Validate affiliate code (if any)
+    let affiliate: { id: string; code: string; customer_discount_rate: number } | null = null;
+    if (affiliateCode && typeof affiliateCode === "string") {
+      const { data: a } = await supabaseAdmin
+        .from("affiliates")
+        .select("id, code, customer_discount_rate, status")
+        .ilike("code", affiliateCode.trim())
+        .eq("status", "active")
+        .maybeSingle();
+      if (a) affiliate = a as typeof affiliate;
+    }
 
     // Load cart
     const { data: cart, error: cartErr } = await supabaseAdmin
