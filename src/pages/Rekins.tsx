@@ -246,6 +246,7 @@ const Rekins = () => {
             orderNumber: orderData.order_number,
             invoiceNumber,
             company: buyerCompany,
+            contact: buyerContact,
             regNr: buyerRegNr,
             vat: buyerVat,
             address: buyerAddress,
