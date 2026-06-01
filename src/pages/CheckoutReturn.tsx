@@ -46,6 +46,7 @@ const STATUS_LABELS: Record<string, string> = {
 
 const CheckoutReturn = () => {
   const [params] = useSearchParams();
+  const navigate = useNavigate();
   const sessionId = params.get("session_id");
   const { user, loading: authLoading } = useAuth();
   const [order, setOrder] = useState<Order | null>(null);
