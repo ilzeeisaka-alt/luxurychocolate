@@ -68,6 +68,7 @@ const Grozs = () => {
   const [shippingId, setShippingId] = useState<string>(() =>
     sessionStorage.getItem("shipping_id") || "pickup"
   );
+  const [affRef, setAffRef] = useState<StoredRef | null>(() => getStoredRef());
 
   useSeo({
     title: "Grozs — Luxury Chocolate",
