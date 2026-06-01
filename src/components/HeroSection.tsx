@@ -95,6 +95,7 @@ const HeroSection = ({
           preload="none"
           poster="/video/hero-poster.webp"
           className="absolute inset-0 w-full h-full object-cover"
+          style={{ objectPosition: "center 35%" }}
         >
           <source src="/video/hero.mp4" type="video/mp4" />
         </video>
