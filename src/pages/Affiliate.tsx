@@ -196,12 +196,30 @@ const Affiliate = () => {
         </p>
 
         {!affiliate ? (
-          <Card className="max-w-2xl">
-            <CardHeader>
-              <CardTitle>Pievienojies programmai</CardTitle>
-              <CardDescription>Aizpildi informāciju, lai aktivizētu savu partneru kodu.</CardDescription>
-            </CardHeader>
-            <CardContent>
+          <div className="max-w-2xl space-y-6">
+            <div className="space-y-4 text-foreground">
+              <p className="text-lg leading-relaxed">
+                <span className="font-semibold">„Affiliate program“</span> (latviski: partnerprogramma vai filiālprogramma) ir uzņēmuma izveidota sadarbības sistēma, kurā jebkurš cilvēks vai cits uzņēmums (partneris) var nopelnīt komisijas maksu, reklamējot šī uzņēmuma produktus vai pakalpojumus.
+              </p>
+              <p className="leading-relaxed">
+                Tā ir uz rezultātiem balstīta mārketinga stratēģija – partneris saņem naudu tikai tad, kad viņa rekomendācijas rezultātā tiek veikts reāls pirkums vai cita vēlamā darbība.
+              </p>
+              <h2 className="text-xl font-semibold mt-6">Kā tas darbojas?</h2>
+              <ol className="list-decimal list-inside space-y-2 pl-1">
+                <li><span className="font-medium">Reģistrācija:</span> Tu piesakies uzņēmuma partnerprogrammā.</li>
+                <li><span className="font-medium">Unikālā saite:</span> Uzņēmums Tev piešķir īpašu, tieši Tev izveidotu interneta saiti (tā saukto affiliate link).</li>
+                <li><span className="font-medium">Reklamēšana:</span> Tu dalies ar šo saiti savā blogā, sociālajos tīklos, YouTube video aprakstā vai sūti draugiem.</li>
+                <li><span className="font-medium">Izsekošana:</span> Kad kāds noklikšķina uz Tavas saites, sistēma ar sīkfailu (cookies) palīdzību atceras, ka klients nācis no Tevis.</li>
+                <li><span className="font-medium">Peļņa:</span> Ja šis cilvēks veic pirkumu, uzņēmums Tev izmaksā noteiktu procentu (komisijas maksu) no darījuma summas.</li>
+              </ol>
+            </div>
+
+            <Card className="max-w-2xl">
+              <CardHeader>
+                <CardTitle>Pievienojies programmai</CardTitle>
+                <CardDescription>Aizpildi informāciju, lai aktivizētu savu partneru kodu.</CardDescription>
+              </CardHeader>
+              <CardContent>
               <form onSubmit={handleRegister} className="space-y-4">
                 <div className="space-y-2">
                   <Label htmlFor="fn">Vārds, uzvārds *</Label>
