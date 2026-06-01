@@ -54,6 +54,7 @@ const Rekins = () => {
     try { return JSON.parse(localStorage.getItem(STORAGE_KEY) || "{}"); } catch { return {}; }
   })();
   const [buyerCompany, setBuyerCompany] = useState<string>(saved.company ?? "");
+  const [buyerContact, setBuyerContact] = useState<string>(saved.contact ?? "");
   const [buyerVat, setBuyerVat] = useState<string>(saved.vat ?? "");
   const [buyerRegNr, setBuyerRegNr] = useState<string>(saved.regNr ?? "");
   const [buyerAddress, setBuyerAddress] = useState<string>(saved.address ?? "");
@@ -68,11 +69,11 @@ const Rekins = () => {
     localStorage.setItem(
       STORAGE_KEY,
       JSON.stringify({
-        company: buyerCompany, vat: buyerVat, regNr: buyerRegNr,
+        company: buyerCompany, contact: buyerContact, vat: buyerVat, regNr: buyerRegNr,
         address: buyerAddress, email: buyerEmail, phone: buyerPhone,
       }),
     );
-  }, [buyerCompany, buyerVat, buyerRegNr, buyerAddress, buyerEmail, buyerPhone]);
+  }, [buyerCompany, buyerContact, buyerVat, buyerRegNr, buyerAddress, buyerEmail, buyerPhone]);
 
   const invoiceNumber = useMemo(() => {
     const d = new Date();
@@ -107,13 +108,15 @@ const Rekins = () => {
     // Prefill from profile
     const { data: profile } = await supabase
       .from("profiles")
-      .select("company_name, vat_number, registration_number, legal_address, legal_city, legal_postal_code, legal_country, phone, email")
+      .select("company_name, vat_number, registration_number, legal_address, legal_city, legal_postal_code, legal_country, phone, email, first_name, last_name")
       .eq("user_id", user.id)
       .maybeSingle();
     if (profile) {
       setBuyerCompany((v) => v || profile.company_name || "");
       setBuyerVat((v) => v || profile.vat_number || "");
       setBuyerRegNr((v) => v || profile.registration_number || "");
+      const contact = [profile.first_name, profile.last_name].filter(Boolean).join(" ");
+      setBuyerContact((v) => v || contact);
       const addr = [profile.legal_address, profile.legal_city, profile.legal_postal_code, profile.legal_country]
         .filter(Boolean).join(", ");
       setBuyerAddress((v) => v || addr);
@@ -199,7 +202,7 @@ const Rekins = () => {
         .insert({
           user_id: user.id,
           customer_email: buyerEmail,
-          customer_name: buyerCompany,
+          customer_name: buyerContact || buyerCompany,
           customer_phone: buyerPhone,
           company_name: buyerCompany,
           vat_number: buyerVat,
@@ -243,6 +246,7 @@ const Rekins = () => {
             orderNumber: orderData.order_number,
             invoiceNumber,
             company: buyerCompany,
+            contact: buyerContact,
             regNr: buyerRegNr,
             vat: buyerVat,
             address: buyerAddress,
@@ -313,6 +317,7 @@ const Rekins = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
             <input className="rounded-md bg-background border border-border px-3 py-2 text-sm" placeholder="Uzņēmuma / personas nosaukums" value={buyerCompany} onChange={(e) => setBuyerCompany(e.target.value)} />
             <input className="rounded-md bg-background border border-border px-3 py-2 text-sm" placeholder="Reģistrācijas numurs" value={buyerRegNr} onChange={(e) => setBuyerRegNr(e.target.value)} />
+            <input className="md:col-span-2 rounded-md bg-background border border-border px-3 py-2 text-sm" placeholder="Kontaktpersona (vārds, uzvārds)" value={buyerContact} onChange={(e) => setBuyerContact(e.target.value)} />
             <input className="rounded-md bg-background border border-border px-3 py-2 text-sm" placeholder="PVN numurs (neobligāti)" value={buyerVat} onChange={(e) => setBuyerVat(e.target.value)} />
             <input className="rounded-md bg-background border border-border px-3 py-2 text-sm" placeholder="Telefons" value={buyerPhone} onChange={(e) => setBuyerPhone(e.target.value)} />
             <input className="md:col-span-2 rounded-md bg-background border border-border px-3 py-2 text-sm" placeholder="Juridiskā adrese" value={buyerAddress} onChange={(e) => setBuyerAddress(e.target.value)} />
@@ -379,6 +384,7 @@ const Rekins = () => {
                 {buyerRegNr && <p>Reģ. Nr. {buyerRegNr}</p>}
                 {buyerVat && <p>PVN: {buyerVat}</p>}
                 {buyerAddress && <p>{buyerAddress}</p>}
+                {buyerContact && <p>Kontaktpersona: {buyerContact}</p>}
                 {buyerEmail && <p>{buyerEmail}</p>}
                 {buyerPhone && <p>{buyerPhone}</p>}
               </div>
