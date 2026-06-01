@@ -127,6 +127,20 @@ const HeroSection = ({
             style={{ boxShadow: "0 0 30px rgba(196,163,90,0.2), 0 0 60px rgba(0,0,0,0.4)" }}
           />
         </div>
+
+        {/* Apakšējais teksts uz video */}
+        <div className="absolute bottom-4 sm:bottom-8 left-0 right-0 z-10 text-center px-4">
+          <p
+            className="text-base sm:text-2xl font-medium tracking-widest uppercase"
+            style={{
+              color: "#e8d5b5",
+              textShadow: "0 2px 12px rgba(60,30,10,0.9), 0 0 24px rgba(60,30,10,0.6)",
+              letterSpacing: "0.2em",
+            }}
+          >
+            Uzdruka ar šokolādes krāsām uz šokolādes
+          </p>
+        </div>
       </div>
 
       {/* Teksts un CTA pogas zem video */}
