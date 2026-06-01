@@ -190,6 +190,19 @@ serve(async (req) => {
       });
     }
 
+    // Optional affiliate discount — create one-off Stripe coupon for the customer
+    let discountsArg: { coupon: string }[] | undefined;
+    if (affiliate && affDiscountCents > 0) {
+      const coupon = await stripe.coupons.create({
+        amount_off: affDiscountCents,
+        currency: (currency || "EUR").toLowerCase(),
+        duration: "once",
+        name: `Partnera atlaide ${affiliate.code}`,
+        max_redemptions: 1,
+      });
+      discountsArg = [{ coupon: coupon.id }];
+    }
+
     const session = await stripe.checkout.sessions.create({
       line_items: stripeLineItems,
       mode: "payment",
@@ -201,6 +214,7 @@ serve(async (req) => {
       billing_address_collection: "required",
       tax_id_collection: { enabled: true, required: "if_supported" },
       invoice_creation: { enabled: true },
+      ...(discountsArg && { discounts: discountsArg }),
       return_url:
         returnUrl ||
         `${req.headers.get("origin")}/checkout/return?session_id={CHECKOUT_SESSION_ID}`,
@@ -211,6 +225,11 @@ serve(async (req) => {
         product_type: "shop_order",
         shipping_id: shippingId ?? "pickup",
         shipping_label: shipping.label,
+        ...(affiliate && {
+          affiliate_id: affiliate.id,
+          affiliate_code: affiliate.code,
+          affiliate_discount_cents: String(affDiscountCents),
+        }),
       },
     });
 
