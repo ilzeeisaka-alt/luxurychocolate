@@ -3,10 +3,12 @@ import { Link, useNavigate } from "react-router-dom";
 import { Minus, Plus, Trash2, ShoppingBag, ChevronLeft } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import FooterSection from "@/components/FooterSection";
+import AffiliateCodeInput from "@/components/AffiliateCodeInput";
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/hooks/useAuth";
 import { useSeo } from "@/hooks/useSeo";
 import { useToast } from "@/hooks/use-toast";
+import { getStoredRef, type StoredRef } from "@/lib/affiliateRef";
 
 interface LogoRef { url: string; filename: string; quantity?: number }
 interface CartLine {
