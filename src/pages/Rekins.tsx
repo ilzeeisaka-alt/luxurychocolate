@@ -253,9 +253,13 @@ const Rekins = () => {
             email: buyerEmail,
             phone: buyerPhone,
             shipping: shipping.label,
+            shippingCost: shipping.cents / 100,
             total: total / 100,
             currency,
-            items: validItems.map((i) => ({ name: i.product!.name, qty: i.quantity, price: i.product!.price_cents / 100 })),
+            items: [
+              ...validItems.map((i) => ({ name: i.product!.name, qty: i.quantity, price: i.product!.price_cents / 100 })),
+              ...(shipping.cents > 0 ? [{ name: `Piegāde: ${shipping.label}`, qty: 1, price: shipping.cents / 100 }] : []),
+            ],
           },
         },
       });
