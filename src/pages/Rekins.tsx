@@ -54,6 +54,7 @@ const Rekins = () => {
     try { return JSON.parse(localStorage.getItem(STORAGE_KEY) || "{}"); } catch { return {}; }
   })();
   const [buyerCompany, setBuyerCompany] = useState<string>(saved.company ?? "");
+  const [buyerContact, setBuyerContact] = useState<string>(saved.contact ?? "");
   const [buyerVat, setBuyerVat] = useState<string>(saved.vat ?? "");
   const [buyerRegNr, setBuyerRegNr] = useState<string>(saved.regNr ?? "");
   const [buyerAddress, setBuyerAddress] = useState<string>(saved.address ?? "");
@@ -68,11 +69,11 @@ const Rekins = () => {
     localStorage.setItem(
       STORAGE_KEY,
       JSON.stringify({
-        company: buyerCompany, vat: buyerVat, regNr: buyerRegNr,
+        company: buyerCompany, contact: buyerContact, vat: buyerVat, regNr: buyerRegNr,
         address: buyerAddress, email: buyerEmail, phone: buyerPhone,
       }),
     );
-  }, [buyerCompany, buyerVat, buyerRegNr, buyerAddress, buyerEmail, buyerPhone]);
+  }, [buyerCompany, buyerContact, buyerVat, buyerRegNr, buyerAddress, buyerEmail, buyerPhone]);
 
   const invoiceNumber = useMemo(() => {
     const d = new Date();
