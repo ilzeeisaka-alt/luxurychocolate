@@ -31,7 +31,7 @@ interface CartLine {
 const SHIPPING_OPTIONS: Record<string, { label: string; cents: number }> = {
   pickup: { label: "Izņemt uz vietas — Kandavas iela 29A, Rīga", cents: 0 },
   venipak_pakomats: { label: "Venipak pakomāts", cents: 1000 },
-  courier_riga: { label: "Mūsu piegāde Rīgā", cents: 3000 },
+  courier_riga: { label: "Piegāde Rīgā", cents: 3025 },
   venipak_lv: { label: "Venipak Latvija", cents: 5500 },
   venipak_baltic: { label: "Venipak Baltija", cents: 6000 },
   venipak_scandi: { label: "Venipak Skandināvija", cents: 8000 },
