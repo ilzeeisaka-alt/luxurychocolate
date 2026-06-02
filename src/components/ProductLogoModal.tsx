@@ -178,6 +178,8 @@ const ProductLogoModal = ({ open, onOpenChange, productId, productName, initialF
       });
       if (insertError) throw insertError;
 
+      await ensurePrepFeeForPrintedProduct(user.id, productId);
+
       window.dispatchEvent(new Event("cart-updated"));
       toast.success(`Pievienots grozam ar ${uploaded.length} logo`);
       onOpenChange(false);
