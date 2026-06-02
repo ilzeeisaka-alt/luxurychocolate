@@ -50,7 +50,7 @@ const formatPrice = (cents: number, currency = "EUR") =>
 const SHIPPING_OPTIONS = [
   { id: "pickup", label: "Izņemt uz vietas — Kandavas iela 29A, Rīga", cents: 0 },
   { id: "venipak_pakomats", label: "Venipak pakomāts", cents: 1000 },
-  { id: "courier_riga", label: "Mūsu piegāde Rīgā", cents: 3000 },
+  { id: "courier_riga", label: "Piegāde Rīgā", cents: 3025 },
   { id: "venipak_lv", label: "Venipak Latvija", cents: 5500 },
   { id: "venipak_baltic", label: "Venipak Baltija", cents: 6000 },
   { id: "venipak_scandi", label: "Venipak Skandināvija", cents: 8000 },
