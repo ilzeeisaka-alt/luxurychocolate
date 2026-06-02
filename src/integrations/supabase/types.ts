@@ -631,6 +631,7 @@ export type Database = {
           short_description: string | null
           short_description_i18n: Json
           slug: string
+          sort_order: number
           source_external_id: string | null
           source_url: string | null
           stock_quantity: number | null
@@ -661,6 +662,7 @@ export type Database = {
           short_description?: string | null
           short_description_i18n?: Json
           slug: string
+          sort_order?: number
           source_external_id?: string | null
           source_url?: string | null
           stock_quantity?: number | null
@@ -691,6 +693,7 @@ export type Database = {
           short_description?: string | null
           short_description_i18n?: Json
           slug?: string
+          sort_order?: number
           source_external_id?: string | null
           source_url?: string | null
           stock_quantity?: number | null
