@@ -10,6 +10,7 @@ import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/hooks/useAuth";
 import { useNavigate } from "react-router-dom";
+import { ensurePrepFeeForPrintedProduct } from "@/lib/prepFee";
 
 interface ProductLogoModalProps {
   open: boolean;
@@ -176,6 +177,8 @@ const ProductLogoModal = ({ open, onOpenChange, productId, productName, initialF
         notes,
       });
       if (insertError) throw insertError;
+
+      await ensurePrepFeeForPrintedProduct(user.id, productId);
 
       window.dispatchEvent(new Event("cart-updated"));
       toast.success(`Pievienots grozam ar ${uploaded.length} logo`);

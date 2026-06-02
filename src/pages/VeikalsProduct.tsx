@@ -11,6 +11,7 @@ import { useAuth } from "@/hooks/useAuth";
 import { useToast } from "@/hooks/use-toast";
 import { cn } from "@/lib/utils";
 import { useCurrentLang, pickI18n } from "@/i18n/useCurrentLang";
+import { ensurePrepFeeForPrintedProduct } from "@/lib/prepFee";
 
 const formatPrice = (cents: number, currency = "EUR") =>
   new Intl.NumberFormat("lv-LV", { style: "currency", currency }).format(cents / 100);
@@ -139,6 +140,7 @@ const VeikalsProduct = () => {
         });
         if (insertError) throw insertError;
       }
+      await ensurePrepFeeForPrintedProduct(user.id, product.id);
       toast({ title: "Pievienots grozam", description: localizedName });
       window.dispatchEvent(new Event("cart-updated"));
     } catch (e) {
