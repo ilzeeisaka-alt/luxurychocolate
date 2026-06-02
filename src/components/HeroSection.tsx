@@ -179,7 +179,7 @@ const HeroSection = ({
         />
 
         {/* Augšējais teksts uz video */}
-        <div className="absolute top-6 sm:top-10 left-0 right-0 z-10 text-center px-4">
+        <div className="absolute top-[32%] sm:top-[30%] left-0 right-0 z-10 text-center px-4">
           <p
             className="text-lg sm:text-3xl font-semibold tracking-widest uppercase"
             style={{
