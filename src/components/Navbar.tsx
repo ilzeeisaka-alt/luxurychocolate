@@ -988,18 +988,28 @@ const Navbar = ({ lang = "lv" }: NavbarProps) => {
               {mobileOpen ? <X size={22} /> : <Menu size={22} />}
             </button>
           </div>
-          {affiliateItem && (
-            <Link
-              to={affiliateItem.to}
-              className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-md text-[11px] font-medium transition-colors border ${
-                pathname === affiliateItem.to
-                  ? "text-primary bg-primary/10 border-primary/40"
-                  : "text-primary/90 border-primary/30 hover:bg-primary/10"
-              }`}
-            >
-              {affiliateItem.label}
-            </Link>
-          )}
+          <div className="flex items-center gap-2">
+            {affiliateItem && (
+              <Link
+                to={affiliateItem.to}
+                className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-md text-[11px] font-medium transition-colors border ${
+                  pathname === affiliateItem.to
+                    ? "text-primary bg-primary/10 border-primary/40"
+                    : "text-primary/90 border-primary/30 hover:bg-primary/10"
+                }`}
+              >
+                {affiliateItem.label}
+              </Link>
+            )}
+            {contactItem && (
+              <a
+                href={contactItem.to}
+                className="inline-flex items-center gap-1.5 px-3 py-1 rounded-md text-[11px] font-medium text-white/80 border border-white/15 hover:text-white hover:bg-white/5 transition-colors"
+              >
+                {contactItem.label}
+              </a>
+            )}
+          </div>
         </div>
       </div>
 
