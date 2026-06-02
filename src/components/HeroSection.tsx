@@ -174,7 +174,7 @@ const HeroSection = ({
               letterSpacing: "0.2em",
             }}
           >
-            Uzdruka ar šokolādes krāsām uz šokolādes
+            {videoCaptions[lang] ?? videoCaptions.en}
           </p>
         </div>
       </div>
