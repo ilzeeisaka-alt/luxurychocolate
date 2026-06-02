@@ -38,7 +38,7 @@ const Veikals = () => {
   const category = params.get("category") ?? "";
   const search = params.get("q") ?? "";
   const page = Math.max(1, parseInt(params.get("page") ?? "1", 10) || 1);
-  const sort = params.get("sort") ?? "newest";
+  const sort = params.get("sort") ?? "category";
   const [searchInput, setSearchInput] = useState(search);
 
   useSeo({
