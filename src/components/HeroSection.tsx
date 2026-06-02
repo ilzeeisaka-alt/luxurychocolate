@@ -179,6 +179,20 @@ const HeroSection = ({
           }}
         />
 
+        {/* Augšējais teksts uz video */}
+        <div className="absolute top-6 sm:top-10 left-0 right-0 z-10 text-center px-4">
+          <p
+            className="text-lg sm:text-3xl font-semibold tracking-widest uppercase"
+            style={{
+              color: "#e8d5b5",
+              textShadow: "0 2px 12px rgba(60,30,10,0.9), 0 0 24px rgba(60,30,10,0.6)",
+              letterSpacing: "0.18em",
+            }}
+          >
+            {videoTopCaptions[lang] ?? videoTopCaptions.en}
+          </p>
+        </div>
+
         {/* Kreisais logo */}
         <div className="absolute top-1/2 -translate-y-1/2 left-4 sm:left-10 z-10">
           <div
