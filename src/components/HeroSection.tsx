@@ -58,6 +58,41 @@ const orderNowLabels: Record<Lang, string> = expandLangs({
   is: "Panta núna",
 });
 
+const videoCaptions: Record<Lang, string> = expandLangs({
+  lv: "Uzdruka ar šokolādes krāsām uz šokolādes",
+  en: "Printing with chocolate colors on chocolate",
+  ru: "Печать шоколадными красками на шоколаде",
+  et: "Trükkimine šokolaadivärvidega šokolaadile",
+  lt: "Spauda šokolado spalvomis ant šokolado",
+  sv: "Tryck med chokladfärger på choklad",
+  no: "Trykk med sjokoladefarger på sjokolade",
+  fi: "Painatus suklaaväreillä suklaalle",
+  da: "Tryk med chokoladefarver på chokolade",
+  de: "Druck mit Schokoladenfarben auf Schokolade",
+  fr: "Impression aux couleurs de chocolat sur chocolat",
+  it: "Stampa con colori di cioccolato su cioccolato",
+  es: "Impresión con colores de chocolate sobre chocolate",
+  ar: "طباعة بألوان الشوكولاتة على الشوكولاتة",
+  nl: "Drukken met chocoladekleuren op chocolade",
+  pl: "Druk czekoladowymi kolorami na czekoladzie",
+  cs: "Tisk čokoládovými barvami na čokoládě",
+  pt: "Impressão com cores de chocolate sobre chocolate",
+  el: "Εκτύπωση με χρώματα σοκολάτας πάνω σε σοκολάτα",
+  tr: "Çikolata renkleriyle çikolata üzerine baskı",
+  hu: "Nyomtatás csokoládészínekkel csokoládéra",
+  ro: "Imprimare cu culori de ciocolată pe ciocolată",
+  bg: "Печат с шоколадови цветове върху шоколад",
+  hr: "Tisak čokoladnim bojama na čokoladi",
+  sk: "Tlač čokoládovými farbami na čokoláde",
+  sl: "Tisk s čokoladnimi barvami na čokoladi",
+  uk: "Друк шоколадними фарбами на шоколаді",
+  sr: "Štampa čokoladnim bojama na čokoladi",
+  bs: "Štampa čokoladnim bojama na čokoladi",
+  mk: "Печат со чоколадни бои на чоколадо",
+  sq: "Shtypje me ngjyra çokollate mbi çokollatë",
+  is: "Prentun með súkkulaðilitum á súkkulaði",
+});
+
 interface HeroSectionProps {
   onCtaClick: () => void;
   lang?: Lang;
