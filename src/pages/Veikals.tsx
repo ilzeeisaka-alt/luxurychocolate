@@ -203,18 +203,6 @@ const Veikals = () => {
 
             <p className="text-xs uppercase tracking-[0.15em] text-muted-foreground mb-3">Kategorijas</p>
             <nav className="space-y-1 max-h-[60vh] overflow-y-auto pr-2">
-              <button
-                type="button"
-                onClick={() => update({ category: null })}
-                className={cn(
-                  "w-full text-left px-3 py-2 rounded-md text-sm transition-colors",
-                  !category
-                    ? "bg-primary/15 text-primary font-medium"
-                    : "text-muted-foreground hover:text-foreground hover:bg-card"
-                )}
-              >
-                Visi produkti
-              </button>
               {categories.map((c) => (
                 <button
                   key={c.id}
@@ -231,6 +219,18 @@ const Veikals = () => {
                   <span className="text-xs opacity-60">{c.product_count}</span>
                 </button>
               ))}
+              <button
+                type="button"
+                onClick={() => update({ category: null })}
+                className={cn(
+                  "w-full text-left px-3 py-2 rounded-md text-sm transition-colors",
+                  !category
+                    ? "bg-primary/15 text-primary font-medium"
+                    : "text-muted-foreground hover:text-foreground hover:bg-card"
+                )}
+              >
+                Visi produkti
+              </button>
             </nav>
           </aside>
 
