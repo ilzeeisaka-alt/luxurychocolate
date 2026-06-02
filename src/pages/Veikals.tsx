@@ -102,7 +102,7 @@ const Veikals = () => {
       let q = supabase
         .from("products")
         .select(
-          "id, slug, name, name_i18n, price_cents, currency, short_description, short_description_i18n, category_id",
+          "id, slug, name, name_i18n, price_cents, currency, short_description, short_description_i18n, category_id, product_categories(sort_order)",
           { count: "exact" }
         )
         .eq("published", true);
@@ -110,7 +110,10 @@ const Veikals = () => {
       if (currentCategoryId) q = q.eq("category_id", currentCategoryId);
       if (search) q = q.or(`name.ilike.%${search}%,name_i18n->>${lang}.ilike.%${search}%`);
 
-      // Piespraustie produkti pirmie, tad produkti ar bildēm
+      // Kārtošana pēc kategorijas secības (default), tad piespraustie + bildes
+      if (sort === "category" && !currentCategoryId) {
+        q = q.order("sort_order", { ascending: true, referencedTable: "product_categories", nullsFirst: false });
+      }
       q = q.order("sort_order", { ascending: true });
       q = q.order("has_image", { ascending: false });
       switch (sort) {
@@ -123,8 +126,12 @@ const Veikals = () => {
         case "name":
           q = q.order("name", { ascending: true });
           break;
-        default:
+        case "newest":
           q = q.order("created_at", { ascending: false });
+          break;
+        default:
+          // category — papildu kārtošana nav nepieciešama
+          break;
       }
 
       const from = (page - 1) * PAGE_SIZE;
