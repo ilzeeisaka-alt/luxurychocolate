@@ -816,7 +816,8 @@ const Navbar = ({ lang = "lv" }: NavbarProps) => {
   const { user } = useAuth();
   const allItems = navItems[lang];
   const affiliateItem = allItems.find((i) => i.to === "/affiliate");
-  const items = allItems.filter((i) => i.to !== "/affiliate");
+  const contactItem = allItems.find((i) => i.to === "#kontakti");
+  const items = allItems.filter((i) => i.to !== "/affiliate" && i.to !== "#kontakti");
   const homePath = homePaths[lang];
   const shopItem = allItems.find((i) => i.to === "/veikals");
   const infoPages = getInfoPages(lang);
