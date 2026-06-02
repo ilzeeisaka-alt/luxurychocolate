@@ -110,7 +110,8 @@ const Veikals = () => {
       if (currentCategoryId) q = q.eq("category_id", currentCategoryId);
       if (search) q = q.or(`name.ilike.%${search}%,name_i18n->>${lang}.ilike.%${search}%`);
 
-      // Vienmēr produkti ar bildēm pirmie
+      // Piespraustie produkti pirmie, tad produkti ar bildēm
+      q = q.order("sort_order", { ascending: true });
       q = q.order("has_image", { ascending: false });
       switch (sort) {
         case "price-asc":
