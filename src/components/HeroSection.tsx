@@ -58,6 +58,41 @@ const orderNowLabels: Record<Lang, string> = expandLangs({
   is: "Panta núna",
 });
 
+const videoTopCaptions: Record<Lang, string> = expandLangs({
+  lv: "Šokolādes apdruka",
+  en: "Chocolate printing",
+  ru: "Шоколадная печать",
+  et: "Šokolaaditrükk",
+  lt: "Šokolado spauda",
+  sv: "Chokladtryck",
+  no: "Sjokoladetrykk",
+  fi: "Suklaapainatus",
+  da: "Chokoladetryk",
+  de: "Schokoladendruck",
+  fr: "Impression sur chocolat",
+  it: "Stampa su cioccolato",
+  es: "Impresión en chocolate",
+  ar: "طباعة الشوكولاتة",
+  nl: "Chocoladedruk",
+  pl: "Druk czekoladowy",
+  cs: "Čokoládový tisk",
+  pt: "Impressão em chocolate",
+  el: "Εκτύπωση σοκολάτας",
+  tr: "Çikolata baskı",
+  hu: "Csokoládé nyomtatás",
+  ro: "Tiparire cu ciocolată",
+  bg: "Шоколадов печат",
+  hr: "Čokoladni tisak",
+  sk: "Čokoládová tlač",
+  sl: "Čokoladni tisk",
+  uk: "Шоколадний друк",
+  sr: "Čokoladna štampa",
+  bs: "Čokoladna štampa",
+  mk: "Чоколадно печатење",
+  sq: "Shtypje çokollate",
+  is: "Súkkulaðaprentun",
+});
+
 const videoCaptions: Record<Lang, string> = expandLangs({
   lv: "Uzdruka ar šokolādes krāsām uz šokolādes",
   en: "Printing with chocolate colors on chocolate",
@@ -143,6 +178,20 @@ const HeroSection = ({
               "linear-gradient(90deg, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.15) 20%, rgba(0,0,0,0) 40%, rgba(0,0,0,0) 60%, rgba(0,0,0,0.15) 80%, rgba(0,0,0,0.55) 100%)",
           }}
         />
+
+        {/* Augšējais teksts uz video */}
+        <div className="absolute top-6 sm:top-10 left-0 right-0 z-10 text-center px-4">
+          <p
+            className="text-lg sm:text-3xl font-semibold tracking-widest uppercase"
+            style={{
+              color: "#e8d5b5",
+              textShadow: "0 2px 12px rgba(60,30,10,0.9), 0 0 24px rgba(60,30,10,0.6)",
+              letterSpacing: "0.18em",
+            }}
+          >
+            {videoTopCaptions[lang] ?? videoTopCaptions.en}
+          </p>
+        </div>
 
         {/* Kreisais logo */}
         <div className="absolute top-1/2 -translate-y-1/2 left-4 sm:left-10 z-10">
