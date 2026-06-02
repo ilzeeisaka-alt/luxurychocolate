@@ -162,8 +162,7 @@ const HeroSection = ({
           muted
           loop
           playsInline
-          preload="none"
-          poster="/video/hero-poster.webp"
+          preload="auto"
           className="absolute inset-0 w-full h-full object-cover"
           style={{ objectPosition: "center 35%" }}
         >
