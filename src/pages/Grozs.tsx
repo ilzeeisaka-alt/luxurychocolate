@@ -261,7 +261,17 @@ const Grozs = () => {
                         >
                           <Minus className="w-3.5 h-3.5" />
                         </button>
-                        <span className="w-10 text-center text-sm">{item.quantity}</span>
+                        <input
+                          type="number"
+                          min={1}
+                          value={item.quantity}
+                          disabled={busyId === item.id}
+                          onChange={(e) => {
+                            const v = parseInt(e.target.value, 10);
+                            if (!isNaN(v) && v >= 1) updateQty(item.id, v);
+                          }}
+                          className="w-12 text-center text-sm bg-transparent outline-none [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+                        />
                         <button
                           type="button"
                           disabled={busyId === item.id}
