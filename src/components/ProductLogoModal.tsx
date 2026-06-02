@@ -10,6 +10,7 @@ import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/hooks/useAuth";
 import { useNavigate } from "react-router-dom";
+import { ensurePrepFeeForPrintedProduct } from "@/lib/prepFee";
 
 interface ProductLogoModalProps {
   open: boolean;
