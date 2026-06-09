@@ -21,6 +21,7 @@ import SouvenirSection from "@/components/SouvenirSection";
 import CienastsSection from "@/components/CienastsSection";
 import TableCardsSection from "@/components/TableCardsSection";
 import CelebrationCakeSection from "@/components/CelebrationCakeSection";
+import WeddingChocolateSection from "@/components/WeddingChocolateSection";
 import SeoContentSection from "@/components/SeoContentSection";
 import FaqSection from "@/components/FaqSection";
 import IdeasSection from "@/components/IdeasSection";
