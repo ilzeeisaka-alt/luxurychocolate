@@ -167,9 +167,9 @@ const Grozs = () => {
           <ChevronLeft className="w-4 h-4" /> Turpināt iepirkties
         </Link>
 
-        <h1 className="text-3xl sm:text-4xl text-foreground mb-8 flex items-center gap-3">
-          <ShoppingBag className="w-7 h-7 text-primary" />
-          Tavs grozs
+        <h1 className="text-3xl sm:text-4xl text-foreground mb-8 flex items-center gap-3 leading-[1.3] py-1">
+          <ShoppingBag className="w-7 h-7 text-primary shrink-0" />
+          <span className="block">Tavs grozs</span>
         </h1>
 
         {loading ? (
