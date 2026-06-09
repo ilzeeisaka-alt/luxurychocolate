@@ -68,6 +68,7 @@ const Index = () => {
       <CienastsSection lang="lv" onCtaClick={() => setModalOpen(true)} />
       <TableCardsSection lang="lv" onCtaClick={() => setModalOpen(true)} />
       <CelebrationCakeSection lang="lv" onCtaClick={() => setModalOpen(true)} />
+      <WeddingChocolateSection lang="lv" onCtaClick={() => setModalOpen(true)} />
       <MagnetBoxSection />
       <CoinsCardsSection lang="lv" onCtaClick={() => setModalOpen(true)} />
       <DailyChocolateSection lang="lv" onCtaClick={() => setModalOpen(true)} />
