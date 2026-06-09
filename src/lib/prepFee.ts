@@ -7,7 +7,6 @@ const PREP_FEE_PRODUCT_ID = "006bc6f2-bbb0-4b9e-992f-40b195b641ed";
 const PRINTED_CATEGORY_SLUGS = new Set([
   "apdrukatas-kuku-sokolades",
   "personalizeta-reklamas-sokolade",
-  "edama-papira-apdruka",
   "sokolades-papira-apdruka",
   "korporativu-davanu-sokolade",
 ]);
