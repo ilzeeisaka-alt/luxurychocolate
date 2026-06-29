@@ -8,6 +8,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { useSeo } from "@/hooks/useSeo";
 import { cn } from "@/lib/utils";
 import { useCurrentLang, pickI18n } from "@/i18n/useCurrentLang";
+import { tUI } from "@/i18n/uiStrings";
 
 const PAGE_SIZE = 24;
 
