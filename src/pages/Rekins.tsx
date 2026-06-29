@@ -359,6 +359,31 @@ const Rekins = () => {
   const [paying, setPaying] = useState(false);
   const [confirming, setConfirming] = useState(false);
 
+  // VIES verification of buyer VAT number
+  type ViesResult = { valid: boolean; name?: string | null; address?: string | null; requestDate?: string } | null;
+  const [viesStatus, setViesStatus] = useState<"idle" | "checking" | "done">("idle");
+  const [viesResult, setViesResult] = useState<ViesResult>(null);
+  useEffect(() => {
+    const v = buyerVat.replace(/[\s-]/g, "").toUpperCase();
+    if (v.length < 4 || !/^[A-Z]{2}/.test(v)) {
+      setViesStatus("idle"); setViesResult(null); return;
+    }
+    let cancelled = false;
+    setViesStatus("checking");
+    const handle = setTimeout(async () => {
+      try {
+        const { data, error } = await supabase.functions.invoke("vies-check", { body: { vat: v } });
+        if (cancelled) return;
+        if (error) { setViesStatus("done"); setViesResult({ valid: false }); return; }
+        setViesStatus("done");
+        setViesResult(data as ViesResult);
+      } catch {
+        if (!cancelled) { setViesStatus("done"); setViesResult({ valid: false }); }
+      }
+    }, 600);
+    return () => { cancelled = true; clearTimeout(handle); };
+  }, [buyerVat]);
+
   const handlePrint = () => window.print();
 
   const handleSavePdf = async () => {
