@@ -28,6 +28,7 @@ interface CartLine {
     currency: string;
     in_stock: boolean;
     image_url: string | null;
+    name_i18n: Record<string, unknown> | null;
   };
 }
 
@@ -41,6 +42,7 @@ interface CartQueryRow {
   logos: LogoRef[] | null;
   product: ProductFromCart | null;
 }
+
 
 interface ProductImageRow {
   product_id: string;
