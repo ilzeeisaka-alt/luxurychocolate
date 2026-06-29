@@ -111,7 +111,7 @@ const NewsletterSignup = ({ lang = "lv", source = "footer", compact = false }: N
             disabled={loading}
             className="px-4 py-2 text-sm rounded-md bg-primary text-primary-foreground font-medium hover:brightness-110 transition disabled:opacity-50"
           >
-            {loading ? <Loader2 size={14} className="animate-spin" /> : "Pierakstīties"}
+            {loading ? <Loader2 size={14} className="animate-spin" /> : ui.subscribe}
           </button>
         </form>
       )}
