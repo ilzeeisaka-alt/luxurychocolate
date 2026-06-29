@@ -36,6 +36,7 @@ const formatPrice = (cents: number, currency = "EUR") =>
 const Veikals = () => {
   const [params, setParams] = useSearchParams();
   const lang = useCurrentLang();
+  const ui = tUI(lang);
   const category = params.get("category") ?? "";
   const search = params.get("q") ?? "";
   const page = Math.max(1, parseInt(params.get("page") ?? "1", 10) || 1);
@@ -43,7 +44,7 @@ const Veikals = () => {
   const [searchInput, setSearchInput] = useState(search);
 
   useSeo({
-    title: "Šokolādes veikals",
+    title: ui.shopTitle,
     description:
       "Pasūti premium šokolādes ar savu logo, dāvanu kastes, makarūnus un saldumus tiešsaistē. Bezmaksas skice 24h laikā.",
     path: "/veikals",
