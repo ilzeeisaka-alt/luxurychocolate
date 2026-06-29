@@ -28,6 +28,10 @@ export interface UIStrings {
   noImage: string;
   prevPage: string;
   nextPage: string;
+  addToCart: string;
+  addingToCart: string;
+  uploadLogoOrCustom: string;
+
 }
 
 const en: UIStrings = {
