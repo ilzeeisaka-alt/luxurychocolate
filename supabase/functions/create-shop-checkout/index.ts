@@ -22,15 +22,35 @@ const EU_COUNTRIES = [
   "CZ","SK","HU","RO","BG","HR","SI","GR","PT","IE","LU","MT","CY","IS","GB",
 ];
 
-const SHIPPING_OPTIONS: Record<string, { label: string; cents: number }> = {
-  pickup: { label: "Izņemt uz vietas — Kandavas iela 29A, Rīga", cents: 0 },
-  venipak_pakomats: { label: "Venipak pakomāts", cents: 1000 },
-  courier_riga: { label: "Mūsu piegāde Rīgā", cents: 3000 },
-  venipak_lv: { label: "Venipak Latvija", cents: 5500 },
-  venipak_baltic: { label: "Venipak Baltija", cents: 6000 },
-  venipak_scandi: { label: "Venipak Skandināvija", cents: 8000 },
-  venipak_eu: { label: "Venipak Eiropa", cents: 10000 },
-  venipak_world: { label: "Venipak Pasaule", cents: 20000 },
+const SHIPPING_OPTIONS: Record<string, { label: string; ruLabel: string; cents: number }> = {
+  pickup: { label: "Izņemt uz vietas — Kandavas iela 29A, Rīga", ruLabel: "Самовывоз — Kandavas iela 29A, Рига", cents: 0 },
+  venipak_pakomats: { label: "Venipak pakomāts", ruLabel: "Постамат Venipak", cents: 1000 },
+  courier_riga: { label: "Piegāde Rīgā", ruLabel: "Доставка по Риге", cents: 3025 },
+  venipak_lv: { label: "Venipak Latvija", ruLabel: "Venipak Латвия", cents: 5500 },
+  venipak_baltic: { label: "Venipak Baltija", ruLabel: "Venipak Балтия", cents: 6000 },
+  venipak_scandi: { label: "Venipak Skandināvija", ruLabel: "Venipak Скандинавия", cents: 8000 },
+  venipak_eu: { label: "Venipak Eiropa", ruLabel: "Venipak Европа", cents: 10000 },
+  venipak_world: { label: "Venipak Pasaule", ruLabel: "Venipak по всему миру", cents: 20000 },
+};
+
+const pickI18n = (i18n: Record<string, unknown> | null | undefined, lang: string, fallback: string) => {
+  if (i18n && typeof i18n === "object") {
+    const value = i18n[lang];
+    if (typeof value === "string" && value.trim()) return value;
+    const lv = i18n.lv;
+    if (typeof lv === "string" && lv.trim()) return lv;
+    const en = i18n.en;
+    if (typeof en === "string" && en.trim()) return en;
+  }
+  if (lang === "ru" && fallback.trim().toLowerCase() === "sagatavošana šokolādes ražošanai") {
+    return "Подготовка шоколадного производства";
+  }
+  return fallback;
+};
+
+const stripeLocale = (locale: unknown, lang: unknown) => {
+  const requested = typeof locale === "string" ? locale : typeof lang === "string" ? lang : "auto";
+  return ["lv", "ru", "en"].includes(requested) ? requested : "auto";
 };
 
 serve(async (req) => {
@@ -45,9 +65,11 @@ serve(async (req) => {
     if (authErr || !userData.user) throw new Error("Unauthorized");
     const user = userData.user;
 
-    const { environment, returnUrl, shippingId, affiliateCode } = await req.json();
+    const { environment, returnUrl, shippingId, affiliateCode, lang = "lv", locale = "auto" } = await req.json();
     const env = (environment || "sandbox") as StripeEnv;
     const shipping = SHIPPING_OPTIONS[shippingId as string] ?? SHIPPING_OPTIONS.pickup;
+    const currentLang = typeof lang === "string" ? lang : "lv";
+    const shippingLabel = currentLang === "ru" ? shipping.ruLabel : shipping.label;
     const isPickup = (shippingId ?? "pickup") === "pickup";
 
     // Validate affiliate code (if any)
@@ -65,7 +87,7 @@ serve(async (req) => {
     // Load cart
     const { data: cart, error: cartErr } = await supabaseAdmin
       .from("cart_items")
-      .select("id, quantity, logo_url, logo_filename, product:products(id, slug, name, price_cents, currency, in_stock, published)")
+      .select("id, quantity, logo_url, logo_filename, product:products(id, slug, name, name_i18n, price_cents, currency, in_stock, published)")
       .eq("user_id", user.id);
 
     if (cartErr) throw cartErr;
@@ -131,7 +153,7 @@ serve(async (req) => {
         currency,
         subtotal_cents: subtotalCents,
         shipping_cents: shipping.cents,
-        shipping_method: shipping.label,
+        shipping_method: shippingLabel,
         total_cents: totalCents,
         affiliate_id: affiliate?.id ?? null,
         affiliate_code: affiliate?.code ?? null,
@@ -147,7 +169,7 @@ serve(async (req) => {
       order_id: order.id,
       product_id: l.product.id,
       product_slug: l.product.slug,
-      product_name: l.product.name,
+      product_name: pickI18n(l.product.name_i18n, currentLang, l.product.name),
       product_type: "shop_product",
       quantity: l.quantity,
       unit_price_cents: l.product.price_cents,
@@ -161,8 +183,11 @@ serve(async (req) => {
     const stripeLineItems = lines.map((l: any) => {
       const productImage = imageMap.get(l.product.id);
       const image = l.logo_url || productImage;
-      const name = l.logo_url ? `${l.product.name} (ar Jūsu logo)` : l.product.name;
-      const description = l.logo_filename ? `Logo: ${l.logo_filename}` : undefined;
+      const productName = pickI18n(l.product.name_i18n, currentLang, l.product.name);
+      const name = l.logo_url
+        ? `${productName} (${currentLang === "ru" ? "с вашим логотипом" : "ar Jūsu logo"})`
+        : productName;
+      const description = l.logo_filename ? `${currentLang === "ru" ? "Логотип" : "Logo"}: ${l.logo_filename}` : undefined;
       return {
         price_data: {
           currency: (currency || "EUR").toLowerCase(),
@@ -182,7 +207,7 @@ serve(async (req) => {
       stripeLineItems.push({
         price_data: {
           currency: (currency || "EUR").toLowerCase(),
-          product_data: { name: `Piegāde: ${shipping.label}` },
+          product_data: { name: `${currentLang === "ru" ? "Доставка" : "Piegāde"}: ${shippingLabel}` },
           unit_amount: shipping.cents,
           tax_behavior: "inclusive" as const,
         },
@@ -207,6 +232,7 @@ serve(async (req) => {
       line_items: stripeLineItems,
       mode: "payment",
       ui_mode: "embedded",
+      locale: stripeLocale(locale, currentLang) as any,
       ...(isPickup
         ? {}
         : { shipping_address_collection: { allowed_countries: EU_COUNTRIES as any } }),
@@ -224,7 +250,7 @@ serve(async (req) => {
         order_id: order.id,
         product_type: "shop_order",
         shipping_id: shippingId ?? "pickup",
-        shipping_label: shipping.label,
+        shipping_label: shippingLabel,
         ...(affiliate && {
           affiliate_id: affiliate.id,
           affiliate_code: affiliate.code,
