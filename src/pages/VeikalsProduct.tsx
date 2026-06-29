@@ -11,7 +11,9 @@ import { useAuth } from "@/hooks/useAuth";
 import { useToast } from "@/hooks/use-toast";
 import { cn } from "@/lib/utils";
 import { useCurrentLang, pickI18n } from "@/i18n/useCurrentLang";
+import { tUI } from "@/i18n/uiStrings";
 import { ensurePrepFeeForPrintedProduct } from "@/lib/prepFee";
+
 
 const formatPrice = (cents: number, currency = "EUR") =>
   new Intl.NumberFormat("lv-LV", { style: "currency", currency }).format(cents / 100);
