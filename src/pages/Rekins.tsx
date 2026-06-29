@@ -629,8 +629,8 @@ const Rekins = () => {
                         )}
                       </td>
                       <td className="text-right py-2 px-3 align-top tabular-nums whitespace-nowrap">{i.quantity}</td>
-                      <td className="text-right py-2 px-3 align-top tabular-nums whitespace-nowrap">{fmt(i.product!.price_cents, currency, lang)}</td>
-                      <td className="text-right py-2 pl-3 align-top tabular-nums whitespace-nowrap">{fmt(i.product!.price_cents * i.quantity, currency, lang)}</td>
+                      <td className="text-right py-2 px-3 align-top tabular-nums whitespace-nowrap">{fmt(isReverseCharge ? Math.round(i.product!.price_cents / (1 + vatRate)) : i.product!.price_cents, currency, lang)}</td>
+                      <td className="text-right py-2 pl-3 align-top tabular-nums whitespace-nowrap">{fmt(isReverseCharge ? Math.round(i.product!.price_cents * i.quantity / (1 + vatRate)) : i.product!.price_cents * i.quantity, currency, lang)}</td>
                     </tr>
                   );
                 })}
@@ -638,8 +638,8 @@ const Rekins = () => {
                   <tr className="border-b border-gray-200">
                     <td className="py-2 pr-4 align-top">{tx.shipping}: {shippingLabel}</td>
                     <td className="text-right py-2 px-3 align-top tabular-nums whitespace-nowrap">1</td>
-                    <td className="text-right py-2 px-3 align-top tabular-nums whitespace-nowrap">{fmt(shipping.cents, currency, lang)}</td>
-                    <td className="text-right py-2 pl-3 align-top tabular-nums whitespace-nowrap">{fmt(shipping.cents, currency, lang)}</td>
+                    <td className="text-right py-2 px-3 align-top tabular-nums whitespace-nowrap">{fmt(isReverseCharge ? Math.round(shipping.cents / (1 + vatRate)) : shipping.cents, currency, lang)}</td>
+                    <td className="text-right py-2 pl-3 align-top tabular-nums whitespace-nowrap">{fmt(isReverseCharge ? Math.round(shipping.cents / (1 + vatRate)) : shipping.cents, currency, lang)}</td>
                   </tr>
                 )}
               </tbody>
