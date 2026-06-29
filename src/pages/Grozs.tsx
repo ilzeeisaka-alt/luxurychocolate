@@ -68,6 +68,8 @@ const Grozs = () => {
   const { user, loading: authLoading } = useAuth();
   const navigate = useNavigate();
   const { toast } = useToast();
+  const lang = useCurrentLang();
+  const t = tUI(lang);
   const [items, setItems] = useState<CartLine[]>([]);
   const [loading, setLoading] = useState(true);
   const [busyId, setBusyId] = useState<string | null>(null);
@@ -75,6 +77,7 @@ const Grozs = () => {
     sessionStorage.getItem("shipping_id") || "pickup"
   );
   const [affRef, setAffRef] = useState<StoredRef | null>(() => getStoredRef());
+
 
   useSeo({
     title: "Grozs — Luxury Chocolate",
