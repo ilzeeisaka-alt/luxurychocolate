@@ -182,8 +182,9 @@ const VeikalsProduct = () => {
                 />
               ) : (
                 <div className="w-full h-full flex items-center justify-center text-muted-foreground">
-                  Bez attēla
+                  {t.noImage}
                 </div>
+
               )}
             </div>
             {images.length > 1 && (
