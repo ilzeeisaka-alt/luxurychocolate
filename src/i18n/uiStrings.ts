@@ -31,6 +31,17 @@ export interface UIStrings {
   addToCart: string;
   addingToCart: string;
   uploadLogoOrCustom: string;
+  backToShop: string;
+  inStock: string;
+  madeToOrder: string;
+  preparationDays: (n: number) => string;
+  deliveryDays: (n: number) => string;
+  vatIncluded: string;
+  description: string;
+  addedToCart: string;
+  errorTitle: string;
+  addToCartError: string;
+
 
 }
 
