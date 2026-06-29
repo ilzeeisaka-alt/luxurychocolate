@@ -83,6 +83,10 @@ const INVOICE_TEXT = {
     vat: "VAT 21%",
     vatReverse: "VAT 21% (reverse charge — 0%)",
     reverseNote: "Reverse charge — VAT is accounted for by the recipient (Art. 196 of EU VAT Directive 2006/112/EC).",
+    viesChecking: "Checking VIES…",
+    viesValid: "Verified in VIES",
+    viesInvalid: "Not found in VIES",
+    viesSource: "Source: ec.europa.eu/taxation_customs/vies",
     totalPayable: "Total payable",
     bankTransfer: "Payment by bank transfer",
     recipient: "Recipient",
@@ -141,6 +145,10 @@ const INVOICE_TEXT = {
     vat: "PVN 21%",
     vatReverse: "PVN 21% (apgrieztā maksāšanas kārtība — 0%)",
     reverseNote: "Apgrieztā PVN maksāšanas kārtība — PVN aprēķina un maksā pakalpojuma saņēmējs (PVN direktīvas 2006/112/EK 196. pants).",
+    viesChecking: "Pārbauda VIES…",
+    viesValid: "Verificēts VIES sistēmā",
+    viesInvalid: "Nav atrasts VIES sistēmā",
+    viesSource: "Avots: ec.europa.eu/taxation_customs/vies",
     totalPayable: "Kopā apmaksai",
     bankTransfer: "Apmaksa ar pārskaitījumu",
     recipient: "Saņēmējs",
@@ -199,6 +207,10 @@ const INVOICE_TEXT = {
     vat: "НДС 21%",
     vatReverse: "НДС 21% (обратное начисление — 0%)",
     reverseNote: "Обратное начисление НДС — НДС уплачивает получатель (ст. 196 Директивы ЕС 2006/112/EC).",
+    viesChecking: "Проверка в VIES…",
+    viesValid: "Подтверждён в VIES",
+    viesInvalid: "Не найден в VIES",
+    viesSource: "Источник: ec.europa.eu/taxation_customs/vies",
     totalPayable: "Итого к оплате",
     bankTransfer: "Оплата банковским переводом",
     recipient: "Получатель",
@@ -346,6 +358,31 @@ const Rekins = () => {
   const [savingPdf, setSavingPdf] = useState(false);
   const [paying, setPaying] = useState(false);
   const [confirming, setConfirming] = useState(false);
+
+  // VIES verification of buyer VAT number
+  type ViesResult = { valid: boolean; name?: string | null; address?: string | null; requestDate?: string } | null;
+  const [viesStatus, setViesStatus] = useState<"idle" | "checking" | "done">("idle");
+  const [viesResult, setViesResult] = useState<ViesResult>(null);
+  useEffect(() => {
+    const v = buyerVat.replace(/[\s-]/g, "").toUpperCase();
+    if (v.length < 4 || !/^[A-Z]{2}/.test(v)) {
+      setViesStatus("idle"); setViesResult(null); return;
+    }
+    let cancelled = false;
+    setViesStatus("checking");
+    const handle = setTimeout(async () => {
+      try {
+        const { data, error } = await supabase.functions.invoke("vies-check", { body: { vat: v } });
+        if (cancelled) return;
+        if (error) { setViesStatus("done"); setViesResult({ valid: false }); return; }
+        setViesStatus("done");
+        setViesResult(data as ViesResult);
+      } catch {
+        if (!cancelled) { setViesStatus("done"); setViesResult({ valid: false }); }
+      }
+    }, 600);
+    return () => { cancelled = true; clearTimeout(handle); };
+  }, [buyerVat]);
 
   const handlePrint = () => window.print();
 
@@ -588,7 +625,29 @@ const Rekins = () => {
                 <p className="font-bold mb-1 text-xs uppercase text-gray-500">{tx.buyer}</p>
                 <p className="font-medium">{buyerCompany || "—"}</p>
                 {buyerRegNr && <p>{tx.regNo} {buyerRegNr}</p>}
-                {buyerVat && <p>{tx.vatReg}: {buyerVat}</p>}
+                {buyerVat && (
+                  <p>
+                    {tx.vatReg}: {buyerVat}
+                    {viesStatus === "checking" && (
+                      <span className="ml-2 text-xs text-gray-500">· {tx.viesChecking}</span>
+                    )}
+                    {viesStatus === "done" && viesResult && (
+                      viesResult.valid ? (
+                        <span className="ml-2 text-xs font-medium text-green-700">· ✓ {tx.viesValid}</span>
+                      ) : (
+                        <span className="ml-2 text-xs font-medium text-red-700">· ✗ {tx.viesInvalid}</span>
+                      )
+                    )}
+                  </p>
+                )}
+                {viesStatus === "done" && viesResult?.valid && (viesResult.name || viesResult.address) && (
+                  <p className="text-xs text-gray-500">
+                    {viesResult.name}{viesResult.name && viesResult.address ? " · " : ""}{viesResult.address?.replace(/\n/g, ", ")}
+                  </p>
+                )}
+                {viesStatus === "done" && viesResult && (
+                  <p className="text-[10px] text-gray-400 italic">{tx.viesSource}</p>
+                )}
                 {buyerAddress && <p>{buyerAddress}</p>}
                 {buyerContact && <p>{tx.contactPerson}: {buyerContact}</p>}
                 {buyerEmail && <p>{buyerEmail}</p>}
