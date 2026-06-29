@@ -210,12 +210,13 @@ const VeikalsProduct = () => {
           <div>
             {product.product_categories && (
               <Link
-                to={`/veikals?category=${product.product_categories.slug}`}
+                to={`/veikals?category=${product.product_categories.slug}${lang !== "lv" ? `&lang=${lang}` : ""}`}
                 className="inline-block text-xs uppercase tracking-[0.15em] text-primary mb-3 hover:underline"
               >
                 {localizedCatName}
               </Link>
             )}
+
             <h1 className="text-3xl sm:text-4xl text-foreground mb-4">{localizedName}</h1>
 
             <div className="flex items-baseline gap-3 mb-6">
