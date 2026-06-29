@@ -8,6 +8,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { useSeo } from "@/hooks/useSeo";
 import { cn } from "@/lib/utils";
 import { useCurrentLang, pickI18n } from "@/i18n/useCurrentLang";
+import { tUI } from "@/i18n/uiStrings";
 
 const PAGE_SIZE = 24;
 
@@ -35,6 +36,7 @@ const formatPrice = (cents: number, currency = "EUR") =>
 const Veikals = () => {
   const [params, setParams] = useSearchParams();
   const lang = useCurrentLang();
+  const ui = tUI(lang);
   const category = params.get("category") ?? "";
   const search = params.get("q") ?? "";
   const page = Math.max(1, parseInt(params.get("page") ?? "1", 10) || 1);
@@ -42,7 +44,7 @@ const Veikals = () => {
   const [searchInput, setSearchInput] = useState(search);
 
   useSeo({
-    title: "Šokolādes veikals",
+    title: ui.shopTitle,
     description:
       "Pasūti premium šokolādes ar savu logo, dāvanu kastes, makarūnus un saldumus tiešsaistē. Bezmaksas skice 24h laikā.",
     path: "/veikals",
@@ -181,11 +183,10 @@ const Veikals = () => {
 
       <main className="container mx-auto px-4 pt-44 md:pt-48 pb-16">
         <header className="mb-10">
-          <p className="text-xs uppercase tracking-[0.2em] text-primary mb-3">Katalogs</p>
-          <h1 className="text-4xl sm:text-5xl text-foreground mb-3">Šokolādes veikals</h1>
+          <p className="text-xs uppercase tracking-[0.2em] text-primary mb-3">{ui.catalog}</p>
+          <h1 className="text-4xl sm:text-5xl text-foreground mb-3">{ui.shopTitle}</h1>
           <p className="text-muted-foreground max-w-2xl">
-            {total > 0 ? `${total} produkti` : "Pasūti premium šokolādes ar savu logo."} — bezmaksas skice 24h laikā,
-            ražošana no 3 dienām.
+            {total > 0 ? ui.productsCount(total) : ""} — {ui.shopTagline}
           </p>
         </header>
 
@@ -204,12 +205,12 @@ const Veikals = () => {
                 type="search"
                 value={searchInput}
                 onChange={(e) => setSearchInput(e.target.value)}
-                placeholder="Meklēt produktus..."
+                placeholder={ui.searchProducts}
                 className="w-full bg-card border border-border rounded-lg pl-10 pr-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary"
               />
             </form>
 
-            <p className="text-xs uppercase tracking-[0.15em] text-muted-foreground mb-3">Kategorijas</p>
+            <p className="text-xs uppercase tracking-[0.15em] text-muted-foreground mb-3">{ui.categories}</p>
             <nav className="space-y-1 max-h-[60vh] overflow-y-auto pr-2">
               {categories.map((c) => (
                 <button
@@ -237,7 +238,7 @@ const Veikals = () => {
                     : "text-muted-foreground hover:text-foreground hover:bg-card"
                 )}
               >
-                Visi produkti
+                {ui.allProducts}
               </button>
             </nav>
           </aside>
@@ -274,11 +275,11 @@ const Veikals = () => {
                 onChange={(e) => update({ sort: e.target.value })}
                 className="bg-card border border-border rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary/30"
               >
-                <option value="category">Pēc kategorijas</option>
-                <option value="newest">Jaunākie</option>
-                <option value="price-asc">Cena ↑</option>
-                <option value="price-desc">Cena ↓</option>
-                <option value="name">Nosaukums</option>
+                <option value="category">{ui.byCategory}</option>
+                <option value="newest">{ui.newest}</option>
+                <option value="price-asc">{ui.priceAsc}</option>
+                <option value="price-desc">{ui.priceDesc}</option>
+                <option value="name">{ui.name}</option>
               </select>
             </div>
 
@@ -290,8 +291,8 @@ const Veikals = () => {
               </div>
             ) : items.length === 0 ? (
               <div className="text-center py-20 text-muted-foreground">
-                <p className="text-lg mb-2">Nekas netika atrasts</p>
-                <p className="text-sm">Mēģiniet citu kategoriju vai meklēšanas vārdu.</p>
+                <p className="text-lg mb-2">{ui.nothingFound}</p>
+                <p className="text-sm">{ui.tryAnother}</p>
               </div>
             ) : (
               <>
@@ -312,7 +313,7 @@ const Veikals = () => {
                           />
                         ) : (
                           <div className="w-full h-full flex items-center justify-center text-muted-foreground text-xs">
-                            Bez attēla
+                            {ui.noImage}
                           </div>
                         )}
                       </div>
@@ -336,7 +337,7 @@ const Veikals = () => {
                       disabled={page <= 1}
                       onClick={() => update({ page: String(page - 1) })}
                       className="p-2 rounded-md border border-border disabled:opacity-30 hover:bg-card transition-colors"
-                      aria-label="Iepriekšējā lapa"
+                      aria-label={ui.prevPage}
                     >
                       <ChevronLeft className="w-4 h-4" />
                     </button>
@@ -348,7 +349,7 @@ const Veikals = () => {
                       disabled={page >= totalPages}
                       onClick={() => update({ page: String(page + 1) })}
                       className="p-2 rounded-md border border-border disabled:opacity-30 hover:bg-card transition-colors"
-                      aria-label="Nākamā lapa"
+                      aria-label={ui.nextPage}
                     >
                       <ChevronRight className="w-4 h-4" />
                     </button>

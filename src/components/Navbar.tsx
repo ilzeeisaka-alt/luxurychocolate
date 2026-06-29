@@ -8,6 +8,7 @@ import type { Lang } from "@/i18n/types";
 import { expandLangs } from "@/i18n/expandLangs";
 import { useAuth } from "@/hooks/useAuth";
 import { supabase } from "@/integrations/supabase/client";
+import { tUI } from "@/i18n/uiStrings";
 
 type InfoLabels = {
   info: string;
@@ -854,6 +855,8 @@ const Navbar = ({ lang = "lv" }: NavbarProps) => {
   const shopItem = allItems.find((i) => i.to === "/veikals");
   const infoPages = getInfoPages(lang);
   const infoLabel = (infoLabelsByLang[lang] ?? infoLabelsByLang.en).info;
+  const ui = tUI(lang);
+  const shopHref = lang && lang !== "lv" ? `/veikals?lang=${lang}` : "/veikals";
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -983,7 +986,7 @@ const Navbar = ({ lang = "lv" }: NavbarProps) => {
               <NewsletterSignup lang={lang} source="navbar" compact />
             </div>
             <Link
-              to="/veikals"
+              to={shopHref}
               className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-medium text-primary bg-primary/10 border border-primary/30 hover:bg-primary/20 transition-colors"
               aria-label={shopItem?.label ?? "Veikals"}
             >
@@ -993,10 +996,10 @@ const Navbar = ({ lang = "lv" }: NavbarProps) => {
             <Link
               to="/grozs"
               className="relative inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-medium text-white/80 hover:text-white hover:bg-white/5 transition-colors border border-white/15"
-              aria-label="Grozs"
+              aria-label={ui.cart}
             >
               <ShoppingCart size={14} />
-              <span className="hidden sm:inline">Grozs</span>
+              <span className="hidden sm:inline">{ui.cart}</span>
               {cartCount > 0 && (
                 <span className="absolute -top-1.5 -right-1.5 min-w-[18px] h-[18px] px-1 rounded-full bg-primary text-primary-foreground text-[10px] font-semibold flex items-center justify-center leading-none">
                   {cartCount}
@@ -1006,10 +1009,10 @@ const Navbar = ({ lang = "lv" }: NavbarProps) => {
             <Link
               to={user ? "/account" : "/auth"}
               className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-medium text-white/80 hover:text-white hover:bg-white/5 transition-colors border border-white/15"
-              aria-label={user ? "Mans konts" : "Pieslēgties"}
+              aria-label={user ? ui.myAccount : ui.signIn}
             >
               {user ? <User size={14} /> : <LogIn size={14} />}
-              <span>{user ? "Mans konts" : "Pieslēgties"}</span>
+              <span>{user ? ui.myAccount : ui.signIn}</span>
             </Link>
             <LanguageSwitcher />
             <button
@@ -1030,7 +1033,7 @@ const Navbar = ({ lang = "lv" }: NavbarProps) => {
                     : "text-primary/90 border-primary/30 hover:bg-primary/10"
                 }`}
               >
-                {affiliateItem.label}
+                {affiliateItem.label === "Affiliate" ? ui.affiliate : affiliateItem.label}
               </Link>
             )}
             {contactItem && (
