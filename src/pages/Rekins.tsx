@@ -625,7 +625,29 @@ const Rekins = () => {
                 <p className="font-bold mb-1 text-xs uppercase text-gray-500">{tx.buyer}</p>
                 <p className="font-medium">{buyerCompany || "—"}</p>
                 {buyerRegNr && <p>{tx.regNo} {buyerRegNr}</p>}
-                {buyerVat && <p>{tx.vatReg}: {buyerVat}</p>}
+                {buyerVat && (
+                  <p>
+                    {tx.vatReg}: {buyerVat}
+                    {viesStatus === "checking" && (
+                      <span className="ml-2 text-xs text-gray-500">· {tx.viesChecking}</span>
+                    )}
+                    {viesStatus === "done" && viesResult && (
+                      viesResult.valid ? (
+                        <span className="ml-2 text-xs font-medium text-green-700">· ✓ {tx.viesValid}</span>
+                      ) : (
+                        <span className="ml-2 text-xs font-medium text-red-700">· ✗ {tx.viesInvalid}</span>
+                      )
+                    )}
+                  </p>
+                )}
+                {viesStatus === "done" && viesResult?.valid && (viesResult.name || viesResult.address) && (
+                  <p className="text-xs text-gray-500">
+                    {viesResult.name}{viesResult.name && viesResult.address ? " · " : ""}{viesResult.address?.replace(/\n/g, ", ")}
+                  </p>
+                )}
+                {viesStatus === "done" && viesResult && (
+                  <p className="text-[10px] text-gray-400 italic">{tx.viesSource}</p>
+                )}
                 {buyerAddress && <p>{buyerAddress}</p>}
                 {buyerContact && <p>{tx.contactPerson}: {buyerContact}</p>}
                 {buyerEmail && <p>{buyerEmail}</p>}
