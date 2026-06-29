@@ -174,7 +174,7 @@ const Grozs = () => {
           to="/veikals"
           className="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-primary mb-6 transition-colors"
         >
-          <ChevronLeft className="w-4 h-4" /> Turpināt iepirkties
+          <ChevronLeft className="w-4 h-4" /> {t.continueShopping}
         </Link>
 
         <h1 className="text-3xl sm:text-4xl text-foreground mb-8 flex items-center gap-3 leading-[1.3] py-1">
