@@ -183,11 +183,10 @@ const Veikals = () => {
 
       <main className="container mx-auto px-4 pt-44 md:pt-48 pb-16">
         <header className="mb-10">
-          <p className="text-xs uppercase tracking-[0.2em] text-primary mb-3">Katalogs</p>
-          <h1 className="text-4xl sm:text-5xl text-foreground mb-3">Šokolādes veikals</h1>
+          <p className="text-xs uppercase tracking-[0.2em] text-primary mb-3">{ui.catalog}</p>
+          <h1 className="text-4xl sm:text-5xl text-foreground mb-3">{ui.shopTitle}</h1>
           <p className="text-muted-foreground max-w-2xl">
-            {total > 0 ? `${total} produkti` : "Pasūti premium šokolādes ar savu logo."} — bezmaksas skice 24h laikā,
-            ražošana no 3 dienām.
+            {total > 0 ? ui.productsCount(total) : ""} — {ui.shopTagline}
           </p>
         </header>
 
@@ -206,12 +205,12 @@ const Veikals = () => {
                 type="search"
                 value={searchInput}
                 onChange={(e) => setSearchInput(e.target.value)}
-                placeholder="Meklēt produktus..."
+                placeholder={ui.searchProducts}
                 className="w-full bg-card border border-border rounded-lg pl-10 pr-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary"
               />
             </form>
 
-            <p className="text-xs uppercase tracking-[0.15em] text-muted-foreground mb-3">Kategorijas</p>
+            <p className="text-xs uppercase tracking-[0.15em] text-muted-foreground mb-3">{ui.categories}</p>
             <nav className="space-y-1 max-h-[60vh] overflow-y-auto pr-2">
               {categories.map((c) => (
                 <button
