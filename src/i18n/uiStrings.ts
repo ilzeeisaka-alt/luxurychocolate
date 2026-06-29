@@ -31,6 +31,17 @@ export interface UIStrings {
   addToCart: string;
   addingToCart: string;
   uploadLogoOrCustom: string;
+  backToShop: string;
+  inStock: string;
+  madeToOrder: string;
+  preparationDays: (n: number) => string;
+  deliveryDays: (n: number) => string;
+  vatIncluded: string;
+  description: string;
+  addedToCart: string;
+  errorTitle: string;
+  addToCartError: string;
+
 
 }
 
@@ -62,7 +73,18 @@ const en: UIStrings = {
   addToCart: "Add to cart",
   addingToCart: "Adding...",
   uploadLogoOrCustom: "Upload logo / custom order",
+  backToShop: "Back to shop",
+  inStock: "In stock",
+  madeToOrder: "Made to order",
+  preparationDays: (n) => `preparation ${n} d.`,
+  deliveryDays: (n) => `delivery ${n} d.`,
+  vatIncluded: "VAT included",
+  description: "Description",
+  addedToCart: "Added to cart",
+  errorTitle: "Error",
+  addToCartError: "Could not add to cart.",
 };
+
 
 export const uiStrings: Record<Lang, UIStrings> = expandLangs<UIStrings>({
   en,
@@ -80,6 +102,13 @@ export const uiStrings: Record<Lang, UIStrings> = expandLangs<UIStrings>({
     noImage: "Bez attēla", prevPage: "Iepriekšējā lapa", nextPage: "Nākamā lapa",
     addToCart: "Pievienot grozam", addingToCart: "Pievieno...",
     uploadLogoOrCustom: "Augšupielādēt logo / individuāls pasūtījums",
+    backToShop: "Atpakaļ uz veikalu", inStock: "Pieejams", madeToOrder: "Izgatavojam pēc pasūtījuma",
+    preparationDays: (n) => `sagatavošana ${n} d.`,
+    deliveryDays: (n) => `piegāde ${n} d.`,
+    vatIncluded: "ar PVN", description: "Apraksts",
+    addedToCart: "Pievienots grozam", errorTitle: "Kļūda",
+    addToCartError: "Neizdevās pievienot grozam.",
+
   },
   ru: {
     signIn: "Войти", myAccount: "Мой аккаунт", cart: "Корзина", subscribe: "Подписаться",
@@ -95,6 +124,13 @@ export const uiStrings: Record<Lang, UIStrings> = expandLangs<UIStrings>({
     noImage: "Нет изображения", prevPage: "Предыдущая страница", nextPage: "Следующая страница",
     addToCart: "Добавить в корзину", addingToCart: "Добавляем...",
     uploadLogoOrCustom: "Загрузить логотип / индивидуальный заказ",
+    backToShop: "Назад в магазин", inStock: "В наличии", madeToOrder: "Изготавливается под заказ",
+    preparationDays: (n) => `подготовка ${n} д.`,
+    deliveryDays: (n) => `доставка ${n} д.`,
+    vatIncluded: "с НДС", description: "Описание",
+    addedToCart: "Добавлено в корзину", errorTitle: "Ошибка",
+    addToCartError: "Не удалось добавить в корзину.",
+
   },
 
   et: { ...en, signIn: "Logi sisse", myAccount: "Minu konto", cart: "Ostukorv", subscribe: "Telli", email: "E-post", thanks: "Aitäh!", affiliate: "Affiliate", catalog: "Kataloog", shopTitle: "Šokolaadipood", productsCount: (n)=>`${n} toodet`, shopTagline: "tasuta visand 24h jooksul, tootmine alates 3 päevast.", searchProducts: "Otsi tooteid...", categories: "Kategooriad", allProducts: "Kõik tooted", nothingFound: "Midagi ei leitud", tryAnother: "Proovi teist kategooriat või otsisõna.", byCategory: "Kategooria järgi", newest: "Uusimad", name: "Nimi", noImage: "Pilt puudub", prevPage: "Eelmine", nextPage: "Järgmine" },

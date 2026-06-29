@@ -145,14 +145,15 @@ const VeikalsProduct = () => {
         if (insertError) throw insertError;
       }
       await ensurePrepFeeForPrintedProduct(user.id, product.id);
-      toast({ title: "Pievienots grozam", description: localizedName });
+      toast({ title: t.addedToCart, description: localizedName });
       window.dispatchEvent(new Event("cart-updated"));
     } catch (e) {
       toast({
-        title: "Kļūda",
-        description: (e as Error).message || "Neizdevās pievienot grozam.",
+        title: t.errorTitle,
+        description: (e as Error).message || t.addToCartError,
         variant: "destructive",
       });
+
     } finally {
       setAdding(false);
     }
@@ -163,11 +164,12 @@ const VeikalsProduct = () => {
       <Navbar />
       <main className="container mx-auto px-4 pt-28 pb-16">
         <Link
-          to="/veikals"
+          to={`/veikals${lang !== "lv" ? `?lang=${lang}` : ""}`}
           className="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-primary mb-8 transition-colors"
         >
-          <ChevronLeft className="w-4 h-4" /> Atpakaļ uz veikalu
+          <ChevronLeft className="w-4 h-4" /> {t.backToShop}
         </Link>
+
 
         <div className="grid md:grid-cols-2 gap-10 lg:gap-16">
           {/* Gallery */}
@@ -181,8 +183,9 @@ const VeikalsProduct = () => {
                 />
               ) : (
                 <div className="w-full h-full flex items-center justify-center text-muted-foreground">
-                  Bez attēla
+                  {t.noImage}
                 </div>
+
               )}
             </div>
             {images.length > 1 && (
@@ -208,12 +211,13 @@ const VeikalsProduct = () => {
           <div>
             {product.product_categories && (
               <Link
-                to={`/veikals?category=${product.product_categories.slug}`}
+                to={`/veikals?category=${product.product_categories.slug}${lang !== "lv" ? `&lang=${lang}` : ""}`}
                 className="inline-block text-xs uppercase tracking-[0.15em] text-primary mb-3 hover:underline"
               >
                 {localizedCatName}
               </Link>
             )}
+
             <h1 className="text-3xl sm:text-4xl text-foreground mb-4">{localizedName}</h1>
 
             <div className="flex items-baseline gap-3 mb-6">
@@ -221,7 +225,7 @@ const VeikalsProduct = () => {
                 {formatPrice(product.price_cents, product.currency)}
               </span>
               {product.prices_include_vat && (
-                <span className="text-xs text-muted-foreground">ar PVN</span>
+                <span className="text-xs text-muted-foreground">{t.vatIncluded}</span>
               )}
             </div>
 
@@ -232,12 +236,11 @@ const VeikalsProduct = () => {
             <div className="flex items-center gap-2 text-sm text-muted-foreground mb-8">
               <Check className="w-4 h-4 text-primary" />
               <span>
-                {product.in_stock ? "Pieejams" : "Izgatavojam pēc pasūtījuma"}
-                {product.preparation_days
-                  ? ` · sagatavošana ${product.preparation_days} d.`
-                  : ""}
-                {product.delivery_days ? ` · piegāde ${product.delivery_days} d.` : ""}
+                {product.in_stock ? t.inStock : t.madeToOrder}
+                {product.preparation_days ? ` · ${t.preparationDays(product.preparation_days)}` : ""}
+                {product.delivery_days ? ` · ${t.deliveryDays(product.delivery_days)}` : ""}
               </span>
+
             </div>
 
             {/* Qty + add */}
@@ -302,7 +305,7 @@ const VeikalsProduct = () => {
 
             {localizedDesc && (
               <div className="mt-10 pt-8 border-t border-border">
-                <h2 className="text-lg text-foreground mb-3">Apraksts</h2>
+                <h2 className="text-lg text-foreground mb-3">{t.description}</h2>
                 <div className="text-sm text-muted-foreground leading-relaxed whitespace-pre-line">
                   {localizedDesc}
                 </div>
