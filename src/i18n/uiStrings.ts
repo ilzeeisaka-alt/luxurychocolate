@@ -41,9 +41,34 @@ export interface UIStrings {
   addedToCart: string;
   errorTitle: string;
   addToCartError: string;
-
-
+  // Cart page
+  continueShopping: string;
+  yourCart: string;
+  cartEmpty: string;
+  goToShop: string;
+  orderSummary: string;
+  shipping: string;
+  free: string;
+  subtotalLine: (n: number) => string;
+  partnerDiscount: string;
+  total: string;
+  belowPaymentMin: string;
+  paymentUnavailable: string;
+  paymentMinDesc: string;
+  checkoutInvoice: string;
+  invoicePdfNote: string;
+  skipInvoice: string;
+  remove: string;
+  shipPickup: string;
+  shipVenipakPakomats: string;
+  shipCourierRiga: string;
+  shipVenipakLv: string;
+  shipVenipakBaltic: string;
+  shipVenipakScandi: string;
+  shipVenipakEu: string;
+  shipVenipakWorld: string;
 }
+
 
 const en: UIStrings = {
   signIn: "Sign in",
@@ -83,6 +108,31 @@ const en: UIStrings = {
   addedToCart: "Added to cart",
   errorTitle: "Error",
   addToCartError: "Could not add to cart.",
+  continueShopping: "Continue shopping",
+  yourCart: "Your cart",
+  cartEmpty: "Your cart is empty",
+  goToShop: "Go to shop",
+  orderSummary: "Order summary",
+  shipping: "Shipping",
+  free: "Free",
+  subtotalLine: (n) => `Subtotal (${n} items)`,
+  partnerDiscount: "Partner discount",
+  total: "Total",
+  belowPaymentMin: "Card payment minimum is €0.50. Add more items or choose shipping.",
+  paymentUnavailable: "Payment not available",
+  paymentMinDesc: "Card payment minimum is €0.50.",
+  checkoutInvoice: "View invoice and pay",
+  invoicePdfNote: "Before payment an invoice will be shown that you can save as PDF or print.",
+  skipInvoice: "Skip invoice and go directly to payment",
+  remove: "Remove",
+  shipPickup: "Pick up on site — Kandavas iela 29A, Riga",
+  shipVenipakPakomats: "Venipak parcel locker",
+  shipCourierRiga: "Delivery in Riga",
+  shipVenipakLv: "Venipak Latvia",
+  shipVenipakBaltic: "Venipak Baltics",
+  shipVenipakScandi: "Venipak Scandinavia",
+  shipVenipakEu: "Venipak Europe",
+  shipVenipakWorld: "Venipak Worldwide",
 };
 
 
@@ -108,8 +158,33 @@ export const uiStrings: Record<Lang, UIStrings> = expandLangs<UIStrings>({
     vatIncluded: "ar PVN", description: "Apraksts",
     addedToCart: "Pievienots grozam", errorTitle: "Kļūda",
     addToCartError: "Neizdevās pievienot grozam.",
-
+    continueShopping: "Turpināt iepirkties",
+    yourCart: "Tavs grozs",
+    cartEmpty: "Grozs ir tukšs",
+    goToShop: "Doties uz veikalu",
+    orderSummary: "Pasūtījuma kopsavilkums",
+    shipping: "Piegāde",
+    free: "Bezmaksas",
+    subtotalLine: (n) => `Starpsumma (${n} preces)`,
+    partnerDiscount: "Partnera atlaide",
+    total: "Kopā",
+    belowPaymentMin: "Kartes maksājuma minimums ir €0.50. Pievieno vēl preces vai izvēlies piegādi.",
+    paymentUnavailable: "Maksājums nav pieejams",
+    paymentMinDesc: "Kartes maksājuma minimums ir €0.50.",
+    checkoutInvoice: "Apskatīt rēķinu un apmaksāt",
+    invoicePdfNote: "Pirms apmaksas tiks parādīts rēķins, ko vari saglabāt PDF formātā vai izdrukāt.",
+    skipInvoice: "Izlaist rēķinu un doties tieši uz apmaksu",
+    remove: "Noņemt",
+    shipPickup: "Izņemt uz vietas — Kandavas iela 29A, Rīga",
+    shipVenipakPakomats: "Venipak pakomāts",
+    shipCourierRiga: "Piegāde Rīgā",
+    shipVenipakLv: "Venipak Latvija",
+    shipVenipakBaltic: "Venipak Baltija",
+    shipVenipakScandi: "Venipak Skandināvija",
+    shipVenipakEu: "Venipak Eiropa",
+    shipVenipakWorld: "Venipak Pasaule",
   },
+
   ru: {
     signIn: "Войти", myAccount: "Мой аккаунт", cart: "Корзина", subscribe: "Подписаться",
     email: "Эл. почта", thanks: "Спасибо!", affiliate: "Партнёрская программа",
@@ -130,8 +205,33 @@ export const uiStrings: Record<Lang, UIStrings> = expandLangs<UIStrings>({
     vatIncluded: "с НДС", description: "Описание",
     addedToCart: "Добавлено в корзину", errorTitle: "Ошибка",
     addToCartError: "Не удалось добавить в корзину.",
-
+    continueShopping: "Продолжить покупки",
+    yourCart: "Ваша корзина",
+    cartEmpty: "Корзина пуста",
+    goToShop: "Перейти в магазин",
+    orderSummary: "Сводка заказа",
+    shipping: "Доставка",
+    free: "Бесплатно",
+    subtotalLine: (n) => `Подытог (${n} товаров)`,
+    partnerDiscount: "Партнёрская скидка",
+    total: "Итого",
+    belowPaymentMin: "Минимум для оплаты картой — €0.50. Добавьте товары или выберите доставку.",
+    paymentUnavailable: "Оплата недоступна",
+    paymentMinDesc: "Минимум для оплаты картой — €0.50.",
+    checkoutInvoice: "Посмотреть счёт и оплатить",
+    invoicePdfNote: "Перед оплатой будет показан счёт, который можно сохранить как PDF или распечатать.",
+    skipInvoice: "Пропустить счёт и перейти к оплате",
+    remove: "Удалить",
+    shipPickup: "Самовывоз — Kandavas iela 29A, Рига",
+    shipVenipakPakomats: "Постамат Venipak",
+    shipCourierRiga: "Доставка по Риге",
+    shipVenipakLv: "Venipak Латвия",
+    shipVenipakBaltic: "Venipak Балтия",
+    shipVenipakScandi: "Venipak Скандинавия",
+    shipVenipakEu: "Venipak Европа",
+    shipVenipakWorld: "Venipak по всему миру",
   },
+
 
   et: { ...en, signIn: "Logi sisse", myAccount: "Minu konto", cart: "Ostukorv", subscribe: "Telli", email: "E-post", thanks: "Aitäh!", affiliate: "Affiliate", catalog: "Kataloog", shopTitle: "Šokolaadipood", productsCount: (n)=>`${n} toodet`, shopTagline: "tasuta visand 24h jooksul, tootmine alates 3 päevast.", searchProducts: "Otsi tooteid...", categories: "Kategooriad", allProducts: "Kõik tooted", nothingFound: "Midagi ei leitud", tryAnother: "Proovi teist kategooriat või otsisõna.", byCategory: "Kategooria järgi", newest: "Uusimad", name: "Nimi", noImage: "Pilt puudub", prevPage: "Eelmine", nextPage: "Järgmine" },
   lt: { ...en, signIn: "Prisijungti", myAccount: "Mano paskyra", cart: "Krepšelis", subscribe: "Užsiprenumeruoti", email: "El. paštas", thanks: "Ačiū!", affiliate: "Partnerių programa", catalog: "Katalogas", shopTitle: "Šokolado parduotuvė", productsCount: (n)=>`${n} prekės`, shopTagline: "nemokamas eskizas per 24h, gamyba nuo 3 dienų.", searchProducts: "Ieškoti prekių...", categories: "Kategorijos", allProducts: "Visos prekės", nothingFound: "Nieko nerasta", tryAnother: "Pabandykite kitą kategoriją ar paieškos žodį.", byCategory: "Pagal kategoriją", newest: "Naujausi", name: "Pavadinimas", noImage: "Nėra nuotraukos", prevPage: "Ankstesnis", nextPage: "Kitas" },
