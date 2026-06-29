@@ -28,6 +28,10 @@ export interface UIStrings {
   noImage: string;
   prevPage: string;
   nextPage: string;
+  addToCart: string;
+  addingToCart: string;
+  uploadLogoOrCustom: string;
+
 }
 
 const en: UIStrings = {
@@ -55,6 +59,9 @@ const en: UIStrings = {
   noImage: "No image",
   prevPage: "Previous page",
   nextPage: "Next page",
+  addToCart: "Add to cart",
+  addingToCart: "Adding...",
+  uploadLogoOrCustom: "Upload logo / custom order",
 };
 
 export const uiStrings: Record<Lang, UIStrings> = expandLangs<UIStrings>({
@@ -71,6 +78,8 @@ export const uiStrings: Record<Lang, UIStrings> = expandLangs<UIStrings>({
     byCategory: "Pēc kategorijas", newest: "Jaunākie",
     priceAsc: "Cena ↑", priceDesc: "Cena ↓", name: "Nosaukums",
     noImage: "Bez attēla", prevPage: "Iepriekšējā lapa", nextPage: "Nākamā lapa",
+    addToCart: "Pievienot grozam", addingToCart: "Pievieno...",
+    uploadLogoOrCustom: "Augšupielādēt logo / individuāls pasūtījums",
   },
   ru: {
     signIn: "Войти", myAccount: "Мой аккаунт", cart: "Корзина", subscribe: "Подписаться",
@@ -84,7 +93,10 @@ export const uiStrings: Record<Lang, UIStrings> = expandLangs<UIStrings>({
     byCategory: "По категориям", newest: "Новинки",
     priceAsc: "Цена ↑", priceDesc: "Цена ↓", name: "Название",
     noImage: "Нет изображения", prevPage: "Предыдущая страница", nextPage: "Следующая страница",
+    addToCart: "Добавить в корзину", addingToCart: "Добавляем...",
+    uploadLogoOrCustom: "Загрузить логотип / индивидуальный заказ",
   },
+
   et: { ...en, signIn: "Logi sisse", myAccount: "Minu konto", cart: "Ostukorv", subscribe: "Telli", email: "E-post", thanks: "Aitäh!", affiliate: "Affiliate", catalog: "Kataloog", shopTitle: "Šokolaadipood", productsCount: (n)=>`${n} toodet`, shopTagline: "tasuta visand 24h jooksul, tootmine alates 3 päevast.", searchProducts: "Otsi tooteid...", categories: "Kategooriad", allProducts: "Kõik tooted", nothingFound: "Midagi ei leitud", tryAnother: "Proovi teist kategooriat või otsisõna.", byCategory: "Kategooria järgi", newest: "Uusimad", name: "Nimi", noImage: "Pilt puudub", prevPage: "Eelmine", nextPage: "Järgmine" },
   lt: { ...en, signIn: "Prisijungti", myAccount: "Mano paskyra", cart: "Krepšelis", subscribe: "Užsiprenumeruoti", email: "El. paštas", thanks: "Ačiū!", affiliate: "Partnerių programa", catalog: "Katalogas", shopTitle: "Šokolado parduotuvė", productsCount: (n)=>`${n} prekės`, shopTagline: "nemokamas eskizas per 24h, gamyba nuo 3 dienų.", searchProducts: "Ieškoti prekių...", categories: "Kategorijos", allProducts: "Visos prekės", nothingFound: "Nieko nerasta", tryAnother: "Pabandykite kitą kategoriją ar paieškos žodį.", byCategory: "Pagal kategoriją", newest: "Naujausi", name: "Pavadinimas", noImage: "Nėra nuotraukos", prevPage: "Ankstesnis", nextPage: "Kitas" },
   de: { ...en, signIn: "Anmelden", myAccount: "Mein Konto", cart: "Warenkorb", subscribe: "Abonnieren", email: "E-Mail", thanks: "Danke!", affiliate: "Partnerprogramm", catalog: "Katalog", shopTitle: "Schokoladen-Shop", productsCount: (n)=>`${n} Produkte`, shopTagline: "kostenlose Skizze in 24h, Produktion ab 3 Tagen.", searchProducts: "Produkte suchen...", categories: "Kategorien", allProducts: "Alle Produkte", nothingFound: "Nichts gefunden", tryAnother: "Versuchen Sie eine andere Kategorie oder Suchbegriff.", byCategory: "Nach Kategorie", newest: "Neueste", name: "Name", noImage: "Kein Bild", prevPage: "Vorherige Seite", nextPage: "Nächste Seite" },
