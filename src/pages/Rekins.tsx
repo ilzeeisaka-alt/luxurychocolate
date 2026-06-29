@@ -9,6 +9,8 @@ import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/hooks/useAuth";
 import { useSeo } from "@/hooks/useSeo";
 import { toast } from "@/hooks/use-toast";
+import { pickI18n, useCurrentLang } from "@/i18n/useCurrentLang";
+import { tUI } from "@/i18n/uiStrings";
 import logoUrl from "@/assets/luxury-chocolate-logo.jpg";
 import chocoTimeUrl from "@/assets/its-choco-time.png";
 import { Check } from "lucide-react";
@@ -23,28 +25,208 @@ interface CartLine {
   product: {
     id: string;
     name: string;
+    name_i18n: Record<string, unknown> | null;
     price_cents: number;
     currency: string;
   } | null;
 }
 
-const SHIPPING_OPTIONS: Record<string, { label: string; cents: number }> = {
-  pickup: { label: "Izņemt uz vietas — Kandavas iela 29A, Rīga", cents: 0 },
-  venipak_pakomats: { label: "Venipak pakomāts", cents: 1000 },
-  courier_riga: { label: "Piegāde Rīgā", cents: 3025 },
-  venipak_lv: { label: "Venipak Latvija", cents: 5500 },
-  venipak_baltic: { label: "Venipak Baltija", cents: 6000 },
-  venipak_scandi: { label: "Venipak Skandināvija", cents: 8000 },
-  venipak_eu: { label: "Venipak Eiropa", cents: 10000 },
-  venipak_world: { label: "Venipak Pasaule", cents: 20000 },
+const SHIPPING_OPTIONS: Record<string, { labelKey: keyof ReturnType<typeof tUI>; lvLabel: string; cents: number }> = {
+  pickup: { labelKey: "shipPickup", lvLabel: "Izņemt uz vietas — Kandavas iela 29A, Rīga", cents: 0 },
+  venipak_pakomats: { labelKey: "shipVenipakPakomats", lvLabel: "Venipak pakomāts", cents: 1000 },
+  courier_riga: { labelKey: "shipCourierRiga", lvLabel: "Piegāde Rīgā", cents: 3025 },
+  venipak_lv: { labelKey: "shipVenipakLv", lvLabel: "Venipak Latvija", cents: 5500 },
+  venipak_baltic: { labelKey: "shipVenipakBaltic", lvLabel: "Venipak Baltija", cents: 6000 },
+  venipak_scandi: { labelKey: "shipVenipakScandi", lvLabel: "Venipak Skandināvija", cents: 8000 },
+  venipak_eu: { labelKey: "shipVenipakEu", lvLabel: "Venipak Eiropa", cents: 10000 },
+  venipak_world: { labelKey: "shipVenipakWorld", lvLabel: "Venipak Pasaule", cents: 20000 },
 };
 
-const fmt = (cents: number, currency = "EUR") =>
-  new Intl.NumberFormat("lv-LV", { style: "currency", currency }).format(cents / 100);
+const INVOICE_TEXT = {
+  en: {
+    backToCart: "Back to cart",
+    print: "Print",
+    savePdf: "Save PDF",
+    saveInvoice: "Save invoice",
+    payNow: "Pay now",
+    payInvoice: "Pay invoice",
+    confirmOrder: "Confirm order",
+    buyerDetails: "Invoice recipient details",
+    companyPlaceholder: "Company / person name",
+    regPlaceholder: "Registration number",
+    contactPlaceholder: "Contact person (name, surname)",
+    vatPlaceholder: "VAT number (optional)",
+    phonePlaceholder: "Phone",
+    addressPlaceholder: "Legal address",
+    emailPlaceholder: "Email",
+    shippingMethod: "Shipping method",
+    proformaTitle: "Prepayment invoice",
+    issued: "Issued",
+    due: "Payment due",
+    legalAddress: "Legal address",
+    actualAddress: "Office address",
+    seller: "Seller",
+    buyer: "Buyer",
+    vatReg: "VAT reg. no.",
+    boardMember: "Board member",
+    regNo: "Reg. No.",
+    contactPerson: "Contact person",
+    itemName: "Name",
+    quantity: "Qty.",
+    price: "Price",
+    sum: "Sum",
+    withYourLogo: "with your logo",
+    withLogos: (n: number) => `with ${n} logos`,
+    shipping: "Shipping",
+    subtotalExVat: "Amount excl. VAT",
+    vat: "VAT 21%",
+    totalPayable: "Total payable",
+    bankTransfer: "Payment by bank transfer",
+    recipient: "Recipient",
+    bank: "Bank",
+    account: "Account",
+    productionAfterPayment: "We will start preparing the order after payment is received. For questions: info@luxurychocolate.lv",
+    proformaNote: "This is a prepayment (proforma) invoice. The final invoice will be issued after payment.",
+    cartEmpty: "Cart is empty.",
+    goToShop: "Go to shop",
+    missingDetailsTitle: "Missing details",
+    missingDetailsDesc: "Please fill in at least the company name and email.",
+    orderConfirmedTitle: "Order confirmed",
+    orderConfirmedDesc: (n: string) => `Order no. ${n}. We will send payment instructions to your email.`,
+    errorTitle: "Error",
+    confirmError: "Could not confirm the order. Please try again.",
+    prepChocolate: "Preparation for chocolate production",
+  },
+  lv: {
+    backToCart: "Atpakaļ uz grozu",
+    print: "Drukāt",
+    savePdf: "Saglabāt PDF",
+    saveInvoice: "Saglabāt rēķinu",
+    payNow: "Maksāt tagad",
+    payInvoice: "Apmaksāt rēķinu",
+    confirmOrder: "Apstiprināt pasūtījumu",
+    buyerDetails: "Rēķina saņēmēja rekvizīti",
+    companyPlaceholder: "Uzņēmuma / personas nosaukums",
+    regPlaceholder: "Reģistrācijas numurs",
+    contactPlaceholder: "Kontaktpersona (vārds, uzvārds)",
+    vatPlaceholder: "PVN numurs (neobligāti)",
+    phonePlaceholder: "Telefons",
+    addressPlaceholder: "Juridiskā adrese",
+    emailPlaceholder: "E-pasts",
+    shippingMethod: "Piegādes veids",
+    proformaTitle: "Priekšapmaksas rēķins",
+    issued: "Izrakstīts",
+    due: "Apmaksas termiņš",
+    legalAddress: "Jur. adrese",
+    actualAddress: "Fakt. adrese",
+    seller: "Pārdevējs",
+    buyer: "Pircējs",
+    vatReg: "PVN Reģ.nr.",
+    boardMember: "Valdes locekle",
+    regNo: "Reģ. Nr.",
+    contactPerson: "Kontaktpersona",
+    itemName: "Nosaukums",
+    quantity: "Daudz.",
+    price: "Cena",
+    sum: "Summa",
+    withYourLogo: "ar Jūsu logo",
+    withLogos: (n: number) => `ar ${n} logo`,
+    shipping: "Piegāde",
+    subtotalExVat: "Summa bez PVN",
+    vat: "PVN 21%",
+    totalPayable: "Kopā apmaksai",
+    bankTransfer: "Apmaksa ar pārskaitījumu",
+    recipient: "Saņēmējs",
+    bank: "Banka",
+    account: "Konts",
+    productionAfterPayment: "Pasūtījumu sāksim gatavot pēc apmaksas saņemšanas. Jautājumu gadījumā: info@luxurychocolate.lv",
+    proformaNote: "Šis ir priekšapmaksas (proforma) rēķins. Galīgais rēķins tiks izsniegts pēc apmaksas.",
+    cartEmpty: "Grozs ir tukšs.",
+    goToShop: "Doties uz veikalu",
+    missingDetailsTitle: "Trūkst rekvizītu",
+    missingDetailsDesc: "Lūdzu, aizpildi vismaz uzņēmuma nosaukumu un e-pastu.",
+    orderConfirmedTitle: "Pasūtījums apstiprināts",
+    orderConfirmedDesc: (n: string) => `Pasūtījuma nr. ${n}. Nosūtīsim apmaksas instrukcijas uz e-pastu.`,
+    errorTitle: "Kļūda",
+    confirmError: "Neizdevās apstiprināt pasūtījumu. Lūdzu, mēģini vēlreiz.",
+    prepChocolate: "Sagatavošana šokolādes ražošanai",
+  },
+  ru: {
+    backToCart: "Назад в корзину",
+    print: "Печать",
+    savePdf: "Сохранить PDF",
+    saveInvoice: "Сохранить счёт",
+    payNow: "Оплатить сейчас",
+    payInvoice: "Оплатить счёт",
+    confirmOrder: "Подтвердить заказ",
+    buyerDetails: "Реквизиты получателя счёта",
+    companyPlaceholder: "Название компании / имя частного лица",
+    regPlaceholder: "Регистрационный номер",
+    contactPlaceholder: "Контактное лицо (имя, фамилия)",
+    vatPlaceholder: "Номер НДС (необязательно)",
+    phonePlaceholder: "Телефон",
+    addressPlaceholder: "Юридический адрес",
+    emailPlaceholder: "Эл. почта",
+    shippingMethod: "Способ доставки",
+    proformaTitle: "Счёт на предоплату",
+    issued: "Выписан",
+    due: "Срок оплаты",
+    legalAddress: "Юр. адрес",
+    actualAddress: "Факт. адрес",
+    seller: "Продавец",
+    buyer: "Покупатель",
+    vatReg: "Рег. № НДС",
+    boardMember: "Член правления",
+    regNo: "Рег. №",
+    contactPerson: "Контактное лицо",
+    itemName: "Наименование",
+    quantity: "Кол-во",
+    price: "Цена",
+    sum: "Сумма",
+    withYourLogo: "с вашим логотипом",
+    withLogos: (n: number) => `с ${n} логотипами`,
+    shipping: "Доставка",
+    subtotalExVat: "Сумма без НДС",
+    vat: "НДС 21%",
+    totalPayable: "Итого к оплате",
+    bankTransfer: "Оплата банковским переводом",
+    recipient: "Получатель",
+    bank: "Банк",
+    account: "Счёт",
+    productionAfterPayment: "Мы начнём подготовку заказа после получения оплаты. По вопросам: info@luxurychocolate.lv",
+    proformaNote: "Это счёт на предоплату (proforma). Окончательный счёт будет выдан после оплаты.",
+    cartEmpty: "Корзина пуста.",
+    goToShop: "Перейти в магазин",
+    missingDetailsTitle: "Не хватает реквизитов",
+    missingDetailsDesc: "Пожалуйста, заполните как минимум название компании и эл. почту.",
+    orderConfirmedTitle: "Заказ подтверждён",
+    orderConfirmedDesc: (n: string) => `Номер заказа ${n}. Мы отправим инструкции по оплате на вашу эл. почту.`,
+    errorTitle: "Ошибка",
+    confirmError: "Не удалось подтвердить заказ. Пожалуйста, попробуйте ещё раз.",
+    prepChocolate: "Подготовка шоколадного производства",
+  },
+};
+
+const getInvoiceText = (lang: string) => INVOICE_TEXT[lang as keyof typeof INVOICE_TEXT] ?? INVOICE_TEXT.en;
+
+const fmt = (cents: number, currency = "EUR", lang = "lv") =>
+  new Intl.NumberFormat(lang === "ru" ? "ru-RU" : lang === "en" ? "en-US" : "lv-LV", { style: "currency", currency }).format(cents / 100);
+
+const localizeProductName = (name: string, lang: string, tx: ReturnType<typeof getInvoiceText>) => {
+  if (lang === "ru" && name.trim().toLowerCase() === "sagatavošana šokolādes ražošanai") return tx.prepChocolate;
+  return name;
+};
 
 const Rekins = () => {
   const { user, loading: authLoading } = useAuth();
   const navigate = useNavigate();
+  const lang = useCurrentLang();
+  const t = tUI(lang);
+  const tx = getInvoiceText(lang);
+  const withLang = useCallback((path: string) => {
+    if (!lang || lang === "lv") return path;
+    return `${path}${path.includes("?") ? "&" : "?"}lang=${lang}`;
+  }, [lang]);
   const [items, setItems] = useState<CartLine[]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -80,29 +262,30 @@ const Rekins = () => {
     const ymd = `${d.getFullYear()}${String(d.getMonth() + 1).padStart(2, "0")}${String(d.getDate()).padStart(2, "0")}`;
     return `PRO-${ymd}-${Math.random().toString(36).slice(2, 6).toUpperCase()}`;
   }, []);
-  const today = useMemo(() => new Date().toLocaleDateString("lv-LV"), []);
+  const dateLocale = lang === "ru" ? "ru-RU" : lang === "en" ? "en-US" : "lv-LV";
+  const today = useMemo(() => new Date().toLocaleDateString(dateLocale), [dateLocale]);
   const dueDate = useMemo(() => {
     const d = new Date();
     d.setDate(d.getDate() + 7);
-    return d.toLocaleDateString("lv-LV");
-  }, []);
+    return d.toLocaleDateString(dateLocale);
+  }, [dateLocale]);
 
   useSeo({
-    title: "Priekšapmaksas rēķins — Luxury Chocolate",
-    description: "Izveido un saglabā rēķinu pirms apmaksas.",
+    title: `${tx.proformaTitle} — Luxury Chocolate`,
+    description: lang === "ru" ? "Создайте, сохраните и оплатите счёт." : "Izveido un saglabā rēķinu pirms apmaksas.",
     path: "/rekins",
   });
 
   useEffect(() => {
-    if (!authLoading && !user) navigate("/auth?redirect=/rekins", { replace: true });
-  }, [authLoading, user, navigate]);
+    if (!authLoading && !user) navigate(`/auth?redirect=${encodeURIComponent(withLang("/rekins"))}${lang !== "lv" ? `&lang=${lang}` : ""}`, { replace: true });
+  }, [authLoading, user, navigate, withLang, lang]);
 
   const load = useCallback(async () => {
     if (!user) return;
     setLoading(true);
     const { data } = await supabase
       .from("cart_items")
-      .select("id, quantity, logo_url, logo_filename, logos, product:products(id, name, price_cents, currency)")
+      .select("id, quantity, logo_url, logo_filename, logos, product:products(id, name, name_i18n, price_cents, currency)")
       .eq("user_id", user.id);
     setItems((data ?? []) as unknown as CartLine[]);
     // Prefill from profile
@@ -134,6 +317,7 @@ const Rekins = () => {
   const currency = validItems[0]?.product?.currency ?? "EUR";
   const subtotal = validItems.reduce((s, i) => s + (i.product?.price_cents ?? 0) * i.quantity, 0);
   const shipping = SHIPPING_OPTIONS[shippingId] ?? SHIPPING_OPTIONS.pickup;
+  const shippingLabel = String(t[shipping.labelKey] ?? shipping.lvLabel);
   const total = subtotal + shipping.cents;
   // VAT included (21%) — show breakdown
   const vatRate = 0.21;
@@ -168,7 +352,7 @@ const Rekins = () => {
         pdf.addImage(imgData, "PNG", 0, y, imgW, imgH);
         heightLeft -= pageH;
       }
-      pdf.save(`Rekins_${invoiceNumber}.pdf`);
+      pdf.save(`${lang === "ru" ? "Schet" : "Rekins"}_${invoiceNumber}.pdf`);
     } finally {
       setSavingPdf(false);
     }
@@ -182,7 +366,7 @@ const Rekins = () => {
         address: buyerAddress, email: buyerEmail, phone: buyerPhone,
         invoiceNumber,
       }));
-      navigate("/kase");
+      navigate(withLang("/kase"));
     } finally {
       setPaying(false);
     }
@@ -190,7 +374,7 @@ const Rekins = () => {
 
   const handleConfirm = async () => {
     if (!buyerCompany || !buyerEmail) {
-      toast({ title: "Trūkst rekvizītu", description: "Lūdzu, aizpildi vismaz uzņēmuma nosaukumu un e-pastu.", variant: "destructive" });
+      toast({ title: tx.missingDetailsTitle, description: tx.missingDetailsDesc, variant: "destructive" });
       return;
     }
     if (!user) return;
@@ -207,7 +391,7 @@ const Rekins = () => {
           company_name: buyerCompany,
           vat_number: buyerVat,
           shipping_address: buyerAddress,
-          shipping_method: shipping.label,
+          shipping_method: shippingLabel,
           subtotal_cents: subtotal,
           shipping_cents: shipping.cents,
           tax_cents: vatAmount,
@@ -217,13 +401,13 @@ const Rekins = () => {
         })
         .select("id, order_number")
         .single();
-      if (orderErr || !orderData) throw orderErr || new Error("Neizdevās izveidot pasūtījumu");
+      if (orderErr || !orderData) throw orderErr || new Error(tx.confirmError);
 
       // 2. Create order items
       const orderItems = validItems.map((i) => ({
         order_id: orderData.id,
         product_id: i.product?.id ?? null,
-        product_name: i.product?.name ?? "",
+          product_name: localizeProductName(pickI18n(i.product?.name_i18n, lang, i.product?.name ?? ""), lang, tx),
         product_type: "product",
         quantity: i.quantity,
         unit_price_cents: i.product?.price_cents ?? 0,
@@ -252,22 +436,22 @@ const Rekins = () => {
             address: buyerAddress,
             email: buyerEmail,
             phone: buyerPhone,
-            shipping: shipping.label,
+            shipping: shippingLabel,
             shippingCost: shipping.cents / 100,
             total: total / 100,
             currency,
             items: [
-              ...validItems.map((i) => ({ name: i.product!.name, qty: i.quantity, price: i.product!.price_cents / 100 })),
-              ...(shipping.cents > 0 ? [{ name: `Piegāde: ${shipping.label}`, qty: 1, price: shipping.cents / 100 }] : []),
+              ...validItems.map((i) => ({ name: localizeProductName(pickI18n(i.product!.name_i18n, lang, i.product!.name), lang, tx), qty: i.quantity, price: i.product!.price_cents / 100 })),
+              ...(shipping.cents > 0 ? [{ name: `${tx.shipping}: ${shippingLabel}`, qty: 1, price: shipping.cents / 100 }] : []),
             ],
           },
         },
       });
 
-      toast({ title: "Pasūtījums apstiprināts", description: `Pasūtījuma nr. ${orderData.order_number}. Nosūtīsim apmaksas instrukcijas uz e-pastu.` });
-      navigate("/account");
+      toast({ title: tx.orderConfirmedTitle, description: tx.orderConfirmedDesc(orderData.order_number) });
+      navigate(withLang("/account"));
     } catch (e) {
-      toast({ title: "Kļūda", description: "Neizdevās apstiprināt pasūtījumu. Lūdzu, mēģini vēlreiz.", variant: "destructive" });
+      toast({ title: tx.errorTitle, description: tx.confirmError, variant: "destructive" });
       console.error(e);
     } finally {
       setConfirming(false);
