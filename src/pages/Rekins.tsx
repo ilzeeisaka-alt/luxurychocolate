@@ -81,6 +81,8 @@ const INVOICE_TEXT = {
     shipping: "Shipping",
     subtotalExVat: "Amount excl. VAT",
     vat: "VAT 21%",
+    vatReverse: "VAT 21% (reverse charge — 0%)",
+    reverseNote: "Reverse charge — VAT is accounted for by the recipient (Art. 196 of EU VAT Directive 2006/112/EC).",
     totalPayable: "Total payable",
     bankTransfer: "Payment by bank transfer",
     recipient: "Recipient",
