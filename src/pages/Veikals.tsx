@@ -291,8 +291,8 @@ const Veikals = () => {
               </div>
             ) : items.length === 0 ? (
               <div className="text-center py-20 text-muted-foreground">
-                <p className="text-lg mb-2">Nekas netika atrasts</p>
-                <p className="text-sm">Mēģiniet citu kategoriju vai meklēšanas vārdu.</p>
+                <p className="text-lg mb-2">{ui.nothingFound}</p>
+                <p className="text-sm">{ui.tryAnother}</p>
               </div>
             ) : (
               <>
