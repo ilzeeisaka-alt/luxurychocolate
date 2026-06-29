@@ -96,11 +96,12 @@ const Grozs = () => {
     setLoading(true);
     const { data, error } = await supabase
       .from("cart_items")
-      .select("id, quantity, logo_url, logo_filename, logos, product:products(id, slug, name, price_cents, currency, in_stock)")
+      .select("id, quantity, logo_url, logo_filename, logos, product:products(id, slug, name, name_i18n, price_cents, currency, in_stock)")
       .eq("user_id", user.id)
       .order("created_at", { ascending: false });
     if (error) {
-      toast({ title: "Kļūda", description: error.message, variant: "destructive" });
+      toast({ title: t.errorTitle, description: error.message, variant: "destructive" });
+
       setLoading(false);
       return;
     }
