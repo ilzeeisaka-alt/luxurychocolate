@@ -224,7 +224,7 @@ const VeikalsProduct = () => {
                 {formatPrice(product.price_cents, product.currency)}
               </span>
               {product.prices_include_vat && (
-                <span className="text-xs text-muted-foreground">ar PVN</span>
+                <span className="text-xs text-muted-foreground">{t.vatIncluded}</span>
               )}
             </div>
 
@@ -235,12 +235,11 @@ const VeikalsProduct = () => {
             <div className="flex items-center gap-2 text-sm text-muted-foreground mb-8">
               <Check className="w-4 h-4 text-primary" />
               <span>
-                {product.in_stock ? "Pieejams" : "Izgatavojam pēc pasūtījuma"}
-                {product.preparation_days
-                  ? ` · sagatavošana ${product.preparation_days} d.`
-                  : ""}
-                {product.delivery_days ? ` · piegāde ${product.delivery_days} d.` : ""}
+                {product.in_stock ? t.inStock : t.madeToOrder}
+                {product.preparation_days ? ` · ${t.preparationDays(product.preparation_days)}` : ""}
+                {product.delivery_days ? ` · ${t.deliveryDays(product.delivery_days)}` : ""}
               </span>
+
             </div>
 
             {/* Qty + add */}
