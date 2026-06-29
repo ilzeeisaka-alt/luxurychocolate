@@ -272,7 +272,7 @@ const VeikalsProduct = () => {
                 className="flex-1 inline-flex items-center justify-center gap-2 bg-primary text-primary-foreground rounded-lg h-11 px-6 text-sm font-medium tracking-wide uppercase transition-all hover:brightness-110 active:scale-[0.98] disabled:opacity-50"
               >
                 <ShoppingCart className="w-4 h-4" />
-                {adding ? "Pievieno..." : "Pievienot grozam"}
+                {adding ? t.addingToCart : t.addToCart}
               </button>
             </div>
 
@@ -282,8 +282,9 @@ const VeikalsProduct = () => {
               className="w-full inline-flex items-center justify-center gap-2 border border-primary text-primary rounded-lg h-11 px-6 text-sm font-medium tracking-wide transition-colors hover:bg-primary hover:text-primary-foreground"
             >
               <Upload className="w-4 h-4" />
-              Augšupielādēt logo / individuāls pasūtījums
+              {t.uploadLogoOrCustom}
             </button>
+
             <input
               ref={logoInputRef}
               type="file"
