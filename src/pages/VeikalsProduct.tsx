@@ -145,14 +145,15 @@ const VeikalsProduct = () => {
         if (insertError) throw insertError;
       }
       await ensurePrepFeeForPrintedProduct(user.id, product.id);
-      toast({ title: "Pievienots grozam", description: localizedName });
+      toast({ title: t.addedToCart, description: localizedName });
       window.dispatchEvent(new Event("cart-updated"));
     } catch (e) {
       toast({
-        title: "Kļūda",
-        description: (e as Error).message || "Neizdevās pievienot grozam.",
+        title: t.errorTitle,
+        description: (e as Error).message || t.addToCartError,
         variant: "destructive",
       });
+
     } finally {
       setAdding(false);
     }
