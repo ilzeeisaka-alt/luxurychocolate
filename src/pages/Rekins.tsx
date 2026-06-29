@@ -139,6 +139,8 @@ const INVOICE_TEXT = {
     shipping: "Piegāde",
     subtotalExVat: "Summa bez PVN",
     vat: "PVN 21%",
+    vatReverse: "PVN 21% (apgrieztā maksāšanas kārtība — 0%)",
+    reverseNote: "Apgrieztā PVN maksāšanas kārtība — PVN aprēķina un maksā pakalpojuma saņēmējs (PVN direktīvas 2006/112/EK 196. pants).",
     totalPayable: "Kopā apmaksai",
     bankTransfer: "Apmaksa ar pārskaitījumu",
     recipient: "Saņēmējs",
