@@ -9,6 +9,7 @@ import { expandLangs } from "@/i18n/expandLangs";
 import { useAuth } from "@/hooks/useAuth";
 import { supabase } from "@/integrations/supabase/client";
 import { tUI } from "@/i18n/uiStrings";
+import { useCurrentLang } from "@/i18n/useCurrentLang";
 
 type InfoLabels = {
   info: string;
@@ -839,13 +840,15 @@ interface NavbarProps {
   lang?: Lang;
 }
 
-const Navbar = ({ lang = "lv" }: NavbarProps) => {
+const Navbar = ({ lang: langProp }: NavbarProps) => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [infoOpen, setInfoOpen] = useState(false);
   const [mobileInfoOpen, setMobileInfoOpen] = useState(false);
   const infoRef = useRef<HTMLDivElement | null>(null);
   const { pathname } = useLocation();
+  const detectedLang = useCurrentLang() as Lang;
+  const lang = langProp ?? detectedLang;
   const { user } = useAuth();
   const allItems = navItems[lang];
   const affiliateItem = allItems.find((i) => i.to === "/affiliate");
@@ -857,6 +860,7 @@ const Navbar = ({ lang = "lv" }: NavbarProps) => {
   const infoLabel = (infoLabelsByLang[lang] ?? infoLabelsByLang.en).info;
   const ui = tUI(lang);
   const shopHref = lang && lang !== "lv" ? `/veikals?lang=${lang}` : "/veikals";
+  const cartHref = lang && lang !== "lv" ? `/grozs?lang=${lang}` : "/grozs";
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -994,7 +998,7 @@ const Navbar = ({ lang = "lv" }: NavbarProps) => {
               <span className="hidden sm:inline">{shopItem?.label ?? "Veikals"}</span>
             </Link>
             <Link
-              to="/grozs"
+              to={cartHref}
               className="relative inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-medium text-white/80 hover:text-white hover:bg-white/5 transition-colors border border-white/15"
               aria-label={ui.cart}
             >

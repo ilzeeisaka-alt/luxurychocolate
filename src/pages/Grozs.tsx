@@ -70,6 +70,10 @@ const Grozs = () => {
   const { toast } = useToast();
   const lang = useCurrentLang();
   const t = tUI(lang);
+  const withLang = useCallback((path: string) => {
+    if (!lang || lang === "lv") return path;
+    return `${path}${path.includes("?") ? "&" : "?"}lang=${lang}`;
+  }, [lang]);
   const [items, setItems] = useState<CartLine[]>([]);
   const [loading, setLoading] = useState(true);
   const [busyId, setBusyId] = useState<string | null>(null);
@@ -86,8 +90,10 @@ const Grozs = () => {
   });
 
   useEffect(() => {
-    if (!authLoading && !user) navigate("/auth?redirect=/grozs", { replace: true });
-  }, [authLoading, user, navigate]);
+    if (!authLoading && !user) {
+      navigate(`/auth?redirect=${encodeURIComponent(withLang("/grozs"))}${lang !== "lv" ? `&lang=${lang}` : ""}`, { replace: true });
+    }
+  }, [authLoading, user, navigate, withLang, lang]);
 
   const shipping = SHIPPING_OPTIONS.find((o) => o.id === shippingId) ?? SHIPPING_OPTIONS[0];
 
@@ -171,7 +177,7 @@ const Grozs = () => {
       <Navbar />
       <main className="container mx-auto px-4 pt-28 pb-16 max-w-5xl">
         <Link
-          to="/veikals"
+          to={withLang("/veikals")}
           className="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-primary mb-6 transition-colors"
         >
           <ChevronLeft className="w-4 h-4" /> {t.continueShopping}
@@ -192,7 +198,7 @@ const Grozs = () => {
           <div className="text-center py-20 bg-card rounded-xl border border-border">
             <p className="text-lg text-muted-foreground mb-4">{t.cartEmpty}</p>
             <Link
-              to="/veikals"
+              to={withLang("/veikals")}
               className="inline-flex items-center gap-2 bg-primary text-primary-foreground rounded-lg px-6 h-11 text-sm font-medium uppercase tracking-wide hover:brightness-110 transition-all"
             >
               {t.goToShop}
@@ -208,7 +214,7 @@ const Grozs = () => {
                   className="flex gap-4 bg-card rounded-xl p-4 border border-border/50"
                 >
                   <Link
-                    to={`/veikals/${item.product.slug}`}
+                    to={withLang(`/veikals/${item.product.slug}`)}
                     className="w-24 h-24 shrink-0 bg-muted rounded-lg overflow-hidden"
                   >
                     {item.product.image_url ? (
@@ -225,7 +231,7 @@ const Grozs = () => {
                   </Link>
                   <div className="flex-1 min-w-0">
                     <Link
-                      to={`/veikals/${item.product.slug}`}
+                      to={withLang(`/veikals/${item.product.slug}`)}
                       className="text-sm font-medium text-foreground hover:text-primary line-clamp-2"
                     >
                       {pickI18n(item.product.name_i18n, lang, item.product.name)}
@@ -390,7 +396,7 @@ const Grozs = () => {
                     });
                     return;
                   }
-                  navigate("/rekins");
+                  navigate(withLang("/rekins"));
                 }}
                 className="w-full mt-6 bg-primary text-primary-foreground rounded-lg h-12 text-sm font-medium uppercase tracking-wide hover:brightness-110 active:scale-[0.98] transition-all disabled:cursor-not-allowed disabled:opacity-50"
               >
@@ -401,7 +407,7 @@ const Grozs = () => {
               </p>
               <button
                 type="button"
-                onClick={() => navigate("/kase")}
+                onClick={() => navigate(withLang("/kase"))}
                 disabled={isBelowPaymentMinimum}
                 className="w-full mt-3 bg-card border border-border text-muted-foreground rounded-lg h-10 text-xs font-medium hover:bg-muted transition-all disabled:opacity-50"
               >
