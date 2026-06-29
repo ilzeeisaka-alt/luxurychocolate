@@ -3,6 +3,7 @@ import { z } from "zod";
 import { Mail, Loader2, Check } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
+import { tUI } from "@/i18n/uiStrings";
 
 const emailSchema = z.string().trim().email({ message: "Lūdzu, ievadi derīgu e-pasta adresi" }).max(255);
 
@@ -13,6 +14,7 @@ interface NewsletterSignupProps {
 }
 
 const NewsletterSignup = ({ lang = "lv", source = "footer", compact = false }: NewsletterSignupProps) => {
+  const ui = tUI(lang);
   const [email, setEmail] = useState("");
   const [loading, setLoading] = useState(false);
   const [done, setDone] = useState(false);
