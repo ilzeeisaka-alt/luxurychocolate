@@ -8,10 +8,12 @@ const langPrefixes = [
 ];
 
 export function useCurrentLang(): string {
-  const { pathname } = useLocation();
+  const { pathname, search } = useLocation();
   for (const p of langPrefixes) {
     if (pathname === `/${p}` || pathname.startsWith(`/${p}/`)) return p;
   }
+  const q = new URLSearchParams(search).get("lang");
+  if (q && langPrefixes.includes(q)) return q;
   return "lv";
 }
 
