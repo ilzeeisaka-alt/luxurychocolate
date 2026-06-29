@@ -470,15 +470,15 @@ const Rekins = () => {
       <div className="no-print"><Navbar /></div>
       <main className="container mx-auto px-4 pt-28 pb-16 max-w-5xl">
         <div className="no-print flex items-center justify-between mb-6">
-          <button onClick={() => navigate("/grozs")} className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground">
-            <ChevronLeft className="w-4 h-4" /> Atpakaļ uz grozu
+          <button onClick={() => navigate(withLang("/grozs"))} className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground">
+            <ChevronLeft className="w-4 h-4" /> {tx.backToCart}
           </button>
           <div className="flex flex-wrap gap-2">
             <button
               onClick={handlePrint}
               className="flex items-center gap-2 rounded-lg border border-border bg-card text-foreground px-4 py-2.5 text-sm font-medium hover:bg-muted"
             >
-              <Printer className="w-4 h-4" /> Drukāt
+              <Printer className="w-4 h-4" /> {tx.print}
             </button>
             <button
               onClick={handleSavePdf}
@@ -486,7 +486,7 @@ const Rekins = () => {
               className="flex items-center gap-2 rounded-lg border border-border bg-card text-foreground px-4 py-2.5 text-sm font-medium hover:bg-muted disabled:opacity-50"
             >
               {savingPdf ? <Loader2 className="w-4 h-4 animate-spin" /> : <Download className="w-4 h-4" />}
-              Saglabāt PDF
+              {tx.savePdf}
             </button>
             <button
               onClick={handlePay}
@@ -494,25 +494,25 @@ const Rekins = () => {
               className="flex items-center gap-2 rounded-lg bg-primary text-primary-foreground px-5 py-2.5 text-sm font-medium hover:brightness-110 disabled:opacity-50"
             >
               {paying ? <Loader2 className="w-4 h-4 animate-spin" /> : <CreditCard className="w-4 h-4" />}
-              Maksāt tagad
+              {tx.payNow}
             </button>
           </div>
         </div>
 
         {/* Buyer details form */}
         <section className="no-print bg-card border border-border rounded-xl p-6 mb-6">
-          <h2 className="text-lg font-medium text-foreground mb-4">Rēķina saņēmēja rekvizīti</h2>
+          <h2 className="text-lg font-medium text-foreground mb-4">{tx.buyerDetails}</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-            <input className="rounded-md bg-background border border-border px-3 py-2 text-sm" placeholder="Uzņēmuma / personas nosaukums" value={buyerCompany} onChange={(e) => setBuyerCompany(e.target.value)} />
-            <input className="rounded-md bg-background border border-border px-3 py-2 text-sm" placeholder="Reģistrācijas numurs" value={buyerRegNr} onChange={(e) => setBuyerRegNr(e.target.value)} />
-            <input className="md:col-span-2 rounded-md bg-background border border-border px-3 py-2 text-sm" placeholder="Kontaktpersona (vārds, uzvārds)" value={buyerContact} onChange={(e) => setBuyerContact(e.target.value)} />
-            <input className="rounded-md bg-background border border-border px-3 py-2 text-sm" placeholder="PVN numurs (neobligāti)" value={buyerVat} onChange={(e) => setBuyerVat(e.target.value)} />
-            <input className="rounded-md bg-background border border-border px-3 py-2 text-sm" placeholder="Telefons" value={buyerPhone} onChange={(e) => setBuyerPhone(e.target.value)} />
-            <input className="md:col-span-2 rounded-md bg-background border border-border px-3 py-2 text-sm" placeholder="Juridiskā adrese" value={buyerAddress} onChange={(e) => setBuyerAddress(e.target.value)} />
-            <input className="md:col-span-2 rounded-md bg-background border border-border px-3 py-2 text-sm" placeholder="E-pasts" value={buyerEmail} onChange={(e) => setBuyerEmail(e.target.value)} />
+            <input className="rounded-md bg-background border border-border px-3 py-2 text-sm" placeholder={tx.companyPlaceholder} value={buyerCompany} onChange={(e) => setBuyerCompany(e.target.value)} />
+            <input className="rounded-md bg-background border border-border px-3 py-2 text-sm" placeholder={tx.regPlaceholder} value={buyerRegNr} onChange={(e) => setBuyerRegNr(e.target.value)} />
+            <input className="md:col-span-2 rounded-md bg-background border border-border px-3 py-2 text-sm" placeholder={tx.contactPlaceholder} value={buyerContact} onChange={(e) => setBuyerContact(e.target.value)} />
+            <input className="rounded-md bg-background border border-border px-3 py-2 text-sm" placeholder={tx.vatPlaceholder} value={buyerVat} onChange={(e) => setBuyerVat(e.target.value)} />
+            <input className="rounded-md bg-background border border-border px-3 py-2 text-sm" placeholder={tx.phonePlaceholder} value={buyerPhone} onChange={(e) => setBuyerPhone(e.target.value)} />
+            <input className="md:col-span-2 rounded-md bg-background border border-border px-3 py-2 text-sm" placeholder={tx.addressPlaceholder} value={buyerAddress} onChange={(e) => setBuyerAddress(e.target.value)} />
+            <input className="md:col-span-2 rounded-md bg-background border border-border px-3 py-2 text-sm" placeholder={tx.emailPlaceholder} value={buyerEmail} onChange={(e) => setBuyerEmail(e.target.value)} />
           </div>
           <div className="mt-4">
-            <label className="block text-sm font-medium text-foreground mb-2">Piegādes veids</label>
+            <label className="block text-sm font-medium text-foreground mb-2">{tx.shippingMethod}</label>
             <select
               value={shippingId}
               onChange={(e) => { setShippingId(e.target.value); sessionStorage.setItem("shipping_id", e.target.value); }}
@@ -520,7 +520,7 @@ const Rekins = () => {
             >
               {Object.entries(SHIPPING_OPTIONS).map(([id, o]) => (
                 <option key={id} value={id}>
-                  {o.label} — {o.cents === 0 ? "Bezmaksas" : fmt(o.cents, currency)}
+                  {String(t[o.labelKey] ?? o.lvLabel)} — {o.cents === 0 ? t.free : fmt(o.cents, currency, lang)}
                 </option>
               ))}
             </select>
@@ -532,7 +532,7 @@ const Rekins = () => {
           <div className="flex justify-center py-20"><Loader2 className="w-8 h-8 animate-spin text-primary" /></div>
         ) : validItems.length === 0 ? (
           <div className="bg-card border border-border rounded-xl p-8 text-center text-muted-foreground">
-            Grozs ir tukšs. <button onClick={() => navigate("/veikals")} className="text-primary underline">Doties uz veikalu</button>
+            {tx.cartEmpty} <button onClick={() => navigate(withLang("/veikals"))} className="text-primary underline">{tx.goToShop}</button>
           </div>
         ) : (
           <div ref={invoiceRef} className="print-area bg-white text-black rounded-xl border border-border p-10 shadow-sm">
@@ -541,38 +541,38 @@ const Rekins = () => {
                 <img src={logoUrl} alt="Luxury Chocolate" className="w-20 h-20 object-contain" crossOrigin="anonymous" />
                 <img src={chocoTimeUrl} alt="It's choco time" className="w-20 h-20 object-contain" crossOrigin="anonymous" />
                 <div>
-                  <h1 className="text-2xl font-bold">Priekšapmaksas rēķins</h1>
+                  <h1 className="text-2xl font-bold">{tx.proformaTitle}</h1>
                   <p className="text-sm mt-1">Nr. {invoiceNumber}</p>
-                  <p className="text-sm">Izrakstīts: {today}</p>
-                  <p className="text-sm">Apmaksas termiņš: {dueDate}</p>
+                  <p className="text-sm">{tx.issued}: {today}</p>
+                  <p className="text-sm">{tx.due}: {dueDate}</p>
                 </div>
               </div>
               <div className="text-right text-sm">
                 <p className="font-bold text-base">Luxury Chocolate SIA</p>
-                <p>PVN Reģ.nr. LV40103921954</p>
-                <p>Jur. adrese: Vircavas iela 9-8, Rīga, LV-1083</p>
-                <p>Fakt. adrese: Kandavas iela 29a-85, Rīga, LV-1083</p>
+                <p>{tx.vatReg} LV40103921954</p>
+                <p>{tx.legalAddress}: Vircavas iela 9-8, Rīga, LV-1083</p>
+                <p>{tx.actualAddress}: Kandavas iela 29a-85, Rīga, LV-1083</p>
                 <p>info@luxurychocolate.lv · +371 26 177 853</p>
               </div>
             </div>
 
             <div className="grid grid-cols-2 gap-8 mb-8 text-sm">
               <div>
-                <p className="font-bold mb-1 text-xs uppercase text-gray-500">Pārdevējs</p>
+                <p className="font-bold mb-1 text-xs uppercase text-gray-500">{tx.seller}</p>
                 <p className="font-medium">Luxury Chocolate SIA</p>
-                <p>Jur. adrese: Vircavas iela 9-8, Rīga, LV-1083</p>
-                <p>Fakt. adrese: Kandavas iela 29a-85, Rīga, LV-1083</p>
-                <p>PVN Reģ.nr. LV40103921954</p>
-                <p>Valdes locekle: Ilze Eisaka</p>
+                <p>{tx.legalAddress}: Vircavas iela 9-8, Rīga, LV-1083</p>
+                <p>{tx.actualAddress}: Kandavas iela 29a-85, Rīga, LV-1083</p>
+                <p>{tx.vatReg} LV40103921954</p>
+                <p>{tx.boardMember}: Ilze Eisaka</p>
               </div>
 
               <div>
-                <p className="font-bold mb-1 text-xs uppercase text-gray-500">Pircējs</p>
+                <p className="font-bold mb-1 text-xs uppercase text-gray-500">{tx.buyer}</p>
                 <p className="font-medium">{buyerCompany || "—"}</p>
-                {buyerRegNr && <p>Reģ. Nr. {buyerRegNr}</p>}
+                {buyerRegNr && <p>{tx.regNo} {buyerRegNr}</p>}
                 {buyerVat && <p>PVN: {buyerVat}</p>}
                 {buyerAddress && <p>{buyerAddress}</p>}
-                {buyerContact && <p>Kontaktpersona: {buyerContact}</p>}
+                {buyerContact && <p>{tx.contactPerson}: {buyerContact}</p>}
                 {buyerEmail && <p>{buyerEmail}</p>}
                 {buyerPhone && <p>{buyerPhone}</p>}
               </div>
@@ -581,10 +581,10 @@ const Rekins = () => {
             <table className="w-full text-sm border-collapse">
               <thead>
                 <tr className="border-b-2 border-black">
-                  <th className="text-left py-2">Nosaukums</th>
-                  <th className="text-right py-2">Daudz.</th>
-                  <th className="text-right py-2">Cena</th>
-                  <th className="text-right py-2">Summa</th>
+                  <th className="text-left py-2">{tx.itemName}</th>
+                  <th className="text-right py-2">{tx.quantity}</th>
+                  <th className="text-right py-2">{tx.price}</th>
+                  <th className="text-right py-2">{tx.sum}</th>
                 </tr>
               </thead>
               <tbody>
@@ -595,27 +595,27 @@ const Rekins = () => {
                   return (
                     <tr key={i.id} className="border-b border-gray-200">
                       <td className="py-2">
-                        {i.product!.name}
+                        {localizeProductName(pickI18n(i.product!.name_i18n, lang, i.product!.name), lang, tx)}
                         {logos.length > 0 && (
                           <div className="text-xs text-gray-500 mt-1">
                             {logos.length === 1
-                              ? `ar Jūsu logo${logos[0].filename ? `: ${logos[0].filename}` : ""}`
-                              : `ar ${logos.length} logo: ${logos.map((l) => l.filename || "—").join(", ")}`}
+                              ? `${tx.withYourLogo}${logos[0].filename ? `: ${logos[0].filename}` : ""}`
+                              : `${tx.withLogos(logos.length)}: ${logos.map((l) => l.filename || "—").join(", ")}`}
                           </div>
                         )}
                       </td>
                       <td className="text-right py-2">{i.quantity}</td>
-                      <td className="text-right py-2">{fmt(i.product!.price_cents, currency)}</td>
-                      <td className="text-right py-2">{fmt(i.product!.price_cents * i.quantity, currency)}</td>
+                      <td className="text-right py-2">{fmt(i.product!.price_cents, currency, lang)}</td>
+                      <td className="text-right py-2">{fmt(i.product!.price_cents * i.quantity, currency, lang)}</td>
                     </tr>
                   );
                 })}
                 {shipping.cents > 0 && (
                   <tr className="border-b border-gray-200">
-                    <td className="py-2">Piegāde: {shipping.label}</td>
+                    <td className="py-2">{tx.shipping}: {shippingLabel}</td>
                     <td className="text-right py-2">1</td>
-                    <td className="text-right py-2">{fmt(shipping.cents, currency)}</td>
-                    <td className="text-right py-2">{fmt(shipping.cents, currency)}</td>
+                    <td className="text-right py-2">{fmt(shipping.cents, currency, lang)}</td>
+                    <td className="text-right py-2">{fmt(shipping.cents, currency, lang)}</td>
                   </tr>
                 )}
               </tbody>
@@ -623,22 +623,22 @@ const Rekins = () => {
 
             <div className="flex justify-end mt-6">
               <div className="w-72 text-sm">
-                <div className="flex justify-between py-1"><span>Summa bez PVN:</span><span>{fmt(totalExVat, currency)}</span></div>
-                <div className="flex justify-between py-1"><span>PVN 21%:</span><span>{fmt(vatAmount, currency)}</span></div>
+                <div className="flex justify-between py-1"><span>{tx.subtotalExVat}:</span><span>{fmt(totalExVat, currency, lang)}</span></div>
+                <div className="flex justify-between py-1"><span>{tx.vat}:</span><span>{fmt(vatAmount, currency, lang)}</span></div>
                 <div className="flex justify-between py-2 border-t-2 border-black font-bold text-base mt-1">
-                  <span>Kopā apmaksai:</span><span>{fmt(total, currency)}</span>
+                  <span>{tx.totalPayable}:</span><span>{fmt(total, currency, lang)}</span>
                 </div>
               </div>
             </div>
 
             <div className="mt-8 text-xs text-gray-600 border-t border-gray-200 pt-4">
-              <p className="font-medium mb-1">Apmaksa ar pārskaitījumu:</p>
-              <p>Saņēmējs: Luxury Chocolate SIA</p>
+              <p className="font-medium mb-1">{tx.bankTransfer}:</p>
+              <p>{tx.recipient}: Luxury Chocolate SIA</p>
               <p>Reģ.nr.: LV40103921954</p>
-              <p>Banka: AS Citadele banka · SWIFT: PARXLV22</p>
-              <p>Konts: LV88PARX0032054790002</p>
-              <p className="mt-3">Pasūtījumu sāksim gatavot pēc apmaksas saņemšanas. Jautājumu gadījumā: info@luxurychocolate.lv</p>
-              <p className="mt-3 italic">Šis ir priekšapmaksas (proforma) rēķins. Galīgais rēķins tiks izsniegts pēc apmaksas.</p>
+              <p>{tx.bank}: AS Citadele banka · SWIFT: PARXLV22</p>
+              <p>{tx.account}: LV88PARX0032054790002</p>
+              <p className="mt-3">{tx.productionAfterPayment}</p>
+              <p className="mt-3 italic">{tx.proformaNote}</p>
             </div>
           </div>
         )}
@@ -651,7 +651,7 @@ const Rekins = () => {
               className="flex items-center gap-2 rounded-lg border border-border bg-card text-foreground px-5 py-3 text-sm font-medium hover:bg-muted disabled:opacity-50"
             >
               {savingPdf ? <Loader2 className="w-4 h-4 animate-spin" /> : <Download className="w-4 h-4" />}
-              Saglabāt rēķinu
+              {tx.saveInvoice}
             </button>
             <button
               onClick={handleConfirm}
@@ -659,7 +659,7 @@ const Rekins = () => {
               className="flex items-center gap-2 rounded-lg border border-primary/40 bg-primary/10 text-foreground px-5 py-3 text-sm font-medium hover:bg-primary/20 disabled:opacity-50"
             >
               {confirming ? <Loader2 className="w-4 h-4 animate-spin" /> : <Check className="w-4 h-4" />}
-              Apstiprināt pasūtījumu
+              {tx.confirmOrder}
             </button>
             <button
               onClick={handlePay}
@@ -667,7 +667,7 @@ const Rekins = () => {
               className="flex items-center gap-2 rounded-lg bg-primary text-primary-foreground px-6 py-3 text-sm font-medium hover:brightness-110 disabled:opacity-50"
             >
               {paying ? <Loader2 className="w-4 h-4 animate-spin" /> : <CreditCard className="w-4 h-4" />}
-              Apmaksāt rēķinu
+              {tx.payInvoice}
             </button>
           </div>
         )}
