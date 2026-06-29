@@ -855,6 +855,8 @@ const Navbar = ({ lang = "lv" }: NavbarProps) => {
   const shopItem = allItems.find((i) => i.to === "/veikals");
   const infoPages = getInfoPages(lang);
   const infoLabel = (infoLabelsByLang[lang] ?? infoLabelsByLang.en).info;
+  const ui = tUI(lang);
+  const shopHref = lang && lang !== "lv" ? `/veikals?lang=${lang}` : "/veikals";
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
