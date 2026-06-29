@@ -300,7 +300,7 @@ const Veikals = () => {
                   {items.map((p) => (
                     <Link
                       key={p.id}
-                      to={`/veikals/${p.slug}`}
+                      to={`/veikals/${p.slug}${lang !== "lv" ? `?lang=${lang}` : ""}`}
                       className="group block bg-card rounded-xl overflow-hidden border border-border/50 hover:border-primary/40 transition-all duration-300"
                     >
                       <div className="aspect-square bg-muted overflow-hidden">
