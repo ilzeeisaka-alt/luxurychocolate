@@ -61,6 +61,7 @@ const INVOICE_TEXT = {
     emailPlaceholder: "Email",
     shippingMethod: "Shipping method",
     proformaTitle: "Prepayment invoice",
+    invoiceNo: "No.",
     issued: "Issued",
     due: "Payment due",
     legalAddress: "Legal address",
@@ -83,6 +84,7 @@ const INVOICE_TEXT = {
     totalPayable: "Total payable",
     bankTransfer: "Payment by bank transfer",
     recipient: "Recipient",
+    companyRegNo: "Reg. no.",
     bank: "Bank",
     account: "Account",
     productionAfterPayment: "We will start preparing the order after payment is received. For questions: info@luxurychocolate.lv",
@@ -115,6 +117,7 @@ const INVOICE_TEXT = {
     emailPlaceholder: "E-pasts",
     shippingMethod: "Piegādes veids",
     proformaTitle: "Priekšapmaksas rēķins",
+    invoiceNo: "Nr.",
     issued: "Izrakstīts",
     due: "Apmaksas termiņš",
     legalAddress: "Jur. adrese",
@@ -137,6 +140,7 @@ const INVOICE_TEXT = {
     totalPayable: "Kopā apmaksai",
     bankTransfer: "Apmaksa ar pārskaitījumu",
     recipient: "Saņēmējs",
+    companyRegNo: "Reģ.nr.",
     bank: "Banka",
     account: "Konts",
     productionAfterPayment: "Pasūtījumu sāksim gatavot pēc apmaksas saņemšanas. Jautājumu gadījumā: info@luxurychocolate.lv",
@@ -169,6 +173,7 @@ const INVOICE_TEXT = {
     emailPlaceholder: "Эл. почта",
     shippingMethod: "Способ доставки",
     proformaTitle: "Счёт на предоплату",
+    invoiceNo: "№",
     issued: "Выписан",
     due: "Срок оплаты",
     legalAddress: "Юр. адрес",
@@ -191,6 +196,7 @@ const INVOICE_TEXT = {
     totalPayable: "Итого к оплате",
     bankTransfer: "Оплата банковским переводом",
     recipient: "Получатель",
+    companyRegNo: "Рег. №",
     bank: "Банк",
     account: "Счёт",
     productionAfterPayment: "Мы начнём подготовку заказа после получения оплаты. По вопросам: info@luxurychocolate.lv",
@@ -407,7 +413,7 @@ const Rekins = () => {
       const orderItems = validItems.map((i) => ({
         order_id: orderData.id,
         product_id: i.product?.id ?? null,
-          product_name: localizeProductName(pickI18n(i.product?.name_i18n, lang, i.product?.name ?? ""), lang, tx),
+        product_name: localizeProductName(pickI18n(i.product?.name_i18n, lang, i.product?.name ?? ""), lang, tx),
         product_type: "product",
         quantity: i.quantity,
         unit_price_cents: i.product?.price_cents ?? 0,
@@ -542,7 +548,7 @@ const Rekins = () => {
                 <img src={chocoTimeUrl} alt="It's choco time" className="w-20 h-20 object-contain" crossOrigin="anonymous" />
                 <div>
                   <h1 className="text-2xl font-bold">{tx.proformaTitle}</h1>
-                  <p className="text-sm mt-1">Nr. {invoiceNumber}</p>
+                  <p className="text-sm mt-1">{tx.invoiceNo} {invoiceNumber}</p>
                   <p className="text-sm">{tx.issued}: {today}</p>
                   <p className="text-sm">{tx.due}: {dueDate}</p>
                 </div>
@@ -570,7 +576,7 @@ const Rekins = () => {
                 <p className="font-bold mb-1 text-xs uppercase text-gray-500">{tx.buyer}</p>
                 <p className="font-medium">{buyerCompany || "—"}</p>
                 {buyerRegNr && <p>{tx.regNo} {buyerRegNr}</p>}
-                {buyerVat && <p>PVN: {buyerVat}</p>}
+                {buyerVat && <p>{tx.vatReg}: {buyerVat}</p>}
                 {buyerAddress && <p>{buyerAddress}</p>}
                 {buyerContact && <p>{tx.contactPerson}: {buyerContact}</p>}
                 {buyerEmail && <p>{buyerEmail}</p>}
@@ -634,7 +640,7 @@ const Rekins = () => {
             <div className="mt-8 text-xs text-gray-600 border-t border-gray-200 pt-4">
               <p className="font-medium mb-1">{tx.bankTransfer}:</p>
               <p>{tx.recipient}: Luxury Chocolate SIA</p>
-              <p>Reģ.nr.: LV40103921954</p>
+              <p>{tx.companyRegNo}: LV40103921954</p>
               <p>{tx.bank}: AS Citadele banka · SWIFT: PARXLV22</p>
               <p>{tx.account}: LV88PARX0032054790002</p>
               <p className="mt-3">{tx.productionAfterPayment}</p>
