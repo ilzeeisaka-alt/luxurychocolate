@@ -330,11 +330,17 @@ const Rekins = () => {
   const subtotal = validItems.reduce((s, i) => s + (i.product?.price_cents ?? 0) * i.quantity, 0);
   const shipping = SHIPPING_OPTIONS[shippingId] ?? SHIPPING_OPTIONS.pickup;
   const shippingLabel = String(t[shipping.labelKey] ?? shipping.lvLabel);
-  const total = subtotal + shipping.cents;
   // VAT included (21%) — show breakdown
   const vatRate = 0.21;
-  const totalExVat = Math.round(total / (1 + vatRate));
-  const vatAmount = total - totalExVat;
+  // EU VAT number prefixes (excluding LV — domestic sales keep 21% VAT)
+  const EU_VAT_PREFIXES = ["AT","BE","BG","CY","CZ","DE","DK","EE","EL","GR","ES","FI","FR","HR","HU","IE","IT","LT","LU","MT","NL","PL","PT","RO","SE","SI","SK","XI"];
+  const normalizedVat = buyerVat.replace(/[\s-]/g, "").toUpperCase();
+  const vatPrefix = normalizedVat.slice(0, 2);
+  const isReverseCharge = EU_VAT_PREFIXES.includes(vatPrefix) && normalizedVat.length >= 4;
+  const subtotalExVatBase = Math.round((subtotal + shipping.cents) / (1 + vatRate));
+  const totalExVat = isReverseCharge ? subtotalExVatBase : Math.round((subtotal + shipping.cents) / (1 + vatRate));
+  const vatAmount = isReverseCharge ? 0 : (subtotal + shipping.cents) - totalExVat;
+  const total = isReverseCharge ? totalExVat : subtotal + shipping.cents;
 
   const invoiceRef = useRef<HTMLDivElement | null>(null);
   const [savingPdf, setSavingPdf] = useState(false);
