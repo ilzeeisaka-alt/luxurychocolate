@@ -24,6 +24,8 @@ const VeikalsProduct = () => {
   const { user } = useAuth();
   const { toast } = useToast();
   const lang = useCurrentLang();
+  const t = tUI(lang);
+
   const [activeImg, setActiveImg] = useState(0);
   const [qty, setQty] = useState(1);
   const [adding, setAdding] = useState(false);
