@@ -53,7 +53,7 @@ const NewsletterSignup = ({ lang = "lv", source = "footer", compact = false }: N
     if (done) {
       return (
         <div className="inline-flex items-center gap-1.5 text-xs text-emerald-400">
-          <Check size={14} /> Paldies!
+          <Check size={14} /> {ui.thanks}
         </div>
       );
     }
@@ -66,7 +66,7 @@ const NewsletterSignup = ({ lang = "lv", source = "footer", compact = false }: N
             required
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            placeholder="E-pasts"
+            placeholder={ui.email}
             className="w-40 xl:w-48 pl-7 pr-2 py-1.5 text-xs rounded-md border border-white/20 bg-white/10 text-white placeholder:text-white/50 focus:outline-none focus:ring-1 focus:ring-primary"
             disabled={loading}
           />
@@ -76,7 +76,7 @@ const NewsletterSignup = ({ lang = "lv", source = "footer", compact = false }: N
           disabled={loading}
           className="px-2.5 py-1.5 text-xs rounded-md bg-primary text-primary-foreground font-medium hover:brightness-110 transition disabled:opacity-50"
         >
-          {loading ? <Loader2 size={12} className="animate-spin" /> : "Pierakstīties"}
+          {loading ? <Loader2 size={12} className="animate-spin" /> : ui.subscribe}
         </button>
       </form>
     );
