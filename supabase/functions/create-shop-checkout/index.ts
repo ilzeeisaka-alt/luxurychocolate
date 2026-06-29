@@ -95,7 +95,7 @@ serve(async (req) => {
       l.product && l.product.published && l.product.in_stock
     );
     if (lines.length === 0) {
-      return new Response(JSON.stringify({ error: "Grozs ir tukšs" }), {
+      return new Response(JSON.stringify({ error: currentLang === "ru" ? "Корзина пуста" : "Grozs ir tukšs" }), {
         status: 400,
         headers: { ...corsHeaders, "Content-Type": "application/json" },
       });
@@ -136,7 +136,11 @@ serve(async (req) => {
     const totalCents = subtotalCents - affDiscountCents + shipping.cents;
     if (totalCents < 50) {
       return new Response(
-        JSON.stringify({ error: "Pasūtījuma summa ir pārāk maza (minimums €0.50). Lūdzu pievienojiet vairāk preču vai izvēlieties piegādes veidu." }),
+        JSON.stringify({
+          error: currentLang === "ru"
+            ? "Сумма заказа слишком мала (минимум €0.50). Добавьте товары или выберите доставку."
+            : "Pasūtījuma summa ir pārāk maza (minimums €0.50). Lūdzu pievienojiet vairāk preču vai izvēlieties piegādes veidu.",
+        }),
         { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } },
       );
     }
