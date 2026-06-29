@@ -53,15 +53,16 @@ const formatPrice = (cents: number, currency = "EUR") =>
   new Intl.NumberFormat("lv-LV", { style: "currency", currency }).format(cents / 100);
 
 const SHIPPING_OPTIONS = [
-  { id: "pickup", label: "Izņemt uz vietas — Kandavas iela 29A, Rīga", cents: 0 },
-  { id: "venipak_pakomats", label: "Venipak pakomāts", cents: 1000 },
-  { id: "courier_riga", label: "Piegāde Rīgā", cents: 3025 },
-  { id: "venipak_lv", label: "Venipak Latvija", cents: 5500 },
-  { id: "venipak_baltic", label: "Venipak Baltija", cents: 6000 },
-  { id: "venipak_scandi", label: "Venipak Skandināvija", cents: 8000 },
-  { id: "venipak_eu", label: "Venipak Eiropa", cents: 10000 },
-  { id: "venipak_world", label: "Venipak Pasaule", cents: 20000 },
+  { id: "pickup", labelKey: "shipPickup" as const, cents: 0 },
+  { id: "venipak_pakomats", labelKey: "shipVenipakPakomats" as const, cents: 1000 },
+  { id: "courier_riga", labelKey: "shipCourierRiga" as const, cents: 3025 },
+  { id: "venipak_lv", labelKey: "shipVenipakLv" as const, cents: 5500 },
+  { id: "venipak_baltic", labelKey: "shipVenipakBaltic" as const, cents: 6000 },
+  { id: "venipak_scandi", labelKey: "shipVenipakScandi" as const, cents: 8000 },
+  { id: "venipak_eu", labelKey: "shipVenipakEu" as const, cents: 10000 },
+  { id: "venipak_world", labelKey: "shipVenipakWorld" as const, cents: 20000 },
 ] as const;
+
 
 const Grozs = () => {
   const { user, loading: authLoading } = useAuth();
