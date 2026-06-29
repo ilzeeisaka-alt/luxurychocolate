@@ -646,12 +646,18 @@ const Rekins = () => {
             </table>
 
             <div className="flex justify-end mt-6">
-              <div className="w-72 text-sm">
+              <div className="w-80 text-sm">
                 <div className="flex justify-between py-1"><span>{tx.subtotalExVat}:</span><span>{fmt(totalExVat, currency, lang)}</span></div>
-                <div className="flex justify-between py-1"><span>{tx.vat}:</span><span>{fmt(vatAmount, currency, lang)}</span></div>
+                <div className="flex justify-between py-1">
+                  <span>{isReverseCharge ? tx.vatReverse : tx.vat}:</span>
+                  <span>{fmt(vatAmount, currency, lang)}</span>
+                </div>
                 <div className="flex justify-between py-2 border-t-2 border-black font-bold text-base mt-1">
                   <span>{tx.totalPayable}:</span><span>{fmt(total, currency, lang)}</span>
                 </div>
+                {isReverseCharge && (
+                  <p className="mt-2 text-xs italic text-gray-600">{tx.reverseNote}</p>
+                )}
               </div>
             </div>
 
