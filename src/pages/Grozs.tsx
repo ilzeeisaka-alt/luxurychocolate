@@ -228,7 +228,8 @@ const Grozs = () => {
                       to={`/veikals/${item.product.slug}`}
                       className="text-sm font-medium text-foreground hover:text-primary line-clamp-2"
                     >
-                      {item.product.name}
+                      {pickI18n(item.product.name_i18n, lang, item.product.name)}
+
                     </Link>
                     <p className="text-sm text-primary mt-1">
                       {formatPrice(item.product.price_cents, item.product.currency)}
