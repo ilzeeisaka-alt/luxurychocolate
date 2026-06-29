@@ -179,7 +179,7 @@ const Grozs = () => {
 
         <h1 className="text-3xl sm:text-4xl text-foreground mb-8 flex items-center gap-3 leading-[1.3] py-1">
           <ShoppingBag className="w-7 h-7 text-primary shrink-0" />
-          <span className="block">Tavs grozs</span>
+          <span className="block">{t.yourCart}</span>
         </h1>
 
         {loading ? (
@@ -190,13 +190,14 @@ const Grozs = () => {
           </div>
         ) : items.length === 0 ? (
           <div className="text-center py-20 bg-card rounded-xl border border-border">
-            <p className="text-lg text-muted-foreground mb-4">Grozs ir tukšs</p>
+            <p className="text-lg text-muted-foreground mb-4">{t.cartEmpty}</p>
             <Link
               to="/veikals"
               className="inline-flex items-center gap-2 bg-primary text-primary-foreground rounded-lg px-6 h-11 text-sm font-medium uppercase tracking-wide hover:brightness-110 transition-all"
             >
-              Doties uz veikalu
+              {t.goToShop}
             </Link>
+
           </div>
         ) : (
           <div className="grid lg:grid-cols-[1fr_360px] gap-8">
