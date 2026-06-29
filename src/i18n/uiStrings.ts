@@ -41,9 +41,34 @@ export interface UIStrings {
   addedToCart: string;
   errorTitle: string;
   addToCartError: string;
-
-
+  // Cart page
+  continueShopping: string;
+  yourCart: string;
+  cartEmpty: string;
+  goToShop: string;
+  orderSummary: string;
+  shipping: string;
+  free: string;
+  subtotalLine: (n: number) => string;
+  partnerDiscount: string;
+  total: string;
+  belowPaymentMin: string;
+  paymentUnavailable: string;
+  paymentMinDesc: string;
+  checkoutInvoice: string;
+  invoicePdfNote: string;
+  skipInvoice: string;
+  remove: string;
+  shipPickup: string;
+  shipVenipakPakomats: string;
+  shipCourierRiga: string;
+  shipVenipakLv: string;
+  shipVenipakBaltic: string;
+  shipVenipakScandi: string;
+  shipVenipakEu: string;
+  shipVenipakWorld: string;
 }
+
 
 const en: UIStrings = {
   signIn: "Sign in",
