@@ -275,11 +275,11 @@ const Veikals = () => {
                 onChange={(e) => update({ sort: e.target.value })}
                 className="bg-card border border-border rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary/30"
               >
-                <option value="category">Pēc kategorijas</option>
-                <option value="newest">Jaunākie</option>
-                <option value="price-asc">Cena ↑</option>
-                <option value="price-desc">Cena ↓</option>
-                <option value="name">Nosaukums</option>
+                <option value="category">{ui.byCategory}</option>
+                <option value="newest">{ui.newest}</option>
+                <option value="price-asc">{ui.priceAsc}</option>
+                <option value="price-desc">{ui.priceDesc}</option>
+                <option value="name">{ui.name}</option>
               </select>
             </div>
 
