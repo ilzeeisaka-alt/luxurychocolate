@@ -102,6 +102,13 @@ export const uiStrings: Record<Lang, UIStrings> = expandLangs<UIStrings>({
     noImage: "Bez attēla", prevPage: "Iepriekšējā lapa", nextPage: "Nākamā lapa",
     addToCart: "Pievienot grozam", addingToCart: "Pievieno...",
     uploadLogoOrCustom: "Augšupielādēt logo / individuāls pasūtījums",
+    backToShop: "Atpakaļ uz veikalu", inStock: "Pieejams", madeToOrder: "Izgatavojam pēc pasūtījuma",
+    preparationDays: (n) => `sagatavošana ${n} d.`,
+    deliveryDays: (n) => `piegāde ${n} d.`,
+    vatIncluded: "ar PVN", description: "Apraksts",
+    addedToCart: "Pievienots grozam", errorTitle: "Kļūda",
+    addToCartError: "Neizdevās pievienot grozam.",
+
   },
   ru: {
     signIn: "Войти", myAccount: "Мой аккаунт", cart: "Корзина", subscribe: "Подписаться",
