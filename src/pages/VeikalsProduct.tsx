@@ -305,7 +305,7 @@ const VeikalsProduct = () => {
 
             {localizedDesc && (
               <div className="mt-10 pt-8 border-t border-border">
-                <h2 className="text-lg text-foreground mb-3">Apraksts</h2>
+                <h2 className="text-lg text-foreground mb-3">{t.description}</h2>
                 <div className="text-sm text-muted-foreground leading-relaxed whitespace-pre-line">
                   {localizedDesc}
                 </div>
