@@ -1033,7 +1033,7 @@ const Navbar = ({ lang = "lv" }: NavbarProps) => {
                     : "text-primary/90 border-primary/30 hover:bg-primary/10"
                 }`}
               >
-                {affiliateItem.label}
+                {affiliateItem.label === "Affiliate" ? ui.affiliate : affiliateItem.label}
               </Link>
             )}
             {contactItem && (
