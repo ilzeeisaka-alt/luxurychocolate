@@ -298,7 +298,7 @@ const Grozs = () => {
                         onClick={() => remove(item.id)}
                         disabled={busyId === item.id}
                         className="text-muted-foreground hover:text-destructive transition-colors p-2"
-                        aria-label="Noņemt"
+                        aria-label={t.remove}
                       >
                         <Trash2 className="w-4 h-4" />
                       </button>
@@ -312,10 +312,10 @@ const Grozs = () => {
             </div>
 
             <aside className="bg-card rounded-xl p-6 border border-border h-fit lg:sticky lg:top-24">
-              <h2 className="text-lg text-foreground mb-4">Pasūtījuma kopsavilkums</h2>
+              <h2 className="text-lg text-foreground mb-4">{t.orderSummary}</h2>
 
               <div className="mb-4">
-                <label className="block text-sm font-medium text-foreground mb-2">Piegāde</label>
+                <label className="block text-sm font-medium text-foreground mb-2">{t.shipping}</label>
                 <div className="space-y-1.5">
                   {SHIPPING_OPTIONS.map((o) => (
                     <label
@@ -338,9 +338,9 @@ const Grozs = () => {
                         className="mt-0.5"
                       />
                       <span className="flex-1 flex justify-between gap-2">
-                        <span>{o.label}</span>
+                        <span>{t[o.labelKey]}</span>
                         <span className="font-medium whitespace-nowrap">
-                          {o.cents === 0 ? "Bezmaksas" : formatPrice(o.cents, currency)}
+                          {o.cents === 0 ? t.free : formatPrice(o.cents, currency)}
                         </span>
                       </span>
                     </label>
@@ -354,27 +354,27 @@ const Grozs = () => {
 
               <div className="space-y-2 text-sm">
                 <div className="flex justify-between text-muted-foreground">
-                  <span>Starpsumma ({items.reduce((s, i) => s + i.quantity, 0)} preces)</span>
+                  <span>{t.subtotalLine(items.reduce((s, i) => s + i.quantity, 0))}</span>
                   <span>{formatPrice(subtotal, currency)}</span>
                 </div>
                 {affDiscount > 0 && (
                   <div className="flex justify-between text-primary">
-                    <span>Partnera atlaide ({affRef?.code})</span>
+                    <span>{t.partnerDiscount} ({affRef?.code})</span>
                     <span>−{formatPrice(affDiscount, currency)}</span>
                   </div>
                 )}
                 <div className="flex justify-between text-muted-foreground">
-                  <span>Piegāde</span>
-                  <span>{shipping.cents === 0 ? "Bezmaksas" : formatPrice(shipping.cents, currency)}</span>
+                  <span>{t.shipping}</span>
+                  <span>{shipping.cents === 0 ? t.free : formatPrice(shipping.cents, currency)}</span>
                 </div>
                 <div className="flex justify-between text-base font-medium text-foreground pt-3 border-t border-border">
-                  <span>Kopā</span>
+                  <span>{t.total}</span>
                   <span className="text-primary">{formatPrice(total, currency)}</span>
                 </div>
-                <p className="text-xs text-muted-foreground">PVN iekļauts</p>
+                <p className="text-xs text-muted-foreground">{t.vatIncluded}</p>
                 {isBelowPaymentMinimum && (
                   <p className="rounded-md border border-destructive/30 bg-destructive/10 p-3 text-xs text-destructive">
-                    Kartes maksājuma minimums ir €0.50. Pievieno vēl preces vai izvēlies piegādi.
+                    {t.belowPaymentMin}
                   </p>
                 )}
               </div>
@@ -384,8 +384,8 @@ const Grozs = () => {
                 onClick={() => {
                   if (isBelowPaymentMinimum) {
                     toast({
-                      title: "Maksājums nav pieejams",
-                      description: "Kartes maksājuma minimums ir €0.50.",
+                      title: t.paymentUnavailable,
+                      description: t.paymentMinDesc,
                       variant: "destructive",
                     });
                     return;
@@ -394,10 +394,10 @@ const Grozs = () => {
                 }}
                 className="w-full mt-6 bg-primary text-primary-foreground rounded-lg h-12 text-sm font-medium uppercase tracking-wide hover:brightness-110 active:scale-[0.98] transition-all disabled:cursor-not-allowed disabled:opacity-50"
               >
-                Apskatīt rēķinu un apmaksāt
+                {t.checkoutInvoice}
               </button>
               <p className="text-xs text-muted-foreground text-center mt-2">
-                Pirms apmaksas tiks parādīts rēķins, ko vari saglabāt PDF formātā vai izdrukāt.
+                {t.invoicePdfNote}
               </p>
               <button
                 type="button"
@@ -405,8 +405,9 @@ const Grozs = () => {
                 disabled={isBelowPaymentMinimum}
                 className="w-full mt-3 bg-card border border-border text-muted-foreground rounded-lg h-10 text-xs font-medium hover:bg-muted transition-all disabled:opacity-50"
               >
-                Izlaist rēķinu un doties tieši uz apmaksu
+                {t.skipInvoice}
               </button>
+
             </aside>
           </div>
         )}
