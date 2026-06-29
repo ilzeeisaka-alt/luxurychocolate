@@ -337,7 +337,7 @@ const Veikals = () => {
                       disabled={page <= 1}
                       onClick={() => update({ page: String(page - 1) })}
                       className="p-2 rounded-md border border-border disabled:opacity-30 hover:bg-card transition-colors"
-                      aria-label="Iepriekšējā lapa"
+                      aria-label={ui.prevPage}
                     >
                       <ChevronLeft className="w-4 h-4" />
                     </button>
@@ -349,7 +349,7 @@ const Veikals = () => {
                       disabled={page >= totalPages}
                       onClick={() => update({ page: String(page + 1) })}
                       className="p-2 rounded-md border border-border disabled:opacity-30 hover:bg-card transition-colors"
-                      aria-label="Nākamā lapa"
+                      aria-label={ui.nextPage}
                     >
                       <ChevronRight className="w-4 h-4" />
                     </button>
