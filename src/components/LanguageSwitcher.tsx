@@ -24,10 +24,10 @@ const langPrefixes = [
 ];
 
 const LanguageSwitcher = () => {
-  const { pathname } = useLocation();
+  const { pathname, search } = useLocation();
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
-  const alternatives = hreflangMap[pathname];
+  const mappedAlternatives = hreflangMap[pathname];
 
   useEffect(() => {
     const handler = (e: MouseEvent) => {
@@ -37,12 +37,21 @@ const LanguageSwitcher = () => {
     return () => document.removeEventListener("mousedown", handler);
   }, []);
 
-  if (!alternatives) return null;
-
+  // Determine current language from path prefix or ?lang= query
   let currentLang = "lv";
   for (const p of langPrefixes) {
     if (pathname.startsWith(`/${p}`)) { currentLang = p; break; }
   }
+  if (currentLang === "lv") {
+    const q = new URLSearchParams(search).get("lang");
+    if (q && langPrefixes.includes(q)) currentLang = q;
+  }
+
+  // Fallback: build ?lang=xx links for any page without hreflang mapping (e.g. shop, product detail)
+  const alternatives = mappedAlternatives ?? Object.fromEntries(
+    ["lv", ...langPrefixes].map((l) => [l, l === "lv" ? pathname : `${pathname}?lang=${l}`])
+  );
+
 
   return (
     <div className="relative" ref={ref}>
