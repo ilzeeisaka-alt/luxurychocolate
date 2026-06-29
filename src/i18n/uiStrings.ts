@@ -73,7 +73,18 @@ const en: UIStrings = {
   addToCart: "Add to cart",
   addingToCart: "Adding...",
   uploadLogoOrCustom: "Upload logo / custom order",
+  backToShop: "Back to shop",
+  inStock: "In stock",
+  madeToOrder: "Made to order",
+  preparationDays: (n) => `preparation ${n} d.`,
+  deliveryDays: (n) => `delivery ${n} d.`,
+  vatIncluded: "VAT included",
+  description: "Description",
+  addedToCart: "Added to cart",
+  errorTitle: "Error",
+  addToCartError: "Could not add to cart.",
 };
+
 
 export const uiStrings: Record<Lang, UIStrings> = expandLangs<UIStrings>({
   en,
