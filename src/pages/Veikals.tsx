@@ -313,7 +313,7 @@ const Veikals = () => {
                           />
                         ) : (
                           <div className="w-full h-full flex items-center justify-center text-muted-foreground text-xs">
-                            Bez attēla
+                            {ui.noImage}
                           </div>
                         )}
                       </div>
