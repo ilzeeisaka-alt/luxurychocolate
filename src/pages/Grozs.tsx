@@ -9,6 +9,9 @@ import { useAuth } from "@/hooks/useAuth";
 import { useSeo } from "@/hooks/useSeo";
 import { useToast } from "@/hooks/use-toast";
 import { getStoredRef, type StoredRef } from "@/lib/affiliateRef";
+import { useCurrentLang, pickI18n } from "@/i18n/useCurrentLang";
+import { tUI } from "@/i18n/uiStrings";
+
 
 interface LogoRef { url: string; filename: string; quantity?: number }
 interface CartLine {
