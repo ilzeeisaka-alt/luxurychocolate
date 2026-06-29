@@ -238,7 +238,7 @@ const Veikals = () => {
                     : "text-muted-foreground hover:text-foreground hover:bg-card"
                 )}
               >
-                Visi produkti
+                {ui.allProducts}
               </button>
             </nav>
           </aside>
