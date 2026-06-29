@@ -584,13 +584,19 @@ const Rekins = () => {
               </div>
             </div>
 
-            <table className="w-full text-sm border-collapse">
+            <table className="w-full text-sm border-collapse table-fixed">
+              <colgroup>
+                <col />
+                <col className="w-20" />
+                <col className="w-32" />
+                <col className="w-32" />
+              </colgroup>
               <thead>
                 <tr className="border-b-2 border-black">
-                  <th className="text-left py-2">{tx.itemName}</th>
-                  <th className="text-right py-2">{tx.quantity}</th>
-                  <th className="text-right py-2">{tx.price}</th>
-                  <th className="text-right py-2">{tx.sum}</th>
+                  <th className="text-left py-2 pr-4">{tx.itemName}</th>
+                  <th className="text-right py-2 px-3 tabular-nums">{tx.quantity}</th>
+                  <th className="text-right py-2 px-3 tabular-nums whitespace-nowrap">{tx.price}</th>
+                  <th className="text-right py-2 pl-3 tabular-nums whitespace-nowrap">{tx.sum}</th>
                 </tr>
               </thead>
               <tbody>
@@ -600,7 +606,7 @@ const Rekins = () => {
                     : (i.logo_url ? [{ url: i.logo_url, filename: i.logo_filename ?? "", quantity: i.quantity }] : []);
                   return (
                     <tr key={i.id} className="border-b border-gray-200">
-                      <td className="py-2">
+                      <td className="py-2 pr-4 align-top">
                         {localizeProductName(pickI18n(i.product!.name_i18n, lang, i.product!.name), lang, tx)}
                         {logos.length > 0 && (
                           <div className="text-xs text-gray-500 mt-1">
@@ -610,18 +616,18 @@ const Rekins = () => {
                           </div>
                         )}
                       </td>
-                      <td className="text-right py-2">{i.quantity}</td>
-                      <td className="text-right py-2">{fmt(i.product!.price_cents, currency, lang)}</td>
-                      <td className="text-right py-2">{fmt(i.product!.price_cents * i.quantity, currency, lang)}</td>
+                      <td className="text-right py-2 px-3 align-top tabular-nums whitespace-nowrap">{i.quantity}</td>
+                      <td className="text-right py-2 px-3 align-top tabular-nums whitespace-nowrap">{fmt(i.product!.price_cents, currency, lang)}</td>
+                      <td className="text-right py-2 pl-3 align-top tabular-nums whitespace-nowrap">{fmt(i.product!.price_cents * i.quantity, currency, lang)}</td>
                     </tr>
                   );
                 })}
                 {shipping.cents > 0 && (
                   <tr className="border-b border-gray-200">
-                    <td className="py-2">{tx.shipping}: {shippingLabel}</td>
-                    <td className="text-right py-2">1</td>
-                    <td className="text-right py-2">{fmt(shipping.cents, currency, lang)}</td>
-                    <td className="text-right py-2">{fmt(shipping.cents, currency, lang)}</td>
+                    <td className="py-2 pr-4 align-top">{tx.shipping}: {shippingLabel}</td>
+                    <td className="text-right py-2 px-3 align-top tabular-nums whitespace-nowrap">1</td>
+                    <td className="text-right py-2 px-3 align-top tabular-nums whitespace-nowrap">{fmt(shipping.cents, currency, lang)}</td>
+                    <td className="text-right py-2 pl-3 align-top tabular-nums whitespace-nowrap">{fmt(shipping.cents, currency, lang)}</td>
                   </tr>
                 )}
               </tbody>
