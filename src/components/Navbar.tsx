@@ -8,6 +8,7 @@ import type { Lang } from "@/i18n/types";
 import { expandLangs } from "@/i18n/expandLangs";
 import { useAuth } from "@/hooks/useAuth";
 import { supabase } from "@/integrations/supabase/client";
+import { tUI } from "@/i18n/uiStrings";
 
 type InfoLabels = {
   info: string;
