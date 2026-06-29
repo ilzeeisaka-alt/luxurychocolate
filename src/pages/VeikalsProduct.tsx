@@ -163,11 +163,12 @@ const VeikalsProduct = () => {
       <Navbar />
       <main className="container mx-auto px-4 pt-28 pb-16">
         <Link
-          to="/veikals"
+          to={`/veikals${lang !== "lv" ? `?lang=${lang}` : ""}`}
           className="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-primary mb-8 transition-colors"
         >
-          <ChevronLeft className="w-4 h-4" /> Atpakaļ uz veikalu
+          <ChevronLeft className="w-4 h-4" /> {t.backToShop}
         </Link>
+
 
         <div className="grid md:grid-cols-2 gap-10 lg:gap-16">
           {/* Gallery */}
