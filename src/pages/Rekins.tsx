@@ -81,6 +81,8 @@ const INVOICE_TEXT = {
     shipping: "Shipping",
     subtotalExVat: "Amount excl. VAT",
     vat: "VAT 21%",
+    vatReverse: "VAT 21% (reverse charge — 0%)",
+    reverseNote: "Reverse charge — VAT is accounted for by the recipient (Art. 196 of EU VAT Directive 2006/112/EC).",
     totalPayable: "Total payable",
     bankTransfer: "Payment by bank transfer",
     recipient: "Recipient",
@@ -137,6 +139,8 @@ const INVOICE_TEXT = {
     shipping: "Piegāde",
     subtotalExVat: "Summa bez PVN",
     vat: "PVN 21%",
+    vatReverse: "PVN 21% (apgrieztā maksāšanas kārtība — 0%)",
+    reverseNote: "Apgrieztā PVN maksāšanas kārtība — PVN aprēķina un maksā pakalpojuma saņēmējs (PVN direktīvas 2006/112/EK 196. pants).",
     totalPayable: "Kopā apmaksai",
     bankTransfer: "Apmaksa ar pārskaitījumu",
     recipient: "Saņēmējs",
@@ -193,6 +197,8 @@ const INVOICE_TEXT = {
     shipping: "Доставка",
     subtotalExVat: "Сумма без НДС",
     vat: "НДС 21%",
+    vatReverse: "НДС 21% (обратное начисление — 0%)",
+    reverseNote: "Обратное начисление НДС — НДС уплачивает получатель (ст. 196 Директивы ЕС 2006/112/EC).",
     totalPayable: "Итого к оплате",
     bankTransfer: "Оплата банковским переводом",
     recipient: "Получатель",
@@ -324,11 +330,17 @@ const Rekins = () => {
   const subtotal = validItems.reduce((s, i) => s + (i.product?.price_cents ?? 0) * i.quantity, 0);
   const shipping = SHIPPING_OPTIONS[shippingId] ?? SHIPPING_OPTIONS.pickup;
   const shippingLabel = String(t[shipping.labelKey] ?? shipping.lvLabel);
-  const total = subtotal + shipping.cents;
   // VAT included (21%) — show breakdown
   const vatRate = 0.21;
-  const totalExVat = Math.round(total / (1 + vatRate));
-  const vatAmount = total - totalExVat;
+  // EU VAT number prefixes (excluding LV — domestic sales keep 21% VAT)
+  const EU_VAT_PREFIXES = ["AT","BE","BG","CY","CZ","DE","DK","EE","EL","GR","ES","FI","FR","HR","HU","IE","IT","LT","LU","MT","NL","PL","PT","RO","SE","SI","SK","XI"];
+  const normalizedVat = buyerVat.replace(/[\s-]/g, "").toUpperCase();
+  const vatPrefix = normalizedVat.slice(0, 2);
+  const isReverseCharge = EU_VAT_PREFIXES.includes(vatPrefix) && normalizedVat.length >= 4;
+  const subtotalExVatBase = Math.round((subtotal + shipping.cents) / (1 + vatRate));
+  const totalExVat = isReverseCharge ? subtotalExVatBase : Math.round((subtotal + shipping.cents) / (1 + vatRate));
+  const vatAmount = isReverseCharge ? 0 : (subtotal + shipping.cents) - totalExVat;
+  const total = isReverseCharge ? totalExVat : subtotal + shipping.cents;
 
   const invoiceRef = useRef<HTMLDivElement | null>(null);
   const [savingPdf, setSavingPdf] = useState(false);
@@ -617,8 +629,8 @@ const Rekins = () => {
                         )}
                       </td>
                       <td className="text-right py-2 px-3 align-top tabular-nums whitespace-nowrap">{i.quantity}</td>
-                      <td className="text-right py-2 px-3 align-top tabular-nums whitespace-nowrap">{fmt(i.product!.price_cents, currency, lang)}</td>
-                      <td className="text-right py-2 pl-3 align-top tabular-nums whitespace-nowrap">{fmt(i.product!.price_cents * i.quantity, currency, lang)}</td>
+                      <td className="text-right py-2 px-3 align-top tabular-nums whitespace-nowrap">{fmt(isReverseCharge ? Math.round(i.product!.price_cents / (1 + vatRate)) : i.product!.price_cents, currency, lang)}</td>
+                      <td className="text-right py-2 pl-3 align-top tabular-nums whitespace-nowrap">{fmt(isReverseCharge ? Math.round(i.product!.price_cents * i.quantity / (1 + vatRate)) : i.product!.price_cents * i.quantity, currency, lang)}</td>
                     </tr>
                   );
                 })}
@@ -626,20 +638,26 @@ const Rekins = () => {
                   <tr className="border-b border-gray-200">
                     <td className="py-2 pr-4 align-top">{tx.shipping}: {shippingLabel}</td>
                     <td className="text-right py-2 px-3 align-top tabular-nums whitespace-nowrap">1</td>
-                    <td className="text-right py-2 px-3 align-top tabular-nums whitespace-nowrap">{fmt(shipping.cents, currency, lang)}</td>
-                    <td className="text-right py-2 pl-3 align-top tabular-nums whitespace-nowrap">{fmt(shipping.cents, currency, lang)}</td>
+                    <td className="text-right py-2 px-3 align-top tabular-nums whitespace-nowrap">{fmt(isReverseCharge ? Math.round(shipping.cents / (1 + vatRate)) : shipping.cents, currency, lang)}</td>
+                    <td className="text-right py-2 pl-3 align-top tabular-nums whitespace-nowrap">{fmt(isReverseCharge ? Math.round(shipping.cents / (1 + vatRate)) : shipping.cents, currency, lang)}</td>
                   </tr>
                 )}
               </tbody>
             </table>
 
             <div className="flex justify-end mt-6">
-              <div className="w-72 text-sm">
+              <div className="w-80 text-sm">
                 <div className="flex justify-between py-1"><span>{tx.subtotalExVat}:</span><span>{fmt(totalExVat, currency, lang)}</span></div>
-                <div className="flex justify-between py-1"><span>{tx.vat}:</span><span>{fmt(vatAmount, currency, lang)}</span></div>
+                <div className="flex justify-between py-1">
+                  <span>{isReverseCharge ? tx.vatReverse : tx.vat}:</span>
+                  <span>{fmt(vatAmount, currency, lang)}</span>
+                </div>
                 <div className="flex justify-between py-2 border-t-2 border-black font-bold text-base mt-1">
                   <span>{tx.totalPayable}:</span><span>{fmt(total, currency, lang)}</span>
                 </div>
+                {isReverseCharge && (
+                  <p className="mt-2 text-xs italic text-gray-600">{tx.reverseNote}</p>
+                )}
               </div>
             </div>
 
