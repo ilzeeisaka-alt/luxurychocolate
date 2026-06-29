@@ -124,6 +124,13 @@ export const uiStrings: Record<Lang, UIStrings> = expandLangs<UIStrings>({
     noImage: "Нет изображения", prevPage: "Предыдущая страница", nextPage: "Следующая страница",
     addToCart: "Добавить в корзину", addingToCart: "Добавляем...",
     uploadLogoOrCustom: "Загрузить логотип / индивидуальный заказ",
+    backToShop: "Назад в магазин", inStock: "В наличии", madeToOrder: "Изготавливается под заказ",
+    preparationDays: (n) => `подготовка ${n} д.`,
+    deliveryDays: (n) => `доставка ${n} д.`,
+    vatIncluded: "с НДС", description: "Описание",
+    addedToCart: "Добавлено в корзину", errorTitle: "Ошибка",
+    addToCartError: "Не удалось добавить в корзину.",
+
   },
 
   et: { ...en, signIn: "Logi sisse", myAccount: "Minu konto", cart: "Ostukorv", subscribe: "Telli", email: "E-post", thanks: "Aitäh!", affiliate: "Affiliate", catalog: "Kataloog", shopTitle: "Šokolaadipood", productsCount: (n)=>`${n} toodet`, shopTagline: "tasuta visand 24h jooksul, tootmine alates 3 päevast.", searchProducts: "Otsi tooteid...", categories: "Kategooriad", allProducts: "Kõik tooted", nothingFound: "Midagi ei leitud", tryAnother: "Proovi teist kategooriat või otsisõna.", byCategory: "Kategooria järgi", newest: "Uusimad", name: "Nimi", noImage: "Pilt puudub", prevPage: "Eelmine", nextPage: "Järgmine" },
