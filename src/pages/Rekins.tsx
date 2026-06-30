@@ -234,7 +234,10 @@ const INVOICE_TEXT = {
     errorTitle: "Ошибка",
     confirmError: "Не удалось подтвердить заказ. Пожалуйста, попробуйте ещё раз.",
     prepChocolate: "Подготовка шоколадного производства",
+    agencyDiscount: "Агентская скидка",
+    agencyDiscountApply: "Применить агентскую скидку",
   },
+
 };
 
 const getInvoiceText = (lang: string) => INVOICE_TEXT[lang as keyof typeof INVOICE_TEXT] ?? INVOICE_TEXT.en;
