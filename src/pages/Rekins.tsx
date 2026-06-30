@@ -104,7 +104,10 @@ const INVOICE_TEXT = {
     errorTitle: "Error",
     confirmError: "Could not confirm the order. Please try again.",
     prepChocolate: "Preparation for chocolate production",
+    agencyDiscount: "Agency discount",
+    agencyDiscountApply: "Apply agency discount",
   },
+
   lv: {
     backToCart: "Atpakaļ uz grozu",
     print: "Drukāt",
