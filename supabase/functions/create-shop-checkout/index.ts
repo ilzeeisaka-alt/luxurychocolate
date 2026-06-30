@@ -65,7 +65,7 @@ serve(async (req) => {
     if (authErr || !userData.user) throw new Error("Unauthorized");
     const user = userData.user;
 
-    const { environment, returnUrl, shippingId, affiliateCode, lang = "lv", locale = "auto" } = await req.json();
+    const { environment, returnUrl, shippingId, affiliateCode, agencyDiscountOn, agencyDiscountPct, lang = "lv", locale = "auto" } = await req.json();
     const env = (environment || "sandbox") as StripeEnv;
     const shipping = SHIPPING_OPTIONS[shippingId as string] ?? SHIPPING_OPTIONS.pickup;
     const currentLang = typeof lang === "string" ? lang : "lv";
@@ -132,8 +132,10 @@ serve(async (req) => {
     const affDiscountCents = affiliate
       ? Math.round(subtotalCents * (Number(affiliate.customer_discount_rate) / 100))
       : 0;
-
-    const totalCents = subtotalCents - affDiscountCents + shipping.cents;
+    const rawAgencyPct = Number(agencyDiscountPct);
+    const agencyPct = Math.max(0, Math.min(100, Number.isFinite(rawAgencyPct) ? rawAgencyPct : 0));
+    const agencyDiscountCents = agencyDiscountOn ? Math.round(subtotalCents * (agencyPct / 100)) : 0;
+    const totalCents = subtotalCents - affDiscountCents - agencyDiscountCents + shipping.cents;
     if (totalCents < 50) {
       return new Response(
         JSON.stringify({
@@ -155,13 +157,16 @@ serve(async (req) => {
         customer_name: customerName,
         customer_phone: profile?.phone || null,
         currency,
-        subtotal_cents: subtotalCents,
+        subtotal_cents: subtotalCents - agencyDiscountCents,
         shipping_cents: shipping.cents,
         shipping_method: shippingLabel,
         total_cents: totalCents,
         affiliate_id: affiliate?.id ?? null,
         affiliate_code: affiliate?.code ?? null,
         affiliate_discount_cents: affDiscountCents,
+        ...(agencyDiscountCents > 0 ? {
+          notes: `Agency discount: ${agencyPct}% (-${(agencyDiscountCents / 100).toFixed(2)} ${currency})`,
+        } : {}),
       })
       .select()
       .single();
@@ -219,8 +224,8 @@ serve(async (req) => {
       });
     }
 
-    // Optional affiliate discount — create one-off Stripe coupon for the customer
-    let discountsArg: { coupon: string }[] | undefined;
+    // Optional discounts — create one-off Stripe coupons for partner and agency discounts
+    const coupons: { coupon: string }[] = [];
     if (affiliate && affDiscountCents > 0) {
       const coupon = await stripe.coupons.create({
         amount_off: affDiscountCents,
@@ -229,8 +234,23 @@ serve(async (req) => {
         name: `Partnera atlaide ${affiliate.code}`,
         max_redemptions: 1,
       });
-      discountsArg = [{ coupon: coupon.id }];
+      coupons.push({ coupon: coupon.id });
     }
+    if (agencyDiscountCents > 0) {
+      const coupon = await stripe.coupons.create({
+        amount_off: agencyDiscountCents,
+        currency: (currency || "EUR").toLowerCase(),
+        duration: "once",
+        name: currentLang === "ru"
+          ? `Агентская скидка ${agencyPct}%`
+          : currentLang === "et"
+          ? `Agentuuri allahindlus ${agencyPct}%`
+          : `Aģentūras atlaide ${agencyPct}%`,
+        max_redemptions: 1,
+      });
+      coupons.push({ coupon: coupon.id });
+    }
+    const discountsArg = coupons.length > 0 ? coupons : undefined;
 
     const session = await stripe.checkout.sessions.create({
       line_items: stripeLineItems,
