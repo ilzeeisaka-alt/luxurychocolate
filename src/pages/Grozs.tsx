@@ -29,6 +29,7 @@ interface CartLine {
     in_stock: boolean;
     image_url: string | null;
     name_i18n: Record<string, unknown> | null;
+    weight_grams: number | null;
   };
 }
 
@@ -102,7 +103,7 @@ const Grozs = () => {
     setLoading(true);
     const { data, error } = await supabase
       .from("cart_items")
-      .select("id, quantity, logo_url, logo_filename, logos, product:products(id, slug, name, name_i18n, price_cents, currency, in_stock)")
+      .select("id, quantity, logo_url, logo_filename, logos, product:products(id, slug, name, name_i18n, price_cents, currency, in_stock, weight_grams)")
       .eq("user_id", user.id)
       .order("created_at", { ascending: false });
     if (error) {
