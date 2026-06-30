@@ -224,33 +224,35 @@ serve(async (req) => {
       });
     }
 
-    // Optional discounts — create one-off Stripe coupons for partner and agency discounts
-    const coupons: { coupon: string }[] = [];
-    if (affiliate && affDiscountCents > 0) {
-      const coupon = await stripe.coupons.create({
-        amount_off: affDiscountCents,
-        currency: (currency || "EUR").toLowerCase(),
-        duration: "once",
-        name: `Partnera atlaide ${affiliate.code}`,
-        max_redemptions: 1,
-      });
-      coupons.push({ coupon: coupon.id });
-    }
-    if (agencyDiscountCents > 0) {
-      const coupon = await stripe.coupons.create({
-        amount_off: agencyDiscountCents,
-        currency: (currency || "EUR").toLowerCase(),
-        duration: "once",
-        name: currentLang === "ru"
+    // Optional discounts — create one-off Stripe coupon for the total discount amount
+    const totalDiscountCents = affDiscountCents + agencyDiscountCents;
+    let discountsArg: { coupon: string }[] | undefined;
+    if (totalDiscountCents > 0) {
+      let discountName: string;
+      if (agencyDiscountCents > 0 && affDiscountCents > 0) {
+        discountName = currentLang === "ru"
+          ? "Партнёрская + агентская скидка"
+          : currentLang === "et"
+          ? "Partneri + agentuuri allahindlus"
+          : "Partnera + aģentūras atlaide";
+      } else if (agencyDiscountCents > 0) {
+        discountName = currentLang === "ru"
           ? `Агентская скидка ${agencyPct}%`
           : currentLang === "et"
           ? `Agentuuri allahindlus ${agencyPct}%`
-          : `Aģentūras atlaide ${agencyPct}%`,
+          : `Aģentūras atlaide ${agencyPct}%`;
+      } else {
+        discountName = `Partnera atlaide ${affiliate?.code}`;
+      }
+      const coupon = await stripe.coupons.create({
+        amount_off: totalDiscountCents,
+        currency: (currency || "EUR").toLowerCase(),
+        duration: "once",
+        name: discountName,
         max_redemptions: 1,
       });
-      coupons.push({ coupon: coupon.id });
+      discountsArg = [{ coupon: coupon.id }];
     }
-    const discountsArg = coupons.length > 0 ? coupons : undefined;
 
     const session = await stripe.checkout.sessions.create({
       line_items: stripeLineItems,
