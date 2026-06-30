@@ -172,6 +172,9 @@ const Grozs = () => {
   const affDiscount = affRef ? Math.round(subtotal * (affRef.discountRate / 100)) : 0;
   const total = subtotal - affDiscount + shipping.cents;
   const isBelowPaymentMinimum = total > 0 && total < 50;
+  const totalWeightGrams = items.reduce((s, i) => s + (i.product.weight_grams ?? 0) * i.quantity, 0);
+  const numLocale = lang === "ru" ? "ru-RU" : lang === "en" ? "en-US" : "lv-LV";
+  const fmtKg = (g: number) => `${(g / 1000).toLocaleString(numLocale, { minimumFractionDigits: 3, maximumFractionDigits: 3 })} kg`;
 
   return (
     <div className="min-h-screen bg-background">
