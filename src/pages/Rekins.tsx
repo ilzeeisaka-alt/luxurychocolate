@@ -278,6 +278,9 @@ const Rekins = () => {
   const [shippingId, setShippingId] = useState<string>(
     () => sessionStorage.getItem("shipping_id") || "pickup",
   );
+  const [agencyDiscountOn, setAgencyDiscountOn] = useState<boolean>(saved.agencyOn ?? false);
+  const [agencyDiscountPct, setAgencyDiscountPct] = useState<number>(typeof saved.agencyPct === "number" ? saved.agencyPct : 20);
+
 
   // Persist on every change
   useEffect(() => {
