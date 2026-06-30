@@ -750,11 +750,18 @@ const Rekins = () => {
 
             <div className="flex justify-end mt-6">
               <div className="w-80 text-sm">
+                {agencyDiscountOn && agencyDiscountCents > 0 && (
+                  <div className="flex justify-between py-1 text-green-700">
+                    <span>{tx.agencyDiscount} ({agencyPctClamped}%):</span>
+                    <span>−{fmt(agencyDiscountCents, currency, lang)}</span>
+                  </div>
+                )}
                 <div className="flex justify-between py-1"><span>{tx.subtotalExVat}:</span><span>{fmt(totalExVat, currency, lang)}</span></div>
                 <div className="flex justify-between py-1">
                   <span>{isReverseCharge ? tx.vatReverse : tx.vat}:</span>
                   <span>{fmt(vatAmount, currency, lang)}</span>
                 </div>
+
                 <div className="flex justify-between py-2 border-t-2 border-black font-bold text-base mt-1">
                   <span>{tx.totalPayable}:</span><span>{fmt(total, currency, lang)}</span>
                 </div>
