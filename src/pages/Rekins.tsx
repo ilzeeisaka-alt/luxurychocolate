@@ -28,6 +28,7 @@ interface CartLine {
     name_i18n: Record<string, unknown> | null;
     price_cents: number;
     currency: string;
+    weight_grams: number | null;
   } | null;
 }
 
@@ -88,6 +89,7 @@ const INVOICE_TEXT = {
     viesInvalid: "Not found in VIES",
     viesSource: "Source: ec.europa.eu/taxation_customs/vies",
     totalPayable: "Total payable",
+    totalWeight: "Total weight",
     bankTransfer: "Payment by bank transfer",
     recipient: "Recipient",
     companyRegNo: "Reg. no.",
@@ -153,6 +155,7 @@ const INVOICE_TEXT = {
     viesInvalid: "Nav atrasts VIES sistēmā",
     viesSource: "Avots: ec.europa.eu/taxation_customs/vies",
     totalPayable: "Kopā apmaksai",
+    totalWeight: "Kopējais svars",
     bankTransfer: "Apmaksa ar pārskaitījumu",
     recipient: "Saņēmējs",
     companyRegNo: "Reģ.nr.",
@@ -218,6 +221,7 @@ const INVOICE_TEXT = {
     viesInvalid: "Не найден в VIES",
     viesSource: "Источник: ec.europa.eu/taxation_customs/vies",
     totalPayable: "Итого к оплате",
+    totalWeight: "Общий вес",
     bankTransfer: "Оплата банковским переводом",
     recipient: "Получатель",
     companyRegNo: "Рег. №",
@@ -323,7 +327,7 @@ const Rekins = () => {
     setLoading(true);
     const { data } = await supabase
       .from("cart_items")
-      .select("id, quantity, logo_url, logo_filename, logos, product:products(id, name, name_i18n, price_cents, currency)")
+      .select("id, quantity, logo_url, logo_filename, logos, product:products(id, name, name_i18n, price_cents, currency, weight_grams)")
       .eq("user_id", user.id);
     setItems((data ?? []) as unknown as CartLine[]);
     // Prefill from profile
@@ -354,6 +358,12 @@ const Rekins = () => {
   const validItems = items.filter((i) => i.product);
   const currency = validItems[0]?.product?.currency ?? "EUR";
   const subtotal = validItems.reduce((s, i) => s + (i.product?.price_cents ?? 0) * i.quantity, 0);
+  const totalWeightGrams = validItems.reduce((s, i) => s + (i.product?.weight_grams ?? 0) * i.quantity, 0);
+  const fmtWeight = (g: number) => {
+    const loc = lang === "ru" ? "ru-RU" : lang === "en" ? "en-US" : "lv-LV";
+    if (g >= 1000) return `${(g / 1000).toLocaleString(loc, { maximumFractionDigits: 3 })} kg`;
+    return `${g.toLocaleString(loc)} g`;
+  };
   const shipping = SHIPPING_OPTIONS[shippingId] ?? SHIPPING_OPTIONS.pickup;
   const shippingLabel = String(t[shipping.labelKey] ?? shipping.lvLabel);
   // Agency discount (applied to products subtotal, VAT-inclusive)
@@ -765,6 +775,11 @@ const Rekins = () => {
                 <div className="flex justify-between py-2 border-t-2 border-black font-bold text-base mt-1">
                   <span>{tx.totalPayable}:</span><span>{fmt(total, currency, lang)}</span>
                 </div>
+                {totalWeightGrams > 0 && (
+                  <div className="flex justify-between py-1 text-sm text-gray-700">
+                    <span>{tx.totalWeight}:</span><span className="tabular-nums">{fmtWeight(totalWeightGrams)}</span>
+                  </div>
+                )}
                 {isReverseCharge && (
                   <p className="mt-2 text-xs italic text-gray-600">{tx.reverseNote}</p>
                 )}
