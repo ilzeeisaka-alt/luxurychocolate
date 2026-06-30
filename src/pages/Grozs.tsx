@@ -194,7 +194,9 @@ const Grozs = () => {
   const subtotal = items.reduce((s, i) => s + i.product.price_cents * i.quantity, 0);
   const currency = items[0]?.product.currency ?? "EUR";
   const affDiscount = affRef ? Math.round(subtotal * (affRef.discountRate / 100)) : 0;
-  const total = subtotal - affDiscount + shipping.cents;
+  const agencyPctClamped = Math.max(0, Math.min(100, Number.isFinite(agencyDiscountPct) ? agencyDiscountPct : 0));
+  const agencyDiscountCents = agencyDiscountOn ? Math.round(subtotal * (agencyPctClamped / 100)) : 0;
+  const total = subtotal - affDiscount - agencyDiscountCents + shipping.cents;
   const isBelowPaymentMinimum = total > 0 && total < 50;
   const totalWeightGrams = items.reduce((s, i) => s + (i.product.weight_grams ?? 0) * i.quantity, 0);
   const numLocale = lang === "ru" ? "ru-RU" : lang === "en" ? "en-US" : lang === "et" ? "et-EE" : "lv-LV";
