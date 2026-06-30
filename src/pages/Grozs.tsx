@@ -82,6 +82,18 @@ const Grozs = () => {
     sessionStorage.getItem("shipping_id") || "pickup"
   );
   const [affRef, setAffRef] = useState<StoredRef | null>(() => getStoredRef());
+  const savedAgency = (() => {
+    try {
+      const raw = localStorage.getItem("invoice_buyer_form");
+      if (raw) {
+        const p = JSON.parse(raw);
+        return { on: !!p.agencyOn, pct: typeof p.agencyPct === "number" ? p.agencyPct : 20 };
+      }
+    } catch {}
+    return { on: false, pct: 20 };
+  })();
+  const [agencyDiscountOn, setAgencyDiscountOn] = useState<boolean>(savedAgency.on);
+  const [agencyDiscountPct, setAgencyDiscountPct] = useState<number>(savedAgency.pct);
 
 
   useSeo({
@@ -95,6 +107,18 @@ const Grozs = () => {
       navigate(`/auth?redirect=${encodeURIComponent(withLang("/grozs"))}${lang !== "lv" ? `&lang=${lang}` : ""}`, { replace: true });
     }
   }, [authLoading, user, navigate, withLang, lang]);
+
+  useEffect(() => {
+    try {
+      const raw = localStorage.getItem("invoice_buyer_form");
+      const p = raw ? JSON.parse(raw) : {};
+      localStorage.setItem(
+        "invoice_buyer_form",
+        JSON.stringify({ ...p, agencyOn: agencyDiscountOn, agencyPct: agencyDiscountPct }),
+      );
+    } catch {}
+  }, [agencyDiscountOn, agencyDiscountPct]);
+
 
   const shipping = SHIPPING_OPTIONS.find((o) => o.id === shippingId) ?? SHIPPING_OPTIONS[0];
 
