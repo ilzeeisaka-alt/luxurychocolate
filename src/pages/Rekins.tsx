@@ -104,7 +104,10 @@ const INVOICE_TEXT = {
     errorTitle: "Error",
     confirmError: "Could not confirm the order. Please try again.",
     prepChocolate: "Preparation for chocolate production",
+    agencyDiscount: "Agency discount",
+    agencyDiscountApply: "Apply agency discount",
   },
+
   lv: {
     backToCart: "Atpakaļ uz grozu",
     print: "Drukāt",
@@ -166,7 +169,10 @@ const INVOICE_TEXT = {
     errorTitle: "Kļūda",
     confirmError: "Neizdevās apstiprināt pasūtījumu. Lūdzu, mēģini vēlreiz.",
     prepChocolate: "Sagatavošana šokolādes ražošanai",
+    agencyDiscount: "Aģentūras atlaide",
+    agencyDiscountApply: "Pielietot aģentūras atlaidi",
   },
+
   ru: {
     backToCart: "Назад в корзину",
     print: "Печать",
@@ -228,7 +234,10 @@ const INVOICE_TEXT = {
     errorTitle: "Ошибка",
     confirmError: "Не удалось подтвердить заказ. Пожалуйста, попробуйте ещё раз.",
     prepChocolate: "Подготовка шоколадного производства",
+    agencyDiscount: "Агентская скидка",
+    agencyDiscountApply: "Применить агентскую скидку",
   },
+
 };
 
 const getInvoiceText = (lang: string) => INVOICE_TEXT[lang as keyof typeof INVOICE_TEXT] ?? INVOICE_TEXT.en;
@@ -269,6 +278,9 @@ const Rekins = () => {
   const [shippingId, setShippingId] = useState<string>(
     () => sessionStorage.getItem("shipping_id") || "pickup",
   );
+  const [agencyDiscountOn, setAgencyDiscountOn] = useState<boolean>(saved.agencyOn ?? false);
+  const [agencyDiscountPct, setAgencyDiscountPct] = useState<number>(typeof saved.agencyPct === "number" ? saved.agencyPct : 20);
+
 
   // Persist on every change
   useEffect(() => {
@@ -277,9 +289,11 @@ const Rekins = () => {
       JSON.stringify({
         company: buyerCompany, contact: buyerContact, vat: buyerVat, regNr: buyerRegNr,
         address: buyerAddress, email: buyerEmail, phone: buyerPhone,
+        agencyOn: agencyDiscountOn, agencyPct: agencyDiscountPct,
       }),
     );
-  }, [buyerCompany, buyerContact, buyerVat, buyerRegNr, buyerAddress, buyerEmail, buyerPhone]);
+  }, [buyerCompany, buyerContact, buyerVat, buyerRegNr, buyerAddress, buyerEmail, buyerPhone, agencyDiscountOn, agencyDiscountPct]);
+
 
   const invoiceNumber = useMemo(() => {
     const d = new Date();
@@ -342,6 +356,10 @@ const Rekins = () => {
   const subtotal = validItems.reduce((s, i) => s + (i.product?.price_cents ?? 0) * i.quantity, 0);
   const shipping = SHIPPING_OPTIONS[shippingId] ?? SHIPPING_OPTIONS.pickup;
   const shippingLabel = String(t[shipping.labelKey] ?? shipping.lvLabel);
+  // Agency discount (applied to products subtotal, VAT-inclusive)
+  const agencyPctClamped = Math.max(0, Math.min(100, Number.isFinite(agencyDiscountPct) ? agencyDiscountPct : 0));
+  const agencyDiscountCents = agencyDiscountOn ? Math.round(subtotal * (agencyPctClamped / 100)) : 0;
+  const subtotalAfterDiscount = subtotal - agencyDiscountCents;
   // VAT included (21%) — show breakdown
   const vatRate = 0.21;
   // EU VAT number prefixes (excluding LV — domestic sales keep 21% VAT)
@@ -349,10 +367,11 @@ const Rekins = () => {
   const normalizedVat = buyerVat.replace(/[\s-]/g, "").toUpperCase();
   const vatPrefix = normalizedVat.slice(0, 2);
   const isReverseCharge = EU_VAT_PREFIXES.includes(vatPrefix) && normalizedVat.length >= 4;
-  const subtotalExVatBase = Math.round((subtotal + shipping.cents) / (1 + vatRate));
-  const totalExVat = isReverseCharge ? subtotalExVatBase : Math.round((subtotal + shipping.cents) / (1 + vatRate));
-  const vatAmount = isReverseCharge ? 0 : (subtotal + shipping.cents) - totalExVat;
-  const total = isReverseCharge ? totalExVat : subtotal + shipping.cents;
+  const grossTotal = subtotalAfterDiscount + shipping.cents;
+  const totalExVat = Math.round(grossTotal / (1 + vatRate));
+  const vatAmount = isReverseCharge ? 0 : grossTotal - totalExVat;
+  const total = isReverseCharge ? totalExVat : grossTotal;
+
 
   const invoiceRef = useRef<HTMLDivElement | null>(null);
   const [savingPdf, setSavingPdf] = useState(false);
@@ -447,7 +466,7 @@ const Rekins = () => {
           vat_number: buyerVat,
           shipping_address: buyerAddress,
           shipping_method: shippingLabel,
-          subtotal_cents: subtotal,
+          subtotal_cents: subtotalAfterDiscount,
           shipping_cents: shipping.cents,
           tax_cents: vatAmount,
           total_cents: total,
@@ -580,7 +599,32 @@ const Rekins = () => {
               ))}
             </select>
           </div>
+          <div className="mt-4 flex items-center gap-3 flex-wrap">
+            <label className="inline-flex items-center gap-2 text-sm font-medium text-foreground">
+              <input
+                type="checkbox"
+                checked={agencyDiscountOn}
+                onChange={(e) => setAgencyDiscountOn(e.target.checked)}
+                className="w-4 h-4 accent-primary"
+              />
+              {tx.agencyDiscountApply}
+            </label>
+            <div className="flex items-center gap-2">
+              <input
+                type="number"
+                min={0}
+                max={100}
+                step={1}
+                value={agencyDiscountPct}
+                disabled={!agencyDiscountOn}
+                onChange={(e) => setAgencyDiscountPct(Number(e.target.value))}
+                className="w-20 rounded-md bg-background border border-border px-3 py-2 text-sm disabled:opacity-50"
+              />
+              <span className="text-sm text-muted-foreground">%</span>
+            </div>
+          </div>
         </section>
+
 
         {/* Printable invoice */}
         {loading ? (
@@ -706,11 +750,18 @@ const Rekins = () => {
 
             <div className="flex justify-end mt-6">
               <div className="w-80 text-sm">
+                {agencyDiscountOn && agencyDiscountCents > 0 && (
+                  <div className="flex justify-between py-1 text-green-700">
+                    <span>{tx.agencyDiscount} ({agencyPctClamped}%):</span>
+                    <span>−{fmt(agencyDiscountCents, currency, lang)}</span>
+                  </div>
+                )}
                 <div className="flex justify-between py-1"><span>{tx.subtotalExVat}:</span><span>{fmt(totalExVat, currency, lang)}</span></div>
                 <div className="flex justify-between py-1">
                   <span>{isReverseCharge ? tx.vatReverse : tx.vat}:</span>
                   <span>{fmt(vatAmount, currency, lang)}</span>
                 </div>
+
                 <div className="flex justify-between py-2 border-t-2 border-black font-bold text-base mt-1">
                   <span>{tx.totalPayable}:</span><span>{fmt(total, currency, lang)}</span>
                 </div>
