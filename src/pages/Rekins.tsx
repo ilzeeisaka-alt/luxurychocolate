@@ -358,6 +358,12 @@ const Rekins = () => {
   const validItems = items.filter((i) => i.product);
   const currency = validItems[0]?.product?.currency ?? "EUR";
   const subtotal = validItems.reduce((s, i) => s + (i.product?.price_cents ?? 0) * i.quantity, 0);
+  const totalWeightGrams = validItems.reduce((s, i) => s + (i.product?.weight_grams ?? 0) * i.quantity, 0);
+  const fmtWeight = (g: number) => {
+    const loc = lang === "ru" ? "ru-RU" : lang === "en" ? "en-US" : "lv-LV";
+    if (g >= 1000) return `${(g / 1000).toLocaleString(loc, { maximumFractionDigits: 3 })} kg`;
+    return `${g.toLocaleString(loc)} g`;
+  };
   const shipping = SHIPPING_OPTIONS[shippingId] ?? SHIPPING_OPTIONS.pickup;
   const shippingLabel = String(t[shipping.labelKey] ?? shipping.lvLabel);
   // Agency discount (applied to products subtotal, VAT-inclusive)
