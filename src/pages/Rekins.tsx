@@ -28,6 +28,7 @@ interface CartLine {
     name_i18n: Record<string, unknown> | null;
     price_cents: number;
     currency: string;
+    weight_grams: number | null;
   } | null;
 }
 
@@ -323,7 +324,7 @@ const Rekins = () => {
     setLoading(true);
     const { data } = await supabase
       .from("cart_items")
-      .select("id, quantity, logo_url, logo_filename, logos, product:products(id, name, name_i18n, price_cents, currency)")
+      .select("id, quantity, logo_url, logo_filename, logos, product:products(id, name, name_i18n, price_cents, currency, weight_grams)")
       .eq("user_id", user.id);
     setItems((data ?? []) as unknown as CartLine[]);
     // Prefill from profile
