@@ -244,6 +244,11 @@ const Grozs = () => {
                     <p className="text-sm text-primary mt-1">
                       {formatPrice(item.product.price_cents, item.product.currency)}
                     </p>
+                    {item.product.weight_grams ? (
+                      <p className="text-xs text-muted-foreground mt-0.5">
+                        {t.weightPerPiece}: {fmtKg(item.product.weight_grams)} · {t.totalWeight}: {fmtKg(item.product.weight_grams * item.quantity)}
+                      </p>
+                    ) : null}
                     {item.logos.length > 0 && (
                       <div className="mt-2 flex flex-wrap gap-2">
                         {item.logos.map((l, idx) => {
