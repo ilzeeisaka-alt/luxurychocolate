@@ -29,6 +29,7 @@ interface CartLine {
     in_stock: boolean;
     image_url: string | null;
     name_i18n: Record<string, unknown> | null;
+    weight_grams: number | null;
   };
 }
 
@@ -102,7 +103,7 @@ const Grozs = () => {
     setLoading(true);
     const { data, error } = await supabase
       .from("cart_items")
-      .select("id, quantity, logo_url, logo_filename, logos, product:products(id, slug, name, name_i18n, price_cents, currency, in_stock)")
+      .select("id, quantity, logo_url, logo_filename, logos, product:products(id, slug, name, name_i18n, price_cents, currency, in_stock, weight_grams)")
       .eq("user_id", user.id)
       .order("created_at", { ascending: false });
     if (error) {
@@ -171,6 +172,9 @@ const Grozs = () => {
   const affDiscount = affRef ? Math.round(subtotal * (affRef.discountRate / 100)) : 0;
   const total = subtotal - affDiscount + shipping.cents;
   const isBelowPaymentMinimum = total > 0 && total < 50;
+  const totalWeightGrams = items.reduce((s, i) => s + (i.product.weight_grams ?? 0) * i.quantity, 0);
+  const numLocale = lang === "ru" ? "ru-RU" : lang === "en" ? "en-US" : "lv-LV";
+  const fmtKg = (g: number) => `${(g / 1000).toLocaleString(numLocale, { minimumFractionDigits: 3, maximumFractionDigits: 3 })} kg`;
 
   return (
     <div className="min-h-screen bg-background">
@@ -240,6 +244,11 @@ const Grozs = () => {
                     <p className="text-sm text-primary mt-1">
                       {formatPrice(item.product.price_cents, item.product.currency)}
                     </p>
+                    {item.product.weight_grams ? (
+                      <p className="text-xs text-muted-foreground mt-0.5">
+                        {t.weightPerPiece}: {fmtKg(item.product.weight_grams)} · {t.totalWeight}: {fmtKg(item.product.weight_grams * item.quantity)}
+                      </p>
+                    ) : null}
                     {item.logos.length > 0 && (
                       <div className="mt-2 flex flex-wrap gap-2">
                         {item.logos.map((l, idx) => {
@@ -377,6 +386,12 @@ const Grozs = () => {
                   <span>{t.total}</span>
                   <span className="text-primary">{formatPrice(total, currency)}</span>
                 </div>
+                {totalWeightGrams > 0 && (
+                  <div className="flex justify-between text-xs text-muted-foreground">
+                    <span>{t.totalWeight}</span>
+                    <span className="tabular-nums">{fmtKg(totalWeightGrams)}</span>
+                  </div>
+                )}
                 <p className="text-xs text-muted-foreground">{t.vatIncluded}</p>
                 {isBelowPaymentMinimum && (
                   <p className="rounded-md border border-destructive/30 bg-destructive/10 p-3 text-xs text-destructive">

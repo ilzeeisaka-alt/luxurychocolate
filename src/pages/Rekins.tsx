@@ -90,6 +90,7 @@ const INVOICE_TEXT = {
     viesSource: "Source: ec.europa.eu/taxation_customs/vies",
     totalPayable: "Total payable",
     totalWeight: "Total weight",
+    weightPerPiece: "Weight/pc",
     bankTransfer: "Payment by bank transfer",
     recipient: "Recipient",
     companyRegNo: "Reg. no.",
@@ -156,6 +157,7 @@ const INVOICE_TEXT = {
     viesSource: "Avots: ec.europa.eu/taxation_customs/vies",
     totalPayable: "Kopā apmaksai",
     totalWeight: "Kopējais svars",
+    weightPerPiece: "Svars/gab.",
     bankTransfer: "Apmaksa ar pārskaitījumu",
     recipient: "Saņēmējs",
     companyRegNo: "Reģ.nr.",
@@ -222,6 +224,7 @@ const INVOICE_TEXT = {
     viesSource: "Источник: ec.europa.eu/taxation_customs/vies",
     totalPayable: "Итого к оплате",
     totalWeight: "Общий вес",
+    weightPerPiece: "Вес/шт.",
     bankTransfer: "Оплата банковским переводом",
     recipient: "Получатель",
     companyRegNo: "Рег. №",
@@ -359,10 +362,9 @@ const Rekins = () => {
   const currency = validItems[0]?.product?.currency ?? "EUR";
   const subtotal = validItems.reduce((s, i) => s + (i.product?.price_cents ?? 0) * i.quantity, 0);
   const totalWeightGrams = validItems.reduce((s, i) => s + (i.product?.weight_grams ?? 0) * i.quantity, 0);
-  const fmtWeight = (g: number) => {
+  const fmtKg = (g: number) => {
     const loc = lang === "ru" ? "ru-RU" : lang === "en" ? "en-US" : "lv-LV";
-    if (g >= 1000) return `${(g / 1000).toLocaleString(loc, { maximumFractionDigits: 3 })} kg`;
-    return `${g.toLocaleString(loc)} g`;
+    return `${(g / 1000).toLocaleString(loc, { minimumFractionDigits: 3, maximumFractionDigits: 3 })} kg`;
   };
   const shipping = SHIPPING_OPTIONS[shippingId] ?? SHIPPING_OPTIONS.pickup;
   const shippingLabel = String(t[shipping.labelKey] ?? shipping.lvLabel);
@@ -733,6 +735,11 @@ const Rekins = () => {
                     <tr key={i.id} className="border-b border-gray-200">
                       <td className="py-2 pr-4 align-top">
                         {localizeProductName(pickI18n(i.product!.name_i18n, lang, i.product!.name), lang, tx)}
+                        {i.product!.weight_grams ? (
+                          <div className="text-xs text-gray-500 mt-1">
+                            {tx.weightPerPiece}: {fmtKg(i.product!.weight_grams)} · {tx.totalWeight}: {fmtKg(i.product!.weight_grams * i.quantity)}
+                          </div>
+                        ) : null}
                         {logos.length > 0 && (
                           <div className="text-xs text-gray-500 mt-1">
                             {logos.length === 1
@@ -777,7 +784,7 @@ const Rekins = () => {
                 </div>
                 {totalWeightGrams > 0 && (
                   <div className="flex justify-between py-1 text-sm text-gray-700">
-                    <span>{tx.totalWeight}:</span><span className="tabular-nums">{fmtWeight(totalWeightGrams)}</span>
+                    <span>{tx.totalWeight}:</span><span className="tabular-nums">{fmtKg(totalWeightGrams)}</span>
                   </div>
                 )}
                 {isReverseCharge && (

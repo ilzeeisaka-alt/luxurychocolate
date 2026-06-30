@@ -67,6 +67,8 @@ export interface UIStrings {
   shipVenipakScandi: string;
   shipVenipakEu: string;
   shipVenipakWorld: string;
+  weightPerPiece: string;
+  totalWeight: string;
 }
 
 
@@ -133,6 +135,8 @@ const en: UIStrings = {
   shipVenipakScandi: "Venipak Scandinavia",
   shipVenipakEu: "Venipak Europe",
   shipVenipakWorld: "Venipak Worldwide",
+  weightPerPiece: "Weight per piece",
+  totalWeight: "Total weight",
 };
 
 
@@ -183,6 +187,8 @@ export const uiStrings: Record<Lang, UIStrings> = expandLangs<UIStrings>({
     shipVenipakScandi: "Venipak Skandināvija",
     shipVenipakEu: "Venipak Eiropa",
     shipVenipakWorld: "Venipak Pasaule",
+    weightPerPiece: "Svars/gab.",
+    totalWeight: "Kopējais svars",
   },
 
   ru: {
@@ -230,6 +236,8 @@ export const uiStrings: Record<Lang, UIStrings> = expandLangs<UIStrings>({
     shipVenipakScandi: "Venipak Скандинавия",
     shipVenipakEu: "Venipak Европа",
     shipVenipakWorld: "Venipak по всему миру",
+    weightPerPiece: "Вес/шт.",
+    totalWeight: "Общий вес",
   },
 
 
