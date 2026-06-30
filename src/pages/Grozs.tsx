@@ -82,6 +82,18 @@ const Grozs = () => {
     sessionStorage.getItem("shipping_id") || "pickup"
   );
   const [affRef, setAffRef] = useState<StoredRef | null>(() => getStoredRef());
+  const savedAgency = (() => {
+    try {
+      const raw = localStorage.getItem("invoice_buyer_form");
+      if (raw) {
+        const p = JSON.parse(raw);
+        return { on: !!p.agencyOn, pct: typeof p.agencyPct === "number" ? p.agencyPct : 20 };
+      }
+    } catch {}
+    return { on: false, pct: 20 };
+  })();
+  const [agencyDiscountOn, setAgencyDiscountOn] = useState<boolean>(savedAgency.on);
+  const [agencyDiscountPct, setAgencyDiscountPct] = useState<number>(savedAgency.pct);
 
 
   useSeo({
@@ -95,6 +107,18 @@ const Grozs = () => {
       navigate(`/auth?redirect=${encodeURIComponent(withLang("/grozs"))}${lang !== "lv" ? `&lang=${lang}` : ""}`, { replace: true });
     }
   }, [authLoading, user, navigate, withLang, lang]);
+
+  useEffect(() => {
+    try {
+      const raw = localStorage.getItem("invoice_buyer_form");
+      const p = raw ? JSON.parse(raw) : {};
+      localStorage.setItem(
+        "invoice_buyer_form",
+        JSON.stringify({ ...p, agencyOn: agencyDiscountOn, agencyPct: agencyDiscountPct }),
+      );
+    } catch {}
+  }, [agencyDiscountOn, agencyDiscountPct]);
+
 
   const shipping = SHIPPING_OPTIONS.find((o) => o.id === shippingId) ?? SHIPPING_OPTIONS[0];
 
@@ -170,7 +194,9 @@ const Grozs = () => {
   const subtotal = items.reduce((s, i) => s + i.product.price_cents * i.quantity, 0);
   const currency = items[0]?.product.currency ?? "EUR";
   const affDiscount = affRef ? Math.round(subtotal * (affRef.discountRate / 100)) : 0;
-  const total = subtotal - affDiscount + shipping.cents;
+  const agencyPctClamped = Math.max(0, Math.min(100, Number.isFinite(agencyDiscountPct) ? agencyDiscountPct : 0));
+  const agencyDiscountCents = agencyDiscountOn ? Math.round(subtotal * (agencyPctClamped / 100)) : 0;
+  const total = subtotal - affDiscount - agencyDiscountCents + shipping.cents;
   const isBelowPaymentMinimum = total > 0 && total < 50;
   const totalWeightGrams = items.reduce((s, i) => s + (i.product.weight_grams ?? 0) * i.quantity, 0);
   const numLocale = lang === "ru" ? "ru-RU" : lang === "en" ? "en-US" : lang === "et" ? "et-EE" : "lv-LV";
@@ -367,6 +393,34 @@ const Grozs = () => {
                 <AffiliateCodeInput onChange={setAffRef} />
               </div>
 
+              <div className="mb-4 border border-border rounded-lg p-3 bg-background/50">
+                <label className="flex items-center gap-2 text-sm text-foreground cursor-pointer">
+                  <input
+                    type="checkbox"
+                    checked={agencyDiscountOn}
+                    onChange={(e) => setAgencyDiscountOn(e.target.checked)}
+                    className="rounded border-border"
+                  />
+                  {t.agencyDiscountApply}
+                </label>
+                {agencyDiscountOn && (
+                  <div className="mt-2 flex items-center gap-2">
+                    <input
+                      type="number"
+                      min={0}
+                      max={100}
+                      value={agencyDiscountPct}
+                      onChange={(e) => {
+                        const v = parseFloat(e.target.value);
+                        setAgencyDiscountPct(Number.isFinite(v) ? Math.max(0, Math.min(100, v)) : 0);
+                      }}
+                      className="w-20 h-8 px-2 text-sm rounded border border-border bg-background outline-none"
+                    />
+                    <span className="text-sm text-muted-foreground">%</span>
+                  </div>
+                )}
+              </div>
+
               <div className="space-y-2 text-sm">
                 <div className="flex justify-between text-muted-foreground">
                   <span>{t.subtotalLine(items.reduce((s, i) => s + i.quantity, 0))}</span>
@@ -376,6 +430,12 @@ const Grozs = () => {
                   <div className="flex justify-between text-primary">
                     <span>{t.partnerDiscount} ({affRef?.code})</span>
                     <span>−{formatPrice(affDiscount, currency)}</span>
+                  </div>
+                )}
+                {agencyDiscountCents > 0 && (
+                  <div className="flex justify-between text-primary">
+                    <span>{t.agencyDiscount} ({agencyPctClamped}%)</span>
+                    <span>−{formatPrice(agencyDiscountCents, currency)}</span>
                   </div>
                 )}
                 <div className="flex justify-between text-muted-foreground">

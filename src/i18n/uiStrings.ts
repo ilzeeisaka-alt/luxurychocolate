@@ -51,6 +51,8 @@ export interface UIStrings {
   free: string;
   subtotalLine: (n: number) => string;
   partnerDiscount: string;
+  agencyDiscount: string;
+  agencyDiscountApply: string;
   total: string;
   belowPaymentMin: string;
   paymentUnavailable: string;
@@ -119,6 +121,8 @@ const en: UIStrings = {
   free: "Free",
   subtotalLine: (n) => `Subtotal (${n} items)`,
   partnerDiscount: "Partner discount",
+  agencyDiscount: "Agency discount",
+  agencyDiscountApply: "Apply agency discount",
   total: "Total",
   belowPaymentMin: "Card payment minimum is €0.50. Add more items or choose shipping.",
   paymentUnavailable: "Payment not available",
@@ -171,6 +175,8 @@ export const uiStrings: Record<Lang, UIStrings> = expandLangs<UIStrings>({
     free: "Bezmaksas",
     subtotalLine: (n) => `Starpsumma (${n} preces)`,
     partnerDiscount: "Partnera atlaide",
+    agencyDiscount: "Aģentūras atlaide",
+    agencyDiscountApply: "Pielietot aģentūras atlaidi",
     total: "Kopā",
     belowPaymentMin: "Kartes maksājuma minimums ir €0.50. Pievieno vēl preces vai izvēlies piegādi.",
     paymentUnavailable: "Maksājums nav pieejams",
@@ -220,6 +226,8 @@ export const uiStrings: Record<Lang, UIStrings> = expandLangs<UIStrings>({
     free: "Бесплатно",
     subtotalLine: (n) => `Подытог (${n} товаров)`,
     partnerDiscount: "Партнёрская скидка",
+    agencyDiscount: "Агентская скидка",
+    agencyDiscountApply: "Применить агентскую скидку",
     total: "Итого",
     belowPaymentMin: "Минимум для оплаты картой — €0.50. Добавьте товары или выберите доставку.",
     paymentUnavailable: "Оплата недоступна",
@@ -270,6 +278,8 @@ export const uiStrings: Record<Lang, UIStrings> = expandLangs<UIStrings>({
     free: "Tasuta",
     subtotalLine: (n) => `Vahesumma (${n} toodet)`,
     partnerDiscount: "Partneri allahindlus",
+    agencyDiscount: "Agentuuri allahindlus",
+    agencyDiscountApply: "Rakenda agentuuri allahindlus",
     total: "Kokku",
     belowPaymentMin: "Kaardimakse miinimum on €0.50. Lisa rohkem tooteid või vali tarne.",
     paymentUnavailable: "Makse pole saadaval",

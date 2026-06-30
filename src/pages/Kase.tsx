@@ -85,12 +85,24 @@ const Kase = () => {
       fetchClientSecret: async (): Promise<string> => {
         const shippingId = sessionStorage.getItem("shipping_id") || "pickup";
         const affRef = getStoredRef();
+        let agencyDiscountOn = false;
+        let agencyDiscountPct = 20;
+        try {
+          const raw = localStorage.getItem("invoice_buyer_form");
+          if (raw) {
+            const p = JSON.parse(raw);
+            agencyDiscountOn = !!p.agencyOn;
+            agencyDiscountPct = typeof p.agencyPct === "number" ? p.agencyPct : 20;
+          }
+        } catch {}
         const { data, error } = await supabase.functions.invoke("create-shop-checkout", {
           body: {
             environment: stripeEnvironment,
             returnUrl: `${window.location.origin}${withLang("/checkout/return?session_id={CHECKOUT_SESSION_ID}")}`,
             shippingId,
             affiliateCode: affRef?.code ?? null,
+            agencyDiscountOn,
+            agencyDiscountPct,
             lang,
             locale: getStripeLocale(lang),
           },
