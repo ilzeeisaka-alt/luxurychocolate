@@ -466,7 +466,7 @@ const Rekins = () => {
           vat_number: buyerVat,
           shipping_address: buyerAddress,
           shipping_method: shippingLabel,
-          subtotal_cents: subtotal,
+          subtotal_cents: subtotalAfterDiscount,
           shipping_cents: shipping.cents,
           tax_cents: vatAmount,
           total_cents: total,
