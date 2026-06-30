@@ -169,7 +169,10 @@ const INVOICE_TEXT = {
     errorTitle: "Kļūda",
     confirmError: "Neizdevās apstiprināt pasūtījumu. Lūdzu, mēģini vēlreiz.",
     prepChocolate: "Sagatavošana šokolādes ražošanai",
+    agencyDiscount: "Aģentūras atlaide",
+    agencyDiscountApply: "Pielietot aģentūras atlaidi",
   },
+
   ru: {
     backToCart: "Назад в корзину",
     print: "Печать",
