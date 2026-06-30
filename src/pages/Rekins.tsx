@@ -775,6 +775,11 @@ const Rekins = () => {
                 <div className="flex justify-between py-2 border-t-2 border-black font-bold text-base mt-1">
                   <span>{tx.totalPayable}:</span><span>{fmt(total, currency, lang)}</span>
                 </div>
+                {totalWeightGrams > 0 && (
+                  <div className="flex justify-between py-1 text-sm text-gray-700">
+                    <span>{tx.totalWeight}:</span><span className="tabular-nums">{fmtWeight(totalWeightGrams)}</span>
+                  </div>
+                )}
                 {isReverseCharge && (
                   <p className="mt-2 text-xs italic text-gray-600">{tx.reverseNote}</p>
                 )}
