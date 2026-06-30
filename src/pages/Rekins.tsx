@@ -733,6 +733,11 @@ const Rekins = () => {
                     <tr key={i.id} className="border-b border-gray-200">
                       <td className="py-2 pr-4 align-top">
                         {localizeProductName(pickI18n(i.product!.name_i18n, lang, i.product!.name), lang, tx)}
+                        {i.product!.weight_grams ? (
+                          <div className="text-xs text-gray-500 mt-1">
+                            {tx.weightPerPiece}: {fmtKg(i.product!.weight_grams)} · {tx.totalWeight}: {fmtKg(i.product!.weight_grams * i.quantity)}
+                          </div>
+                        ) : null}
                         {logos.length > 0 && (
                           <div className="text-xs text-gray-500 mt-1">
                             {logos.length === 1
