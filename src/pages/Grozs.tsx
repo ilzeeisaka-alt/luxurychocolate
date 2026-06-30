@@ -386,6 +386,12 @@ const Grozs = () => {
                   <span>{t.total}</span>
                   <span className="text-primary">{formatPrice(total, currency)}</span>
                 </div>
+                {totalWeightGrams > 0 && (
+                  <div className="flex justify-between text-xs text-muted-foreground">
+                    <span>{t.totalWeight}</span>
+                    <span className="tabular-nums">{fmtKg(totalWeightGrams)}</span>
+                  </div>
+                )}
                 <p className="text-xs text-muted-foreground">{t.vatIncluded}</p>
                 {isBelowPaymentMinimum && (
                   <p className="rounded-md border border-destructive/30 bg-destructive/10 p-3 text-xs text-destructive">
