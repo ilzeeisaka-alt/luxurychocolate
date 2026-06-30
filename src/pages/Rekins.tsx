@@ -245,15 +245,83 @@ const INVOICE_TEXT = {
     agencyDiscountApply: "Применить агентскую скидку",
   },
 
+  et: {
+    backToCart: "Tagasi ostukorvi",
+    print: "Prindi",
+    savePdf: "Salvesta PDF",
+    saveInvoice: "Salvesta arve",
+    payNow: "Maksa kohe",
+    payInvoice: "Maksa arve",
+    confirmOrder: "Kinnita tellimus",
+    buyerDetails: "Arve saaja andmed",
+    companyPlaceholder: "Ettevõtte / isiku nimi",
+    regPlaceholder: "Registrinumber",
+    contactPlaceholder: "Kontaktisik (eesnimi, perekonnanimi)",
+    vatPlaceholder: "KMKR number (valikuline)",
+    phonePlaceholder: "Telefon",
+    addressPlaceholder: "Juriidiline aadress",
+    emailPlaceholder: "E-post",
+    shippingMethod: "Tarneviis",
+    proformaTitle: "Ettemaksuarve",
+    invoiceNo: "Nr.",
+    issued: "Väljastatud",
+    due: "Maksetähtaeg",
+    legalAddress: "Jur. aadress",
+    actualAddress: "Tegelik aadress",
+    seller: "Müüja",
+    buyer: "Ostja",
+    vatReg: "KMKR nr.",
+    boardMember: "Juhatuse liige",
+    regNo: "Reg. nr.",
+    contactPerson: "Kontaktisik",
+    itemName: "Nimetus",
+    quantity: "Kogus",
+    price: "Hind",
+    sum: "Summa",
+    withYourLogo: "teie logoga",
+    withLogos: (n: number) => `${n} logoga`,
+    shipping: "Tarne",
+    subtotalExVat: "Summa ilma käibemaksuta",
+    vat: "Käibemaks 21%",
+    vatReverse: "Käibemaks 21% (pöördmaksustamine — 0%)",
+    reverseNote: "Pöördmaksustamine — käibemaksu arvestab ja tasub saaja (EL käibemaksudirektiivi 2006/112/EÜ art. 196).",
+    viesChecking: "VIES kontroll…",
+    viesValid: "Kinnitatud VIES-is",
+    viesInvalid: "Ei leitud VIES-ist",
+    viesSource: "Allikas: ec.europa.eu/taxation_customs/vies",
+    totalPayable: "Kokku tasumisele",
+    totalWeight: "Kogukaal",
+    weightPerPiece: "Kaal/tk",
+    bankTransfer: "Tasumine pangaülekandega",
+    recipient: "Saaja",
+    companyRegNo: "Reg. nr.",
+    bank: "Pank",
+    account: "Konto",
+    productionAfterPayment: "Alustame tellimuse ettevalmistamist pärast makse laekumist. Küsimuste korral: info@luxurychocolate.lv",
+    proformaNote: "See on ettemaksuarve (proforma). Lõplik arve väljastatakse pärast makse laekumist.",
+    cartEmpty: "Ostukorv on tühi.",
+    goToShop: "Mine poodi",
+    missingDetailsTitle: "Andmed puuduvad",
+    missingDetailsDesc: "Palun täida vähemalt ettevõtte nimi ja e-post.",
+    orderConfirmedTitle: "Tellimus kinnitatud",
+    orderConfirmedDesc: (n: string) => `Tellimuse nr. ${n}. Saadame maksejuhised teie e-postile.`,
+    errorTitle: "Viga",
+    confirmError: "Tellimuse kinnitamine ebaõnnestus. Palun proovi uuesti.",
+    prepChocolate: "Šokolaadi tootmise ettevalmistus",
+    agencyDiscount: "Agentuuri allahindlus",
+    agencyDiscountApply: "Rakenda agentuuri allahindlus",
+  },
+
 };
 
 const getInvoiceText = (lang: string) => INVOICE_TEXT[lang as keyof typeof INVOICE_TEXT] ?? INVOICE_TEXT.en;
 
 const fmt = (cents: number, currency = "EUR", lang = "lv") =>
-  new Intl.NumberFormat(lang === "ru" ? "ru-RU" : lang === "en" ? "en-US" : "lv-LV", { style: "currency", currency }).format(cents / 100);
+  new Intl.NumberFormat(lang === "ru" ? "ru-RU" : lang === "en" ? "en-US" : lang === "et" ? "et-EE" : "lv-LV", { style: "currency", currency }).format(cents / 100);
 
 const localizeProductName = (name: string, lang: string, tx: ReturnType<typeof getInvoiceText>) => {
-  if (lang === "ru" && name.trim().toLowerCase() === "sagatavošana šokolādes ražošanai") return tx.prepChocolate;
+  const norm = name.trim().toLowerCase().replace(/\.$/, "");
+  if ((lang === "ru" || lang === "et") && norm === "sagatavošana šokolādes ražošanai") return tx.prepChocolate;
   return name;
 };
 
