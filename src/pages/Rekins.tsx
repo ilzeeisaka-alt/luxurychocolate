@@ -599,7 +599,32 @@ const Rekins = () => {
               ))}
             </select>
           </div>
+          <div className="mt-4 flex items-center gap-3 flex-wrap">
+            <label className="inline-flex items-center gap-2 text-sm font-medium text-foreground">
+              <input
+                type="checkbox"
+                checked={agencyDiscountOn}
+                onChange={(e) => setAgencyDiscountOn(e.target.checked)}
+                className="w-4 h-4 accent-primary"
+              />
+              {tx.agencyDiscountApply}
+            </label>
+            <div className="flex items-center gap-2">
+              <input
+                type="number"
+                min={0}
+                max={100}
+                step={1}
+                value={agencyDiscountPct}
+                disabled={!agencyDiscountOn}
+                onChange={(e) => setAgencyDiscountPct(Number(e.target.value))}
+                className="w-20 rounded-md bg-background border border-border px-3 py-2 text-sm disabled:opacity-50"
+              />
+              <span className="text-sm text-muted-foreground">%</span>
+            </div>
+          </div>
         </section>
+
 
         {/* Printable invoice */}
         {loading ? (
