@@ -14,6 +14,33 @@ export type Database = {
   }
   public: {
     Tables: {
+      abandoned_cart_reminders: {
+        Row: {
+          created_at: string
+          last_cart_updated_at: string | null
+          stage1_sent_at: string | null
+          stage2_sent_at: string | null
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          last_cart_updated_at?: string | null
+          stage1_sent_at?: string | null
+          stage2_sent_at?: string | null
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          last_cart_updated_at?: string | null
+          stage1_sent_at?: string | null
+          stage2_sent_at?: string | null
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
       affiliate_payouts: {
         Row: {
           admin_notes: string | null
