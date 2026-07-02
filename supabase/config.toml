@@ -23,3 +23,6 @@ verify_jwt = false
 
 [functions.vies-check]
 verify_jwt = false
+
+[functions.send-abandoned-cart-reminders]
+verify_jwt = false
