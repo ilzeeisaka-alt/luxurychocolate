@@ -102,19 +102,27 @@ async function processStage(stage: "stage1" | "stage2") {
   const cutoffMax = new Date(now - minAgeH * 3600 * 1000).toISOString();
   const cutoffMin = new Date(now - maxAgeH * 3600 * 1000).toISOString();
 
-  // Get distinct users with cart items in the window
+  // Get ALL cart items (we need to compute the true last-activity time per user).
+  // A user is only "abandoned" if their MOST RECENT cart activity is older than the threshold.
+  // Otherwise (if they added/updated any item within the last hour) they are still active
+  // and must NOT receive a reminder.
   const { data: carts, error: cartErr } = await supabase
     .from("cart_items")
-    .select("user_id, updated_at")
-    .lte("updated_at", cutoffMax)
-    .gte("updated_at", cutoffMin);
+    .select("user_id, updated_at");
   if (cartErr) throw cartErr;
 
-  const byUser = new Map<string, string>();
+  // Compute max(updated_at) per user across their entire cart
+  const lastActivity = new Map<string, string>();
   (carts ?? []).forEach((c: any) => {
-    const prev = byUser.get(c.user_id);
-    if (!prev || c.updated_at > prev) byUser.set(c.user_id, c.updated_at);
+    const prev = lastActivity.get(c.user_id);
+    if (!prev || c.updated_at > prev) lastActivity.set(c.user_id, c.updated_at);
   });
+
+  // Keep only users whose LAST activity falls in the stage window
+  const byUser = new Map<string, string>();
+  for (const [uid, ts] of lastActivity) {
+    if (ts <= cutoffMax && ts >= cutoffMin) byUser.set(uid, ts);
+  }
   if (byUser.size === 0) return { stage, sent: 0, skipped: 0 };
 
   const userIds = [...byUser.keys()];
