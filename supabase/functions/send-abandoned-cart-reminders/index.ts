@@ -102,19 +102,27 @@ async function processStage(stage: "stage1" | "stage2") {
   const cutoffMax = new Date(now - minAgeH * 3600 * 1000).toISOString();
   const cutoffMin = new Date(now - maxAgeH * 3600 * 1000).toISOString();
 
-  // Get distinct users with cart items in the window
+  // Get ALL cart items (we need to compute the true last-activity time per user).
+  // A user is only "abandoned" if their MOST RECENT cart activity is older than the threshold.
+  // Otherwise (if they added/updated any item within the last hour) they are still active
+  // and must NOT receive a reminder.
   const { data: carts, error: cartErr } = await supabase
     .from("cart_items")
-    .select("user_id, updated_at")
-    .lte("updated_at", cutoffMax)
-    .gte("updated_at", cutoffMin);
+    .select("user_id, updated_at");
   if (cartErr) throw cartErr;
 
-  const byUser = new Map<string, string>();
+  // Compute max(updated_at) per user across their entire cart
+  const lastActivity = new Map<string, string>();
   (carts ?? []).forEach((c: any) => {
-    const prev = byUser.get(c.user_id);
-    if (!prev || c.updated_at > prev) byUser.set(c.user_id, c.updated_at);
+    const prev = lastActivity.get(c.user_id);
+    if (!prev || c.updated_at > prev) lastActivity.set(c.user_id, c.updated_at);
   });
+
+  // Keep only users whose LAST activity falls in the stage window
+  const byUser = new Map<string, string>();
+  for (const [uid, ts] of lastActivity) {
+    if (ts <= cutoffMax && ts >= cutoffMin) byUser.set(uid, ts);
+  }
   if (byUser.size === 0) return { stage, sent: 0, skipped: 0 };
 
   const userIds = [...byUser.keys()];
@@ -122,7 +130,7 @@ async function processStage(stage: "stage1" | "stage2") {
   // Load existing reminder tracking
   const { data: tracking } = await supabase
     .from("abandoned_cart_reminders")
-    .select("user_id, stage1_sent_at, stage2_sent_at")
+    .select("user_id, stage1_sent_at, stage2_sent_at, last_cart_updated_at")
     .in("user_id", userIds);
   const trackMap = new Map<string, any>();
   (tracking ?? []).forEach((t: any) => trackMap.set(t.user_id, t));
@@ -131,16 +139,21 @@ async function processStage(stage: "stage1" | "stage2") {
   for (const userId of userIds) {
     try {
       const t = trackMap.get(userId);
-      const alreadySent =
-        stage === "stage1" ? !!t?.stage1_sent_at : !!t?.stage2_sent_at;
-      if (alreadySent) { skipped++; continue; }
+      const cartUpdatedAt = byUser.get(userId)!;
+      // Only treat as "already sent" if the reminder was sent for THIS abandonment cycle
+      // (i.e., after the current last cart activity). If the user resumed shopping and
+      // abandoned again, allow a fresh reminder.
+      const sentAt = stage === "stage1" ? t?.stage1_sent_at : t?.stage2_sent_at;
+      const trackedCartTs = t?.last_cart_updated_at;
+      const alreadySentForThisCycle =
+        !!sentAt && !!trackedCartTs && trackedCartTs >= cartUpdatedAt;
+      if (alreadySentForThisCycle) { skipped++; continue; }
 
       // For stage2, require stage1 already sent (so we don't skip straight to 24h reminder)
       // But if user was already past 24h when first discovered, still send stage2.
       // We'll allow either — the goal is 2 reminders max.
 
       // Skip if user placed an order after the cart was last updated
-      const cartUpdatedAt = byUser.get(userId)!;
       const { data: recentOrder } = await supabase
         .from("orders")
         .select("id")
