@@ -130,7 +130,7 @@ async function processStage(stage: "stage1" | "stage2") {
   // Load existing reminder tracking
   const { data: tracking } = await supabase
     .from("abandoned_cart_reminders")
-    .select("user_id, stage1_sent_at, stage2_sent_at")
+    .select("user_id, stage1_sent_at, stage2_sent_at, last_cart_updated_at")
     .in("user_id", userIds);
   const trackMap = new Map<string, any>();
   (tracking ?? []).forEach((t: any) => trackMap.set(t.user_id, t));
@@ -139,9 +139,15 @@ async function processStage(stage: "stage1" | "stage2") {
   for (const userId of userIds) {
     try {
       const t = trackMap.get(userId);
-      const alreadySent =
-        stage === "stage1" ? !!t?.stage1_sent_at : !!t?.stage2_sent_at;
-      if (alreadySent) { skipped++; continue; }
+      const cartUpdatedAt = byUser.get(userId)!;
+      // Only treat as "already sent" if the reminder was sent for THIS abandonment cycle
+      // (i.e., after the current last cart activity). If the user resumed shopping and
+      // abandoned again, allow a fresh reminder.
+      const sentAt = stage === "stage1" ? t?.stage1_sent_at : t?.stage2_sent_at;
+      const trackedCartTs = t?.last_cart_updated_at;
+      const alreadySentForThisCycle =
+        !!sentAt && !!trackedCartTs && trackedCartTs >= cartUpdatedAt;
+      if (alreadySentForThisCycle) { skipped++; continue; }
 
       // For stage2, require stage1 already sent (so we don't skip straight to 24h reminder)
       // But if user was already past 24h when first discovered, still send stage2.
