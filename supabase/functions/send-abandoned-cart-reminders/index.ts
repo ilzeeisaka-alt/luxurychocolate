@@ -154,7 +154,6 @@ async function processStage(stage: "stage1" | "stage2") {
       // We'll allow either — the goal is 2 reminders max.
 
       // Skip if user placed an order after the cart was last updated
-      const cartUpdatedAt = byUser.get(userId)!;
       const { data: recentOrder } = await supabase
         .from("orders")
         .select("id")
