@@ -7,6 +7,7 @@ import FooterSection from "@/components/FooterSection";
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/hooks/useAuth";
 import { useSeo } from "@/hooks/useSeo";
+import PostCheckoutRegister from "@/components/PostCheckoutRegister";
 
 interface OrderItem {
   id: string;
