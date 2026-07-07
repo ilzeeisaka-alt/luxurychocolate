@@ -219,7 +219,9 @@ const CheckoutReturn = () => {
                     {formatPrice(order.total_cents, order.currency)}
                   </span>
                 </div>
+              </div>
             </div>
+
 
             {user?.is_anonymous && (
               <PostCheckoutRegister defaultEmail={order.customer_email} />
