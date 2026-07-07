@@ -319,11 +319,21 @@ const Grozs = () => {
                         <input
                           type="number"
                           min={1}
-                          value={item.quantity}
-                          disabled={busyId === item.id}
+                          value={qtyDraft[item.id] ?? String(item.quantity)}
+                          onFocus={(e) => e.currentTarget.select()}
                           onChange={(e) => {
+                            setQtyDraft((prev) => ({ ...prev, [item.id]: e.target.value }));
+                          }}
+                          onBlur={(e) => {
                             const v = parseInt(e.target.value, 10);
-                            if (!isNaN(v) && v >= 1) updateQty(item.id, v);
+                            setQtyDraft((prev) => {
+                              const { [item.id]: _, ...rest } = prev;
+                              return rest;
+                            });
+                            if (!isNaN(v) && v >= 1 && v !== item.quantity) updateQty(item.id, v);
+                          }}
+                          onKeyDown={(e) => {
+                            if (e.key === "Enter") (e.currentTarget as HTMLInputElement).blur();
                           }}
                           className="w-12 text-center text-sm bg-transparent outline-none [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
                         />
