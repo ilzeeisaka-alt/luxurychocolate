@@ -70,7 +70,7 @@ const Account = () => {
   });
 
   useEffect(() => {
-    if (!authLoading && !user) {
+    if (!authLoading && (!user || (user as any).is_anonymous)) {
       navigate("/auth", { replace: true });
     }
   }, [user, authLoading, navigate]);
