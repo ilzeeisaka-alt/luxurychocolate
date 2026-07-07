@@ -219,8 +219,13 @@ const CheckoutReturn = () => {
                     {formatPrice(order.total_cents, order.currency)}
                   </span>
                 </div>
-              </div>
             </div>
+
+            {user?.is_anonymous && (
+              <PostCheckoutRegister defaultEmail={order.customer_email} />
+            )}
+
+
 
             <div className="rounded-lg border border-border bg-muted/30 p-6 text-sm text-muted-foreground">
               <p className="mb-2">
