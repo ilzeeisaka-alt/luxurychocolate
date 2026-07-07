@@ -22,6 +22,7 @@ const Auth = () => {
   const [searchParams] = useSearchParams();
   const { user, loading: authLoading } = useAuth();
   const [loading, setLoading] = useState(false);
+  const isAnonymousUser = Boolean(user && (user as any).is_anonymous);
   const requestedRedirect = searchParams.get("redirect");
   const redirectPath = requestedRedirect?.startsWith("/") && !requestedRedirect.startsWith("//")
     ? requestedRedirect
@@ -44,10 +45,10 @@ const Auth = () => {
   });
 
   useEffect(() => {
-    if (!authLoading && user) {
+    if (!authLoading && user && !isAnonymousUser) {
       navigate(redirectPath, { replace: true });
     }
-  }, [user, authLoading, navigate, redirectPath]);
+  }, [user, isAnonymousUser, authLoading, navigate, redirectPath]);
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
