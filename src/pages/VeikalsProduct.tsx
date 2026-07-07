@@ -55,6 +55,35 @@ const VeikalsProduct = () => {
     },
   });
 
+  const variantGroup = (data?.product?.metadata as { variant_group?: string } | null)?.variant_group ?? null;
+  const { data: variants } = useQuery({
+    queryKey: ["product-variants", variantGroup, data?.product?.id],
+    enabled: !!variantGroup && !!data?.product?.id,
+    queryFn: async () => {
+      const { data: rows, error } = await supabase
+        .from("products")
+        .select("id, slug, name, name_i18n, price_cents, currency, weight_grams")
+        .eq("published", true)
+        .contains("metadata", { variant_group: variantGroup })
+        .neq("id", data!.product.id)
+        .order("weight_grams", { ascending: true });
+      if (error) throw error;
+      const ids = (rows ?? []).map((r) => r.id);
+      if (ids.length === 0) return [] as Array<typeof rows[number] & { image?: string }>;
+      const { data: imgs } = await supabase
+        .from("product_images")
+        .select("product_id, url, is_primary, sort_order")
+        .in("product_id", ids)
+        .order("is_primary", { ascending: false })
+        .order("sort_order", { ascending: true });
+      const imgByProduct = new Map<string, string>();
+      for (const img of imgs ?? []) {
+        if (!imgByProduct.has(img.product_id)) imgByProduct.set(img.product_id, img.url);
+      }
+      return (rows ?? []).map((r) => ({ ...r, image: imgByProduct.get(r.id) }));
+    },
+  });
+
   const seoTitle = data?.product
     ? pickI18n(data.product.name_i18n as Record<string, unknown> | null, lang, data.product.name)
     : "Produkts";
@@ -320,6 +349,47 @@ const VeikalsProduct = () => {
             )}
           </div>
         </div>
+
+        {variants && variants.length > 0 && (
+          <section className="mt-16 pt-10 border-t border-border">
+            <h2 className="text-2xl text-foreground mb-6">
+              {lang === "ru" ? "Другие варианты" : lang === "et" ? "Teised variandid" : "Citas versijas"}
+            </h2>
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
+              {variants.map((v) => {
+                const vName = pickI18n(v.name_i18n as Record<string, unknown> | null, lang, v.name);
+                return (
+                  <Link
+                    key={v.id}
+                    to={`/veikals/${v.slug}${lang !== "lv" ? `?lang=${lang}` : ""}`}
+                    className="group block bg-card rounded-xl overflow-hidden border border-border hover:border-primary transition-colors"
+                  >
+                    <div className="aspect-square bg-background overflow-hidden">
+                      {v.image ? (
+                        <img
+                          src={v.image}
+                          alt={vName}
+                          className="w-full h-full object-cover group-hover:scale-105 transition-transform"
+                          loading="lazy"
+                        />
+                      ) : (
+                        <div className="w-full h-full flex items-center justify-center text-muted-foreground text-xs">
+                          {t.noImage}
+                        </div>
+                      )}
+                    </div>
+                    <div className="p-4">
+                      <h3 className="text-sm text-foreground mb-2 line-clamp-2 min-h-[2.5rem]">{vName}</h3>
+                      <div className="text-primary font-medium">
+                        {formatPrice(v.price_cents, v.currency)}
+                      </div>
+                    </div>
+                  </Link>
+                );
+              })}
+            </div>
+          </section>
+        )}
       </main>
       <FooterSection />
       <ProductLogoModal
