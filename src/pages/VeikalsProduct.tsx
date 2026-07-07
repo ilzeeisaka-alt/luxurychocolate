@@ -349,6 +349,47 @@ const VeikalsProduct = () => {
             )}
           </div>
         </div>
+
+        {variants && variants.length > 0 && (
+          <section className="mt-16 pt-10 border-t border-border">
+            <h2 className="text-2xl text-foreground mb-6">
+              {lang === "ru" ? "Другие варианты" : lang === "et" ? "Teised variandid" : "Citas versijas"}
+            </h2>
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
+              {variants.map((v) => {
+                const vName = pickI18n(v.name_i18n as Record<string, unknown> | null, lang, v.name);
+                return (
+                  <Link
+                    key={v.id}
+                    to={`/veikals/${v.slug}${lang !== "lv" ? `?lang=${lang}` : ""}`}
+                    className="group block bg-card rounded-xl overflow-hidden border border-border hover:border-primary transition-colors"
+                  >
+                    <div className="aspect-square bg-background overflow-hidden">
+                      {v.image ? (
+                        <img
+                          src={v.image}
+                          alt={vName}
+                          className="w-full h-full object-cover group-hover:scale-105 transition-transform"
+                          loading="lazy"
+                        />
+                      ) : (
+                        <div className="w-full h-full flex items-center justify-center text-muted-foreground text-xs">
+                          {t.noImage}
+                        </div>
+                      )}
+                    </div>
+                    <div className="p-4">
+                      <h3 className="text-sm text-foreground mb-2 line-clamp-2 min-h-[2.5rem]">{vName}</h3>
+                      <div className="text-primary font-medium">
+                        {formatPrice(v.price_cents, v.currency)}
+                      </div>
+                    </div>
+                  </Link>
+                );
+              })}
+            </div>
+          </section>
+        )}
       </main>
       <FooterSection />
       <ProductLogoModal
