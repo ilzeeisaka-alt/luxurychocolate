@@ -55,6 +55,35 @@ const VeikalsProduct = () => {
     },
   });
 
+  const variantGroup = (data?.product?.metadata as { variant_group?: string } | null)?.variant_group ?? null;
+  const { data: variants } = useQuery({
+    queryKey: ["product-variants", variantGroup, data?.product?.id],
+    enabled: !!variantGroup && !!data?.product?.id,
+    queryFn: async () => {
+      const { data: rows, error } = await supabase
+        .from("products")
+        .select("id, slug, name, name_i18n, price_cents, currency, weight_grams")
+        .eq("published", true)
+        .contains("metadata", { variant_group: variantGroup })
+        .neq("id", data!.product.id)
+        .order("weight_grams", { ascending: true });
+      if (error) throw error;
+      const ids = (rows ?? []).map((r) => r.id);
+      if (ids.length === 0) return [] as Array<typeof rows[number] & { image?: string }>;
+      const { data: imgs } = await supabase
+        .from("product_images")
+        .select("product_id, url, is_primary, sort_order")
+        .in("product_id", ids)
+        .order("is_primary", { ascending: false })
+        .order("sort_order", { ascending: true });
+      const imgByProduct = new Map<string, string>();
+      for (const img of imgs ?? []) {
+        if (!imgByProduct.has(img.product_id)) imgByProduct.set(img.product_id, img.url);
+      }
+      return (rows ?? []).map((r) => ({ ...r, image: imgByProduct.get(r.id) }));
+    },
+  });
+
   const seoTitle = data?.product
     ? pickI18n(data.product.name_i18n as Record<string, unknown> | null, lang, data.product.name)
     : "Produkts";
