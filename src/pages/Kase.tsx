@@ -76,9 +76,17 @@ const Kase = () => {
   });
 
   useEffect(() => {
-    if (!authLoading && !user) navigate(`/auth?redirect=${encodeURIComponent(withLang("/kase"))}${lang !== "lv" ? `&lang=${lang}` : ""}`, { replace: true });
-    else if (user) setReady(true);
-  }, [authLoading, user, navigate, withLang, lang]);
+    if (authLoading) return;
+    if (user) {
+      setReady(true);
+      return;
+    }
+    (async () => {
+      const { error } = await supabase.auth.signInAnonymously();
+      if (error) setError(error.message);
+      else setReady(true);
+    })();
+  }, [authLoading, user]);
 
   const options = useMemo(
     () => ({
