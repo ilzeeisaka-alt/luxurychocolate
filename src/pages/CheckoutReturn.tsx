@@ -7,6 +7,7 @@ import FooterSection from "@/components/FooterSection";
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/hooks/useAuth";
 import { useSeo } from "@/hooks/useSeo";
+import PostCheckoutRegister from "@/components/PostCheckoutRegister";
 
 interface OrderItem {
   id: string;
@@ -220,6 +221,13 @@ const CheckoutReturn = () => {
                 </div>
               </div>
             </div>
+
+
+            {user?.is_anonymous && (
+              <PostCheckoutRegister defaultEmail={order.customer_email} />
+            )}
+
+
 
             <div className="rounded-lg border border-border bg-muted/30 p-6 text-sm text-muted-foreground">
               <p className="mb-2">

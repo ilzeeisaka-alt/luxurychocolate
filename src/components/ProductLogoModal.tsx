@@ -11,6 +11,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/hooks/useAuth";
 import { useNavigate } from "react-router-dom";
 import { ensurePrepFeeForPrintedProduct } from "@/lib/prepFee";
+import { ensureSessionUser } from "@/lib/ensureSession";
 
 interface ProductLogoModalProps {
   open: boolean;
@@ -132,17 +133,13 @@ const ProductLogoModal = ({ open, onOpenChange, productId, productName, initialF
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (!user) {
-      toast.error("Lūdzu pieslēdzieties");
-      navigate("/auth");
-      return;
-    }
     if (entries.length === 0) {
       toast.error("Lūdzu augšupielādējiet vismaz vienu logo");
       return;
     }
     setLoading(true);
     try {
+      const activeUser = user ?? (await ensureSessionUser());
       const formData = new FormData(e.currentTarget);
       const message = (formData.get('message') as string || '').trim();
       const notes = message ? `Piezīmes: ${message}` : null;
@@ -168,7 +165,7 @@ const ProductLogoModal = ({ open, onOpenChange, productId, productName, initialF
       if (uploaded.length === 0) throw new Error("Neviens logo netika augšupielādēts");
 
       const { error: insertError } = await supabase.from('cart_items').insert({
-        user_id: user.id,
+        user_id: activeUser.id,
         product_id: productId,
         quantity: 1,
         logo_url: uploaded[0].url,
@@ -178,7 +175,7 @@ const ProductLogoModal = ({ open, onOpenChange, productId, productName, initialF
       });
       if (insertError) throw insertError;
 
-      await ensurePrepFeeForPrintedProduct(user.id, productId);
+      await ensurePrepFeeForPrintedProduct(activeUser.id, productId);
 
       window.dispatchEvent(new Event("cart-updated"));
       toast.success(`Pievienots grozam ar ${uploaded.length} logo`);

@@ -104,7 +104,8 @@ const Grozs = () => {
 
   useEffect(() => {
     if (!authLoading && !user) {
-      navigate(`/auth?redirect=${encodeURIComponent(withLang("/grozs"))}${lang !== "lv" ? `&lang=${lang}` : ""}`, { replace: true });
+      // No auth required to view an empty cart; anonymous session is created on add-to-cart.
+      // Nothing to do here.
     }
   }, [authLoading, user, navigate, withLang, lang]);
 

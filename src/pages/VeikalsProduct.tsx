@@ -13,6 +13,7 @@ import { cn } from "@/lib/utils";
 import { useCurrentLang, pickI18n } from "@/i18n/useCurrentLang";
 import { tUI } from "@/i18n/uiStrings";
 import { ensurePrepFeeForPrintedProduct } from "@/lib/prepFee";
+import { ensureSessionUser } from "@/lib/ensureSession";
 
 
 const formatPrice = (cents: number, currency = "EUR") =>
@@ -139,21 +140,13 @@ const VeikalsProduct = () => {
     : "";
 
   const handleAddToCart = async () => {
-    if (!user) {
-      const redirectPath = `/veikals/${slug ?? ""}`;
-      toast({
-        title: "Nepieciešama autentifikācija",
-        description: "Lūdzu pieslēdzieties, lai pievienotu grozam.",
-      });
-      navigate(`/auth?redirect=${encodeURIComponent(redirectPath)}`);
-      return;
-    }
     setAdding(true);
     try {
+      const activeUser = user ?? (await ensureSessionUser());
       const { data: existing, error: fetchError } = await supabase
         .from("cart_items")
         .select("id, quantity")
-        .eq("user_id", user.id)
+        .eq("user_id", activeUser.id)
         .eq("product_id", product.id)
         .is("logo_url", null)
         .maybeSingle();
@@ -167,13 +160,13 @@ const VeikalsProduct = () => {
         if (updateError) throw updateError;
       } else {
         const { error: insertError } = await supabase.from("cart_items").insert({
-          user_id: user.id,
+          user_id: activeUser.id,
           product_id: product.id,
           quantity: qty,
         });
         if (insertError) throw insertError;
       }
-      await ensurePrepFeeForPrintedProduct(user.id, product.id);
+      await ensurePrepFeeForPrintedProduct(activeUser.id, product.id);
       toast({ title: t.addedToCart, description: localizedName });
       window.dispatchEvent(new Event("cart-updated"));
     } catch (e) {
