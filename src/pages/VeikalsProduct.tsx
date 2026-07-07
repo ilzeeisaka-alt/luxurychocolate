@@ -13,6 +13,7 @@ import { cn } from "@/lib/utils";
 import { useCurrentLang, pickI18n } from "@/i18n/useCurrentLang";
 import { tUI } from "@/i18n/uiStrings";
 import { ensurePrepFeeForPrintedProduct } from "@/lib/prepFee";
+import { ensureSessionUser } from "@/lib/ensureSession";
 
 
 const formatPrice = (cents: number, currency = "EUR") =>
