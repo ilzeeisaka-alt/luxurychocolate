@@ -78,6 +78,7 @@ const Grozs = () => {
   const [items, setItems] = useState<CartLine[]>([]);
   const [loading, setLoading] = useState(true);
   const [busyId, setBusyId] = useState<string | null>(null);
+  const [qtyDraft, setQtyDraft] = useState<Record<string, string>>({});
   const [shippingId, setShippingId] = useState<string>(() =>
     sessionStorage.getItem("shipping_id") || "pickup"
   );
