@@ -233,6 +233,7 @@ const INVOICE_TEXT = {
     bank: "Банк",
     account: "Счёт",
     productionAfterPayment: "Мы начнём подготовку заказа после получения оплаты. По вопросам: info@luxurychocolate.lv",
+    productionTerms: "Срок изготовления по согласованию, стандартный срок изготовления 1–2 недели.",
     proformaNote: "Это счёт на предоплату (proforma). Окончательный счёт будет выдан после оплаты.",
     cartEmpty: "Корзина пуста.",
     goToShop: "Перейти в магазин",
