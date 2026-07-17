@@ -26,6 +26,9 @@ export function pickI18n(
   if (i18n && typeof i18n === "object") {
     const v = (i18n as Record<string, unknown>)[lang];
     if (typeof v === "string" && v.trim()) return v;
+    // Prefer the provided fallback (typically the LV source name/text) over an
+    // arbitrary other-language value — otherwise LV pages can show RU/EN etc.
+    if (fallback && fallback.trim()) return fallback;
     const lv = (i18n as Record<string, unknown>)["lv"];
     if (typeof lv === "string" && lv.trim()) return lv;
     const en = (i18n as Record<string, unknown>)["en"];
