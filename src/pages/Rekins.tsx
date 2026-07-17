@@ -97,6 +97,7 @@ const INVOICE_TEXT = {
     bank: "Bank",
     account: "Account",
     productionAfterPayment: "We will start preparing the order after payment is received. For questions: info@luxurychocolate.lv",
+    productionTerms: "Production lead time by agreement, standard production time 1–2 weeks.",
     proformaNote: "This is a prepayment (proforma) invoice. The final invoice will be issued after payment.",
     cartEmpty: "Cart is empty.",
     goToShop: "Go to shop",
