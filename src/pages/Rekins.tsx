@@ -97,6 +97,7 @@ const INVOICE_TEXT = {
     bank: "Bank",
     account: "Account",
     productionAfterPayment: "We will start preparing the order after payment is received. For questions: info@luxurychocolate.lv",
+    productionTerms: "Production lead time by agreement, standard production time 1–2 weeks.",
     proformaNote: "This is a prepayment (proforma) invoice. The final invoice will be issued after payment.",
     cartEmpty: "Cart is empty.",
     goToShop: "Go to shop",
@@ -164,6 +165,7 @@ const INVOICE_TEXT = {
     bank: "Banka",
     account: "Konts",
     productionAfterPayment: "Pasūtījumu sāksim gatavot pēc apmaksas saņemšanas. Jautājumu gadījumā: info@luxurychocolate.lv",
+    productionTerms: "Izgatavošanas termiņš pēc vienošanās, standarta izgatavošanas termiņš 1–2 nedēļas.",
     proformaNote: "Šis ir priekšapmaksas (proforma) rēķins. Galīgais rēķins tiks izsniegts pēc apmaksas.",
     cartEmpty: "Grozs ir tukšs.",
     goToShop: "Doties uz veikalu",
@@ -231,6 +233,7 @@ const INVOICE_TEXT = {
     bank: "Банк",
     account: "Счёт",
     productionAfterPayment: "Мы начнём подготовку заказа после получения оплаты. По вопросам: info@luxurychocolate.lv",
+    productionTerms: "Срок изготовления по согласованию, стандартный срок изготовления 1–2 недели.",
     proformaNote: "Это счёт на предоплату (proforma). Окончательный счёт будет выдан после оплаты.",
     cartEmpty: "Корзина пуста.",
     goToShop: "Перейти в магазин",
@@ -298,6 +301,7 @@ const INVOICE_TEXT = {
     bank: "Pank",
     account: "Konto",
     productionAfterPayment: "Alustame tellimuse ettevalmistamist pärast makse laekumist. Küsimuste korral: info@luxurychocolate.lv",
+    productionTerms: "Tootmise tähtaeg kokkuleppel, standardne tootmisaeg 1–2 nädalat.",
     proformaNote: "See on ettemaksuarve (proforma). Lõplik arve väljastatakse pärast makse laekumist.",
     cartEmpty: "Ostukorv on tühi.",
     goToShop: "Mine poodi",
@@ -868,6 +872,7 @@ const Rekins = () => {
               <p>{tx.bank}: AS Citadele banka · SWIFT: PARXLV22</p>
               <p>{tx.account}: LV88PARX0032054790002</p>
               <p className="mt-3">{tx.productionAfterPayment}</p>
+              <p className="mt-3">{tx.productionTerms}</p>
               <p className="mt-3 italic">{tx.proformaNote}</p>
             </div>
           </div>
