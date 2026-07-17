@@ -301,6 +301,7 @@ const INVOICE_TEXT = {
     bank: "Pank",
     account: "Konto",
     productionAfterPayment: "Alustame tellimuse ettevalmistamist pärast makse laekumist. Küsimuste korral: info@luxurychocolate.lv",
+    productionTerms: "Tootmise tähtaeg kokkuleppel, standardne tootmisaeg 1–2 nädalat.",
     proformaNote: "See on ettemaksuarve (proforma). Lõplik arve väljastatakse pärast makse laekumist.",
     cartEmpty: "Ostukorv on tühi.",
     goToShop: "Mine poodi",
