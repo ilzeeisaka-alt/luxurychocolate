@@ -165,6 +165,7 @@ const INVOICE_TEXT = {
     bank: "Banka",
     account: "Konts",
     productionAfterPayment: "Pasūtījumu sāksim gatavot pēc apmaksas saņemšanas. Jautājumu gadījumā: info@luxurychocolate.lv",
+    productionTerms: "Izgatavošanas termiņš pēc vienošanās, standarta izgatavošanas termiņš 1–2 nedēļas.",
     proformaNote: "Šis ir priekšapmaksas (proforma) rēķins. Galīgais rēķins tiks izsniegts pēc apmaksas.",
     cartEmpty: "Grozs ir tukšs.",
     goToShop: "Doties uz veikalu",
