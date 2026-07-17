@@ -872,6 +872,7 @@ const Rekins = () => {
               <p>{tx.bank}: AS Citadele banka · SWIFT: PARXLV22</p>
               <p>{tx.account}: LV88PARX0032054790002</p>
               <p className="mt-3">{tx.productionAfterPayment}</p>
+              <p className="mt-3">{tx.productionTerms}</p>
               <p className="mt-3 italic">{tx.proformaNote}</p>
             </div>
           </div>
