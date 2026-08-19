@@ -258,7 +258,7 @@ const AdminInvoice = () => {
               <p className="font-medium">{order.company_name || order.customer_name || "—"}</p>
               {regNr && <p>Reģ. Nr. {regNr}</p>}
               {order.vat_number && <p>PVN: {order.vat_number}</p>}
-              {order.shipping_address && <p>{order.shipping_address}</p>}
+              
               {order.customer_email && <p>{order.customer_email}</p>}
               {order.customer_phone && <p>{order.customer_phone}</p>}
               {order.shipping_address && <p className="mt-1"><span className="font-medium">Piegādes adrese:</span> {order.shipping_address}</p>}
