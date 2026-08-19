@@ -688,6 +688,14 @@ const Rekins = () => {
             <input className="rounded-md bg-background border border-border px-3 py-2 text-sm" placeholder={tx.phonePlaceholder} value={buyerPhone} onChange={(e) => setBuyerPhone(e.target.value)} />
             <input className="md:col-span-2 rounded-md bg-background border border-border px-3 py-2 text-sm" placeholder={tx.addressPlaceholder} value={buyerAddress} onChange={(e) => setBuyerAddress(e.target.value)} />
             <input className="md:col-span-2 rounded-md bg-background border border-border px-3 py-2 text-sm" placeholder={tx.emailPlaceholder} value={buyerEmail} onChange={(e) => setBuyerEmail(e.target.value)} />
+            <div className="md:col-span-2">
+              <label className="block text-sm font-medium text-foreground mb-1">{tx.eventDateLabel}</label>
+              <input type="datetime-local" className="w-full rounded-md bg-background border border-border px-3 py-2 text-sm" placeholder={tx.eventDatePlaceholder} value={eventDate} onChange={(e) => setEventDate(e.target.value)} />
+            </div>
+            <div className="md:col-span-2">
+              <label className="block text-sm font-medium text-foreground mb-1">{tx.deliveryAddressLabel}</label>
+              <input className="w-full rounded-md bg-background border border-border px-3 py-2 text-sm" placeholder={tx.deliveryAddressPlaceholder} value={deliveryAddress} onChange={(e) => setDeliveryAddress(e.target.value)} />
+            </div>
           </div>
           <div className="mt-4">
             <label className="block text-sm font-medium text-foreground mb-2">{tx.shippingMethod}</label>
