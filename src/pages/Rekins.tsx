@@ -808,6 +808,10 @@ const Rekins = () => {
                 {buyerContact && <p>{tx.contactPerson}: {buyerContact}</p>}
                 {buyerEmail && <p>{buyerEmail}</p>}
                 {buyerPhone && <p>{buyerPhone}</p>}
+                {deliveryAddress && <p className="mt-1"><span className="font-medium">{tx.deliveryAddressLabel}:</span> {deliveryAddress}</p>}
+                {eventDate && (
+                  <p><span className="font-medium">{tx.eventDateLabel}:</span> {new Date(eventDate).toLocaleString(dateLocale, { dateStyle: "short", timeStyle: "short" })}</p>
+                )}
               </div>
             </div>
 
