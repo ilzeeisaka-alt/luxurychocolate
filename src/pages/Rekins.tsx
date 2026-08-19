@@ -370,6 +370,8 @@ const Rekins = () => {
   const [buyerAddress, setBuyerAddress] = useState<string>(saved.address ?? "");
   const [buyerEmail, setBuyerEmail] = useState<string>(saved.email ?? "");
   const [buyerPhone, setBuyerPhone] = useState<string>(saved.phone ?? "");
+  const [eventDate, setEventDate] = useState<string>(saved.eventDate ?? "");
+  const [deliveryAddress, setDeliveryAddress] = useState<string>(saved.deliveryAddress ?? "");
   const [shippingId, setShippingId] = useState<string>(
     () => sessionStorage.getItem("shipping_id") || "pickup",
   );
