@@ -30,6 +30,7 @@ interface Order {
   company_name: string | null;
   vat_number: string | null;
   shipping_address: string | null;
+  notes: string | null;
   shipping_method: string | null;
   subtotal_cents: number;
   shipping_cents: number;
@@ -111,6 +112,19 @@ const AdminInvoice = () => {
     d.setDate(d.getDate() + 7);
     return d.toLocaleDateString("lv-LV");
   }, [order]);
+
+  // Pasākuma datums / laiks tiek saglabāts pasūtījuma piezīmēs, piem. "Pasākuma datums / laiks: 2026-08-19T10:00"
+  const eventDateStr = useMemo(() => {
+    const raw = order?.notes ?? "";
+    if (!raw) return "";
+    const m = raw.match(/:\s*(\d{4}-\d{2}-\d{2}(?:[T ]\d{2}:\d{2})?)/);
+    const iso = m?.[1];
+    if (!iso) return raw.includes(":") ? raw.split(/:(.+)/)[1]?.trim() ?? "" : raw.trim();
+    const d = new Date(iso.replace(" ", "T"));
+    if (isNaN(d.getTime())) return iso;
+    return d.toLocaleString("lv-LV", { dateStyle: "short", timeStyle: "short" });
+  }, [order]);
+
 
   const invoiceRef = useRef<HTMLDivElement | null>(null);
   const [savingPdf, setSavingPdf] = useState(false);
@@ -257,9 +271,11 @@ const AdminInvoice = () => {
               <p className="font-medium">{order.company_name || order.customer_name || "—"}</p>
               {regNr && <p>Reģ. Nr. {regNr}</p>}
               {order.vat_number && <p>PVN: {order.vat_number}</p>}
-              {order.shipping_address && <p>{order.shipping_address}</p>}
+              
               {order.customer_email && <p>{order.customer_email}</p>}
               {order.customer_phone && <p>{order.customer_phone}</p>}
+              {order.shipping_address && <p className="mt-1"><span className="font-medium">Piegādes adrese:</span> {order.shipping_address}</p>}
+              {eventDateStr && <p className="mt-1"><span className="font-medium">Pasākuma datums / laiks:</span> {eventDateStr}</p>}
             </div>
           </div>
 
