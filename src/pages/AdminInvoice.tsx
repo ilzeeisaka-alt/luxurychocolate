@@ -113,6 +113,19 @@ const AdminInvoice = () => {
     return d.toLocaleDateString("lv-LV");
   }, [order]);
 
+  // Pasākuma datums / laiks tiek saglabāts pasūtījuma piezīmēs, piem. "Pasākuma datums / laiks: 2026-08-19T10:00"
+  const eventDateStr = useMemo(() => {
+    const raw = order?.notes ?? "";
+    if (!raw) return "";
+    const m = raw.match(/:\s*(\d{4}-\d{2}-\d{2}(?:[T ]\d{2}:\d{2})?)/);
+    const iso = m?.[1];
+    if (!iso) return raw.includes(":") ? raw.split(/:(.+)/)[1]?.trim() ?? "" : raw.trim();
+    const d = new Date(iso.replace(" ", "T"));
+    if (isNaN(d.getTime())) return iso;
+    return d.toLocaleString("lv-LV", { dateStyle: "short", timeStyle: "short" });
+  }, [order]);
+
+
   const invoiceRef = useRef<HTMLDivElement | null>(null);
   const [savingPdf, setSavingPdf] = useState(false);
 
