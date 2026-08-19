@@ -30,6 +30,7 @@ interface Order {
   company_name: string | null;
   vat_number: string | null;
   shipping_address: string | null;
+  notes: string | null;
   shipping_method: string | null;
   subtotal_cents: number;
   shipping_cents: number;
