@@ -60,6 +60,10 @@ const INVOICE_TEXT = {
     phonePlaceholder: "Phone",
     addressPlaceholder: "Legal address",
     emailPlaceholder: "Email",
+    eventDatePlaceholder: "Event date / time",
+    eventDateLabel: "Event date / time",
+    deliveryAddressPlaceholder: "Delivery address",
+    deliveryAddressLabel: "Delivery address",
     shippingMethod: "Shipping method",
     proformaTitle: "Prepayment invoice",
     invoiceNo: "No.",
@@ -128,6 +132,10 @@ const INVOICE_TEXT = {
     phonePlaceholder: "Telefons",
     addressPlaceholder: "Juridiskā adrese",
     emailPlaceholder: "E-pasts",
+    eventDatePlaceholder: "Pasākuma datums / laiks",
+    eventDateLabel: "Pasākuma datums / laiks",
+    deliveryAddressPlaceholder: "Piegādes adrese",
+    deliveryAddressLabel: "Piegādes adrese",
     shippingMethod: "Piegādes veids",
     proformaTitle: "Priekšapmaksas rēķins",
     invoiceNo: "Nr.",
@@ -196,6 +204,10 @@ const INVOICE_TEXT = {
     phonePlaceholder: "Телефон",
     addressPlaceholder: "Юридический адрес",
     emailPlaceholder: "Эл. почта",
+    eventDatePlaceholder: "Дата / время мероприятия",
+    eventDateLabel: "Дата / время мероприятия",
+    deliveryAddressPlaceholder: "Адрес доставки",
+    deliveryAddressLabel: "Адрес доставки",
     shippingMethod: "Способ доставки",
     proformaTitle: "Счёт на предоплату",
     invoiceNo: "№",
@@ -264,6 +276,10 @@ const INVOICE_TEXT = {
     phonePlaceholder: "Telefon",
     addressPlaceholder: "Juriidiline aadress",
     emailPlaceholder: "E-post",
+    eventDatePlaceholder: "Ürituse kuupäev / kellaaeg",
+    eventDateLabel: "Ürituse kuupäev / kellaaeg",
+    deliveryAddressPlaceholder: "Tarneaadress",
+    deliveryAddressLabel: "Tarneaadress",
     shippingMethod: "Tarneviis",
     proformaTitle: "Ettemaksuarve",
     invoiceNo: "Nr.",
@@ -354,6 +370,8 @@ const Rekins = () => {
   const [buyerAddress, setBuyerAddress] = useState<string>(saved.address ?? "");
   const [buyerEmail, setBuyerEmail] = useState<string>(saved.email ?? "");
   const [buyerPhone, setBuyerPhone] = useState<string>(saved.phone ?? "");
+  const [eventDate, setEventDate] = useState<string>(saved.eventDate ?? "");
+  const [deliveryAddress, setDeliveryAddress] = useState<string>(saved.deliveryAddress ?? "");
   const [shippingId, setShippingId] = useState<string>(
     () => sessionStorage.getItem("shipping_id") || "pickup",
   );
@@ -368,10 +386,11 @@ const Rekins = () => {
       JSON.stringify({
         company: buyerCompany, contact: buyerContact, vat: buyerVat, regNr: buyerRegNr,
         address: buyerAddress, email: buyerEmail, phone: buyerPhone,
+        eventDate, deliveryAddress,
         agencyOn: agencyDiscountOn, agencyPct: agencyDiscountPct,
       }),
     );
-  }, [buyerCompany, buyerContact, buyerVat, buyerRegNr, buyerAddress, buyerEmail, buyerPhone, agencyDiscountOn, agencyDiscountPct]);
+  }, [buyerCompany, buyerContact, buyerVat, buyerRegNr, buyerAddress, buyerEmail, buyerPhone, eventDate, deliveryAddress, agencyDiscountOn, agencyDiscountPct]);
 
 
   const invoiceNumber = useMemo(() => {
@@ -548,8 +567,9 @@ const Rekins = () => {
           customer_phone: buyerPhone,
           company_name: buyerCompany,
           vat_number: buyerVat,
-          shipping_address: buyerAddress,
+          shipping_address: deliveryAddress || buyerAddress,
           shipping_method: shippingLabel,
+          notes: eventDate ? `${tx.eventDateLabel}: ${eventDate}` : null,
           subtotal_cents: subtotalAfterDiscount,
           shipping_cents: shipping.cents,
           tax_cents: vatAmount,
@@ -668,6 +688,14 @@ const Rekins = () => {
             <input className="rounded-md bg-background border border-border px-3 py-2 text-sm" placeholder={tx.phonePlaceholder} value={buyerPhone} onChange={(e) => setBuyerPhone(e.target.value)} />
             <input className="md:col-span-2 rounded-md bg-background border border-border px-3 py-2 text-sm" placeholder={tx.addressPlaceholder} value={buyerAddress} onChange={(e) => setBuyerAddress(e.target.value)} />
             <input className="md:col-span-2 rounded-md bg-background border border-border px-3 py-2 text-sm" placeholder={tx.emailPlaceholder} value={buyerEmail} onChange={(e) => setBuyerEmail(e.target.value)} />
+            <div className="md:col-span-2">
+              <label className="block text-sm font-medium text-foreground mb-1">{tx.eventDateLabel}</label>
+              <input type="datetime-local" className="w-full rounded-md bg-background border border-border px-3 py-2 text-sm" placeholder={tx.eventDatePlaceholder} value={eventDate} onChange={(e) => setEventDate(e.target.value)} />
+            </div>
+            <div className="md:col-span-2">
+              <label className="block text-sm font-medium text-foreground mb-1">{tx.deliveryAddressLabel}</label>
+              <input className="w-full rounded-md bg-background border border-border px-3 py-2 text-sm" placeholder={tx.deliveryAddressPlaceholder} value={deliveryAddress} onChange={(e) => setDeliveryAddress(e.target.value)} />
+            </div>
           </div>
           <div className="mt-4">
             <label className="block text-sm font-medium text-foreground mb-2">{tx.shippingMethod}</label>
@@ -780,6 +808,10 @@ const Rekins = () => {
                 {buyerContact && <p>{tx.contactPerson}: {buyerContact}</p>}
                 {buyerEmail && <p>{buyerEmail}</p>}
                 {buyerPhone && <p>{buyerPhone}</p>}
+                {deliveryAddress && <p className="mt-1"><span className="font-medium">{tx.deliveryAddressLabel}:</span> {deliveryAddress}</p>}
+                {eventDate && (
+                  <p><span className="font-medium">{tx.eventDateLabel}:</span> {new Date(eventDate).toLocaleString(dateLocale, { dateStyle: "short", timeStyle: "short" })}</p>
+                )}
               </div>
             </div>
 
