@@ -386,10 +386,11 @@ const Rekins = () => {
       JSON.stringify({
         company: buyerCompany, contact: buyerContact, vat: buyerVat, regNr: buyerRegNr,
         address: buyerAddress, email: buyerEmail, phone: buyerPhone,
+        eventDate, deliveryAddress,
         agencyOn: agencyDiscountOn, agencyPct: agencyDiscountPct,
       }),
     );
-  }, [buyerCompany, buyerContact, buyerVat, buyerRegNr, buyerAddress, buyerEmail, buyerPhone, agencyDiscountOn, agencyDiscountPct]);
+  }, [buyerCompany, buyerContact, buyerVat, buyerRegNr, buyerAddress, buyerEmail, buyerPhone, eventDate, deliveryAddress, agencyDiscountOn, agencyDiscountPct]);
 
 
   const invoiceNumber = useMemo(() => {
