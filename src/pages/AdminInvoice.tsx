@@ -261,6 +261,8 @@ const AdminInvoice = () => {
               {order.shipping_address && <p>{order.shipping_address}</p>}
               {order.customer_email && <p>{order.customer_email}</p>}
               {order.customer_phone && <p>{order.customer_phone}</p>}
+              {order.shipping_address && <p className="mt-1"><span className="font-medium">Piegādes adrese:</span> {order.shipping_address}</p>}
+              {eventDateStr && <p className="mt-1"><span className="font-medium">Pasākuma datums / laiks:</span> {eventDateStr}</p>}
             </div>
           </div>
 
