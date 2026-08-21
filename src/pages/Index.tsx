@@ -22,6 +22,7 @@ import CienastsSection from "@/components/CienastsSection";
 import TableCardsSection from "@/components/TableCardsSection";
 import CelebrationCakeSection from "@/components/CelebrationCakeSection";
 import WeddingChocolateSection from "@/components/WeddingChocolateSection";
+import CupcakeSection from "@/components/CupcakeSection";
 import SeoContentSection from "@/components/SeoContentSection";
 import FaqSection from "@/components/FaqSection";
 import IdeasSection from "@/components/IdeasSection";
@@ -69,6 +70,7 @@ const Index = () => {
       <TableCardsSection lang="lv" onCtaClick={() => setModalOpen(true)} />
       <CelebrationCakeSection lang="lv" onCtaClick={() => setModalOpen(true)} />
       <WeddingChocolateSection lang="lv" onCtaClick={() => setModalOpen(true)} />
+      <CupcakeSection lang="lv" onCtaClick={() => setModalOpen(true)} />
       <MagnetBoxSection />
       <CoinsCardsSection lang="lv" onCtaClick={() => setModalOpen(true)} />
       <DailyChocolateSection lang="lv" onCtaClick={() => setModalOpen(true)} />
