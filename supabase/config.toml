@@ -1,28 +1,23 @@
 project_id = "qptmewoggfoycsoehenn"
 
-[functions.send-logo-email]
-verify_jwt = false
-
-[functions.create-cake-checkout]
-verify_jwt = false
-
-[functions.payments-webhook]
-verify_jwt = false
-
-[functions.send-order-status-email]
-verify_jwt = false
-
-[functions.import-products]
-verify_jwt = false
-
-[functions.create-shop-checkout]
-verify_jwt = false
-
-[functions.notify-admin]
-verify_jwt = false
-
-[functions.vies-check]
-verify_jwt = false
-
-[functions.send-abandoned-cart-reminders]
-verify_jwt = false
+[functions]
+  [functions.auth-email-hook]
+    verify_jwt = false
+  [functions.create-cake-checkout]
+    verify_jwt = false
+  [functions.create-shop-checkout]
+    verify_jwt = false
+  [functions.import-products]
+    verify_jwt = false
+  [functions.notify-admin]
+    verify_jwt = false
+  [functions.payments-webhook]
+    verify_jwt = false
+  [functions.send-abandoned-cart-reminders]
+    verify_jwt = false
+  [functions.send-logo-email]
+    verify_jwt = false
+  [functions.send-order-status-email]
+    verify_jwt = false
+  [functions.vies-check]
+    verify_jwt = false
