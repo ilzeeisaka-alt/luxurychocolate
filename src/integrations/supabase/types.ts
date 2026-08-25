@@ -374,6 +374,54 @@ export type Database = {
         }
         Relationships: []
       }
+      offer_requests: {
+        Row: {
+          company: string | null
+          created_at: string
+          email: string
+          email_status: string | null
+          id: string
+          logo_url: string | null
+          message: string | null
+          name: string
+          packaging: string | null
+          phone: string | null
+          purpose: string | null
+          quantity: string | null
+          size: string | null
+        }
+        Insert: {
+          company?: string | null
+          created_at?: string
+          email: string
+          email_status?: string | null
+          id?: string
+          logo_url?: string | null
+          message?: string | null
+          name: string
+          packaging?: string | null
+          phone?: string | null
+          purpose?: string | null
+          quantity?: string | null
+          size?: string | null
+        }
+        Update: {
+          company?: string | null
+          created_at?: string
+          email?: string
+          email_status?: string | null
+          id?: string
+          logo_url?: string | null
+          message?: string | null
+          name?: string
+          packaging?: string | null
+          phone?: string | null
+          purpose?: string | null
+          quantity?: string | null
+          size?: string | null
+        }
+        Relationships: []
+      }
       order_items: {
         Row: {
           area_cm2: number | null
