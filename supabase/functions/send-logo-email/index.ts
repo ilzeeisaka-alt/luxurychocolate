@@ -200,17 +200,63 @@ serve(async (req) => {
       ${logoSection}
     `;
 
-    const offerSend = await sendEmail(
+    // 1) Always persist the request first so no lead can ever be lost
+    let saved = false;
+    try {
+      const supabaseUrl = Deno.env.get("SUPABASE_URL");
+      const serviceKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY");
+      if (supabaseUrl && serviceKey) {
+        const res = await fetch(`${supabaseUrl}/rest/v1/offer_requests`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            apikey: serviceKey,
+            Authorization: `Bearer ${serviceKey}`,
+            Prefer: "return=minimal",
+          },
+          body: JSON.stringify({
+            name, company, email,
+            phone: phone || null,
+            size: size || null,
+            packaging: packaging || null,
+            purpose: purpose || null,
+            quantity: quantity || null,
+            message: message || null,
+            logo_url: logoUrl || null,
+            email_status: "pending",
+          }),
+        });
+        saved = res.ok;
+        if (!res.ok) console.error("Lead save failed:", await res.text());
+      }
+    } catch (e) {
+      console.error("Lead save error:", e);
+    }
+
+    const subject = `Jauns pieprasījums no ${safeCompany} — ${safeName}`;
+
+    // 2) Try primary recipients
+    let offerSend = await sendEmail(
       resendApiKey,
       fromEmail,
       ["info@luxurychocolate.lv", "ilze.eisaka@gmail.com"],
-      `Jauns pieprasījums no ${safeCompany} — ${safeName}`,
+      subject,
       htmlBody,
       email,
     );
 
+    // 3) Resend sandbox / unverified domain → retry with the allowed recipient only
     if (!offerSend.ok) {
       console.error("Offer send failed:", JSON.stringify(offerSend.data));
+      const fallbackRecipient = extractAllowedTestRecipient(offerSend.data?.message);
+      if (fallbackRecipient) {
+        offerSend = await sendEmail(resendApiKey, fromEmail, [fallbackRecipient], subject, htmlBody, email);
+        if (!offerSend.ok) console.error("Fallback send failed:", JSON.stringify(offerSend.data));
+      }
+    }
+
+    // 4) The form must never fail for the customer if the request is stored
+    if (!offerSend.ok && !saved) {
       return new Response(
         JSON.stringify({ error: offerSend.data?.message ?? "Neizdevās nosūtīt e-pastu" }),
         { status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" } },
@@ -218,9 +264,10 @@ serve(async (req) => {
     }
 
     return new Response(
-      JSON.stringify({ success: true }),
+      JSON.stringify({ success: true, emailed: offerSend.ok, saved }),
       { status: 200, headers: { ...corsHeaders, "Content-Type": "application/json" } },
     );
+
   } catch (error) {
     console.error("Error:", error);
     const message = error instanceof Error ? error.message : "Unknown error";
