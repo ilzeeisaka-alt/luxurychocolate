@@ -1,16 +1,28 @@
-import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
+import { createClient } from "npm:@supabase/supabase-js@2";
+import { corsHeaders } from "npm:@supabase/supabase-js@2/cors";
+import { z } from "npm:zod@3.23.8";
 
-type ResendResponse = {
-  id?: string;
-  message?: string;
-  name?: string;
-  statusCode?: number;
-};
+const SENDER_DOMAIN = "notify.luxurychocolate.lv";
+const FROM_EMAIL = "Luxury Chocolate <info@luxurychocolate.lv>";
+const OFFER_RECIPIENTS = ["info@luxurychocolate.lv", "ilze.eisaka@gmail.com"];
+const SHOP_RECIPIENTS = ["info@luxurychocolate.lv"];
 
-const corsHeaders = {
-  "Access-Control-Allow-Origin": "*",
-  "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type, x-supabase-client-platform, x-supabase-client-platform-version, x-supabase-client-runtime, x-supabase-client-runtime-version",
-};
+const RequestSchema = z.object({
+  name: z.string().trim().min(1).max(200).optional(),
+  company: z.string().trim().min(1).max(200).optional(),
+  email: z.string().trim().email().max(320).optional(),
+  phone: z.string().trim().max(100).optional(),
+  size: z.string().trim().max(200).optional(),
+  packaging: z.string().trim().max(300).optional(),
+  purpose: z.string().trim().max(300).optional(),
+  quantity: z.string().trim().max(100).optional(),
+  message: z.string().trim().max(5000).optional(),
+  logoUrl: z.string().url().max(2000).optional().nullable(),
+  shopUpload: z.boolean().optional().default(false),
+  fileName: z.string().trim().max(255).optional(),
+  fileType: z.string().trim().max(150).optional(),
+  fileSize: z.number().nonnegative().max(20 * 1024 * 1024).optional(),
+});
 
 const escapeHtml = (value: unknown) =>
   String(value ?? "")
@@ -20,78 +32,36 @@ const escapeHtml = (value: unknown) =>
     .replaceAll('"', "&quot;")
     .replaceAll("'", "&#39;");
 
-const sendEmail = async (
-  apiKey: string,
-  from: string,
-  to: string[],
-  subject: string,
-  html: string,
-  replyTo?: string,
-) => {
-  const response = await fetch("https://api.resend.com/emails", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${apiKey}`,
-    },
-    body: JSON.stringify({
-      from,
-      to,
-      subject,
-      html,
-      ...(replyTo ? { reply_to: replyTo } : {}),
-    }),
+const jsonResponse = (body: unknown, status = 200) =>
+  new Response(JSON.stringify(body), {
+    status,
+    headers: { ...corsHeaders, "Content-Type": "application/json" },
   });
 
-  const data = (await response.json()) as ResendResponse;
-  return { ok: response.ok, status: response.status, data };
-};
-
-const extractAllowedTestRecipient = (message: string | undefined) => {
-  if (!message) return null;
-  const match = message.match(/own email address \(([^)]+)\)/i);
-  return match?.[1] ?? null;
-};
-
-serve(async (req) => {
+Deno.serve(async (req) => {
   if (req.method === "OPTIONS") {
     return new Response("ok", { headers: corsHeaders });
   }
 
+  if (req.method !== "POST") {
+    return jsonResponse({ error: "Method not allowed" }, 405);
+  }
+
   try {
-    const {
-      name,
-      company,
-      email,
-      phone,
-      size,
-      packaging,
-      purpose,
-      quantity,
-      message,
-      logoUrl,
-      shopUpload,
-      fileName,
-      fileType,
-      fileSize,
-    } = await req.json();
-
-    const resendApiKey = Deno.env.get("RESEND_API_KEY");
-    const fromEmail = Deno.env.get("RESEND_FROM_EMAIL") ?? "Luxury Chocolate <onboarding@resend.dev>";
-
-    if (!resendApiKey) {
-      return new Response(
-        JSON.stringify({ error: "E-pasta serviss nav konfigurēts" }),
-        { status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" } },
-      );
+    const parsed = RequestSchema.safeParse(await req.json());
+    if (!parsed.success) {
+      return jsonResponse({ error: parsed.error.flatten().fieldErrors }, 400);
     }
+
+    const { name, company, email, phone, size, packaging, purpose, quantity, message, logoUrl, shopUpload, fileName, fileType, fileSize } = parsed.data;
+    const supabaseUrl = Deno.env.get("SUPABASE_URL");
+    const serviceKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY");
+    if (!supabaseUrl || !serviceKey) return jsonResponse({ error: "Server configuration error" }, 500);
+    const supabase = createClient(supabaseUrl, serviceKey);
 
     if (shopUpload) {
       if (!logoUrl) {
-        return new Response(
-          JSON.stringify({ error: "Logo URL ir obligāts" }),
-          { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } },
-        );
+        return jsonResponse({ error: "Logo URL ir obligāts" }, 400);
       }
 
       const safeFileName = escapeHtml(fileName || "fails");
@@ -109,65 +79,33 @@ serve(async (req) => {
         ${isImage ? `<p><img src="${safeLogoUrl}" alt="Klienta augšupielādētais fails" style="max-width:400px;max-height:300px;" /></p>` : ""}
       `;
 
-      const primarySend = await sendEmail(
-        resendApiKey,
-        fromEmail,
-        ["info@luxurychocolate.lv"],
-        `Jauns fails augšupielādēts — ${safeFileName}`,
-        htmlBody,
-      );
-
-      if (primarySend.ok) {
-        return new Response(
-          JSON.stringify({ success: true, recipient: "info@luxurychocolate.lv", fallbackUsed: false }),
-          { status: 200, headers: { ...corsHeaders, "Content-Type": "application/json" } },
-        );
+      const messageId = crypto.randomUUID();
+      const { error: enqueueError } = await supabase.rpc("enqueue_email", {
+        queue_name: "transactional_emails",
+        payload: {
+          message_id: messageId,
+          to: SHOP_RECIPIENTS[0],
+          from: FROM_EMAIL,
+          sender_domain: SENDER_DOMAIN,
+          subject: `Jauns fails augšupielādēts — ${fileName || "fails"}`,
+          html: htmlBody,
+          text: `Jauns fails augšupielādēts\nFaila nosaukums: ${fileName || "fails"}\nTips: ${fileType || "unknown"}\nFaila saite: ${logoUrl}`,
+          purpose: "transactional",
+          label: "shop_logo_upload",
+          idempotency_key: `shop-logo-${messageId}`,
+          unsubscribe_token: crypto.randomUUID(),
+          queued_at: new Date().toISOString(),
+        },
+      });
+      if (enqueueError) {
+        console.error("Shop upload email enqueue failed", { code: enqueueError.code, message: enqueueError.message });
+        return jsonResponse({ success: true, emailed: false, warning: "Fails saglabāts, paziņojums aizkavēts." });
       }
-
-      const primaryMessage = primarySend.data?.message;
-      console.error("Primary recipient send failed:", JSON.stringify(primarySend.data));
-
-      const fallbackRecipient = extractAllowedTestRecipient(primaryMessage);
-      if (fallbackRecipient) {
-        const fallbackSend = await sendEmail(
-          resendApiKey,
-          fromEmail,
-          [fallbackRecipient],
-          `Jauns fails augšupielādēts — ${safeFileName}`,
-          htmlBody,
-        );
-
-        if (fallbackSend.ok) {
-          return new Response(
-            JSON.stringify({
-              success: true,
-              recipient: fallbackRecipient,
-              fallbackUsed: true,
-              warning: "Primārais saņēmējs īslaicīgi nav pieejams; izmantots rezerves saņēmējs.",
-            }),
-            { status: 200, headers: { ...corsHeaders, "Content-Type": "application/json" } },
-          );
-        }
-
-        console.error("Fallback recipient send failed:", JSON.stringify(fallbackSend.data));
-      }
-
-      return new Response(
-        JSON.stringify({
-          success: true,
-          fallbackUsed: true,
-          warning: "Fails ir saglabāts, bet e-pastu šobrīd nevarēja nosūtīt.",
-          details: primaryMessage ?? "unknown_email_error",
-        }),
-        { status: 200, headers: { ...corsHeaders, "Content-Type": "application/json" } },
-      );
+      return jsonResponse({ success: true, emailed: true });
     }
 
     if (!name || !company || !email) {
-      return new Response(
-        JSON.stringify({ error: "Trūkst obligāto lauku" }),
-        { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } },
-      );
+      return jsonResponse({ error: "Trūkst obligāto lauku" }, 400);
     }
 
     const safeName = escapeHtml(name);
@@ -200,80 +138,54 @@ serve(async (req) => {
       ${logoSection}
     `;
 
-    // 1) Always persist the request first so no lead can ever be lost
-    let saved = false;
-    try {
-      const supabaseUrl = Deno.env.get("SUPABASE_URL");
-      const serviceKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY");
-      if (supabaseUrl && serviceKey) {
-        const res = await fetch(`${supabaseUrl}/rest/v1/offer_requests`, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            apikey: serviceKey,
-            Authorization: `Bearer ${serviceKey}`,
-            Prefer: "return=minimal",
-          },
-          body: JSON.stringify({
-            name, company, email,
-            phone: phone || null,
-            size: size || null,
-            packaging: packaging || null,
-            purpose: purpose || null,
-            quantity: quantity || null,
-            message: message || null,
-            logo_url: logoUrl || null,
-            email_status: "pending",
-          }),
-        });
-        saved = res.ok;
-        if (!res.ok) console.error("Lead save failed:", await res.text());
-      }
-    } catch (e) {
-      console.error("Lead save error:", e);
-    }
+    const { error: saveError } = await supabase.from("offer_requests").insert({
+      name, company, email,
+      phone: phone || null,
+      size: size || null,
+      packaging: packaging || null,
+      purpose: purpose || null,
+      quantity: quantity || null,
+      message: message || null,
+      logo_url: logoUrl || null,
+      email_status: "pending",
+    });
+    const saved = !saveError;
+    if (saveError) console.error("Lead save failed", { code: saveError.code, message: saveError.message });
 
     const subject = `Jauns pieprasījums no ${safeCompany} — ${safeName}`;
-
-    // 2) Try primary recipients
-    let offerSend = await sendEmail(
-      resendApiKey,
-      fromEmail,
-      ["info@luxurychocolate.lv", "ilze.eisaka@gmail.com"],
-      subject,
-      htmlBody,
-      email,
-    );
-
-    // 3) Resend sandbox / unverified domain → retry with the allowed recipient only
-    if (!offerSend.ok) {
-      console.error("Offer send failed:", JSON.stringify(offerSend.data));
-      const fallbackRecipient = extractAllowedTestRecipient(offerSend.data?.message);
-      if (fallbackRecipient) {
-        offerSend = await sendEmail(resendApiKey, fromEmail, [fallbackRecipient], subject, htmlBody, email);
-        if (!offerSend.ok) console.error("Fallback send failed:", JSON.stringify(offerSend.data));
+    let enqueuedCount = 0;
+    for (const recipient of OFFER_RECIPIENTS) {
+      const messageId = crypto.randomUUID();
+      const { error: enqueueError } = await supabase.rpc("enqueue_email", {
+        queue_name: "transactional_emails",
+        payload: {
+          message_id: messageId,
+          to: recipient,
+          from: FROM_EMAIL,
+          sender_domain: SENDER_DOMAIN,
+          reply_to: email,
+          subject,
+          html: htmlBody,
+          text: `Jauns piedāvājuma pieprasījums\nVārds: ${name}\nUzņēmums: ${company}\nE-pasts: ${email}\nTelefons: ${phone || "Nav norādīts"}\nIzmērs: ${size || "Nav norādīts"}\nIepakojums: ${packaging || "Nav norādīts"}\nPielietošana: ${purpose || "Nav norādīts"}\nDaudzums: ${quantity || "Nav norādīts"}\nZiņojums: ${message || "Nav norādīts"}${logoUrl ? `\nLogo fails: ${logoUrl}` : ""}`,
+          purpose: "transactional",
+          label: "offer_request",
+          idempotency_key: `offer-${messageId}`,
+          unsubscribe_token: crypto.randomUUID(),
+          queued_at: new Date().toISOString(),
+        },
+      });
+      if (enqueueError) {
+        console.error("Offer email enqueue failed", { recipient, code: enqueueError.code, message: enqueueError.message });
+      } else {
+        enqueuedCount += 1;
       }
     }
-
-    // 4) The form must never fail for the customer if the request is stored
-    if (!offerSend.ok && !saved) {
-      return new Response(
-        JSON.stringify({ error: offerSend.data?.message ?? "Neizdevās nosūtīt e-pastu" }),
-        { status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" } },
-      );
-    }
-
-    return new Response(
-      JSON.stringify({ success: true, emailed: offerSend.ok, saved }),
-      { status: 200, headers: { ...corsHeaders, "Content-Type": "application/json" } },
-    );
+    if (enqueuedCount === 0 && !saved) return jsonResponse({ error: "Neizdevās saglabāt pieprasījumu" }, 500);
+    return jsonResponse({ success: true, emailed: enqueuedCount > 0, saved });
 
   } catch (error) {
     console.error("Error:", error);
     const message = error instanceof Error ? error.message : "Unknown error";
-    return new Response(
-      JSON.stringify({ error: message }),
-      { status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" } },
-    );
+    return jsonResponse({ error: message }, 500);
   }
 });

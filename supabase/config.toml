@@ -13,6 +13,8 @@ project_id = "qptmewoggfoycsoehenn"
     verify_jwt = false
   [functions.payments-webhook]
     verify_jwt = false
+  [functions.process-email-queue]
+    verify_jwt = true
   [functions.send-abandoned-cart-reminders]
     verify_jwt = false
   [functions.send-logo-email]
