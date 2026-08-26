@@ -84,7 +84,7 @@ Deno.serve(async (req) => {
         queue_name: "transactional_emails",
         payload: {
           message_id: messageId,
-          to: SHOP_RECIPIENTS,
+          to: SHOP_RECIPIENTS[0],
           from: FROM_EMAIL,
           sender_domain: SENDER_DOMAIN,
           subject: `Jauns fails augšupielādēts — ${fileName || "fails"}`,
@@ -151,26 +151,33 @@ Deno.serve(async (req) => {
     if (saveError) console.error("Lead save failed", { code: saveError.code, message: saveError.message });
 
     const subject = `Jauns pieprasījums no ${safeCompany} — ${safeName}`;
-    const messageId = crypto.randomUUID();
-    const { error: enqueueError } = await supabase.rpc("enqueue_email", {
-      queue_name: "transactional_emails",
-      payload: {
-        message_id: messageId,
-        to: OFFER_RECIPIENTS,
-        from: FROM_EMAIL,
-        sender_domain: SENDER_DOMAIN,
-        reply_to: email,
-        subject,
-        html: htmlBody,
-        purpose: "transactional",
-        label: "offer_request",
-        idempotency_key: `offer-${messageId}`,
-        queued_at: new Date().toISOString(),
-      },
-    });
-    if (enqueueError) console.error("Offer email enqueue failed", { code: enqueueError.code, message: enqueueError.message });
-    if (enqueueError && !saved) return jsonResponse({ error: "Neizdevās saglabāt pieprasījumu" }, 500);
-    return jsonResponse({ success: true, emailed: !enqueueError, saved });
+    let enqueuedCount = 0;
+    for (const recipient of OFFER_RECIPIENTS) {
+      const messageId = crypto.randomUUID();
+      const { error: enqueueError } = await supabase.rpc("enqueue_email", {
+        queue_name: "transactional_emails",
+        payload: {
+          message_id: messageId,
+          to: recipient,
+          from: FROM_EMAIL,
+          sender_domain: SENDER_DOMAIN,
+          reply_to: email,
+          subject,
+          html: htmlBody,
+          purpose: "transactional",
+          label: "offer_request",
+          idempotency_key: `offer-${messageId}`,
+          queued_at: new Date().toISOString(),
+        },
+      });
+      if (enqueueError) {
+        console.error("Offer email enqueue failed", { recipient, code: enqueueError.code, message: enqueueError.message });
+      } else {
+        enqueuedCount += 1;
+      }
+    }
+    if (enqueuedCount === 0 && !saved) return jsonResponse({ error: "Neizdevās saglabāt pieprasījumu" }, 500);
+    return jsonResponse({ success: true, emailed: enqueuedCount > 0, saved });
 
   } catch (error) {
     console.error("Error:", error);
