@@ -1,12 +1,16 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Loader2, Package, ChevronDown, ChevronUp, ExternalLink } from "lucide-react";
+import { Loader2, Package, ChevronDown, ChevronUp, ExternalLink, RotateCcw } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 
 interface OrderItem {
   id: string;
+  product_id: string | null;
   product_name: string;
   shape: string | null;
   width_mm: number | null;
@@ -16,8 +20,12 @@ interface OrderItem {
   unit_price_cents: number;
   total_price_cents: number;
   logo_url: string | null;
+  logo_filename: string | null;
+  notes: string | null;
+  logos: unknown;
   custom_text: string | null;
 }
+
 
 interface Order {
   id: string;
