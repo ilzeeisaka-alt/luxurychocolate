@@ -214,11 +214,54 @@ const OrdersList = ({ userId }: OrdersListProps) => {
                           </div>
                         </div>
                       </div>
-                      <div className="text-right text-sm font-medium whitespace-nowrap">
-                        {formatPrice(item.total_price_cents, order.currency)}
+                      <div className="text-right text-sm font-medium whitespace-nowrap space-y-2">
+                        <div>{formatPrice(item.total_price_cents, order.currency)}</div>
+                        {item.product_id && (
+                          <div className="flex items-center gap-2 justify-end">
+                            <Input
+                              type="number"
+                              min={1}
+                              value={qty[item.id] ?? String(item.quantity)}
+                              onChange={(e) => setQty((p) => ({ ...p, [item.id]: e.target.value }))}
+                              className="w-20 h-8 text-right"
+                              aria-label="Daudzums atkārtotam pasūtījumam"
+                            />
+                            <Button
+                              size="sm"
+                              variant="outline"
+                              disabled={reordering === item.id}
+                              onClick={() => addItemsToCart([item], item.id)}
+                            >
+                              {reordering === item.id ? (
+                                <Loader2 className="h-3.5 w-3.5 animate-spin" />
+                              ) : (
+                                <RotateCcw className="h-3.5 w-3.5" />
+                              )}
+                              <span className="ml-1.5">Pasūtīt atkārtoti</span>
+                            </Button>
+                          </div>
+                        )}
                       </div>
                     </div>
                   ))}
+
+                  {order.order_items.some((i) => i.product_id) && (
+                    <Button
+                      variant="secondary"
+                      size="sm"
+                      className="w-full"
+                      disabled={reordering === order.id}
+                      onClick={() => addItemsToCart(order.order_items, order.id)}
+                    >
+                      {reordering === order.id ? (
+                        <Loader2 className="h-4 w-4 animate-spin mr-2" />
+                      ) : (
+                        <RotateCcw className="h-4 w-4 mr-2" />
+                      )}
+                      Pasūtīt visu atkārtoti
+                    </Button>
+                  )}
+
 
                   <div className="pt-3 border-t space-y-1 text-sm">
                     <div className="flex justify-between text-muted-foreground">
