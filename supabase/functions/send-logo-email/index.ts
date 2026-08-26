@@ -93,6 +93,7 @@ Deno.serve(async (req) => {
           purpose: "transactional",
           label: "shop_logo_upload",
           idempotency_key: `shop-logo-${messageId}`,
+          unsubscribe_token: crypto.randomUUID(),
           queued_at: new Date().toISOString(),
         },
       });
@@ -169,6 +170,7 @@ Deno.serve(async (req) => {
           purpose: "transactional",
           label: "offer_request",
           idempotency_key: `offer-${messageId}`,
+          unsubscribe_token: crypto.randomUUID(),
           queued_at: new Date().toISOString(),
         },
       });
