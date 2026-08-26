@@ -67,9 +67,12 @@ interface OrdersListProps {
 }
 
 const OrdersList = ({ userId }: OrdersListProps) => {
+  const navigate = useNavigate();
   const [orders, setOrders] = useState<Order[]>([]);
   const [loading, setLoading] = useState(true);
   const [expanded, setExpanded] = useState<Set<string>>(new Set());
+  const [qty, setQty] = useState<Record<string, string>>({});
+  const [reordering, setReordering] = useState<string | null>(null);
 
   useEffect(() => {
     (async () => {
@@ -80,7 +83,7 @@ const OrdersList = ({ userId }: OrdersListProps) => {
         .order("created_at", { ascending: false });
 
       if (!error && data) {
-        setOrders(data as Order[]);
+        setOrders(data as unknown as Order[]);
       }
       setLoading(false);
     })();
@@ -94,6 +97,38 @@ const OrdersList = ({ userId }: OrdersListProps) => {
     });
   };
 
+  const addItemsToCart = async (items: OrderItem[], key: string) => {
+    const reorderable = items.filter((i) => i.product_id);
+    if (reorderable.length === 0) {
+      toast.error("Šos produktus nevar pasūtīt atkārtoti — lūdzu sazinieties ar mums.");
+      return;
+    }
+    setReordering(key);
+    try {
+      const rows = reorderable.map((i) => {
+        const parsed = parseInt(qty[i.id] ?? "", 10);
+        return {
+          user_id: userId,
+          product_id: i.product_id as string,
+          quantity: Number.isFinite(parsed) && parsed > 0 ? parsed : i.quantity,
+          logo_url: i.logo_url,
+          logo_filename: i.logo_filename,
+          notes: i.notes,
+          logos: (i.logos ?? []) as never,
+        };
+      });
+      const { error } = await supabase.from("cart_items").insert(rows);
+      if (error) throw error;
+      toast.success("Pievienots grozam!");
+      navigate("/grozs");
+    } catch (err) {
+      console.error("Reorder error:", err);
+      toast.error("Neizdevās pievienot grozam. Lūdzu mēģiniet vēlreiz.");
+    } finally {
+      setReordering(null);
+    }
+  };
+
   if (loading) {
     return (
       <Card className="mt-6">
@@ -103,6 +138,7 @@ const OrdersList = ({ userId }: OrdersListProps) => {
       </Card>
     );
   }
+
 
   if (orders.length === 0) {
     return (
