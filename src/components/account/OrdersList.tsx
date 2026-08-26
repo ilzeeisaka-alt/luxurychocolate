@@ -1,12 +1,16 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Loader2, Package, ChevronDown, ChevronUp, ExternalLink } from "lucide-react";
+import { Loader2, Package, ChevronDown, ChevronUp, ExternalLink, RotateCcw } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 
 interface OrderItem {
   id: string;
+  product_id: string | null;
   product_name: string;
   shape: string | null;
   width_mm: number | null;
@@ -16,8 +20,12 @@ interface OrderItem {
   unit_price_cents: number;
   total_price_cents: number;
   logo_url: string | null;
+  logo_filename: string | null;
+  notes: string | null;
+  logos: unknown;
   custom_text: string | null;
 }
+
 
 interface Order {
   id: string;
@@ -59,9 +67,12 @@ interface OrdersListProps {
 }
 
 const OrdersList = ({ userId }: OrdersListProps) => {
+  const navigate = useNavigate();
   const [orders, setOrders] = useState<Order[]>([]);
   const [loading, setLoading] = useState(true);
   const [expanded, setExpanded] = useState<Set<string>>(new Set());
+  const [qty, setQty] = useState<Record<string, string>>({});
+  const [reordering, setReordering] = useState<string | null>(null);
 
   useEffect(() => {
     (async () => {
@@ -72,7 +83,7 @@ const OrdersList = ({ userId }: OrdersListProps) => {
         .order("created_at", { ascending: false });
 
       if (!error && data) {
-        setOrders(data as Order[]);
+        setOrders(data as unknown as Order[]);
       }
       setLoading(false);
     })();
@@ -86,6 +97,38 @@ const OrdersList = ({ userId }: OrdersListProps) => {
     });
   };
 
+  const addItemsToCart = async (items: OrderItem[], key: string) => {
+    const reorderable = items.filter((i) => i.product_id);
+    if (reorderable.length === 0) {
+      toast.error("Šos produktus nevar pasūtīt atkārtoti — lūdzu sazinieties ar mums.");
+      return;
+    }
+    setReordering(key);
+    try {
+      const rows = reorderable.map((i) => {
+        const parsed = parseInt(qty[i.id] ?? "", 10);
+        return {
+          user_id: userId,
+          product_id: i.product_id as string,
+          quantity: Number.isFinite(parsed) && parsed > 0 ? parsed : i.quantity,
+          logo_url: i.logo_url,
+          logo_filename: i.logo_filename,
+          notes: i.notes,
+          logos: (i.logos ?? []) as never,
+        };
+      });
+      const { error } = await supabase.from("cart_items").insert(rows);
+      if (error) throw error;
+      toast.success("Pievienots grozam!");
+      navigate("/grozs");
+    } catch (err) {
+      console.error("Reorder error:", err);
+      toast.error("Neizdevās pievienot grozam. Lūdzu mēģiniet vēlreiz.");
+    } finally {
+      setReordering(null);
+    }
+  };
+
   if (loading) {
     return (
       <Card className="mt-6">
@@ -95,6 +138,7 @@ const OrdersList = ({ userId }: OrdersListProps) => {
       </Card>
     );
   }
+
 
   if (orders.length === 0) {
     return (
@@ -170,11 +214,54 @@ const OrdersList = ({ userId }: OrdersListProps) => {
                           </div>
                         </div>
                       </div>
-                      <div className="text-right text-sm font-medium whitespace-nowrap">
-                        {formatPrice(item.total_price_cents, order.currency)}
+                      <div className="text-right text-sm font-medium whitespace-nowrap space-y-2">
+                        <div>{formatPrice(item.total_price_cents, order.currency)}</div>
+                        {item.product_id && (
+                          <div className="flex items-center gap-2 justify-end">
+                            <Input
+                              type="number"
+                              min={1}
+                              value={qty[item.id] ?? String(item.quantity)}
+                              onChange={(e) => setQty((p) => ({ ...p, [item.id]: e.target.value }))}
+                              className="w-20 h-8 text-right"
+                              aria-label="Daudzums atkārtotam pasūtījumam"
+                            />
+                            <Button
+                              size="sm"
+                              variant="outline"
+                              disabled={reordering === item.id}
+                              onClick={() => addItemsToCart([item], item.id)}
+                            >
+                              {reordering === item.id ? (
+                                <Loader2 className="h-3.5 w-3.5 animate-spin" />
+                              ) : (
+                                <RotateCcw className="h-3.5 w-3.5" />
+                              )}
+                              <span className="ml-1.5">Pasūtīt atkārtoti</span>
+                            </Button>
+                          </div>
+                        )}
                       </div>
                     </div>
                   ))}
+
+                  {order.order_items.some((i) => i.product_id) && (
+                    <Button
+                      variant="secondary"
+                      size="sm"
+                      className="w-full"
+                      disabled={reordering === order.id}
+                      onClick={() => addItemsToCart(order.order_items, order.id)}
+                    >
+                      {reordering === order.id ? (
+                        <Loader2 className="h-4 w-4 animate-spin mr-2" />
+                      ) : (
+                        <RotateCcw className="h-4 w-4 mr-2" />
+                      )}
+                      Pasūtīt visu atkārtoti
+                    </Button>
+                  )}
+
 
                   <div className="pt-3 border-t space-y-1 text-sm">
                     <div className="flex justify-between text-muted-foreground">
