@@ -1,0 +1,1 @@
+ALTER TABLE public.product_categories ADD COLUMN IF NOT EXISTS parent_id uuid REFERENCES public.product_categories(id) ON DELETE SET NULL;
