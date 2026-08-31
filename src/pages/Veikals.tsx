@@ -17,6 +17,7 @@ interface CategoryRow {
   slug: string;
   name: string;
   product_count: number;
+  parent_id: string | null;
 }
 
 interface ProductRow {
