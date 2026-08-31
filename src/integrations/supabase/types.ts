@@ -701,6 +701,7 @@ export type Database = {
           image_url: string | null
           name: string
           name_i18n: Json
+          parent_id: string | null
           slug: string
           sort_order: number
           updated_at: string
@@ -713,6 +714,7 @@ export type Database = {
           image_url?: string | null
           name: string
           name_i18n?: Json
+          parent_id?: string | null
           slug: string
           sort_order?: number
           updated_at?: string
@@ -725,11 +727,20 @@ export type Database = {
           image_url?: string | null
           name?: string
           name_i18n?: Json
+          parent_id?: string | null
           slug?: string
           sort_order?: number
           updated_at?: string
         }
-        Relationships: []
+        Relationships: [
+          {
+            foreignKeyName: "product_categories_parent_id_fkey"
+            columns: ["parent_id"]
+            isOneToOne: false
+            referencedRelation: "product_categories"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       product_images: {
         Row: {
