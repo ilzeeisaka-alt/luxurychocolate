@@ -69,7 +69,7 @@ const Veikals = () => {
     queryFn: async () => {
       const { data: cats } = await supabase
         .from("product_categories")
-        .select("id, slug, name, name_i18n, sort_order")
+        .select("id, slug, name, name_i18n, sort_order, parent_id")
         .order("sort_order", { ascending: true })
         .order("name", { ascending: true });
       const { data: prods } = await supabase
@@ -82,21 +82,34 @@ const Veikals = () => {
       (prods ?? []).forEach((p) => {
         if (p.category_id) counts.set(p.category_id, (counts.get(p.category_id) ?? 0) + 1);
       });
-      return (cats ?? [])
+      const mapped: CategoryRow[] = (cats ?? [])
         .map((c) => ({
           id: c.id,
           slug: c.slug,
           name: pickI18n(c.name_i18n as Record<string, unknown> | null, lang, c.name),
           product_count: counts.get(c.id) ?? 0,
+          parent_id: (c as { parent_id: string | null }).parent_id ?? null,
         }))
         .filter((c) => c.product_count > 0);
+      // Sakārto: apakškategorijas uzreiz aiz to virskategorijas
+      const parents = mapped.filter((c) => !c.parent_id || !mapped.some((p) => p.id === c.parent_id));
+      const ordered: CategoryRow[] = [];
+      parents.forEach((p) => {
+        ordered.push(p);
+        mapped.filter((c) => c.parent_id === p.id).forEach((c) => ordered.push(c));
+      });
+      return ordered;
     },
   });
 
-  const currentCategoryId = useMemo(
-    () => categories.find((c) => c.slug === category)?.id ?? null,
-    [categories, category]
-  );
+  const currentCategoryIds = useMemo(() => {
+    const current = categories.find((c) => c.slug === category);
+    if (!current) return null;
+    const children = categories.filter((c) => c.parent_id === current.id).map((c) => c.id);
+    return [current.id, ...children];
+  }, [categories, category]);
+
+  const currentCategoryId = currentCategoryIds?.[0] ?? null;
 
   const { data, isLoading } = useQuery({
     queryKey: ["catalog-products", currentCategoryId, search, page, sort, category, lang],
