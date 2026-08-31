@@ -233,12 +233,13 @@ const Veikals = () => {
                   onClick={() => update({ category: c.slug })}
                   className={cn(
                     "w-full text-left px-3 py-2 rounded-md text-sm transition-colors flex items-center justify-between gap-2",
+                    c.parent_id ? "pl-7 text-xs" : "",
                     category === c.slug
                       ? "bg-primary/15 text-primary font-medium"
                       : "text-muted-foreground hover:text-foreground hover:bg-card"
                   )}
                 >
-                  <span className="truncate">{c.name}</span>
+                  <span className="truncate">{c.parent_id ? `— ${c.name}` : c.name}</span>
                   <span className="text-xs opacity-60">{c.product_count}</span>
                 </button>
               ))}
