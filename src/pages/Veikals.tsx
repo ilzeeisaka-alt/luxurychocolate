@@ -123,7 +123,7 @@ const Veikals = () => {
         )
         .eq("published", true);
 
-      if (currentCategoryId) q = q.eq("category_id", currentCategoryId);
+      if (currentCategoryIds && currentCategoryIds.length > 0) q = q.in("category_id", currentCategoryIds);
       if (search) q = q.or(`name.ilike.%${search}%,name_i18n->>${lang}.ilike.%${search}%`);
 
       // Kārtošana pēc kategorijas secības (default), tad piespraustie + bildes
