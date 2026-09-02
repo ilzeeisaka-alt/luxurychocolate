@@ -99,7 +99,7 @@ const VeikalsProduct = () => {
     return (
       <div className="min-h-screen bg-background">
         <Navbar />
-        <main className="container mx-auto px-4 pt-28 pb-16">
+        <main className="container mx-auto px-4 pt-44 md:pt-48 pb-16">
           <div className="grid md:grid-cols-2 gap-10">
             <div className="aspect-square bg-card rounded-xl animate-pulse" />
             <div className="space-y-4">
@@ -118,7 +118,7 @@ const VeikalsProduct = () => {
     return (
       <div className="min-h-screen bg-background">
         <Navbar />
-        <main className="container mx-auto px-4 pt-28 pb-16 text-center">
+        <main className="container mx-auto px-4 pt-44 md:pt-48 pb-16 text-center">
           <h1 className="text-3xl text-foreground mb-4">Produkts nav atrasts</h1>
           <Link to="/veikals" className="text-primary hover:underline">
             ← Atpakaļ uz veikalu
@@ -184,7 +184,7 @@ const VeikalsProduct = () => {
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
-      <main className="container mx-auto px-4 pt-28 pb-16">
+      <main className="container mx-auto px-4 pt-44 md:pt-48 pb-16">
         <Link
           to={`/veikals${lang !== "lv" ? `?lang=${lang}` : ""}`}
           className="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-primary mb-8 transition-colors"
