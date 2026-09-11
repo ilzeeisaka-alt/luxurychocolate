@@ -85,6 +85,24 @@ const VeikalsProduct = () => {
     },
   });
 
+  // Same-category products — gives every product several internal links (SEO).
+  const categoryId = data?.product?.category_id ?? null;
+  const { data: related } = useQuery({
+    queryKey: ["product-related", categoryId, data?.product?.id],
+    enabled: !!categoryId && !!data?.product?.id,
+    queryFn: async () => {
+      const { data: rows, error } = await supabase
+        .from("products")
+        .select("id, slug, name, name_i18n")
+        .eq("published", true)
+        .eq("category_id", categoryId!)
+        .neq("id", data!.product.id)
+        .limit(12);
+      if (error) throw error;
+      return rows ?? [];
+    },
+  });
+
   const seoTitle = data?.product
     ? pickI18n(data.product.name_i18n as Record<string, unknown> | null, lang, data.product.name)
     : "Produkts";
