@@ -3,6 +3,7 @@ import { Youtube, Linkedin } from "lucide-react";
 import NewsletterSignup from "./NewsletterSignup";
 
 const footerLinks = [
+  { to: "/katalogs", label: "Pilns produktu katalogs" },
   { to: "/sokolades-ar-logo", label: "Šokolādes ar logo" },
   { to: "/sokolades-klientu-davanam", label: "Korporatīvās dāvanas" },
   { to: "/reklamas-sokolade", label: "Reklāmas šokolādes" },

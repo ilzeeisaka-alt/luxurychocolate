@@ -4,6 +4,12 @@
 
   <!-- === HOMEPAGES === -->
   <url>
+    <loc>https://luxurychocolate.lv/katalogs</loc>
+    <lastmod>2026-09-11</lastmod>
+    <priority>0.9</priority>
+    <changefreq>daily</changefreq>
+  </url>
+  <url>
     <loc>https://luxurychocolate.lv/</loc>
     <xhtml:link rel="alternate" hreflang="lv" href="https://luxurychocolate.lv/" />
     <xhtml:link rel="alternate" hreflang="en" href="https://luxurychocolate.lv/en" />

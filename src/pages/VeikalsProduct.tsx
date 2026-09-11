@@ -85,6 +85,24 @@ const VeikalsProduct = () => {
     },
   });
 
+  // Same-category products — gives every product several internal links (SEO).
+  const categoryId = data?.product?.category_id ?? null;
+  const { data: related } = useQuery({
+    queryKey: ["product-related", categoryId, data?.product?.id],
+    enabled: !!categoryId && !!data?.product?.id,
+    queryFn: async () => {
+      const { data: rows, error } = await supabase
+        .from("products")
+        .select("id, slug, name, name_i18n")
+        .eq("published", true)
+        .eq("category_id", categoryId!)
+        .neq("id", data!.product.id)
+        .limit(12);
+      if (error) throw error;
+      return rows ?? [];
+    },
+  });
+
   const seoTitle = data?.product
     ? pickI18n(data.product.name_i18n as Record<string, unknown> | null, lang, data.product.name)
     : "Produkts";
@@ -381,6 +399,32 @@ const VeikalsProduct = () => {
                 );
               })}
             </div>
+          </section>
+        )}
+
+        {related && related.length > 0 && (
+          <section className="mt-16 pt-10 border-t border-border">
+            <h2 className="text-xl text-foreground mb-4">
+              {lang === "ru" ? "Похожие товары" : lang === "et" ? "Sarnased tooted" : "Līdzīgi produkti"}
+            </h2>
+            <ul className="grid sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-1.5">
+              {related.map((r) => (
+                <li key={r.id}>
+                  <Link
+                    to={`/veikals/${r.slug}${lang !== "lv" ? `?lang=${lang}` : ""}`}
+                    className="text-sm text-muted-foreground hover:text-primary transition-colors"
+                  >
+                    {pickI18n(r.name_i18n as Record<string, unknown> | null, lang, r.name)}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+            <Link
+              to={`/katalogs${lang !== "lv" ? `?lang=${lang}` : ""}`}
+              className="inline-block mt-6 text-sm text-primary hover:underline"
+            >
+              {lang === "ru" ? "Весь каталог" : lang === "et" ? "Kogu kataloog" : "Pilns produktu katalogs"} →
+            </Link>
           </section>
         )}
       </main>
