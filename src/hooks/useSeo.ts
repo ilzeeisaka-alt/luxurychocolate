@@ -86,36 +86,36 @@ export function useSeo({ title, description, path, ogImage, keywords }: SeoProps
     // Canonical must never carry query params (?lang, ?page, ?category, ?q).
     const cleanPath = path.split("?")[0].split("#")[0];
     const url = `${BASE_URL}${cleanPath}`;
-    description = clampDescription(description);
+    const desc = clampDescription(description);
 
     document.title = fullTitle;
 
-    setMeta("description", description);
+    setMeta("description", desc);
     setLink("canonical", url);
 
     // Keywords
-    const kw = keywords || seoKeywords[path] || "";
+    const kw = keywords || seoKeywords[cleanPath] || "";
     if (kw) setMeta("keywords", kw);
 
     // Open Graph
     setMeta("og:title", fullTitle, "property");
-    setMeta("og:description", description, "property");
+    setMeta("og:description", desc, "property");
     setMeta("og:url", url, "property");
     setMeta("og:type", "website", "property");
     if (ogImage) setMeta("og:image", ogImage, "property");
 
     // Twitter
     setMeta("twitter:title", fullTitle);
-    setMeta("twitter:description", description);
+    setMeta("twitter:description", desc);
     if (ogImage) setMeta("twitter:image", ogImage);
 
     // Hreflang alternate links
-    const alternatives = hreflangMap[path];
+    const alternatives = hreflangMap[cleanPath];
     if (alternatives) {
       Object.entries(alternatives).forEach(([lang, altPath]) => {
         setLink("alternate", `${BASE_URL}${altPath}`, { hreflang: lang });
       });
-      const defaultPath = alternatives["lv"] || path;
+      const defaultPath = alternatives["lv"] || cleanPath;
       setLink("alternate", `${BASE_URL}${defaultPath}`, { hreflang: "x-default" });
     }
 
