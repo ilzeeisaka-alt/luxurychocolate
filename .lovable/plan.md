@@ -1,45 +1,38 @@
-## Konteksts
+## Ko rāda audits
 
-Avota lapa `www.luxurychocolatesia.lv` satur:
-- **~40 produktu kategorijas** (LV)
-- **~150–200 unikālus produktus** (atkārtoti 20 valodās zem dažādiem URL — pavisam 560+ produkta saites)
-- **Satura sadaļas:** Par mums (about-us), Apdruka, Ko mēs darām, Cenu lapa, Beļģu šokolāde, Drukāšana, Līgums, Aģents 007, Eņģeļu Birojs, MĪLESTĪBA IR KĀ UGUNS, Blogs, Noteikumi, Privātums, Glabāšana
-- **20 valodu versijas** (LV, ENG, RUS, EST, LIT, DEU, FRA, ITA, SPA, ARA, JPN, NOR, SWE, FIN, ZHO, DAN, HEB, HIN, CZE, GRE) — avota lapā NAV pieejamas visās 55, ko šī lapa atbalsta
-- Lapa renderē produktu sarakstu ar JavaScript, tāpēc Firecrawl jāizmanto ar `waitFor` katrai kategoriju lapai
+Ahrefs ziņo par 4 galvenajām problēmām:
 
-## Realitātes pārbaude
+1. **537 "bāreņu" lapas** — produktu lapas, uz kurām neved neviena iekšēja saite (Google tās atrod tikai caur sitemap.xml)
+2. **35 kanoniskās adreses bez iekšējām saitēm** — tas pats iemesls
+3. **41 dublēta lapa bez kanoniskās adreses** — dažas lapas nepasaka Google, kura ir "īstā" versija
+4. **23 lapas ar pārāk garu aprakstu** (meta description virs 160 rakstzīmēm)
 
-- Pilna 200 produktu × 20 valodu skrēpēšana = ~4000 Firecrawl pieprasījumu + tūkstošiem bilžu lejupielāžu. Tas pārsniedz vienas atbildes apjomu un patērē daudz kredītu.
-- 35 no 55 valodām (piem., portugāļu, holandiešu, ungāru, turku, korejiešu utt.) avotā **vispār neeksistē** — tām būs jāizmanto auto-fallback uz angļu vai LV.
+Galvenā cēlonis: veikalā produkti ir sadalīti pa lappusēm (24 gab.), tāpēc lielākā daļa no 500+ produktiem nekur nav saistīti ar saiti.
 
-## Piedāvātais plāns (fāzēs)
+## Risinājums
 
-### Fāze 1 — Pamats: LV produkti un kategorijas (šī atbilde)
-1. Iztīrīt esošās `product_categories` un `products` ierakstus (vai izveidot importa karogu lai izvairītos no dublikātiem)
-2. Skrēpēt katras 40 LV kategorijas lapu ar `waitFor: 3000`
-3. Saglabāt kategorijas tabulā `product_categories` (slug, name, sort_order)
-4. Katram unikālajam produktam:
-   - Skrēpēt produkta lapu (nosaukums, cena, apraksts, bildes)
-   - Lejupielādēt bildes uz `product-images` storage
-   - Ievietot rindu `products` + ierakstus `product_images`
-5. Atgriezt importa kopsavilkumu (cik kategoriju, produktu, bilžu)
+### 1. Pilnais katalogs (jauna lapa `/katalogs`)
+Viena lapa, kur redzamas **visas** kategorijas un **visi** produkti kā parastas saites, sagrupēti pa kategorijām. Saite uz to tiek pievienota kājenē visās valodās, lai Google to atrastu no jebkuras lapas. Tas novērš gan bāreņu lapas, gan kanonisko adrešu problēmu.
 
-### Fāze 2 — Satura sadaļas (nākamā ziņa)
-1. Skrēpēt 14 LV satura lapas
-2. Pārveidot par React komponentēm `src/pages/` ar lokalizāciju (LV avots, EN fallback)
-3. Pievienot maršrutus un navigāciju
+### 2. Saistītie produkti produkta lapā
+Katrā produkta lapā zem apraksta pievienot 6–8 saites uz citiem tās pašas kategorijas produktiem, lai katram produktam būtu vairāk nekā viena ievadošā saite (Ahrefs brīdinājums "tikai viena dofollow saite" — 205 lapas).
 
-### Fāze 3 — Tulkojumi (nākamā ziņa)
-1. Skrēpēt 19 papildu valodu produktu nosaukumus/aprakstus
-2. Saglabāt `products.metadata->translations` JSON laukā
-3. Frontendā nolasīt valodai specifisko nosaukumu, ar fallback uz EN→LV
-4. Pārējām 35 valodām — automātisks fallback uz EN
+### 3. Kanoniskās adreses
+- Pievienot pamata kanonisko adresi `index.html`, lai neviena lapa nepaliktu bez tās
+- Nodrošināt, ka `?lang=`, `?page=`, `?category=` un `?q=` varianti vienmēr norāda uz tīro adresi bez parametriem
+- Pārbaudīt maršrutus, kas šobrīd neuzstāda savu SEO informāciju
 
-### Tehniskās izmaiņas šajā fāzē
-- **Migrācija:** pievienot `products.metadata.translations` (jau ir `metadata jsonb`, izmantosim to), `products.source_external_id` (text, lai novērstu dublikātus pārimporta laikā), `product_categories.image_url` (kategorijas attēls)
-- **Storage:** izmantot esošo `product-images` publisko bucket
-- **Skripts:** rakstīts `/tmp/import.py`, neizmaina lietotnes kodu šajā fāzē
+### 4. Apraksti
+Automātiski saīsināt meta aprakstu līdz 155 rakstzīmēm (pie vārda robežas) un pārrakstīt garākos aprakstus veikala un satura lapās.
 
-## Vai apstiprini Fāzi 1?
+### 5. Sitemap
+Atjaunot `public/sitemap.xml` ar jaunajām adresēm un iesniegt Search Console.
 
-Pēc apstiprinājuma izpildīšu importu (var aizņemt 5–10 minūtes Firecrawl izsaukumiem). Pēc tam ziņošu, cik kategoriju/produktu/bilžu ievests, un tu vari teikt "turpini ar Fāzi 2".
+## Tehniskās izmaiņas
+
+- Jauna lapa `src/pages/Katalogs.tsx` + maršruts `/katalogs` (`src/App.tsx`)
+- Saite kājenē `src/components/FooterSection.tsx`
+- Saistīto produktu bloks `src/pages/VeikalsProduct.tsx`
+- `src/hooks/useSeo.ts`: apraksta saīsināšana, kanoniskā adrese bez vaicājuma parametriem
+- `index.html`: noklusētā kanoniskā adrese
+- `public/sitemap.xml` atjaunošana
