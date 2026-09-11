@@ -71,10 +71,22 @@ function setLink(rel: string, href: string, extra?: Record<string, string>) {
   el.setAttribute("href", href);
 }
 
+// Keep meta descriptions within the 160-character limit search engines display.
+function clampDescription(text: string, max = 155) {
+  const clean = text.replace(/\s+/g, " ").trim();
+  if (clean.length <= max) return clean;
+  const cut = clean.slice(0, max);
+  const lastSpace = cut.lastIndexOf(" ");
+  return `${(lastSpace > 60 ? cut.slice(0, lastSpace) : cut).replace(/[\s,;:.-]+$/, "")}…`;
+}
+
 export function useSeo({ title, description, path, ogImage, keywords }: SeoProps) {
   useEffect(() => {
     const fullTitle = `${title} — Luxury Chocolate`;
-    const url = `${BASE_URL}${path}`;
+    // Canonical must never carry query params (?lang, ?page, ?category, ?q).
+    const cleanPath = path.split("?")[0].split("#")[0];
+    const url = `${BASE_URL}${cleanPath}`;
+    description = clampDescription(description);
 
     document.title = fullTitle;
 
