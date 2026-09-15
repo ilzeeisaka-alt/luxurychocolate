@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Cake } from "lucide-react";
+import { useInViewOnce } from "@/hooks/useInViewOnce";
 import type { Lang } from "@/i18n/types";
 
 import video1Asset from "@/assets/kapkeiki-1.mp4.asset.json";
@@ -126,6 +127,7 @@ interface CupcakeSectionProps {
 
 const CupcakeSection = ({ lang = "lv", onCtaClick }: CupcakeSectionProps) => {
   const t = content[lang];
+  const [gridRef, videosInView] = useInViewOnce<HTMLDivElement>();
 
   return (
     <motion.section
@@ -159,15 +161,15 @@ const CupcakeSection = ({ lang = "lv", onCtaClick }: CupcakeSectionProps) => {
                 className="bg-card rounded-xl overflow-hidden group"
                 style={{ boxShadow: "var(--shadow-card)" }}
               >
-                <div className="aspect-[9/16] overflow-hidden bg-muted">
+                <div ref={i === 0 ? gridRef : undefined} className="aspect-[9/16] overflow-hidden bg-muted">
                   <video
-                    src={videos[i]?.src}
+                    src={videosInView ? videos[i]?.src : undefined}
                     poster={videos[i]?.poster}
                     autoPlay
                     muted
                     loop
                     playsInline
-                    preload="metadata"
+                    preload="none"
                     className="w-full h-full object-cover"
                   />
                 </div>
