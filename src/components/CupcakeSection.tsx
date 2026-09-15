@@ -127,6 +127,7 @@ interface CupcakeSectionProps {
 
 const CupcakeSection = ({ lang = "lv", onCtaClick }: CupcakeSectionProps) => {
   const t = content[lang];
+  const [gridRef, videosInView] = useInViewOnce<HTMLDivElement>();
 
   return (
     <motion.section
