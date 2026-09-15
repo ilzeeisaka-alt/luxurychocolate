@@ -56,7 +56,7 @@ const StrawberryRosesSection = () => {
                   src="/video/zemenes-sokolade-rozes.mp4"
                   controls
                   playsInline
-                  preload="metadata"
+                  preload="none"
                 />
               </div>
               <div className="p-3">

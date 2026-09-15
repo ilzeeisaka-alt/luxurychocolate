@@ -69,7 +69,7 @@ const MacaroonsSection = () => {
                   className="w-full aspect-[9/16] md:aspect-video object-cover"
                   controls
                   playsInline
-                  preload="metadata"
+                  preload="none"
                   muted
                 >
                   <source src={v.src} type="video/mp4" />

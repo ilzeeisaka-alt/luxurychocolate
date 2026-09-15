@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import type { Lang } from "@/i18n/types";
 import { bookBoxContent } from "@/i18n/content";
 import Lightbox from "@/components/Lightbox";
+import { useInViewOnce } from "@/hooks/useInViewOnce";
 
 import heroImg from "@/assets/sokolades-gramata-hero.jpg";
 import elegantaImg from "@/assets/sokolades-gramata-eleganta.jpg";
@@ -28,6 +29,7 @@ const BookBoxSection = ({ lang = "lv" }: BookBoxSectionProps) => {
   const t = bookBoxContent[lang];
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
 
+  const [wrapRef, videoInView] = useInViewOnce<HTMLDivElement>();
   const [isMuted, setIsMuted] = useState(true);
   const videoRef = useRef<HTMLVideoElement>(null);
 
@@ -41,17 +43,18 @@ const BookBoxSection = ({ lang = "lv" }: BookBoxSectionProps) => {
   return (
     <>
       {/* Hero video — half-page width, looping, with sound toggle */}
-      <div className="max-w-3xl mx-auto px-4 overflow-hidden relative group">
+      <div ref={wrapRef} className="max-w-3xl mx-auto px-4 overflow-hidden relative group">
         <video
           ref={videoRef}
           autoPlay
           loop
           muted
           playsInline
+          preload="none"
           className="w-full h-auto block"
           poster={heroImg}
         >
-          <source src="/video/sokolades-gramata.mp4" type="video/mp4" />
+          {videoInView && <source src="/video/sokolades-gramata.mp4" type="video/mp4" />}
         </video>
         <button
           onClick={toggleMute}
