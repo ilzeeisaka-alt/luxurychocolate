@@ -107,41 +107,19 @@ Deno.serve(async (req) => {
         return jsonResponse({ error: "Logo URL ir obligāts" }, 400);
       }
 
-      const safeFileName = escapeHtml(fileName || "fails");
-      const safeFileType = escapeHtml(fileType || "unknown");
-      const safeFileSize = Number.isFinite(fileSize) ? `${Math.max(0, Number(fileSize))} B` : "Nav zināms";
-      const safeLogoUrl = escapeHtml(logoUrl);
-      const isImage = typeof fileType === "string" && fileType.startsWith("image/");
-
-      const htmlBody = `
-        <h2>Jauns logo/fails augšupielādēts no interneta veikala</h2>
-        <p><strong>Faila nosaukums:</strong> ${safeFileName}</p>
-        <p><strong>Tips:</strong> ${safeFileType}</p>
-        <p><strong>Izmērs:</strong> ${safeFileSize}</p>
-        <p><strong>Faila saite:</strong> <a href="${safeLogoUrl}">${safeLogoUrl}</a></p>
-        ${isImage ? `<p><img src="${safeLogoUrl}" alt="Klienta augšupielādētais fails" style="max-width:400px;max-height:300px;" /></p>` : ""}
-      `;
-
-      const messageId = crypto.randomUUID();
-      const { error: enqueueError } = await supabase.rpc("enqueue_email", {
-        queue_name: "transactional_emails",
-        payload: {
-          message_id: messageId,
-          to: SHOP_RECIPIENTS[0],
-          from: FROM_EMAIL,
-          sender_domain: SENDER_DOMAIN,
-          subject: `Jauns fails augšupielādēts — ${fileName || "fails"}`,
-          html: htmlBody,
-          text: `Jauns fails augšupielādēts\nFaila nosaukums: ${fileName || "fails"}\nTips: ${fileType || "unknown"}\nFaila saite: ${logoUrl}`,
-          purpose: "transactional",
-          label: "shop_logo_upload",
-          idempotency_key: `shop-logo-${messageId}`,
-          unsubscribe_token: crypto.randomUUID(),
-          queued_at: new Date().toISOString(),
+      const uploadId = crypto.randomUUID();
+      const emailed = await sendAndLog(supabase, "shop_logo_upload", SHOP_RECIPIENTS[0], {
+        templateData: {
+          fileName: fileName || "fails",
+          fileType: fileType || "unknown",
+          fileSize: Number.isFinite(fileSize) ? `${Math.max(0, Number(fileSize))} B` : "Nav zināms",
+          logoUrl,
+          isImage: typeof fileType === "string" && fileType.startsWith("image/"),
         },
+        idempotencyKey: `shop_logo_upload-${uploadId}`,
       });
-      if (enqueueError) {
-        console.error("Shop upload email enqueue failed", { code: enqueueError.code, message: enqueueError.message });
+
+      if (!emailed) {
         return jsonResponse({ success: true, emailed: false, warning: "Fails saglabāts, paziņojums aizkavēts." });
       }
       return jsonResponse({ success: true, emailed: true });
@@ -150,36 +128,6 @@ Deno.serve(async (req) => {
     if (!name || !company || !email) {
       return jsonResponse({ error: "Trūkst obligāto lauku" }, 400);
     }
-
-    const safeName = escapeHtml(name);
-    const safeCompany = escapeHtml(company);
-    const safeEmail = escapeHtml(email);
-    const safePhone = escapeHtml(phone || "Nav norādīts");
-    const safeSize = escapeHtml(size || "Nav norādīts");
-    const safePackaging = escapeHtml(packaging || "Nav norādīts");
-    const safePurpose = escapeHtml(purpose || "Nav norādīts");
-    const safeQuantity = escapeHtml(quantity || "Nav norādīts");
-    const safeMessage = escapeHtml(message || "Nav norādīts");
-
-    const logoSection = logoUrl
-      ? `<p><strong>Logo fails:</strong> <a href="${escapeHtml(logoUrl)}">${escapeHtml(logoUrl)}</a></p>`
-      : "<p><em>Logo nav pievienots</em></p>";
-
-    const htmlBody = `
-      <h2>Jauns piedāvājuma pieprasījums</h2>
-      <table style="border-collapse:collapse;width:100%;">
-        <tr><td style="padding:8px;font-weight:bold;">Vārds:</td><td style="padding:8px;">${safeName}</td></tr>
-        <tr><td style="padding:8px;font-weight:bold;">Uzņēmums:</td><td style="padding:8px;">${safeCompany}</td></tr>
-        <tr><td style="padding:8px;font-weight:bold;">E-pasts:</td><td style="padding:8px;">${safeEmail}</td></tr>
-        <tr><td style="padding:8px;font-weight:bold;">Telefons:</td><td style="padding:8px;">${safePhone}</td></tr>
-        <tr><td style="padding:8px;font-weight:bold;">Izmērs:</td><td style="padding:8px;">${safeSize}</td></tr>
-        <tr><td style="padding:8px;font-weight:bold;">Iepakojums:</td><td style="padding:8px;">${safePackaging}</td></tr>
-        <tr><td style="padding:8px;font-weight:bold;">Pielietošana:</td><td style="padding:8px;">${safePurpose}</td></tr>
-        <tr><td style="padding:8px;font-weight:bold;">Daudzums:</td><td style="padding:8px;">${safeQuantity}</td></tr>
-        <tr><td style="padding:8px;font-weight:bold;">Ziņojums:</td><td style="padding:8px;">${safeMessage}</td></tr>
-      </table>
-      ${logoSection}
-    `;
 
     const { error: saveError } = await supabase.from("offer_requests").insert({
       name, company, email,
@@ -195,36 +143,32 @@ Deno.serve(async (req) => {
     const saved = !saveError;
     if (saveError) console.error("Lead save failed", { code: saveError.code, message: saveError.message });
 
-    const subject = `Jauns pieprasījums no ${safeCompany} — ${safeName}`;
-    let enqueuedCount = 0;
+    const offerId = crypto.randomUUID();
+    const templateData = {
+      name,
+      company,
+      email,
+      phone: phone || "",
+      size: size || "",
+      packaging: packaging || "",
+      purpose: purpose || "",
+      quantity: quantity || "",
+      message: message || "",
+      logoUrl: logoUrl || null,
+    };
+
+    let sentCount = 0;
     for (const recipient of OFFER_RECIPIENTS) {
-      const messageId = crypto.randomUUID();
-      const { error: enqueueError } = await supabase.rpc("enqueue_email", {
-        queue_name: "transactional_emails",
-        payload: {
-          message_id: messageId,
-          to: recipient,
-          from: FROM_EMAIL,
-          sender_domain: SENDER_DOMAIN,
-          reply_to: email,
-          subject,
-          html: htmlBody,
-          text: `Jauns piedāvājuma pieprasījums\nVārds: ${name}\nUzņēmums: ${company}\nE-pasts: ${email}\nTelefons: ${phone || "Nav norādīts"}\nIzmērs: ${size || "Nav norādīts"}\nIepakojums: ${packaging || "Nav norādīts"}\nPielietošana: ${purpose || "Nav norādīts"}\nDaudzums: ${quantity || "Nav norādīts"}\nZiņojums: ${message || "Nav norādīts"}${logoUrl ? `\nLogo fails: ${logoUrl}` : ""}`,
-          purpose: "transactional",
-          label: "offer_request",
-          idempotency_key: `offer-${messageId}`,
-          unsubscribe_token: crypto.randomUUID(),
-          queued_at: new Date().toISOString(),
-        },
+      const ok = await sendAndLog(supabase, "offer_request", recipient, {
+        templateData,
+        idempotencyKey: `offer_request-${offerId}-${recipient}`,
+        replyTo: email,
       });
-      if (enqueueError) {
-        console.error("Offer email enqueue failed", { recipient, code: enqueueError.code, message: enqueueError.message });
-      } else {
-        enqueuedCount += 1;
-      }
+      if (ok) sentCount += 1;
     }
-    if (enqueuedCount === 0 && !saved) return jsonResponse({ error: "Neizdevās saglabāt pieprasījumu" }, 500);
-    return jsonResponse({ success: true, emailed: enqueuedCount > 0, saved });
+
+    if (sentCount === 0 && !saved) return jsonResponse({ error: "Neizdevās saglabāt pieprasījumu" }, 500);
+    return jsonResponse({ success: true, emailed: sentCount > 0, saved });
 
   } catch (error) {
     console.error("Error:", error);
