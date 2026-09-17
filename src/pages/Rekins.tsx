@@ -780,7 +780,7 @@ const Rekins = () => {
                   <p className="text-sm mt-1">{tx.invoiceNo} {invoiceNumber}</p>
                   <p className="text-sm">{tx.issued}: {today}</p>
                   <p className="text-sm">{tx.due}: {dueDate}</p>
-                  {eventDateDisplay && <p className="text-sm font-medium">{tx.eventDateLabel}: {eventDateDisplay}</p>}
+                  <p className="text-sm font-medium">{tx.eventDateLabel}: {eventDateDisplay || "_______________"}</p>
                 </div>
               </div>
               <div className="text-right text-sm">
@@ -834,9 +834,7 @@ const Rekins = () => {
                 {buyerEmail && <p>{buyerEmail}</p>}
                 {buyerPhone && <p>{buyerPhone}</p>}
                 {deliveryAddress && <p className="mt-1"><span className="font-medium">{tx.deliveryAddressLabel}:</span> {deliveryAddress}</p>}
-                {eventDateDisplay && (
-                  <p><span className="font-medium">{tx.eventDateLabel}:</span> {eventDateDisplay}</p>
-                )}
+                <p><span className="font-medium">{tx.eventDateLabel}:</span> {eventDateDisplay || "_______________"}</p>
               </div>
             </div>
 
