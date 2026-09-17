@@ -782,17 +782,9 @@ const Rekins = () => {
                   <p className="text-sm mt-1">{tx.invoiceNo} {invoiceNumber}</p>
                   <p className="text-sm">{tx.issued}: {today}</p>
                   <p className="text-sm">{tx.due}: {dueDate}</p>
-                  <div className="text-sm font-medium flex items-center gap-2 mt-1">
-                    <span>{tx.eventDateLabel}:</span>
-                    <input
-                      type="datetime-local"
-                      aria-label={tx.eventDateLabel}
-                      value={eventDate}
-                      onChange={(e) => setEventDate(e.target.value)}
-                      className="no-print min-w-48 border-b border-black bg-transparent px-1 py-0.5 text-sm text-black"
-                    />
-                    <span className="print-only">{eventDateDisplay || "_______________"}</span>
-                  </div>
+                  <p className="text-sm font-medium mt-1">
+                    {tx.eventDateLabel}: {eventDateDisplay || "_______________"}
+                  </p>
                 </div>
               </div>
               <div className="text-right text-sm">
