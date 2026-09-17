@@ -65,7 +65,7 @@ serve(async (req) => {
     if (authErr || !userData.user) throw new Error("Unauthorized");
     const user = userData.user;
 
-    const { environment, returnUrl, shippingId, affiliateCode, agencyDiscountOn, agencyDiscountPct, lang = "lv", locale = "auto" } = await req.json();
+    const { environment, returnUrl, shippingId, affiliateCode, agencyDiscountOn, agencyDiscountPct, eventDate, deliveryAddress, lang = "lv", locale = "auto" } = await req.json();
     const env = (environment || "sandbox") as StripeEnv;
     const shipping = SHIPPING_OPTIONS[shippingId as string] ?? SHIPPING_OPTIONS.pickup;
     const currentLang = typeof lang === "string" ? lang : "lv";
@@ -147,6 +147,13 @@ serve(async (req) => {
       );
     }
 
+    const eventDateText = typeof eventDate === "string" && eventDate.trim() ? eventDate.trim().slice(0, 80) : null;
+    const deliveryAddressText = typeof deliveryAddress === "string" && deliveryAddress.trim() ? deliveryAddress.trim().slice(0, 500) : null;
+    const orderNotes = [
+      eventDateText ? `Pasākuma datums / laiks: ${eventDateText}` : null,
+      agencyDiscountCents > 0 ? `Agency discount: ${agencyPct}% (-${(agencyDiscountCents / 100).toFixed(2)} ${currency})` : null,
+    ].filter(Boolean).join("\n");
+
     // Create pending order
     const { data: order, error: orderErr } = await supabaseAdmin
       .from("orders")
@@ -156,6 +163,7 @@ serve(async (req) => {
         customer_email: user.email || "",
         customer_name: customerName,
         customer_phone: profile?.phone || null,
+        shipping_address: deliveryAddressText,
         currency,
         subtotal_cents: subtotalCents - agencyDiscountCents,
         shipping_cents: shipping.cents,
@@ -164,9 +172,7 @@ serve(async (req) => {
         affiliate_id: affiliate?.id ?? null,
         affiliate_code: affiliate?.code ?? null,
         affiliate_discount_cents: affDiscountCents,
-        ...(agencyDiscountCents > 0 ? {
-          notes: `Agency discount: ${agencyPct}% (-${(agencyDiscountCents / 100).toFixed(2)} ${currency})`,
-        } : {}),
+        ...(orderNotes ? { notes: orderNotes } : {}),
       })
       .select()
       .single();
@@ -277,6 +283,7 @@ serve(async (req) => {
         product_type: "shop_order",
         shipping_id: shippingId ?? "pickup",
         shipping_label: shippingLabel,
+        ...(eventDateText && { event_date: eventDateText }),
         ...(affiliate && {
           affiliate_id: affiliate.id,
           affiliate_code: affiliate.code,

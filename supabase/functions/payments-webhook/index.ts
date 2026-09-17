@@ -188,7 +188,7 @@ async function handleShopOrderCompleted(session: any, env: StripeEnv) {
   // Idempotency
   const { data: existing } = await supabase
     .from("orders")
-    .select("id, status")
+    .select("id, status, customer_email, customer_name, customer_phone, shipping_address, shipping_city, shipping_postal_code, shipping_country, notes")
     .eq("id", orderId)
     .maybeSingle();
   if (!existing) {
@@ -219,19 +219,19 @@ async function handleShopOrderCompleted(session: any, env: StripeEnv) {
         typeof fullSession.payment_intent === "string"
           ? fullSession.payment_intent
           : (fullSession.payment_intent as any)?.id || null,
-      customer_email: cd?.email || fullSession.customer_email || "",
-      customer_name: cd?.name || shipping?.name || null,
-      customer_phone: cd?.phone || null,
+      customer_email: cd?.email || fullSession.customer_email || existing.customer_email || "",
+      customer_name: cd?.name || shipping?.name || existing.customer_name || null,
+      customer_phone: cd?.phone || existing.customer_phone || null,
       total_cents: fullSession.amount_total || 0,
       subtotal_cents: fullSession.amount_subtotal || fullSession.amount_total || 0,
       tax_cents: fullSession.total_details?.amount_tax || 0,
       shipping_cents: fullSession.total_details?.amount_shipping || 0,
       shipping_address: shippingAddr?.line1
         ? [shippingAddr.line1, shippingAddr.line2].filter(Boolean).join(", ")
-        : null,
-      shipping_city: shippingAddr?.city || null,
-      shipping_postal_code: shippingAddr?.postal_code || null,
-      shipping_country: shippingAddr?.country || null,
+        : existing.shipping_address || null,
+      shipping_city: shippingAddr?.city || existing.shipping_city || null,
+      shipping_postal_code: shippingAddr?.postal_code || existing.shipping_postal_code || null,
+      shipping_country: shippingAddr?.country || existing.shipping_country || null,
       paid_at: new Date().toISOString(),
     })
     .eq("id", orderId)
