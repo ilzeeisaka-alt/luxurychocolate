@@ -665,9 +665,11 @@ const Rekins = () => {
       <style>{`
         @media print {
           .no-print { display: none !important; }
+          .print-only { display: inline !important; }
           .print-area { box-shadow: none !important; border: none !important; }
           body { background: white !important; }
         }
+        .print-only { display: none; }
       `}</style>
       <div className="no-print"><Navbar /></div>
       <main className="container mx-auto px-4 pt-28 pb-16 max-w-5xl">
@@ -780,7 +782,17 @@ const Rekins = () => {
                   <p className="text-sm mt-1">{tx.invoiceNo} {invoiceNumber}</p>
                   <p className="text-sm">{tx.issued}: {today}</p>
                   <p className="text-sm">{tx.due}: {dueDate}</p>
-                  <p className="text-sm font-medium">{tx.eventDateLabel}: {eventDateDisplay || "_______________"}</p>
+                  <div className="text-sm font-medium flex items-center gap-2 mt-1">
+                    <span>{tx.eventDateLabel}:</span>
+                    <input
+                      type="datetime-local"
+                      aria-label={tx.eventDateLabel}
+                      value={eventDate}
+                      onChange={(e) => setEventDate(e.target.value)}
+                      className="no-print min-w-48 border-b border-black bg-transparent px-1 py-0.5 text-sm text-black"
+                    />
+                    <span className="print-only">{eventDateDisplay || "_______________"}</span>
+                  </div>
                 </div>
               </div>
               <div className="text-right text-sm">
