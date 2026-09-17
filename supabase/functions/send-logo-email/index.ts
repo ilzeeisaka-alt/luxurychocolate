@@ -1,11 +1,54 @@
 import { createClient } from "npm:@supabase/supabase-js@2";
 import { corsHeaders } from "npm:@supabase/supabase-js@2/cors";
 import { z } from "npm:zod@3.23.8";
+import { sendTemplateEmail } from "../_shared/transactional-email-templates/send-email.ts";
 
-const SENDER_DOMAIN = "notify.luxurychocolate.lv";
-const FROM_EMAIL = "Luxury Chocolate <info@luxurychocolate.lv>";
 const OFFER_RECIPIENTS = ["info@luxurychocolate.lv", "ilze.eisaka@gmail.com"];
 const SHOP_RECIPIENTS = ["info@luxurychocolate.lv"];
+
+type SupabaseClient = ReturnType<typeof createClient>;
+
+// Mirrors the send-state history the queue processor used to write.
+const logSend = async (
+  supabase: SupabaseClient,
+  templateName: string,
+  recipient: string,
+  status: "sent" | "suppressed" | "failed",
+  errorMessage?: string,
+) => {
+  const { error } = await supabase.from("email_send_log").insert({
+    message_id: null,
+    template_name: templateName,
+    recipient_email: recipient,
+    status,
+    error_message: errorMessage ? errorMessage.slice(0, 1000) : null,
+  });
+  if (error) {
+    console.error("Failed to write email send log", { code: error.code, message: error.message });
+  }
+};
+
+const sendAndLog = async (
+  supabase: SupabaseClient,
+  templateName: string,
+  recipient: string,
+  options: { templateData: Record<string, unknown>; idempotencyKey: string; replyTo?: string },
+): Promise<boolean> => {
+  try {
+    const result = await sendTemplateEmail(templateName, recipient, options);
+    if (!result.sent) {
+      await logSend(supabase, templateName, recipient, "suppressed", result.reason);
+      return false;
+    }
+    await logSend(supabase, templateName, recipient, "sent");
+    return true;
+  } catch (error) {
+    const msg = error instanceof Error ? error.message : String(error);
+    console.error("Email send failed", { templateName, error: msg });
+    await logSend(supabase, templateName, recipient, "failed", msg);
+    return false;
+  }
+};
 
 const RequestSchema = z.object({
   name: z.string().trim().min(1).max(200).optional(),
