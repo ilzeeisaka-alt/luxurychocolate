@@ -142,8 +142,8 @@ const AdminInvoice = () => {
     if (!invoiceRef.current) return;
     setSavingPdf(true);
     try {
-      const canvas = await html2canvas(invoiceRef.current, { scale: 2, backgroundColor: "#ffffff" });
-      const imgData = canvas.toDataURL("image/png");
+      const canvas = await html2canvas(invoiceRef.current, { scale: 1.5, backgroundColor: "#ffffff" });
+      const imgData = canvas.toDataURL("image/jpeg", 0.82);
       const pdf = new jsPDF({ unit: "mm", format: "a4", orientation: "portrait" });
       const pageW = pdf.internal.pageSize.getWidth();
       const pageH = pdf.internal.pageSize.getHeight();
