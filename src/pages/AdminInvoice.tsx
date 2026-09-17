@@ -254,6 +254,7 @@ const AdminInvoice = () => {
                 <p className="text-sm">Pasūtījums: {order.order_number}</p>
                 <p className="text-sm">Izrakstīts: {dateStr}</p>
                 {docType === "proforma" && <p className="text-sm">Apmaksas termiņš: {dueDate}</p>}
+                {eventDateStr && <p className="text-sm font-medium">Pasākuma datums / laiks: {eventDateStr}</p>}
               </div>
             </div>
             <div className="text-right text-sm">
