@@ -345,6 +345,26 @@ const localizeProductName = (name: string, lang: string, tx: ReturnType<typeof g
   return name;
 };
 
+const formatEventDateTime = (value: string, locale: string) => {
+  const trimmed = value.trim();
+  if (!trimmed) return "";
+  const dateTime = trimmed.match(/^(\d{4})-(\d{2})-(\d{2})[T ](\d{2}):(\d{2})/);
+  if (dateTime) {
+    const [, y, m, d, h, min] = dateTime;
+    const parsed = new Date(Number(y), Number(m) - 1, Number(d), Number(h), Number(min));
+    if (!isNaN(parsed.getTime())) return parsed.toLocaleString(locale, { dateStyle: "short", timeStyle: "short" });
+  }
+  const dateOnly = trimmed.match(/^(\d{4})-(\d{2})-(\d{2})$/);
+  if (dateOnly) {
+    const [, y, m, d] = dateOnly;
+    const parsed = new Date(Number(y), Number(m) - 1, Number(d));
+    if (!isNaN(parsed.getTime())) return parsed.toLocaleDateString(locale);
+  }
+  const parsed = new Date(trimmed);
+  if (!isNaN(parsed.getTime())) return parsed.toLocaleString(locale, { dateStyle: "short", timeStyle: "short" });
+  return trimmed;
+};
+
 const Rekins = () => {
   const { user, loading: authLoading } = useAuth();
   const navigate = useNavigate();
@@ -405,6 +425,7 @@ const Rekins = () => {
     d.setDate(d.getDate() + 7);
     return d.toLocaleDateString(dateLocale);
   }, [dateLocale]);
+  const eventDateDisplay = useMemo(() => formatEventDateTime(eventDate, dateLocale), [eventDate, dateLocale]);
 
   useSeo({
     title: `${tx.proformaTitle} — Luxury Chocolate`,
@@ -541,7 +562,7 @@ const Rekins = () => {
       sessionStorage.setItem("invoice_buyer", JSON.stringify({
         company: buyerCompany, vat: buyerVat, regNr: buyerRegNr,
         address: buyerAddress, email: buyerEmail, phone: buyerPhone,
-        invoiceNumber,
+        invoiceNumber, eventDate, deliveryAddress,
       }));
       navigate(withLang("/kase"));
     } finally {
@@ -614,6 +635,9 @@ const Rekins = () => {
             address: buyerAddress,
             email: buyerEmail,
             phone: buyerPhone,
+            eventDate,
+            eventDateDisplay,
+            deliveryAddress,
             shipping: shippingLabel,
             shippingCost: shipping.cents / 100,
             total: total / 100,
@@ -756,6 +780,7 @@ const Rekins = () => {
                   <p className="text-sm mt-1">{tx.invoiceNo} {invoiceNumber}</p>
                   <p className="text-sm">{tx.issued}: {today}</p>
                   <p className="text-sm">{tx.due}: {dueDate}</p>
+                  {eventDateDisplay && <p className="text-sm font-medium">{tx.eventDateLabel}: {eventDateDisplay}</p>}
                 </div>
               </div>
               <div className="text-right text-sm">
@@ -809,8 +834,8 @@ const Rekins = () => {
                 {buyerEmail && <p>{buyerEmail}</p>}
                 {buyerPhone && <p>{buyerPhone}</p>}
                 {deliveryAddress && <p className="mt-1"><span className="font-medium">{tx.deliveryAddressLabel}:</span> {deliveryAddress}</p>}
-                {eventDate && (
-                  <p><span className="font-medium">{tx.eventDateLabel}:</span> {new Date(eventDate).toLocaleString(dateLocale, { dateStyle: "short", timeStyle: "short" })}</p>
+                {eventDateDisplay && (
+                  <p><span className="font-medium">{tx.eventDateLabel}:</span> {eventDateDisplay}</p>
                 )}
               </div>
             </div>

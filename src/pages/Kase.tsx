@@ -95,12 +95,16 @@ const Kase = () => {
         const affRef = getStoredRef();
         let agencyDiscountOn = false;
         let agencyDiscountPct = 20;
+        let eventDate: string | null = null;
+        let deliveryAddress: string | null = null;
         try {
           const raw = localStorage.getItem("invoice_buyer_form");
           if (raw) {
             const p = JSON.parse(raw);
             agencyDiscountOn = !!p.agencyOn;
             agencyDiscountPct = typeof p.agencyPct === "number" ? p.agencyPct : 20;
+            eventDate = typeof p.eventDate === "string" && p.eventDate.trim() ? p.eventDate.trim() : null;
+            deliveryAddress = typeof p.deliveryAddress === "string" && p.deliveryAddress.trim() ? p.deliveryAddress.trim() : null;
           }
         } catch {}
         const { data, error } = await supabase.functions.invoke("create-shop-checkout", {
@@ -111,6 +115,8 @@ const Kase = () => {
             affiliateCode: affRef?.code ?? null,
             agencyDiscountOn,
             agencyDiscountPct,
+            eventDate,
+            deliveryAddress,
             lang,
             locale: getStripeLocale(lang),
           },
