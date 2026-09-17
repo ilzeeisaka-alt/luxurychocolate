@@ -115,14 +115,22 @@ const AdminInvoice = () => {
 
   // Pasākuma datums / laiks tiek saglabāts pasūtījuma piezīmēs, piem. "Pasākuma datums / laiks: 2026-08-19T10:00"
   const eventDateStr = useMemo(() => {
-    const raw = order?.notes ?? "";
+    const o = order as unknown as { notes?: string | null; event_date?: string | null } | null;
+    const fmt = (val: string) => {
+      const d = new Date(val.trim().replace(" ", "T"));
+      if (isNaN(d.getTime())) return val.trim();
+      const hasTime = /\d{2}:\d{2}/.test(val);
+      return d.toLocaleString("lv-LV", hasTime ? { dateStyle: "short", timeStyle: "short" } : { dateStyle: "short" });
+    };
+    if (o?.event_date) return fmt(o.event_date);
+    const raw = o?.notes ?? "";
     if (!raw) return "";
-    const m = raw.match(/:\s*(\d{4}-\d{2}-\d{2}(?:[T ]\d{2}:\d{2})?)/);
-    const iso = m?.[1];
-    if (!iso) return raw.includes(":") ? raw.split(/:(.+)/)[1]?.trim() ?? "" : raw.trim();
-    const d = new Date(iso.replace(" ", "T"));
-    if (isNaN(d.getTime())) return iso;
-    return d.toLocaleString("lv-LV", { dateStyle: "short", timeStyle: "short" });
+    const line = raw
+      .split("\n")
+      .find((l) => /pas[āa]kuma\s*datums/i.test(l));
+    if (!line) return "";
+    const value = line.split(/:(.+)/s)[1]?.trim() ?? "";
+    return value ? fmt(value) : "";
   }, [order]);
 
 
@@ -246,6 +254,7 @@ const AdminInvoice = () => {
                 <p className="text-sm">Pasūtījums: {order.order_number}</p>
                 <p className="text-sm">Izrakstīts: {dateStr}</p>
                 {docType === "proforma" && <p className="text-sm">Apmaksas termiņš: {dueDate}</p>}
+                {eventDateStr && <p className="text-sm font-medium">Pasākuma datums / laiks: {eventDateStr}</p>}
               </div>
             </div>
             <div className="text-right text-sm">
