@@ -391,6 +391,7 @@ const Rekins = () => {
   const [buyerEmail, setBuyerEmail] = useState<string>(saved.email ?? "");
   const [buyerPhone, setBuyerPhone] = useState<string>(saved.phone ?? "");
   const [eventDate, setEventDate] = useState<string>(saved.eventDate ?? "");
+  const eventDateInputRef = useRef<HTMLInputElement>(null);
   const [deliveryAddress, setDeliveryAddress] = useState<string>(saved.deliveryAddress ?? "");
   const [shippingId, setShippingId] = useState<string>(
     () => sessionStorage.getItem("shipping_id") || "pickup",
@@ -421,6 +422,24 @@ const Rekins = () => {
       localStorage.setItem(STORAGE_KEY, JSON.stringify({ eventDate: value }));
     }
   }, []);
+
+  // Some browsers restore datetime-local values without emitting change/input.
+  // Keep the invoice preview synchronized with the value visibly shown in the field.
+  useEffect(() => {
+    const syncVisibleEventDate = () => {
+      const visibleValue = eventDateInputRef.current?.value ?? "";
+      if (visibleValue && visibleValue !== eventDate) updateEventDate(visibleValue);
+    };
+    syncVisibleEventDate();
+    const timer = window.setInterval(syncVisibleEventDate, 500);
+    window.addEventListener("pageshow", syncVisibleEventDate);
+    window.addEventListener("focus", syncVisibleEventDate);
+    return () => {
+      window.clearInterval(timer);
+      window.removeEventListener("pageshow", syncVisibleEventDate);
+      window.removeEventListener("focus", syncVisibleEventDate);
+    };
+  }, [eventDate, updateEventDate]);
 
 
   const invoiceNumber = useMemo(() => {
@@ -726,7 +745,7 @@ const Rekins = () => {
             <input className="md:col-span-2 rounded-md bg-background border border-border px-3 py-2 text-sm" placeholder={tx.emailPlaceholder} value={buyerEmail} onChange={(e) => setBuyerEmail(e.target.value)} />
             <div className="md:col-span-2">
               <label className="block text-sm font-medium text-foreground mb-1">{tx.eventDateLabel}</label>
-              <input type="datetime-local" className="w-full rounded-md bg-background border border-border px-3 py-2 text-sm" placeholder={tx.eventDatePlaceholder} value={eventDate} onChange={(e) => updateEventDate(e.currentTarget.value)} onInput={(e) => updateEventDate(e.currentTarget.value)} />
+              <input ref={eventDateInputRef} type="datetime-local" className="w-full rounded-md bg-background border border-border px-3 py-2 text-sm" placeholder={tx.eventDatePlaceholder} value={eventDate} onChange={(e) => updateEventDate(e.currentTarget.value)} onInput={(e) => updateEventDate(e.currentTarget.value)} onBlur={(e) => updateEventDate(e.currentTarget.value)} />
             </div>
             <div className="md:col-span-2">
               <label className="block text-sm font-medium text-foreground mb-1">{tx.deliveryAddressLabel}</label>
