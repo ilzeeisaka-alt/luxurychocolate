@@ -95,6 +95,7 @@ const Kase = () => {
         const affRef = getStoredRef();
         let agencyDiscountOn = false;
         let agencyDiscountPct = 20;
+        let eventName: string | null = null;
         let eventDate: string | null = null;
         let deliveryAddress: string | null = null;
         try {
@@ -103,6 +104,7 @@ const Kase = () => {
             const p = JSON.parse(raw);
             agencyDiscountOn = !!p.agencyOn;
             agencyDiscountPct = typeof p.agencyPct === "number" ? p.agencyPct : 20;
+            eventName = typeof p.eventName === "string" && p.eventName.trim() ? p.eventName.trim() : null;
             eventDate = typeof p.eventDate === "string" && p.eventDate.trim() ? p.eventDate.trim() : null;
             deliveryAddress = typeof p.deliveryAddress === "string" && p.deliveryAddress.trim() ? p.deliveryAddress.trim() : null;
           }
@@ -115,6 +117,7 @@ const Kase = () => {
             affiliateCode: affRef?.code ?? null,
             agencyDiscountOn,
             agencyDiscountPct,
+            eventName,
             eventDate,
             deliveryAddress,
             lang,

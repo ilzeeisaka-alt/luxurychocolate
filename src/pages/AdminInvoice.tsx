@@ -133,6 +133,14 @@ const AdminInvoice = () => {
     return value ? fmt(value) : "";
   }, [order]);
 
+  const eventNameStr = useMemo(() => {
+    const raw = order?.notes ?? "";
+    const line = raw
+      .split("\n")
+      .find((value) => /pas[āa]kuma\s*nosaukums/i.test(value));
+    return line?.split(/:(.+)/s)[1]?.trim() ?? "";
+  }, [order]);
+
 
   const invoiceRef = useRef<HTMLDivElement | null>(null);
   const [savingPdf, setSavingPdf] = useState(false);
@@ -254,6 +262,7 @@ const AdminInvoice = () => {
                 <p className="text-sm">Pasūtījums: {order.order_number}</p>
                 <p className="text-sm">Izrakstīts: {dateStr}</p>
                 {docType === "proforma" && <p className="text-sm">Apmaksas termiņš: {dueDate}</p>}
+                {eventNameStr && <p className="text-sm font-medium">Pasākuma nosaukums: {eventNameStr}</p>}
                 {eventDateStr && <p className="text-sm font-medium">Pasākuma datums / laiks: {eventDateStr}</p>}
               </div>
             </div>
@@ -284,6 +293,7 @@ const AdminInvoice = () => {
               {order.customer_email && <p>{order.customer_email}</p>}
               {order.customer_phone && <p>{order.customer_phone}</p>}
               {order.shipping_address && <p className="mt-1"><span className="font-medium">Piegādes adrese:</span> {order.shipping_address}</p>}
+              {eventNameStr && <p className="mt-1"><span className="font-medium">Pasākuma nosaukums:</span> {eventNameStr}</p>}
               {eventDateStr && <p className="mt-1"><span className="font-medium">Pasākuma datums / laiks:</span> {eventDateStr}</p>}
             </div>
           </div>

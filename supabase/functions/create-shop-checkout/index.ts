@@ -65,7 +65,7 @@ serve(async (req) => {
     if (authErr || !userData.user) throw new Error("Unauthorized");
     const user = userData.user;
 
-    const { environment, returnUrl, shippingId, affiliateCode, agencyDiscountOn, agencyDiscountPct, eventDate, deliveryAddress, lang = "lv", locale = "auto" } = await req.json();
+    const { environment, returnUrl, shippingId, affiliateCode, agencyDiscountOn, agencyDiscountPct, eventName, eventDate, deliveryAddress, lang = "lv", locale = "auto" } = await req.json();
     const env = (environment || "sandbox") as StripeEnv;
     const shipping = SHIPPING_OPTIONS[shippingId as string] ?? SHIPPING_OPTIONS.pickup;
     const currentLang = typeof lang === "string" ? lang : "lv";
@@ -147,9 +147,11 @@ serve(async (req) => {
       );
     }
 
+    const eventNameText = typeof eventName === "string" && eventName.trim() ? eventName.trim().slice(0, 200) : null;
     const eventDateText = typeof eventDate === "string" && eventDate.trim() ? eventDate.trim().slice(0, 80) : null;
     const deliveryAddressText = typeof deliveryAddress === "string" && deliveryAddress.trim() ? deliveryAddress.trim().slice(0, 500) : null;
     const orderNotes = [
+      eventNameText ? `Pasākuma nosaukums: ${eventNameText}` : null,
       eventDateText ? `Pasākuma datums / laiks: ${eventDateText}` : null,
       agencyDiscountCents > 0 ? `Agency discount: ${agencyPct}% (-${(agencyDiscountCents / 100).toFixed(2)} ${currency})` : null,
     ].filter(Boolean).join("\n");
@@ -283,6 +285,7 @@ serve(async (req) => {
         product_type: "shop_order",
         shipping_id: shippingId ?? "pickup",
         shipping_label: shippingLabel,
+        ...(eventNameText && { event_name: eventNameText }),
         ...(eventDateText && { event_date: eventDateText }),
         ...(affiliate && {
           affiliate_id: affiliate.id,
