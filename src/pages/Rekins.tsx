@@ -745,7 +745,18 @@ const Rekins = () => {
             <input className="md:col-span-2 rounded-md bg-background border border-border px-3 py-2 text-sm" placeholder={tx.emailPlaceholder} value={buyerEmail} onChange={(e) => setBuyerEmail(e.target.value)} />
             <div className="md:col-span-2">
               <label className="block text-sm font-medium text-foreground mb-1">{tx.eventDateLabel}</label>
-              <input ref={eventDateInputRef} type="datetime-local" className="w-full rounded-md bg-background border border-border px-3 py-2 text-sm" placeholder={tx.eventDatePlaceholder} value={eventDate} onChange={(e) => updateEventDate(e.currentTarget.value)} onInput={(e) => updateEventDate(e.currentTarget.value)} onBlur={(e) => updateEventDate(e.currentTarget.value)} />
+              <input
+                ref={eventDateInputRef}
+                name="eventDate"
+                type="datetime-local"
+                autoComplete="off"
+                className="w-full rounded-md bg-background border border-border px-3 py-2 text-sm"
+                placeholder={tx.eventDatePlaceholder}
+                value={eventDate}
+                onChange={(e) => updateEventDate(e.target.value)}
+                onInput={(e) => updateEventDate((e.target as HTMLInputElement).value)}
+                onBlur={(e) => updateEventDate(e.target.value)}
+              />
             </div>
             <div className="md:col-span-2">
               <label className="block text-sm font-medium text-foreground mb-1">{tx.deliveryAddressLabel}</label>
