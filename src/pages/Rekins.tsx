@@ -392,6 +392,8 @@ const Rekins = () => {
   const [buyerPhone, setBuyerPhone] = useState<string>(saved.phone ?? "");
   const [eventDate, setEventDate] = useState<string>(saved.eventDate ?? "");
   const eventDateInputRef = useRef<HTMLInputElement>(null);
+  const eventDateHeaderRef = useRef<HTMLSpanElement>(null);
+  const eventDateBuyerRef = useRef<HTMLSpanElement>(null);
   const [deliveryAddress, setDeliveryAddress] = useState<string>(saved.deliveryAddress ?? "");
   const [shippingId, setShippingId] = useState<string>(
     () => sessionStorage.getItem("shipping_id") || "pickup",
@@ -415,13 +417,17 @@ const Rekins = () => {
 
   const updateEventDate = useCallback((value: string) => {
     setEventDate(value);
+    const locale = lang === "ru" ? "ru-RU" : lang === "en" ? "en-US" : lang === "et" ? "et-EE" : "lv-LV";
+    const displayValue = formatEventDateTime(value, locale) || "_______________";
+    if (eventDateHeaderRef.current) eventDateHeaderRef.current.textContent = displayValue;
+    if (eventDateBuyerRef.current) eventDateBuyerRef.current.textContent = displayValue;
     try {
       const current = JSON.parse(localStorage.getItem(STORAGE_KEY) || "{}");
       localStorage.setItem(STORAGE_KEY, JSON.stringify({ ...current, eventDate: value }));
     } catch {
       localStorage.setItem(STORAGE_KEY, JSON.stringify({ eventDate: value }));
     }
-  }, []);
+  }, [lang]);
 
   // Browsers can restore or commit datetime-local values without React receiving
   // the synthetic change event. Listen to the native field as well and poll its
@@ -430,6 +436,10 @@ const Rekins = () => {
     const input = eventDateInputRef.current;
     const syncVisibleEventDate = () => {
       const visibleValue = input?.value ?? "";
+      const locale = lang === "ru" ? "ru-RU" : lang === "en" ? "en-US" : lang === "et" ? "et-EE" : "lv-LV";
+      const displayValue = formatEventDateTime(visibleValue, locale) || "_______________";
+      if (eventDateHeaderRef.current) eventDateHeaderRef.current.textContent = displayValue;
+      if (eventDateBuyerRef.current) eventDateBuyerRef.current.textContent = displayValue;
       setEventDate((current) => {
         if (!visibleValue || visibleValue === current) return current;
         try {
@@ -456,7 +466,7 @@ const Rekins = () => {
       window.removeEventListener("pageshow", syncVisibleEventDate);
       window.removeEventListener("focus", syncVisibleEventDate);
     };
-  }, []);
+  }, [lang]);
 
 
   const invoiceNumber = useMemo(() => {
@@ -840,7 +850,7 @@ const Rekins = () => {
                   <p className="text-sm">{tx.issued}: {today}</p>
                   <p className="text-sm">{tx.due}: {dueDate}</p>
                   <p className="text-sm font-medium mt-1">
-                    {tx.eventDateLabel}: {eventDateDisplay || "_______________"}
+                    {tx.eventDateLabel}: <span ref={eventDateHeaderRef}>{eventDateDisplay || "_______________"}</span>
                   </p>
                 </div>
               </div>
@@ -895,7 +905,7 @@ const Rekins = () => {
                 {buyerEmail && <p>{buyerEmail}</p>}
                 {buyerPhone && <p>{buyerPhone}</p>}
                 {deliveryAddress && <p className="mt-1"><span className="font-medium">{tx.deliveryAddressLabel}:</span> {deliveryAddress}</p>}
-                <p><span className="font-medium">{tx.eventDateLabel}:</span> {eventDateDisplay || "_______________"}</p>
+                <p><span className="font-medium">{tx.eventDateLabel}:</span> <span ref={eventDateBuyerRef}>{eventDateDisplay || "_______________"}</span></p>
               </div>
             </div>
 
