@@ -131,6 +131,7 @@ Deno.serve(async (req) => {
       quantity: quantity || null,
       message: message || null,
       logo_url: logoUrl || null,
+      lang: lang || null,
       email_status: "pending",
     });
     const saved = !saveError;
@@ -148,6 +149,7 @@ Deno.serve(async (req) => {
       quantity: quantity || "",
       message: message || "",
       logoUrl: logoUrl || null,
+      lang: lang || "",
     };
 
     let sentCount = 0;
