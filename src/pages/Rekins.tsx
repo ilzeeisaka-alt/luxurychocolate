@@ -423,23 +423,40 @@ const Rekins = () => {
     }
   }, []);
 
-  // Some browsers restore datetime-local values without emitting change/input.
-  // Keep the invoice preview synchronized with the value visibly shown in the field.
+  // Browsers can restore or commit datetime-local values without React receiving
+  // the synthetic change event. Listen to the native field as well and poll its
+  // actual displayed value so the printable invoice always mirrors the form.
   useEffect(() => {
+    const input = eventDateInputRef.current;
     const syncVisibleEventDate = () => {
-      const visibleValue = eventDateInputRef.current?.value ?? "";
-      if (visibleValue && visibleValue !== eventDate) updateEventDate(visibleValue);
+      const visibleValue = input?.value ?? "";
+      setEventDate((current) => {
+        if (!visibleValue || visibleValue === current) return current;
+        try {
+          const savedForm = JSON.parse(localStorage.getItem(STORAGE_KEY) || "{}");
+          localStorage.setItem(STORAGE_KEY, JSON.stringify({ ...savedForm, eventDate: visibleValue }));
+        } catch {
+          localStorage.setItem(STORAGE_KEY, JSON.stringify({ eventDate: visibleValue }));
+        }
+        return visibleValue;
+      });
     };
+    input?.addEventListener("input", syncVisibleEventDate);
+    input?.addEventListener("change", syncVisibleEventDate);
+    input?.addEventListener("blur", syncVisibleEventDate);
     syncVisibleEventDate();
-    const timer = window.setInterval(syncVisibleEventDate, 500);
+    const timer = window.setInterval(syncVisibleEventDate, 150);
     window.addEventListener("pageshow", syncVisibleEventDate);
     window.addEventListener("focus", syncVisibleEventDate);
     return () => {
+      input?.removeEventListener("input", syncVisibleEventDate);
+      input?.removeEventListener("change", syncVisibleEventDate);
+      input?.removeEventListener("blur", syncVisibleEventDate);
       window.clearInterval(timer);
       window.removeEventListener("pageshow", syncVisibleEventDate);
       window.removeEventListener("focus", syncVisibleEventDate);
     };
-  }, [eventDate, updateEventDate]);
+  }, []);
 
 
   const invoiceNumber = useMemo(() => {
