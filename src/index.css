@@ -157,3 +157,15 @@
 .photo-gradient-gold:hover::after {
   opacity: 1;
 }
+
+/* Hide Lovable editor badge / floating UI when printing (e.g. invoices) */
+@media print {
+  #lovable-badge,
+  lovable-badge,
+  [class*="lovable-badge"],
+  [id*="lovable-badge"],
+  body > div[style*="position: fixed"],
+  body > div[style*="position:fixed"] {
+    display: none !important;
+  }
+}
