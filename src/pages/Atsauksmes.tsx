@@ -51,12 +51,7 @@ const Atsauksmes = () => {
 
   const load = async () => {
     setLoading(true);
-    const { data } = await supabase
-      .from("reviews")
-      .select("id, author_name, rating, title, content, created_at")
-      .eq("approved", true)
-      .order("created_at", { ascending: false })
-      .limit(100);
+    const { data } = await supabase.rpc("get_approved_reviews");
     setReviews(data ?? []);
     setLoading(false);
   };

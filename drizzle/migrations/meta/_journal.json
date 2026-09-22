@@ -8,6 +8,20 @@
       "when": 1789392563074,
       "tag": "0000_kapkeiki_subcategories_and_rename",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1790062069508,
+      "tag": "0001_protect_review_email_addresses",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1790062178213,
+      "tag": "0002_protect_affiliate_financial_fields",
+      "breakpoints": true
     }
   ]
 }
