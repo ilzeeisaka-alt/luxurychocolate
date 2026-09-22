@@ -61,6 +61,7 @@ const RequestSchema = z.object({
   quantity: z.string().trim().max(100).optional(),
   message: z.string().trim().max(5000).optional(),
   logoUrl: z.string().url().max(2000).optional().nullable(),
+  lang: z.string().trim().max(10).optional(),
   shopUpload: z.boolean().optional().default(false),
   fileName: z.string().trim().max(255).optional(),
   fileType: z.string().trim().max(150).optional(),
@@ -88,7 +89,7 @@ Deno.serve(async (req) => {
       return jsonResponse({ error: parsed.error.flatten().fieldErrors }, 400);
     }
 
-    const { name, company, email, phone, size, packaging, purpose, quantity, message, logoUrl, shopUpload, fileName, fileType, fileSize } = parsed.data;
+    const { name, company, email, phone, size, packaging, purpose, quantity, message, logoUrl, lang, shopUpload, fileName, fileType, fileSize } = parsed.data;
     const supabaseUrl = Deno.env.get("SUPABASE_URL");
     const serviceKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY");
     if (!supabaseUrl || !serviceKey) return jsonResponse({ error: "Server configuration error" }, 500);
