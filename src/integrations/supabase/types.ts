@@ -468,6 +468,7 @@ export type Database = {
           email: string
           email_status: string | null
           id: string
+          lang: string | null
           logo_url: string | null
           message: string | null
           name: string
@@ -483,6 +484,7 @@ export type Database = {
           email: string
           email_status?: string | null
           id?: string
+          lang?: string | null
           logo_url?: string | null
           message?: string | null
           name: string
@@ -498,6 +500,7 @@ export type Database = {
           email?: string
           email_status?: string | null
           id?: string
+          lang?: string | null
           logo_url?: string | null
           message?: string | null
           name?: string
