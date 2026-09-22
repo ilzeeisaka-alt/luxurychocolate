@@ -62,6 +62,8 @@ const INVOICE_TEXT = {
     emailPlaceholder: "Email",
     eventDatePlaceholder: "Event date / time",
     eventDateLabel: "Event date / time",
+    eventNamePlaceholder: "Event name",
+    eventNameLabel: "Event name",
     deliveryAddressPlaceholder: "Delivery address",
     deliveryAddressLabel: "Delivery address",
     shippingMethod: "Shipping method",
@@ -134,6 +136,8 @@ const INVOICE_TEXT = {
     emailPlaceholder: "E-pasts",
     eventDatePlaceholder: "Pasākuma datums / laiks",
     eventDateLabel: "Pasākuma datums / laiks",
+    eventNamePlaceholder: "Pasākuma nosaukums",
+    eventNameLabel: "Pasākuma nosaukums",
     deliveryAddressPlaceholder: "Piegādes adrese",
     deliveryAddressLabel: "Piegādes adrese",
     shippingMethod: "Piegādes veids",
@@ -206,6 +210,8 @@ const INVOICE_TEXT = {
     emailPlaceholder: "Эл. почта",
     eventDatePlaceholder: "Дата / время мероприятия",
     eventDateLabel: "Дата / время мероприятия",
+    eventNamePlaceholder: "Название мероприятия",
+    eventNameLabel: "Название мероприятия",
     deliveryAddressPlaceholder: "Адрес доставки",
     deliveryAddressLabel: "Адрес доставки",
     shippingMethod: "Способ доставки",
@@ -278,6 +284,8 @@ const INVOICE_TEXT = {
     emailPlaceholder: "E-post",
     eventDatePlaceholder: "Ürituse kuupäev / kellaaeg",
     eventDateLabel: "Ürituse kuupäev / kellaaeg",
+    eventNamePlaceholder: "Ürituse nimi",
+    eventNameLabel: "Ürituse nimi",
     deliveryAddressPlaceholder: "Tarneaadress",
     deliveryAddressLabel: "Tarneaadress",
     shippingMethod: "Tarneviis",
@@ -390,6 +398,7 @@ const Rekins = () => {
   const [buyerAddress, setBuyerAddress] = useState<string>(saved.address ?? "");
   const [buyerEmail, setBuyerEmail] = useState<string>(saved.email ?? "");
   const [buyerPhone, setBuyerPhone] = useState<string>(saved.phone ?? "");
+  const [eventName, setEventName] = useState<string>(saved.eventName ?? "");
   const [eventDate, setEventDate] = useState<string>(saved.eventDate ?? "");
   const eventDateInputRef = useRef<HTMLInputElement>(null);
   const eventDateHeaderRef = useRef<HTMLSpanElement>(null);
@@ -409,11 +418,11 @@ const Rekins = () => {
       JSON.stringify({
         company: buyerCompany, contact: buyerContact, vat: buyerVat, regNr: buyerRegNr,
         address: buyerAddress, email: buyerEmail, phone: buyerPhone,
-        eventDate, deliveryAddress,
+        eventName, eventDate, deliveryAddress,
         agencyOn: agencyDiscountOn, agencyPct: agencyDiscountPct,
       }),
     );
-  }, [buyerCompany, buyerContact, buyerVat, buyerRegNr, buyerAddress, buyerEmail, buyerPhone, eventDate, deliveryAddress, agencyDiscountOn, agencyDiscountPct]);
+  }, [buyerCompany, buyerContact, buyerVat, buyerRegNr, buyerAddress, buyerEmail, buyerPhone, eventName, eventDate, deliveryAddress, agencyDiscountOn, agencyDiscountPct]);
 
   const updateEventDate = useCallback((value: string) => {
     setEventDate(value);
@@ -618,7 +627,7 @@ const Rekins = () => {
       sessionStorage.setItem("invoice_buyer", JSON.stringify({
         company: buyerCompany, vat: buyerVat, regNr: buyerRegNr,
         address: buyerAddress, email: buyerEmail, phone: buyerPhone,
-        invoiceNumber, eventDate, deliveryAddress,
+        invoiceNumber, eventName, eventDate, deliveryAddress,
       }));
       navigate(withLang("/kase"));
     } finally {
@@ -646,7 +655,10 @@ const Rekins = () => {
           vat_number: buyerVat,
           shipping_address: deliveryAddress || buyerAddress,
           shipping_method: shippingLabel,
-          notes: eventDate ? `${tx.eventDateLabel}: ${eventDate}` : null,
+          notes: [
+            eventName ? `Pasākuma nosaukums: ${eventName}` : null,
+            eventDate ? `Pasākuma datums / laiks: ${eventDate}` : null,
+          ].filter(Boolean).join("\n") || null,
           subtotal_cents: subtotalAfterDiscount,
           shipping_cents: shipping.cents,
           tax_cents: vatAmount,
@@ -691,6 +703,7 @@ const Rekins = () => {
             address: buyerAddress,
             email: buyerEmail,
             phone: buyerPhone,
+            eventName,
             eventDate,
             eventDateDisplay,
             deliveryAddress,
@@ -771,6 +784,17 @@ const Rekins = () => {
             <input className="md:col-span-2 rounded-md bg-background border border-border px-3 py-2 text-sm" placeholder={tx.addressPlaceholder} value={buyerAddress} onChange={(e) => setBuyerAddress(e.target.value)} />
             <input className="md:col-span-2 rounded-md bg-background border border-border px-3 py-2 text-sm" placeholder={tx.emailPlaceholder} value={buyerEmail} onChange={(e) => setBuyerEmail(e.target.value)} />
             <div className="md:col-span-2">
+              <label className="block text-sm font-medium text-foreground mb-1">{tx.eventNameLabel}</label>
+              <input
+                name="eventName"
+                type="text"
+                className="w-full rounded-md bg-background border border-border px-3 py-2 text-sm"
+                placeholder={tx.eventNamePlaceholder}
+                value={eventName}
+                onChange={(e) => setEventName(e.target.value)}
+              />
+            </div>
+            <div className="md:col-span-2">
               <label className="block text-sm font-medium text-foreground mb-1">{tx.eventDateLabel}</label>
               <input
                 ref={eventDateInputRef}
@@ -850,6 +874,9 @@ const Rekins = () => {
                   <p className="text-sm">{tx.issued}: {today}</p>
                   <p className="text-sm">{tx.due}: {dueDate}</p>
                   <p className="text-sm font-medium mt-1">
+                    {tx.eventNameLabel}: {eventName || "_______________"}
+                  </p>
+                  <p className="text-sm font-medium mt-1">
                     {tx.eventDateLabel}: <span ref={eventDateHeaderRef}>{eventDateDisplay || "_______________"}</span>
                   </p>
                 </div>
@@ -905,6 +932,7 @@ const Rekins = () => {
                 {buyerEmail && <p>{buyerEmail}</p>}
                 {buyerPhone && <p>{buyerPhone}</p>}
                 {deliveryAddress && <p className="mt-1"><span className="font-medium">{tx.deliveryAddressLabel}:</span> {deliveryAddress}</p>}
+                <p><span className="font-medium">{tx.eventNameLabel}:</span> {eventName || "_______________"}</p>
                 <p><span className="font-medium">{tx.eventDateLabel}:</span> <span ref={eventDateBuyerRef}>{eventDateDisplay || "_______________"}</span></p>
               </div>
             </div>
