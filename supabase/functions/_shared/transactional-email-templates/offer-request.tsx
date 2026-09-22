@@ -23,6 +23,7 @@ interface OfferRequestEmailProps {
   quantity?: string
   message?: string
   logoUrl?: string | null
+  lang?: string
 }
 
 const NA = 'Nav norādīts'

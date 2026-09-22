@@ -176,7 +176,7 @@ const OfferModal = ({ open, onOpenChange, autoOpenUpload, initialFile }: OfferMo
 
       // Send email via edge function
       const { error } = await supabase.functions.invoke('send-logo-email', {
-        body: { name, company, email, phone, size, packaging, purpose, quantity, message, logoUrl },
+        body: { name, company, email, phone, size, packaging, purpose, quantity, message, logoUrl, lang },
       });
 
       if (error) {
