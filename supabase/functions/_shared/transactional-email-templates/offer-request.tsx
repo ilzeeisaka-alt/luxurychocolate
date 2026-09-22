@@ -23,6 +23,7 @@ interface OfferRequestEmailProps {
   quantity?: string
   message?: string
   logoUrl?: string | null
+  lang?: string
 }
 
 const NA = 'Nav norādīts'
@@ -41,6 +42,7 @@ export const OfferRequestEmail = ({
   quantity,
   message,
   logoUrl,
+  lang,
 }: OfferRequestEmailProps) => (
   <Html>
     <Head />
@@ -88,6 +90,10 @@ export const OfferRequestEmail = ({
               <tr>
                 <td style={labelCell}>Ziņojums:</td>
                 <td style={row}>{message || NA}</td>
+              </tr>
+              <tr>
+                <td style={labelCell}>Valoda:</td>
+                <td style={row}>{lang || NA}</td>
               </tr>
             </tbody>
           </table>

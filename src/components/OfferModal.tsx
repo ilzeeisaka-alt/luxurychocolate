@@ -10,6 +10,7 @@ import {
 import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
 import { cn } from "@/lib/utils";
+import { useCurrentLang } from "@/i18n/useCurrentLang";
 import { Button } from "@/components/ui/button";
 import { Calendar } from "@/components/ui/calendar";
 import {
@@ -35,6 +36,7 @@ const quantityOptions = [
 ];
 
 const OfferModal = ({ open, onOpenChange, autoOpenUpload, initialFile }: OfferModalProps) => {
+  const lang = useCurrentLang();
   const [loading, setLoading] = useState(false);
   const [logoFile, setLogoFile] = useState<File | null>(null);
   const [logoPreview, setLogoPreview] = useState<string | null>(null);
@@ -174,7 +176,7 @@ const OfferModal = ({ open, onOpenChange, autoOpenUpload, initialFile }: OfferMo
 
       // Send email via edge function
       const { error } = await supabase.functions.invoke('send-logo-email', {
-        body: { name, company, email, phone, size, packaging, purpose, quantity, message, logoUrl },
+        body: { name, company, email, phone, size, packaging, purpose, quantity, message, logoUrl, lang },
       });
 
       if (error) {
