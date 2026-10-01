@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Menu, X, User, LogIn, ShoppingCart, Store, ChevronDown } from "lucide-react";
 import logo from "@/assets/logo-seal-clean.png";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
@@ -893,6 +893,25 @@ const Navbar = ({ lang: langProp }: NavbarProps) => {
   const ui = tUI(lang);
   const shopHref = lang && lang !== "lv" ? `/veikals?lang=${lang}` : "/veikals";
   const cartHref = lang && lang !== "lv" ? `/grozs?lang=${lang}` : "/grozs";
+  const navigate = useNavigate();
+
+  // Anchor links (e.g. #kontakti) only exist on the homepage — if the target
+  // is missing on the current page, navigate home and scroll there instead.
+  const handleAnchorClick = (e: React.MouseEvent<HTMLAnchorElement>, hash: string) => {
+    setMobileOpen(false);
+    const id = hash.slice(1);
+    const target = document.getElementById(id);
+    if (target) {
+      e.preventDefault();
+      target.scrollIntoView({ behavior: "smooth", block: "start" });
+      return;
+    }
+    e.preventDefault();
+    navigate(`${homePath}#${id}`);
+    setTimeout(() => {
+      document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
+    }, 300);
+  };
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
