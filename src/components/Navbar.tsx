@@ -973,7 +973,7 @@ const Navbar = ({ lang: langProp }: NavbarProps) => {
                 key={item.to}
                 href={item.to}
                 className="px-3 py-1.5 rounded-md text-xs font-medium transition-colors text-white/70 hover:text-white hover:bg-white/5"
-                onClick={() => setMobileOpen(false)}
+                onClick={(e) => handleAnchorClick(e, item.to)}
               >
                 {item.label}
               </a>
@@ -1094,6 +1094,7 @@ const Navbar = ({ lang: langProp }: NavbarProps) => {
             {contactItem && (
               <a
                 href={contactItem.to}
+                onClick={(e) => handleAnchorClick(e, contactItem.to)}
                 className="inline-flex items-center gap-1.5 px-3 py-1 rounded-md text-[11px] font-medium text-white/80 border border-white/15 hover:text-white hover:bg-white/5 transition-colors"
               >
                 {contactItem.label}
@@ -1112,7 +1113,7 @@ const Navbar = ({ lang: langProp }: NavbarProps) => {
                 key={item.to}
                 href={item.to}
                 className="block py-2.5 px-3 rounded-md text-sm font-medium transition-colors text-white/70 hover:text-white hover:bg-white/5"
-                onClick={() => setMobileOpen(false)}
+                onClick={(e) => handleAnchorClick(e, item.to)}
               >
                 {item.label}
               </a>
