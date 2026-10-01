@@ -1,5 +1,5 @@
-import { useState, useEffect, useRef } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { useState, useEffect, useRef, type MouseEvent as ReactMouseEvent } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Menu, X, User, LogIn, ShoppingCart, Store, ChevronDown } from "lucide-react";
 import logo from "@/assets/logo-seal-clean.png";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
@@ -893,6 +893,25 @@ const Navbar = ({ lang: langProp }: NavbarProps) => {
   const ui = tUI(lang);
   const shopHref = lang && lang !== "lv" ? `/veikals?lang=${lang}` : "/veikals";
   const cartHref = lang && lang !== "lv" ? `/grozs?lang=${lang}` : "/grozs";
+  const navigate = useNavigate();
+
+  // Anchor links (e.g. #kontakti) only exist on the homepage — if the target
+  // is missing on the current page, navigate home and scroll there instead.
+  const handleAnchorClick = (e: ReactMouseEvent<HTMLAnchorElement>, hash: string) => {
+    setMobileOpen(false);
+    const id = hash.slice(1);
+    const target = document.getElementById(id);
+    if (target) {
+      e.preventDefault();
+      target.scrollIntoView({ behavior: "smooth", block: "start" });
+      return;
+    }
+    e.preventDefault();
+    navigate(`${homePath}#${id}`);
+    setTimeout(() => {
+      document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
+    }, 300);
+  };
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -954,7 +973,7 @@ const Navbar = ({ lang: langProp }: NavbarProps) => {
                 key={item.to}
                 href={item.to}
                 className="px-3 py-1.5 rounded-md text-xs font-medium transition-colors text-white/70 hover:text-white hover:bg-white/5"
-                onClick={() => setMobileOpen(false)}
+                onClick={(e) => handleAnchorClick(e, item.to)}
               >
                 {item.label}
               </a>
@@ -1075,6 +1094,7 @@ const Navbar = ({ lang: langProp }: NavbarProps) => {
             {contactItem && (
               <a
                 href={contactItem.to}
+                onClick={(e) => handleAnchorClick(e, contactItem.to)}
                 className="inline-flex items-center gap-1.5 px-3 py-1 rounded-md text-[11px] font-medium text-white/80 border border-white/15 hover:text-white hover:bg-white/5 transition-colors"
               >
                 {contactItem.label}
@@ -1093,7 +1113,7 @@ const Navbar = ({ lang: langProp }: NavbarProps) => {
                 key={item.to}
                 href={item.to}
                 className="block py-2.5 px-3 rounded-md text-sm font-medium transition-colors text-white/70 hover:text-white hover:bg-white/5"
-                onClick={() => setMobileOpen(false)}
+                onClick={(e) => handleAnchorClick(e, item.to)}
               >
                 {item.label}
               </a>
