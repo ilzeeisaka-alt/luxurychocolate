@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, type MouseEvent as ReactMouseEvent } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Menu, X, User, LogIn, ShoppingCart, Store, ChevronDown } from "lucide-react";
 import logo from "@/assets/logo-seal-clean.png";
@@ -897,7 +897,7 @@ const Navbar = ({ lang: langProp }: NavbarProps) => {
 
   // Anchor links (e.g. #kontakti) only exist on the homepage — if the target
   // is missing on the current page, navigate home and scroll there instead.
-  const handleAnchorClick = (e: React.MouseEvent<HTMLAnchorElement>, hash: string) => {
+  const handleAnchorClick = (e: ReactMouseEvent<HTMLAnchorElement>, hash: string) => {
     setMobileOpen(false);
     const id = hash.slice(1);
     const target = document.getElementById(id);
