@@ -86,7 +86,9 @@ export function useSeo({ title, description, path, ogImage, keywords }: SeoProps
     // Canonical must never carry query params (?lang, ?page, ?category, ?q).
     const cleanPath = path.split("?")[0].split("#")[0].replace(/\/+$/, "") || "/";
     const url = `${BASE_URL}${cleanPath}`;
-    const desc = clampDescription(description);
+    let base = description.replace(/\s+/g, " ").trim();
+    if (base.length < 110) base = `${base.replace(/[.\s]+$/, "")}. Luxury Chocolate — premium Beļģu šokolāde ar apdruku, pasūtījumi no 1 gab.`;
+    const desc = clampDescription(base);
 
     document.title = fullTitle;
 
