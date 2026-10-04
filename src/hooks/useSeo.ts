@@ -84,9 +84,11 @@ export function useSeo({ title, description, path, ogImage, keywords }: SeoProps
   useEffect(() => {
     const fullTitle = `${title} — Luxury Chocolate`;
     // Canonical must never carry query params (?lang, ?page, ?category, ?q).
-    const cleanPath = path.split("?")[0].split("#")[0];
+    const cleanPath = path.split("?")[0].split("#")[0].replace(/\/+$/, "") || "/";
     const url = `${BASE_URL}${cleanPath}`;
-    const desc = clampDescription(description);
+    let base = description.replace(/\s+/g, " ").trim();
+    if (base.length < 110) base = `${base.replace(/[.\s]+$/, "")}. Luxury Chocolate — premium Beļģu šokolāde ar apdruku, pasūtījumi no 1 gab.`;
+    const desc = clampDescription(base);
 
     document.title = fullTitle;
 
@@ -110,8 +112,10 @@ export function useSeo({ title, description, path, ogImage, keywords }: SeoProps
     if (ogImage) setMeta("twitter:image", ogImage);
 
     // Hreflang alternate links
+    document.querySelectorAll('link[rel="alternate"][hreflang]').forEach((el) => el.remove());
     const alternatives = hreflangMap[cleanPath];
-    if (alternatives) {
+    // Only emit hreflang when the current URL is itself the canonical member of the set.
+    if (alternatives && Object.values(alternatives).includes(cleanPath)) {
       Object.entries(alternatives).forEach(([lang, altPath]) => {
         setLink("alternate", `${BASE_URL}${altPath}`, { hreflang: lang });
       });
