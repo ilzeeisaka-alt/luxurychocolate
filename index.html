@@ -8,6 +8,7 @@
     <meta name="keywords" content="šokolādes ar logo, korporatīvās šokolādes, reklāmas šokolāde, klientu dāvanas, corporate chocolate gifts, branded chocolate, promotional chocolate">
     <meta name="author" content="Luxury Chocolate" />
     <link rel="canonical" href="https://luxurychocolate.lv/" />
+    <script>(function(){try{var p=location.pathname.replace(/\/+$/,"")||"/";var c=document.querySelector('link[rel="canonical"]');if(c)c.href="https://luxurychocolate.lv"+p;}catch(e){}})();</script>
     <meta name="google-site-verification" content="-qgvXWKj90kdVJvTPXc87aci4XY-3W5-feJnjL_WOa8" />
     
     <meta property="og:type" content="website" />
@@ -62,13 +63,17 @@
       {
         "@type": "Product",
         "name": "Personalizētas šokolādes ar uzņēmuma logo",
+        "image": "https://luxurychocolate.lv/favicon.png",
         "description": "Premium Beļģu šokolādes ar individuālu pilnkrāsu apdruku. Ideālas korporatīvajām dāvanām, konferencēm, izstādēm un pasākumiem. Pasūtījumi jau no 1 gab., izgatavošana 3–10 darba dienas.",
         "brand": {"@type": "Brand", "name": "Luxury Chocolate"},
         "category": "Korporatīvās dāvanas",
         "offers": {
-          "@type": "Offer",
+          "@type": "AggregateOffer",
           "availability": "https://schema.org/InStock",
           "priceCurrency": "EUR",
+          "lowPrice": "0.76",
+          "highPrice": "302.50",
+          "offerCount": "500",
           "eligibleQuantity": {"@type": "QuantitativeValue", "minValue": 1, "unitText": "gab."}
         },
         "material": "Premium Beļģu šokolāde",
@@ -91,10 +96,10 @@
           "@type": "OfferCatalog",
           "name": "Šokolādes produkti",
           "itemListElement": [
-            {"@type": "Offer", "itemOffered": {"@type": "Product", "name": "Šokolādes ar uzņēmuma logo"}},
-            {"@type": "Offer", "itemOffered": {"@type": "Product", "name": "Reklāmas šokolāde ar apdruku"}},
-            {"@type": "Offer", "itemOffered": {"@type": "Product", "name": "Ziemassvētku korporatīvās šokolādes"}},
-            {"@type": "Offer", "itemOffered": {"@type": "Product", "name": "Šokolādes klientu dāvanām"}}
+            {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Šokolādes ar uzņēmuma logo"}},
+            {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Reklāmas šokolāde ar apdruku"}},
+            {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Ziemassvētku korporatīvās šokolādes"}},
+            {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Šokolādes klientu dāvanām"}}
           ]
         }
       },
