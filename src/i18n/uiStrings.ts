@@ -25,6 +25,7 @@ export interface UIStrings {
   categories: string;
   allProducts: string;
   nothingFound: string;
+  loadingIn: (s: number) => string;
   tryAnother: string;
   byCategory: string;
   newest: string;
@@ -102,6 +103,7 @@ const en: UIStrings = {
   categories: "Categories",
   allProducts: "All products",
   nothingFound: "Nothing found",
+  loadingIn: (s) => `Products will appear in ~${s} s`,
   tryAnother: "Try another category or search term.",
   byCategory: "By category",
   newest: "Newest",
@@ -169,6 +171,7 @@ export const uiStrings: Record<Lang, UIStrings> = expandLangs<UIStrings>({
     shopTagline: "bezmaksas skice 24h laikā, ražošana no 3 dienām.",
     searchProducts: "Meklēt produktus...", categories: "Kategorijas",
     allProducts: "Visi produkti", nothingFound: "Nekas netika atrasts",
+    loadingIn: (s) => `Produkti parādīsies aptuveni pēc ${s} s`,
     tryAnother: "Mēģiniet citu kategoriju vai meklēšanas vārdu.",
     byCategory: "Pēc kategorijas", newest: "Jaunākie",
     priceAsc: "Cena ↑", priceDesc: "Cena ↓", name: "Nosaukums",
@@ -223,6 +226,7 @@ export const uiStrings: Record<Lang, UIStrings> = expandLangs<UIStrings>({
     shopTagline: "бесплатный эскиз за 24 часа, производство от 3 дней.",
     searchProducts: "Поиск товаров...", categories: "Категории",
     allProducts: "Все товары", nothingFound: "Ничего не найдено",
+    loadingIn: (s) => `Товары появятся примерно через ${s} с`,
     tryAnother: "Попробуйте другую категорию или поисковое слово.",
     byCategory: "По категориям", newest: "Новинки",
     priceAsc: "Цена ↑", priceDesc: "Цена ↓", name: "Название",
@@ -278,6 +282,7 @@ export const uiStrings: Record<Lang, UIStrings> = expandLangs<UIStrings>({
     shopTagline: "tasuta visand 24h jooksul, tootmine alates 3 päevast.",
     searchProducts: "Otsi tooteid...", categories: "Kategooriad",
     allProducts: "Kõik tooted", nothingFound: "Midagi ei leitud",
+    loadingIn: (s) => `Tooted ilmuvad umbes ${s} s pärast`,
     tryAnother: "Proovi teist kategooriat või otsisõna.",
     byCategory: "Kategooria järgi", newest: "Uusimad",
     priceAsc: "Hind ↑", priceDesc: "Hind ↓", name: "Nimi",
