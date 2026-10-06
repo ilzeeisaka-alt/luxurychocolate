@@ -1,0 +1,1 @@
+COMMENT ON TABLE public.tmp_product_en IS 'DEPRECATED: one-off translation staging, empty, unused';
