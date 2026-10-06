@@ -111,6 +111,17 @@ const Veikals = () => {
 
   const currentCategoryId = currentCategoryIds?.[0] ?? null;
 
+  // Aptuvenā ielādes laika atskaite, kamēr produkti vēl nav redzami
+  const currentCategory = useMemo(
+    () => categories.find((c) => c.slug === category) ?? null,
+    [categories, category]
+  );
+  const estimateSeconds = useMemo(() => {
+    const count = currentCategory?.product_count ?? 0;
+    return Math.min(15, Math.max(2, Math.ceil(count / 20)));
+  }, [currentCategory]);
+  const [countdown, setCountdown] = useState(estimateSeconds);
+
   const { data, isLoading } = useQuery({
     queryKey: ["catalog-products", currentCategoryId, search, page, sort, category, lang],
     enabled: !category || currentCategoryId !== null || categories.length === 0,
