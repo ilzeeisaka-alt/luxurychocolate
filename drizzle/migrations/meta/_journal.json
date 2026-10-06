@@ -29,6 +29,13 @@
       "when": 1791289997759,
       "tag": "0003_tmp_translation_staging",
       "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "7",
+      "when": 1791290047146,
+      "tag": "0004_deprecate_tmp_translation_staging",
+      "breakpoints": true
     }
   ]
 }
