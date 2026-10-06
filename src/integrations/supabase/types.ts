@@ -1019,6 +1019,27 @@ export type Database = {
         }
         Relationships: []
       }
+      tmp_product_en: {
+        Row: {
+          d: string | null
+          id: string
+          n: string | null
+          s: string | null
+        }
+        Insert: {
+          d?: string | null
+          id: string
+          n?: string | null
+          s?: string | null
+        }
+        Update: {
+          d?: string | null
+          id?: string
+          n?: string | null
+          s?: string | null
+        }
+        Relationships: []
+      }
       user_roles: {
         Row: {
           created_at: string
