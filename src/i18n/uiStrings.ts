@@ -10,6 +10,12 @@ export interface UIStrings {
   email: string;
   thanks: string;
   affiliate: string;
+  hasPartnerCode: string;
+  partnerCode: string;
+  partnerCodePlaceholder: string;
+  apply: string;
+  invalidCode: string;
+  removeCode: string;
   // Shop page
   catalog: string;
   shopTitle: string;
@@ -82,6 +88,12 @@ const en: UIStrings = {
   email: "Email",
   thanks: "Thanks!",
   affiliate: "Affiliate",
+  hasPartnerCode: "Have a partner code?",
+  partnerCode: "Partner code",
+  partnerCodePlaceholder: "PARTNER CODE",
+  apply: "Apply",
+  invalidCode: "Invalid code",
+  removeCode: "Remove code",
   catalog: "Catalog",
   shopTitle: "Chocolate shop",
   productsCount: (n) => `${n} products`,
@@ -149,6 +161,9 @@ export const uiStrings: Record<Lang, UIStrings> = expandLangs<UIStrings>({
   lv: {
     signIn: "Pieslēgties", myAccount: "Mans konts", cart: "Grozs", subscribe: "Pierakstīties",
     email: "E-pasts", thanks: "Paldies!", affiliate: "Partneru programma",
+    hasPartnerCode: "Ir partnera kods?", partnerCode: "Partnera kods",
+    partnerCodePlaceholder: "PARTNERA KODS", apply: "Pielietot",
+    invalidCode: "Nederīgs kods", removeCode: "Noņemt kodu",
     catalog: "Katalogs", shopTitle: "Šokolādes veikals",
     productsCount: (n) => `${n} produkti`,
     shopTagline: "bezmaksas skice 24h laikā, ražošana no 3 dienām.",
@@ -200,6 +215,9 @@ export const uiStrings: Record<Lang, UIStrings> = expandLangs<UIStrings>({
   ru: {
     signIn: "Войти", myAccount: "Мой аккаунт", cart: "Корзина", subscribe: "Подписаться",
     email: "Эл. почта", thanks: "Спасибо!", affiliate: "Партнёрская программа",
+    hasPartnerCode: "Есть партнёрский код?", partnerCode: "Партнёрский код",
+    partnerCodePlaceholder: "ПАРТНЁРСКИЙ КОД", apply: "Применить",
+    invalidCode: "Недействительный код", removeCode: "Удалить код",
     catalog: "Каталог", shopTitle: "Шоколадный магазин",
     productsCount: (n) => `${n} товаров`,
     shopTagline: "бесплатный эскиз за 24 часа, производство от 3 дней.",
@@ -252,6 +270,9 @@ export const uiStrings: Record<Lang, UIStrings> = expandLangs<UIStrings>({
   et: {
     signIn: "Logi sisse", myAccount: "Minu konto", cart: "Ostukorv", subscribe: "Telli",
     email: "E-post", thanks: "Aitäh!", affiliate: "Partnerprogramm",
+    hasPartnerCode: "Kas teil on partnerikood?", partnerCode: "Partnerikood",
+    partnerCodePlaceholder: "PARTNERIKOOD", apply: "Rakenda",
+    invalidCode: "Vigane kood", removeCode: "Eemalda kood",
     catalog: "Kataloog", shopTitle: "Šokolaadipood",
     productsCount: (n) => `${n} toodet`,
     shopTagline: "tasuta visand 24h jooksul, tootmine alates 3 päevast.",
