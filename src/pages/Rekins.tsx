@@ -615,7 +615,8 @@ const Rekins = () => {
         pdf.addImage(imgData, "JPEG", 0, y, imgW, imgH, undefined, "FAST");
         heightLeft -= pageH;
       }
-      pdf.save(`${lang === "ru" ? "Schet" : "Rekins"}_${invoiceNumber}.pdf`);
+      const filePrefix = lang === "lv" ? "Rekins" : lang === "ru" ? "Schet" : lang === "et" ? "Arve" : "Invoice";
+      pdf.save(`${filePrefix}_${invoiceNumber}.pdf`);
     } finally {
       setSavingPdf(false);
     }
