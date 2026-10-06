@@ -198,6 +198,14 @@ const Veikals = () => {
     },
   });
 
+  // Atskaite katru sekundi, kamēr produkti ielādējas
+  useEffect(() => {
+    if (!isLoading) return;
+    setCountdown(estimateSeconds);
+    const t = setInterval(() => setCountdown((c) => (c > 0 ? c - 1 : 0)), 1000);
+    return () => clearInterval(t);
+  }, [isLoading, estimateSeconds, category]);
+
   const items = data?.items ?? [];
   const total = data?.total ?? 0;
   const totalPages = Math.max(1, Math.ceil(total / PAGE_SIZE));
