@@ -592,7 +592,15 @@ const Rekins = () => {
     return () => { cancelled = true; clearTimeout(handle); };
   }, [buyerVat]);
 
-  const handlePrint = () => window.print();
+  const handlePrint = () => {
+    const prefix = lang === "lv" ? "Rekins" : lang === "ru" ? "Schet" : lang === "et" ? "Arve" : "Invoice";
+    const prev = document.title;
+    document.title = `${prefix}_${invoiceNumber}`;
+    const restore = () => { document.title = prev; window.removeEventListener("afterprint", restore); };
+    window.addEventListener("afterprint", restore);
+    window.print();
+    setTimeout(restore, 1000);
+  };
 
   const handleSavePdf = async () => {
     if (!invoiceRef.current) return;
