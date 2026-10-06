@@ -310,10 +310,15 @@ const Veikals = () => {
             </div>
 
             {isLoading ? (
-              <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-5">
-                {Array.from({ length: 8 }).map((_, i) => (
-                  <div key={i} className="aspect-square bg-card rounded-xl animate-pulse" />
-                ))}
+              <div>
+                <p className="mb-4 text-sm text-muted-foreground text-center" role="status">
+                  {ui.loadingIn(countdown)}
+                </p>
+                <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-5">
+                  {Array.from({ length: 8 }).map((_, i) => (
+                    <div key={i} className="aspect-square bg-card rounded-xl animate-pulse" />
+                  ))}
+                </div>
               </div>
             ) : items.length === 0 ? (
               <div className="text-center py-20 text-muted-foreground">
