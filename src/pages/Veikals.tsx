@@ -111,6 +111,17 @@ const Veikals = () => {
 
   const currentCategoryId = currentCategoryIds?.[0] ?? null;
 
+  // Aptuvenā ielādes laika atskaite, kamēr produkti vēl nav redzami
+  const currentCategory = useMemo(
+    () => categories.find((c) => c.slug === category) ?? null,
+    [categories, category]
+  );
+  const estimateSeconds = useMemo(() => {
+    const count = currentCategory?.product_count ?? 0;
+    return Math.min(15, Math.max(2, Math.ceil(count / 20)));
+  }, [currentCategory]);
+  const [countdown, setCountdown] = useState(estimateSeconds);
+
   const { data, isLoading } = useQuery({
     queryKey: ["catalog-products", currentCategoryId, search, page, sort, category, lang],
     enabled: !category || currentCategoryId !== null || categories.length === 0,
@@ -186,6 +197,14 @@ const Veikals = () => {
       return { items, total: count ?? 0 };
     },
   });
+
+  // Atskaite katru sekundi, kamēr produkti ielādējas
+  useEffect(() => {
+    if (!isLoading) return;
+    setCountdown(estimateSeconds);
+    const t = setInterval(() => setCountdown((c) => (c > 0 ? c - 1 : 0)), 1000);
+    return () => clearInterval(t);
+  }, [isLoading, estimateSeconds, category]);
 
   const items = data?.items ?? [];
   const total = data?.total ?? 0;
@@ -299,10 +318,15 @@ const Veikals = () => {
             </div>
 
             {isLoading ? (
-              <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-5">
-                {Array.from({ length: 8 }).map((_, i) => (
-                  <div key={i} className="aspect-square bg-card rounded-xl animate-pulse" />
-                ))}
+              <div>
+                <p className="mb-4 text-sm text-muted-foreground text-center" role="status">
+                  {ui.loadingIn(countdown)}
+                </p>
+                <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-5">
+                  {Array.from({ length: 8 }).map((_, i) => (
+                    <div key={i} className="aspect-square bg-card rounded-xl animate-pulse" />
+                  ))}
+                </div>
               </div>
             ) : items.length === 0 ? (
               <div className="text-center py-20 text-muted-foreground">
