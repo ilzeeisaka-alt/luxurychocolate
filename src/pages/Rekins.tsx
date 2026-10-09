@@ -611,8 +611,10 @@ const Rekins = () => {
 
   const handlePrint = () => {
     const prefix = lang === "lv" ? "Rekins" : lang === "ru" ? "Schet" : lang === "et" ? "Arve" : "Invoice";
+    const tag = halfMode === "none" ? "" : `_${halfFileTag(halfMode)}`;
     const prev = document.title;
-    document.title = `${prefix}_${invoiceNumber}`;
+    document.title = `${prefix}_${invoiceNumber}${tag}`;
+
     const restore = () => { document.title = prev; window.removeEventListener("afterprint", restore); };
     window.addEventListener("afterprint", restore);
     window.print();
@@ -641,7 +643,9 @@ const Rekins = () => {
         heightLeft -= pageH;
       }
       const filePrefix = lang === "lv" ? "Rekins" : lang === "ru" ? "Schet" : lang === "et" ? "Arve" : "Invoice";
-      pdf.save(`${filePrefix}_${invoiceNumber}.pdf`);
+      const tag = halfMode === "none" ? "" : `_${halfFileTag(halfMode)}`;
+      pdf.save(`${filePrefix}_${invoiceNumber}${tag}.pdf`);
+
     } finally {
       setSavingPdf(false);
     }
