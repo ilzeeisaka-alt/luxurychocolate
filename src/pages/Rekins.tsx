@@ -409,7 +409,24 @@ const Rekins = () => {
   );
   const [agencyDiscountOn, setAgencyDiscountOn] = useState<boolean>(saved.agencyOn ?? false);
   const [agencyDiscountPct, setAgencyDiscountPct] = useState<number>(typeof saved.agencyPct === "number" ? saved.agencyPct : 20);
-  const [halfPrepay, setHalfPrepay] = useState<boolean>(false);
+  const [halfMode, setHalfMode] = useState<"none" | "prepay" | "postpay">("none");
+  const halfBtn = (m: "prepay" | "postpay") =>
+    m === "prepay"
+      ? (lang === "ru" ? "Счёт на 50% предоплату" : lang === "et" ? "50% ettemaksu arve" : lang === "lv" ? "50% priekšapmaksas rēķins" : "50% prepayment invoice")
+      : (lang === "ru" ? "Счёт на 50% постоплату" : lang === "et" ? "50% järelmaksu arve" : lang === "lv" ? "50% pēcapmaksa rēķins" : "50% postpayment invoice");
+  const halfDue = (m: "prepay" | "postpay") =>
+    m === "prepay"
+      ? (lang === "ru" ? "Предоплата 50% к оплате" : lang === "et" ? "50% ettemaks tasumisele" : lang === "lv" ? "50% priekšapmaksa apmaksai" : "50% prepayment due")
+      : (lang === "ru" ? "Постоплата 50% к оплате" : lang === "et" ? "50% järelmaks tasumisele" : lang === "lv" ? "50% pēcapmaksa apmaksai" : "50% postpayment due");
+  const halfOther = (m: "prepay" | "postpay") =>
+    m === "prepay"
+      ? (lang === "ru" ? "Остаток 50% (после выполнения)" : lang === "et" ? "Ülejäänud 50% (pärast täitmist)" : lang === "lv" ? "Atlikušie 50% (pēc izpildes)" : "Remaining 50% (after completion)")
+      : (lang === "ru" ? "Предоплата 50% (до выполнения)" : lang === "et" ? "Ettemaks 50% (enne täitmist)" : lang === "lv" ? "Priekšapmaksa 50% (pirms izpildes)" : "Prepayment 50% (before completion)");
+  const halfFileTag = (m: "prepay" | "postpay") =>
+    m === "prepay"
+      ? (lang === "ru" ? "50predoplaty" : lang === "et" ? "50ettemaks" : lang === "lv" ? "50priekšapmaksa" : "50prepayment")
+      : (lang === "ru" ? "50postplata" : lang === "et" ? "50jarelmaks" : lang === "lv" ? "50pecapmaksa" : "50postpayment");
+
 
   // Persist on every change
   useEffect(() => {
@@ -594,8 +611,10 @@ const Rekins = () => {
 
   const handlePrint = () => {
     const prefix = lang === "lv" ? "Rekins" : lang === "ru" ? "Schet" : lang === "et" ? "Arve" : "Invoice";
+    const tag = halfMode === "none" ? "" : `_${halfFileTag(halfMode)}`;
     const prev = document.title;
-    document.title = `${prefix}_${invoiceNumber}`;
+    document.title = `${prefix}_${invoiceNumber}${tag}`;
+
     const restore = () => { document.title = prev; window.removeEventListener("afterprint", restore); };
     window.addEventListener("afterprint", restore);
     window.print();
@@ -624,7 +643,9 @@ const Rekins = () => {
         heightLeft -= pageH;
       }
       const filePrefix = lang === "lv" ? "Rekins" : lang === "ru" ? "Schet" : lang === "et" ? "Arve" : "Invoice";
-      pdf.save(`${filePrefix}_${invoiceNumber}.pdf`);
+      const tag = halfMode === "none" ? "" : `_${halfFileTag(halfMode)}`;
+      pdf.save(`${filePrefix}_${invoiceNumber}${tag}.pdf`);
+
     } finally {
       setSavingPdf(false);
     }
@@ -757,11 +778,18 @@ const Rekins = () => {
           </button>
           <div className="flex flex-wrap gap-2">
             <button
-              onClick={() => setHalfPrepay((v) => !v)}
-              className={`flex items-center gap-2 rounded-lg border px-4 py-2.5 text-sm font-medium ${halfPrepay ? "border-primary bg-primary/15 text-primary" : "border-border bg-card text-foreground hover:bg-muted"}`}
+              onClick={() => setHalfMode((m) => (m === "prepay" ? "none" : "prepay"))}
+              className={`flex items-center gap-2 rounded-lg border px-4 py-2.5 text-sm font-medium ${halfMode === "prepay" ? "border-primary bg-primary/15 text-primary" : "border-border bg-card text-foreground hover:bg-muted"}`}
             >
-              {halfPrepay ? "✓ " : ""}{lang === "ru" ? "Счёт на 50% предоплату" : lang === "et" ? "50% ettemaksu arve" : lang === "lv" ? "50% priekšapmaksas rēķins" : "50% prepayment invoice"}
+              {halfMode === "prepay" ? "✓ " : ""}{halfBtn("prepay")}
             </button>
+            <button
+              onClick={() => setHalfMode((m) => (m === "postpay" ? "none" : "postpay"))}
+              className={`flex items-center gap-2 rounded-lg border px-4 py-2.5 text-sm font-medium ${halfMode === "postpay" ? "border-primary bg-primary/15 text-primary" : "border-border bg-card text-foreground hover:bg-muted"}`}
+            >
+              {halfMode === "postpay" ? "✓ " : ""}{halfBtn("postpay")}
+            </button>
+
             <button
               onClick={handlePrint}
               className="flex items-center gap-2 rounded-lg border border-border bg-card text-foreground px-4 py-2.5 text-sm font-medium hover:bg-muted"
@@ -1020,16 +1048,16 @@ const Rekins = () => {
                   <span>{fmt(vatAmount, currency, lang)}</span>
                 </div>
 
-                {halfPrepay ? (
+                {halfMode !== "none" ? (
                   <>
                     <div className="flex justify-between py-1 border-t border-gray-400 mt-1">
                       <span>{lang === "ru" ? "Сумма заказа" : lang === "et" ? "Tellimuse summa" : lang === "lv" ? "Pasūtījuma summa" : "Order total"}:</span><span>{fmt(total, currency, lang)}</span>
                     </div>
                     <div className="flex justify-between py-2 border-t-2 border-black font-bold text-base">
-                      <span>{lang === "ru" ? "Предоплата 50% к оплате" : lang === "et" ? "50% ettemaks tasumisele" : lang === "lv" ? "50% priekšapmaksa apmaksai" : "50% prepayment due"}:</span><span>{fmt(Math.round(total / 2), currency, lang)}</span>
+                      <span>{halfDue(halfMode)}:</span><span>{fmt(Math.round(total / 2), currency, lang)}</span>
                     </div>
                     <div className="flex justify-between py-1 text-gray-700">
-                      <span>{lang === "ru" ? "Остаток 50% (после выполнения)" : lang === "et" ? "Ülejäänud 50% (pärast täitmist)" : lang === "lv" ? "Atlikušie 50% (pēc izpildes)" : "Remaining 50% (after completion)"}:</span><span>{fmt(total - Math.round(total / 2), currency, lang)}</span>
+                      <span>{halfOther(halfMode)}:</span><span>{fmt(total - Math.round(total / 2), currency, lang)}</span>
                     </div>
                   </>
                 ) : (
@@ -1037,6 +1065,7 @@ const Rekins = () => {
                     <span>{tx.totalPayable}:</span><span>{fmt(total, currency, lang)}</span>
                   </div>
                 )}
+
                 {totalWeightGrams > 0 && (
                   <div className="flex justify-between py-1 text-sm text-gray-700">
                     <span>{tx.totalWeight}:</span><span className="tabular-nums">{fmtKg(totalWeightGrams)}</span>
@@ -1064,11 +1093,18 @@ const Rekins = () => {
         {validItems.length > 0 && (
           <div className="no-print mt-8 flex flex-wrap gap-3 justify-end">
             <button
-              onClick={() => setHalfPrepay((v) => !v)}
-              className={`flex items-center gap-2 rounded-lg border px-5 py-3 text-sm font-medium ${halfPrepay ? "border-primary bg-primary/15 text-primary" : "border-border bg-card text-foreground hover:bg-muted"}`}
+              onClick={() => setHalfMode((m) => (m === "prepay" ? "none" : "prepay"))}
+              className={`flex items-center gap-2 rounded-lg border px-5 py-3 text-sm font-medium ${halfMode === "prepay" ? "border-primary bg-primary/15 text-primary" : "border-border bg-card text-foreground hover:bg-muted"}`}
             >
-              {halfPrepay ? "✓ " : ""}{lang === "ru" ? "Счёт на 50% предоплату" : lang === "et" ? "50% ettemaksu arve" : lang === "lv" ? "50% priekšapmaksas rēķins" : "50% prepayment invoice"}
+              {halfMode === "prepay" ? "✓ " : ""}{halfBtn("prepay")}
             </button>
+            <button
+              onClick={() => setHalfMode((m) => (m === "postpay" ? "none" : "postpay"))}
+              className={`flex items-center gap-2 rounded-lg border px-5 py-3 text-sm font-medium ${halfMode === "postpay" ? "border-primary bg-primary/15 text-primary" : "border-border bg-card text-foreground hover:bg-muted"}`}
+            >
+              {halfMode === "postpay" ? "✓ " : ""}{halfBtn("postpay")}
+            </button>
+
             <button
               onClick={handlePrint}
               className="flex items-center gap-2 rounded-lg border border-border bg-card text-foreground px-5 py-3 text-sm font-medium hover:bg-muted"
