@@ -1064,6 +1064,18 @@ const Rekins = () => {
         {validItems.length > 0 && (
           <div className="no-print mt-8 flex flex-wrap gap-3 justify-end">
             <button
+              onClick={() => setHalfPrepay((v) => !v)}
+              className={`flex items-center gap-2 rounded-lg border px-5 py-3 text-sm font-medium ${halfPrepay ? "border-primary bg-primary/15 text-primary" : "border-border bg-card text-foreground hover:bg-muted"}`}
+            >
+              {halfPrepay ? "✓ " : ""}{lang === "ru" ? "Счёт на 50% предоплату" : lang === "et" ? "50% ettemaksu arve" : lang === "lv" ? "50% priekšapmaksas rēķins" : "50% prepayment invoice"}
+            </button>
+            <button
+              onClick={handlePrint}
+              className="flex items-center gap-2 rounded-lg border border-border bg-card text-foreground px-5 py-3 text-sm font-medium hover:bg-muted"
+            >
+              <Printer className="w-4 h-4" /> {tx.print}
+            </button>
+            <button
               onClick={handleSavePdf}
               disabled={savingPdf}
               className="flex items-center gap-2 rounded-lg border border-border bg-card text-foreground px-5 py-3 text-sm font-medium hover:bg-muted disabled:opacity-50"
