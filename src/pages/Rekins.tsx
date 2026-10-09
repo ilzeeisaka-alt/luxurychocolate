@@ -409,7 +409,7 @@ const Rekins = () => {
   );
   const [agencyDiscountOn, setAgencyDiscountOn] = useState<boolean>(saved.agencyOn ?? false);
   const [agencyDiscountPct, setAgencyDiscountPct] = useState<number>(typeof saved.agencyPct === "number" ? saved.agencyPct : 20);
-
+  const [halfPrepay, setHalfPrepay] = useState<boolean>(false);
 
   // Persist on every change
   useEffect(() => {
@@ -757,6 +757,12 @@ const Rekins = () => {
           </button>
           <div className="flex flex-wrap gap-2">
             <button
+              onClick={() => setHalfPrepay((v) => !v)}
+              className={`flex items-center gap-2 rounded-lg border px-4 py-2.5 text-sm font-medium ${halfPrepay ? "border-primary bg-primary/15 text-primary" : "border-border bg-card text-foreground hover:bg-muted"}`}
+            >
+              {halfPrepay ? "✓ " : ""}{lang === "ru" ? "Счёт на 50% предоплату" : lang === "et" ? "50% ettemaksu arve" : lang === "lv" ? "50% priekšapmaksas rēķins" : "50% prepayment invoice"}
+            </button>
+            <button
               onClick={handlePrint}
               className="flex items-center gap-2 rounded-lg border border-border bg-card text-foreground px-4 py-2.5 text-sm font-medium hover:bg-muted"
             >
@@ -1014,9 +1020,23 @@ const Rekins = () => {
                   <span>{fmt(vatAmount, currency, lang)}</span>
                 </div>
 
-                <div className="flex justify-between py-2 border-t-2 border-black font-bold text-base mt-1">
-                  <span>{tx.totalPayable}:</span><span>{fmt(total, currency, lang)}</span>
-                </div>
+                {halfPrepay ? (
+                  <>
+                    <div className="flex justify-between py-1 border-t border-gray-400 mt-1">
+                      <span>{lang === "ru" ? "Сумма заказа" : lang === "et" ? "Tellimuse summa" : lang === "lv" ? "Pasūtījuma summa" : "Order total"}:</span><span>{fmt(total, currency, lang)}</span>
+                    </div>
+                    <div className="flex justify-between py-2 border-t-2 border-black font-bold text-base">
+                      <span>{lang === "ru" ? "Предоплата 50% к оплате" : lang === "et" ? "50% ettemaks tasumisele" : lang === "lv" ? "50% priekšapmaksa apmaksai" : "50% prepayment due"}:</span><span>{fmt(Math.round(total / 2), currency, lang)}</span>
+                    </div>
+                    <div className="flex justify-between py-1 text-gray-700">
+                      <span>{lang === "ru" ? "Остаток 50% (после выполнения)" : lang === "et" ? "Ülejäänud 50% (pärast täitmist)" : lang === "lv" ? "Atlikušie 50% (pēc izpildes)" : "Remaining 50% (after completion)"}:</span><span>{fmt(total - Math.round(total / 2), currency, lang)}</span>
+                    </div>
+                  </>
+                ) : (
+                  <div className="flex justify-between py-2 border-t-2 border-black font-bold text-base mt-1">
+                    <span>{tx.totalPayable}:</span><span>{fmt(total, currency, lang)}</span>
+                  </div>
+                )}
                 {totalWeightGrams > 0 && (
                   <div className="flex justify-between py-1 text-sm text-gray-700">
                     <span>{tx.totalWeight}:</span><span className="tabular-nums">{fmtKg(totalWeightGrams)}</span>
