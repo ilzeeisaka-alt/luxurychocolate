@@ -197,9 +197,17 @@ serve(async (req) => {
 
     // Build Stripe line items with price_data (one-off prices)
     const stripe = createStripeClient(env);
+    // Stripe rejects checkout sessions when an image URL is not an absolute
+    // http(s) URL (or is too long), so only pass valid absolute URLs.
+    const validStripeImage = (url: unknown): string | undefined => {
+      if (typeof url !== "string") return undefined;
+      const trimmed = url.trim();
+      if (!trimmed || trimmed.length > 2048) return undefined;
+      return /^https?:\/\//i.test(trimmed) ? trimmed : undefined;
+    };
     const stripeLineItems = lines.map((l: any) => {
       const productImage = imageMap.get(l.product.id);
-      const image = l.logo_url || productImage;
+      const image = validStripeImage(l.logo_url) || validStripeImage(productImage);
       const productName = pickI18n(l.product.name_i18n, currentLang, l.product.name);
       const name = l.logo_url
         ? `${productName} (${currentLang === "ru" ? "с вашим логотипом" : "ar Jūsu logo"})`
