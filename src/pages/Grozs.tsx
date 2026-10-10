@@ -173,8 +173,10 @@ const Grozs = () => {
   }, [toast, user]);
 
   useEffect(() => {
+    if (authLoading) return;
     if (user) load();
-  }, [load, user]);
+    else setLoading(false);
+  }, [load, user, authLoading]);
 
   const updateQty = async (id: string, qty: number) => {
     if (qty < 1) return;

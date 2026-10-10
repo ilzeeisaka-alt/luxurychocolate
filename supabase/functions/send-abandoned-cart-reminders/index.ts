@@ -102,14 +102,23 @@ async function processStage(stage: "stage1" | "stage2") {
   const cutoffMax = new Date(now - minAgeH * 3600 * 1000).toISOString();
   const cutoffMin = new Date(now - maxAgeH * 3600 * 1000).toISOString();
 
-  // Get ALL cart items (we need to compute the true last-activity time per user).
-  // A user is only "abandoned" if their MOST RECENT cart activity is older than the threshold.
-  // Otherwise (if they added/updated any item within the last hour) they are still active
-  // and must NOT receive a reminder.
-  const { data: carts, error: cartErr } = await supabase
-    .from("cart_items")
-    .select("user_id, updated_at");
-  if (cartErr) throw cartErr;
+  // Get cart items with activity inside the stage window horizon (we need to compute
+  // the true last-activity time per user). Rows older than cutoffMin can never make a
+  // user "abandoned" in this stage, so filtering server-side keeps the result bounded.
+  // Paginate to stay correct even if the window holds more rows than the API cap.
+  const PAGE = 1000;
+  const carts: { user_id: string; updated_at: string }[] = [];
+  for (let from = 0; ; from += PAGE) {
+    const { data: page, error: cartErr } = await supabase
+      .from("cart_items")
+      .select("user_id, updated_at")
+      .gte("updated_at", cutoffMin)
+      .order("updated_at", { ascending: false })
+      .range(from, from + PAGE - 1);
+    if (cartErr) throw cartErr;
+    carts.push(...(page ?? []));
+    if (!page || page.length < PAGE) break;
+  }
 
   // Compute max(updated_at) per user across their entire cart
   const lastActivity = new Map<string, string>();
