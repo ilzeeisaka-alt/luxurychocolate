@@ -155,6 +155,12 @@ const AdminInvoice = () => {
 
   const filePrefix = halfMode === "prepay" ? "Prieksapmaksa50" : halfMode === "postpay" ? "Pecapmaksa50" : docMeta.filePrefix;
 
+  // Always show the invoice file name as the page title, so browser print (Ctrl+P)
+  // and the print dialog also suggest the correct file name.
+  useEffect(() => {
+    document.title = `${filePrefix}_${invoiceNumber}`;
+  }, [filePrefix, invoiceNumber]);
+
   const handlePrint = () => {
     const prev = document.title;
     document.title = `${filePrefix}_${invoiceNumber}`;
