@@ -104,7 +104,7 @@ const AdminInvoice = () => {
       case "invoice":
         return { title: "Rēķins-Pavadzīme", prefix: "INV", filePrefix: "Rekins-Pavadzime" };
       default:
-        return { title: "Priekšapmaksas rēķins", prefix: "PRO", filePrefix: "Priekapmaksa" };
+        return { title: "Priekšapmaksas rēķins", prefix: "PRO", filePrefix: "Prieksapmaksa" };
     }
   }, [docType]);
 
@@ -153,9 +153,11 @@ const AdminInvoice = () => {
   const invoiceRef = useRef<HTMLDivElement | null>(null);
   const [savingPdf, setSavingPdf] = useState(false);
 
+  const filePrefix = halfMode === "prepay" ? "Prieksapmaksa50" : halfMode === "postpay" ? "Pecapmaksa50" : docMeta.filePrefix;
+
   const handlePrint = () => {
     const prev = document.title;
-    document.title = `${docMeta.filePrefix}_${invoiceNumber}${halfLabels ? `_${halfLabels.tag}` : ""}`;
+    document.title = `${filePrefix}_${invoiceNumber}`;
     const restore = () => {
       document.title = prev;
       window.removeEventListener("afterprint", restore);
@@ -184,7 +186,7 @@ const AdminInvoice = () => {
         pdf.addImage(imgData, "JPEG", 0, y, imgW, imgH, undefined, "FAST");
         heightLeft -= pageH;
       }
-      pdf.save(`${docMeta.filePrefix}_${invoiceNumber}${halfLabels ? `_${halfLabels.tag}` : ""}.pdf`);
+      pdf.save(`${filePrefix}_${invoiceNumber}.pdf`);
     } finally {
       setSavingPdf(false);
     }
