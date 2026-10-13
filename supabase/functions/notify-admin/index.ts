@@ -1,4 +1,5 @@
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
+import { sendTemplateEmail } from "../_shared/transactional-email-templates/send-email.ts";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -20,15 +21,6 @@ serve(async (req) => {
 
   try {
     const { type, data } = await req.json();
-    const apiKey = Deno.env.get("RESEND_API_KEY");
-    const from = Deno.env.get("RESEND_FROM_EMAIL") ?? "Luxury Chocolate <onboarding@resend.dev>";
-
-    if (!apiKey) {
-      return new Response(JSON.stringify({ error: "email_not_configured" }), {
-        status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" },
-      });
-    }
-
     let subject = "Jauns notikums mājaslapā";
     let html = "";
 
@@ -81,24 +73,18 @@ serve(async (req) => {
       html = `<pre>${esc(JSON.stringify(data, null, 2))}</pre>`;
     }
 
-    const resp = await fetch("https://api.resend.com/emails", {
-      method: "POST",
-      headers: { "Content-Type": "application/json", Authorization: `Bearer ${apiKey}` },
-      body: JSON.stringify({ from, to: ADMIN_RECIPIENTS, subject, html }),
-    });
-
-    const body = await resp.json();
-    if (!resp.ok) {
-      console.error("notify-admin send failed", body);
-      // Fallback: try ilze only if Resend test-mode restriction
-      const fallback = await fetch("https://api.resend.com/emails", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", Authorization: `Bearer ${apiKey}` },
-        body: JSON.stringify({ from, to: ["ilze.eisaka@gmail.com"], subject, html }),
-      });
-      const fb = await fallback.json();
-      return new Response(JSON.stringify({ success: fallback.ok, fallback: true, body: fb }), {
-        status: 200, headers: { ...corsHeaders, "Content-Type": "application/json" },
+    const failures: string[] = [];
+    for (const to of ADMIN_RECIPIENTS) {
+      try {
+        await sendTemplateEmail("html_message", to, { templateData: { subject, html } });
+      } catch (err) {
+        console.error("notify-admin send failed", to, err);
+        failures.push(to);
+      }
+    }
+    if (failures.length === ADMIN_RECIPIENTS.length) {
+      return new Response(JSON.stringify({ success: false, error: "send_failed" }), {
+        status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" },
       });
     }
 

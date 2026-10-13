@@ -4,7 +4,7 @@
 // Runs on a schedule via pg_cron.
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2.45.0";
-import { Resend } from "https://esm.sh/resend@4.0.0";
+import { sendTemplateEmail } from "../_shared/transactional-email-templates/send-email.ts";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -15,9 +15,7 @@ const supabase = createClient(
   Deno.env.get("SUPABASE_URL")!,
   Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!,
 );
-const resend = new Resend(Deno.env.get("RESEND_API_KEY")!);
 
-const FROM = "Luxury Chocolate <onboarding@resend.dev>";
 const SITE_URL = "https://luxurychocolate.lv";
 const CART_URL = `${SITE_URL}/grozs`;
 
@@ -208,13 +206,12 @@ async function processStage(stage: "stage1" | "stage2") {
       const subtotal = lines.reduce((s, l) => s + l.unit_price_cents * l.quantity, 0);
 
       const html = buildHtml(stage, lines, subtotal);
-      const { error: sendErr } = await resend.emails.send({
-        from: FROM,
-        to: [email],
-        subject: COPY[stage].subject,
-        html,
-      });
-      if (sendErr) {
+      try {
+        await sendTemplateEmail("html_message", email, {
+          templateData: { subject: COPY[stage].subject, html },
+          idempotencyKey: `cart-${stage}-${userId}-${cartUpdatedAt}`,
+        });
+      } catch (sendErr) {
         console.error(`send failed user=${userId}`, sendErr);
         skipped++;
         continue;
