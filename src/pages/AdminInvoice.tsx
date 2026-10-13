@@ -184,7 +184,7 @@ const AdminInvoice = () => {
         pdf.addImage(imgData, "JPEG", 0, y, imgW, imgH, undefined, "FAST");
         heightLeft -= pageH;
       }
-      pdf.save(`${docMeta.filePrefix}_${invoiceNumber}.pdf`);
+      pdf.save(`${docMeta.filePrefix}_${invoiceNumber}${halfLabels ? `_${halfLabels.tag}` : ""}.pdf`);
     } finally {
       setSavingPdf(false);
     }
