@@ -433,6 +433,22 @@ const Admin = () => {
                     >
                       🧾 Rēķins-Pavadzīme
                     </a>
+                    <a
+                      href={`/admin/rekins/${order.id}?type=proforma&half=prepay`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 rounded-md border border-border bg-card px-3 py-1.5 text-sm font-medium hover:bg-muted"
+                    >
+                      📄 50% priekšapmaksas rēķins
+                    </a>
+                    <a
+                      href={`/admin/rekins/${order.id}?type=invoice&half=postpay`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 rounded-md border border-border bg-card px-3 py-1.5 text-sm font-medium hover:bg-muted"
+                    >
+                      🧾 50% pēcapmaksas rēķins
+                    </a>
                   </div>
                   <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                     {/* Left: customer + items */}
