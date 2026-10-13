@@ -256,9 +256,25 @@ const AdminInvoice = () => {
           ] as { v: DocType; l: string }[]).map((t) => (
             <button
               key={t.v}
-              onClick={() => setSearchParams({ type: t.v })}
+              onClick={() => setSearchParams(halfMode === "none" ? { type: t.v } : { type: t.v, half: halfMode })}
               className={`rounded-md border px-3 py-1.5 text-sm font-medium transition ${
                 docType === t.v
+                  ? "border-primary bg-primary text-primary-foreground"
+                  : "border-border bg-card text-foreground hover:bg-muted"
+              }`}
+            >
+              {t.l}
+            </button>
+          ))}
+          {([
+            { v: "prepay", l: "50% priekšapmaksas rēķins" },
+            { v: "postpay", l: "50% pēcapmaksa rēķins" },
+          ] as { v: "prepay" | "postpay"; l: string }[]).map((t) => (
+            <button
+              key={t.v}
+              onClick={() => setSearchParams(halfMode === t.v ? { type: docType } : { type: docType, half: t.v })}
+              className={`rounded-md border px-3 py-1.5 text-sm font-medium transition ${
+                halfMode === t.v
                   ? "border-primary bg-primary text-primary-foreground"
                   : "border-border bg-card text-foreground hover:bg-muted"
               }`}
@@ -363,8 +379,18 @@ const AdminInvoice = () => {
               <div className="flex justify-between py-1"><span>Summa bez PVN:</span><span>{fmt(order.total_cents - order.tax_cents, currency)}</span></div>
               <div className="flex justify-between py-1"><span>PVN 21%:</span><span>{fmt(order.tax_cents, currency)}</span></div>
               <div className="flex justify-between py-2 border-t-2 border-black font-bold text-base mt-1">
-                <span>Kopā apmaksai:</span><span>{fmt(order.total_cents, currency)}</span>
+                <span>Kopā:</span><span>{fmt(order.total_cents, currency)}</span>
               </div>
+              {halfLabels ? (
+                <>
+                  <div className="flex justify-between py-2 border-t border-gray-300 font-bold text-base">
+                    <span>{halfLabels.due}:</span><span>{fmt(Math.round(order.total_cents / 2), currency)}</span>
+                  </div>
+                  <div className="flex justify-between py-1 text-gray-600">
+                    <span>{halfLabels.other}:</span><span>{fmt(order.total_cents - Math.round(order.total_cents / 2), currency)}</span>
+                  </div>
+                </>
+              ) : null}
             </div>
           </div>
 
