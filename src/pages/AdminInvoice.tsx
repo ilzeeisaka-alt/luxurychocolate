@@ -298,7 +298,13 @@ const AdminInvoice = () => {
               <img src={logoUrl} alt="Luxury Chocolate" className="w-20 h-20 object-contain" crossOrigin="anonymous" />
               <img src={chocoTimeUrl} alt="It's choco time" className="w-20 h-20 object-contain" crossOrigin="anonymous" />
               <div>
-                <h1 className="text-2xl font-bold">{docMeta.title}</h1>
+                <h1 className="text-2xl font-bold">
+                  {halfMode === "postpay"
+                    ? "Pēcapmaksas rēķins 50%"
+                    : halfMode === "prepay"
+                      ? "Priekšapmaksas rēķins 50%"
+                      : docMeta.title}
+                </h1>
                 <p className="text-sm mt-1">Nr. {invoiceNumber}</p>
                 <p className="text-sm">Pasūtījums: {order.order_number}</p>
                 <p className="text-sm">Izrakstīts: {dateStr}</p>
