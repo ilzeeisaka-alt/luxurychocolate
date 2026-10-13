@@ -417,7 +417,7 @@ const Rekins = () => {
   const halfDue = (m: "prepay" | "postpay") =>
     m === "prepay"
       ? (lang === "ru" ? "Предоплата 50% к оплате" : lang === "et" ? "50% ettemaks tasumisele" : lang === "lv" ? "50% priekšapmaksa apmaksai" : "50% prepayment due")
-      : (lang === "ru" ? "Постоплата 50% к оплате" : lang === "et" ? "50% järelmaks tasumisele" : lang === "lv" ? "50% pēcapmaksa apmaksai" : "50% postpayment due");
+      : (lang === "ru" ? "Постоплата 50% (после выполнения) к оплате" : lang === "et" ? "50% järelmaks (pärast täitmist) tasumisele" : lang === "lv" ? "Pēcapmaksa 50% (pēc izpildes) apmaksai" : "Postpayment 50% (after completion) due");
   const halfOther = (m: "prepay" | "postpay") =>
     m === "prepay"
       ? (lang === "ru" ? "Остаток 50% (после выполнения)" : lang === "et" ? "Ülejäänud 50% (pärast täitmist)" : lang === "lv" ? "Atlikušie 50% (pēc izpildes)" : "Remaining 50% (after completion)")
