@@ -153,6 +153,8 @@ const AdminInvoice = () => {
   const invoiceRef = useRef<HTMLDivElement | null>(null);
   const [savingPdf, setSavingPdf] = useState(false);
 
+  const filePrefix = halfMode === "prepay" ? "Prieksapmaksa50" : halfMode === "postpay" ? "Pecapmaksa50" : docMeta.filePrefix;
+
   const handlePrint = () => {
     const prev = document.title;
     document.title = `${filePrefix}_${invoiceNumber}`;
