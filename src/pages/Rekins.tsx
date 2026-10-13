@@ -912,7 +912,16 @@ const Rekins = () => {
                 <img src={logoUrl} alt="Luxury Chocolate" className="w-20 h-20 object-contain" crossOrigin="anonymous" />
                 <img src={chocoTimeUrl} alt="It's choco time" className="w-20 h-20 object-contain" crossOrigin="anonymous" />
                 <div>
-                  <h1 className="text-2xl font-bold">{tx.proformaTitle}</h1>
+                  <h1 className="text-2xl font-bold">
+                    {halfMode === "none"
+                      ? tx.proformaTitle
+                      : ({
+                          lv: { prepay: "Priekšapmaksas rēķins 50%", postpay: "Pēcapmaksas rēķins 50%" },
+                          ru: { prepay: "Счёт на предоплату 50%", postpay: "Счёт на постоплату 50%" },
+                          et: { prepay: "Ettemaksuarve 50%", postpay: "Järelmaksuarve 50%" },
+                        } as Record<string, Record<"prepay" | "postpay", string>>)[lang]?.[halfMode] ??
+                        (halfMode === "prepay" ? "Prepayment invoice 50%" : "Postpayment invoice 50%")}
+                  </h1>
                   <p className="text-sm mt-1">{tx.invoiceNo} {invoiceNumber}</p>
                   <p className="text-sm">{tx.issued}: {today}</p>
                   <p className="text-sm">{tx.due}: {dueDate}</p>
