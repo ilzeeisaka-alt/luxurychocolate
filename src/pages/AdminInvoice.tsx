@@ -50,6 +50,14 @@ const AdminInvoice = () => {
   const { orderId } = useParams<{ orderId: string }>();
   const [searchParams, setSearchParams] = useSearchParams();
   const docType = (searchParams.get("type") as DocType) || "proforma";
+  const halfMode = (searchParams.get("half") as "none" | "prepay" | "postpay") || "none";
+  const halfLabels = useMemo(() => {
+    if (halfMode === "prepay")
+      return { due: "Priekšapmaksa 50% (pirms izpildes) apmaksai", other: "Atlikušie 50% (pēc izpildes)", tag: "50prieksapmaksa" };
+    if (halfMode === "postpay")
+      return { due: "Pēcapmaksa 50% (pēc izpildes) apmaksai", other: "Priekšapmaksa 50% (pirms izpildes)", tag: "50pecapmaksa" };
+    return null;
+  }, [halfMode]);
   const { user, loading: authLoading } = useAuth();
   const navigate = useNavigate();
   const [order, setOrder] = useState<Order | null>(null);
@@ -145,7 +153,16 @@ const AdminInvoice = () => {
   const invoiceRef = useRef<HTMLDivElement | null>(null);
   const [savingPdf, setSavingPdf] = useState(false);
 
-  const handlePrint = () => window.print();
+  const handlePrint = () => {
+    const prev = document.title;
+    document.title = `${docMeta.filePrefix}_${invoiceNumber}${halfLabels ? `_${halfLabels.tag}` : ""}`;
+    const restore = () => {
+      document.title = prev;
+      window.removeEventListener("afterprint", restore);
+    };
+    window.addEventListener("afterprint", restore);
+    window.print();
+  };
   const handleSavePdf = async () => {
     if (!invoiceRef.current) return;
     setSavingPdf(true);
