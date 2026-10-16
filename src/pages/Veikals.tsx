@@ -249,7 +249,12 @@ const Veikals = () => {
                 <button
                   key={c.id}
                   type="button"
-                  onClick={() => update({ category: c.slug })}
+                  onClick={() => {
+                    update({ category: c.slug });
+                    if (window.innerWidth < 1024) {
+                      setTimeout(() => document.getElementById("veikals-produkti")?.scrollIntoView({ behavior: "smooth", block: "start" }), 150);
+                    }
+                  }}
                   className={cn(
                     "w-full text-left px-3 py-2 rounded-md text-sm transition-colors flex items-center justify-between gap-2",
                     c.parent_id ? "pl-7 text-xs" : "",
@@ -278,7 +283,7 @@ const Veikals = () => {
           </aside>
 
           {/* Grid */}
-          <section className="flex-1 min-w-0">
+          <section id="veikals-produkti" className="flex-1 min-w-0 scroll-mt-48">
             {/* Active filters + sort */}
             <div className="flex items-center justify-between gap-4 mb-6 flex-wrap">
               <div className="flex items-center gap-2 flex-wrap">
