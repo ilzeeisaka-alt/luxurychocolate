@@ -1080,11 +1080,11 @@ const Navbar = ({ lang: langProp }: NavbarProps) => {
             </Link>
             <Link
               to={user && !(user as any).is_anonymous ? "/account" : "/auth"}
-              className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-medium text-white/80 hover:text-white hover:bg-white/5 transition-colors border border-white/15"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-medium text-white/80 hover:text-white hover:bg-white/5 transition-colors border border-white/15"
               aria-label={user && !(user as any).is_anonymous ? ui.myAccount : ui.signIn}
             >
               {user && !(user as any).is_anonymous ? <User size={14} /> : <LogIn size={14} />}
-              <span>{user && !(user as any).is_anonymous ? ui.myAccount : ui.signIn}</span>
+              <span className="hidden sm:inline">{user && !(user as any).is_anonymous ? ui.myAccount : ui.signIn}</span>
             </Link>
             <LanguageSwitcher />
             <button
