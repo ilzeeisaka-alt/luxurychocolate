@@ -344,6 +344,10 @@ const INVOICE_TEXT = {
 
 const getInvoiceText = (lang: string) => INVOICE_TEXT[lang as keyof typeof INVOICE_TEXT] ?? INVOICE_TEXT.en;
 
+// Inserts a zero-width space after the first character so iOS cannot auto-detect
+// the string as an email/phone and draw its link decoration (strikethrough) over it.
+const undetectable = (s: string) => (s ? s.charAt(0) + "\u200B" + s.slice(1) : s);
+
 const fmt = (cents: number, currency = "EUR", lang = "lv") =>
   new Intl.NumberFormat(lang === "ru" ? "ru-RU" : lang === "en" ? "en-US" : lang === "et" ? "et-EE" : "lv-LV", { style: "currency", currency }).format(cents / 100);
 
