@@ -1123,7 +1123,7 @@ const Navbar = ({ lang: langProp }: NavbarProps) => {
 
       {/* Mobile menu */}
       {mobileOpen && (
-        <div className="lg:hidden bg-foreground border-t border-white/10 px-4 pb-4">
+        <div className="lg:hidden bg-foreground border-t border-white/10 px-4 pb-4 max-h-[calc(100vh-3.5rem)] overflow-y-auto overscroll-contain">
           {items.map((item) =>
             item.to.startsWith("#") ? (
               <a
