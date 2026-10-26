@@ -344,6 +344,10 @@ const INVOICE_TEXT = {
 
 const getInvoiceText = (lang: string) => INVOICE_TEXT[lang as keyof typeof INVOICE_TEXT] ?? INVOICE_TEXT.en;
 
+// Inserts a zero-width space after the first character so iOS cannot auto-detect
+// the string as an email/phone and draw its link decoration (strikethrough) over it.
+const undetectable = (s: string) => (s ? s.charAt(0) + "\u200B" + s.slice(1) : s);
+
 const fmt = (cents: number, currency = "EUR", lang = "lv") =>
   new Intl.NumberFormat(lang === "ru" ? "ru-RU" : lang === "en" ? "en-US" : lang === "et" ? "et-EE" : "lv-LV", { style: "currency", currency }).format(cents / 100);
 
@@ -938,7 +942,7 @@ const Rekins = () => {
                 <p>{tx.vatReg} LV40103921954</p>
                 <p>{tx.legalAddress}: Vircavas iela 9-8, Rīga, LV-1083</p>
                 <p>{tx.actualAddress}: Kandavas iela 29a-85, Rīga, LV-1083</p>
-                <p>info@luxurychocolate.lv · +371 26 177 853</p>
+                <p>{undetectable("info@luxurychocolate.lv · +371 26 177 853")}</p>
               </div>
             </div>
 
@@ -981,8 +985,8 @@ const Rekins = () => {
                 )}
                 {buyerAddress && <p>{buyerAddress}</p>}
                 {buyerContact && <p>{tx.contactPerson}: {buyerContact}</p>}
-                {buyerEmail && <p>{buyerEmail}</p>}
-                {buyerPhone && <p>{buyerPhone}</p>}
+                {buyerEmail && <p>{undetectable(buyerEmail)}</p>}
+                {buyerPhone && <p>{undetectable(buyerPhone)}</p>}
                 {deliveryAddress && <p className="mt-1"><span className="font-medium">{tx.deliveryAddressLabel}:</span> {deliveryAddress}</p>}
                 <p><span className="font-medium">{tx.eventNameLabel}:</span> {eventName || "_______________"}</p>
                 <p><span className="font-medium">{tx.eventDateLabel}:</span> <span ref={eventDateBuyerRef}>{eventDateDisplay || "_______________"}</span></p>
@@ -1092,7 +1096,7 @@ const Rekins = () => {
               <p>{tx.companyRegNo}: LV40103921954</p>
               <p>{tx.bank}: AS Citadele banka · SWIFT: PARXLV22</p>
               <p>{tx.account}: LV88PARX0032054790002</p>
-              <p className="mt-3">{tx.productionAfterPayment}</p>
+              <p className="mt-3">{undetectable(tx.productionAfterPayment)}</p>
               <p className="mt-3">{tx.productionTerms}</p>
               <p className="mt-3 italic">{tx.proformaNote}</p>
             </div>

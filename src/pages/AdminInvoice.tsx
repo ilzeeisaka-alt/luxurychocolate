@@ -10,6 +10,10 @@ import { useAuth } from "@/hooks/useAuth";
 import logoUrl from "@/assets/luxury-chocolate-logo.jpg";
 import chocoTimeUrl from "@/assets/its-choco-time.png";
 
+// Inserts a zero-width space after the first character so iOS cannot auto-detect
+// the string as an email/phone and draw its link decoration (strikethrough) over it.
+const undetectable = (s: string) => (s ? s.charAt(0) + "\u200B" + s.slice(1) : s);
+
 interface OrderItem {
   id: string;
   product_name: string;
@@ -318,7 +322,7 @@ const AdminInvoice = () => {
               <p>PVN Reģ.nr. LV40103921954</p>
               <p>Jur. adrese: Vircavas iela 9-8, Rīga, LV-1083</p>
               <p>Fakt. adrese: Kandavas iela 29a-85, Rīga, LV-1083</p>
-              <p>info@luxurychocolate.lv · +371 26 177 853</p>
+              <p>{undetectable("info@luxurychocolate.lv · +371 26 177 853")}</p>
             </div>
           </div>
 
@@ -337,8 +341,8 @@ const AdminInvoice = () => {
               {regNr && <p>Reģ. Nr. {regNr}</p>}
               {order.vat_number && <p>PVN: {order.vat_number}</p>}
               
-              {order.customer_email && <p>{order.customer_email}</p>}
-              {order.customer_phone && <p>{order.customer_phone}</p>}
+              {order.customer_email && <p>{undetectable(order.customer_email)}</p>}
+              {order.customer_phone && <p>{undetectable(order.customer_phone)}</p>}
               {order.shipping_address && <p className="mt-1"><span className="font-medium">Piegādes adrese:</span> {order.shipping_address}</p>}
               {eventNameStr && <p className="mt-1"><span className="font-medium">Pasākuma nosaukums:</span> {eventNameStr}</p>}
               {eventDateStr && <p className="mt-1"><span className="font-medium">Pasākuma datums / laiks:</span> {eventDateStr}</p>}
@@ -415,7 +419,7 @@ const AdminInvoice = () => {
               <p>Reģ.nr.: LV40103921954</p>
               <p>Banka: AS Citadele banka · SWIFT: PARXLV22</p>
               <p>Konts: LV88PARX0032054790002</p>
-              <p className="mt-3">Pasūtījumu sāksim gatavot pēc apmaksas saņemšanas. Jautājumu gadījumā: info@luxurychocolate.lv</p>
+              <p className="mt-3">{undetectable("Pasūtījumu sāksim gatavot pēc apmaksas saņemšanas. Jautājumu gadījumā: info@luxurychocolate.lv")}</p>
               <p className="mt-3 italic">Šis ir priekšapmaksas (proforma) rēķins. Galīgais rēķins tiks izsniegts pēc apmaksas.</p>
             </div>
           )}
