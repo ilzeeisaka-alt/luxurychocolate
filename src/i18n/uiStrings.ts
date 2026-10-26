@@ -5,6 +5,7 @@ import type { Lang } from "./types";
 export interface UIStrings {
   signIn: string;
   myAccount: string;
+  admin: string;
   cart: string;
   subscribe: string;
   email: string;
@@ -84,6 +85,7 @@ export interface UIStrings {
 const en: UIStrings = {
   signIn: "Sign in",
   myAccount: "My account",
+  admin: "Admin",
   cart: "Cart",
   subscribe: "Subscribe",
   email: "Email",
@@ -161,7 +163,7 @@ const en: UIStrings = {
 export const uiStrings: Record<Lang, UIStrings> = expandLangs<UIStrings>({
   en,
   lv: {
-    signIn: "Pieslēgties", myAccount: "Mans konts", cart: "Grozs", subscribe: "Pierakstīties",
+    signIn: "Pieslēgties", myAccount: "Mans konts", admin: "Admin panelis", cart: "Grozs", subscribe: "Pierakstīties",
     email: "E-pasts", thanks: "Paldies!", affiliate: "Partneru programma",
     hasPartnerCode: "Ir partnera kods?", partnerCode: "Partnera kods",
     partnerCodePlaceholder: "PARTNERA KODS", apply: "Pielietot",
@@ -216,7 +218,7 @@ export const uiStrings: Record<Lang, UIStrings> = expandLangs<UIStrings>({
   },
 
   ru: {
-    signIn: "Войти", myAccount: "Мой аккаунт", cart: "Корзина", subscribe: "Подписаться",
+    signIn: "Войти", myAccount: "Мой аккаунт", admin: "Админ-панель", cart: "Корзина", subscribe: "Подписаться",
     email: "Эл. почта", thanks: "Спасибо!", affiliate: "Партнёрская программа",
     hasPartnerCode: "Есть партнёрский код?", partnerCode: "Партнёрский код",
     partnerCodePlaceholder: "ПАРТНЁРСКИЙ КОД", apply: "Применить",
@@ -272,7 +274,7 @@ export const uiStrings: Record<Lang, UIStrings> = expandLangs<UIStrings>({
 
 
   et: {
-    signIn: "Logi sisse", myAccount: "Minu konto", cart: "Ostukorv", subscribe: "Telli",
+    signIn: "Logi sisse", myAccount: "Minu konto", admin: "Adminpaneel", cart: "Ostukorv", subscribe: "Telli",
     email: "E-post", thanks: "Aitäh!", affiliate: "Partnerprogramm",
     hasPartnerCode: "Kas teil on partnerikood?", partnerCode: "Partnerikood",
     partnerCodePlaceholder: "PARTNERIKOOD", apply: "Rakenda",
