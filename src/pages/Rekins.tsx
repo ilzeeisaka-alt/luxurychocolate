@@ -907,7 +907,7 @@ const Rekins = () => {
           </div>
         ) : (
           <div ref={invoiceRef} className="print-area bg-white text-black rounded-xl border border-border p-10 shadow-sm">
-            <div className="flex justify-between items-start mb-8 gap-6">
+            <div className="flex flex-col sm:flex-row sm:justify-between items-start mb-8 gap-6">
               <div className="flex items-start gap-4">
                 <img src={logoUrl} alt="Luxury Chocolate" className="w-20 h-20 object-contain" crossOrigin="anonymous" />
                 <img src={chocoTimeUrl} alt="It's choco time" className="w-20 h-20 object-contain" crossOrigin="anonymous" />
