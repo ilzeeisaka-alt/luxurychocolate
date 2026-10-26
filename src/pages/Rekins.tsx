@@ -985,8 +985,8 @@ const Rekins = () => {
                 )}
                 {buyerAddress && <p>{buyerAddress}</p>}
                 {buyerContact && <p>{tx.contactPerson}: {buyerContact}</p>}
-                {buyerEmail && <p>{buyerEmail}</p>}
-                {buyerPhone && <p>{buyerPhone}</p>}
+                {buyerEmail && <p>{undetectable(buyerEmail)}</p>}
+                {buyerPhone && <p>{undetectable(buyerPhone)}</p>}
                 {deliveryAddress && <p className="mt-1"><span className="font-medium">{tx.deliveryAddressLabel}:</span> {deliveryAddress}</p>}
                 <p><span className="font-medium">{tx.eventNameLabel}:</span> {eventName || "_______________"}</p>
                 <p><span className="font-medium">{tx.eventDateLabel}:</span> <span ref={eventDateBuyerRef}>{eventDateDisplay || "_______________"}</span></p>
