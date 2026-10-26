@@ -877,6 +877,7 @@ const Navbar = ({ lang: langProp }: NavbarProps) => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [infoOpen, setInfoOpen] = useState(false);
   const [mobileInfoOpen, setMobileInfoOpen] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(false);
   const infoRef = useRef<HTMLDivElement | null>(null);
   const { pathname } = useLocation();
   const detectedLang = useCurrentLang() as Lang;
@@ -942,6 +943,22 @@ const Navbar = ({ lang: langProp }: NavbarProps) => {
     const onUpdate = () => fetchCount();
     window.addEventListener("cart-updated", onUpdate);
     return () => { cancelled = true; window.removeEventListener("cart-updated", onUpdate); };
+  }, [user]);
+
+  // Admin role — lets the mobile menu offer the admin panel link
+  useEffect(() => {
+    if (!user) { setIsAdmin(false); return; }
+    let cancelled = false;
+    (async () => {
+      const { data } = await supabase
+        .from("user_roles")
+        .select("role")
+        .eq("user_id", user.id)
+        .eq("role", "admin")
+        .maybeSingle();
+      if (!cancelled) setIsAdmin(!!data);
+    })();
+    return () => { cancelled = true; };
   }, [user]);
 
   return (
@@ -1170,6 +1187,22 @@ const Navbar = ({ lang: langProp }: NavbarProps) => {
               )}
             </div>
           )}
+          <div className="mt-4 pt-4 border-t border-white/10">
+            <Link
+              to={user && !(user as any).is_anonymous ? "/account" : "/auth"}
+              className="block py-2.5 px-3 rounded-md text-sm font-medium text-white/80 hover:text-white hover:bg-white/5"
+            >
+              {user && !(user as any).is_anonymous ? ui.myAccount : ui.signIn}
+            </Link>
+            {isAdmin && (
+              <Link
+                to="/admin"
+                className="block py-2.5 px-3 rounded-md text-sm font-medium text-primary bg-primary/10 hover:bg-primary/20"
+              >
+                {ui.admin}
+              </Link>
+            )}
+          </div>
           <div className="mt-4 pt-4 border-t border-white/10">
             <NewsletterSignup lang={lang} source="navbar-mobile" />
           </div>
