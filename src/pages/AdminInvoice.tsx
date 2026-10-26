@@ -10,6 +10,10 @@ import { useAuth } from "@/hooks/useAuth";
 import logoUrl from "@/assets/luxury-chocolate-logo.jpg";
 import chocoTimeUrl from "@/assets/its-choco-time.png";
 
+// Inserts a zero-width space after the first character so iOS cannot auto-detect
+// the string as an email/phone and draw its link decoration (strikethrough) over it.
+const undetectable = (s: string) => (s ? s.charAt(0) + "\u200B" + s.slice(1) : s);
+
 interface OrderItem {
   id: string;
   product_name: string;
