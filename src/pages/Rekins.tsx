@@ -942,7 +942,7 @@ const Rekins = () => {
                 <p>{tx.vatReg} LV40103921954</p>
                 <p>{tx.legalAddress}: Vircavas iela 9-8, Rīga, LV-1083</p>
                 <p>{tx.actualAddress}: Kandavas iela 29a-85, Rīga, LV-1083</p>
-                <p>info@luxurychocolate.lv · +371 26 177 853</p>
+                <p>{undetectable("info@luxurychocolate.lv · +371 26 177 853")}</p>
               </div>
             </div>
 
