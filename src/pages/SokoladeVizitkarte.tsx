@@ -2,6 +2,7 @@ import SeoLandingLayout from "@/components/SeoLandingLayout";
 
 const SokoladeVizitkarte = () => (
   <SeoLandingLayout
+    article
     emoji="✨"
     title="Šokolāde ar logo kā vizītkarte: Kāpēc salds iespaids paliek atmiņā ilgāk"
     metaDescription="Personalizēta Beļģu šokolāde ar logo aizstāj parasto vizītkarti — rada emocionālu saikni un paliek klientu atmiņā ilgāk. Pasūtījumi no 1 gab."
