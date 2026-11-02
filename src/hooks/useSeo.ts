@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { hreflangMap } from "@/i18n/ui-strings";
 import { canonicalPath } from "@/lib/seoPaths";
+import { useCurrentLang } from "@/i18n/useCurrentLang";
 
 interface SeoProps {
   title: string;
@@ -85,6 +86,7 @@ function clampDescription(text: string, max = 155) {
 }
 
 export function useSeo({ title, description, path, ogImage, keywords }: SeoProps) {
+  const pageLang = useCurrentLang();
   useEffect(() => {
     const fullTitle = `${title} — Luxury Chocolate`;
     // Canonical must never carry query params (?lang, ?page, ?category, ?q).
@@ -95,6 +97,7 @@ export function useSeo({ title, description, path, ogImage, keywords }: SeoProps
     const desc = clampDescription(base);
 
     document.title = fullTitle;
+    document.documentElement.lang = pageLang;
 
     setMeta("description", desc);
     setMeta("robots", "index, follow");
@@ -131,5 +134,5 @@ export function useSeo({ title, description, path, ogImage, keywords }: SeoProps
     return () => {
       document.querySelectorAll('link[rel="alternate"][hreflang]').forEach((el) => el.remove());
     };
-  }, [title, description, path, ogImage, keywords]);
+  }, [title, description, path, ogImage, keywords, pageLang]);
 }
