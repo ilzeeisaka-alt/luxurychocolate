@@ -1,4 +1,5 @@
 # SEO corrections
+- [ ] Match HTML language to the selected page language; verify the additional Ahrefs product-link examples.
 - [x] Correct route canonical handling and invalid localized links; restore existing SV/NO/FI/DA landing pages.
 - [x] Reconcile sitemap and internal links: 1163 URLs, including 906 published products and 48 articles, linked in a static HTML directory.
 - [x] Add article metadata and structured data; verify existing organization data and assign its stable ID.
