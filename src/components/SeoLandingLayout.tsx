@@ -35,6 +35,7 @@ interface SeoLandingPageProps {
   productImage?: string;
   priceFrom?: string;
   extraSection?: React.ReactNode;
+  article?: boolean;
 }
 
 const vp = { once: true, margin: "-50px" as const };
@@ -54,6 +55,7 @@ const SeoLandingLayout = ({
   productImage,
   priceFrom = "3.50",
   extraSection,
+  article = false,
 }: SeoLandingPageProps) => {
   const [modalOpen, setModalOpen] = useState(false);
   const { pathname } = useLocation();
@@ -80,7 +82,7 @@ const SeoLandingLayout = ({
         "name": fullTitle,
         "description": metaDescription,
         "url": fullUrl,
-        "inLanguage": lang === "lv" ? "lv" : lang === "en" ? "en" : "ru",
+        "inLanguage": lang,
         "isPartOf": { "@id": `${BASE_URL}/#website` },
         "breadcrumb": {
           "@type": "BreadcrumbList",
@@ -166,6 +168,20 @@ const SeoLandingLayout = ({
       },
     ];
 
+    if (article) {
+      jsonLd.push({
+        "@type": "Article",
+        "@id": `${fullUrl}#article`,
+        "headline": title,
+        "description": metaDescription,
+        "image": productImage,
+        "inLanguage": lang,
+        "mainEntityOfPage": { "@id": fullUrl },
+        "author": { "@id": `${BASE_URL}/#organization` },
+        "publisher": { "@id": `${BASE_URL}/#organization` },
+      });
+    }
+
     if (faqs && faqs.length > 0) {
       jsonLd.push({
         "@type": "FAQPage",
@@ -189,7 +205,7 @@ const SeoLandingLayout = ({
     return () => {
       document.getElementById("seo-landing-jsonld")?.remove();
     };
-  }, [pathname, title, metaDescription, intro, faqs, lang, ui, homePath]);
+  }, [pathname, title, metaDescription, intro, faqs, lang, ui, homePath, article, productImage, priceFrom]);
 
   return (
     <main className="bg-background">

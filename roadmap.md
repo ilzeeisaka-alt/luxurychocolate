@@ -1,4 +1,5 @@
 # SEO corrections
+- [ ] Add Article metadata to the editorial chocolate-business-card page and reference the full organization from the service; verify screenshot examples and explain IndexNow.
 - [x] Match HTML language to the selected page language; verified LT/RU/ET/EN self-hreflang alignment and direct catalog links for the additional Ahrefs product examples (10 tests passed).
 - [x] Correct route canonical handling and invalid localized links; restore existing SV/NO/FI/DA landing pages.
 - [x] Reconcile sitemap and internal links: 1163 URLs, including 906 published products and 48 articles, linked in a static HTML directory.
