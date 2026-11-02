@@ -1,828 +1,785 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:xhtml="http://www.w3.org/1999/xhtml">
-
-  <!-- === HOMEPAGES === -->
-  <url>
-    <loc>https://luxurychocolate.lv/katalogs</loc>
-    <lastmod>2026-09-11</lastmod>
-    <priority>0.9</priority>
-    <changefreq>daily</changefreq>
-  </url>
-  <url>
+<?xml version='1.0' encoding='UTF-8'?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml"><url>
     <loc>https://luxurychocolate.lv/</loc>
-    <xhtml:link rel="alternate" hreflang="lv" href="https://luxurychocolate.lv/" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://luxurychocolate.lv/en" />
-    <xhtml:link rel="alternate" hreflang="ru" href="https://luxurychocolate.lv/ru" />
-    <xhtml:link rel="alternate" hreflang="et" href="https://luxurychocolate.lv/et" />
-    <xhtml:link rel="alternate" hreflang="lt" href="https://luxurychocolate.lv/lt" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://luxurychocolate.lv/" />
+    <xhtml:link rel="alternate" hreflang="lv" href="https://luxurychocolate.lv/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://luxurychocolate.lv/en"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://luxurychocolate.lv/ru"/>
+    <xhtml:link rel="alternate" hreflang="et" href="https://luxurychocolate.lv/et"/>
+    <xhtml:link rel="alternate" hreflang="lt" href="https://luxurychocolate.lv/lt"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://luxurychocolate.lv/"/>
     <lastmod>2026-03-26</lastmod>
     <priority>1.0</priority>
     <changefreq>weekly</changefreq>
   </url>
-  <url>
-    <loc>https://luxurychocolate.lv/en</loc>
-    <xhtml:link rel="alternate" hreflang="lv" href="https://luxurychocolate.lv/" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://luxurychocolate.lv/en" />
-    <xhtml:link rel="alternate" hreflang="ru" href="https://luxurychocolate.lv/ru" />
-    <xhtml:link rel="alternate" hreflang="et" href="https://luxurychocolate.lv/et" />
-    <xhtml:link rel="alternate" hreflang="lt" href="https://luxurychocolate.lv/lt" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://luxurychocolate.lv/" />
-    <lastmod>2026-03-26</lastmod>
-    <priority>0.9</priority>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://luxurychocolate.lv/ru</loc>
-    <xhtml:link rel="alternate" hreflang="lv" href="https://luxurychocolate.lv/" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://luxurychocolate.lv/en" />
-    <xhtml:link rel="alternate" hreflang="ru" href="https://luxurychocolate.lv/ru" />
-    <xhtml:link rel="alternate" hreflang="et" href="https://luxurychocolate.lv/et" />
-    <xhtml:link rel="alternate" hreflang="lt" href="https://luxurychocolate.lv/lt" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://luxurychocolate.lv/" />
-    <lastmod>2026-03-26</lastmod>
-    <priority>0.9</priority>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://luxurychocolate.lv/et</loc>
-    <xhtml:link rel="alternate" hreflang="lv" href="https://luxurychocolate.lv/" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://luxurychocolate.lv/en" />
-    <xhtml:link rel="alternate" hreflang="ru" href="https://luxurychocolate.lv/ru" />
-    <xhtml:link rel="alternate" hreflang="et" href="https://luxurychocolate.lv/et" />
-    <xhtml:link rel="alternate" hreflang="lt" href="https://luxurychocolate.lv/lt" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://luxurychocolate.lv/" />
-    <lastmod>2026-03-26</lastmod>
-    <priority>0.9</priority>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://luxurychocolate.lv/lt</loc>
-    <xhtml:link rel="alternate" hreflang="lv" href="https://luxurychocolate.lv/" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://luxurychocolate.lv/en" />
-    <xhtml:link rel="alternate" hreflang="ru" href="https://luxurychocolate.lv/ru" />
-    <xhtml:link rel="alternate" hreflang="et" href="https://luxurychocolate.lv/et" />
-    <xhtml:link rel="alternate" hreflang="lt" href="https://luxurychocolate.lv/lt" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://luxurychocolate.lv/" />
-    <lastmod>2026-03-26</lastmod>
-    <priority>0.9</priority>
-    <changefreq>weekly</changefreq>
-  </url>
-
-  <!-- === Šokolādes ar logo === -->
-  <url>
-    <loc>https://luxurychocolate.lv/sokolades-ar-logo</loc>
-    <xhtml:link rel="alternate" hreflang="lv" href="https://luxurychocolate.lv/sokolades-ar-logo" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://luxurychocolate.lv/en/chocolate-with-logo" />
-    <xhtml:link rel="alternate" hreflang="ru" href="https://luxurychocolate.lv/ru/shokolad-s-logotipom" />
-    <xhtml:link rel="alternate" hreflang="et" href="https://luxurychocolate.lv/et/sokolaad-logoga" />
-    <xhtml:link rel="alternate" hreflang="lt" href="https://luxurychocolate.lv/lt/sokoladas-su-logotipu" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://luxurychocolate.lv/sokolades-ar-logo" />
-    <lastmod>2026-03-26</lastmod>
-    <priority>0.8</priority>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://luxurychocolate.lv/en/chocolate-with-logo</loc>
-    <xhtml:link rel="alternate" hreflang="lv" href="https://luxurychocolate.lv/sokolades-ar-logo" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://luxurychocolate.lv/en/chocolate-with-logo" />
-    <xhtml:link rel="alternate" hreflang="ru" href="https://luxurychocolate.lv/ru/shokolad-s-logotipom" />
-    <xhtml:link rel="alternate" hreflang="et" href="https://luxurychocolate.lv/et/sokolaad-logoga" />
-    <xhtml:link rel="alternate" hreflang="lt" href="https://luxurychocolate.lv/lt/sokoladas-su-logotipu" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://luxurychocolate.lv/sokolades-ar-logo" />
-    <lastmod>2026-03-26</lastmod>
-    <priority>0.7</priority>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://luxurychocolate.lv/ru/shokolad-s-logotipom</loc>
-    <xhtml:link rel="alternate" hreflang="lv" href="https://luxurychocolate.lv/sokolades-ar-logo" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://luxurychocolate.lv/en/chocolate-with-logo" />
-    <xhtml:link rel="alternate" hreflang="ru" href="https://luxurychocolate.lv/ru/shokolad-s-logotipom" />
-    <xhtml:link rel="alternate" hreflang="et" href="https://luxurychocolate.lv/et/sokolaad-logoga" />
-    <xhtml:link rel="alternate" hreflang="lt" href="https://luxurychocolate.lv/lt/sokoladas-su-logotipu" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://luxurychocolate.lv/sokolades-ar-logo" />
-    <lastmod>2026-03-26</lastmod>
-    <priority>0.7</priority>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://luxurychocolate.lv/et/sokolaad-logoga</loc>
-    <xhtml:link rel="alternate" hreflang="lv" href="https://luxurychocolate.lv/sokolades-ar-logo" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://luxurychocolate.lv/en/chocolate-with-logo" />
-    <xhtml:link rel="alternate" hreflang="ru" href="https://luxurychocolate.lv/ru/shokolad-s-logotipom" />
-    <xhtml:link rel="alternate" hreflang="et" href="https://luxurychocolate.lv/et/sokolaad-logoga" />
-    <xhtml:link rel="alternate" hreflang="lt" href="https://luxurychocolate.lv/lt/sokoladas-su-logotipu" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://luxurychocolate.lv/sokolades-ar-logo" />
-    <lastmod>2026-03-26</lastmod>
-    <priority>0.7</priority>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://luxurychocolate.lv/lt/sokoladas-su-logotipu</loc>
-    <xhtml:link rel="alternate" hreflang="lv" href="https://luxurychocolate.lv/sokolades-ar-logo" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://luxurychocolate.lv/en/chocolate-with-logo" />
-    <xhtml:link rel="alternate" hreflang="ru" href="https://luxurychocolate.lv/ru/shokolad-s-logotipom" />
-    <xhtml:link rel="alternate" hreflang="et" href="https://luxurychocolate.lv/et/sokolaad-logoga" />
-    <xhtml:link rel="alternate" hreflang="lt" href="https://luxurychocolate.lv/lt/sokoladas-su-logotipu" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://luxurychocolate.lv/sokolades-ar-logo" />
-    <lastmod>2026-03-26</lastmod>
-    <priority>0.7</priority>
-    <changefreq>monthly</changefreq>
-  </url>
-
-  <!-- === Ziemassvētku šokolādes === -->
-  <url>
-    <loc>https://luxurychocolate.lv/ziemassvetku-korporativas-sokolades</loc>
-    <xhtml:link rel="alternate" hreflang="lv" href="https://luxurychocolate.lv/ziemassvetku-korporativas-sokolades" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://luxurychocolate.lv/en/christmas-corporate-chocolate" />
-    <xhtml:link rel="alternate" hreflang="ru" href="https://luxurychocolate.lv/ru/rozhdestvenskij-shokolad" />
-    <xhtml:link rel="alternate" hreflang="et" href="https://luxurychocolate.lv/et/joulu-sokolaad" />
-    <xhtml:link rel="alternate" hreflang="lt" href="https://luxurychocolate.lv/lt/kaledinis-sokoladas" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://luxurychocolate.lv/ziemassvetku-korporativas-sokolades" />
-    <lastmod>2026-03-26</lastmod>
-    <priority>0.8</priority>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://luxurychocolate.lv/en/christmas-corporate-chocolate</loc>
-    <xhtml:link rel="alternate" hreflang="lv" href="https://luxurychocolate.lv/ziemassvetku-korporativas-sokolades" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://luxurychocolate.lv/en/christmas-corporate-chocolate" />
-    <xhtml:link rel="alternate" hreflang="ru" href="https://luxurychocolate.lv/ru/rozhdestvenskij-shokolad" />
-    <xhtml:link rel="alternate" hreflang="et" href="https://luxurychocolate.lv/et/joulu-sokolaad" />
-    <xhtml:link rel="alternate" hreflang="lt" href="https://luxurychocolate.lv/lt/kaledinis-sokoladas" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://luxurychocolate.lv/ziemassvetku-korporativas-sokolades" />
-    <lastmod>2026-03-26</lastmod>
-    <priority>0.7</priority>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://luxurychocolate.lv/ru/rozhdestvenskij-shokolad</loc>
-    <xhtml:link rel="alternate" hreflang="lv" href="https://luxurychocolate.lv/ziemassvetku-korporativas-sokolades" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://luxurychocolate.lv/en/christmas-corporate-chocolate" />
-    <xhtml:link rel="alternate" hreflang="ru" href="https://luxurychocolate.lv/ru/rozhdestvenskij-shokolad" />
-    <xhtml:link rel="alternate" hreflang="et" href="https://luxurychocolate.lv/et/joulu-sokolaad" />
-    <xhtml:link rel="alternate" hreflang="lt" href="https://luxurychocolate.lv/lt/kaledinis-sokoladas" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://luxurychocolate.lv/ziemassvetku-korporativas-sokolades" />
-    <lastmod>2026-03-26</lastmod>
-    <priority>0.7</priority>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://luxurychocolate.lv/et/joulu-sokolaad</loc>
-    <xhtml:link rel="alternate" hreflang="lv" href="https://luxurychocolate.lv/ziemassvetku-korporativas-sokolades" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://luxurychocolate.lv/en/christmas-corporate-chocolate" />
-    <xhtml:link rel="alternate" hreflang="ru" href="https://luxurychocolate.lv/ru/rozhdestvenskij-shokolad" />
-    <xhtml:link rel="alternate" hreflang="et" href="https://luxurychocolate.lv/et/joulu-sokolaad" />
-    <xhtml:link rel="alternate" hreflang="lt" href="https://luxurychocolate.lv/lt/kaledinis-sokoladas" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://luxurychocolate.lv/ziemassvetku-korporativas-sokolades" />
-    <lastmod>2026-03-26</lastmod>
-    <priority>0.7</priority>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://luxurychocolate.lv/lt/kaledinis-sokoladas</loc>
-    <xhtml:link rel="alternate" hreflang="lv" href="https://luxurychocolate.lv/ziemassvetku-korporativas-sokolades" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://luxurychocolate.lv/en/christmas-corporate-chocolate" />
-    <xhtml:link rel="alternate" hreflang="ru" href="https://luxurychocolate.lv/ru/rozhdestvenskij-shokolad" />
-    <xhtml:link rel="alternate" hreflang="et" href="https://luxurychocolate.lv/et/joulu-sokolaad" />
-    <xhtml:link rel="alternate" hreflang="lt" href="https://luxurychocolate.lv/lt/kaledinis-sokoladas" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://luxurychocolate.lv/ziemassvetku-korporativas-sokolades" />
-    <lastmod>2026-03-26</lastmod>
-    <priority>0.7</priority>
-    <changefreq>monthly</changefreq>
-  </url>
-
-  <!-- === Reklāmas šokolāde === -->
-  <url>
-    <loc>https://luxurychocolate.lv/reklamas-sokolade</loc>
-    <xhtml:link rel="alternate" hreflang="lv" href="https://luxurychocolate.lv/reklamas-sokolade" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://luxurychocolate.lv/en/promotional-chocolate" />
-    <xhtml:link rel="alternate" hreflang="ru" href="https://luxurychocolate.lv/ru/reklamniy-shokolad" />
-    <xhtml:link rel="alternate" hreflang="et" href="https://luxurychocolate.lv/et/reklaam-sokolaad" />
-    <xhtml:link rel="alternate" hreflang="lt" href="https://luxurychocolate.lv/lt/reklaminis-sokoladas" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://luxurychocolate.lv/reklamas-sokolade" />
-    <lastmod>2026-03-26</lastmod>
-    <priority>0.8</priority>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://luxurychocolate.lv/en/promotional-chocolate</loc>
-    <xhtml:link rel="alternate" hreflang="lv" href="https://luxurychocolate.lv/reklamas-sokolade" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://luxurychocolate.lv/en/promotional-chocolate" />
-    <xhtml:link rel="alternate" hreflang="ru" href="https://luxurychocolate.lv/ru/reklamniy-shokolad" />
-    <xhtml:link rel="alternate" hreflang="et" href="https://luxurychocolate.lv/et/reklaam-sokolaad" />
-    <xhtml:link rel="alternate" hreflang="lt" href="https://luxurychocolate.lv/lt/reklaminis-sokoladas" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://luxurychocolate.lv/reklamas-sokolade" />
-    <lastmod>2026-03-26</lastmod>
-    <priority>0.7</priority>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://luxurychocolate.lv/ru/reklamniy-shokolad</loc>
-    <xhtml:link rel="alternate" hreflang="lv" href="https://luxurychocolate.lv/reklamas-sokolade" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://luxurychocolate.lv/en/promotional-chocolate" />
-    <xhtml:link rel="alternate" hreflang="ru" href="https://luxurychocolate.lv/ru/reklamniy-shokolad" />
-    <xhtml:link rel="alternate" hreflang="et" href="https://luxurychocolate.lv/et/reklaam-sokolaad" />
-    <xhtml:link rel="alternate" hreflang="lt" href="https://luxurychocolate.lv/lt/reklaminis-sokoladas" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://luxurychocolate.lv/reklamas-sokolade" />
-    <lastmod>2026-03-26</lastmod>
-    <priority>0.7</priority>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://luxurychocolate.lv/et/reklaam-sokolaad</loc>
-    <xhtml:link rel="alternate" hreflang="lv" href="https://luxurychocolate.lv/reklamas-sokolade" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://luxurychocolate.lv/en/promotional-chocolate" />
-    <xhtml:link rel="alternate" hreflang="ru" href="https://luxurychocolate.lv/ru/reklamniy-shokolad" />
-    <xhtml:link rel="alternate" hreflang="et" href="https://luxurychocolate.lv/et/reklaam-sokolaad" />
-    <xhtml:link rel="alternate" hreflang="lt" href="https://luxurychocolate.lv/lt/reklaminis-sokoladas" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://luxurychocolate.lv/reklamas-sokolade" />
-    <lastmod>2026-03-26</lastmod>
-    <priority>0.7</priority>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://luxurychocolate.lv/lt/reklaminis-sokoladas</loc>
-    <xhtml:link rel="alternate" hreflang="lv" href="https://luxurychocolate.lv/reklamas-sokolade" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://luxurychocolate.lv/en/promotional-chocolate" />
-    <xhtml:link rel="alternate" hreflang="ru" href="https://luxurychocolate.lv/ru/reklamniy-shokolad" />
-    <xhtml:link rel="alternate" hreflang="et" href="https://luxurychocolate.lv/et/reklaam-sokolaad" />
-    <xhtml:link rel="alternate" hreflang="lt" href="https://luxurychocolate.lv/lt/reklaminis-sokoladas" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://luxurychocolate.lv/reklamas-sokolade" />
-    <lastmod>2026-03-26</lastmod>
-    <priority>0.7</priority>
-    <changefreq>monthly</changefreq>
-  </url>
-
-  <!-- === Klientu dāvanas === -->
-  <url>
-    <loc>https://luxurychocolate.lv/sokolades-klientu-davanam</loc>
-    <xhtml:link rel="alternate" hreflang="lv" href="https://luxurychocolate.lv/sokolades-klientu-davanam" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://luxurychocolate.lv/en/client-gifts" />
-    <xhtml:link rel="alternate" hreflang="ru" href="https://luxurychocolate.lv/ru/podarki-klientam" />
-    <xhtml:link rel="alternate" hreflang="et" href="https://luxurychocolate.lv/et/kingitused-klientidele" />
-    <xhtml:link rel="alternate" hreflang="lt" href="https://luxurychocolate.lv/lt/dovanos-klientams" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://luxurychocolate.lv/sokolades-klientu-davanam" />
-    <lastmod>2026-03-26</lastmod>
-    <priority>0.8</priority>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://luxurychocolate.lv/en/client-gifts</loc>
-    <xhtml:link rel="alternate" hreflang="lv" href="https://luxurychocolate.lv/sokolades-klientu-davanam" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://luxurychocolate.lv/en/client-gifts" />
-    <xhtml:link rel="alternate" hreflang="ru" href="https://luxurychocolate.lv/ru/podarki-klientam" />
-    <xhtml:link rel="alternate" hreflang="et" href="https://luxurychocolate.lv/et/kingitused-klientidele" />
-    <xhtml:link rel="alternate" hreflang="lt" href="https://luxurychocolate.lv/lt/dovanos-klientams" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://luxurychocolate.lv/sokolades-klientu-davanam" />
-    <lastmod>2026-03-26</lastmod>
-    <priority>0.7</priority>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://luxurychocolate.lv/ru/podarki-klientam</loc>
-    <xhtml:link rel="alternate" hreflang="lv" href="https://luxurychocolate.lv/sokolades-klientu-davanam" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://luxurychocolate.lv/en/client-gifts" />
-    <xhtml:link rel="alternate" hreflang="ru" href="https://luxurychocolate.lv/ru/podarki-klientam" />
-    <xhtml:link rel="alternate" hreflang="et" href="https://luxurychocolate.lv/et/kingitused-klientidele" />
-    <xhtml:link rel="alternate" hreflang="lt" href="https://luxurychocolate.lv/lt/dovanos-klientams" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://luxurychocolate.lv/sokolades-klientu-davanam" />
-    <lastmod>2026-03-26</lastmod>
-    <priority>0.7</priority>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://luxurychocolate.lv/et/kingitused-klientidele</loc>
-    <xhtml:link rel="alternate" hreflang="lv" href="https://luxurychocolate.lv/sokolades-klientu-davanam" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://luxurychocolate.lv/en/client-gifts" />
-    <xhtml:link rel="alternate" hreflang="ru" href="https://luxurychocolate.lv/ru/podarki-klientam" />
-    <xhtml:link rel="alternate" hreflang="et" href="https://luxurychocolate.lv/et/kingitused-klientidele" />
-    <xhtml:link rel="alternate" hreflang="lt" href="https://luxurychocolate.lv/lt/dovanos-klientams" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://luxurychocolate.lv/sokolades-klientu-davanam" />
-    <lastmod>2026-03-26</lastmod>
-    <priority>0.7</priority>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://luxurychocolate.lv/lt/dovanos-klientams</loc>
-    <xhtml:link rel="alternate" hreflang="lv" href="https://luxurychocolate.lv/sokolades-klientu-davanam" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://luxurychocolate.lv/en/client-gifts" />
-    <xhtml:link rel="alternate" hreflang="ru" href="https://luxurychocolate.lv/ru/podarki-klientam" />
-    <xhtml:link rel="alternate" hreflang="et" href="https://luxurychocolate.lv/et/kingitused-klientidele" />
-    <xhtml:link rel="alternate" hreflang="lt" href="https://luxurychocolate.lv/lt/dovanos-klientams" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://luxurychocolate.lv/sokolades-klientu-davanam" />
-    <lastmod>2026-03-26</lastmod>
-    <priority>0.7</priority>
-    <changefreq>monthly</changefreq>
-  </url>
-
-  <!-- === Konferencēm === -->
-  <url>
-    <loc>https://luxurychocolate.lv/sokolades-konferencem</loc>
-    <xhtml:link rel="alternate" hreflang="lv" href="https://luxurychocolate.lv/sokolades-konferencem" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://luxurychocolate.lv/en/conference-chocolate" />
-    <xhtml:link rel="alternate" hreflang="ru" href="https://luxurychocolate.lv/ru/shokolad-dlya-konferencij" />
-    <xhtml:link rel="alternate" hreflang="et" href="https://luxurychocolate.lv/et/konverentsi-sokolaad" />
-    <xhtml:link rel="alternate" hreflang="lt" href="https://luxurychocolate.lv/lt/sokoladas-konferencijoms" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://luxurychocolate.lv/sokolades-konferencem" />
-    <lastmod>2026-03-26</lastmod>
-    <priority>0.7</priority>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://luxurychocolate.lv/en/conference-chocolate</loc>
-    <xhtml:link rel="alternate" hreflang="lv" href="https://luxurychocolate.lv/sokolades-konferencem" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://luxurychocolate.lv/en/conference-chocolate" />
-    <xhtml:link rel="alternate" hreflang="ru" href="https://luxurychocolate.lv/ru/shokolad-dlya-konferencij" />
-    <xhtml:link rel="alternate" hreflang="et" href="https://luxurychocolate.lv/et/konverentsi-sokolaad" />
-    <xhtml:link rel="alternate" hreflang="lt" href="https://luxurychocolate.lv/lt/sokoladas-konferencijoms" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://luxurychocolate.lv/sokolades-konferencem" />
-    <lastmod>2026-03-26</lastmod>
-    <priority>0.6</priority>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://luxurychocolate.lv/ru/shokolad-dlya-konferencij</loc>
-    <xhtml:link rel="alternate" hreflang="lv" href="https://luxurychocolate.lv/sokolades-konferencem" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://luxurychocolate.lv/en/conference-chocolate" />
-    <xhtml:link rel="alternate" hreflang="ru" href="https://luxurychocolate.lv/ru/shokolad-dlya-konferencij" />
-    <xhtml:link rel="alternate" hreflang="et" href="https://luxurychocolate.lv/et/konverentsi-sokolaad" />
-    <xhtml:link rel="alternate" hreflang="lt" href="https://luxurychocolate.lv/lt/sokoladas-konferencijoms" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://luxurychocolate.lv/sokolades-konferencem" />
-    <lastmod>2026-03-26</lastmod>
-    <priority>0.6</priority>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://luxurychocolate.lv/et/konverentsi-sokolaad</loc>
-    <xhtml:link rel="alternate" hreflang="lv" href="https://luxurychocolate.lv/sokolades-konferencem" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://luxurychocolate.lv/en/conference-chocolate" />
-    <xhtml:link rel="alternate" hreflang="ru" href="https://luxurychocolate.lv/ru/shokolad-dlya-konferencij" />
-    <xhtml:link rel="alternate" hreflang="et" href="https://luxurychocolate.lv/et/konverentsi-sokolaad" />
-    <xhtml:link rel="alternate" hreflang="lt" href="https://luxurychocolate.lv/lt/sokoladas-konferencijoms" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://luxurychocolate.lv/sokolades-konferencem" />
-    <lastmod>2026-03-26</lastmod>
-    <priority>0.6</priority>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://luxurychocolate.lv/lt/sokoladas-konferencijoms</loc>
-    <xhtml:link rel="alternate" hreflang="lv" href="https://luxurychocolate.lv/sokolades-konferencem" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://luxurychocolate.lv/en/conference-chocolate" />
-    <xhtml:link rel="alternate" hreflang="ru" href="https://luxurychocolate.lv/ru/shokolad-dlya-konferencij" />
-    <xhtml:link rel="alternate" hreflang="et" href="https://luxurychocolate.lv/et/konverentsi-sokolaad" />
-    <xhtml:link rel="alternate" hreflang="lt" href="https://luxurychocolate.lv/lt/sokoladas-konferencijoms" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://luxurychocolate.lv/sokolades-konferencem" />
-    <lastmod>2026-03-26</lastmod>
-    <priority>0.6</priority>
-    <changefreq>monthly</changefreq>
-  </url>
-
-  <!-- === Darbiniekiem === -->
-  <url>
-    <loc>https://luxurychocolate.lv/sokolades-darbinieku-davanam</loc>
-    <xhtml:link rel="alternate" hreflang="lv" href="https://luxurychocolate.lv/sokolades-darbinieku-davanam" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://luxurychocolate.lv/en/employee-gifts" />
-    <xhtml:link rel="alternate" hreflang="ru" href="https://luxurychocolate.lv/ru/podarki-sotrudnikam" />
-    <xhtml:link rel="alternate" hreflang="et" href="https://luxurychocolate.lv/et/kingitused-tootajatele" />
-    <xhtml:link rel="alternate" hreflang="lt" href="https://luxurychocolate.lv/lt/dovanos-darbuotojams" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://luxurychocolate.lv/sokolades-darbinieku-davanam" />
-    <lastmod>2026-03-26</lastmod>
-    <priority>0.7</priority>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://luxurychocolate.lv/en/employee-gifts</loc>
-    <xhtml:link rel="alternate" hreflang="lv" href="https://luxurychocolate.lv/sokolades-darbinieku-davanam" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://luxurychocolate.lv/en/employee-gifts" />
-    <xhtml:link rel="alternate" hreflang="ru" href="https://luxurychocolate.lv/ru/podarki-sotrudnikam" />
-    <xhtml:link rel="alternate" hreflang="et" href="https://luxurychocolate.lv/et/kingitused-tootajatele" />
-    <xhtml:link rel="alternate" hreflang="lt" href="https://luxurychocolate.lv/lt/dovanos-darbuotojams" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://luxurychocolate.lv/sokolades-darbinieku-davanam" />
-    <lastmod>2026-03-26</lastmod>
-    <priority>0.6</priority>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://luxurychocolate.lv/ru/podarki-sotrudnikam</loc>
-    <xhtml:link rel="alternate" hreflang="lv" href="https://luxurychocolate.lv/sokolades-darbinieku-davanam" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://luxurychocolate.lv/en/employee-gifts" />
-    <xhtml:link rel="alternate" hreflang="ru" href="https://luxurychocolate.lv/ru/podarki-sotrudnikam" />
-    <xhtml:link rel="alternate" hreflang="et" href="https://luxurychocolate.lv/et/kingitused-tootajatele" />
-    <xhtml:link rel="alternate" hreflang="lt" href="https://luxurychocolate.lv/lt/dovanos-darbuotojams" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://luxurychocolate.lv/sokolades-darbinieku-davanam" />
-    <lastmod>2026-03-26</lastmod>
-    <priority>0.6</priority>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://luxurychocolate.lv/et/kingitused-tootajatele</loc>
-    <xhtml:link rel="alternate" hreflang="lv" href="https://luxurychocolate.lv/sokolades-darbinieku-davanam" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://luxurychocolate.lv/en/employee-gifts" />
-    <xhtml:link rel="alternate" hreflang="ru" href="https://luxurychocolate.lv/ru/podarki-sotrudnikam" />
-    <xhtml:link rel="alternate" hreflang="et" href="https://luxurychocolate.lv/et/kingitused-tootajatele" />
-    <xhtml:link rel="alternate" hreflang="lt" href="https://luxurychocolate.lv/lt/dovanos-darbuotojams" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://luxurychocolate.lv/sokolades-darbinieku-davanam" />
-    <lastmod>2026-03-26</lastmod>
-    <priority>0.6</priority>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://luxurychocolate.lv/lt/dovanos-darbuotojams</loc>
-    <xhtml:link rel="alternate" hreflang="lv" href="https://luxurychocolate.lv/sokolades-darbinieku-davanam" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://luxurychocolate.lv/en/employee-gifts" />
-    <xhtml:link rel="alternate" hreflang="ru" href="https://luxurychocolate.lv/ru/podarki-sotrudnikam" />
-    <xhtml:link rel="alternate" hreflang="et" href="https://luxurychocolate.lv/et/kingitused-tootajatele" />
-    <xhtml:link rel="alternate" hreflang="lt" href="https://luxurychocolate.lv/lt/dovanos-darbuotojams" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://luxurychocolate.lv/sokolades-darbinieku-davanam" />
-    <lastmod>2026-03-26</lastmod>
-    <priority>0.6</priority>
-    <changefreq>monthly</changefreq>
-  </url>
-
-  <!-- === Partneriem === -->
-  <url>
-    <loc>https://luxurychocolate.lv/sokolades-partneru-davanam</loc>
-    <xhtml:link rel="alternate" hreflang="lv" href="https://luxurychocolate.lv/sokolades-partneru-davanam" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://luxurychocolate.lv/en/partner-gifts" />
-    <xhtml:link rel="alternate" hreflang="ru" href="https://luxurychocolate.lv/ru/podarki-partneram" />
-    <xhtml:link rel="alternate" hreflang="et" href="https://luxurychocolate.lv/et/kingitused-partneritele" />
-    <xhtml:link rel="alternate" hreflang="lt" href="https://luxurychocolate.lv/lt/dovanos-partneriams" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://luxurychocolate.lv/sokolades-partneru-davanam" />
-    <lastmod>2026-03-26</lastmod>
-    <priority>0.7</priority>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://luxurychocolate.lv/en/partner-gifts</loc>
-    <xhtml:link rel="alternate" hreflang="lv" href="https://luxurychocolate.lv/sokolades-partneru-davanam" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://luxurychocolate.lv/en/partner-gifts" />
-    <xhtml:link rel="alternate" hreflang="ru" href="https://luxurychocolate.lv/ru/podarki-partneram" />
-    <xhtml:link rel="alternate" hreflang="et" href="https://luxurychocolate.lv/et/kingitused-partneritele" />
-    <xhtml:link rel="alternate" hreflang="lt" href="https://luxurychocolate.lv/lt/dovanos-partneriams" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://luxurychocolate.lv/sokolades-partneru-davanam" />
-    <lastmod>2026-03-26</lastmod>
-    <priority>0.6</priority>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://luxurychocolate.lv/ru/podarki-partneram</loc>
-    <xhtml:link rel="alternate" hreflang="lv" href="https://luxurychocolate.lv/sokolades-partneru-davanam" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://luxurychocolate.lv/en/partner-gifts" />
-    <xhtml:link rel="alternate" hreflang="ru" href="https://luxurychocolate.lv/ru/podarki-partneram" />
-    <xhtml:link rel="alternate" hreflang="et" href="https://luxurychocolate.lv/et/kingitused-partneritele" />
-    <xhtml:link rel="alternate" hreflang="lt" href="https://luxurychocolate.lv/lt/dovanos-partneriams" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://luxurychocolate.lv/sokolades-partneru-davanam" />
-    <lastmod>2026-03-26</lastmod>
-    <priority>0.6</priority>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://luxurychocolate.lv/et/kingitused-partneritele</loc>
-    <xhtml:link rel="alternate" hreflang="lv" href="https://luxurychocolate.lv/sokolades-partneru-davanam" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://luxurychocolate.lv/en/partner-gifts" />
-    <xhtml:link rel="alternate" hreflang="ru" href="https://luxurychocolate.lv/ru/podarki-partneram" />
-    <xhtml:link rel="alternate" hreflang="et" href="https://luxurychocolate.lv/et/kingitused-partneritele" />
-    <xhtml:link rel="alternate" hreflang="lt" href="https://luxurychocolate.lv/lt/dovanos-partneriams" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://luxurychocolate.lv/sokolades-partneru-davanam" />
-    <lastmod>2026-03-26</lastmod>
-    <priority>0.6</priority>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://luxurychocolate.lv/lt/dovanos-partneriams</loc>
-    <xhtml:link rel="alternate" hreflang="lv" href="https://luxurychocolate.lv/sokolades-partneru-davanam" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://luxurychocolate.lv/en/partner-gifts" />
-    <xhtml:link rel="alternate" hreflang="ru" href="https://luxurychocolate.lv/ru/podarki-partneram" />
-    <xhtml:link rel="alternate" hreflang="et" href="https://luxurychocolate.lv/et/kingitused-partneritele" />
-    <xhtml:link rel="alternate" hreflang="lt" href="https://luxurychocolate.lv/lt/dovanos-partneriams" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://luxurychocolate.lv/sokolades-partneru-davanam" />
-    <lastmod>2026-03-26</lastmod>
-    <priority>0.6</priority>
-    <changefreq>monthly</changefreq>
-  </url>
-
-  <!-- === Dāvanu idejas === -->
-  <url>
-    <loc>https://luxurychocolate.lv/korporativo-davanu-idejas</loc>
-    <xhtml:link rel="alternate" hreflang="lv" href="https://luxurychocolate.lv/korporativo-davanu-idejas" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://luxurychocolate.lv/en/corporate-gift-ideas" />
-    <xhtml:link rel="alternate" hreflang="ru" href="https://luxurychocolate.lv/ru/idei-korporativnyh-podarkov" />
-    <xhtml:link rel="alternate" hreflang="et" href="https://luxurychocolate.lv/et/korporatiiv-kingituste-ideed" />
-    <xhtml:link rel="alternate" hreflang="lt" href="https://luxurychocolate.lv/lt/korporatyviniu-dovanu-idejos" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://luxurychocolate.lv/korporativo-davanu-idejas" />
-    <lastmod>2026-03-26</lastmod>
-    <priority>0.8</priority>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://luxurychocolate.lv/en/corporate-gift-ideas</loc>
-    <xhtml:link rel="alternate" hreflang="lv" href="https://luxurychocolate.lv/korporativo-davanu-idejas" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://luxurychocolate.lv/en/corporate-gift-ideas" />
-    <xhtml:link rel="alternate" hreflang="ru" href="https://luxurychocolate.lv/ru/idei-korporativnyh-podarkov" />
-    <xhtml:link rel="alternate" hreflang="et" href="https://luxurychocolate.lv/et/korporatiiv-kingituste-ideed" />
-    <xhtml:link rel="alternate" hreflang="lt" href="https://luxurychocolate.lv/lt/korporatyviniu-dovanu-idejos" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://luxurychocolate.lv/korporativo-davanu-idejas" />
-    <lastmod>2026-03-26</lastmod>
-    <priority>0.7</priority>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://luxurychocolate.lv/ru/idei-korporativnyh-podarkov</loc>
-    <xhtml:link rel="alternate" hreflang="lv" href="https://luxurychocolate.lv/korporativo-davanu-idejas" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://luxurychocolate.lv/en/corporate-gift-ideas" />
-    <xhtml:link rel="alternate" hreflang="ru" href="https://luxurychocolate.lv/ru/idei-korporativnyh-podarkov" />
-    <xhtml:link rel="alternate" hreflang="et" href="https://luxurychocolate.lv/et/korporatiiv-kingituste-ideed" />
-    <xhtml:link rel="alternate" hreflang="lt" href="https://luxurychocolate.lv/lt/korporatyviniu-dovanu-idejos" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://luxurychocolate.lv/korporativo-davanu-idejas" />
-    <lastmod>2026-03-26</lastmod>
-    <priority>0.7</priority>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://luxurychocolate.lv/et/korporatiiv-kingituste-ideed</loc>
-    <xhtml:link rel="alternate" hreflang="lv" href="https://luxurychocolate.lv/korporativo-davanu-idejas" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://luxurychocolate.lv/en/corporate-gift-ideas" />
-    <xhtml:link rel="alternate" hreflang="ru" href="https://luxurychocolate.lv/ru/idei-korporativnyh-podarkov" />
-    <xhtml:link rel="alternate" hreflang="et" href="https://luxurychocolate.lv/et/korporatiiv-kingituste-ideed" />
-    <xhtml:link rel="alternate" hreflang="lt" href="https://luxurychocolate.lv/lt/korporatyviniu-dovanu-idejos" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://luxurychocolate.lv/korporativo-davanu-idejas" />
-    <lastmod>2026-03-26</lastmod>
-    <priority>0.7</priority>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://luxurychocolate.lv/lt/korporatyviniu-dovanu-idejos</loc>
-    <xhtml:link rel="alternate" hreflang="lv" href="https://luxurychocolate.lv/korporativo-davanu-idejas" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://luxurychocolate.lv/en/corporate-gift-ideas" />
-    <xhtml:link rel="alternate" hreflang="ru" href="https://luxurychocolate.lv/ru/idei-korporativnyh-podarkov" />
-    <xhtml:link rel="alternate" hreflang="et" href="https://luxurychocolate.lv/et/korporatiiv-kingituste-ideed" />
-    <xhtml:link rel="alternate" hreflang="lt" href="https://luxurychocolate.lv/lt/korporatyviniu-dovanu-idejos" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://luxurychocolate.lv/korporativo-davanu-idejas" />
-    <lastmod>2026-03-26</lastmod>
-    <priority>0.7</priority>
-    <changefreq>monthly</changefreq>
-  </url>
-
-  <!-- === Dāvanu ceļvedis === -->
-  <url>
-    <loc>https://luxurychocolate.lv/korporativo-davanu-celvedis</loc>
-    <xhtml:link rel="alternate" hreflang="lv" href="https://luxurychocolate.lv/korporativo-davanu-celvedis" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://luxurychocolate.lv/korporativo-davanu-celvedis" />
-    <lastmod>2026-03-26</lastmod>
-    <priority>0.7</priority>
-    <changefreq>monthly</changefreq>
-  </url>
-
-  <!-- === Šokolādes grāmata === -->
-  <url>
-    <loc>https://luxurychocolate.lv/sokolades-gramata</loc>
-    <xhtml:link rel="alternate" hreflang="lv" href="https://luxurychocolate.lv/sokolades-gramata" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://luxurychocolate.lv/en/chocolate-book-box" />
-    <xhtml:link rel="alternate" hreflang="ru" href="https://luxurychocolate.lv/ru/shokoladnaya-kniga" />
-    <xhtml:link rel="alternate" hreflang="et" href="https://luxurychocolate.lv/et/sokolaadi-raamat" />
-    <xhtml:link rel="alternate" hreflang="lt" href="https://luxurychocolate.lv/lt/sokolado-knyga" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://luxurychocolate.lv/sokolades-gramata" />
-    <lastmod>2026-03-26</lastmod>
-    <priority>0.8</priority>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://luxurychocolate.lv/en/chocolate-book-box</loc>
-    <xhtml:link rel="alternate" hreflang="lv" href="https://luxurychocolate.lv/sokolades-gramata" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://luxurychocolate.lv/en/chocolate-book-box" />
-    <xhtml:link rel="alternate" hreflang="ru" href="https://luxurychocolate.lv/ru/shokoladnaya-kniga" />
-    <xhtml:link rel="alternate" hreflang="et" href="https://luxurychocolate.lv/et/sokolaadi-raamat" />
-    <xhtml:link rel="alternate" hreflang="lt" href="https://luxurychocolate.lv/lt/sokolado-knyga" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://luxurychocolate.lv/sokolades-gramata" />
-    <lastmod>2026-03-26</lastmod>
-    <priority>0.7</priority>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://luxurychocolate.lv/ru/shokoladnaya-kniga</loc>
-    <xhtml:link rel="alternate" hreflang="lv" href="https://luxurychocolate.lv/sokolades-gramata" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://luxurychocolate.lv/en/chocolate-book-box" />
-    <xhtml:link rel="alternate" hreflang="ru" href="https://luxurychocolate.lv/ru/shokoladnaya-kniga" />
-    <xhtml:link rel="alternate" hreflang="et" href="https://luxurychocolate.lv/et/sokolaadi-raamat" />
-    <xhtml:link rel="alternate" hreflang="lt" href="https://luxurychocolate.lv/lt/sokolado-knyga" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://luxurychocolate.lv/sokolades-gramata" />
-    <lastmod>2026-03-26</lastmod>
-    <priority>0.7</priority>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://luxurychocolate.lv/et/sokolaadi-raamat</loc>
-    <xhtml:link rel="alternate" hreflang="lv" href="https://luxurychocolate.lv/sokolades-gramata" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://luxurychocolate.lv/en/chocolate-book-box" />
-    <xhtml:link rel="alternate" hreflang="ru" href="https://luxurychocolate.lv/ru/shokoladnaya-kniga" />
-    <xhtml:link rel="alternate" hreflang="et" href="https://luxurychocolate.lv/et/sokolaadi-raamat" />
-    <xhtml:link rel="alternate" hreflang="lt" href="https://luxurychocolate.lv/lt/sokolado-knyga" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://luxurychocolate.lv/sokolades-gramata" />
-    <lastmod>2026-03-26</lastmod>
-    <priority>0.7</priority>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://luxurychocolate.lv/lt/sokolado-knyga</loc>
-    <xhtml:link rel="alternate" hreflang="lv" href="https://luxurychocolate.lv/sokolades-gramata" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://luxurychocolate.lv/en/chocolate-book-box" />
-    <xhtml:link rel="alternate" hreflang="ru" href="https://luxurychocolate.lv/ru/shokoladnaya-kniga" />
-    <xhtml:link rel="alternate" hreflang="et" href="https://luxurychocolate.lv/et/sokolaadi-raamat" />
-    <xhtml:link rel="alternate" hreflang="lt" href="https://luxurychocolate.lv/lt/sokolado-knyga" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://luxurychocolate.lv/sokolades-gramata" />
-    <lastmod>2026-03-26</lastmod>
-    <priority>0.7</priority>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://luxurychocolate.lv/zh</loc>
-    <xhtml:link rel="alternate" hreflang="zh" href="https://luxurychocolate.lv/zh" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://luxurychocolate.lv/" />
-    <lastmod>2026-04-22</lastmod>
-    <priority>0.8</priority>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://luxurychocolate.lv/ja</loc>
-    <xhtml:link rel="alternate" hreflang="ja" href="https://luxurychocolate.lv/ja" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://luxurychocolate.lv/" />
-    <lastmod>2026-04-22</lastmod>
-    <priority>0.8</priority>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://luxurychocolate.lv/ko</loc>
-    <xhtml:link rel="alternate" hreflang="ko" href="https://luxurychocolate.lv/ko" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://luxurychocolate.lv/" />
-    <lastmod>2026-04-22</lastmod>
-    <priority>0.8</priority>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://luxurychocolate.lv/hi</loc>
-    <xhtml:link rel="alternate" hreflang="hi" href="https://luxurychocolate.lv/hi" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://luxurychocolate.lv/" />
-    <lastmod>2026-04-22</lastmod>
-    <priority>0.8</priority>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://luxurychocolate.lv/bn</loc>
-    <xhtml:link rel="alternate" hreflang="bn" href="https://luxurychocolate.lv/bn" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://luxurychocolate.lv/" />
-    <lastmod>2026-04-22</lastmod>
-    <priority>0.8</priority>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://luxurychocolate.lv/ur</loc>
-    <xhtml:link rel="alternate" hreflang="ur" href="https://luxurychocolate.lv/ur" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://luxurychocolate.lv/" />
-    <lastmod>2026-04-22</lastmod>
-    <priority>0.8</priority>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://luxurychocolate.lv/fa</loc>
-    <xhtml:link rel="alternate" hreflang="fa" href="https://luxurychocolate.lv/fa" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://luxurychocolate.lv/" />
-    <lastmod>2026-04-22</lastmod>
-    <priority>0.8</priority>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://luxurychocolate.lv/he</loc>
-    <xhtml:link rel="alternate" hreflang="he" href="https://luxurychocolate.lv/he" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://luxurychocolate.lv/" />
-    <lastmod>2026-04-22</lastmod>
-    <priority>0.8</priority>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://luxurychocolate.lv/th</loc>
-    <xhtml:link rel="alternate" hreflang="th" href="https://luxurychocolate.lv/th" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://luxurychocolate.lv/" />
-    <lastmod>2026-04-22</lastmod>
-    <priority>0.8</priority>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://luxurychocolate.lv/vi</loc>
-    <xhtml:link rel="alternate" hreflang="vi" href="https://luxurychocolate.lv/vi" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://luxurychocolate.lv/" />
-    <lastmod>2026-04-22</lastmod>
-    <priority>0.8</priority>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://luxurychocolate.lv/id</loc>
-    <xhtml:link rel="alternate" hreflang="id" href="https://luxurychocolate.lv/id" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://luxurychocolate.lv/" />
-    <lastmod>2026-04-22</lastmod>
-    <priority>0.8</priority>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://luxurychocolate.lv/ms</loc>
-    <xhtml:link rel="alternate" hreflang="ms" href="https://luxurychocolate.lv/ms" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://luxurychocolate.lv/" />
-    <lastmod>2026-04-22</lastmod>
-    <priority>0.8</priority>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://luxurychocolate.lv/tl</loc>
-    <xhtml:link rel="alternate" hreflang="tl" href="https://luxurychocolate.lv/tl" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://luxurychocolate.lv/" />
-    <lastmod>2026-04-22</lastmod>
-    <priority>0.8</priority>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://luxurychocolate.lv/sw</loc>
-    <xhtml:link rel="alternate" hreflang="sw" href="https://luxurychocolate.lv/sw" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://luxurychocolate.lv/" />
-    <lastmod>2026-04-22</lastmod>
-    <priority>0.8</priority>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
+  <url><loc>https://luxurychocolate.lv/affiliate</loc></url><url><loc>https://luxurychocolate.lv/agents-007</loc></url><url>
     <loc>https://luxurychocolate.lv/am</loc>
-    <xhtml:link rel="alternate" hreflang="am" href="https://luxurychocolate.lv/am" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://luxurychocolate.lv/" />
+    <xhtml:link rel="alternate" hreflang="am" href="https://luxurychocolate.lv/am"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://luxurychocolate.lv/"/>
     <lastmod>2026-04-22</lastmod>
     <priority>0.8</priority>
     <changefreq>weekly</changefreq>
   </url>
-  <url>
-    <loc>https://luxurychocolate.lv/ka</loc>
-    <xhtml:link rel="alternate" hreflang="ka" href="https://luxurychocolate.lv/ka" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://luxurychocolate.lv/" />
-    <lastmod>2026-04-22</lastmod>
-    <priority>0.8</priority>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
+  <url><loc>https://luxurychocolate.lv/ar</loc></url><url><loc>https://luxurychocolate.lv/ar/blog</loc></url><url><loc>https://luxurychocolate.lv/atsauksmes</loc></url><url>
     <loc>https://luxurychocolate.lv/az</loc>
-    <xhtml:link rel="alternate" hreflang="az" href="https://luxurychocolate.lv/az" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://luxurychocolate.lv/" />
-    <lastmod>2026-04-22</lastmod>
-    <priority>0.8</priority>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://luxurychocolate.lv/kk</loc>
-    <xhtml:link rel="alternate" hreflang="kk" href="https://luxurychocolate.lv/kk" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://luxurychocolate.lv/" />
-    <lastmod>2026-04-22</lastmod>
-    <priority>0.8</priority>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://luxurychocolate.lv/hy</loc>
-    <xhtml:link rel="alternate" hreflang="hy" href="https://luxurychocolate.lv/hy" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://luxurychocolate.lv/" />
+    <xhtml:link rel="alternate" hreflang="az" href="https://luxurychocolate.lv/az"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://luxurychocolate.lv/"/>
     <lastmod>2026-04-22</lastmod>
     <priority>0.8</priority>
     <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>https://luxurychocolate.lv/be</loc>
-    <xhtml:link rel="alternate" hreflang="be" href="https://luxurychocolate.lv/be" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://luxurychocolate.lv/" />
+    <xhtml:link rel="alternate" hreflang="be" href="https://luxurychocolate.lv/be"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://luxurychocolate.lv/"/>
+    <lastmod>2026-04-22</lastmod>
+    <priority>0.8</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url><loc>https://luxurychocolate.lv/bg</loc></url><url><loc>https://luxurychocolate.lv/bg/blog</loc></url><url><loc>https://luxurychocolate.lv/blogs</loc></url><url><loc>https://luxurychocolate.lv/blogs/10-radosas-korporativas-davanas</loc></url><url><loc>https://luxurychocolate.lv/blogs/7-kludas-korporativajam-davanam</loc></url><url><loc>https://luxurychocolate.lv/blogs/davanu-komplekti-uznemumiem-kas-jazina</loc></url><url><loc>https://luxurychocolate.lv/blogs/ekskluzivas-biznesa-davanas-personalizeta-pieeja</loc></url><url><loc>https://luxurychocolate.lv/blogs/kapec-personalizeta-sokolade-mainis-attiecibas-ar-klientiem</loc></url><url><loc>https://luxurychocolate.lv/blogs/konferencu-stendi-personalizeta-sokolade</loc></url><url><loc>https://luxurychocolate.lv/blogs/korporativas-davanas-2025</loc></url><url><loc>https://luxurychocolate.lv/blogs/logo-sokolade-pie-kafijas</loc></url><url><loc>https://luxurychocolate.lv/blogs/personalizeta-sokolade-pasakumiem</loc></url><url><loc>https://luxurychocolate.lv/blogs/personalizeta-sokolade-videi-draudziga-davana</loc></url><url><loc>https://luxurychocolate.lv/blogs/sokolade-ar-logo-ka-vizitkarte</loc></url><url><loc>https://luxurychocolate.lv/blogs/sokolades-gramata-davana</loc></url><url>
+    <loc>https://luxurychocolate.lv/bn</loc>
+    <xhtml:link rel="alternate" hreflang="bn" href="https://luxurychocolate.lv/bn"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://luxurychocolate.lv/"/>
+    <lastmod>2026-04-22</lastmod>
+    <priority>0.8</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url><loc>https://luxurychocolate.lv/bs</loc></url><url><loc>https://luxurychocolate.lv/bs/blog</loc></url><url><loc>https://luxurychocolate.lv/cenu-lapa</loc></url><url><loc>https://luxurychocolate.lv/christmas-chocolate-gifts</loc></url><url><loc>https://luxurychocolate.lv/contacts</loc></url><url><loc>https://luxurychocolate.lv/cs</loc></url><url><loc>https://luxurychocolate.lv/cs/blog</loc></url><url><loc>https://luxurychocolate.lv/da</loc></url><url><loc>https://luxurychocolate.lv/da/blog</loc></url><url><loc>https://luxurychocolate.lv/da/chokolade-med-logo</loc></url><url><loc>https://luxurychocolate.lv/da/chokoladebog</loc></url><url><loc>https://luxurychocolate.lv/da/gaver-kunder</loc></url><url><loc>https://luxurychocolate.lv/da/gaver-medarbejdere</loc></url><url><loc>https://luxurychocolate.lv/da/gaver-partnere</loc></url><url><loc>https://luxurychocolate.lv/da/julechokolade-firma</loc></url><url><loc>https://luxurychocolate.lv/da/konference-chokolade</loc></url><url><loc>https://luxurychocolate.lv/da/reklamechokolade</loc></url><url><loc>https://luxurychocolate.lv/de</loc></url><url><loc>https://luxurychocolate.lv/de/blog</loc></url><url><loc>https://luxurychocolate.lv/drukasanas-noteikumi</loc></url><url><loc>https://luxurychocolate.lv/edamie-druki</loc></url><url><loc>https://luxurychocolate.lv/edible-prints</loc></url><url><loc>https://luxurychocolate.lv/el</loc></url><url><loc>https://luxurychocolate.lv/el/blog</loc></url><url>
+    <loc>https://luxurychocolate.lv/en</loc>
+    <xhtml:link rel="alternate" hreflang="lv" href="https://luxurychocolate.lv/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://luxurychocolate.lv/en"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://luxurychocolate.lv/ru"/>
+    <xhtml:link rel="alternate" hreflang="et" href="https://luxurychocolate.lv/et"/>
+    <xhtml:link rel="alternate" hreflang="lt" href="https://luxurychocolate.lv/lt"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://luxurychocolate.lv/"/>
+    <lastmod>2026-03-26</lastmod>
+    <priority>0.9</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url><loc>https://luxurychocolate.lv/en/blog</loc></url><url><loc>https://luxurychocolate.lv/en/blog/10-creative-corporate-gift-ideas</loc></url><url><loc>https://luxurychocolate.lv/en/blog/7-corporate-gift-mistakes</loc></url><url><loc>https://luxurychocolate.lv/en/blog/chocolate-book-box-gift</loc></url><url><loc>https://luxurychocolate.lv/en/blog/corporate-gift-sets-what-to-know-before-ordering</loc></url><url><loc>https://luxurychocolate.lv/en/blog/corporate-gift-trends-2025</loc></url><url><loc>https://luxurychocolate.lv/en/blog/why-personalized-chocolate-transforms-client-relationships</loc></url><url>
+    <loc>https://luxurychocolate.lv/en/chocolate-book-box</loc>
+    <xhtml:link rel="alternate" hreflang="lv" href="https://luxurychocolate.lv/sokolades-gramata"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://luxurychocolate.lv/en/chocolate-book-box"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://luxurychocolate.lv/ru/shokoladnaya-kniga"/>
+    <xhtml:link rel="alternate" hreflang="et" href="https://luxurychocolate.lv/et/sokolaadi-raamat"/>
+    <xhtml:link rel="alternate" hreflang="lt" href="https://luxurychocolate.lv/lt/sokolado-knyga"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://luxurychocolate.lv/sokolades-gramata"/>
+    <lastmod>2026-03-26</lastmod>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://luxurychocolate.lv/en/chocolate-with-logo</loc>
+    <xhtml:link rel="alternate" hreflang="lv" href="https://luxurychocolate.lv/sokolades-ar-logo"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://luxurychocolate.lv/en/chocolate-with-logo"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://luxurychocolate.lv/ru/shokolad-s-logotipom"/>
+    <xhtml:link rel="alternate" hreflang="et" href="https://luxurychocolate.lv/et/sokolaad-logoga"/>
+    <xhtml:link rel="alternate" hreflang="lt" href="https://luxurychocolate.lv/lt/sokoladas-su-logotipu"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://luxurychocolate.lv/sokolades-ar-logo"/>
+    <lastmod>2026-03-26</lastmod>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://luxurychocolate.lv/en/christmas-corporate-chocolate</loc>
+    <xhtml:link rel="alternate" hreflang="lv" href="https://luxurychocolate.lv/ziemassvetku-korporativas-sokolades"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://luxurychocolate.lv/en/christmas-corporate-chocolate"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://luxurychocolate.lv/ru/rozhdestvenskij-shokolad"/>
+    <xhtml:link rel="alternate" hreflang="et" href="https://luxurychocolate.lv/et/joulu-sokolaad"/>
+    <xhtml:link rel="alternate" hreflang="lt" href="https://luxurychocolate.lv/lt/kaledinis-sokoladas"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://luxurychocolate.lv/ziemassvetku-korporativas-sokolades"/>
+    <lastmod>2026-03-26</lastmod>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://luxurychocolate.lv/en/client-gifts</loc>
+    <xhtml:link rel="alternate" hreflang="lv" href="https://luxurychocolate.lv/sokolades-klientu-davanam"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://luxurychocolate.lv/en/client-gifts"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://luxurychocolate.lv/ru/podarki-klientam"/>
+    <xhtml:link rel="alternate" hreflang="et" href="https://luxurychocolate.lv/et/kingitused-klientidele"/>
+    <xhtml:link rel="alternate" hreflang="lt" href="https://luxurychocolate.lv/lt/dovanos-klientams"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://luxurychocolate.lv/sokolades-klientu-davanam"/>
+    <lastmod>2026-03-26</lastmod>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://luxurychocolate.lv/en/conference-chocolate</loc>
+    <xhtml:link rel="alternate" hreflang="lv" href="https://luxurychocolate.lv/sokolades-konferencem"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://luxurychocolate.lv/en/conference-chocolate"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://luxurychocolate.lv/ru/shokolad-dlya-konferencij"/>
+    <xhtml:link rel="alternate" hreflang="et" href="https://luxurychocolate.lv/et/konverentsi-sokolaad"/>
+    <xhtml:link rel="alternate" hreflang="lt" href="https://luxurychocolate.lv/lt/sokoladas-konferencijoms"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://luxurychocolate.lv/sokolades-konferencem"/>
+    <lastmod>2026-03-26</lastmod>
+    <priority>0.6</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://luxurychocolate.lv/en/corporate-gift-ideas</loc>
+    <xhtml:link rel="alternate" hreflang="lv" href="https://luxurychocolate.lv/korporativo-davanu-idejas"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://luxurychocolate.lv/en/corporate-gift-ideas"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://luxurychocolate.lv/ru/idei-korporativnyh-podarkov"/>
+    <xhtml:link rel="alternate" hreflang="et" href="https://luxurychocolate.lv/et/korporatiiv-kingituste-ideed"/>
+    <xhtml:link rel="alternate" hreflang="lt" href="https://luxurychocolate.lv/lt/korporatyviniu-dovanu-idejos"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://luxurychocolate.lv/korporativo-davanu-idejas"/>
+    <lastmod>2026-03-26</lastmod>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://luxurychocolate.lv/en/employee-gifts</loc>
+    <xhtml:link rel="alternate" hreflang="lv" href="https://luxurychocolate.lv/sokolades-darbinieku-davanam"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://luxurychocolate.lv/en/employee-gifts"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://luxurychocolate.lv/ru/podarki-sotrudnikam"/>
+    <xhtml:link rel="alternate" hreflang="et" href="https://luxurychocolate.lv/et/kingitused-tootajatele"/>
+    <xhtml:link rel="alternate" hreflang="lt" href="https://luxurychocolate.lv/lt/dovanos-darbuotojams"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://luxurychocolate.lv/sokolades-darbinieku-davanam"/>
+    <lastmod>2026-03-26</lastmod>
+    <priority>0.6</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url><loc>https://luxurychocolate.lv/en/exhibition-stand-chocolate</loc></url><url>
+    <loc>https://luxurychocolate.lv/en/partner-gifts</loc>
+    <xhtml:link rel="alternate" hreflang="lv" href="https://luxurychocolate.lv/sokolades-partneru-davanam"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://luxurychocolate.lv/en/partner-gifts"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://luxurychocolate.lv/ru/podarki-partneram"/>
+    <xhtml:link rel="alternate" hreflang="et" href="https://luxurychocolate.lv/et/kingitused-partneritele"/>
+    <xhtml:link rel="alternate" hreflang="lt" href="https://luxurychocolate.lv/lt/dovanos-partneriams"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://luxurychocolate.lv/sokolades-partneru-davanam"/>
+    <lastmod>2026-03-26</lastmod>
+    <priority>0.6</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://luxurychocolate.lv/en/promotional-chocolate</loc>
+    <xhtml:link rel="alternate" hreflang="lv" href="https://luxurychocolate.lv/reklamas-sokolade"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://luxurychocolate.lv/en/promotional-chocolate"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://luxurychocolate.lv/ru/reklamniy-shokolad"/>
+    <xhtml:link rel="alternate" hreflang="et" href="https://luxurychocolate.lv/et/reklaam-sokolaad"/>
+    <xhtml:link rel="alternate" hreflang="lt" href="https://luxurychocolate.lv/lt/reklaminis-sokoladas"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://luxurychocolate.lv/reklamas-sokolade"/>
+    <lastmod>2026-03-26</lastmod>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url><loc>https://luxurychocolate.lv/engelu-birojs</loc></url><url><loc>https://luxurychocolate.lv/es</loc></url><url><loc>https://luxurychocolate.lv/es/blog</loc></url><url>
+    <loc>https://luxurychocolate.lv/et</loc>
+    <xhtml:link rel="alternate" hreflang="lv" href="https://luxurychocolate.lv/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://luxurychocolate.lv/en"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://luxurychocolate.lv/ru"/>
+    <xhtml:link rel="alternate" hreflang="et" href="https://luxurychocolate.lv/et"/>
+    <xhtml:link rel="alternate" hreflang="lt" href="https://luxurychocolate.lv/lt"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://luxurychocolate.lv/"/>
+    <lastmod>2026-03-26</lastmod>
+    <priority>0.9</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url><loc>https://luxurychocolate.lv/et/blogi</loc></url><url><loc>https://luxurychocolate.lv/et/blogi/10-loomingulist-ettevotte-kingitust</loc></url><url><loc>https://luxurychocolate.lv/et/blogi/7-viga-ettevotte-kingitustega</loc></url><url><loc>https://luxurychocolate.lv/et/blogi/kinkekomplektid-ettevotete-jaoks-mida-teada</loc></url><url><loc>https://luxurychocolate.lv/et/blogi/korporatiivkingitused-2025</loc></url><url><loc>https://luxurychocolate.lv/et/blogi/miks-personaliseeritud-sokolaad-muudab-kliendisuhteid</loc></url><url>
+    <loc>https://luxurychocolate.lv/et/joulu-sokolaad</loc>
+    <xhtml:link rel="alternate" hreflang="lv" href="https://luxurychocolate.lv/ziemassvetku-korporativas-sokolades"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://luxurychocolate.lv/en/christmas-corporate-chocolate"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://luxurychocolate.lv/ru/rozhdestvenskij-shokolad"/>
+    <xhtml:link rel="alternate" hreflang="et" href="https://luxurychocolate.lv/et/joulu-sokolaad"/>
+    <xhtml:link rel="alternate" hreflang="lt" href="https://luxurychocolate.lv/lt/kaledinis-sokoladas"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://luxurychocolate.lv/ziemassvetku-korporativas-sokolades"/>
+    <lastmod>2026-03-26</lastmod>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://luxurychocolate.lv/et/kingitused-klientidele</loc>
+    <xhtml:link rel="alternate" hreflang="lv" href="https://luxurychocolate.lv/sokolades-klientu-davanam"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://luxurychocolate.lv/en/client-gifts"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://luxurychocolate.lv/ru/podarki-klientam"/>
+    <xhtml:link rel="alternate" hreflang="et" href="https://luxurychocolate.lv/et/kingitused-klientidele"/>
+    <xhtml:link rel="alternate" hreflang="lt" href="https://luxurychocolate.lv/lt/dovanos-klientams"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://luxurychocolate.lv/sokolades-klientu-davanam"/>
+    <lastmod>2026-03-26</lastmod>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://luxurychocolate.lv/et/kingitused-partneritele</loc>
+    <xhtml:link rel="alternate" hreflang="lv" href="https://luxurychocolate.lv/sokolades-partneru-davanam"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://luxurychocolate.lv/en/partner-gifts"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://luxurychocolate.lv/ru/podarki-partneram"/>
+    <xhtml:link rel="alternate" hreflang="et" href="https://luxurychocolate.lv/et/kingitused-partneritele"/>
+    <xhtml:link rel="alternate" hreflang="lt" href="https://luxurychocolate.lv/lt/dovanos-partneriams"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://luxurychocolate.lv/sokolades-partneru-davanam"/>
+    <lastmod>2026-03-26</lastmod>
+    <priority>0.6</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://luxurychocolate.lv/et/kingitused-tootajatele</loc>
+    <xhtml:link rel="alternate" hreflang="lv" href="https://luxurychocolate.lv/sokolades-darbinieku-davanam"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://luxurychocolate.lv/en/employee-gifts"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://luxurychocolate.lv/ru/podarki-sotrudnikam"/>
+    <xhtml:link rel="alternate" hreflang="et" href="https://luxurychocolate.lv/et/kingitused-tootajatele"/>
+    <xhtml:link rel="alternate" hreflang="lt" href="https://luxurychocolate.lv/lt/dovanos-darbuotojams"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://luxurychocolate.lv/sokolades-darbinieku-davanam"/>
+    <lastmod>2026-03-26</lastmod>
+    <priority>0.6</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://luxurychocolate.lv/et/konverentsi-sokolaad</loc>
+    <xhtml:link rel="alternate" hreflang="lv" href="https://luxurychocolate.lv/sokolades-konferencem"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://luxurychocolate.lv/en/conference-chocolate"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://luxurychocolate.lv/ru/shokolad-dlya-konferencij"/>
+    <xhtml:link rel="alternate" hreflang="et" href="https://luxurychocolate.lv/et/konverentsi-sokolaad"/>
+    <xhtml:link rel="alternate" hreflang="lt" href="https://luxurychocolate.lv/lt/sokoladas-konferencijoms"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://luxurychocolate.lv/sokolades-konferencem"/>
+    <lastmod>2026-03-26</lastmod>
+    <priority>0.6</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://luxurychocolate.lv/et/korporatiiv-kingituste-ideed</loc>
+    <xhtml:link rel="alternate" hreflang="lv" href="https://luxurychocolate.lv/korporativo-davanu-idejas"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://luxurychocolate.lv/en/corporate-gift-ideas"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://luxurychocolate.lv/ru/idei-korporativnyh-podarkov"/>
+    <xhtml:link rel="alternate" hreflang="et" href="https://luxurychocolate.lv/et/korporatiiv-kingituste-ideed"/>
+    <xhtml:link rel="alternate" hreflang="lt" href="https://luxurychocolate.lv/lt/korporatyviniu-dovanu-idejos"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://luxurychocolate.lv/korporativo-davanu-idejas"/>
+    <lastmod>2026-03-26</lastmod>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url><loc>https://luxurychocolate.lv/et/maiustused-messidele</loc></url><url>
+    <loc>https://luxurychocolate.lv/et/reklaam-sokolaad</loc>
+    <xhtml:link rel="alternate" hreflang="lv" href="https://luxurychocolate.lv/reklamas-sokolade"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://luxurychocolate.lv/en/promotional-chocolate"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://luxurychocolate.lv/ru/reklamniy-shokolad"/>
+    <xhtml:link rel="alternate" hreflang="et" href="https://luxurychocolate.lv/et/reklaam-sokolaad"/>
+    <xhtml:link rel="alternate" hreflang="lt" href="https://luxurychocolate.lv/lt/reklaminis-sokoladas"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://luxurychocolate.lv/reklamas-sokolade"/>
+    <lastmod>2026-03-26</lastmod>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://luxurychocolate.lv/et/sokolaad-logoga</loc>
+    <xhtml:link rel="alternate" hreflang="lv" href="https://luxurychocolate.lv/sokolades-ar-logo"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://luxurychocolate.lv/en/chocolate-with-logo"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://luxurychocolate.lv/ru/shokolad-s-logotipom"/>
+    <xhtml:link rel="alternate" hreflang="et" href="https://luxurychocolate.lv/et/sokolaad-logoga"/>
+    <xhtml:link rel="alternate" hreflang="lt" href="https://luxurychocolate.lv/lt/sokoladas-su-logotipu"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://luxurychocolate.lv/sokolades-ar-logo"/>
+    <lastmod>2026-03-26</lastmod>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://luxurychocolate.lv/et/sokolaadi-raamat</loc>
+    <xhtml:link rel="alternate" hreflang="lv" href="https://luxurychocolate.lv/sokolades-gramata"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://luxurychocolate.lv/en/chocolate-book-box"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://luxurychocolate.lv/ru/shokoladnaya-kniga"/>
+    <xhtml:link rel="alternate" hreflang="et" href="https://luxurychocolate.lv/et/sokolaadi-raamat"/>
+    <xhtml:link rel="alternate" hreflang="lt" href="https://luxurychocolate.lv/lt/sokolado-knyga"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://luxurychocolate.lv/sokolades-gramata"/>
+    <lastmod>2026-03-26</lastmod>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://luxurychocolate.lv/fa</loc>
+    <xhtml:link rel="alternate" hreflang="fa" href="https://luxurychocolate.lv/fa"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://luxurychocolate.lv/"/>
+    <lastmod>2026-04-22</lastmod>
+    <priority>0.8</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url><loc>https://luxurychocolate.lv/fi</loc></url><url><loc>https://luxurychocolate.lv/fi/blogi</loc></url><url><loc>https://luxurychocolate.lv/fi/blogi/10-luovaa-yrityslahjaa</loc></url><url><loc>https://luxurychocolate.lv/fi/blogi/7-virhetta-yrityslahjoisssa</loc></url><url><loc>https://luxurychocolate.lv/fi/blogi/lahjapakkaukset-yrityksille-mita-tietaa-ennen-tilausta</loc></url><url><loc>https://luxurychocolate.lv/fi/blogi/miksi-personoitu-suklaa-muuttaa-asiakassuhteita</loc></url><url><loc>https://luxurychocolate.lv/fi/blogi/yrityslahja-trendit-2025</loc></url><url><loc>https://luxurychocolate.lv/fi/joulusuklaa-yritys</loc></url><url><loc>https://luxurychocolate.lv/fi/konferenssi-suklaa</loc></url><url><loc>https://luxurychocolate.lv/fi/lahjat-asiakkaille</loc></url><url><loc>https://luxurychocolate.lv/fi/lahjat-kumppaneille</loc></url><url><loc>https://luxurychocolate.lv/fi/lahjat-tyontekijoille</loc></url><url><loc>https://luxurychocolate.lv/fi/mainossuklaa</loc></url><url><loc>https://luxurychocolate.lv/fi/suklaa-logolla</loc></url><url><loc>https://luxurychocolate.lv/fi/suklaakirja</loc></url><url><loc>https://luxurychocolate.lv/fr</loc></url><url><loc>https://luxurychocolate.lv/fr/blog</loc></url><url><loc>https://luxurychocolate.lv/glabasana</loc></url><url>
+    <loc>https://luxurychocolate.lv/he</loc>
+    <xhtml:link rel="alternate" hreflang="he" href="https://luxurychocolate.lv/he"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://luxurychocolate.lv/"/>
     <lastmod>2026-04-22</lastmod>
     <priority>0.8</priority>
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://luxurychocolate.lv/ta</loc>
-    <xhtml:link rel="alternate" hreflang="ta" href="https://luxurychocolate.lv/ta" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://luxurychocolate.lv/" />
+    <loc>https://luxurychocolate.lv/hi</loc>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://luxurychocolate.lv/hi"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://luxurychocolate.lv/"/>
+    <lastmod>2026-04-22</lastmod>
+    <priority>0.8</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url><loc>https://luxurychocolate.lv/hr</loc></url><url><loc>https://luxurychocolate.lv/hr/blog</loc></url><url><loc>https://luxurychocolate.lv/hu</loc></url><url><loc>https://luxurychocolate.lv/hu/blog</loc></url><url>
+    <loc>https://luxurychocolate.lv/hy</loc>
+    <xhtml:link rel="alternate" hreflang="hy" href="https://luxurychocolate.lv/hy"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://luxurychocolate.lv/"/>
+    <lastmod>2026-04-22</lastmod>
+    <priority>0.8</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://luxurychocolate.lv/id</loc>
+    <xhtml:link rel="alternate" hreflang="id" href="https://luxurychocolate.lv/id"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://luxurychocolate.lv/"/>
+    <lastmod>2026-04-22</lastmod>
+    <priority>0.8</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url><loc>https://luxurychocolate.lv/is</loc></url><url><loc>https://luxurychocolate.lv/is/blog</loc></url><url><loc>https://luxurychocolate.lv/it</loc></url><url><loc>https://luxurychocolate.lv/it/blog</loc></url><url>
+    <loc>https://luxurychocolate.lv/ja</loc>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://luxurychocolate.lv/ja"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://luxurychocolate.lv/"/>
+    <lastmod>2026-04-22</lastmod>
+    <priority>0.8</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://luxurychocolate.lv/ka</loc>
+    <xhtml:link rel="alternate" hreflang="ka" href="https://luxurychocolate.lv/ka"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://luxurychocolate.lv/"/>
+    <lastmod>2026-04-22</lastmod>
+    <priority>0.8</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://luxurychocolate.lv/katalogs</loc>
+    <lastmod>2026-09-11</lastmod>
+    <priority>0.9</priority>
+    <changefreq>daily</changefreq>
+  </url>
+  <url><loc>https://luxurychocolate.lv/katalogs.html</loc></url><url>
+    <loc>https://luxurychocolate.lv/kk</loc>
+    <xhtml:link rel="alternate" hreflang="kk" href="https://luxurychocolate.lv/kk"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://luxurychocolate.lv/"/>
     <lastmod>2026-04-22</lastmod>
     <priority>0.8</priority>
     <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>https://luxurychocolate.lv/km</loc>
-    <xhtml:link rel="alternate" hreflang="km" href="https://luxurychocolate.lv/km" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://luxurychocolate.lv/" />
+    <xhtml:link rel="alternate" hreflang="km" href="https://luxurychocolate.lv/km"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://luxurychocolate.lv/"/>
     <lastmod>2026-04-22</lastmod>
     <priority>0.8</priority>
     <changefreq>weekly</changefreq>
   </url>
   <url>
+    <loc>https://luxurychocolate.lv/ko</loc>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://luxurychocolate.lv/ko"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://luxurychocolate.lv/"/>
+    <lastmod>2026-04-22</lastmod>
+    <priority>0.8</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url><loc>https://luxurychocolate.lv/ko-mes-daram</loc></url><url><loc>https://luxurychocolate.lv/kontakti</loc></url><url>
+    <loc>https://luxurychocolate.lv/korporativo-davanu-celvedis</loc>
+    <xhtml:link rel="alternate" hreflang="lv" href="https://luxurychocolate.lv/korporativo-davanu-celvedis"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://luxurychocolate.lv/korporativo-davanu-celvedis"/>
+    <lastmod>2026-03-26</lastmod>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+
+  <url>
+    <loc>https://luxurychocolate.lv/korporativo-davanu-idejas</loc>
+    <xhtml:link rel="alternate" hreflang="lv" href="https://luxurychocolate.lv/korporativo-davanu-idejas"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://luxurychocolate.lv/en/corporate-gift-ideas"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://luxurychocolate.lv/ru/idei-korporativnyh-podarkov"/>
+    <xhtml:link rel="alternate" hreflang="et" href="https://luxurychocolate.lv/et/korporatiiv-kingituste-ideed"/>
+    <xhtml:link rel="alternate" hreflang="lt" href="https://luxurychocolate.lv/lt/korporatyviniu-dovanu-idejos"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://luxurychocolate.lv/korporativo-davanu-idejas"/>
+    <lastmod>2026-03-26</lastmod>
+    <priority>0.8</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url><loc>https://luxurychocolate.lv/kuku-sokolades-veikals</loc></url><url><loc>https://luxurychocolate.lv/ligums</loc></url><url>
+    <loc>https://luxurychocolate.lv/lt</loc>
+    <xhtml:link rel="alternate" hreflang="lv" href="https://luxurychocolate.lv/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://luxurychocolate.lv/en"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://luxurychocolate.lv/ru"/>
+    <xhtml:link rel="alternate" hreflang="et" href="https://luxurychocolate.lv/et"/>
+    <xhtml:link rel="alternate" hreflang="lt" href="https://luxurychocolate.lv/lt"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://luxurychocolate.lv/"/>
+    <lastmod>2026-03-26</lastmod>
+    <priority>0.9</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+
+  <url><loc>https://luxurychocolate.lv/lt/blogas</loc></url><url><loc>https://luxurychocolate.lv/lt/blogas/10-kurybingu-verslo-dovanu-ideju</loc></url><url><loc>https://luxurychocolate.lv/lt/blogas/7-klaidos-su-verslo-dovanomis</loc></url><url><loc>https://luxurychocolate.lv/lt/blogas/dovanu-rinkiniai-imonems-ka-zinoti-pries-uzsakant</loc></url><url><loc>https://luxurychocolate.lv/lt/blogas/kodel-personalizuotas-sokoladas-pakeis-santykius-su-klientais</loc></url><url><loc>https://luxurychocolate.lv/lt/blogas/korporatyvines-dovanos-2025</loc></url><url>
+    <loc>https://luxurychocolate.lv/lt/dovanos-darbuotojams</loc>
+    <xhtml:link rel="alternate" hreflang="lv" href="https://luxurychocolate.lv/sokolades-darbinieku-davanam"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://luxurychocolate.lv/en/employee-gifts"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://luxurychocolate.lv/ru/podarki-sotrudnikam"/>
+    <xhtml:link rel="alternate" hreflang="et" href="https://luxurychocolate.lv/et/kingitused-tootajatele"/>
+    <xhtml:link rel="alternate" hreflang="lt" href="https://luxurychocolate.lv/lt/dovanos-darbuotojams"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://luxurychocolate.lv/sokolades-darbinieku-davanam"/>
+    <lastmod>2026-03-26</lastmod>
+    <priority>0.6</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+
+  <url>
+    <loc>https://luxurychocolate.lv/lt/dovanos-klientams</loc>
+    <xhtml:link rel="alternate" hreflang="lv" href="https://luxurychocolate.lv/sokolades-klientu-davanam"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://luxurychocolate.lv/en/client-gifts"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://luxurychocolate.lv/ru/podarki-klientam"/>
+    <xhtml:link rel="alternate" hreflang="et" href="https://luxurychocolate.lv/et/kingitused-klientidele"/>
+    <xhtml:link rel="alternate" hreflang="lt" href="https://luxurychocolate.lv/lt/dovanos-klientams"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://luxurychocolate.lv/sokolades-klientu-davanam"/>
+    <lastmod>2026-03-26</lastmod>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+
+  <url>
+    <loc>https://luxurychocolate.lv/lt/dovanos-partneriams</loc>
+    <xhtml:link rel="alternate" hreflang="lv" href="https://luxurychocolate.lv/sokolades-partneru-davanam"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://luxurychocolate.lv/en/partner-gifts"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://luxurychocolate.lv/ru/podarki-partneram"/>
+    <xhtml:link rel="alternate" hreflang="et" href="https://luxurychocolate.lv/et/kingitused-partneritele"/>
+    <xhtml:link rel="alternate" hreflang="lt" href="https://luxurychocolate.lv/lt/dovanos-partneriams"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://luxurychocolate.lv/sokolades-partneru-davanam"/>
+    <lastmod>2026-03-26</lastmod>
+    <priority>0.6</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+
+  <url>
+    <loc>https://luxurychocolate.lv/lt/kaledinis-sokoladas</loc>
+    <xhtml:link rel="alternate" hreflang="lv" href="https://luxurychocolate.lv/ziemassvetku-korporativas-sokolades"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://luxurychocolate.lv/en/christmas-corporate-chocolate"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://luxurychocolate.lv/ru/rozhdestvenskij-shokolad"/>
+    <xhtml:link rel="alternate" hreflang="et" href="https://luxurychocolate.lv/et/joulu-sokolaad"/>
+    <xhtml:link rel="alternate" hreflang="lt" href="https://luxurychocolate.lv/lt/kaledinis-sokoladas"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://luxurychocolate.lv/ziemassvetku-korporativas-sokolades"/>
+    <lastmod>2026-03-26</lastmod>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+
+  <url>
+    <loc>https://luxurychocolate.lv/lt/korporatyviniu-dovanu-idejos</loc>
+    <xhtml:link rel="alternate" hreflang="lv" href="https://luxurychocolate.lv/korporativo-davanu-idejas"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://luxurychocolate.lv/en/corporate-gift-ideas"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://luxurychocolate.lv/ru/idei-korporativnyh-podarkov"/>
+    <xhtml:link rel="alternate" hreflang="et" href="https://luxurychocolate.lv/et/korporatiiv-kingituste-ideed"/>
+    <xhtml:link rel="alternate" hreflang="lt" href="https://luxurychocolate.lv/lt/korporatyviniu-dovanu-idejos"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://luxurychocolate.lv/korporativo-davanu-idejas"/>
+    <lastmod>2026-03-26</lastmod>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+
+  <url>
+    <loc>https://luxurychocolate.lv/lt/reklaminis-sokoladas</loc>
+    <xhtml:link rel="alternate" hreflang="lv" href="https://luxurychocolate.lv/reklamas-sokolade"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://luxurychocolate.lv/en/promotional-chocolate"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://luxurychocolate.lv/ru/reklamniy-shokolad"/>
+    <xhtml:link rel="alternate" hreflang="et" href="https://luxurychocolate.lv/et/reklaam-sokolaad"/>
+    <xhtml:link rel="alternate" hreflang="lt" href="https://luxurychocolate.lv/lt/reklaminis-sokoladas"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://luxurychocolate.lv/reklamas-sokolade"/>
+    <lastmod>2026-03-26</lastmod>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+
+  <url><loc>https://luxurychocolate.lv/lt/saldainiai-parodoms</loc></url><url>
+    <loc>https://luxurychocolate.lv/lt/sokoladas-konferencijoms</loc>
+    <xhtml:link rel="alternate" hreflang="lv" href="https://luxurychocolate.lv/sokolades-konferencem"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://luxurychocolate.lv/en/conference-chocolate"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://luxurychocolate.lv/ru/shokolad-dlya-konferencij"/>
+    <xhtml:link rel="alternate" hreflang="et" href="https://luxurychocolate.lv/et/konverentsi-sokolaad"/>
+    <xhtml:link rel="alternate" hreflang="lt" href="https://luxurychocolate.lv/lt/sokoladas-konferencijoms"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://luxurychocolate.lv/sokolades-konferencem"/>
+    <lastmod>2026-03-26</lastmod>
+    <priority>0.6</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+
+  <url>
+    <loc>https://luxurychocolate.lv/lt/sokoladas-su-logotipu</loc>
+    <xhtml:link rel="alternate" hreflang="lv" href="https://luxurychocolate.lv/sokolades-ar-logo"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://luxurychocolate.lv/en/chocolate-with-logo"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://luxurychocolate.lv/ru/shokolad-s-logotipom"/>
+    <xhtml:link rel="alternate" hreflang="et" href="https://luxurychocolate.lv/et/sokolaad-logoga"/>
+    <xhtml:link rel="alternate" hreflang="lt" href="https://luxurychocolate.lv/lt/sokoladas-su-logotipu"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://luxurychocolate.lv/sokolades-ar-logo"/>
+    <lastmod>2026-03-26</lastmod>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+
+  <url>
+    <loc>https://luxurychocolate.lv/lt/sokolado-knyga</loc>
+    <xhtml:link rel="alternate" hreflang="lv" href="https://luxurychocolate.lv/sokolades-gramata"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://luxurychocolate.lv/en/chocolate-book-box"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://luxurychocolate.lv/ru/shokoladnaya-kniga"/>
+    <xhtml:link rel="alternate" hreflang="et" href="https://luxurychocolate.lv/et/sokolaadi-raamat"/>
+    <xhtml:link rel="alternate" hreflang="lt" href="https://luxurychocolate.lv/lt/sokolado-knyga"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://luxurychocolate.lv/sokolades-gramata"/>
+    <lastmod>2026-03-26</lastmod>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url><loc>https://luxurychocolate.lv/luxuschocolate/budzets</loc></url><url><loc>https://luxurychocolate.lv/luxuschocolate/buj</loc></url><url><loc>https://luxurychocolate.lv/luxuschocolate/galerija</loc></url><url><loc>https://luxurychocolate.lv/luxuschocolate/kontakti</loc></url><url><loc>https://luxurychocolate.lv/luxuschocolate/noteikumi</loc></url><url><loc>https://luxurychocolate.lv/luxuschocolate/padomi</loc></url><url><loc>https://luxurychocolate.lv/luxuschocolate/pakalpojumi</loc></url><url><loc>https://luxurychocolate.lv/luxuschocolate/papildu-iespejas</loc></url><url><loc>https://luxurychocolate.lv/luxuschocolate/par-mums</loc></url><url><loc>https://luxurychocolate.lv/luxuschocolate/partneri</loc></url><url><loc>https://luxurychocolate.lv/luxuschocolate/privatums</loc></url><url><loc>https://luxurychocolate.lv/luxuschocolate/raksti</loc></url><url><loc>https://luxurychocolate.lv/luxuschocolate/sikdatnes</loc></url><url><loc>https://luxurychocolate.lv/milestiba-ir-ka-uguns</loc></url><url><loc>https://luxurychocolate.lv/mk</loc></url><url><loc>https://luxurychocolate.lv/mk/blog</loc></url><url>
     <loc>https://luxurychocolate.lv/mn</loc>
-    <xhtml:link rel="alternate" hreflang="mn" href="https://luxurychocolate.lv/mn" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://luxurychocolate.lv/" />
+    <xhtml:link rel="alternate" hreflang="mn" href="https://luxurychocolate.lv/mn"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://luxurychocolate.lv/"/>
     <lastmod>2026-04-22</lastmod>
     <priority>0.8</priority>
     <changefreq>weekly</changefreq>
   </url>
 
-  <!-- === Veikals (Shop) === -->
+  <url>
+    <loc>https://luxurychocolate.lv/ms</loc>
+    <xhtml:link rel="alternate" hreflang="ms" href="https://luxurychocolate.lv/ms"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://luxurychocolate.lv/"/>
+    <lastmod>2026-04-22</lastmod>
+    <priority>0.8</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url><loc>https://luxurychocolate.lv/nl</loc></url><url><loc>https://luxurychocolate.lv/nl/blog</loc></url><url><loc>https://luxurychocolate.lv/no</loc></url><url><loc>https://luxurychocolate.lv/no/blogg</loc></url><url><loc>https://luxurychocolate.lv/no/blogg/10-kreative-bedriftsgaver</loc></url><url><loc>https://luxurychocolate.lv/no/blogg/7-feil-med-bedriftsgaver</loc></url><url><loc>https://luxurychocolate.lv/no/blogg/bedriftsgaver-2025</loc></url><url><loc>https://luxurychocolate.lv/no/blogg/gavesett-for-bedrifter-hva-du-bor-vite-for-bestilling</loc></url><url><loc>https://luxurychocolate.lv/no/blogg/hvorfor-personalisert-sjokolade-endrer-kundeforhold</loc></url><url><loc>https://luxurychocolate.lv/no/gaver-kunder</loc></url><url><loc>https://luxurychocolate.lv/no/gaver-medarbeidere</loc></url><url><loc>https://luxurychocolate.lv/no/gaver-partnere</loc></url><url><loc>https://luxurychocolate.lv/no/julesjokolade-bedrift</loc></url><url><loc>https://luxurychocolate.lv/no/konferanse-sjokolade</loc></url><url><loc>https://luxurychocolate.lv/no/reklamesjokolade</loc></url><url><loc>https://luxurychocolate.lv/no/sjokolade-med-logo</loc></url><url><loc>https://luxurychocolate.lv/no/sjokoladebok</loc></url><url><loc>https://luxurychocolate.lv/noteikumi</loc></url><url><loc>https://luxurychocolate.lv/par-mums</loc></url><url><loc>https://luxurychocolate.lv/pl</loc></url><url><loc>https://luxurychocolate.lv/pl/blog</loc></url><url><loc>https://luxurychocolate.lv/privatuma-politika</loc></url><url><loc>https://luxurychocolate.lv/pt</loc></url><url><loc>https://luxurychocolate.lv/pt/blog</loc></url><url>
+    <loc>https://luxurychocolate.lv/reklamas-sokolade</loc>
+    <xhtml:link rel="alternate" hreflang="lv" href="https://luxurychocolate.lv/reklamas-sokolade"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://luxurychocolate.lv/en/promotional-chocolate"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://luxurychocolate.lv/ru/reklamniy-shokolad"/>
+    <xhtml:link rel="alternate" hreflang="et" href="https://luxurychocolate.lv/et/reklaam-sokolaad"/>
+    <xhtml:link rel="alternate" hreflang="lt" href="https://luxurychocolate.lv/lt/reklaminis-sokoladas"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://luxurychocolate.lv/reklamas-sokolade"/>
+    <lastmod>2026-03-26</lastmod>
+    <priority>0.8</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url><loc>https://luxurychocolate.lv/ro</loc></url><url><loc>https://luxurychocolate.lv/ro/blog</loc></url><url>
+    <loc>https://luxurychocolate.lv/ru</loc>
+    <xhtml:link rel="alternate" hreflang="lv" href="https://luxurychocolate.lv/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://luxurychocolate.lv/en"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://luxurychocolate.lv/ru"/>
+    <xhtml:link rel="alternate" hreflang="et" href="https://luxurychocolate.lv/et"/>
+    <xhtml:link rel="alternate" hreflang="lt" href="https://luxurychocolate.lv/lt"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://luxurychocolate.lv/"/>
+    <lastmod>2026-03-26</lastmod>
+    <priority>0.9</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url><loc>https://luxurychocolate.lv/ru/blog</loc></url><url><loc>https://luxurychocolate.lv/ru/blog/10-kreativnykh-korporativnykh-podarkov</loc></url><url><loc>https://luxurychocolate.lv/ru/blog/7-oshibok-korporativnykh-podarkov</loc></url><url><loc>https://luxurychocolate.lv/ru/blog/korporativnye-podarki-2025</loc></url><url><loc>https://luxurychocolate.lv/ru/blog/pochemu-personalizirovanniy-shokolad-izmenit-otnosheniya-s-klientami</loc></url><url><loc>https://luxurychocolate.lv/ru/blog/podarochnye-nabory-dlya-kompanij-chto-nuzhno-znat</loc></url><url>
+    <loc>https://luxurychocolate.lv/ru/idei-korporativnyh-podarkov</loc>
+    <xhtml:link rel="alternate" hreflang="lv" href="https://luxurychocolate.lv/korporativo-davanu-idejas"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://luxurychocolate.lv/en/corporate-gift-ideas"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://luxurychocolate.lv/ru/idei-korporativnyh-podarkov"/>
+    <xhtml:link rel="alternate" hreflang="et" href="https://luxurychocolate.lv/et/korporatiiv-kingituste-ideed"/>
+    <xhtml:link rel="alternate" hreflang="lt" href="https://luxurychocolate.lv/lt/korporatyviniu-dovanu-idejos"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://luxurychocolate.lv/korporativo-davanu-idejas"/>
+    <lastmod>2026-03-26</lastmod>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://luxurychocolate.lv/ru/podarki-klientam</loc>
+    <xhtml:link rel="alternate" hreflang="lv" href="https://luxurychocolate.lv/sokolades-klientu-davanam"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://luxurychocolate.lv/en/client-gifts"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://luxurychocolate.lv/ru/podarki-klientam"/>
+    <xhtml:link rel="alternate" hreflang="et" href="https://luxurychocolate.lv/et/kingitused-klientidele"/>
+    <xhtml:link rel="alternate" hreflang="lt" href="https://luxurychocolate.lv/lt/dovanos-klientams"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://luxurychocolate.lv/sokolades-klientu-davanam"/>
+    <lastmod>2026-03-26</lastmod>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://luxurychocolate.lv/ru/podarki-partneram</loc>
+    <xhtml:link rel="alternate" hreflang="lv" href="https://luxurychocolate.lv/sokolades-partneru-davanam"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://luxurychocolate.lv/en/partner-gifts"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://luxurychocolate.lv/ru/podarki-partneram"/>
+    <xhtml:link rel="alternate" hreflang="et" href="https://luxurychocolate.lv/et/kingitused-partneritele"/>
+    <xhtml:link rel="alternate" hreflang="lt" href="https://luxurychocolate.lv/lt/dovanos-partneriams"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://luxurychocolate.lv/sokolades-partneru-davanam"/>
+    <lastmod>2026-03-26</lastmod>
+    <priority>0.6</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://luxurychocolate.lv/ru/podarki-sotrudnikam</loc>
+    <xhtml:link rel="alternate" hreflang="lv" href="https://luxurychocolate.lv/sokolades-darbinieku-davanam"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://luxurychocolate.lv/en/employee-gifts"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://luxurychocolate.lv/ru/podarki-sotrudnikam"/>
+    <xhtml:link rel="alternate" hreflang="et" href="https://luxurychocolate.lv/et/kingitused-tootajatele"/>
+    <xhtml:link rel="alternate" hreflang="lt" href="https://luxurychocolate.lv/lt/dovanos-darbuotojams"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://luxurychocolate.lv/sokolades-darbinieku-davanam"/>
+    <lastmod>2026-03-26</lastmod>
+    <priority>0.6</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://luxurychocolate.lv/ru/reklamniy-shokolad</loc>
+    <xhtml:link rel="alternate" hreflang="lv" href="https://luxurychocolate.lv/reklamas-sokolade"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://luxurychocolate.lv/en/promotional-chocolate"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://luxurychocolate.lv/ru/reklamniy-shokolad"/>
+    <xhtml:link rel="alternate" hreflang="et" href="https://luxurychocolate.lv/et/reklaam-sokolaad"/>
+    <xhtml:link rel="alternate" hreflang="lt" href="https://luxurychocolate.lv/lt/reklaminis-sokoladas"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://luxurychocolate.lv/reklamas-sokolade"/>
+    <lastmod>2026-03-26</lastmod>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://luxurychocolate.lv/ru/rozhdestvenskij-shokolad</loc>
+    <xhtml:link rel="alternate" hreflang="lv" href="https://luxurychocolate.lv/ziemassvetku-korporativas-sokolades"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://luxurychocolate.lv/en/christmas-corporate-chocolate"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://luxurychocolate.lv/ru/rozhdestvenskij-shokolad"/>
+    <xhtml:link rel="alternate" hreflang="et" href="https://luxurychocolate.lv/et/joulu-sokolaad"/>
+    <xhtml:link rel="alternate" hreflang="lt" href="https://luxurychocolate.lv/lt/kaledinis-sokoladas"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://luxurychocolate.lv/ziemassvetku-korporativas-sokolades"/>
+    <lastmod>2026-03-26</lastmod>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://luxurychocolate.lv/ru/shokolad-dlya-konferencij</loc>
+    <xhtml:link rel="alternate" hreflang="lv" href="https://luxurychocolate.lv/sokolades-konferencem"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://luxurychocolate.lv/en/conference-chocolate"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://luxurychocolate.lv/ru/shokolad-dlya-konferencij"/>
+    <xhtml:link rel="alternate" hreflang="et" href="https://luxurychocolate.lv/et/konverentsi-sokolaad"/>
+    <xhtml:link rel="alternate" hreflang="lt" href="https://luxurychocolate.lv/lt/sokoladas-konferencijoms"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://luxurychocolate.lv/sokolades-konferencem"/>
+    <lastmod>2026-03-26</lastmod>
+    <priority>0.6</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://luxurychocolate.lv/ru/shokolad-s-logotipom</loc>
+    <xhtml:link rel="alternate" hreflang="lv" href="https://luxurychocolate.lv/sokolades-ar-logo"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://luxurychocolate.lv/en/chocolate-with-logo"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://luxurychocolate.lv/ru/shokolad-s-logotipom"/>
+    <xhtml:link rel="alternate" hreflang="et" href="https://luxurychocolate.lv/et/sokolaad-logoga"/>
+    <xhtml:link rel="alternate" hreflang="lt" href="https://luxurychocolate.lv/lt/sokoladas-su-logotipu"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://luxurychocolate.lv/sokolades-ar-logo"/>
+    <lastmod>2026-03-26</lastmod>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://luxurychocolate.lv/ru/shokoladnaya-kniga</loc>
+    <xhtml:link rel="alternate" hreflang="lv" href="https://luxurychocolate.lv/sokolades-gramata"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://luxurychocolate.lv/en/chocolate-book-box"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://luxurychocolate.lv/ru/shokoladnaya-kniga"/>
+    <xhtml:link rel="alternate" hreflang="et" href="https://luxurychocolate.lv/et/sokolaadi-raamat"/>
+    <xhtml:link rel="alternate" hreflang="lt" href="https://luxurychocolate.lv/lt/sokolado-knyga"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://luxurychocolate.lv/sokolades-gramata"/>
+    <lastmod>2026-03-26</lastmod>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url><loc>https://luxurychocolate.lv/ru/sladosti-dlya-vystavok</loc></url><url><loc>https://luxurychocolate.lv/sk</loc></url><url><loc>https://luxurychocolate.lv/sk/blog</loc></url><url><loc>https://luxurychocolate.lv/sl</loc></url><url><loc>https://luxurychocolate.lv/sl/blog</loc></url><url><loc>https://luxurychocolate.lv/sokolade-pie-kafijas</loc></url><url><loc>https://luxurychocolate.lv/sokolade-vizitkarte</loc></url><url>
+    <loc>https://luxurychocolate.lv/sokolades-ar-logo</loc>
+    <xhtml:link rel="alternate" hreflang="lv" href="https://luxurychocolate.lv/sokolades-ar-logo"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://luxurychocolate.lv/en/chocolate-with-logo"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://luxurychocolate.lv/ru/shokolad-s-logotipom"/>
+    <xhtml:link rel="alternate" hreflang="et" href="https://luxurychocolate.lv/et/sokolaad-logoga"/>
+    <xhtml:link rel="alternate" hreflang="lt" href="https://luxurychocolate.lv/lt/sokoladas-su-logotipu"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://luxurychocolate.lv/sokolades-ar-logo"/>
+    <lastmod>2026-03-26</lastmod>
+    <priority>0.8</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://luxurychocolate.lv/sokolades-darbinieku-davanam</loc>
+    <xhtml:link rel="alternate" hreflang="lv" href="https://luxurychocolate.lv/sokolades-darbinieku-davanam"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://luxurychocolate.lv/en/employee-gifts"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://luxurychocolate.lv/ru/podarki-sotrudnikam"/>
+    <xhtml:link rel="alternate" hreflang="et" href="https://luxurychocolate.lv/et/kingitused-tootajatele"/>
+    <xhtml:link rel="alternate" hreflang="lt" href="https://luxurychocolate.lv/lt/dovanos-darbuotojams"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://luxurychocolate.lv/sokolades-darbinieku-davanam"/>
+    <lastmod>2026-03-26</lastmod>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://luxurychocolate.lv/sokolades-gramata</loc>
+    <xhtml:link rel="alternate" hreflang="lv" href="https://luxurychocolate.lv/sokolades-gramata"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://luxurychocolate.lv/en/chocolate-book-box"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://luxurychocolate.lv/ru/shokoladnaya-kniga"/>
+    <xhtml:link rel="alternate" hreflang="et" href="https://luxurychocolate.lv/et/sokolaadi-raamat"/>
+    <xhtml:link rel="alternate" hreflang="lt" href="https://luxurychocolate.lv/lt/sokolado-knyga"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://luxurychocolate.lv/sokolades-gramata"/>
+    <lastmod>2026-03-26</lastmod>
+    <priority>0.8</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url><loc>https://luxurychocolate.lv/sokolades-izstadem</loc></url><url>
+    <loc>https://luxurychocolate.lv/sokolades-klientu-davanam</loc>
+    <xhtml:link rel="alternate" hreflang="lv" href="https://luxurychocolate.lv/sokolades-klientu-davanam"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://luxurychocolate.lv/en/client-gifts"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://luxurychocolate.lv/ru/podarki-klientam"/>
+    <xhtml:link rel="alternate" hreflang="et" href="https://luxurychocolate.lv/et/kingitused-klientidele"/>
+    <xhtml:link rel="alternate" hreflang="lt" href="https://luxurychocolate.lv/lt/dovanos-klientams"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://luxurychocolate.lv/sokolades-klientu-davanam"/>
+    <lastmod>2026-03-26</lastmod>
+    <priority>0.8</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://luxurychocolate.lv/sokolades-konferencem</loc>
+    <xhtml:link rel="alternate" hreflang="lv" href="https://luxurychocolate.lv/sokolades-konferencem"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://luxurychocolate.lv/en/conference-chocolate"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://luxurychocolate.lv/ru/shokolad-dlya-konferencij"/>
+    <xhtml:link rel="alternate" hreflang="et" href="https://luxurychocolate.lv/et/konverentsi-sokolaad"/>
+    <xhtml:link rel="alternate" hreflang="lt" href="https://luxurychocolate.lv/lt/sokoladas-konferencijoms"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://luxurychocolate.lv/sokolades-konferencem"/>
+    <lastmod>2026-03-26</lastmod>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://luxurychocolate.lv/sokolades-partneru-davanam</loc>
+    <xhtml:link rel="alternate" hreflang="lv" href="https://luxurychocolate.lv/sokolades-partneru-davanam"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://luxurychocolate.lv/en/partner-gifts"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://luxurychocolate.lv/ru/podarki-partneram"/>
+    <xhtml:link rel="alternate" hreflang="et" href="https://luxurychocolate.lv/et/kingitused-partneritele"/>
+    <xhtml:link rel="alternate" hreflang="lt" href="https://luxurychocolate.lv/lt/dovanos-partneriams"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://luxurychocolate.lv/sokolades-partneru-davanam"/>
+    <lastmod>2026-03-26</lastmod>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url><loc>https://luxurychocolate.lv/sq</loc></url><url><loc>https://luxurychocolate.lv/sq/blog</loc></url><url><loc>https://luxurychocolate.lv/sr</loc></url><url><loc>https://luxurychocolate.lv/sr/blog</loc></url><url><loc>https://luxurychocolate.lv/sv</loc></url><url><loc>https://luxurychocolate.lv/sv/blogg</loc></url><url><loc>https://luxurychocolate.lv/sv/blogg/10-kreativa-foretagsgavor</loc></url><url><loc>https://luxurychocolate.lv/sv/blogg/7-misstag-med-foretagsgavor</loc></url><url><loc>https://luxurychocolate.lv/sv/blogg/foretagspresenter-2025</loc></url><url><loc>https://luxurychocolate.lv/sv/blogg/presentforpackningar-foretag-vad-du-behover-veta</loc></url><url><loc>https://luxurychocolate.lv/sv/blogg/varfor-personaliserad-choklad-forandrar-kundrelationer</loc></url><url><loc>https://luxurychocolate.lv/sv/choklad-med-logotyp</loc></url><url><loc>https://luxurychocolate.lv/sv/chokladbok</loc></url><url><loc>https://luxurychocolate.lv/sv/julchoklad-foretag</loc></url><url><loc>https://luxurychocolate.lv/sv/konferens-choklad</loc></url><url><loc>https://luxurychocolate.lv/sv/presenter-kunder</loc></url><url><loc>https://luxurychocolate.lv/sv/presenter-medarbetare</loc></url><url><loc>https://luxurychocolate.lv/sv/presenter-partners</loc></url><url><loc>https://luxurychocolate.lv/sv/reklamchoklad</loc></url><url>
+    <loc>https://luxurychocolate.lv/sw</loc>
+    <xhtml:link rel="alternate" hreflang="sw" href="https://luxurychocolate.lv/sw"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://luxurychocolate.lv/"/>
+    <lastmod>2026-04-22</lastmod>
+    <priority>0.8</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://luxurychocolate.lv/ta</loc>
+    <xhtml:link rel="alternate" hreflang="ta" href="https://luxurychocolate.lv/ta"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://luxurychocolate.lv/"/>
+    <lastmod>2026-04-22</lastmod>
+    <priority>0.8</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url><loc>https://luxurychocolate.lv/terms</loc></url><url>
+    <loc>https://luxurychocolate.lv/th</loc>
+    <xhtml:link rel="alternate" hreflang="th" href="https://luxurychocolate.lv/th"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://luxurychocolate.lv/"/>
+    <lastmod>2026-04-22</lastmod>
+    <priority>0.8</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://luxurychocolate.lv/tl</loc>
+    <xhtml:link rel="alternate" hreflang="tl" href="https://luxurychocolate.lv/tl"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://luxurychocolate.lv/"/>
+    <lastmod>2026-04-22</lastmod>
+    <priority>0.8</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url><loc>https://luxurychocolate.lv/tr</loc></url><url><loc>https://luxurychocolate.lv/tr/blog</loc></url><url><loc>https://luxurychocolate.lv/uk</loc></url><url><loc>https://luxurychocolate.lv/uk/blog</loc></url><url>
+    <loc>https://luxurychocolate.lv/ur</loc>
+    <xhtml:link rel="alternate" hreflang="ur" href="https://luxurychocolate.lv/ur"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://luxurychocolate.lv/"/>
+    <lastmod>2026-04-22</lastmod>
+    <priority>0.8</priority>
+    <changefreq>weekly</changefreq>
+  </url>
   <url>
     <loc>https://luxurychocolate.lv/veikals</loc>
     <lastmod>2026-06-02</lastmod>
@@ -830,7 +787,6 @@
     <changefreq>daily</changefreq>
   </url>
 
-  <!-- === Veikala produkti === -->
   <url>
     <loc>https://luxurychocolate.lv/veikals/1-5-cm-sokolades-aplisi-kukam-personalizeti-15-cm-so</loc>
     <lastmod>2026-06-02</lastmod>
@@ -2253,7 +2209,7 @@
     <priority>0.7</priority>
     <changefreq>weekly</changefreq>
   </url>
-  <url>
+  <url><loc>https://luxurychocolate.lv/veikals/gramatinas-veida-sokolades-tafelisu-kastite-50-gab</loc></url><url>
     <loc>https://luxurychocolate.lv/veikals/gramatinas-veida-sokolades-tafelites-kastite-gramatin</loc>
     <lastmod>2026-06-02</lastmod>
     <priority>0.7</priority>
@@ -2457,7 +2413,7 @@
     <priority>0.7</priority>
     <changefreq>weekly</changefreq>
   </url>
-  <url>
+  <url><loc>https://luxurychocolate.lv/veikals/kuku-sokolades-50-pecapmaksa</loc></url><url><loc>https://luxurychocolate.lv/veikals/kuku-sokolades-50-priekssapmaksa</loc></url><url>
     <loc>https://luxurychocolate.lv/veikals/kvadrata-25-konfeksu-kaste-ar-originalu-uzdruku-25-konfe</loc>
     <lastmod>2026-06-02</lastmod>
     <priority>0.7</priority>
@@ -2547,7 +2503,7 @@
     <priority>0.7</priority>
     <changefreq>weekly</changefreq>
   </url>
-  <url>
+  <url><loc>https://luxurychocolate.lv/veikals/laimes-cepums-6-cm-maisina-ar-lentiti-un-uzlimi</loc></url><url>
     <loc>https://luxurychocolate.lv/veikals/laimes-cepums-ar-piena-sokoladi-un-baltiem-cukura-dekoriem-laimes-c</loc>
     <lastmod>2026-06-02</lastmod>
     <priority>0.7</priority>
@@ -2643,7 +2599,7 @@
     <priority>0.7</priority>
     <changefreq>weekly</changefreq>
   </url>
-  <url>
+  <url><loc>https://luxurychocolate.lv/veikals/laimes-cepums-mini-3-4-cm-bez-skaita-laimes-c</loc></url><url>
     <loc>https://luxurychocolate.lv/veikals/laimes-cepums-mini-3-4-cm-laimes-c</loc>
     <lastmod>2026-06-02</lastmod>
     <priority>0.7</priority>
@@ -3819,7 +3775,7 @@
     <priority>0.7</priority>
     <changefreq>weekly</changefreq>
   </url>
-  <url>
+  <url><loc>https://luxurychocolate.lv/veikals/parnesum-loksne-ar-apdruku-a4</loc></url><url>
     <loc>https://luxurychocolate.lv/veikals/pavasara-puke-podina-un-davanu-maisina-ar-apsveikuma-kartinu-pavasara</loc>
     <lastmod>2026-06-02</lastmod>
     <priority>0.7</priority>
@@ -3831,7 +3787,7 @@
     <priority>0.7</priority>
     <changefreq>weekly</changefreq>
   </url>
-  <url>
+  <url><loc>https://luxurychocolate.lv/veikals/personalizeta-korporativa-logo-sokolade-2-gab-konfektes-kastites</loc></url><url>
     <loc>https://luxurychocolate.lv/veikals/personalizeta-korporativa-logo-sokolade-3-gab-konfektes-kastites-personal</loc>
     <lastmod>2026-06-02</lastmod>
     <priority>0.7</priority>
@@ -3927,7 +3883,7 @@
     <priority>0.7</priority>
     <changefreq>weekly</changefreq>
   </url>
-  <url>
+  <url><loc>https://luxurychocolate.lv/veikals/personalizeta-korporativa-logo-sokolade-kafijai-pasakumiem-izstadem-konfekte-mai-personalizeta-korporativa-logo-sokolade-kafijai-pasakumiem--v2</loc></url><url><loc>https://luxurychocolate.lv/veikals/personalizeta-korporativa-logo-sokolade-kafijai-pasakumiem-izstadem-konfekte-mai-personalizeta-korporativa-logo-sokolade-kafijai-pasakumiem--v3</loc></url><url>
     <loc>https://luxurychocolate.lv/veikals/personalizeta-korporativa-logo-sokolade-kafijai-pasakumiem-izstadem-konfektes-3-personal</loc>
     <lastmod>2026-06-02</lastmod>
     <priority>0.7</priority>
@@ -4299,7 +4255,7 @@
     <priority>0.7</priority>
     <changefreq>weekly</changefreq>
   </url>
-  <url>
+  <url><loc>https://luxurychocolate.lv/veikals/rieksts-sokolade-maisina-ar-logo-uzlimi</loc></url><url>
     <loc>https://luxurychocolate.lv/veikals/rozu-kaste-es-tevi-milu-4996046</loc>
     <lastmod>2026-06-02</lastmod>
     <priority>0.7</priority>
@@ -4311,7 +4267,7 @@
     <priority>0.7</priority>
     <changefreq>weekly</changefreq>
   </url>
-  <url>
+  <url><loc>https://luxurychocolate.lv/veikals/sagatavosana-drukai</loc></url><url>
     <loc>https://luxurychocolate.lv/veikals/sagatavosana-kastisu-izgatavosanai-sagatavo</loc>
     <lastmod>2026-06-02</lastmod>
     <priority>0.7</priority>
@@ -4395,7 +4351,7 @@
     <priority>0.7</priority>
     <changefreq>weekly</changefreq>
   </url>
-  <url>
+  <url><loc>https://luxurychocolate.lv/veikals/sagatavosana-sokolades-razosanai-adventes-kalendari</loc></url><url><loc>https://luxurychocolate.lv/veikals/sagatavosana-sokolades-razosanai-aksesuari</loc></url><url><loc>https://luxurychocolate.lv/veikals/sagatavosana-sokolades-razosanai-chocolates</loc></url><url><loc>https://luxurychocolate.lv/veikals/sagatavosana-sokolades-razosanai-corporate-gifts</loc></url><url><loc>https://luxurychocolate.lv/veikals/sagatavosana-sokolades-razosanai-davanas</loc></url><url><loc>https://luxurychocolate.lv/veikals/sagatavosana-sokolades-razosanai-davanu-iepakojums</loc></url><url><loc>https://luxurychocolate.lv/veikals/sagatavosana-sokolades-razosanai-davanu-kartes</loc></url><url><loc>https://luxurychocolate.lv/veikals/sagatavosana-sokolades-razosanai-davanu-kastes</loc></url><url><loc>https://luxurychocolate.lv/veikals/sagatavosana-sokolades-razosanai-davanu-kastites</loc></url><url><loc>https://luxurychocolate.lv/veikals/sagatavosana-sokolades-razosanai-davanu-komplekti</loc></url><url><loc>https://luxurychocolate.lv/veikals/sagatavosana-sokolades-razosanai-dazadi</loc></url><url><loc>https://luxurychocolate.lv/veikals/sagatavosana-sokolades-razosanai-dekoracijas</loc></url><url><loc>https://luxurychocolate.lv/veikals/sagatavosana-sokolades-razosanai-edama-papira-apdruka</loc></url><url><loc>https://luxurychocolate.lv/veikals/sagatavosana-sokolades-razosanai-iepakojums-riekstiem</loc></url><url><loc>https://luxurychocolate.lv/veikals/sagatavosana-sokolades-razosanai-jusu-milestibas-saderiba</loc></url><url><loc>https://luxurychocolate.lv/veikals/sagatavosana-sokolades-razosanai-kapkeiki</loc></url><url><loc>https://luxurychocolate.lv/veikals/sagatavosana-sokolades-razosanai-kastisu-izgatavosana</loc></url><url><loc>https://luxurychocolate.lv/veikals/sagatavosana-sokolades-razosanai-konditorejas-izstradajumi</loc></url><url><loc>https://luxurychocolate.lv/veikals/sagatavosana-sokolades-razosanai-korporativu-davanu-sokolade</loc></url><url><loc>https://luxurychocolate.lv/veikals/sagatavosana-sokolades-razosanai-kukas-tortes</loc></url><url><loc>https://luxurychocolate.lv/veikals/sagatavosana-sokolades-razosanai-laimes-cepumi</loc></url><url><loc>https://luxurychocolate.lv/veikals/sagatavosana-sokolades-razosanai-lc-assemblies-sets-of-chocolate</loc></url><url><loc>https://luxurychocolate.lv/veikals/sagatavosana-sokolades-razosanai-lc-baskets-with-chocolate</loc></url><url><loc>https://luxurychocolate.lv/veikals/sagatavosana-sokolades-razosanai-lc-biscuits-with-chocolate</loc></url><url><loc>https://luxurychocolate.lv/veikals/sagatavosana-sokolades-razosanai-lc-boxes-with-chocolate-pralines</loc></url><url><loc>https://luxurychocolate.lv/veikals/sagatavosana-sokolades-razosanai-lc-chocolate-bars-decorated-with-small-bars</loc></url><url><loc>https://luxurychocolate.lv/veikals/sagatavosana-sokolades-razosanai-lc-chocolate-hearts</loc></url><url><loc>https://luxurychocolate.lv/veikals/sagatavosana-sokolades-razosanai-lc-chocolate-in-boxes</loc></url><url><loc>https://luxurychocolate.lv/veikals/sagatavosana-sokolades-razosanai-lc-chocolate-in-boxes-with-magnet</loc></url><url><loc>https://luxurychocolate.lv/veikals/sagatavosana-sokolades-razosanai-lc-chocolate-medals</loc></url><url><loc>https://luxurychocolate.lv/veikals/sagatavosana-sokolades-razosanai-lc-chocolate-money</loc></url><url><loc>https://luxurychocolate.lv/veikals/sagatavosana-sokolades-razosanai-lc-chocolate-nuts</loc></url><url><loc>https://luxurychocolate.lv/veikals/sagatavosana-sokolades-razosanai-lc-chocolate-pictures</loc></url><url><loc>https://luxurychocolate.lv/veikals/sagatavosana-sokolades-razosanai-lc-chocolate-truffles</loc></url><url><loc>https://luxurychocolate.lv/veikals/sagatavosana-sokolades-razosanai-lc-chocolate-with-ready-designs</loc></url><url><loc>https://luxurychocolate.lv/veikals/sagatavosana-sokolades-razosanai-lc-chocolates-for-subscription</loc></url><url><loc>https://luxurychocolate.lv/veikals/sagatavosana-sokolades-razosanai-lc-chocolates-in-paper</loc></url><url><loc>https://luxurychocolate.lv/veikals/sagatavosana-sokolades-razosanai-lc-christmas-ideas</loc></url><url><loc>https://luxurychocolate.lv/veikals/sagatavosana-sokolades-razosanai-lc-decorative-chocolate-bars-for-cocktail-glasses</loc></url><url><loc>https://luxurychocolate.lv/veikals/sagatavosana-sokolades-razosanai-lc-easter-ideas</loc></url><url><loc>https://luxurychocolate.lv/veikals/sagatavosana-sokolades-razosanai-lc-empty-boxes</loc></url><url><loc>https://luxurychocolate.lv/veikals/sagatavosana-sokolades-razosanai-lc-fortune-cookies</loc></url><url><loc>https://luxurychocolate.lv/veikals/sagatavosana-sokolades-razosanai-lc-french-biscuits-macaroon-with-chocolate</loc></url><url><loc>https://luxurychocolate.lv/veikals/sagatavosana-sokolades-razosanai-lc-pepper-ginger-bread-with-chocolate</loc></url><url><loc>https://luxurychocolate.lv/veikals/sagatavosana-sokolades-razosanai-lc-pralines-with-hazel-nut-cream-filling</loc></url><url><loc>https://luxurychocolate.lv/veikals/sagatavosana-sokolades-razosanai-lc-pralines-with-riga-balsam</loc></url><url><loc>https://luxurychocolate.lv/veikals/sagatavosana-sokolades-razosanai-lc-promotional-chocolates</loc></url><url><loc>https://luxurychocolate.lv/veikals/sagatavosana-sokolades-razosanai-medalas-un-monetas</loc></url><url><loc>https://luxurychocolate.lv/veikals/sagatavosana-sokolades-razosanai-mentoringa-pakalpojumi</loc></url><url><loc>https://luxurychocolate.lv/veikals/sagatavosana-sokolades-razosanai-olu-sokolades</loc></url><url><loc>https://luxurychocolate.lv/veikals/sagatavosana-sokolades-razosanai-parnesum-loksnes-ar-apdruku</loc></url><url><loc>https://luxurychocolate.lv/veikals/sagatavosana-sokolades-razosanai-personalizeta-reklamas-sokolade</loc></url><url><loc>https://luxurychocolate.lv/veikals/sagatavosana-sokolades-razosanai-piekarinamais</loc></url><url><loc>https://luxurychocolate.lv/veikals/sagatavosana-sokolades-razosanai-piparkukas</loc></url><url><loc>https://luxurychocolate.lv/veikals/sagatavosana-sokolades-razosanai-raksti-par-milestibu</loc></url><url><loc>https://luxurychocolate.lv/veikals/sagatavosana-sokolades-razosanai-razosana</loc></url><url><loc>https://luxurychocolate.lv/veikals/sagatavosana-sokolades-razosanai-reklamas</loc></url><url><loc>https://luxurychocolate.lv/veikals/sagatavosana-sokolades-razosanai-rieksti-sokolade</loc></url><url><loc>https://luxurychocolate.lv/veikals/sagatavosana-sokolades-razosanai-rieksti-un-sokolade</loc></url><url><loc>https://luxurychocolate.lv/veikals/sagatavosana-sokolades-razosanai-rotallietas</loc></url><url>
     <loc>https://luxurychocolate.lv/veikals/sagatavosana-sokolades-razosanai-sagatavo</loc>
     <lastmod>2026-06-02</lastmod>
     <priority>0.7</priority>
@@ -4425,7 +4381,7 @@
     <priority>0.7</priority>
     <changefreq>weekly</changefreq>
   </url>
-  <url>
+  <url><loc>https://luxurychocolate.lv/veikals/sagatavosana-sokolades-razosanai-sagriezti-augli</loc></url><url><loc>https://luxurychocolate.lv/veikals/sagatavosana-sokolades-razosanai-saldumi</loc></url><url><loc>https://luxurychocolate.lv/veikals/sagatavosana-sokolades-razosanai-saldumu-kastes</loc></url><url><loc>https://luxurychocolate.lv/veikals/sagatavosana-sokolades-razosanai-schwarzkopf</loc></url><url><loc>https://luxurychocolate.lv/veikals/sagatavosana-sokolades-razosanai-sokolade</loc></url><url><loc>https://luxurychocolate.lv/veikals/sagatavosana-sokolades-razosanai-sokolades-atslegas</loc></url><url><loc>https://luxurychocolate.lv/veikals/sagatavosana-sokolades-razosanai-sokolades-davanas</loc></url><url><loc>https://luxurychocolate.lv/veikals/sagatavosana-sokolades-razosanai-sokolades-gleznas</loc></url><url><loc>https://luxurychocolate.lv/veikals/sagatavosana-sokolades-razosanai-sokolades-kalendari</loc></url><url><loc>https://luxurychocolate.lv/veikals/sagatavosana-sokolades-razosanai-sokolades-laimes-pakavs</loc></url><url><loc>https://luxurychocolate.lv/veikals/sagatavosana-sokolades-razosanai-sokolades-maisinos-ar-lentitem</loc></url><url><loc>https://luxurychocolate.lv/veikals/sagatavosana-sokolades-razosanai-sokolades-papira-apdruka</loc></url><url><loc>https://luxurychocolate.lv/veikals/sagatavosana-sokolades-razosanai-sokolades-razosanai</loc></url><url><loc>https://luxurychocolate.lv/veikals/sagatavosana-sokolades-razosanai-sokolades-sirds</loc></url><url><loc>https://luxurychocolate.lv/veikals/sagatavosana-sokolades-razosanai-sokolazu-davanu-kastes</loc></url><url><loc>https://luxurychocolate.lv/veikals/sagatavosana-sokolades-razosanai-spilveni</loc></url><url><loc>https://luxurychocolate.lv/veikals/sagatavosana-sokolades-razosanai-svaigas-un-sokolades</loc></url><url><loc>https://luxurychocolate.lv/veikals/sagatavosana-sokolades-razosanai-svaigi-augli</loc></url><url><loc>https://luxurychocolate.lv/veikals/sagatavosana-sokolades-razosanai-zemenes-sokolade-un-rozes</loc></url><url><loc>https://luxurychocolate.lv/veikals/sagatavosana-sokolades-razosanai-ziemassvetku-davanas</loc></url><url><loc>https://luxurychocolate.lv/veikals/sagatavosana-sokolades-razosanai-ziemassvetku-dekori</loc></url><url><loc>https://luxurychocolate.lv/veikals/sagatavosana-sokolades-razosanai-ziemassvetku-piparkukas</loc></url><url>
     <loc>https://luxurychocolate.lv/veikals/sagatavosanas-kastes-razosanai-sagatavo</loc>
     <lastmod>2026-06-02</lastmod>
     <priority>0.7</priority>
@@ -4503,7 +4459,7 @@
     <priority>0.7</priority>
     <changefreq>weekly</changefreq>
   </url>
-  <url>
+  <url><loc>https://luxurychocolate.lv/veikals/schwarzkopf-sokolade-ar-logo</loc></url><url>
     <loc>https://luxurychocolate.lv/veikals/secinajums-dzejas-sokolade-secinaju</loc>
     <lastmod>2026-06-02</lastmod>
     <priority>0.7</priority>
@@ -4917,7 +4873,7 @@
     <priority>0.7</priority>
     <changefreq>weekly</changefreq>
   </url>
-  <url>
+  <url><loc>https://luxurychocolate.lv/veikals/tumsas-piena-sokolades-izvele-apdrukai-adventes-kalendari</loc></url><url><loc>https://luxurychocolate.lv/veikals/tumsas-piena-sokolades-izvele-apdrukai-aksesuari</loc></url><url><loc>https://luxurychocolate.lv/veikals/tumsas-piena-sokolades-izvele-apdrukai-chocolates</loc></url><url><loc>https://luxurychocolate.lv/veikals/tumsas-piena-sokolades-izvele-apdrukai-corporate-gifts</loc></url><url><loc>https://luxurychocolate.lv/veikals/tumsas-piena-sokolades-izvele-apdrukai-davanas</loc></url><url><loc>https://luxurychocolate.lv/veikals/tumsas-piena-sokolades-izvele-apdrukai-davanu-iepakojums</loc></url><url><loc>https://luxurychocolate.lv/veikals/tumsas-piena-sokolades-izvele-apdrukai-davanu-kartes</loc></url><url><loc>https://luxurychocolate.lv/veikals/tumsas-piena-sokolades-izvele-apdrukai-davanu-kastes</loc></url><url><loc>https://luxurychocolate.lv/veikals/tumsas-piena-sokolades-izvele-apdrukai-davanu-kastites</loc></url><url><loc>https://luxurychocolate.lv/veikals/tumsas-piena-sokolades-izvele-apdrukai-davanu-komplekti</loc></url><url><loc>https://luxurychocolate.lv/veikals/tumsas-piena-sokolades-izvele-apdrukai-dazadi</loc></url><url><loc>https://luxurychocolate.lv/veikals/tumsas-piena-sokolades-izvele-apdrukai-dekoracijas</loc></url><url><loc>https://luxurychocolate.lv/veikals/tumsas-piena-sokolades-izvele-apdrukai-edama-papira-apdruka</loc></url><url><loc>https://luxurychocolate.lv/veikals/tumsas-piena-sokolades-izvele-apdrukai-iepakojums-riekstiem</loc></url><url><loc>https://luxurychocolate.lv/veikals/tumsas-piena-sokolades-izvele-apdrukai-jusu-milestibas-saderiba</loc></url><url><loc>https://luxurychocolate.lv/veikals/tumsas-piena-sokolades-izvele-apdrukai-kapkeiki</loc></url><url><loc>https://luxurychocolate.lv/veikals/tumsas-piena-sokolades-izvele-apdrukai-kastisu-izgatavosana</loc></url><url><loc>https://luxurychocolate.lv/veikals/tumsas-piena-sokolades-izvele-apdrukai-konditorejas-izstradajumi</loc></url><url><loc>https://luxurychocolate.lv/veikals/tumsas-piena-sokolades-izvele-apdrukai-korporativu-davanu-sokolade</loc></url><url><loc>https://luxurychocolate.lv/veikals/tumsas-piena-sokolades-izvele-apdrukai-kukas-tortes</loc></url><url><loc>https://luxurychocolate.lv/veikals/tumsas-piena-sokolades-izvele-apdrukai-laimes-cepumi</loc></url><url><loc>https://luxurychocolate.lv/veikals/tumsas-piena-sokolades-izvele-apdrukai-lc-assemblies-sets-of-chocolate</loc></url><url><loc>https://luxurychocolate.lv/veikals/tumsas-piena-sokolades-izvele-apdrukai-lc-baskets-with-chocolate</loc></url><url><loc>https://luxurychocolate.lv/veikals/tumsas-piena-sokolades-izvele-apdrukai-lc-biscuits-with-chocolate</loc></url><url><loc>https://luxurychocolate.lv/veikals/tumsas-piena-sokolades-izvele-apdrukai-lc-boxes-with-chocolate-pralines</loc></url><url><loc>https://luxurychocolate.lv/veikals/tumsas-piena-sokolades-izvele-apdrukai-lc-chocolate-bars-decorated-with-small-bars</loc></url><url><loc>https://luxurychocolate.lv/veikals/tumsas-piena-sokolades-izvele-apdrukai-lc-chocolate-hearts</loc></url><url><loc>https://luxurychocolate.lv/veikals/tumsas-piena-sokolades-izvele-apdrukai-lc-chocolate-in-boxes</loc></url><url><loc>https://luxurychocolate.lv/veikals/tumsas-piena-sokolades-izvele-apdrukai-lc-chocolate-in-boxes-with-magnet</loc></url><url><loc>https://luxurychocolate.lv/veikals/tumsas-piena-sokolades-izvele-apdrukai-lc-chocolate-medals</loc></url><url><loc>https://luxurychocolate.lv/veikals/tumsas-piena-sokolades-izvele-apdrukai-lc-chocolate-money</loc></url><url><loc>https://luxurychocolate.lv/veikals/tumsas-piena-sokolades-izvele-apdrukai-lc-chocolate-nuts</loc></url><url><loc>https://luxurychocolate.lv/veikals/tumsas-piena-sokolades-izvele-apdrukai-lc-chocolate-pictures</loc></url><url><loc>https://luxurychocolate.lv/veikals/tumsas-piena-sokolades-izvele-apdrukai-lc-chocolate-truffles</loc></url><url><loc>https://luxurychocolate.lv/veikals/tumsas-piena-sokolades-izvele-apdrukai-lc-chocolate-with-ready-designs</loc></url><url><loc>https://luxurychocolate.lv/veikals/tumsas-piena-sokolades-izvele-apdrukai-lc-chocolates-for-subscription</loc></url><url><loc>https://luxurychocolate.lv/veikals/tumsas-piena-sokolades-izvele-apdrukai-lc-chocolates-in-paper</loc></url><url><loc>https://luxurychocolate.lv/veikals/tumsas-piena-sokolades-izvele-apdrukai-lc-christmas-ideas</loc></url><url><loc>https://luxurychocolate.lv/veikals/tumsas-piena-sokolades-izvele-apdrukai-lc-decorative-chocolate-bars-for-cocktail-glasses</loc></url><url><loc>https://luxurychocolate.lv/veikals/tumsas-piena-sokolades-izvele-apdrukai-lc-easter-ideas</loc></url><url><loc>https://luxurychocolate.lv/veikals/tumsas-piena-sokolades-izvele-apdrukai-lc-empty-boxes</loc></url><url><loc>https://luxurychocolate.lv/veikals/tumsas-piena-sokolades-izvele-apdrukai-lc-fortune-cookies</loc></url><url><loc>https://luxurychocolate.lv/veikals/tumsas-piena-sokolades-izvele-apdrukai-lc-french-biscuits-macaroon-with-chocolate</loc></url><url><loc>https://luxurychocolate.lv/veikals/tumsas-piena-sokolades-izvele-apdrukai-lc-pepper-ginger-bread-with-chocolate</loc></url><url><loc>https://luxurychocolate.lv/veikals/tumsas-piena-sokolades-izvele-apdrukai-lc-pralines-with-hazel-nut-cream-filling</loc></url><url><loc>https://luxurychocolate.lv/veikals/tumsas-piena-sokolades-izvele-apdrukai-lc-pralines-with-riga-balsam</loc></url><url><loc>https://luxurychocolate.lv/veikals/tumsas-piena-sokolades-izvele-apdrukai-lc-promotional-chocolates</loc></url><url><loc>https://luxurychocolate.lv/veikals/tumsas-piena-sokolades-izvele-apdrukai-medalas-un-monetas</loc></url><url><loc>https://luxurychocolate.lv/veikals/tumsas-piena-sokolades-izvele-apdrukai-mentoringa-pakalpojumi</loc></url><url><loc>https://luxurychocolate.lv/veikals/tumsas-piena-sokolades-izvele-apdrukai-olu-sokolades</loc></url><url><loc>https://luxurychocolate.lv/veikals/tumsas-piena-sokolades-izvele-apdrukai-parnesum-loksnes-ar-apdruku</loc></url><url><loc>https://luxurychocolate.lv/veikals/tumsas-piena-sokolades-izvele-apdrukai-personalizeta-reklamas-sokolade</loc></url><url><loc>https://luxurychocolate.lv/veikals/tumsas-piena-sokolades-izvele-apdrukai-piekarinamais</loc></url><url><loc>https://luxurychocolate.lv/veikals/tumsas-piena-sokolades-izvele-apdrukai-piparkukas</loc></url><url><loc>https://luxurychocolate.lv/veikals/tumsas-piena-sokolades-izvele-apdrukai-raksti-par-milestibu</loc></url><url><loc>https://luxurychocolate.lv/veikals/tumsas-piena-sokolades-izvele-apdrukai-razosana</loc></url><url><loc>https://luxurychocolate.lv/veikals/tumsas-piena-sokolades-izvele-apdrukai-rieksti-sokolade</loc></url><url><loc>https://luxurychocolate.lv/veikals/tumsas-piena-sokolades-izvele-apdrukai-rieksti-un-sokolade</loc></url><url><loc>https://luxurychocolate.lv/veikals/tumsas-piena-sokolades-izvele-apdrukai-rotallietas</loc></url><url><loc>https://luxurychocolate.lv/veikals/tumsas-piena-sokolades-izvele-apdrukai-sagriezti-augli</loc></url><url><loc>https://luxurychocolate.lv/veikals/tumsas-piena-sokolades-izvele-apdrukai-saldumi</loc></url><url><loc>https://luxurychocolate.lv/veikals/tumsas-piena-sokolades-izvele-apdrukai-saldumu-kastes</loc></url><url><loc>https://luxurychocolate.lv/veikals/tumsas-piena-sokolades-izvele-apdrukai-schwarzkopf</loc></url><url><loc>https://luxurychocolate.lv/veikals/tumsas-piena-sokolades-izvele-apdrukai-sokolade</loc></url><url><loc>https://luxurychocolate.lv/veikals/tumsas-piena-sokolades-izvele-apdrukai-sokolades-atslegas</loc></url><url><loc>https://luxurychocolate.lv/veikals/tumsas-piena-sokolades-izvele-apdrukai-sokolades-davanas</loc></url><url><loc>https://luxurychocolate.lv/veikals/tumsas-piena-sokolades-izvele-apdrukai-sokolades-gleznas</loc></url><url><loc>https://luxurychocolate.lv/veikals/tumsas-piena-sokolades-izvele-apdrukai-sokolades-kalendari</loc></url><url><loc>https://luxurychocolate.lv/veikals/tumsas-piena-sokolades-izvele-apdrukai-sokolades-laimes-pakavs</loc></url><url><loc>https://luxurychocolate.lv/veikals/tumsas-piena-sokolades-izvele-apdrukai-sokolades-maisinos-ar-lentitem</loc></url><url><loc>https://luxurychocolate.lv/veikals/tumsas-piena-sokolades-izvele-apdrukai-sokolades-papira-apdruka</loc></url><url><loc>https://luxurychocolate.lv/veikals/tumsas-piena-sokolades-izvele-apdrukai-sokolades-razosanai</loc></url><url><loc>https://luxurychocolate.lv/veikals/tumsas-piena-sokolades-izvele-apdrukai-sokolades-sirds</loc></url><url><loc>https://luxurychocolate.lv/veikals/tumsas-piena-sokolades-izvele-apdrukai-sokolazu-davanu-kastes</loc></url><url><loc>https://luxurychocolate.lv/veikals/tumsas-piena-sokolades-izvele-apdrukai-spilveni</loc></url><url><loc>https://luxurychocolate.lv/veikals/tumsas-piena-sokolades-izvele-apdrukai-svaigas-un-sokolades</loc></url><url><loc>https://luxurychocolate.lv/veikals/tumsas-piena-sokolades-izvele-apdrukai-svaigi-augli</loc></url><url><loc>https://luxurychocolate.lv/veikals/tumsas-piena-sokolades-izvele-apdrukai-zemenes-sokolade-un-rozes</loc></url><url><loc>https://luxurychocolate.lv/veikals/tumsas-piena-sokolades-izvele-apdrukai-ziemassvetku-davanas</loc></url><url><loc>https://luxurychocolate.lv/veikals/tumsas-piena-sokolades-izvele-apdrukai-ziemassvetku-dekori</loc></url><url><loc>https://luxurychocolate.lv/veikals/tumsas-piena-sokolades-izvele-apdrukai-ziemassvetku-piparkukas</loc></url><url>
     <loc>https://luxurychocolate.lv/veikals/tumsas-sokolades-izvele-apdrukai-4961254</loc>
     <lastmod>2026-06-02</lastmod>
     <priority>0.7</priority>
@@ -5218,4 +5174,32 @@
     <changefreq>weekly</changefreq>
   </url>
 
-</urlset>
+<url>
+    <loc>https://luxurychocolate.lv/vi</loc>
+    <xhtml:link rel="alternate" hreflang="vi" href="https://luxurychocolate.lv/vi"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://luxurychocolate.lv/"/>
+    <lastmod>2026-04-22</lastmod>
+    <priority>0.8</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://luxurychocolate.lv/zh</loc>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://luxurychocolate.lv/zh"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://luxurychocolate.lv/"/>
+    <lastmod>2026-04-22</lastmod>
+    <priority>0.8</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://luxurychocolate.lv/ziemassvetku-korporativas-sokolades</loc>
+    <xhtml:link rel="alternate" hreflang="lv" href="https://luxurychocolate.lv/ziemassvetku-korporativas-sokolades"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://luxurychocolate.lv/en/christmas-corporate-chocolate"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://luxurychocolate.lv/ru/rozhdestvenskij-shokolad"/>
+    <xhtml:link rel="alternate" hreflang="et" href="https://luxurychocolate.lv/et/joulu-sokolaad"/>
+    <xhtml:link rel="alternate" hreflang="lt" href="https://luxurychocolate.lv/lt/kaledinis-sokoladas"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://luxurychocolate.lv/ziemassvetku-korporativas-sokolades"/>
+    <lastmod>2026-03-26</lastmod>
+    <priority>0.8</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url><loc>https://luxurychocolate.lv/ziemassvetku-sokolades-davanas</loc></url></urlset>
