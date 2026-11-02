@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams, Link, useSearchParams } from "react-router-dom";
+import { useParams, Link, useSearchParams, useLocation } from "react-router-dom";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import Navbar from "@/components/Navbar";
@@ -21,6 +21,7 @@ interface Page {
 
 const ContentPage = ({ slug: slugProp }: ContentPageProps) => {
   const params = useParams<{ slug: string }>();
+  const { pathname } = useLocation();
   const slug = slugProp ?? params.slug ?? "";
   const [searchParams] = useSearchParams();
   const urlLang = useCurrentLang();
@@ -31,9 +32,9 @@ const ContentPage = ({ slug: slugProp }: ContentPageProps) => {
   const [notFound, setNotFound] = useState(false);
 
   useSeo({
-    title: page ? `${page.title} | Luxury Chocolate` : "Luxury Chocolate",
+    title: page?.title ?? "Luxury Chocolate",
     description: page?.description ?? "Personalizēta šokolāde ar logo - Luxury Chocolate SIA",
-    path: `/${slug}`,
+    path: pathname,
   });
 
   useEffect(() => {

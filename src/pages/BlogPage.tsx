@@ -5,6 +5,7 @@ import type { Lang } from "@/i18n/types";
 import { expandLangs } from "@/i18n/expandLangs";
 import Navbar from "@/components/Navbar";
 import FooterSection from "@/components/FooterSection";
+import { useSeo } from "@/hooks/useSeo";
 
 const blogStrings: Record<Lang, { title: string; subtitle: string; readMore: string; noPostsYet: string; loading: string }> = expandLangs({
   lv: { title: "Blogs", subtitle: "Jaunākās ziņas un padomi par korporatīvajām šokolādēm", readMore: "Lasīt vairāk", noPostsYet: "Pagaidām nav publicētu rakstu.", loading: "Ielādē..." },
@@ -83,6 +84,7 @@ interface BlogPageProps {
 const BlogPage = ({ lang = "lv" }: BlogPageProps) => {
   const strings = blogStrings[lang];
   const basePath = blogBasePaths[lang];
+  useSeo({ title: strings.title, description: strings.subtitle, path: basePath });
 
   const { data: posts, isLoading } = useQuery({
     queryKey: ["blog-posts", lang],
