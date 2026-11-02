@@ -136,6 +136,11 @@ const Veikals = () => {
 
       if (currentCategoryIds && currentCategoryIds.length > 0) q = q.in("category_id", currentCategoryIds);
       if (search) q = q.or(`name.ilike.%${search}%,name_i18n->>${lang}.ilike.%${search}%`);
+      // Kopējā skatā nerādīt katras kategorijas kopijas (izvēle/sagatavošana) — tikai oriģinālus
+      if (!currentCategoryId && !search) {
+        q = q.not("slug", "like", "tumsas-piena-sokolades-izvele-apdrukai-%");
+        q = q.or("slug.not.like.sagatavosana-sokolades-razosanai-%,slug.eq.sagatavosana-sokolades-razosanai-sagatavosana-razosanai-u0s36v");
+      }
 
       // Kārtošana pēc kategorijas secības (default), tad piespraustie + bildes
       if (sort === "category" && !currentCategoryId) {
