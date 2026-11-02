@@ -5,6 +5,8 @@ import type { Lang } from "@/i18n/types";
 import { expandLangs } from "@/i18n/expandLangs";
 import Navbar from "@/components/Navbar";
 import FooterSection from "@/components/FooterSection";
+import { useSeo } from "@/hooks/useSeo";
+import { useEffect } from "react";
 
 const postStrings: Record<Lang, { backToBlog: string; notFound: string; loading: string }> = expandLangs({
   lv: { backToBlog: "← Atpakaļ uz blogu", notFound: "Raksts nav atrasts.", loading: "Ielādē..." },
@@ -88,11 +90,12 @@ const BlogPostPage = ({ lang = "lv" }: BlogPostPageProps) => {
   const { data: post, isLoading } = useQuery({
     queryKey: ["blog-post", lang, slug],
     queryFn: async () => {
+      if (!slug) return null;
       const { data, error } = await supabase
         .from("blog_posts")
         .select("*")
         .eq("lang", lang)
-        .eq("slug", slug!)
+        .eq("slug", slug)
         .eq("published", true)
         .maybeSingle();
       if (error) throw error;
@@ -100,6 +103,35 @@ const BlogPostPage = ({ lang = "lv" }: BlogPostPageProps) => {
     },
     enabled: !!slug,
   });
+
+  useSeo({
+    title: post?.title ?? "Luxury Chocolate Blog",
+    description: post?.excerpt || post?.content.replace(/<[^>]*>/g, " ").slice(0, 155) || "Luxury Chocolate — personalized Belgian chocolate and corporate gifts.",
+    path: `${basePath}/${slug ?? ""}`,
+    ogImage: post?.cover_image || undefined,
+  });
+
+  useEffect(() => {
+    if (!post) return;
+    const script = document.createElement("script");
+    script.type = "application/ld+json";
+    script.dataset.seo = "article";
+    script.textContent = JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Article",
+      headline: post.title,
+      description: post.excerpt || undefined,
+      image: post.cover_image || undefined,
+      datePublished: post.published_at || undefined,
+      dateModified: post.updated_at || post.published_at || undefined,
+      inLanguage: lang,
+      mainEntityOfPage: `https://luxurychocolate.lv${basePath}/${post.slug}`,
+      author: { "@type": "Organization", name: "Luxury Chocolate SIA", url: "https://luxurychocolate.lv" },
+      publisher: { "@id": "https://luxurychocolate.lv/#organization", "@type": "Organization", name: "Luxury Chocolate SIA", url: "https://luxurychocolate.lv" },
+    });
+    document.head.appendChild(script);
+    return () => script.remove();
+  }, [post, lang, basePath]);
 
   return (
     <div className="min-h-screen bg-background">

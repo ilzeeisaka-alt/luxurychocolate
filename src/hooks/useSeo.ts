@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { hreflangMap } from "@/i18n/ui-strings";
+import { canonicalPath } from "@/lib/seoPaths";
 
 interface SeoProps {
   title: string;
@@ -65,7 +66,10 @@ function setLink(rel: string, href: string, extra?: Record<string, string>) {
   if (!el) {
     el = document.createElement("link");
     el.setAttribute("rel", rel);
-    if (extra) Object.entries(extra).forEach(([k, v]) => el!.setAttribute(k, v));
+    if (extra) {
+      const link = el;
+      Object.entries(extra).forEach(([k, v]) => link.setAttribute(k, v));
+    }
     document.head.appendChild(el);
   }
   el.setAttribute("href", href);
@@ -84,7 +88,7 @@ export function useSeo({ title, description, path, ogImage, keywords }: SeoProps
   useEffect(() => {
     const fullTitle = `${title} — Luxury Chocolate`;
     // Canonical must never carry query params (?lang, ?page, ?category, ?q).
-    const cleanPath = path.split("?")[0].split("#")[0].replace(/\/+$/, "") || "/";
+    const cleanPath = canonicalPath(path);
     const url = `${BASE_URL}${cleanPath}`;
     let base = description.replace(/\s+/g, " ").trim();
     if (base.length < 110) base = `${base.replace(/[.\s]+$/, "")}. Luxury Chocolate — premium Beļģu šokolāde ar apdruku, pasūtījumi no 1 gab.`;
@@ -93,6 +97,7 @@ export function useSeo({ title, description, path, ogImage, keywords }: SeoProps
     document.title = fullTitle;
 
     setMeta("description", desc);
+    setMeta("robots", "index, follow");
     setLink("canonical", url);
 
     // Keywords

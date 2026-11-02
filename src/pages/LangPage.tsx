@@ -4,6 +4,10 @@ import { enPages } from "@/i18n/en";
 import { ruPages } from "@/i18n/ru";
 import { etPages } from "@/i18n/et";
 import { ltPages } from "@/i18n/lt";
+import { svPages } from "@/i18n/sv";
+import { noPages } from "@/i18n/no";
+import { fiPages } from "@/i18n/fi";
+import { daPages } from "@/i18n/da";
 import type { Lang } from "@/i18n/types";
 import NotFound from "@/pages/NotFound";
 
@@ -16,6 +20,10 @@ const pagesByLang: Record<string, Record<string, import("@/i18n/types").PageCont
   ru: ruPages,
   et: etPages,
   lt: ltPages,
+  sv: svPages,
+  no: noPages,
+  fi: fiPages,
+  da: daPages,
 };
 
 const LangPage = ({ lang }: LangPageProps) => {

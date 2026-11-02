@@ -23,6 +23,7 @@ const FooterSection = () => {
           <nav aria-label="Populārākās lapas">
             <p className="text-sm font-medium text-foreground mb-3">Populārākās lapas</p>
             <ul className="space-y-1.5">
+              <li><a href="/katalogs.html" className="text-sm text-muted-foreground hover:text-primary transition-colors">Produktu un rakstu saraksts</a></li>
               {footerLinks.map((link) => (
                 <li key={link.to}>
                   <Link

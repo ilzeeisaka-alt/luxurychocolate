@@ -1,6 +1,7 @@
 import { lazy, Suspense } from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import { seoAliases } from "@/lib/seoPaths";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -119,6 +120,11 @@ const App = () => (
         <ReferralTracker />
         <Suspense fallback={<div className="min-h-screen bg-background" />}>
           <Routes>
+            {Object.entries(seoAliases).map(([from, to]) => <Route key={from} path={from} element={<Navigate to={to} replace />} />)}
+            <Route path="/sv/:slug" element={<LangPage lang="sv" />} />
+            <Route path="/no/:slug" element={<LangPage lang="no" />} />
+            <Route path="/fi/:slug" element={<LangPage lang="fi" />} />
+            <Route path="/da/:slug" element={<LangPage lang="da" />} />
             {/* Auth */}
             <Route path="/auth" element={<Auth />} />
             <Route path="/account" element={<Account />} />
