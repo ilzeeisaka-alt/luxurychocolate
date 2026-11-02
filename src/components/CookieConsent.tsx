@@ -3,6 +3,30 @@ import { motion, AnimatePresence } from "framer-motion";
 
 const GA_ID = "G-72FX1S590Z";
 
+function gtag(...args: unknown[]) {
+  window.dataLayer = window.dataLayer || [];
+  window.dataLayer.push(args);
+}
+
+// Google Consent Mode v2: deny everything until the visitor chooses.
+function setConsentDefaults() {
+  gtag("consent", "default", {
+    ad_storage: "denied",
+    analytics_storage: "denied",
+    ad_user_data: "denied",
+    ad_personalization: "denied",
+  });
+}
+
+function grantConsent() {
+  gtag("consent", "update", {
+    ad_storage: "granted",
+    analytics_storage: "granted",
+    ad_user_data: "granted",
+    ad_personalization: "granted",
+  });
+}
+
 function loadGA() {
   if (document.getElementById("ga-script")) return;
   const s = document.createElement("script");
@@ -10,10 +34,6 @@ function loadGA() {
   s.async = true;
   s.src = `https://www.googletagmanager.com/gtag/js?id=${GA_ID}`;
   document.head.appendChild(s);
-  window.dataLayer = window.dataLayer || [];
-  function gtag(...args: unknown[]) {
-    window.dataLayer.push(args);
-  }
   gtag("js", new Date());
   gtag("config", GA_ID);
 }
