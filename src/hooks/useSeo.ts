@@ -80,20 +80,39 @@ function setLink(rel: string, href: string, extra?: Record<string, string>) {
 function clampDescription(text: string, max = 155) {
   const clean = text.replace(/\s+/g, " ").trim();
   if (clean.length <= max) return clean;
-  const cut = clean.slice(0, max);
+  const cut = clean.slice(0, max - 1);
   const lastSpace = cut.lastIndexOf(" ");
   return `${(lastSpace > 60 ? cut.slice(0, lastSpace) : cut).replace(/[\s,;:.-]+$/, "")}…`;
 }
 
+function searchTitle(title: string) {
+  const suffix = " — Luxury Chocolate";
+  const clean = title.replace(/\s+/g, " ").trim().replace(/\s*[|—–-]\s*Luxury Chocolate\s*$/i, "");
+  const full = `${clean}${suffix}`;
+  // Keep descriptive product details ahead of branding when the full title is long.
+  if (full.length <= 70) return full;
+  if (clean.length <= 70) return clean;
+  return clampDescription(clean, 70);
+}
+
+const descriptionContext: Record<string, string> = {
+  lv: "Apskatiet Luxury Chocolate piedāvājumu un produktu informāciju. Sazinieties ar mums, lai saņemtu individuālu piedāvājumu.",
+  en: "Explore the Luxury Chocolate collection and product details. Contact us for a personalised quotation for your order.",
+  ru: "Посмотрите ассортимент Luxury Chocolate и информацию о продукции. Свяжитесь с нами для индивидуального предложения.",
+  et: "Tutvuge Luxury Chocolate valiku ja tooteinfoga. Võtke meiega ühendust, et saada oma tellimusele personaalne pakkumine.",
+};
+
 export function useSeo({ title, description, path, ogImage, keywords }: SeoProps) {
   const pageLang = useCurrentLang();
   useEffect(() => {
-    const fullTitle = `${title} — Luxury Chocolate`;
+    const fullTitle = searchTitle(title);
     // Canonical must never carry query params (?lang, ?page, ?category, ?q).
     const cleanPath = canonicalPath(path);
     const url = `${BASE_URL}${cleanPath}`;
     let base = description.replace(/\s+/g, " ").trim();
-    if (base.length < 110) base = `${base.replace(/[.\s]+$/, "")}. Luxury Chocolate — premium Beļģu šokolāde ar apdruku, pasūtījumi no 1 gab.`;
+    if (base.length < 110) {
+      base = `${base.replace(/[.\s]+$/, "")}. ${descriptionContext[pageLang] ?? descriptionContext.en}`;
+    }
     const desc = clampDescription(base);
 
     document.title = fullTitle;
