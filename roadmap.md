@@ -1,4 +1,5 @@
 # SEO corrections
+- [ ] Duplicate the personalized cake chocolate squares as a 2 cm product at EUR 0.38 with the original image; synchronize crawlable links and verify the product.
 - [x] Limited search titles without changing visible product names and expanded short descriptions; verified six representative URLs (titles at most 70 characters, descriptions 110–155, one H1) and 10 existing tests passed.
 - [x] Removed the shared noscript H1 that Ahrefs counted alongside route headings; preview has one H1 on the home, LT conference, contact, review and advertising pages. Title/description/H1 change reports are informational.
 - [x] Added Article metadata to the editorial chocolate-business-card page and referenced the full organization from the service; verified Article on all three screenshot examples and full Organization on six pages. IndexNow submission is optional and was not enabled.
