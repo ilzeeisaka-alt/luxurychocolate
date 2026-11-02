@@ -1,10 +1,8 @@
-// @vitest-environment node
 import { describe, expect, it } from "vitest";
-import { loadEnv } from "vite";
 
 describe("Oscar chocolate catalog pricing", () => {
   it("offers the statuette for EUR 25 per piece in its own category", async () => {
-    const env = loadEnv("development", process.cwd(), "VITE_");
+    const env = import.meta.env;
     const response = await fetch(
       `${env.VITE_SUPABASE_URL}/rest/v1/products?slug=eq.sokolades-oskara-statuete&select=price_cents,currency,published,product_categories(slug)`,
       { headers: { apikey: env.VITE_SUPABASE_PUBLISHABLE_KEY } },
