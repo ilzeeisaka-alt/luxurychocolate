@@ -48,8 +48,10 @@ const CookieConsent = () => {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
+    setConsentDefaults();
     const consent = localStorage.getItem("cookie-consent");
     if (consent === "accepted") {
+      grantConsent();
       loadGA();
     } else if (!consent) {
       setVisible(true);
@@ -58,6 +60,7 @@ const CookieConsent = () => {
 
   const accept = () => {
     localStorage.setItem("cookie-consent", "accepted");
+    grantConsent();
     loadGA();
     setVisible(false);
   };
