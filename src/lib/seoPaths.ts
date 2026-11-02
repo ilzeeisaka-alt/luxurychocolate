@@ -6,7 +6,6 @@ export const seoAliases: Record<string, string> = {
   "/et/joulushokolaad-ettevottele": "/et/joulu-sokolaad",
   "/sv/reklam-choklad": "/sv/reklamchoklad",
   "/no/julesjokolade-bedrifter": "/no/julesjokolade-bedrift",
-  "/korporativo-davanu-celvedis": "/korporativo-davanu-celvedis-placeholder",
 };
 
 export function canonicalPath(path: string): string {
