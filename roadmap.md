@@ -1,5 +1,5 @@
 # SEO corrections
-- [ ] Add the Šokolādes Oskara statuete category and product at EUR 25 per piece; synchronize catalog links and verify the shop.
+- [x] Added the Šokolādes Oskara statuete category and product at EUR 25 per piece; synchronized catalog links, verified category-to-product navigation and passed the catalog price test. No product photo was supplied.
 - [x] Duplicated the personalized cake chocolate squares as a 2 cm product at EUR 0.38 with the original image; synchronized crawlable links and verified the price, dimensions and rendered image.
 - [x] Limited search titles without changing visible product names and expanded short descriptions; verified six representative URLs (titles at most 70 characters, descriptions 110–155, one H1) and 10 existing tests passed.
 - [x] Removed the shared noscript H1 that Ahrefs counted alongside route headings; preview has one H1 on the home, LT conference, contact, review and advertising pages. Title/description/H1 change reports are informational.
