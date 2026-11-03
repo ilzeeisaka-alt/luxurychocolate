@@ -56,6 +56,7 @@ const SeoLandingLayout = ({
   productImage,
   priceFrom = "3.50",
   extraSection,
+  extraSectionPosition = "default",
   article = false,
 }: SeoLandingPageProps) => {
   const [modalOpen, setModalOpen] = useState(false);
@@ -244,6 +245,8 @@ const SeoLandingLayout = ({
           </motion.div>
         </div>
       </section>
+
+      {extraSection && extraSectionPosition === "after-hero" ? extraSection : null}
 
       {/* Benefits */}
       <section className="py-16 bg-background">
