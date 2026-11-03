@@ -217,18 +217,14 @@ const VeikalsProduct = () => {
         <div className="grid md:grid-cols-2 gap-10 lg:gap-16">
           {/* Gallery */}
           <div>
-            <div className={cn("bg-card rounded-xl overflow-hidden mb-4", product.slug === "3-garsu-karba-piparkukas-3-cm" && mainImage ? "" : "aspect-square")}>
+            <div className="bg-card rounded-xl overflow-hidden mb-4">
               {mainImage ? (
-                <Button variant="ghost" className={cn("w-full p-0 cursor-zoom-in hover:bg-transparent", product.slug === "3-garsu-karba-piparkukas-3-cm" ? "h-auto" : "h-full")} aria-label={imageViewerLabels(lang).open} title={imageViewerLabels(lang).open}
+                <Button variant="ghost" className="w-full h-auto p-0 cursor-zoom-in hover:bg-transparent block" aria-label={imageViewerLabels(lang).open} title={imageViewerLabels(lang).open}
                   onClick={() => setViewer({ images: images.map((image) => image.url), index: activeImg, title: localizedName })}>
                 <img
                   src={mainImage}
                   alt={images[activeImg]?.alt_text || localizedName}
-                  className={cn(
-                    "w-full",
-                    product.slug === "3-garsu-karba-piparkukas-3-cm" ? "h-auto" : "h-full",
-                    ["3-garsu-karba-piparkukas-9-cm", "3-garsu-karba-piparkukas-3-cm"].includes(product.slug) ? "object-contain" : "object-cover"
-                  )}
+                  className="w-full h-auto object-contain"
                 />
                 </Button>
               ) : (
@@ -250,7 +246,7 @@ const VeikalsProduct = () => {
                       activeImg === i ? "border-primary" : "border-transparent hover:border-border"
                     )}
                   >
-                    <img src={img.url} alt="" className={cn("w-full h-full", product.slug === "3-garsu-karba-piparkukas-3-cm" ? "object-contain" : "object-cover")} />
+                    <img src={img.url} alt="" className="w-full h-full object-contain" loading="lazy" />
                   </button>
                 ))}
               </div>
@@ -391,7 +387,7 @@ const VeikalsProduct = () => {
                         <img
                           src={v.image}
                           alt={vName}
-                          className={cn("w-full h-full", v.slug === "3-garsu-karba-piparkukas-3-cm" ? "object-contain" : "object-cover group-hover:scale-105 transition-transform")}
+                          className="w-full h-full object-contain"
                           loading="lazy"
                         />
                         </Button>

@@ -357,11 +357,11 @@ const Veikals = () => {
                       <div className="aspect-square bg-muted overflow-hidden">
                         {p.image_url ? (
                           <Button variant="ghost" className="h-full w-full p-0 cursor-zoom-in hover:bg-transparent" aria-label={`${imageViewerLabels(lang).open}: ${p.name}`} title={imageViewerLabels(lang).open} onClick={() => setPreview(p)}>
-                          <img
+                           <img
                             src={p.image_url}
                             alt={p.name}
                             loading="lazy"
-                            className={cn("w-full h-full", p.slug === "3-garsu-karba-piparkukas-3-cm" ? "object-contain" : "object-cover transition-transform duration-500 group-hover:scale-110")}
+                            className="w-full h-full object-contain transition-transform duration-500"
                           />
                           </Button>
                         ) : (
