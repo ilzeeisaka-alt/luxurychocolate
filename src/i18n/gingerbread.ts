@@ -13,3 +13,35 @@ const content: Record<string, GingerbreadContent> = {
 };
 
 export const gingerbreadContent = (lang: string): GingerbreadContent => content[lang] ?? content.en;
+
+const photoCaptions: Record<string, { title: string; description: string }[]> = {
+  lv: [
+    { title: "Piparkūkas ar uzņēmuma logo", description: "Apaļas piparkūkas ar apdrukātu šokolādi un personalizētu logo uz sarkana svētku fona." },
+    { title: "Salds mirklis pie kafijas", description: "Piparkūkas ar logo un sarkana kafijas krūze — svētku noskaņa pie kafijas galda." },
+    { title: "Svētku piparkūkas ar lentīti", description: "Egles, zvaigznes un mājiņas formas piparkūkas caurspīdīgos maisiņos ar sarkanām lentītēm." },
+    { title: "Piparkūku zvaigzne", description: "Zvaigznes formas piparkūka ar baltu glazūru un uzņēmuma logo centrā." },
+    { title: "Krāsaina piparkūku eglīte", description: "Egles formas piparkūka ar krāsainu glazūras rotājumu un personalizētu logo." },
+    { title: "Piparkūkas svētku galdam", description: "Sarkanā un zaļā krāsā dekorētas, iesaiņotas piparkūkas blakus svinīgai dzēriena krūzei." },
+    { title: "Individuāli iesaiņotas piparkūkas", description: "Divas piparkūkas ar apdrukātu šokolādi un WOW air logo caurspīdīgā iepakojumā." },
+  ],
+  en: [
+    { title: "Gingerbread with your company logo", description: "Round gingerbread cookies with printed chocolate and a personalised logo on a red festive background." },
+    { title: "A sweet coffee moment", description: "Logo gingerbread and a red coffee cup bring a festive touch to the coffee table." },
+    { title: "Ribbon-wrapped festive gingerbread", description: "Tree, star and house-shaped gingerbread in clear bags tied with red ribbons." },
+    { title: "Gingerbread star", description: "A star-shaped gingerbread cookie with white icing and a company logo in the centre." },
+    { title: "Colourful gingerbread tree", description: "Tree-shaped gingerbread decorated with colourful icing and a personalised logo." },
+    { title: "Gingerbread for the festive table", description: "Wrapped gingerbread decorated in red and green beside a festive drinks cup." },
+    { title: "Individually wrapped gingerbread", description: "Two gingerbread cookies with printed chocolate and the WOW air logo in clear packaging." },
+  ],
+  ru: [
+    { title: "Пряники с логотипом компании", description: "Круглые пряники с печатью на шоколаде и персональным логотипом на красном праздничном фоне." },
+    { title: "Сладкий момент за кофе", description: "Пряники с логотипом и красная чашка кофе создают праздничное настроение." },
+    { title: "Праздничные пряники с лентой", description: "Пряники в форме ёлки, звезды и домика в прозрачных пакетах с красными лентами." },
+    { title: "Пряничная звезда", description: "Пряник в форме звезды с белой глазурью и логотипом компании в центре." },
+    { title: "Красочная пряничная ёлка", description: "Пряник в форме ёлки с разноцветной глазурью и персональным логотипом." },
+    { title: "Пряники для праздничного стола", description: "Упакованные пряники с красным и зелёным декором рядом с праздничной чашкой." },
+    { title: "Пряники в индивидуальной упаковке", description: "Два пряника с печатью на шоколаде и логотипом WOW air в прозрачной упаковке." },
+  ],
+};
+
+export const gingerbreadPhotoCaptions = (lang: string) => photoCaptions[lang] ?? photoCaptions.en;
