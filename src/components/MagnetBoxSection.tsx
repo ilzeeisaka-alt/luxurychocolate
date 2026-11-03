@@ -531,6 +531,7 @@ const magnetBoxContent: Record<Lang, MagnetBoxContent> = expandLangs({
     badge: "Magnetne kutije",
     heading: "Elegantne poklon kutije s magnetskim zatvaračem",
     subtitle: "Poklon kutije premium kvaliteta sa ugrađenim magnetom — elegantno i praktično rješenje za korporativne poklone i praznične setove",
+    giftInfo: "Savršeno za božićne i novogodišnje poklone",
     items: [
       { title: "Božićna poklon kutija", description: "Svečana kutija sa personalizovanim štampom i magnetskim zatvaračem", alt: "Božićna poklon kutija s magnetom" },
       { title: "Kutija za slatkiše", description: "Elegantna bijela kutija sa crvenom vrpcom i magnetskim zatvaračem", alt: "Kutija za slatkiše sa vrpcom i magnetom" },
