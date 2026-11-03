@@ -36,6 +36,7 @@ interface SeoLandingPageProps {
   priceFrom?: string;
   extraSection?: React.ReactNode;
   extraSectionPosition?: "after-hero" | "default";
+  introPosition?: "hero" | "after-extra";
   article?: boolean;
 }
 
@@ -57,6 +58,7 @@ const SeoLandingLayout = ({
   priceFrom = "3.50",
   extraSection,
   extraSectionPosition = "default",
+  introPosition = "hero",
   article = false,
 }: SeoLandingPageProps) => {
   const [modalOpen, setModalOpen] = useState(false);
@@ -241,12 +243,22 @@ const SeoLandingLayout = ({
           >
             <span className="text-5xl mb-6 block" aria-hidden="true">{emoji}</span>
             <h1 className="text-3xl sm:text-5xl text-foreground mb-6 leading-tight">{title}</h1>
-            <p className="text-lg text-muted-foreground max-w-xl mx-auto">{intro}</p>
+            {introPosition !== "after-extra" && (
+              <p className="text-lg text-muted-foreground max-w-xl mx-auto">{intro}</p>
+            )}
           </motion.div>
         </div>
       </section>
 
       {extraSection && extraSectionPosition === "after-hero" ? extraSection : null}
+
+      {introPosition === "after-extra" && (
+        <section className="bg-secondary/50 pb-16">
+          <div className="container mx-auto max-w-3xl text-center">
+            <p className="text-lg text-muted-foreground max-w-xl mx-auto">{intro}</p>
+          </div>
+        </section>
+      )}
 
       {/* Benefits */}
       <section className="py-16 bg-background">
