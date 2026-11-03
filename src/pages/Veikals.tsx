@@ -4,6 +4,8 @@ import { useQuery } from "@tanstack/react-query";
 import { Search, ChevronLeft, ChevronRight, X } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import FooterSection from "@/components/FooterSection";
+import ProductImageViewer, { imageViewerLabels } from "@/components/ProductImageViewer";
+import { Button } from "@/components/ui/button";
 import { supabase } from "@/integrations/supabase/client";
 import { useSeo } from "@/hooks/useSeo";
 import { cn } from "@/lib/utils";
@@ -43,6 +45,7 @@ const Veikals = () => {
   const page = Math.max(1, parseInt(params.get("page") ?? "1", 10) || 1);
   const sort = params.get("sort") ?? "category";
   const [searchInput, setSearchInput] = useState(search);
+  const [preview, setPreview] = useState<ProductRow | null>(null);
 
   useSeo({
     title: ui.shopTitle,
@@ -347,34 +350,35 @@ const Veikals = () => {
               <>
                 <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-5">
                   {items.map((p) => (
-                    <Link
+                    <article
                       key={p.id}
-                      to={`/veikals/${p.slug}${lang !== "lv" ? `?lang=${lang}` : ""}`}
                       className="group block bg-card rounded-xl overflow-hidden border border-border/50 hover:border-primary/40 transition-all duration-300"
                     >
                       <div className="aspect-square bg-muted overflow-hidden">
                         {p.image_url ? (
+                          <Button variant="ghost" className="h-full w-full p-0 cursor-zoom-in hover:bg-transparent" aria-label={`${imageViewerLabels(lang).open}: ${p.name}`} title={imageViewerLabels(lang).open} onClick={() => setPreview(p)}>
                           <img
                             src={p.image_url}
                             alt={p.name}
                             loading="lazy"
                             className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                           />
+                          </Button>
                         ) : (
                           <div className="w-full h-full flex items-center justify-center text-muted-foreground text-xs">
                             {ui.noImage}
                           </div>
                         )}
                       </div>
-                      <div className="p-4">
+                      <Link to={`/veikals/${p.slug}${lang !== "lv" ? `?lang=${lang}` : ""}`} className="block p-4">
                         <h3 className="text-sm text-foreground line-clamp-2 mb-2 min-h-[2.5rem] group-hover:text-primary transition-colors">
                           {p.name}
                         </h3>
                         <p className="text-base font-medium text-primary">
                           {formatPrice(p.price_cents, p.currency)}
                         </p>
-                      </div>
-                    </Link>
+                      </Link>
+                    </article>
                   ))}
                 </div>
 
@@ -411,6 +415,7 @@ const Veikals = () => {
       </main>
 
       <FooterSection />
+      <ProductImageViewer images={preview?.image_url ? [preview.image_url] : []} index={preview ? 0 : null} title={preview?.name ?? ""} onClose={() => setPreview(null)} onChangeIndex={() => {}} />
     </div>
   );
 };
