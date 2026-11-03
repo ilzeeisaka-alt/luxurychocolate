@@ -3,6 +3,9 @@ import { motion } from "framer-motion";
 import { Heart } from "lucide-react";
 import Lightbox from "@/components/Lightbox";
 import strawberryImg from "@/assets/strawberries/zemenes-sokolade.jpg";
+import videoAsset from "@/assets/strawberries/strawberries-roses-loop.mp4.asset.json";
+import videoPoster from "@/assets/strawberries/strawberries-roses-poster.jpg.asset.json";
+import { useInViewOnce } from "@/hooks/useInViewOnce";
 
 const images = [strawberryImg];
 const items = [
@@ -15,6 +18,7 @@ const items = [
 
 const StrawberryRosesSection = () => {
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
+  const [videoWrapRef, videoInView] = useInViewOnce<HTMLDivElement>();
 
   return (
     <>
@@ -50,13 +54,16 @@ const StrawberryRosesSection = () => {
               className="rounded-xl overflow-hidden bg-card"
               style={{ boxShadow: "var(--shadow-card)" }}
             >
-              <div className="relative aspect-[9/16] w-full bg-black">
+              <div ref={videoWrapRef} className="relative aspect-[9/16] w-full bg-muted">
                 <video
                   className="absolute inset-0 w-full h-full object-cover"
-                  src="/video/zemenes-sokolade-rozes.mp4"
-                  controls
+                  src={videoInView ? videoAsset.url : undefined}
+                  poster={videoPoster.url}
+                  autoPlay
+                  loop
+                  muted
                   playsInline
-                  preload="none"
+                  preload={videoInView ? "auto" : "none"}
                 />
               </div>
               <div className="p-3">
