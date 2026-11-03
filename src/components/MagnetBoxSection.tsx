@@ -495,6 +495,7 @@ const magnetBoxContent: Record<Lang, MagnetBoxContent> = expandLangs({
     badge: "Магнітні коробки",
     heading: "Елегантні подарункові коробки з магнітним замком",
     subtitle: "Подарункові коробки преміум якості з вбудованим магнітом — елегантне та практичне рішення для корпоративних подарунків та святкових наборів",
+    giftInfo: "Ідеально для різдвяних та новорічних подарунків",
     items: [
       { title: "Різдвяна подарункова коробка", description: "Святкова коробка з персоналізованим друком і магнітним замком", alt: "Різдвяна подарункова коробка з магнітом" },
       { title: "Коробка для цукерок", description: "Елегантна біла коробка з червоною стрічкою та магнітним замком", alt: "Коробка для цукерок зі стрічкою та магнітом" },
@@ -512,6 +513,8 @@ const magnetBoxContent: Record<Lang, MagnetBoxContent> = expandLangs({
     badge: "Magnetne kutije",
     heading: "Elegantne poklon kutije s magnetskim zatvaračem",
     subtitle: "Poklon kutije premium kvaliteta sa ugrađenim magnetom — elegantno i praktično rešenje za korporativne poklone i praznične setove",
+    giftInfo: "Savršeno za božićne i novogodišnje poklone",
+    giftInfo: "Savršeno za božićne i novogodišnje poklone",
     items: [
       { title: "Božićna poklon kutija", description: "Svečana kutija sa personalizovanim štampom i magnetskim zatvaračem", alt: "Božićna poklon kutija s magnetom" },
       { title: "Kutija za slatkiše", description: "Elegantna bela kutija sa crvenom trakom i magnetskim zatvaračem", alt: "Kutija za slatkiše sa trakom i magnetom" },
@@ -546,6 +549,7 @@ const magnetBoxContent: Record<Lang, MagnetBoxContent> = expandLangs({
     badge: "Магнетни кутии",
     heading: "Елегантни поклон кутии со магнетно затворање",
     subtitle: "Поклон кутии од премиум квалитет со вграден магнет — елегантно и практично решение за корпоративни подароци и празнични сетови",
+    giftInfo: "Идеално за божиќни и новогодишни подароци",
     items: [
       { title: "Новогодишна поклон кутија", description: "Празнична кутија со персонализиран печат и магнетно затворање", alt: "Новогодишна поклон кутија со магнет" },
       { title: "Кутија за бонбони", description: "Елегантна бела кутија со црвена лента и магнетно затворање", alt: "Кутија за бонбони со лента и магнет" },
@@ -563,6 +567,7 @@ const magnetBoxContent: Record<Lang, MagnetBoxContent> = expandLangs({
     badge: "Kutitë magnetike",
     heading: "Kutitë elegante të dhuratave me mbyllje magnetike",
     subtitle: "Kutitë e dhuratave të cilësisë premium me magnet të integruar — një zgjidhje elegante dhe praktike për dhurata korporative dhe setet festive",
+    giftInfo: "Perfekt për dhurata të Krishtlindjeve dhe Vitit të Ri",
     items: [
       { title: "Kutia e dhuratave të Krishtlindjeve", description: "Kuti festive me shtypjen e personalizuar dhe mbyllje magnetike", alt: "Kutia e dhuratave të Krishtlindjeve me magnet" },
       { title: "Kutia e ëmbëlsirave", description: "Kuti e bardhë elegante me shirit të kuq dhe mbyllje magnetike", alt: "Kutia e ëmbëlsirave me shirit dhe magnet" },
@@ -580,6 +585,7 @@ const magnetBoxContent: Record<Lang, MagnetBoxContent> = expandLangs({
     badge: "Magnetic Boxes",
     heading: "Elegant Gift Boxes with Magnetic Closure",
     subtitle: "Premium quality gift boxes with built-in magnet — an elegant and practical solution for corporate gifts and holiday sets",
+    giftInfo: "Perfect for Christmas and New Year gifts",
     items: [
       { title: "Christmas Gift Box", description: "Festive box with personalized printing and magnetic closure", alt: "Christmas gift box with magnet" },
       { title: "Confectionery Box", description: "Elegant white box with red ribbon and magnetic closure", alt: "Confectionery box with ribbon and magnet" },
