@@ -30,7 +30,7 @@ const magnetBoxContent: Record<Lang, MagnetBoxContent> = expandLangs({
     subtitle: "Premium kvalitātes dāvanu kastes ar iebūvētu magnētu — elegants un praktisks risinājums korporatīvām dāvanām un svētku komplektiem",
     giftInfo: "Ziemassvētku un Jaunā gada dāvanām",
     items: [
-      { title: "Ziemassvētku dāvanu kaste", description: "Festīva kaste ar personalizētu apdruku un magnētisku aizdari", alt: "Ziemassvētku dāvanu kaste ar magnētu" },
+      { title: "Ziemassvētku dāvanu kaste", description: "Svētku kaste ar personalizētu apdruku un magnētisku aizdari", alt: "Ziemassvētku dāvanu kaste ar magnētu" },
       { title: "Konfekšu kaste ar lentu", description: "Eleganta balta kaste ar sarkanu lenti un magnētisku aizdari", alt: "Konfekšu kaste ar lentu un magnētu" },
       { title: "Personalizēta dāvana", description: "Trīsvalodu apsveikums ar sniegpārslu dizainu", alt: "Personalizēta šokolādes dāvana" },
       { title: "Luksusa konfekšu kastīte", description: "Balta kaste ar zaļu lenti un korporatīvu logo", alt: "Luksusa konfekšu kastīte" },
