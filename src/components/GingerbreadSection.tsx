@@ -27,12 +27,13 @@ export default function GingerbreadSection({ lang = "lv", showHeading = true }: 
       aria-labelledby={showHeading ? "gingerbread-heading" : undefined}
       className={showHeading ? "scroll-mt-40 bg-background py-20 sm:py-24" : "scroll-mt-40 bg-background pb-20 pt-10 sm:pb-24 sm:pt-14"}
     >
-      {showHeading && (
       <div className="container mx-auto px-4">
+        {showHeading && (
         <div className="mx-auto mb-10 max-w-2xl text-center">
           <h2 id="gingerbread-heading" className="mb-4 text-3xl text-foreground sm:text-4xl">{t.title}</h2>
           <p className="text-muted-foreground">{t.description}</p>
         </div>
+        )}
         <div className="grid grid-cols-1 gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
           {images.map((image, index) => (
             <figure key={image} className="min-w-0">
