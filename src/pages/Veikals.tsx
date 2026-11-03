@@ -361,7 +361,7 @@ const Veikals = () => {
                             src={p.image_url}
                             alt={p.name}
                             loading="lazy"
-                            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                            className={cn("w-full h-full", p.slug === "3-garsu-karba-piparkukas-3-cm" ? "object-contain" : "object-cover transition-transform duration-500 group-hover:scale-110")}
                           />
                           </Button>
                         ) : (
