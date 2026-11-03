@@ -1,4 +1,5 @@
 # SEO corrections
+- [x] Copied the 9 cm gingerbread box as a ribbon bag with 3 cookies for EUR 15 including VAT, without images; synchronized catalog links, verified the product page and passed three catalog tests.
 - [x] Added the Šokolādes Oskara statuete category and product at EUR 25 per piece; synchronized catalog links, verified category-to-product navigation and passed the catalog price test. No product photo was supplied.
 - [x] Duplicated the personalized cake chocolate squares as a 2 cm product at EUR 0.38 with the original image; synchronized crawlable links and verified the price, dimensions and rendered image.
 - [x] Limited search titles without changing visible product names and expanded short descriptions; verified six representative URLs (titles at most 70 characters, descriptions 110–155, one H1) and 10 existing tests passed.
