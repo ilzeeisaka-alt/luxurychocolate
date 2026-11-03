@@ -3,9 +3,9 @@ import SeoLandingLayout from "@/components/SeoLandingLayout";
 const ZiemassvētkuŠokolādes = () => (
   <SeoLandingLayout
     emoji="🎄"
-    title="Ziemassvētku korporatīvās dāvanas ar šokolādi"
-    metaDescription="Ziemassvētku korporatīvās dāvanas ar personalizētu šokolādi. Ekskluzīvas šokolādes ar logo klientiem, partneriem un darbiniekiem."
-    intro="Ziemassvētku korporatīvās dāvanas ir lielisks veids, kā uzņēmumi var pateikties saviem klientiem, partneriem un darbiniekiem par veiksmīgu sadarbību gada laikā."
+    title="Ziemassvētku un Jaunā Gada Šokolādes Dāvanas"
+    metaDescription="Ziemassvētku un Jaunā Gada Šokolādes Dāvanas ar uzņēmuma logo. Personalizēta Beļģu šokolāde elegantās kastēs klientiem, partneriem un darbiniekiem."
+    intro="Ziemassvētku un Jaunā Gada Šokolādes Dāvanas ar uzņēmuma logo — personalizēta Beļģu šokolāde elegantās dāvanu kastēs. Pateicībai klientiem, partneriem un darbiniekiem par veiksmīgu sadarbību."
     benefits={[
       "Svētku tematisks dizains ar Jūsu uzņēmuma logo",
       "Premium Beļģu šokolāde elegantā svētku iepakojumā",
@@ -23,6 +23,7 @@ const ZiemassvētkuŠokolādes = () => (
     `}
     cta="Pasūtiet Ziemassvētku šokolādes"
     keywords={[
+      "Ziemassvētku un Jaunā Gada Šokolādes Dāvanas", "Jaunā gada šokolādes dāvanas",
       "Ziemassvētku korporatīvās dāvanas", "Ziemassvētku šokolādes ar logo",
       "korporatīvās Ziemassvētku šokolādes", "corporate Christmas gifts",
       "holiday corporate chocolate", "svētku dāvanas uzņēmumiem",
