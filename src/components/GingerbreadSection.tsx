@@ -34,7 +34,7 @@ export default function GingerbreadSection({ lang = "lv", showHeading = true }: 
           <p className="text-muted-foreground">{t.description}</p>
         </div>
         )}
-        <div className="grid grid-cols-1 gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3">
           {images.map((image, index) => (
             <figure key={image} className="min-w-0">
             <Button
@@ -47,8 +47,8 @@ export default function GingerbreadSection({ lang = "lv", showHeading = true }: 
               <img src={image} alt={captions[index]?.description} loading="lazy" decoding="async" className="h-full w-full object-contain transition-transform duration-500 motion-safe:group-hover:scale-105" />
               <span className="absolute bottom-3 right-3 flex h-8 w-8 items-center justify-center rounded-full bg-background/90 text-primary transition-transform motion-safe:group-hover:scale-110"><ZoomIn size={17} /></span>
             </Button>
-            <figcaption className="pt-5">
-              <h3 className="mb-2 text-lg font-bold leading-snug text-foreground">{captions[index]?.title}</h3>
+            <figcaption className="pt-3">
+              <h3 className="mb-1 text-lg font-bold leading-snug text-foreground">{captions[index]?.title}</h3>
               <p className="text-sm leading-relaxed text-muted-foreground">{captions[index]?.description}</p>
             </figcaption>
             </figure>
