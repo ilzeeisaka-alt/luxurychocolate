@@ -24,6 +24,7 @@ const ZiemassvētkuŠokolādes = () => (
     `}
     extraSection={<MagnetBoxSection />}
     extraSectionPosition="after-hero"
+    introPosition="after-extra"
     cta="Pasūtiet Ziemassvētku šokolādes"
     keywords={[
       "Ziemassvētku un Jaunā Gada Šokolādes Dāvanas", "Jaunā gada šokolādes dāvanas",
