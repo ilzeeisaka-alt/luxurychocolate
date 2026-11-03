@@ -1,4 +1,5 @@
 import SeoLandingLayout from "@/components/SeoLandingLayout";
+import MagnetBoxSection from "@/components/MagnetBoxSection";
 
 const ZiemassvētkuŠokolādes = () => (
   <SeoLandingLayout
@@ -21,6 +22,7 @@ const ZiemassvētkuŠokolādes = () => (
       <p><strong class="text-foreground">Ziemassvētku šokolādes ar logo</strong> var būt lielisks risinājums gan nelielām dāvanām, gan lielākiem korporatīvajiem projektiem. Personalizēta šokolāde palīdz uzņēmumiem radīt siltu svētku atmosfēru un vienlaikus stiprināt zīmola atpazīstamību.</p>
       <p>Mēs piedāvājam īpašus <strong class="text-foreground">svētku kolekcijas iepakojumus</strong> — no elegantām kastītēm līdz adventes kalendāriem ar Jūsu brendingu.</p>
     `}
+    extraSection={<MagnetBoxSection />}
     cta="Pasūtiet Ziemassvētku šokolādes"
     keywords={[
       "Ziemassvētku un Jaunā Gada Šokolādes Dāvanas", "Jaunā gada šokolādes dāvanas",
