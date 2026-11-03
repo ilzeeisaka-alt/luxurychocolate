@@ -221,7 +221,7 @@ const VeikalsProduct = () => {
                   alt={images[activeImg]?.alt_text || localizedName}
                   className={cn(
                     "w-full h-full",
-                    product.slug === "3-garsu-karba-piparkukas-9-cm" ? "object-contain" : "object-cover"
+                    ["3-garsu-karba-piparkukas-9-cm", "3-garsu-karba-piparkukas-3-cm"].includes(product.slug) ? "object-contain" : "object-cover"
                   )}
                 />
               ) : (
