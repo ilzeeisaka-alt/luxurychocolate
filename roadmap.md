@@ -1,4 +1,5 @@
 # SEO corrections
+- [ ] Highlight Christmas and New Year chocolate gifts in the gift-box section and update the existing Christmas page's title, description and keywords; verify display and metadata.
 - [x] Added the Piparkūkas gallery to all language homepages with seven supplied photos and top navigation; verified full-image display, enlargement, next-image controls, the shop-category link and return navigation in Latvian and English. Local browser asset requests were forwarded to the actual preview asset service for verification.
 - [x] Copied the 3 cm gingerbread box as a ribbon bag ("3 garšu maisiņš ar lentīti – Piparkūkas 3 cm, 9 gab. iepakojumā") for EUR 15 including VAT, without images; synchronized catalog links, verified the product and category pages and passed three catalog tests.
 - [x] Added the Šokolādes Oskara statuete category and product at EUR 25 per piece; synchronized catalog links, verified category-to-product navigation and passed the catalog price test. No product photo was supplied.

@@ -4,6 +4,7 @@ import { Magnet, Gift, Sparkles } from "lucide-react";
 import type { Lang } from "@/i18n/types";
 import { expandLangs } from "@/i18n/expandLangs";
 import Lightbox from "@/components/Lightbox";
+import { Link } from "react-router-dom";
 
 import bookBox1 from "@/assets/bookbox-1.jpg";
 import bookBox2 from "@/assets/bookbox-2.jpg";
@@ -633,10 +634,20 @@ const MagnetBoxSection = ({ lang = "lv", onCtaClick }: MagnetBoxSectionProps) =>
             <p className="text-muted-foreground max-w-2xl mx-auto">
               {t.subtitle}
             </p>
-            <p className="mt-3 inline-flex items-center justify-center gap-2 text-primary font-medium">
-              <Gift className="w-4 h-4" />
-              {t.giftInfo}
-            </p>
+            <div className="mx-auto mt-8 max-w-4xl border-y border-primary/30 py-6">
+              {lang === "lv" && (
+                <h3 className="mb-4 flex items-center justify-center gap-3 text-2xl font-semibold leading-snug text-foreground sm:text-3xl">
+                  <span aria-hidden="true" className="shrink-0 text-2xl">🎄</span>
+                  <Link to="/ziemassvetku-korporativas-sokolades" className="min-w-0 hover:text-primary transition-colors">Ziemassvētku un Jaunā Gada Šokolādes Dāvanas</Link>
+                  <span aria-hidden="true" className="shrink-0 text-2xl">🎁</span>
+                </h3>
+              )}
+              <p className="flex items-center justify-center gap-3 text-xl font-semibold leading-snug text-primary sm:text-2xl">
+                <Sparkles aria-hidden="true" className="h-5 w-5 shrink-0" />
+                <span>{t.giftInfo}</span>
+                <Sparkles aria-hidden="true" className="h-5 w-5 shrink-0" />
+              </p>
+            </div>
           </div>
 
           {/* Images grid */}
