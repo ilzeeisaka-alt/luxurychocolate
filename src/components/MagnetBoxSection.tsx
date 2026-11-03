@@ -16,6 +16,7 @@ interface MagnetBoxContent {
   badge: string;
   heading: string;
   subtitle: string;
+  giftInfo: string;
   items: { title: string; description: string; alt: string }[];
   ctaButton: string;
   features: { magnet: { title: string; desc: string }; print: { title: string; desc: string }; pack: { title: string; desc: string } };
@@ -26,6 +27,7 @@ const magnetBoxContent: Record<Lang, MagnetBoxContent> = expandLangs({
     badge: "Kastes ar magnētu",
     heading: "Elegantas dāvanu kastes ar magnētisku aizdari",
     subtitle: "Premium kvalitātes dāvanu kastes ar iebūvētu magnētu — elegants un praktisks risinājums korporatīvām dāvanām un svētku komplektiem",
+    giftInfo: "Ziemassvētku un Jaunā gada dāvanām",
     items: [
       { title: "Ziemassvētku dāvanu kaste", description: "Festīva kaste ar personalizētu apdruku un magnētisku aizdari", alt: "Ziemassvētku dāvanu kaste ar magnētu" },
       { title: "Konfekšu kaste ar lentu", description: "Eleganta balta kaste ar sarkanu lenti un magnētisku aizdari", alt: "Konfekšu kaste ar lentu un magnētu" },
@@ -43,6 +45,7 @@ const magnetBoxContent: Record<Lang, MagnetBoxContent> = expandLangs({
     badge: "Magnetic Boxes",
     heading: "Elegant Gift Boxes with Magnetic Closure",
     subtitle: "Premium quality gift boxes with built-in magnet — an elegant and practical solution for corporate gifts and holiday sets",
+    giftInfo: "Perfect for Christmas and New Year gifts",
     items: [
       { title: "Christmas Gift Box", description: "Festive box with personalized printing and magnetic closure", alt: "Christmas gift box with magnet" },
       { title: "Confectionery Box", description: "Elegant white box with red ribbon and magnetic closure", alt: "Confectionery box with ribbon and magnet" },
@@ -60,6 +63,7 @@ const magnetBoxContent: Record<Lang, MagnetBoxContent> = expandLangs({
     badge: "Коробки с магнитом",
     heading: "Элегантные подарочные коробки с магнитным замком",
     subtitle: "Коробки премиум качества со встроенным магнитом — элегантное и практичное решение для корпоративных подарков и праздничных наборов",
+    giftInfo: "Подарки на Рождество и Новый год",
     items: [
       { title: "Новогодняя коробка", description: "Праздничная коробка с персонализированной печатью и магнитным замком", alt: "Новогодняя подарочная коробка с магнитом" },
       { title: "Коробка для конфет", description: "Элегантная белая коробка с красной лентой и магнитным замком", alt: "Коробка для конфет с лентой и магнитом" },
@@ -77,6 +81,7 @@ const magnetBoxContent: Record<Lang, MagnetBoxContent> = expandLangs({
     badge: "Magnetkastid",
     heading: "Elegantsed kingituse kastid magnetlukuga",
     subtitle: "Premium kvaliteediga kingituse kastid sisseehitatud magnetiga — elegantne ja praktiline lahendus ettevõtte kingitustele ja pühade komplektidele",
+    giftInfo: "Jõulu- ja uusaastakingitusteks",
     items: [
       { title: "Jõulukinkide kast", description: "Pidulik kast personaliseeritud trükise ja magnetlukuga", alt: "Jõulukinkide kast magnetiga" },
       { title: "Kommikarp", description: "Elegantne valge kast punase lipsu ja magnetlukuga", alt: "Kommikarp lipsu ja magnetiga" },
@@ -94,6 +99,7 @@ const magnetBoxContent: Record<Lang, MagnetBoxContent> = expandLangs({
     badge: "Dėžutės su magnetu",
     heading: "Elegantiškos dovanų dėžutės su magnetiniu užsegimu",
     subtitle: "Premium kokybės dovanų dėžutės su įmontuotu magnetu — elegantiškas ir praktiškas sprendimas įmonių dovanoms ir šventiniams rinkiniams",
+    giftInfo: "Kalėdų ir Naujųjų metų dovanoms",
     items: [
       { title: "Kalėdinė dovanų dėžutė", description: "Šventinė dėžutė su personalizuota spauda ir magnetiniu užsegimu", alt: "Kalėdinė dovanų dėžutė su magnetu" },
       { title: "Saldainių dėžutė", description: "Elegantiška balta dėžutė su raudona juostele ir magnetiniu užsegimu", alt: "Saldainių dėžutė su juostele ir magnetu" },
@@ -111,6 +117,7 @@ const magnetBoxContent: Record<Lang, MagnetBoxContent> = expandLangs({
     badge: "Magnetlådor",
     heading: "Eleganta presentboxar med magnetisk stängning",
     subtitle: "Premiumkvalitet presentboxar med inbyggd magnet — en elegant och praktisk lösning för företagsgåvor och högtidsset",
+    giftInfo: "Perfekt för jul- och nyårspresenter",
     items: [
       { title: "Julklappslåda", description: "Festlig låda med personligt tryck och magnetisk stängning", alt: "Julklappslåda med magnet" },
       { title: "Konfektlåda", description: "Elegant vit låda med rött band och magnetisk stängning", alt: "Konfektlåda med band och magnet" },
@@ -128,6 +135,7 @@ const magnetBoxContent: Record<Lang, MagnetBoxContent> = expandLangs({
     badge: "Magnetbokser",
     heading: "Elegante gaveesker med magnetisk lukking",
     subtitle: "Premium kvalitet gaveesker med innebygget magnet — en elegant og praktisk løsning for bedriftsgaver og høytidssett",
+    giftInfo: "Perfekt til jul- og nyårsgaver",
     items: [
       { title: "Julegaveeske", description: "Festlig eske med personlig trykk og magnetisk lukking", alt: "Julegaveeske med magnet" },
       { title: "Konfekteske", description: "Elegant hvit eske med rødt bånd og magnetisk lukking", alt: "Konfekteske med bånd og magnet" },
@@ -145,6 +153,7 @@ const magnetBoxContent: Record<Lang, MagnetBoxContent> = expandLangs({
     badge: "Magneettilaatikoit",
     heading: "Elegantit lahjalaatikot magneettisella suljinnalla",
     subtitle: "Premium-laatuiset lahjalaatikot sisäänrakennetulla magneetilla — elegantti ja käytännöllinen ratkaisu yrityslahjoille ja juhlaseteille",
+    giftInfo: "Täydellinen joulun ja uudenvuoden lahjaksi",
     items: [
       { title: "Joululahjalaatikko", description: "Juhlallinen laatikko personoidulla painatuksella ja magneettisella suljinnalla", alt: "Joululahjalaatikko magneetilla" },
       { title: "Konvehtilaatikko", description: "Elegantti valkoinen laatikko punaisella nauhalla ja magneettisella suljinnalla", alt: "Konvehtilaatikko nauhalla ja magneetilla" },
@@ -162,6 +171,7 @@ const magnetBoxContent: Record<Lang, MagnetBoxContent> = expandLangs({
     badge: "Magnetæsker",
     heading: "Elegante gaveæsker med magnetisk lukning",
     subtitle: "Premium kvalitet gaveæsker med indbygget magnet — en elegant og praktisk løsning til virksomhedsgaver og højtidssæt",
+    giftInfo: "Perfekt til jul- og nyårsgaver",
     items: [
       { title: "Julegaveæske", description: "Festlig æske med personligt tryk og magnetisk lukning", alt: "Julegaveæske med magnet" },
       { title: "Konfekteske", description: "Elegant hvid æske med rødt bånd og magnetisk lukning", alt: "Konfekteske med bånd og magnet" },
@@ -179,6 +189,7 @@ const magnetBoxContent: Record<Lang, MagnetBoxContent> = expandLangs({
     badge: "Magnetboxen",
     heading: "Elegante Geschenkboxen mit Magnetverschluss",
     subtitle: "Premium-Qualität Geschenkboxen mit eingebautem Magnet — eine elegante und praktische Lösung für Firmengeschenke und Feiertagssets",
+    giftInfo: "Perfekt für Weihnachts- und Neujahrsgeschenke",
     items: [
       { title: "Weihnachtsbox", description: "Festliche Box mit personalisiertem Druck und Magnetverschluss", alt: "Weihnachtsgeschenkbox mit Magnet" },
       { title: "Pralinenbox", description: "Elegante weiße Box mit rotem Band und Magnetverschluss", alt: "Pralinenbox mit Band und Magnet" },
@@ -196,6 +207,7 @@ const magnetBoxContent: Record<Lang, MagnetBoxContent> = expandLangs({
     badge: "Boîtes magnétiques",
     heading: "Boîtes cadeaux élégantes avec fermeture magnétique",
     subtitle: "Boîtes cadeaux de qualité premium avec aimant intégré — une solution élégante et pratique pour les cadeaux d'entreprise et les ensembles de fête",
+    giftInfo: "Idéal pour les cadeaux de Noël et du Nouvel An",
     items: [
       { title: "Boîte cadeau de Noël", description: "Boîte festive avec impression personnalisée et fermeture magnétique", alt: "Boîte cadeau de Noël avec aimant" },
       { title: "Boîte de confiserie", description: "Boîte blanche élégante avec ruban rouge et fermeture magnétique", alt: "Boîte de confiserie avec ruban et aimant" },
@@ -599,6 +611,10 @@ const MagnetBoxSection = ({ lang = "lv", onCtaClick }: MagnetBoxSectionProps) =>
             </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
               {t.subtitle}
+            </p>
+            <p className="mt-3 inline-flex items-center justify-center gap-2 text-primary font-medium">
+              <Gift className="w-4 h-4" />
+              {t.giftInfo}
             </p>
           </div>
 
