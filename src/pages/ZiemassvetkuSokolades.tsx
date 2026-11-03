@@ -23,6 +23,7 @@ const ZiemassvētkuŠokolādes = () => (
       <p>Mēs piedāvājam īpašus <strong class="text-foreground">svētku kolekcijas iepakojumus</strong> — no elegantām kastītēm līdz adventes kalendāriem ar Jūsu brendingu.</p>
     `}
     extraSection={<MagnetBoxSection />}
+    extraSectionPosition="after-hero"
     cta="Pasūtiet Ziemassvētku šokolādes"
     keywords={[
       "Ziemassvētku un Jaunā Gada Šokolādes Dāvanas", "Jaunā gada šokolādes dāvanas",
