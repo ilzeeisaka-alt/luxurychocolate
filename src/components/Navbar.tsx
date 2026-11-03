@@ -887,7 +887,7 @@ const Navbar = ({ lang: langProp }: NavbarProps) => {
   const baseItems = navItems[lang];
   const allItems = [
     ...baseItems.slice(0, 1),
-    { label: gingerbreadContent(lang).title, to: "#piparkukas" },
+    { label: gingerbreadContent(lang).title, to: lang === "lv" ? "/piparkukas" : "#piparkukas" },
     ...baseItems.slice(1),
   ];
   const affiliateItem = allItems.find((i) => i.to === "/affiliate");
