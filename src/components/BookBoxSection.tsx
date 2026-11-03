@@ -42,37 +42,38 @@ const BookBoxSection = ({ lang = "lv" }: BookBoxSectionProps) => {
 
   return (
     <>
-      {/* Hero video — half-page width, looping, with sound toggle */}
-      <div ref={wrapRef} className="max-w-3xl mx-auto px-4 overflow-hidden relative group">
-        <video
-          ref={videoRef}
-          autoPlay
-          loop
-          muted
-          playsInline
-          preload="none"
-          className="w-full h-auto block"
-          poster={heroImg}
-        >
-          {videoInView && <source src="/video/sokolades-gramata.mp4" type="video/mp4" />}
-        </video>
-        <button
-          onClick={toggleMute}
-          className="absolute bottom-4 right-4 z-10 p-3 rounded-full bg-background/70 backdrop-blur-sm text-foreground hover:bg-background/90 transition-all duration-200 opacity-0 group-hover:opacity-100 focus:opacity-100"
-          aria-label={isMuted ? "Ieslēgt skaņu" : "Izslēgt skaņu"}
-        >
-          {isMuted ? <VolumeX size={20} /> : <Volume2 size={20} />}
-        </button>
-      </div>
-
       <motion.section className="py-24" {...sectionVariants}>
         <div className="container mx-auto">
           <h2 className="text-3xl sm:text-4xl text-foreground text-center mb-4">
             {t.heading}
           </h2>
-          <p className="text-muted-foreground text-center mb-16 max-w-lg mx-auto">
+          <p className="text-muted-foreground text-center max-w-lg mx-auto">
             {t.subtitle}
           </p>
+
+          {/* Hero video — half-page width, looping, with sound toggle */}
+          <div ref={wrapRef} className="max-w-3xl mx-auto px-4 overflow-hidden relative group mt-12 mb-16">
+            <video
+              ref={videoRef}
+              autoPlay
+              loop
+              muted
+              playsInline
+              preload="none"
+              className="w-full h-auto block"
+              poster={heroImg}
+            >
+              {videoInView && <source src="/video/sokolades-gramata.mp4" type="video/mp4" />}
+            </video>
+            <button
+              onClick={toggleMute}
+              className="absolute bottom-4 right-4 z-10 p-3 rounded-full bg-background/70 backdrop-blur-sm text-foreground hover:bg-background/90 transition-all duration-200 opacity-0 group-hover:opacity-100 focus:opacity-100"
+              aria-label={isMuted ? "Ieslēgt skaņu" : "Izslēgt skaņu"}
+            >
+              {isMuted ? <VolumeX size={20} /> : <Volume2 size={20} />}
+            </button>
+          </div>
+
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
             {t.items.map((item, i) => (
