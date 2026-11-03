@@ -34,7 +34,7 @@ export default function ProductImageViewer({ images, index, title, onClose, onCh
     <Dialog open={index !== null} onOpenChange={(open) => { if (!open) onClose(); }}>
       <DialogContent
         aria-describedby={undefined}
-        className="z-[100] flex h-[92dvh] w-[96vw] max-w-[1400px] flex-col gap-3 p-3 sm:p-5"
+        className="z-[10000] flex h-[92dvh] w-[96vw] max-w-[1400px] flex-col gap-3 p-3 sm:p-5"
         onKeyDown={(event) => {
           if (event.key === "ArrowLeft") { event.preventDefault(); change(-1); }
           if (event.key === "ArrowRight") { event.preventDefault(); change(1); }
