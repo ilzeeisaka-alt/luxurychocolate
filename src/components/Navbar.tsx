@@ -885,10 +885,18 @@ const Navbar = ({ lang: langProp }: NavbarProps) => {
   const lang = langProp ?? detectedLang;
   const { user } = useAuth();
   const baseItems = navItems[lang];
-  const allItems = [
-    ...baseItems.slice(0, 1),
-    { label: gingerbreadContent(lang).title, to: lang === "lv" ? "/piparkukas" : "#piparkukas" },
-    ...baseItems.slice(1),
+  // "Piparkūkas" and the Christmas page lead the menu on desktop and mobile.
+  const gingerbreadItem: NavItem = {
+    label: gingerbreadContent(lang).title,
+    to: lang === "lv" ? "/piparkukas" : "#piparkukas",
+  };
+  const christmasItem = baseItems.find((i) =>
+    /christmas-corporate|ziemassvetku-korporativas|rozhdestvenskij|joulu-sokolaad|kaledinis-sokoladas/.test(i.to)
+  );
+  const allItems: NavItem[] = [
+    gingerbreadItem,
+    ...(christmasItem ? [christmasItem] : []),
+    ...baseItems.filter((i) => i !== christmasItem),
   ];
   const affiliateItem = allItems.find((i) => i.to === "/affiliate");
   const contactItem = allItems.find((i) => i.to === "#kontakti");
