@@ -219,7 +219,10 @@ const VeikalsProduct = () => {
                 <img
                   src={mainImage}
                   alt={images[activeImg]?.alt_text || localizedName}
-                  className="w-full h-full object-cover"
+                  className={cn(
+                    "w-full h-full",
+                    product.slug === "3-garsu-karba-piparkukas-9-cm" ? "object-contain" : "object-cover"
+                  )}
                 />
               ) : (
                 <div className="w-full h-full flex items-center justify-center text-muted-foreground">
