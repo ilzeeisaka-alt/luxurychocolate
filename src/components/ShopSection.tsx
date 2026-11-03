@@ -4,6 +4,7 @@ import type { Lang } from "@/i18n/types";
 import { expandLangs } from "@/i18n/expandLangs";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
+import GingerbreadSection from "@/components/GingerbreadSection";
 
 const shopContent: Record<
   Lang,
@@ -309,6 +310,7 @@ const ShopSection = ({ lang = "lv", onCtaClick }: ShopSectionProps) => {
   const url = lang === "lv" ? "/veikals" : `/veikals?lang=${lang}`;
 
   return (
+    <>
     <section className="py-20 bg-primary/5" aria-labelledby="shop-heading">
       <div className="container mx-auto max-w-3xl text-center">
         <motion.div
@@ -355,6 +357,8 @@ const ShopSection = ({ lang = "lv", onCtaClick }: ShopSectionProps) => {
         </motion.div>
       </div>
     </section>
+    <GingerbreadSection lang={lang} />
+    </>
   );
 };
 

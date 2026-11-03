@@ -1,4 +1,5 @@
 # Architecture rules
+- Compose the homepage gingerbread gallery as a sibling of the shop band in shared ShopSection so all language homepages have the same navigation target without duplicating page wiring.
 - Use the shared ProductImageViewer for shop and product-page image enlargement, keeping image previews separate from product navigation and reusing accessible dialog controls.
 - Keep legacy SEO URL aliases in `src/lib/seoPaths.ts` and route them to real pages; this prevents editorial links from landing on noindex pages.
 - Keep `public/sitemap.xml` and `public/katalogs.html` synchronized with published product/blog URLs when the catalog changes; the HTML directory supplies crawlable links without a database query per crawler visit.

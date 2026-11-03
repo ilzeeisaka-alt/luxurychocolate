@@ -1,4 +1,5 @@
 # SEO corrections
+- [ ] Add a Piparkūkas homepage gallery with seven supplied photos, top navigation, full-image viewing and a link to the existing shop category; verify navigation and photos.
 - [x] Copied the 3 cm gingerbread box as a ribbon bag ("3 garšu maisiņš ar lentīti – Piparkūkas 3 cm, 9 gab. iepakojumā") for EUR 15 including VAT, without images; synchronized catalog links, verified the product and category pages and passed three catalog tests.
 - [x] Added the Šokolādes Oskara statuete category and product at EUR 25 per piece; synchronized catalog links, verified category-to-product navigation and passed the catalog price test. No product photo was supplied.
 - [x] Duplicated the personalized cake chocolate squares as a 2 cm product at EUR 0.38 with the original image; synchronized crawlable links and verified the price, dimensions and rendered image.

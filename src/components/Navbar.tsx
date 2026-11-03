@@ -10,6 +10,7 @@ import { useAuth } from "@/hooks/useAuth";
 import { supabase } from "@/integrations/supabase/client";
 import { tUI } from "@/i18n/uiStrings";
 import { useCurrentLang } from "@/i18n/useCurrentLang";
+import { gingerbreadContent } from "@/i18n/gingerbread";
 
 type InfoLabels = {
   info: string;
@@ -883,7 +884,12 @@ const Navbar = ({ lang: langProp }: NavbarProps) => {
   const detectedLang = useCurrentLang() as Lang;
   const lang = langProp ?? detectedLang;
   const { user } = useAuth();
-  const allItems = navItems[lang];
+  const baseItems = navItems[lang];
+  const allItems = [
+    ...baseItems.slice(0, 1),
+    { label: gingerbreadContent(lang).title, to: "#piparkukas" },
+    ...baseItems.slice(1),
+  ];
   const affiliateItem = allItems.find((i) => i.to === "/affiliate");
   const contactItem = allItems.find((i) => i.to === "#kontakti");
   const items = allItems.filter((i) => i.to !== "/affiliate" && i.to !== "#kontakti");
