@@ -44,7 +44,7 @@ export default function GingerbreadSection({ lang = "lv", showHeading = true }: 
               aria-label={`${labels.open}: ${captions[index]?.title}`}
               title={labels.open}
             >
-              <img src={image} alt={captions[index]?.description} loading="lazy" decoding="async" className="h-full w-full object-contain transition-transform duration-500 motion-safe:group-hover:scale-105" />
+              <img src={image} alt={captions[index]?.description} loading="lazy" decoding="async" className="h-full w-full object-cover transition-transform duration-500 motion-safe:group-hover:scale-105" />
               <span className="absolute bottom-3 right-3 flex h-8 w-8 items-center justify-center rounded-full bg-background/90 text-primary transition-transform motion-safe:group-hover:scale-110"><ZoomIn size={17} /></span>
             </Button>
             <figcaption className="pt-3">

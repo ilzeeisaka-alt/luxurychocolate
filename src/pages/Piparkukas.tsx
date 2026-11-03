@@ -1,6 +1,5 @@
 import SeoLandingLayout from "@/components/SeoLandingLayout";
 import GingerbreadSection from "@/components/GingerbreadSection";
-import ClientExamplesSection from "@/components/ClientExamplesSection";
 
 const Piparkukas = () => (
   <SeoLandingLayout
@@ -22,12 +21,7 @@ const Piparkukas = () => (
     `}
     cta="Pasūtiet piparkūkas ar logo"
     keywords={["piparkūkas ar logo", "piparkūkas ar apdruku", "Ziemassvētku piparkūkas", "personalizētas piparkūkas", "korporatīvās Ziemassvētku dāvanas", "gingerbread with logo"]}
-    extraSection={
-      <>
-        <GingerbreadSection showHeading={false} />
-        <ClientExamplesSection />
-      </>
-    }
+    extraSection={<GingerbreadSection showHeading={false} />}
     extraSectionPosition="after-hero"
     faqs={[
       { q: "Vai uz piparkūkām var apdrukāt logo?", a: "Jā, apdrukājam logo, tekstu vai svētku zīmējumu ar pārtikas krāsām." },
