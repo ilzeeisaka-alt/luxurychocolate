@@ -14,7 +14,7 @@ import wrappedPhoto from "@/assets/gingerbread/gingerbread-wrapped.webp.asset.js
 
 const images = [logoPhoto, coffeePhoto, ribbonPhoto, starPhoto, treePhoto, tablePhoto, wrappedPhoto].map((photo) => photo.url);
 
-export default function GingerbreadSection({ lang = "lv" }: { lang?: string }) {
+export default function GingerbreadSection({ lang = "lv", showHeading = true }: { lang?: string; showHeading?: boolean }) {
   const [imageIndex, setImageIndex] = useState<number | null>(null);
   const t = gingerbreadContent(lang);
   const captions = gingerbreadPhotoCaptions(lang);
@@ -22,7 +22,12 @@ export default function GingerbreadSection({ lang = "lv" }: { lang?: string }) {
   const shopUrl = `/veikals?category=ziemassvetku-piparkukas${lang === "lv" ? "" : `&lang=${lang}`}`;
 
   return (
-    <section id="piparkukas" aria-labelledby="gingerbread-heading" className="scroll-mt-40 bg-background py-20 sm:py-24">
+    <section
+      id="piparkukas"
+      aria-labelledby={showHeading ? "gingerbread-heading" : undefined}
+      className={showHeading ? "scroll-mt-40 bg-background py-20 sm:py-24" : "scroll-mt-40 bg-background pb-20 pt-10 sm:pb-24 sm:pt-14"}
+    >
+      {showHeading && (
       <div className="container mx-auto px-4">
         <div className="mx-auto mb-10 max-w-2xl text-center">
           <h2 id="gingerbread-heading" className="mb-4 text-3xl text-foreground sm:text-4xl">{t.title}</h2>

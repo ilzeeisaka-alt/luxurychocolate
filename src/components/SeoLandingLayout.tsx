@@ -35,6 +35,7 @@ interface SeoLandingPageProps {
   productImage?: string;
   priceFrom?: string;
   extraSection?: React.ReactNode;
+  extraSectionPosition?: "after-hero" | "default";
   article?: boolean;
 }
 
