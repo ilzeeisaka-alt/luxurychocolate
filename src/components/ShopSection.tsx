@@ -1,25 +1,9 @@
 import { motion } from "framer-motion";
-import { ShoppingBag, ExternalLink, Upload } from "lucide-react";
+import { ShoppingBag, ArrowRight, Upload } from "lucide-react";
 import type { Lang } from "@/i18n/types";
 import { expandLangs } from "@/i18n/expandLangs";
-
-const shopUrls: Record<Lang, string> = expandLangs({
-  lv: "https://www.luxurychocolatesia.lv/interneta-veikals-produkti/",
-  en: "https://www.luxurychocolatesia.lv/online-shop-products/",
-  ru: "https://www.luxurychocolatesia.lv/internet-magazin-produkti/",
-  et: "https://www.luxurychocolatesia.lv/e-pood/",
-  lt: "https://www.luxurychocolatesia.lv/internetine-parduotuve/",
-  sv: "https://www.luxurychocolatesia.lv/online-shop-products/",
-  no: "https://www.luxurychocolatesia.lv/online-shop-products/",
-  fi: "https://www.luxurychocolatesia.lv/online-shop-products/",
-  da: "https://www.luxurychocolatesia.lv/online-shop-products/",
-  de: "https://www.luxurychocolatesia.lv/online-shop-products/",
-  fr: "https://www.luxurychocolatesia.lv/online-shop-products/",
-  it: "https://www.luxurychocolatesia.lv/online-shop-products/",
-  es: "https://www.luxurychocolatesia.lv/online-shop-products/",
-  ar: "https://www.luxurychocolatesia.lv/online-shop-products/",
-  nl: "https://www.luxurychocolatesia.lv/online-shop-products/", pl: "https://www.luxurychocolatesia.lv/online-shop-products/", cs: "https://www.luxurychocolatesia.lv/online-shop-products/", pt: "https://www.luxurychocolatesia.lv/online-shop-products/", el: "https://www.luxurychocolatesia.lv/online-shop-products/", tr: "https://www.luxurychocolatesia.lv/online-shop-products/", hu: "https://www.luxurychocolatesia.lv/online-shop-products/", ro: "https://www.luxurychocolatesia.lv/online-shop-products/", bg: "https://www.luxurychocolatesia.lv/online-shop-products/", hr: "https://www.luxurychocolatesia.lv/online-shop-products/", sk: "https://www.luxurychocolatesia.lv/online-shop-products/", sl: "https://www.luxurychocolatesia.lv/online-shop-products/", uk: "https://www.luxurychocolatesia.lv/online-shop-products/", sr: "https://www.luxurychocolatesia.lv/online-shop-products/", bs: "https://www.luxurychocolatesia.lv/online-shop-products/", mk: "https://www.luxurychocolatesia.lv/online-shop-products/", sq: "https://www.luxurychocolatesia.lv/online-shop-products/", is: "https://www.luxurychocolatesia.lv/online-shop-products/",
-});
+import { Link } from "react-router-dom";
+import { Button } from "@/components/ui/button";
 
 const shopContent: Record<
   Lang,
@@ -322,7 +306,7 @@ interface ShopSectionProps {
 
 const ShopSection = ({ lang = "lv", onCtaClick }: ShopSectionProps) => {
   const t = shopContent[lang];
-  const url = shopUrls[lang];
+  const url = lang === "lv" ? "/veikals" : `/veikals?lang=${lang}`;
 
   return (
     <section className="py-20 bg-primary/5" aria-labelledby="shop-heading">
@@ -352,20 +336,12 @@ const ShopSection = ({ lang = "lv", onCtaClick }: ShopSectionProps) => {
           </div>
 
           <div className="flex flex-col items-center gap-4">
-            <a
-              href={url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 justify-center rounded-lg bg-primary text-primary-foreground px-10 py-4 font-medium tracking-wider text-base uppercase transition-all duration-300 active:scale-[0.97] hover:brightness-110"
-              style={{
-                boxShadow:
-                  "0 0 0 1px rgba(196,163,90,0.3), 0 4px 20px -4px rgba(196,163,90,0.4), 0 8px 32px -8px rgba(0,0,0,0.3)",
-                letterSpacing: "0.12em",
-              }}
-            >
-              {t.cta}
-              <ExternalLink size={18} />
-            </a>
+            <Button asChild className="h-auto rounded-lg px-10 py-4 text-base uppercase transition-all duration-300 active:scale-[0.97]">
+              <Link to={url}>
+                {t.cta}
+                <ArrowRight size={18} />
+              </Link>
+            </Button>
 
             <button
               type="button"
