@@ -58,6 +58,7 @@ const SeoLandingLayout = ({
   priceFrom = "3.50",
   extraSection,
   extraSectionPosition = "default",
+  introPosition = "hero",
   article = false,
 }: SeoLandingPageProps) => {
   const [modalOpen, setModalOpen] = useState(false);
