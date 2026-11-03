@@ -5,6 +5,8 @@ import { ChevronLeft, ShoppingCart, Upload, Check } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import FooterSection from "@/components/FooterSection";
 import ProductLogoModal from "@/components/ProductLogoModal";
+import ProductImageViewer, { imageViewerLabels } from "@/components/ProductImageViewer";
+import { Button } from "@/components/ui/button";
 import { supabase } from "@/integrations/supabase/client";
 import { useSeo } from "@/hooks/useSeo";
 import { useAuth } from "@/hooks/useAuth";
@@ -28,6 +30,7 @@ const VeikalsProduct = () => {
   const t = tUI(lang);
 
   const [activeImg, setActiveImg] = useState(0);
+  const [viewer, setViewer] = useState<{ images: string[]; index: number; title: string } | null>(null);
   const [qty, setQty] = useState(1);
   const [adding, setAdding] = useState(false);
   const [offerOpen, setOfferOpen] = useState(false);
@@ -216,6 +219,8 @@ const VeikalsProduct = () => {
           <div>
             <div className="aspect-square bg-card rounded-xl overflow-hidden mb-4">
               {mainImage ? (
+                <Button variant="ghost" className="h-full w-full p-0 cursor-zoom-in hover:bg-transparent" aria-label={imageViewerLabels(lang).open} title={imageViewerLabels(lang).open}
+                  onClick={() => setViewer({ images: images.map((image) => image.url), index: activeImg, title: localizedName })}>
                 <img
                   src={mainImage}
                   alt={images[activeImg]?.alt_text || localizedName}
@@ -224,6 +229,7 @@ const VeikalsProduct = () => {
                     ["3-garsu-karba-piparkukas-9-cm", "3-garsu-karba-piparkukas-3-cm"].includes(product.slug) ? "object-contain" : "object-cover"
                   )}
                 />
+                </Button>
               ) : (
                 <div className="w-full h-full flex items-center justify-center text-muted-foreground">
                   {t.noImage}
@@ -373,32 +379,34 @@ const VeikalsProduct = () => {
               {variants.map((v) => {
                 const vName = pickI18n(v.name_i18n as Record<string, unknown> | null, lang, v.name);
                 return (
-                  <Link
+                  <article
                     key={v.id}
-                    to={`/veikals/${v.slug}${lang !== "lv" ? `?lang=${lang}` : ""}`}
                     className="group block bg-card rounded-xl overflow-hidden border border-border hover:border-primary transition-colors"
                   >
                     <div className="aspect-square bg-background overflow-hidden">
                       {v.image ? (
+                        <Button variant="ghost" className="h-full w-full p-0 cursor-zoom-in hover:bg-transparent" aria-label={`${imageViewerLabels(lang).open}: ${vName}`} title={imageViewerLabels(lang).open}
+                          onClick={() => { if (v.image) setViewer({ images: [v.image], index: 0, title: vName }); }}>
                         <img
                           src={v.image}
                           alt={vName}
                           className="w-full h-full object-cover group-hover:scale-105 transition-transform"
                           loading="lazy"
                         />
+                        </Button>
                       ) : (
                         <div className="w-full h-full flex items-center justify-center text-muted-foreground text-xs">
                           {t.noImage}
                         </div>
                       )}
                     </div>
-                    <div className="p-4">
+                    <Link to={`/veikals/${v.slug}${lang !== "lv" ? `?lang=${lang}` : ""}`} className="block p-4">
                       <h3 className="text-sm text-foreground mb-2 line-clamp-2 min-h-[2.5rem]">{vName}</h3>
                       <div className="text-primary font-medium">
                         {formatPrice(v.price_cents, v.currency)}
                       </div>
-                    </div>
-                  </Link>
+                    </Link>
+                  </article>
                 );
               })}
             </div>
@@ -432,6 +440,7 @@ const VeikalsProduct = () => {
         )}
       </main>
       <FooterSection />
+      <ProductImageViewer images={viewer?.images ?? []} index={viewer?.index ?? null} title={viewer?.title ?? localizedName} onClose={() => setViewer(null)} onChangeIndex={(index) => setViewer((current) => current ? { ...current, index } : null)} />
       <ProductLogoModal
         open={offerOpen}
         onOpenChange={(v) => { setOfferOpen(v); if (!v) setPendingLogo(null); }}
