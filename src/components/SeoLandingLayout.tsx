@@ -284,7 +284,7 @@ const SeoLandingLayout = ({
         </div>
       </section>
 
-      {extraSection}
+      {extraSection && extraSectionPosition !== "after-hero" ? extraSection : null}
 
       {/* FAQ */}
       {faqs && faqs.length > 0 && (
