@@ -35,6 +35,7 @@ interface SeoLandingPageProps {
   productImage?: string;
   priceFrom?: string;
   extraSection?: React.ReactNode;
+  extraSectionPosition?: "after-hero" | "default";
   article?: boolean;
 }
 
@@ -55,6 +56,7 @@ const SeoLandingLayout = ({
   productImage,
   priceFrom = "3.50",
   extraSection,
+  extraSectionPosition = "default",
   article = false,
 }: SeoLandingPageProps) => {
   const [modalOpen, setModalOpen] = useState(false);
@@ -244,6 +246,8 @@ const SeoLandingLayout = ({
         </div>
       </section>
 
+      {extraSection && extraSectionPosition === "after-hero" ? extraSection : null}
+
       {/* Benefits */}
       <section className="py-16 bg-background">
         <div className="container mx-auto max-w-3xl">
@@ -280,7 +284,7 @@ const SeoLandingLayout = ({
         </div>
       </section>
 
-      {extraSection}
+      {extraSection && extraSectionPosition !== "after-hero" ? extraSection : null}
 
       {/* FAQ */}
       {faqs && faqs.length > 0 && (

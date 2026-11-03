@@ -21,7 +21,8 @@ const Piparkukas = () => (
     `}
     cta="Pasūtiet piparkūkas ar logo"
     keywords={["piparkūkas ar logo", "piparkūkas ar apdruku", "Ziemassvētku piparkūkas", "personalizētas piparkūkas", "korporatīvās Ziemassvētku dāvanas", "gingerbread with logo"]}
-    extraSection={<GingerbreadSection />}
+    extraSection={<GingerbreadSection showHeading={false} />}
+    extraSectionPosition="after-hero"
     faqs={[
       { q: "Vai uz piparkūkām var apdrukāt logo?", a: "Jā, apdrukājam logo, tekstu vai svētku zīmējumu ar pārtikas krāsām." },
       { q: "Kad jāpasūta Ziemassvētku piparkūkas?", a: "Iesakām pasūtīt vismaz 2–3 nedēļas pirms svētkiem." },
