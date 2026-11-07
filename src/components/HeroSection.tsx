@@ -193,9 +193,9 @@ const HeroSection = ({
         </div>
 
         {/* Kreisais logo */}
-        <div className="absolute top-1/2 -translate-y-1/2 left-4 sm:left-10 z-10">
-          <div className="w-[110px] h-[110px] sm:w-[180px] sm:h-[180px] flex items-center justify-center">
-            <img src={logo} alt={logoAlt} className="w-[70%] h-[70%] object-contain" />
+        <div className="absolute top-[60%] -translate-y-1/2 left-3 sm:left-6 z-10">
+          <div className="w-[140px] h-[140px] sm:w-[220px] sm:h-[220px] lg:w-[260px] lg:h-[260px] flex items-center justify-center">
+            <img src={logo} alt={logoAlt} className="w-full h-full object-contain brightness-110 contrast-125" />
           </div>
         </div>
 
