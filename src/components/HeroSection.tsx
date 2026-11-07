@@ -194,10 +194,7 @@ const HeroSection = ({
 
         {/* Kreisais logo */}
         <div className="absolute top-1/2 -translate-y-1/2 left-4 sm:left-10 z-10">
-          <div
-            className="w-[110px] h-[110px] sm:w-[180px] sm:h-[180px] rounded-full bg-white flex items-center justify-center"
-            style={{ boxShadow: "0 0 40px rgba(196,163,90,0.25), 0 0 80px rgba(0,0,0,0.5)" }}
-          >
+          <div className="w-[110px] h-[110px] sm:w-[180px] sm:h-[180px] flex items-center justify-center">
             <img src={logo} alt={logoAlt} className="w-[70%] h-[70%] object-contain" />
           </div>
         </div>
