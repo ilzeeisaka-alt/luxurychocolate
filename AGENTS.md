@@ -1,4 +1,5 @@
 # Architecture rules
+- Keep visitor chat history private behind the session-token function; administrator reads validate the JWT and protected admin role, and completed exchanges trigger fixed-recipient managed email notifications deduplicated by message ID.
 - Compose the homepage gingerbread gallery as a sibling of the shop band in shared ShopSection so all language homepages have the same navigation target without duplicating page wiring.
 - Use the shared ProductImageViewer for shop and product-page image enlargement, keeping image previews separate from product navigation and reusing accessible dialog controls.
 - Keep legacy SEO URL aliases in `src/lib/seoPaths.ts` and route them to real pages; this prevents editorial links from landing on noindex pages.

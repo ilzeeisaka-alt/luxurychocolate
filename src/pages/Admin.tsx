@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/hooks/useAuth";
 import { useSeo } from "@/hooks/useSeo";
@@ -25,8 +25,9 @@ import {
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import AdminProducts from "@/components/admin/AdminProducts";
 import AdminAffiliates from "@/components/admin/AdminAffiliates";
+import AdminChats from "@/components/admin/AdminChats";
 import { toast } from "sonner";
-import { Loader2, Package, Search, ShieldAlert, ShoppingBag, Users } from "lucide-react";
+import { Loader2, MessageCircle, Package, Search, ShieldAlert, ShoppingBag, Users } from "lucide-react";
 
 type OrderStatus =
   | "pending"
@@ -104,6 +105,7 @@ const formatDate = (iso: string) =>
 
 const Admin = () => {
   const navigate = useNavigate();
+  const [searchParams, setSearchParams] = useSearchParams();
   const { user, loading: authLoading } = useAuth();
   const [isAdmin, setIsAdmin] = useState<boolean | null>(null);
   const [orders, setOrders] = useState<Order[]>([]);
@@ -307,8 +309,8 @@ const Admin = () => {
           Admin panelis
         </h1>
 
-        <Tabs defaultValue="orders" className="w-full">
-          <TabsList className="mb-6">
+        <Tabs value={searchParams.get("tab") || "orders"} onValueChange={(tab) => setSearchParams({ tab })} className="w-full">
+          <TabsList className="mb-6 flex h-auto flex-wrap justify-start">
             <TabsTrigger value="orders" className="gap-2">
               <ShoppingBag className="w-4 h-4" /> Pasūtījumi
             </TabsTrigger>
@@ -318,6 +320,9 @@ const Admin = () => {
             <TabsTrigger value="affiliates" className="gap-2">
               <Users className="w-4 h-4" /> Partneri
             </TabsTrigger>
+            <TabsTrigger value="chats" className="gap-2">
+              <MessageCircle className="w-4 h-4" /> AI sarunas
+            </TabsTrigger>
           </TabsList>
 
           <TabsContent value="products">
@@ -326,6 +331,9 @@ const Admin = () => {
 
           <TabsContent value="affiliates">
             <AdminAffiliates />
+          </TabsContent>
+          <TabsContent value="chats">
+            <AdminChats />
           </TabsContent>
 
 

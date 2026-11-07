@@ -2,13 +2,20 @@ import { corsHeaders } from 'npm:@supabase/supabase-js@2/cors'
 import { createClient } from 'npm:@supabase/supabase-js@2'
 import { streamResponse, GatewayError } from 'npm:@lovable.dev/ai-gateway'
 import { z } from 'npm:zod@3'
+import { hasAdminRole } from './admin-access.ts'
+import { sendTemplateEmail } from '../_shared/transactional-email-templates/send-email.ts'
 
-const BodySchema = z.object({
+const VisitorSchema = z.object({
   action: z.enum(['history', 'message']),
   sessionToken: z.string().uuid(),
   lang: z.string().min(2).max(5).default('lv'),
   message: z.string().min(1).max(2000).optional(),
 })
+const BodySchema = z.union([
+  VisitorSchema,
+  z.object({ action: z.literal('admin-list'), page: z.number().int().min(0).max(10000).default(0) }),
+  z.object({ action: z.literal('admin-history'), conversationId: z.string().uuid() }),
+])
 
 const MAX_MESSAGES_PER_CONVERSATION = 60
 const HISTORY_LIMIT = 20
@@ -49,19 +56,51 @@ Deno.serve(async (req) => {
         headers: { ...corsHeaders, 'Content-Type': 'application/json' },
       })
     }
+    const serviceUrl = Deno.env.get('SUPABASE_URL')
+    const serviceKey = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')
+    if (!serviceUrl || !serviceKey) throw new Error('Missing server configuration')
+    const supabase = createClient(
+      serviceUrl,
+      serviceKey,
+    )
+    const json = (data: unknown, status = 200) => new Response(JSON.stringify(data), {
+      status, headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+    })
+    if (parsed.data.action === 'admin-list' || parsed.data.action === 'admin-history') {
+      const token = req.headers.get('Authorization')?.replace(/^Bearer\s+/i, '')
+      if (!token) return json({ error: 'Unauthorized' }, 401)
+      const { data: auth, error: authError } = await supabase.auth.getUser(token)
+      if (authError || !auth.user) return json({ error: 'Unauthorized' }, 401)
+      const { data: roles, error: roleError } = await supabase.from('user_roles').select('role').eq('user_id', auth.user.id)
+      if (roleError || !hasAdminRole(roles)) return json({ error: 'Forbidden' }, 403)
+      if (parsed.data.action === 'admin-history') {
+        const { data, error } = await supabase.from('chat_messages').select('id, role, content, created_at')
+          .eq('conversation_id', parsed.data.conversationId).order('created_at', { ascending: true }).limit(100)
+        if (error) throw error
+        return json({ messages: data ?? [] })
+      }
+      const offset = parsed.data.page * 25
+      const { data, error } = await supabase.from('chat_conversations').select('id, lang, created_at, updated_at')
+        .order('updated_at', { ascending: false }).order('id', { ascending: true }).range(offset, offset + 25)
+      if (error) throw error
+      const rows = (data ?? []).slice(0, 25)
+      const conversations = await Promise.all(rows.map(async (row) => {
+        const { data: question, error } = await supabase.from('chat_messages').select('content')
+          .eq('conversation_id', row.id).eq('role', 'user').order('created_at', { ascending: true }).limit(1).maybeSingle()
+        if (error) throw error
+        return { ...row, question: question?.content ?? '' }
+      }))
+      return json({ conversations, hasMore: (data?.length ?? 0) > 25 })
+    }
     const { action, sessionToken, lang, message } = parsed.data
 
-    const supabase = createClient(
-      Deno.env.get('SUPABASE_URL')!,
-      Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')!,
-    )
-
     // Find or create the conversation for this browser session.
-    let { data: convo } = await supabase
+    let { data: convo, error: conversationError } = await supabase
       .from('chat_conversations')
       .select('id')
       .eq('session_token', sessionToken)
       .maybeSingle()
+    if (conversationError) throw conversationError
 
     if (!convo) {
       const { data: created, error: createErr } = await supabase
@@ -72,7 +111,8 @@ Deno.serve(async (req) => {
       if (createErr) throw createErr
       convo = created
     }
-    const conversationId = convo!.id
+    if (!convo) throw new Error('Conversation not created')
+    const conversationId = convo.id
 
     if (action === 'history') {
       const { data: messages, error } = await supabase
@@ -106,10 +146,12 @@ Deno.serve(async (req) => {
       })
     }
 
-    const { error: insertErr } = await supabase
+    const { data: userMessage, error: insertErr } = await supabase
       .from('chat_messages')
       .insert({ conversation_id: conversationId, role: 'user', content: message })
+      .select('id').single()
     if (insertErr) throw insertErr
+    if (!userMessage) throw new Error('Message not saved')
 
     const { data: history, error: histErr } = await supabase
       .from('chat_messages')
@@ -147,13 +189,26 @@ Deno.serve(async (req) => {
             }
           }
           if (fullText.trim()) {
-            await supabase
+            const { error: saveError } = await supabase
               .from('chat_messages')
               .insert({ conversation_id: conversationId, role: 'assistant', content: fullText })
-            await supabase
+            if (saveError) throw saveError
+            const occurredAt = new Date()
+            const { error: updateError } = await supabase
               .from('chat_conversations')
-              .update({ updated_at: new Date().toISOString(), lang })
+              .update({ updated_at: occurredAt.toISOString(), lang })
               .eq('id', conversationId)
+            if (updateError) throw updateError
+            try {
+              const result = await sendTemplateEmail('ai-chat-notification', 'ilze.eisaka@gmail.com', {
+                idempotencyKey: `ai-chat-notification-${userMessage.id}`,
+                templateData: { conversationId, question: message, answer: fullText, lang,
+                  occurredAt: occurredAt.toLocaleString('lv-LV', { timeZone: 'Europe/Riga' }) },
+              })
+              console.info('AI chat notification:', result.sent ? 'sent' : result.reason)
+            } catch (emailError) {
+              console.error('AI chat notification failed:', emailError instanceof Error ? emailError.message : 'Unknown error')
+            }
           }
           controller.enqueue(encoder.encode(sse({ type: 'done' })))
         } catch (err) {

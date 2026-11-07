@@ -1,3 +1,8 @@
+# AI conversation reporting
+- [x] Keep complete chat exchanges saved and add an administrator-only conversation tab; verified question and answer restoration after reload and anonymous denial, with three role-access tests passing.
+- [x] Notify Ilze by email after each completed exchange; verified managed email sent event and stored exchange.
+- [ ] Verify signed-in administrator list/detail on desktop and mobile. Blocked: no requesting-user auth account matches and multiple accounts exist; user must sign in to the preview or identify the account to test.
+
 # SEO corrections
 - [x] Highlighted Christmas and New Year chocolate gifts with festive symbols in the gift-box section; verified the link and existing Christmas page title, description, keywords and H1 in the browser. Google indexing/rankings were not verified; live changes need publishing.
 - [x] Added the Piparkūkas gallery to all language homepages with seven supplied photos and top navigation; verified full-image display, enlargement, next-image controls, the shop-category link and return navigation in Latvian and English. Local browser asset requests were forwarded to the actual preview asset service for verification.

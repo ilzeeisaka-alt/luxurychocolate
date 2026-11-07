@@ -2,6 +2,7 @@ import type { ComponentType } from 'npm:react@18.3.1'
 import { template as offerRequestTemplate } from './offer-request.tsx'
 import { template as shopLogoUploadTemplate } from './shop-logo-upload.tsx'
 import { template as htmlMessageTemplate } from './html-message.tsx'
+import { template as aiChatNotificationTemplate } from './ai-chat-notification.tsx'
 
 export interface TemplateEntry {
   component: ComponentType<any>
@@ -21,6 +22,7 @@ export interface TemplateEntry {
  *   // then add to TEMPLATES: 'welcome': welcomeTemplate
  */
 export const TEMPLATES: Record<string, TemplateEntry> = {
+  'ai-chat-notification': aiChatNotificationTemplate,
   'offer_request': offerRequestTemplate,
   'shop_logo_upload': shopLogoUploadTemplate,
   'html_message': htmlMessageTemplate,
