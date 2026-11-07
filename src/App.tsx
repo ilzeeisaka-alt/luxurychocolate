@@ -6,6 +6,7 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import CookieConsent from "./components/CookieConsent.tsx";
+import ChatWidget from "./components/ChatWidget.tsx";
 
 import { AuthProvider } from "./hooks/useAuth";
 import { OrderNotificationsListener } from "./hooks/useOrderNotifications";
@@ -356,10 +357,11 @@ const App = () => (
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Suspense>
+        <ChatWidget />
         </AuthProvider>
       </BrowserRouter>
       <CookieConsent />
-      
+
     </TooltipProvider>
   </QueryClientProvider>
 );
