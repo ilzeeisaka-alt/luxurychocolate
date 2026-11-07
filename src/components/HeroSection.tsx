@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import logo from "@/assets/logo-hero-gold-center.png";
-import chocoTimeLogo from "@/assets/its-choco-time.png";
+import chocoTimeLogo from "@/assets/its-choco-time-gold.png";
 import { ExternalLink, ShoppingBag } from "lucide-react";
 import type { Lang } from "@/i18n/types";
 import { expandLangs } from "@/i18n/expandLangs";
@@ -204,8 +204,7 @@ const HeroSection = ({
           <img
             src={chocoTimeLogo}
             alt="It's Choco Time"
-            className="w-[100px] sm:w-[170px] h-auto object-contain rounded-lg"
-            style={{ boxShadow: "0 0 30px rgba(196,163,90,0.2), 0 0 60px rgba(0,0,0,0.4)" }}
+            className="w-[100px] sm:w-[170px] h-auto object-contain"
           />
         </div>
 
