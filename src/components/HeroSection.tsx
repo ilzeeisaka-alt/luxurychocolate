@@ -6,7 +6,7 @@ import type { Lang } from "@/i18n/types";
 import { expandLangs } from "@/i18n/expandLangs";
 
 const shopUrls: Record<Lang, string> = expandLangs({
-  lv: "https://www.luxurychocolatesia.lv/interneta-veikals-produkti/",
+  lv: "https://luxurychocolate.lv/veikals",
   en: "https://www.luxurychocolatesia.lv/online-shop-products/",
   ru: "https://www.luxurychocolatesia.lv/internet-magazin-produkti/",
   et: "https://www.luxurychocolatesia.lv/e-pood/",
