@@ -38,13 +38,24 @@ export default function ChatWidget() {
   const [navigationHeight, setNavigationHeight] = useState(56);
 
   useEffect(() => {
-    const navigation = document.getElementById("luxury-navigation")?.firstElementChild;
-    if (!navigation) return;
-    const updatePosition = () => setNavigationHeight(navigation.getBoundingClientRect().height);
-    updatePosition();
-    const observer = new ResizeObserver(updatePosition);
-    observer.observe(navigation);
-    return () => observer.disconnect();
+    let navigation: Element | null = null;
+    const observer = new ResizeObserver(() => {
+      if (navigation) setNavigationHeight(navigation.getBoundingClientRect().bottom);
+    });
+    const attach = () => {
+      const next = document.getElementById("luxury-navigation")?.firstElementChild ?? null;
+      if (next === navigation) return;
+      observer.disconnect();
+      navigation = next;
+      if (navigation) {
+        setNavigationHeight(navigation.getBoundingClientRect().bottom);
+        observer.observe(navigation);
+      }
+    };
+    attach();
+    const mutations = new MutationObserver(attach);
+    mutations.observe(document.body, { childList: true, subtree: true });
+    return () => { observer.disconnect(); mutations.disconnect(); };
   }, []);
 
   // Load saved conversation the first time the widget is opened.
