@@ -11,7 +11,7 @@ export interface ChatWidgetStrings {
 }
 
 const lv: ChatWidgetStrings = {
-  title: "AI asistents",
+  title: "Luxury Chocolate Asistents",
   subtitle: "Atbildām uzreiz",
   placeholder: "Uzrakstiet jautājumu…",
   send: "Sūtīt",
@@ -24,7 +24,7 @@ const lv: ChatWidgetStrings = {
 };
 
 const en: ChatWidgetStrings = {
-  title: "AI assistant",
+  title: "Luxury Chocolate Assistant",
   subtitle: "We reply instantly",
   placeholder: "Type your question…",
   send: "Send",
@@ -37,7 +37,7 @@ const en: ChatWidgetStrings = {
 };
 
 const ru: ChatWidgetStrings = {
-  title: "AI-ассистент",
+  title: "Luxury Chocolate Ассистент",
   subtitle: "Отвечаем мгновенно",
   placeholder: "Напишите вопрос…",
   send: "Отправить",
@@ -50,7 +50,7 @@ const ru: ChatWidgetStrings = {
 };
 
 const et: ChatWidgetStrings = {
-  title: "AI-assistent",
+  title: "Luxury Chocolate Assistent",
   subtitle: "Vastame koheselt",
   placeholder: "Kirjutage küsimus…",
   send: "Saada",

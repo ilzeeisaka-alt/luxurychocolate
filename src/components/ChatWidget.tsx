@@ -4,6 +4,7 @@ import remarkGfm from "remark-gfm";
 import { MessageCircle, X, Send, Loader2 } from "lucide-react";
 import { useCurrentLang } from "@/i18n/useCurrentLang";
 import { getChatWidgetStrings } from "@/i18n/chatWidget";
+import { Button } from "@/components/ui/button";
 
 interface ChatMessage {
   role: "user" | "assistant";
@@ -34,6 +35,17 @@ export default function ChatWidget() {
   const [historyLoaded, setHistoryLoaded] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLTextAreaElement>(null);
+  const [navigationHeight, setNavigationHeight] = useState(56);
+
+  useEffect(() => {
+    const navigation = document.getElementById("luxury-navigation")?.firstElementChild;
+    if (!navigation) return;
+    const updatePosition = () => setNavigationHeight(navigation.getBoundingClientRect().height);
+    updatePosition();
+    const observer = new ResizeObserver(updatePosition);
+    observer.observe(navigation);
+    return () => observer.disconnect();
+  }, []);
 
   // Load saved conversation the first time the widget is opened.
   useEffect(() => {
@@ -139,37 +151,47 @@ export default function ChatWidget() {
 
   return (
     <>
-      {/* Floating open button */}
+      {/* Assistant entry directly below navigation */}
       {!open && (
-        <button
+        <Button
           type="button"
           onClick={() => setOpen(true)}
-          aria-label={t.open}
-          className="fixed bottom-5 right-5 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-primary text-primary-foreground shadow-lg transition-transform hover:scale-105 print:hidden"
+          aria-label={t.title}
+          aria-expanded={false}
+          style={{ top: navigationHeight + 12 }}
+          className="fixed right-3 z-30 h-11 max-w-[calc(100vw-1.5rem)] gap-2 rounded-md px-4 shadow-lg print:hidden sm:right-5"
         >
-          <MessageCircle className="h-6 w-6" />
-        </button>
+          <MessageCircle className="h-5 w-5" />
+          <span>{t.title}</span>
+        </Button>
       )}
 
       {/* Chat panel */}
       {open && (
-        <div className="fixed bottom-5 right-5 z-50 flex h-[min(560px,80vh)] w-[min(380px,calc(100vw-2.5rem))] flex-col overflow-hidden rounded-2xl border border-border bg-card shadow-2xl print:hidden">
+        <div
+          role="dialog"
+          aria-label={t.title}
+          style={{ top: navigationHeight + 12, maxHeight: `calc(100dvh - ${navigationHeight + 24}px)` }}
+          className="fixed right-3 z-30 flex h-[560px] w-[min(380px,calc(100vw-1.5rem))] flex-col overflow-hidden rounded-lg border border-border bg-card shadow-2xl print:hidden sm:right-5"
+        >
           <div className="flex items-center justify-between bg-primary px-4 py-3 text-primary-foreground">
             <div>
               <p className="text-sm font-semibold">{t.title}</p>
               <p className="text-xs opacity-80">{t.subtitle}</p>
             </div>
-            <button
+            <Button
+              variant="ghost"
+              size="icon"
               type="button"
               onClick={() => setOpen(false)}
               aria-label={t.close}
-              className="rounded-full p-1 transition-colors hover:bg-primary-foreground/10"
+              className="h-8 w-8 shrink-0 text-primary-foreground hover:bg-primary-foreground/10 hover:text-primary-foreground"
             >
               <X className="h-5 w-5" />
-            </button>
+            </Button>
           </div>
 
-          <div ref={scrollRef} className="flex-1 space-y-3 overflow-y-auto bg-background px-3 py-4">
+          <div ref={scrollRef} className="min-h-0 flex-1 space-y-3 overflow-y-auto bg-background px-3 py-4">
             <div className="max-w-[85%] rounded-2xl rounded-tl-sm bg-muted px-3 py-2 text-sm text-foreground">
               <ReactMarkdown remarkPlugins={[remarkGfm]}>{t.greeting}</ReactMarkdown>
             </div>
@@ -218,7 +240,8 @@ export default function ChatWidget() {
               maxLength={2000}
               className="max-h-28 flex-1 resize-none rounded-xl border border-input bg-background px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring"
             />
-            <button
+            <Button
+              size="icon"
               type="button"
               onClick={() => void send()}
               disabled={busy || !input.trim()}
@@ -226,7 +249,7 @@ export default function ChatWidget() {
               className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-primary text-primary-foreground transition-opacity disabled:opacity-40"
             >
               <Send className="h-4 w-4" />
-            </button>
+            </Button>
           </div>
         </div>
       )}
