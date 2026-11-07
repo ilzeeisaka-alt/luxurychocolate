@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import logo from "@/assets/logo-hero-clear.png";
+import logo from "@/assets/logo-seal-clean.png";
 import chocoTimeLogo from "@/assets/its-choco-time.png";
 import { ExternalLink, ShoppingBag } from "lucide-react";
 import type { Lang } from "@/i18n/types";
@@ -195,7 +195,7 @@ const HeroSection = ({
         {/* Kreisais logo */}
         <div className="absolute top-[55%] -translate-y-1/2 left-3 sm:left-6 z-10">
           <div className="w-[180px] h-[180px] sm:w-[260px] sm:h-[260px] lg:w-[320px] lg:h-[320px] flex items-center justify-center">
-            <img src={logo} alt={logoAlt} className="w-full h-full object-contain brightness-110 contrast-125" />
+            <img src={logo} alt={logoAlt} className="w-full h-full object-contain scale-[1.24] brightness-110 contrast-125" />
           </div>
         </div>
 
