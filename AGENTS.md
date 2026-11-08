@@ -1,6 +1,7 @@
 # Architecture rules
 - Keep hero chocolate lettering as localized Unicode text with a shared chocolate texture and explicit translations for every supported language, preserving native script shaping without per-language image generation; retain the original Latvian artwork.
 - Keep product visualization generation in its dedicated Edge Function, with durable request IDs, bounded generation, private storage, session-scoped visitor history, protected admin reads and fixed-recipient event-deduplicated emails; never expose client designs publicly.
+- Normalize visualization logo uploads to bounded PNGs in the browser, sanitizing SVG and rendering only the first PDF/TIFF page; keep server image validation strict so active document formats never reach private image storage or the image model.
 - Keep visitor chat history private behind the session-token function; administrator reads validate the JWT and protected admin role, and completed exchanges trigger fixed-recipient managed email notifications deduplicated by message ID.
 - Compose the homepage gingerbread gallery as a sibling of the shop band in shared ShopSection so all language homepages have the same navigation target without duplicating page wiring.
 - Use the shared ProductImageViewer for shop and product-page image enlargement, keeping image previews separate from product navigation and reusing accessible dialog controls.

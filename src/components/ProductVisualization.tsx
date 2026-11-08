@@ -1,4 +1,4 @@
-import { useEffect, useId, useState } from 'react'
+import { useEffect, useId, useRef, useState } from 'react'
 import { useQuery } from '@tanstack/react-query'
 import { Download, Loader2, Sparkles } from 'lucide-react'
 import { supabase } from '@/integrations/supabase/client'
@@ -12,6 +12,7 @@ import { useCurrentLang } from '@/i18n/useCurrentLang'
 import { visualizationText } from '@/i18n/visualizations'
 import { downloadVisualization, visualizationSession, type Visualization } from '@/lib/visualizations'
 import { validImage } from '../../supabase/functions/product-visualization/validation'
+import { logoAccept, prepareLogo, validLogoFile } from '@/lib/logoFiles'
 
 export default function ProductVisualization({ productId, productName, imageUrl, compact = false }: { productId: string; productName: string; imageUrl: string | null; compact?: boolean }) {
   const lang = useCurrentLang(); const t = visualizationText(lang); const prefix = useId()
@@ -21,6 +22,8 @@ export default function ProductVisualization({ productId, productName, imageUrl,
   const [logoPreview, setLogoPreview] = useState<string | null>(null)
   const [consent, setConsent] = useState(false); const [submitting, setSubmitting] = useState(false); const [error, setError] = useState('')
   const [active, setActive] = useState<string | null>(null)
+  const [preparingLogo, setPreparingLogo] = useState(false)
+  const logoSelection = useRef(0)
   const history = useQuery({
     queryKey: ['visualizations', productId], enabled: open,
     queryFn: async () => {
@@ -37,7 +40,17 @@ export default function ProductVisualization({ productId, productName, imageUrl,
   }, [logo])
   const current = history.data?.find(r => r.id === active)
   useEffect(() => { if (current && current.status !== 'pending') setActive(null) }, [current])
-  const pending = submitting || Boolean(active) || history.data?.some(r => r.status === 'pending')
+  const pending = preparingLogo || submitting || Boolean(active) || history.data?.some(r => r.status === 'pending')
+  const pickLogo = async (file: File | undefined) => {
+    const selection = ++logoSelection.current
+    setLogo(null); setError(''); setPreparingLogo(false)
+    if (!file) return
+    if (!validLogoFile(file)) { setError(t.logoFile); return }
+    setPreparingLogo(true)
+    try { const prepared = await prepareLogo(file); if (selection === logoSelection.current) setLogo(prepared) }
+    catch { if (selection === logoSelection.current) setError(t.logoError) }
+    finally { if (selection === logoSelection.current) setPreparingLogo(false) }
+  }
   const pickFile = (file: File | undefined, set: (file: File | null) => void) => {
     setError(''); if (!file) { set(null); return }
     if (!validImage(file)) { setError(t.file); set(null); return }
@@ -69,7 +82,7 @@ export default function ProductVisualization({ productId, productName, imageUrl,
           <form className="space-y-4 min-w-0" onSubmit={generate}>
             <div className="space-y-1"><Label htmlFor={`${prefix}-name`}>{t.name}</Label><Input id={`${prefix}-name`} required minLength={2} maxLength={120} autoComplete="name" value={name} onChange={e => setName(e.target.value)} /></div>
             <div className="space-y-1"><Label htmlFor={`${prefix}-email`}>{t.email}</Label><Input id={`${prefix}-email`} type="email" required maxLength={254} autoComplete="email" value={email} onChange={e => setEmail(e.target.value)} /></div>
-            <div className="space-y-1"><Label htmlFor={`${prefix}-logo`}>{t.logo}</Label><Input className="h-auto" id={`${prefix}-logo`} type="file" accept="image/png,image/jpeg,image/webp" required onChange={e => pickFile(e.target.files?.[0], setLogo)} /><p className="text-xs text-muted-foreground">{t.file}</p>{logoPreview && <img src={logoPreview} alt={t.logo} className="h-20 max-w-full object-contain" />}</div>
+            <div className="space-y-1"><Label htmlFor={`${prefix}-logo`}>{t.logo}</Label><Input className="h-auto" id={`${prefix}-logo`} type="file" accept={logoAccept} required onChange={e => void pickLogo(e.target.files?.[0])} /><p className="text-xs text-muted-foreground">{t.logoFile}</p>{preparingLogo && <p role="status" className="text-xs text-muted-foreground">{t.preparingLogo}</p>}{logoPreview && <img src={logoPreview} alt={t.logo} className="h-20 max-w-full object-contain" />}</div>
             {!imageUrl && <div className="space-y-1"><Label htmlFor={`${prefix}-photo`}>{t.photo}</Label><Input className="h-auto" id={`${prefix}-photo`} type="file" accept="image/png,image/jpeg,image/webp" required onChange={e => pickFile(e.target.files?.[0], setPhoto)} /></div>}
             <div className="space-y-1"><Label htmlFor={`${prefix}-idea`}>{t.idea}</Label><Textarea id={`${prefix}-idea`} required minLength={3} maxLength={2000} placeholder={t.placeholder} value={idea} onChange={e => setIdea(e.target.value)} /></div>
             <div className="flex items-start gap-2"><Checkbox id={`${prefix}-consent`} checked={consent} onCheckedChange={v => setConsent(v === true)} /><Label className="text-xs leading-relaxed" htmlFor={`${prefix}-consent`}>{t.consent} <a href="/privatuma-politika" target="_blank" rel="noreferrer" className="underline">{t.privacy}</a></Label></div>
