@@ -1,4 +1,5 @@
 # Product visualizations
+- [x] Add cumulative multi-file logo/design references without a count cap; verified 11-file selection, adding a 12th, removing one, and real generation with all remaining references.
 - [x] Add iterative customer-directed editing of any visual element; verified real multi-instruction revision, both versions restored after reload, notification sent for both versions and private-parent permission tests.
 - [x] Add product logo/idea visualization, private saved images and download; verified real generation, PNG download and restoration after reload, plus product-detail button and mobile width.
 - [x] Notify administrator and add client/product/idea/image overview; verified saved identity/idea/image and managed email sent to Ilze.

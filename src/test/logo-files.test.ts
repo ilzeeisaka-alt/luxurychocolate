@@ -1,7 +1,14 @@
 import { describe, expect, it } from 'vitest'
-import { validLogoFile } from '../lib/logoFiles'
+import { validLogoFile, referenceGrid } from '../lib/logoFiles'
 
 describe('visualization logo uploads', () => {
+  it('allocates a reference tile for every file without a count cap', () => {
+    for (const count of [1, 2, 10, 100, 1000, 10000]) {
+      const grid = referenceGrid(count)
+      expect(grid.columns * grid.rows).toBeGreaterThanOrEqual(count)
+      expect(grid.rows).toBe(Math.ceil(count / grid.columns))
+    }
+  })
   it.each(['svg', 'pdf', 'png', 'jpg', 'jpeg', 'webp', 'gif', 'bmp', 'avif', 'tif', 'tiff', 'ico'])('accepts %s logo files', extension => {
     expect(validLogoFile({ name: `logo.${extension}`, size: 100 })).toBe(true)
   })

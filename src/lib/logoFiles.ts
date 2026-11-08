@@ -6,6 +6,28 @@ const extensions = new Set(logoAccept.split(',').map(value => value.slice(1)))
 export function validLogoFile(file: { name: string; size: number }) {
   return file.size > 0 && extensions.has(file.name.split('.').pop()?.toLowerCase() ?? '')
 }
+export function referenceGrid(count: number) {
+  const columns = Math.max(1, Math.ceil(Math.sqrt(count)))
+  return { columns, rows: Math.max(1, Math.ceil(count / columns)) }
+}
+export async function combineDesignFiles(files: File[]): Promise<File> {
+  if (!files.length) throw new Error('No references')
+  if (files.length === 1 && files[0]) return files[0]
+  const { columns, rows } = referenceGrid(files.length)
+  const canvas = document.createElement('canvas'); canvas.width = 2048; canvas.height = 2048
+  const context = canvas.getContext('2d'); if (!context) throw new Error('Canvas unavailable')
+  const cellWidth = canvas.width / columns; const cellHeight = canvas.height / rows
+  for (const [index, file] of files.entries()) {
+    const url = URL.createObjectURL(file)
+    try {
+      const image = new Image(); image.src = url; await image.decode()
+      const scale = Math.min((cellWidth - 8) / image.naturalWidth, (cellHeight - 8) / image.naturalHeight)
+      const width = Math.max(1, image.naturalWidth * Math.max(0.001, scale)); const height = Math.max(1, image.naturalHeight * Math.max(0.001, scale))
+      context.drawImage(image, (index % columns) * cellWidth + (cellWidth - width) / 2, Math.floor(index / columns) * cellHeight + (cellHeight - height) / 2, width, height)
+    } finally { URL.revokeObjectURL(url) }
+  }
+  return pngFile(canvas, 'design-references.png')
+}
 function canvasFor(width: number, height: number) {
   if (!Number.isFinite(width * height) || width <= 0 || height <= 0 || width * height > 40_000_000) throw new Error('Invalid image dimensions')
   const scale = Math.min(1, 2048 / Math.max(width, height))
