@@ -4,7 +4,7 @@ import { validImage } from '../../supabase/functions/product-visualization/valid
 export const logoAccept = '.svg,.pdf,.png,.jpg,.jpeg,.webp,.gif,.bmp,.avif,.tif,.tiff,.ico'
 const extensions = new Set(logoAccept.split(',').map(value => value.slice(1)))
 export function validLogoFile(file: { name: string; size: number }) {
-  return file.size > 0 && file.size <= 5 * 1024 * 1024 && extensions.has(file.name.split('.').pop()?.toLowerCase() ?? '')
+  return file.size > 0 && extensions.has(file.name.split('.').pop()?.toLowerCase() ?? '')
 }
 function canvasFor(width: number, height: number) {
   if (!Number.isFinite(width * height) || width <= 0 || height <= 0 || width * height > 40_000_000) throw new Error('Invalid image dimensions')
@@ -14,10 +14,18 @@ function canvasFor(width: number, height: number) {
   return canvas
 }
 async function pngFile(canvas: HTMLCanvasElement, name: string) {
-  const blob = await new Promise<Blob>((resolve, reject) => canvas.toBlob(value => value ? resolve(value) : reject(new Error('Conversion failed')), 'image/png'))
-  const result = new File([blob], `${name.replace(/\.[^.]+$/, '')}.png`, { type: 'image/png' })
-  if (!validImage(result)) throw new Error('Converted image exceeds limit')
-  return result
+  let output = canvas
+  while (true) {
+    const blob = await new Promise<Blob>((resolve, reject) => output.toBlob(value => value ? resolve(value) : reject(new Error('Conversion failed')), 'image/png'))
+    const result = new File([blob], `${name.replace(/\.[^.]+$/, '')}.png`, { type: 'image/png' })
+    if (validImage(result)) return result
+    if (output.width <= 1 && output.height <= 1) throw new Error('Conversion failed')
+    const smaller = document.createElement('canvas')
+    smaller.width = Math.max(1, Math.floor(output.width * 0.75)); smaller.height = Math.max(1, Math.floor(output.height * 0.75))
+    const context = smaller.getContext('2d'); if (!context) throw new Error('Canvas unavailable')
+    context.drawImage(output, 0, 0, smaller.width, smaller.height)
+    output = smaller
+  }
 }
 // Only a rasterized PNG leaves the browser; SVG is never inserted into the page.
 export async function prepareLogo(file: File): Promise<File> {

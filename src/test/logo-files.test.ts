@@ -11,9 +11,12 @@ describe('visualization logo uploads', () => {
   it('rejects unsupported and executable files', () => {
     for (const name of ['logo.exe', 'logo.svg.exe', 'logo.html', 'logo.ai', 'logo.eps']) expect(validLogoFile({ name, size: 100 })).toBe(false)
   })
-  it('keeps the 5 MB limit and rejects empty files', () => {
+  it('accepts logos without a file-size cap', () => {
     expect(validLogoFile({ name: 'logo.svg', size: 5 * 1024 * 1024 })).toBe(true)
-    expect(validLogoFile({ name: 'logo.svg', size: 5 * 1024 * 1024 + 1 })).toBe(false)
+    expect(validLogoFile({ name: 'logo.svg', size: 5 * 1024 * 1024 + 1 })).toBe(true)
+    expect(validLogoFile({ name: 'logo.pdf', size: 1024 * 1024 * 1024 })).toBe(true)
+  })
+  it('rejects empty logo files', () => {
     expect(validLogoFile({ name: 'logo.svg', size: 0 })).toBe(false)
   })
 })
