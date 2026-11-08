@@ -5,6 +5,7 @@ import { ChevronLeft, ShoppingCart, Upload, Check } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import FooterSection from "@/components/FooterSection";
 import ProductLogoModal from "@/components/ProductLogoModal";
+import ProductVisualization from "@/components/ProductVisualization";
 import ProductImageViewer, { imageViewerLabels } from "@/components/ProductImageViewer";
 import { Button } from "@/components/ui/button";
 import { supabase } from "@/integrations/supabase/client";
@@ -290,6 +291,7 @@ const VeikalsProduct = () => {
             </div>
 
             {/* Qty + add */}
+            <div className="mb-4"><ProductVisualization productId={product.id} productName={localizedName} imageUrl={images[0]?.url ?? null} /></div>
             <div className="flex items-center gap-3 mb-4">
               <div className="flex items-center border border-border rounded-lg">
                 <button

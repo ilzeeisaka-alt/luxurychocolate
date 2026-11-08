@@ -1,3 +1,9 @@
+# Product visualizations
+- [x] Add product logo/idea visualization, private saved images and download; verified real generation, PNG download and restoration after reload, plus product-detail button and mobile width.
+- [x] Notify administrator and add client/product/idea/image overview; verified saved identity/idea/image and managed email sent to Ilze.
+- [x] Verify generation, saved result, email and permission rules; five tests pass and anonymous admin reads, stranger history and private file listing were denied.
+- [ ] Verify signed-in administrator visualization overview. Blocked: requesting user's email has no matching app auth account; preview sign-in is needed.
+
 # AI conversation reporting
 - [x] Keep complete chat exchanges saved and add an administrator-only conversation tab; verified question and answer restoration after reload and anonymous denial, with three role-access tests passing.
 - [x] Notify Ilze by email after each completed exchange; verified managed email sent event and stored exchange.

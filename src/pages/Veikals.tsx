@@ -5,6 +5,7 @@ import { Search, ChevronLeft, ChevronRight, X } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import FooterSection from "@/components/FooterSection";
 import ProductImageViewer, { imageViewerLabels } from "@/components/ProductImageViewer";
+import ProductVisualization from "@/components/ProductVisualization";
 import { Button } from "@/components/ui/button";
 import { supabase } from "@/integrations/supabase/client";
 import { useSeo } from "@/hooks/useSeo";
@@ -378,6 +379,7 @@ const Veikals = () => {
                           {formatPrice(p.price_cents, p.currency)}
                         </p>
                       </Link>
+                      <div className="px-3 pb-3"><ProductVisualization compact productId={p.id} productName={p.name} imageUrl={p.image_url} /></div>
                     </article>
                   ))}
                 </div>

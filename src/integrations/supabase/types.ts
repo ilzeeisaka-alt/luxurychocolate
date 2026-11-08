@@ -839,6 +839,65 @@ export type Database = {
           },
         ]
       }
+      product_visualizations: {
+        Row: {
+          created_at: string
+          customer_email: string
+          customer_name: string
+          email_status: string | null
+          id: string
+          idea: string
+          image_path: string | null
+          lang: string
+          logo_path: string | null
+          product_id: string
+          product_name: string
+          session_token: string
+          status: string
+          user_id: string | null
+        }
+        Insert: {
+          created_at?: string
+          customer_email: string
+          customer_name: string
+          email_status?: string | null
+          id?: string
+          idea: string
+          image_path?: string | null
+          lang?: string
+          logo_path?: string | null
+          product_id: string
+          product_name: string
+          session_token: string
+          status?: string
+          user_id?: string | null
+        }
+        Update: {
+          created_at?: string
+          customer_email?: string
+          customer_name?: string
+          email_status?: string | null
+          id?: string
+          idea?: string
+          image_path?: string | null
+          lang?: string
+          logo_path?: string | null
+          product_id?: string
+          product_name?: string
+          session_token?: string
+          status?: string
+          user_id?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "product_visualizations_product_id_fkey"
+            columns: ["product_id"]
+            isOneToOne: false
+            referencedRelation: "products"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       products: {
         Row: {
           category_id: string | null
