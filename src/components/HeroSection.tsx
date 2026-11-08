@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import logo from "@/assets/logo-hero-gold-center.png";
 import chocoTimeLogo from "@/assets/its-choco-time-gold.png";
 import chocolatePrintingTitle from "@/assets/hero-chocolate-printing.png";
+import { heroChocolateTitles, heroChocolateRtlLanguages } from "@/i18n/heroChocolateTitle";
 import { ExternalLink, ShoppingBag } from "lucide-react";
 import type { Lang } from "@/i18n/types";
 import { expandLangs } from "@/i18n/expandLangs";
@@ -57,41 +58,6 @@ const orderNowLabels: Record<Lang, string> = expandLangs({
   mk: "Нарачај сега",
   sq: "Porosit tani",
   is: "Panta núna",
-});
-
-const videoTopCaptions: Record<Lang, string> = expandLangs({
-  lv: "Šokolādes apdruka",
-  en: "Chocolate printing",
-  ru: "Шоколадная печать",
-  et: "Šokolaaditrükk",
-  lt: "Šokolado spauda",
-  sv: "Chokladtryck",
-  no: "Sjokoladetrykk",
-  fi: "Suklaapainatus",
-  da: "Chokoladetryk",
-  de: "Schokoladendruck",
-  fr: "Impression sur chocolat",
-  it: "Stampa su cioccolato",
-  es: "Impresión en chocolate",
-  ar: "طباعة الشوكولاتة",
-  nl: "Chocoladedruk",
-  pl: "Druk czekoladowy",
-  cs: "Čokoládový tisk",
-  pt: "Impressão em chocolate",
-  el: "Εκτύπωση σοκολάτας",
-  tr: "Çikolata baskı",
-  hu: "Csokoládé nyomtatás",
-  ro: "Tiparire cu ciocolată",
-  bg: "Шоколадов печат",
-  hr: "Čokoladni tisak",
-  sk: "Čokoládová tlač",
-  sl: "Čokoladni tisk",
-  uk: "Шоколадний друк",
-  sr: "Čokoladna štampa",
-  bs: "Čokoladna štampa",
-  mk: "Чоколадно печатење",
-  sq: "Shtypje çokollate",
-  is: "Súkkulaðaprentun",
 });
 
 const videoCaptions: Record<Lang, string> = expandLangs({
@@ -180,7 +146,7 @@ const HeroSection = ({
         />
 
         {/* Augšējais teksts uz video */}
-        <div className="absolute top-[20%] sm:top-[16%] left-0 right-0 z-10 text-center px-4">
+        <div className="absolute top-[16%] sm:top-[12%] left-0 right-0 z-10 text-center px-4">
           {lang === "lv" ? (
             <p>
               <span className="sr-only">Šokolādes apdruka</span>
@@ -195,16 +161,14 @@ const HeroSection = ({
               />
             </p>
           ) : (
-          <p
-            className="text-lg sm:text-3xl font-semibold tracking-widest uppercase"
-            style={{
-              color: "#e8d5b5",
-              textShadow: "0 2px 12px rgba(60,30,10,0.9), 0 0 24px rgba(60,30,10,0.6)",
-              letterSpacing: "0.18em",
-            }}
-          >
-            {videoTopCaptions[lang] ?? videoTopCaptions.en}
-          </p>
+            <p
+              className="hero-chocolate-title"
+              lang={lang}
+              dir={heroChocolateRtlLanguages.includes(lang) ? "rtl" : "ltr"}
+            >
+              <span className="hero-chocolate-title-depth" aria-hidden="true">{heroChocolateTitles[lang]}</span>
+              <span className="hero-chocolate-title-face">{heroChocolateTitles[lang]}</span>
+            </p>
           )}
         </div>
 

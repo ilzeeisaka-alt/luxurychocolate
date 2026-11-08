@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 import { Utensils } from "lucide-react";
 import type { Lang } from "@/i18n/types";
+import { expandLangs } from "@/i18n/expandLangs";
 import Lightbox from "@/components/Lightbox";
 
 import img1 from "@/assets/galda-karte-1.jpg";
@@ -14,7 +15,7 @@ type OldLang9 = "lv" | "en" | "ru" | "et" | "lt" | "sv" | "no" | "fi" | "da";
 const _addLangs = <T,>(base: Record<OldLang9, T>): Record<Lang, T> => {
   const r: any = { ...base };
   for (const l of _NEW) r[l] = base.en;
-  return r;
+  return expandLangs(r);
 };
 
 const content: Record<Lang, {

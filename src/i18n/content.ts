@@ -1,4 +1,5 @@
 import type { Lang } from "./types";
+import { expandLangs } from "./expandLangs";
 import * as nl from "./nl";
 import * as pl from "./pl";
 import * as cs from "./cs";
@@ -9,14 +10,14 @@ type BaseLang = "lv" | "en" | "ru" | "et" | "lt";
 const withNordics = <T>(base: Record<BaseLang, T>): Record<Lang, T> => {
   const result: any = { ...base, sv: base.en, no: base.en, fi: base.en, da: base.en };
   for (const l of NEW_LANGS) result[l] = base.en;
-  return result;
+  return expandLangs(result);
 };
 
 type OldLang = "lv" | "en" | "ru" | "et" | "lt" | "sv" | "no" | "fi" | "da";
 const addNewLangs = <T>(base: Record<OldLang, T>): Record<Lang, T> => {
   const result: any = { ...base };
   for (const l of NEW_LANGS) result[l] = base.en;
-  return result;
+  return expandLangs(result);
 };
 
 
