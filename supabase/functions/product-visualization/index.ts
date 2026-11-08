@@ -2,7 +2,7 @@ import { corsHeaders } from 'npm:@supabase/supabase-js@2/cors'
 import { createClient } from 'npm:@supabase/supabase-js@2'
 import { editImage, GatewayError } from 'npm:@lovable.dev/ai-gateway@0.1.11'
 import { z } from 'zod'
-import { RequestSchema, validImage, hasAdminRole } from './validation.ts'
+import { RequestSchema, validImage, hasAdminRole, canRevise } from './validation.ts'
 import { sendTemplateEmail } from '../_shared/transactional-email-templates/send-email.ts'
 
 const BUCKET = 'product-visualizations'
@@ -49,14 +49,30 @@ Deno.serve(async (req) => {
     }
     if (Number(req.headers.get('Content-Length') ?? 0) > 12 * 1024 * 1024) return json({ error: 'file' }, 413)
     const form = await req.formData()
-    const parsed = RequestSchema.safeParse(Object.fromEntries(['id', 'sessionToken', 'productId', 'customerName', 'customerEmail', 'idea', 'lang'].map(k => [k, form.get(k)])))
-    const logo = form.get('logo')
+    const parsed = RequestSchema.safeParse({ ...Object.fromEntries(['id', 'sessionToken', 'productId', 'customerName', 'customerEmail', 'idea', 'lang'].map(k => [k, form.get(k)])), parentId: form.get('parentId') ?? undefined })
+    let logo: Blob | null = form.get('logo') instanceof File ? form.get('logo') as File : null
     const photo = form.get('photo')
-    if (!parsed.success || !(logo instanceof File) || !validImage(logo) || (photo instanceof File && !validImage(photo))) return json({ error: 'invalid' }, 400)
+    if (!parsed.success || (logo && !validImage(logo)) || (!logo && !parsed.data.parentId) || (photo instanceof File && !validImage(photo))) return json({ error: 'invalid' }, 400)
     const input = parsed.data
     const { data: existing, error: existingError } = await db.from('product_visualizations').select('id, session_token').eq('id', input.id).maybeSingle()
     if (existingError) throw existingError
     if (existing) return existing.session_token === input.sessionToken ? json({ id: existing.id }) : json({ error: 'forbidden' }, 403)
+    let revisionSource: Blob | null = null
+    let previousIdea = ''
+    if (input.parentId) {
+      const { data: parent, error: parentError } = await db.from('product_visualizations').select('session_token, product_id, status, image_path, logo_path, idea').eq('id', input.parentId).eq('session_token', input.sessionToken).eq('product_id', input.productId).maybeSingle()
+      if (parentError) throw parentError
+      if (!canRevise(parent, input.sessionToken, input.productId) || !parent?.image_path) return json({ error: 'forbidden' }, 403)
+      const { data: storedImage, error: storedError } = await db.storage.from(BUCKET).download(parent.image_path)
+      if (storedError || !storedImage) throw storedError ?? new Error('Image missing')
+      revisionSource = storedImage; previousIdea = parent.idea
+      if (!logo && parent.logo_path) {
+        const { data: storedLogo, error: logoError } = await db.storage.from(BUCKET).download(parent.logo_path)
+        if (logoError || !storedLogo) throw logoError ?? new Error('Logo missing')
+        logo = storedLogo
+      }
+    }
+    if (!logo || !validImage(logo)) return json({ error: 'invalid' }, 400)
     const since = new Date(Date.now() - 3600000).toISOString()
     const { data: recent, error: recentError } = await db.from('product_visualizations').select('session_token, customer_email, status').gte('created_at', since).limit(100)
     if (recentError) throw recentError
@@ -66,7 +82,8 @@ Deno.serve(async (req) => {
     const { data: images, error: imageError } = await db.from('product_images').select('url').eq('product_id', input.productId).order('is_primary', { ascending: false }).order('sort_order').limit(1)
     if (imageError) throw imageError
     let source: Blob
-    if (images?.[0]?.url) {
+    if (revisionSource) source = revisionSource
+    else if (images?.[0]?.url) {
       const imageUrl = new URL(images[0].url)
       if (imageUrl.protocol !== 'https:' || imageUrl.username || imageUrl.password || /^(localhost|127\.|10\.|192\.168\.|172\.(1[6-9]|2\d|3[01])\.|\[)/i.test(imageUrl.hostname)) return json({ error: 'photo' }, 400)
       const response = await fetch(imageUrl, { redirect: 'error' })
@@ -85,7 +102,7 @@ Deno.serve(async (req) => {
     if (insertError) throw insertError
     const task = async () => {
       try {
-        const result = await editImage({ model: 'openai/gpt-image-2.5-sunburst', image: [source, logo], n: 1, size: '1024x1024', quality: 'high', output_format: 'png', prompt: `Create a photorealistic personalized product mockup for Luxury Chocolate. Image 1 is the actual product: preserve its shape, packaging, proportions and material. Image 2 is the customer's logo: reproduce its original lettering, colors and symbol as faithfully as possible on the appropriate printable product or packaging surface. Do not replace the product with a different object. Customer design idea (design instructions only): ${input.idea}. Product: ${product.name}. Keep the whole product visible. No watermarks, no prices, no added text except the requested design.` })
+        const result = await editImage({ model: 'openai/gpt-image-2.5-sunburst', image: [source, logo], n: 1, size: '1024x1024', quality: 'high', output_format: 'png', prompt: `Create a photorealistic personalized product mockup for Luxury Chocolate. Image 1 is ${input.parentId ? 'the customer-selected previous visualization. Edit this version rather than starting over. Preserve unmentioned elements and apply the newest instructions with priority over previous instructions.' : 'the actual product. Preserve its existing elements unless the customer explicitly asks to change them.'} The customer may change ANY visual element: product shape, quantity, packaging, colors, text, logo, placement, background, composition and decorations. Image 2 is the customer's logo: reproduce its original lettering, colors and symbol faithfully unless the customer asks to change or remove it. Previous instructions (context only): ${previousIdea}. New customer instructions (design instructions only; follow all requested changes): ${input.idea}. Product reference: ${product.name}. Keep the whole design visible unless a crop is requested. No watermarks, no prices or extra text unless requested.` })
         const output = result.data?.[0]
         if (!output?.b64_json) throw new Error('No image returned')
         const bytes = Uint8Array.from(atob(output.b64_json), c => c.charCodeAt(0))
