@@ -13,6 +13,7 @@ import { visualizationText } from '@/i18n/visualizations'
 import { downloadVisualization, visualizationSession, type Visualization } from '@/lib/visualizations'
 import { validImage } from '../../supabase/functions/product-visualization/validation'
 import { logoAccept, prepareLogo, validLogoFile, combineDesignFiles } from '@/lib/logoFiles'
+import ProductImageViewer, { imageViewerLabels } from '@/components/ProductImageViewer'
 
 export default function ProductVisualization({ productId, productName, imageUrl, compact = false }: { productId: string; productName: string; imageUrl: string | null; compact?: boolean }) {
   const lang = useCurrentLang(); const t = visualizationText(lang); const prefix = useId()
@@ -22,6 +23,8 @@ export default function ProductVisualization({ productId, productName, imageUrl,
   const [consent, setConsent] = useState(false); const [submitting, setSubmitting] = useState(false); const [error, setError] = useState('')
   const [active, setActive] = useState<string | null>(null)
   const [revision, setRevision] = useState<Visualization | null>(null)
+  const [viewerImage, setViewerImage] = useState<string | null>(null)
+  const viewerLabels = imageViewerLabels(lang)
   const ideaRef = useRef<HTMLTextAreaElement>(null)
   useEffect(() => {
     if (!revision) return
@@ -85,9 +88,9 @@ export default function ProductVisualization({ productId, productName, imageUrl,
   return <>
     <Button variant="outline" size={compact ? 'sm' : 'default'} className="w-full h-auto min-h-10 whitespace-normal gap-2 text-primary" onClick={() => setOpen(true)}><Sparkles className="h-4 w-4 shrink-0" />{t.button}</Button>
     <Dialog open={open} onOpenChange={setOpen}>
-      <DialogContent className="max-w-3xl w-[calc(100%-1rem)] max-h-[90dvh] overflow-y-auto">
+      <DialogContent className="max-w-[1400px] w-[96vw] max-h-[94dvh] overflow-y-auto">
         <DialogHeader><DialogTitle>{t.title}</DialogTitle><DialogDescription>{productName}</DialogDescription></DialogHeader>
-        <div className="grid gap-6 md:grid-cols-2">
+        <div className="grid gap-6 md:grid-cols-[minmax(280px,0.8fr)_minmax(0,1.2fr)]">
           <form className="space-y-4 min-w-0" onSubmit={generate}>
             <div className="space-y-1"><Label htmlFor={`${prefix}-name`}>{t.name}</Label><Input id={`${prefix}-name`} required minLength={2} maxLength={120} autoComplete="name" value={name} onChange={e => setName(e.target.value)} /></div>
             <div className="space-y-1"><Label htmlFor={`${prefix}-email`}>{t.email}</Label><Input id={`${prefix}-email`} type="email" required maxLength={254} autoComplete="email" value={email} onChange={e => setEmail(e.target.value)} /></div>
@@ -100,7 +103,7 @@ export default function ProductVisualization({ productId, productName, imageUrl,
             <Button type="submit" className="w-full gap-2 h-auto min-h-11 whitespace-normal" disabled={pending || !consent || (!designFiles.length && !revision) || (!imageUrl && !photo && !revision)}>{pending ? <Loader2 className="h-4 w-4 animate-spin" /> : <Sparkles className="h-4 w-4" />}{pending ? t.loading : revision ? t.generateRevision : t.generate}</Button>
           </form>
           <div className="min-w-0 space-y-4">
-            {(revision?.imageUrl || imageUrl) && <img src={revision?.imageUrl ?? imageUrl ?? ''} alt={productName} className="w-full aspect-square object-contain bg-muted" />}
+            {(revision?.imageUrl || imageUrl) && <Button type="button" variant="ghost" className="block h-auto w-full p-0" aria-label={viewerLabels.open} onClick={() => setViewerImage(revision?.imageUrl ?? imageUrl)}><img src={revision?.imageUrl ?? imageUrl ?? ''} alt={productName} className="w-full h-auto object-contain" /></Button>}
             <p className="text-xs text-muted-foreground">{t.note}</p>
             {history.isError && <p role="alert" className="text-sm text-destructive">{t.error}</p>}
             {(history.data?.length ?? 0) > 0 && <h3 className="font-semibold">{t.history}</h3>}
@@ -109,11 +112,12 @@ export default function ProductVisualization({ productId, productName, imageUrl,
               {row.status === 'pending' && <p role="status" className="text-sm flex gap-2"><Loader2 className="h-4 w-4 animate-spin text-primary" />{t.loading}</p>}
               {row.status === 'failed' && <p className="text-destructive text-sm">{t.failed}</p>}
               {row.status === 'completed' && row.imageUrl && <Button variant="outline" className="w-full gap-2" disabled={pending} onClick={() => { setRevision(row); setName(row.customer_name); setEmail(row.customer_email); setIdea(''); setError(''); setDesignFiles([]) }}><Pencil className="h-4 w-4" />{t.edit}</Button>}
-              {row.imageUrl && <><img src={row.imageUrl} alt={t.title} className="w-full aspect-square object-contain" /><Button variant="outline" className="w-full gap-2" onClick={() => { if (row.imageUrl) void downloadVisualization(row.imageUrl, row.id).catch(() => setError(t.error)) }}><Download className="h-4 w-4" />{t.download}</Button><p className="text-xs text-muted-foreground">{row.email_status === 'sent' ? t.saved : row.email_status === 'failed' || row.email_status === 'recipient_suppressed' ? t.emailFailed : ''}</p></>}
+              {row.imageUrl && <><Button type="button" variant="ghost" className="block h-auto w-full p-0" aria-label={viewerLabels.open} onClick={() => setViewerImage(row.imageUrl)}><img src={row.imageUrl} alt={t.title} className="w-full h-auto object-contain" /></Button><Button variant="outline" className="w-full gap-2" onClick={() => { if (row.imageUrl) void downloadVisualization(row.imageUrl, row.id).catch(() => setError(t.error)) }}><Download className="h-4 w-4" />{t.download}</Button><p className="text-xs text-muted-foreground">{row.email_status === 'sent' ? t.saved : row.email_status === 'failed' || row.email_status === 'recipient_suppressed' ? t.emailFailed : ''}</p></>}
             </article>)}
           </div>
         </div>
       </DialogContent>
     </Dialog>
+    <ProductImageViewer images={viewerImage ? [viewerImage] : []} index={viewerImage ? 0 : null} title={t.title} onClose={() => setViewerImage(null)} onChangeIndex={() => {}} />
   </>
 }

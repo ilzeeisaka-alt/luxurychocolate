@@ -3,6 +3,7 @@
 - [ ] Verify signed-in administrator price-proposal overview. Blocked: no app auth account matches the requesting user; preview administrator sign-in is needed.
 
 # Product visualizations
+- [x] Remove forced square composition, enlarge natural-ratio previews and add full-image enlargement; eight tests passed, desktop/mobile dialogs checked, and real generation returned a 1536×1024 landscape image with the whole box, lid, separate card and styled surrounding background. Generator technical resolution limits still apply.
 - [x] Add cumulative multi-file logo/design references without a count cap; verified 11-file selection, adding a 12th, removing one, and real generation with all remaining references.
 - [x] Add iterative customer-directed editing of any visual element; verified real multi-instruction revision, both versions restored after reload, notification sent for both versions and private-parent permission tests.
 - [x] Add product logo/idea visualization, private saved images and download; verified real generation, PNG download and restoration after reload, plus product-detail button and mobile width.

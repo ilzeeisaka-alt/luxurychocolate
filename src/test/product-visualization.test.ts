@@ -1,6 +1,10 @@
 import { describe, expect, it } from 'vitest'
 import { RequestSchema, validImage, hasAdminRole, canRevise } from '../../supabase/functions/product-visualization/validation'
+import { visualizationComposition } from '../../supabase/functions/product-visualization/composition'
 describe('private client product visualizations', () => {
+  it('does not force products and surrounding design into a square canvas', () => {
+    expect(visualizationComposition.size).toBe('auto')
+  })
   const request = { id: '671c09d4-03f3-44f0-9fd0-49fb33d6e640', sessionToken: '671c09d4-03f3-44f0-9fd0-49fb33d6e641', productId: '671c09d4-03f3-44f0-9fd0-49fb33d6e642', customerName: 'Test Client', customerEmail: 'client@example.com', idea: 'Logo on the chocolate', lang: 'lv' }
   it('requires the client name for administrator identification', () => { expect(RequestSchema.safeParse({ ...request, customerName: '' }).success).toBe(false); expect(RequestSchema.safeParse(request).success).toBe(true) })
   it('requires a valid client email', () => { expect(RequestSchema.safeParse({ ...request, customerEmail: '' }).success).toBe(false) })
