@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import logo from "@/assets/logo-hero-gold-center.png";
 import chocoTimeLogo from "@/assets/its-choco-time-gold.png";
 import chocolatePrintingTitle from "@/assets/hero-chocolate-printing.png";
+import chocolatePrintingTitleEn from "@/assets/hero-chocolate-printing-en.png";
 import { heroChocolateTitles, heroChocolateRtlLanguages } from "@/i18n/heroChocolateTitle";
 import { ExternalLink, ShoppingBag } from "lucide-react";
 import type { Lang } from "@/i18n/types";
@@ -147,11 +148,11 @@ const HeroSection = ({
 
         {/* Augšējais teksts uz video */}
         <div className="absolute top-[16%] sm:top-[12%] left-0 right-0 z-10 text-center px-4">
-          {lang === "lv" ? (
+          {lang === "lv" || lang === "en" ? (
             <p>
-              <span className="sr-only">Šokolādes apdruka</span>
+              <span className="sr-only">{heroChocolateTitles[lang]}</span>
               <img
-                src={chocolatePrintingTitle}
+                src={lang === "lv" ? chocolatePrintingTitle : chocolatePrintingTitleEn}
                 alt=""
                 aria-hidden="true"
                 width={1884}
