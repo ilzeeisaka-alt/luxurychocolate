@@ -73,10 +73,6 @@ Deno.serve(async (req) => {
       }
     }
     if (!logo || !validImage(logo)) return json({ error: 'invalid' }, 400)
-    const since = new Date(Date.now() - 3600000).toISOString()
-    const { data: recent, error: recentError } = await db.from('product_visualizations').select('session_token, customer_email, status').gte('created_at', since).limit(100)
-    if (recentError) throw recentError
-    if ((recent?.length ?? 0) >= 30 || (recent ?? []).filter(r => r.session_token === input.sessionToken || r.customer_email.toLowerCase() === input.customerEmail.toLowerCase()).length >= 5 || (recent ?? []).some(r => r.session_token === input.sessionToken && r.status === 'pending')) return json({ error: 'limit' }, 429)
     const { data: product, error: productError } = await db.from('products').select('name, published').eq('id', input.productId).single()
     if (productError || !product?.published) return json({ error: 'product' }, 404)
     const { data: images, error: imageError } = await db.from('product_images').select('url').eq('product_id', input.productId).order('is_primary', { ascending: false }).order('sort_order').limit(1)
