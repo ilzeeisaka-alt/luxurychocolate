@@ -839,6 +839,65 @@ export type Database = {
           },
         ]
       }
+      product_price_proposals: {
+        Row: {
+          created_at: string
+          currency: string
+          current_price_cents: number
+          customer_email: string
+          customer_name: string
+          email_status: string
+          id: string
+          lang: string
+          message: string
+          product_id: string
+          product_name: string
+          product_slug: string
+          proposed_price_cents: number
+          quantity: number
+        }
+        Insert: {
+          created_at?: string
+          currency?: string
+          current_price_cents: number
+          customer_email: string
+          customer_name: string
+          email_status?: string
+          id: string
+          lang?: string
+          message?: string
+          product_id: string
+          product_name: string
+          product_slug: string
+          proposed_price_cents: number
+          quantity: number
+        }
+        Update: {
+          created_at?: string
+          currency?: string
+          current_price_cents?: number
+          customer_email?: string
+          customer_name?: string
+          email_status?: string
+          id?: string
+          lang?: string
+          message?: string
+          product_id?: string
+          product_name?: string
+          product_slug?: string
+          proposed_price_cents?: number
+          quantity?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "product_price_proposals_product_id_fkey"
+            columns: ["product_id"]
+            isOneToOne: false
+            referencedRelation: "products"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       product_visualizations: {
         Row: {
           created_at: string

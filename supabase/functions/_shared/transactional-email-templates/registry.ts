@@ -4,6 +4,7 @@ import { template as shopLogoUploadTemplate } from './shop-logo-upload.tsx'
 import { template as htmlMessageTemplate } from './html-message.tsx'
 import { template as aiChatNotificationTemplate } from './ai-chat-notification.tsx'
 import { template as productVisualizationTemplate } from './product-visualization.tsx'
+import { template as productPriceProposalTemplate } from './product-price-proposal.tsx'
 
 export interface TemplateEntry {
   component: ComponentType<any>
@@ -23,6 +24,7 @@ export interface TemplateEntry {
  *   // then add to TEMPLATES: 'welcome': welcomeTemplate
  */
 export const TEMPLATES: Record<string, TemplateEntry> = {
+  'product-price-proposal': productPriceProposalTemplate,
   'product-visualization': productVisualizationTemplate,
   'ai-chat-notification': aiChatNotificationTemplate,
   'offer_request': offerRequestTemplate,

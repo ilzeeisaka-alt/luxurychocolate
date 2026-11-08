@@ -6,6 +6,7 @@ import Navbar from "@/components/Navbar";
 import FooterSection from "@/components/FooterSection";
 import ProductImageViewer, { imageViewerLabels } from "@/components/ProductImageViewer";
 import ProductVisualization from "@/components/ProductVisualization";
+import ProductPriceProposal from "@/components/ProductPriceProposal";
 import { Button } from "@/components/ui/button";
 import { supabase } from "@/integrations/supabase/client";
 import { useSeo } from "@/hooks/useSeo";
@@ -379,7 +380,7 @@ const Veikals = () => {
                           {formatPrice(p.price_cents, p.currency)}
                         </p>
                       </Link>
-                      <div className="px-3 pb-3"><ProductVisualization compact productId={p.id} productName={p.name} imageUrl={p.image_url} /></div>
+                      <div className="px-3 pb-3 space-y-2"><ProductPriceProposal compact productId={p.id} productName={p.name} priceCents={p.price_cents} currency={p.currency} /><ProductVisualization compact productId={p.id} productName={p.name} imageUrl={p.image_url} /></div>
                     </article>
                   ))}
                 </div>

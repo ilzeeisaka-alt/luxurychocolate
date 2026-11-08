@@ -50,6 +50,13 @@
       "when": 1794122068150,
       "tag": "0006_private_product_visualizations",
       "breakpoints": true
+    },
+    {
+      "idx": 7,
+      "version": "7",
+      "when": 1794133012489,
+      "tag": "0007_create_product_price_proposals",
+      "breakpoints": true
     }
   ]
 }

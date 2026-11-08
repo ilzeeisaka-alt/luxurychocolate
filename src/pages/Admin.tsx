@@ -27,6 +27,7 @@ import AdminProducts from "@/components/admin/AdminProducts";
 import AdminAffiliates from "@/components/admin/AdminAffiliates";
 import AdminChats from "@/components/admin/AdminChats";
 import AdminVisualizations from "@/components/admin/AdminVisualizations";
+import AdminPriceProposals from "@/components/admin/AdminPriceProposals";
 import { toast } from "sonner";
 import { Loader2, MessageCircle, Package, Search, ShieldAlert, ShoppingBag, Users } from "lucide-react";
 
@@ -325,6 +326,7 @@ const Admin = () => {
               <MessageCircle className="w-4 h-4" /> AI sarunas
             </TabsTrigger>
             <TabsTrigger value="visualizations" className="gap-2"><Package className="w-4 h-4" /> Vizualizācijas</TabsTrigger>
+            <TabsTrigger value="price-proposals" className="gap-2"><MessageCircle className="w-4 h-4" /> Cenas piedāvājumi</TabsTrigger>
           </TabsList>
 
           <TabsContent value="products">
@@ -338,6 +340,7 @@ const Admin = () => {
             <AdminChats />
           </TabsContent>
           <TabsContent value="visualizations"><AdminVisualizations /></TabsContent>
+          <TabsContent value="price-proposals"><AdminPriceProposals /></TabsContent>
 
 
           <TabsContent value="orders">

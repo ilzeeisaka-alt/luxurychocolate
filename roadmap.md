@@ -1,3 +1,7 @@
+# Customer price proposals
+- [x] Add product price proposal form, private saved submissions, owner email and admin overview; verified a EUR 20 unit-price / 50-piece submission against a EUR 25 catalog price, saved data, sent owner email, mobile/shop controls and four validation tests; removed only the test submission.
+- [ ] Verify signed-in administrator price-proposal overview. Blocked: no app auth account matches the requesting user; preview administrator sign-in is needed.
+
 # Product visualizations
 - [x] Add cumulative multi-file logo/design references without a count cap; verified 11-file selection, adding a 12th, removing one, and real generation with all remaining references.
 - [x] Add iterative customer-directed editing of any visual element; verified real multi-instruction revision, both versions restored after reload, notification sent for both versions and private-parent permission tests.

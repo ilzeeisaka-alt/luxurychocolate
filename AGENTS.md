@@ -1,4 +1,5 @@
 # Architecture rules
+- Keep customer price proposals separate from catalog prices: server-validate published products, save private submissions, expose admin-only reads through RLS and send fixed-recipient event-deduplicated notifications; proposals must never change checkout prices.
 - Keep hero chocolate lettering as localized Unicode text with a shared chocolate texture and explicit translations for every supported language, preserving native script shaping without per-language image generation; retain the original Latvian artwork.
 - Keep product visualization generation in its dedicated Edge Function, with durable request IDs, bounded generation, private storage, session-scoped visitor history, protected admin reads and fixed-recipient event-deduplicated emails; never expose client designs publicly.
 - Normalize visualization logo uploads to bounded PNGs in the browser, sanitizing SVG and rendering only the first PDF/TIFF page; keep server image validation strict so active document formats never reach private image storage or the image model.
