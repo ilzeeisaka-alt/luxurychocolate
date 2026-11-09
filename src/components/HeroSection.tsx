@@ -1,3 +1,4 @@
+import { useLayoutEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import logo from "@/assets/logo-hero-gold-center.png";
 import chocoTimeLogo from "@/assets/its-choco-time-gold.png";
@@ -121,8 +122,31 @@ const HeroSection = ({
   pricesButton,
   logoAlt = "Luxury Chocolate — ekskluzīvas korporatīvās šokolādes ar logo",
 }: HeroSectionProps) => {
+  const sectionRef = useRef<HTMLElement>(null);
+  const [navigationClearance, setNavigationClearance] = useState(0);
+
+  useLayoutEffect(() => {
+    const navigation = document.getElementById("luxury-navigation");
+    if (!navigation) return;
+
+    const updateClearance = () => {
+      const section = sectionRef.current;
+      if (!section) return;
+      const sectionTop = section.getBoundingClientRect().top + window.scrollY;
+      setNavigationClearance(Math.max(0, navigation.getBoundingClientRect().height - sectionTop));
+    };
+    const observer = new ResizeObserver(updateClearance);
+    observer.observe(navigation);
+    window.addEventListener("resize", updateClearance);
+    updateClearance();
+    return () => {
+      observer.disconnect();
+      window.removeEventListener("resize", updateClearance);
+    };
+  }, []);
+
   return (
-    <section className="flex flex-col">
+    <section ref={sectionRef} className="flex flex-col bg-foreground" style={{ paddingTop: navigationClearance }}>
       {/* Video ar logo abās malās */}
       <div className="relative w-full h-[55vh] sm:h-[70vh] overflow-hidden bg-foreground">
         <video
