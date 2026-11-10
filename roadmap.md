@@ -17,6 +17,7 @@
 - [ ] Verify signed-in administrator list/detail on desktop and mobile. Blocked: no requesting-user auth account matches and multiple accounts exist; user must sign in to the preview or identify the account to test.
 
 # SEO corrections
+- [x] Added the supplied "Super Vision" white-chocolate-bar photo as the first and only image of "8.7 x 19.7 cm Šokolāde ar apdruku" (previously had none); verified the live product page renders it at 1536×1024 and the asset returns 200 image/png.
 - [x] Copied the 5-7 cm cupcakes into a separate product named with chocolate logo decoration and berries at EUR 10 per piece, reusing the original photo; synchronized catalog and sitemap links, verified the product page, category list and English version in the browser, and passed the price test confirming the original remains EUR 5.
 - [x] Copied mini cupcakes into a separate product with the supplied berry/logo photo at EUR 5 per piece; synchronized catalog links, verified the rendered photo and price, and passed the price test confirming the original remains EUR 2.50.
 - [x] Highlighted Christmas and New Year chocolate gifts with festive symbols in the gift-box section; verified the link and existing Christmas page title, description, keywords and H1 in the browser. Google indexing/rankings were not verified; live changes need publishing.
