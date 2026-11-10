@@ -36,6 +36,7 @@
 
 # Chocolate in 3D gun shape product
 - [x] Add "Šokolāde 3D ieroča formā" as a published product at EUR 15.00 per piece including VAT in its own shop category, with LV/EN/RU names and descriptions, a preparation service copied from the Oscar statuette category, an AI preview photo, catalog and sitemap entries, and one passing price/category test; live product page checked for the EUR 15.00 price and the full-size photo.
+- [x] Move "Šokolāde 3D ieroča formā" into the "Īpašu formu šokolādes" category, remove its separate category and the duplicated preparation service, refresh the catalog directory and sitemap, and update the test; live category page checked.
 
 ## Verification limits
 - Live site changes require publishing and a new Ahrefs crawl; screenshot counts are historical, not a fresh verdict.
