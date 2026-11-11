@@ -11,6 +11,12 @@ async function catalogRead(path: string) {
 }
 
 describe("Truffles catalog", () => {
+  it("prices the branded 12-truffle box at EUR 25 including VAT", async () => {
+    const products = await catalogRead("products?slug=eq.12-trifelu-kastite-ar-uznemuma-logo-ziemassvetkiem&select=price_cents,currency,prices_include_vat,published,metadata,product_categories(slug)");
+    expect(products).toHaveLength(1);
+    expect(products[0]).toMatchObject({ price_cents: 2500, currency: "EUR", prices_include_vat: true, published: true, metadata: { pieces_per_box: 12 }, product_categories: { slug: "trifeles" } });
+  });
+
   it.each([
     "piena-sokolades-trifele-belgu-cepums",
     "tumsas-sokolades-trifele-melna-balzama-ganasa",
