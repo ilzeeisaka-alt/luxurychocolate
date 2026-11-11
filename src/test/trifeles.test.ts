@@ -11,6 +11,20 @@ async function catalogRead(path: string) {
 }
 
 describe("Truffles catalog", () => {
+  it.each([
+    "tumsas-sokolades-trifeles-ar-dzervenu-pildijumu",
+    "piena-sokolades-trifeles-ar-karameles-un-kanela-piparkuku-garsvielu-pildijumu",
+    "piena-sokolades-trifeles-ar-lazdu-riekstu-krema-pildijumu",
+    "baltas-sokolades-trifeles-ar-vanilas-marcipana-vai-ziemas-ogu-krema-pildijumu",
+  ])("prices %s at EUR 3 per piece in Trifeles", async (productSlug) => {
+    const products = await catalogRead(`products?slug=eq.${productSlug}&select=price_cents,currency,prices_include_vat,published,product_categories(slug)`);
+    expect(products).toHaveLength(1);
+    expect(products[0]).toMatchObject({
+      price_cents: 300, currency: "EUR", prices_include_vat: true, published: true,
+      product_categories: { slug: "trifeles" },
+    });
+  });
+
   it("places truffles second among top-level categories", async () => {
     const categories = await catalogRead("product_categories?parent_id=is.null&select=slug&order=sort_order.asc,name.asc&limit=3");
     expect(categories[1]?.slug).toBe("trifeles");
