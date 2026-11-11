@@ -1,0 +1,27 @@
+import { describe, expect, it } from "vitest";
+
+const slug = "piena-sokolades-trifeles-ar-piparkuku-garsas-krema-pildijumu";
+async function catalogRead(path: string) {
+  const env = import.meta.env;
+  const response = await fetch(`${env.VITE_SUPABASE_URL}/rest/v1/${path}`, {
+    headers: { apikey: env.VITE_SUPABASE_PUBLISHABLE_KEY },
+  });
+  expect(response.ok).toBe(true);
+  return response.json();
+}
+
+describe("Truffles catalog", () => {
+  it("places truffles second among top-level categories", async () => {
+    const categories = await catalogRead("product_categories?parent_id=is.null&select=slug&order=sort_order.asc,name.asc&limit=3");
+    expect(categories[1]?.slug).toBe("trifeles");
+  });
+
+  it("prices gingerbread cream truffles at EUR 3 per piece", async () => {
+    const products = await catalogRead(`products?slug=eq.${slug}&select=price_cents,currency,prices_include_vat,published,product_categories(slug)`);
+    expect(products).toHaveLength(1);
+    expect(products[0]).toMatchObject({
+      price_cents: 300, currency: "EUR", prices_include_vat: true, published: true,
+      product_categories: { slug: "trifeles" },
+    });
+  });
+});

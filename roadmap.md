@@ -1,3 +1,6 @@
+# Truffles
+- [x] Created “Trifeles” as the second top-level shop category and added milk-chocolate truffles with gingerbread-flavoured cream filling at EUR 3 per piece including VAT, without an invented product photo; synchronized catalog links, passed two price/order tests and verified category-to-product navigation and the displayed price in the browser.
+
 # Customer price proposals
 - [x] Add product price proposal form, private saved submissions, owner email and admin overview; verified a EUR 20 unit-price / 50-piece submission against a EUR 25 catalog price, saved data, sent owner email, mobile/shop controls and four validation tests; removed only the test submission.
 - [ ] Verify signed-in administrator price-proposal overview. Blocked: no app auth account matches the requesting user; preview administrator sign-in is needed.
