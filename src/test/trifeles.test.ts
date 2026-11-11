@@ -11,6 +11,18 @@ async function catalogRead(path: string) {
 }
 
 describe("Truffles catalog", () => {
+  it("prices the new 30-truffle box at EUR 50 including VAT", async () => {
+    const products = await catalogRead("products?slug=eq.30-trifelu-kastite-ar-uznemuma-logo-ziemassvetkiem&select=price_cents,currency,prices_include_vat,published,product_categories(slug)");
+    expect(products).toHaveLength(1);
+    expect(products[0]).toMatchObject({ price_cents: 5000, currency: "EUR", prices_include_vat: true, published: true, product_categories: { slug: "trifeles" } });
+  });
+
+  it("contains 30 truffles in five rows of six", async () => {
+    const products = await catalogRead("products?slug=eq.30-trifelu-kastite-ar-uznemuma-logo-ziemassvetkiem&select=metadata");
+    expect(products).toHaveLength(1);
+    expect(products[0].metadata).toMatchObject({ pieces_per_box: 30, rows: 5, pieces_per_row: 6 });
+  });
+
   it("prices the branded 12-truffle box at EUR 25 including VAT", async () => {
     const products = await catalogRead("products?slug=eq.12-trifelu-kastite-ar-uznemuma-logo-ziemassvetkiem&select=price_cents,currency,prices_include_vat,published,metadata,product_categories(slug)");
     expect(products).toHaveLength(1);
