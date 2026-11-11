@@ -12,6 +12,16 @@ async function catalogRead(path: string) {
 
 describe("Truffles catalog", () => {
   it.each([
+    "tumsas-sokolades-trifeles-ar-cepumu-pildijumu",
+    "tumsas-sokolades-trifeles-mocha",
+    "piena-sokolades-trifeles-ar-kokosriekstu-pildijumu",
+  ])("prices new %s at EUR 3 per piece", async (productSlug) => {
+    const products = await catalogRead(`products?slug=eq.${productSlug}&select=price_cents,currency,published,has_image,product_categories(slug)`);
+    expect(products).toHaveLength(1);
+    expect(products[0]).toMatchObject({ price_cents: 300, currency: "EUR", published: true, has_image: true, product_categories: { slug: "trifeles" } });
+  });
+
+  it.each([
     "tumsas-sokolades-trifeles-ar-upenu-kremu-un-liofilizetam-upenem",
     "piena-sokolades-trifeles-ar-karameles-kremu-un-kraukskiem",
     "piena-sokolades-trifeles-ar-lazdu-riekstu-kremu-un-riekstu-dekoru",
