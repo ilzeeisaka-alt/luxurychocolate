@@ -12,6 +12,22 @@ async function catalogRead(path: string) {
 
 describe("Truffles catalog", () => {
   it.each([
+    "tumsas-sokolades-trifeles-ar-upenu-kremu-un-liofilizetam-upenem",
+    "piena-sokolades-trifeles-ar-karameles-kremu-un-kraukskiem",
+    "piena-sokolades-trifeles-ar-lazdu-riekstu-kremu-un-riekstu-dekoru",
+    "piena-sokolades-trifeles-ar-piparkuku-kanela-kremu-un-cepumu-dekoru",
+    "tumsas-sokolades-trifeles-ar-dzervenu-kremu-un-dzervenu-dekoru",
+    "tumsas-sokolades-trifeles-ar-vanilas-piena-kremu-un-baltas-sokolades-dekoru",
+  ])("prices decorated %s at EUR 3 per piece", async (productSlug) => {
+    const products = await catalogRead(`products?slug=eq.${productSlug}&select=price_cents,currency,prices_include_vat,published,product_categories(slug)`);
+    expect(products).toHaveLength(1);
+    expect(products[0]).toMatchObject({
+      price_cents: 300, currency: "EUR", prices_include_vat: true, published: true,
+      product_categories: { slug: "trifeles" },
+    });
+  });
+
+  it.each([
     "tumsas-sokolades-trifeles-ar-dzervenu-pildijumu",
     "piena-sokolades-trifeles-ar-karameles-un-kanela-piparkuku-garsvielu-pildijumu",
     "piena-sokolades-trifeles-ar-lazdu-riekstu-krema-pildijumu",

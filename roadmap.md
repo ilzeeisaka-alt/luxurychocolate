@@ -1,4 +1,5 @@
 # Truffles
+- [x] Added six decorated cream-filled truffle products at EUR 3 per piece including VAT, retaining previous products and leaving photos unset; synchronized catalog links, passed 12 catalog tests and verified all six prices, decorations and product pages through the 11-product category.
 - [x] Added the four requested cranberry, caramel/spice, hazelnut and white-chocolate truffle products at EUR 3 per piece including VAT, without photos; synchronized catalog links, passed six catalog tests and verified all four product pages through the five-product Trifeles category.
 - [x] Created “Trifeles” as the second top-level shop category and added milk-chocolate truffles with gingerbread-flavoured cream filling at EUR 3 per piece including VAT, without an invented product photo; synchronized catalog links, passed two price/order tests and verified category-to-product navigation and the displayed price in the browser.
 
