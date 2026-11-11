@@ -1,4 +1,5 @@
 # Truffles
+- [x] Added a separate 30-truffle three-piece gift product with a winter-scene lid, full-size branded card and white/burgundy/green/navy previews; source product retained, copied EUR 50 price, 21 tests passed and all gallery variants verified live.
 - [x] Added burgundy, forest-green and navy-blue design preview photos to the 30-truffle box, retaining white and EUR 50; verified selecting all three in the live gallery.
 - [x] Copied the branded box into a 30-truffle EUR 50 product with a square BDO Christmas design, a red cranberry row and catalog links; 20 tests passed and live product price, contents and 1536px image verified.
 - [x] Added a branded 12-truffle Christmas gift box at EUR 25 including VAT, with BDO preview logo and LV/RU/EN greetings on the same box; synchronized catalog links, passed 18 tests and verified the live product price, contents, greetings and loaded image.
