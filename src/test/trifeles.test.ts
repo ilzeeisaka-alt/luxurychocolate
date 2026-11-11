@@ -12,6 +12,8 @@ async function catalogRead(path: string) {
 
 describe("Truffles catalog", () => {
   it.each([
+    "piena-sokolades-trifele-belgu-cepums",
+    "tumsas-sokolades-trifele-melna-balzama-ganasa",
     "tumsas-sokolades-trifeles-ar-cepumu-pildijumu",
     "tumsas-sokolades-trifeles-mocha",
     "piena-sokolades-trifeles-ar-kokosriekstu-pildijumu",
