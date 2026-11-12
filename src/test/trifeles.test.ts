@@ -11,6 +11,18 @@ async function catalogRead(path: string) {
 }
 
 describe("Truffles catalog", () => {
+  it("contains twelve truffles in the copied BDO three-panel box", async () => {
+    const products = await catalogRead("products?slug=eq.12-trifelu-kastite-bdo-dizains-3-paneli&select=metadata,published,product_categories(slug)");
+    expect(products).toHaveLength(1);
+    expect(products[0]).toMatchObject({ published: true, product_categories: { slug: "trifeles" }, metadata: { pieces_per_box: 12, rows: 3, pieces_per_row: 4 } });
+  });
+
+  it("retains the source BDO box's three equally sized packaging parts", async () => {
+    const products = await catalogRead("products?slug=eq.12-trifelu-kastite-bdo-dizains-3-paneli&select=metadata");
+    expect(products).toHaveLength(1);
+    expect(products[0].metadata).toMatchObject({ packaging_part_count: 3, packaging_parts: ["box", "lid", "full_size_card"], card_matches_box_footprint: true, lid_matches_box_footprint: true, internal_dividers: false });
+  });
+
   it("includes three packaging pieces and a box-sized card in the copied gift set", async () => {
     const products = await catalogRead("products?slug=eq.30-trifelu-kastite-ar-ziemas-vaku-un-kartinu&select=metadata,price_cents,product_categories(slug)");
     expect(products).toHaveLength(1);
