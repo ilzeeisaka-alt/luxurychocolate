@@ -51,6 +51,7 @@ const Index = () => {
     <main className="bg-background pt-14 lg:pt-24">
       <Navbar />
       <HeroSection onCtaClick={() => setModalOpen(true)} lang="lv" {...t} />
+      <MagnetBoxSection />
       <ShopBanner />
       <SeoContentSection />
       <QuickFactsSection />
@@ -71,7 +72,6 @@ const Index = () => {
       <CelebrationCakeSection lang="lv" onCtaClick={() => setModalOpen(true)} />
       <WeddingChocolateSection lang="lv" onCtaClick={() => setModalOpen(true)} />
       <CupcakeSection lang="lv" onCtaClick={() => setModalOpen(true)} />
-      <MagnetBoxSection />
       <CoinsCardsSection lang="lv" onCtaClick={() => setModalOpen(true)} />
       <DailyChocolateSection lang="lv" onCtaClick={() => setModalOpen(true)} />
       <CakeChocolateSection />
