@@ -8,6 +8,8 @@ import kyberxTray from "@/assets/macaroons/kyberx-glass-tray.jpg";
 import kyberxSingle from "@/assets/macaroons/kyberx-single-box.jpg";
 import kyberxAssorted from "@/assets/macaroons/kyberx-assorted-display.jpg";
 import kyberxTower from "@/assets/macaroons/kyberx-tower-display.jpg";
+import lmtVideoPoster from "@/assets/macaroons/lmt-macaroons-preview.jpg.asset.json";
+import boxVideoPoster from "@/assets/macaroons/macaron-box-preview.jpg.asset.json";
 
 const images = [kyberxTray, lmtMacaroons, kyberxSingle, kyberxAssorted, kyberxTower];
 
@@ -20,8 +22,8 @@ const items = [
 ];
 
 const videos = [
-  { src: "/video/lmt-logo-macaroons.mp4", title: "LMT logo makarūni" },
-  { src: "/video/makaruni-kastite.mp4", title: "Individuālais iepakojums" },
+  { src: "/video/lmt-logo-macaroons.mp4", title: "LMT logo makarūni", poster: lmtVideoPoster.url },
+  { src: "/video/makaruni-kastite.mp4", title: "Individuālais iepakojums", poster: boxVideoPoster.url },
 ];
 
 const MacaroonsSection = () => {
@@ -67,6 +69,7 @@ const MacaroonsSection = () => {
               >
                 <video
                   className="w-full aspect-[9/16] md:aspect-video object-cover"
+                  poster={v.poster}
                   controls
                   playsInline
                   preload="none"
