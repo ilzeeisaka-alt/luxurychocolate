@@ -1,3 +1,6 @@
+# ERVY chocolates
+- [x] Moved the five-hazelnut-praline product immediately after the ERVY chocolate bar and added a main design photo with black ERVY logos on every white chocolate, leaving the box unprinted; order test passed and live category/product image verified, existing price retained.
+
 # Truffles
 - [x] Copied the five-truffle BDO three-panel product into a separate twelve-truffle box using the supplied contents reference and matching design; retained the source and copied EUR 25 price, synchronized catalog links, passed 23 tests and verified the live price and 1536×1920 image on desktop/mobile.
 - [x] Added a separate 30-truffle three-piece gift product with a winter-scene lid, full-size branded card and white/burgundy/green/navy previews; source product retained, copied EUR 50 price, 21 tests passed and all gallery variants verified live.
