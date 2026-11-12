@@ -1,3 +1,6 @@
+# Project monitoring
+- [x] Corrected recent AI chat context and deployed ai-chat; four tests passed, a real eleventh question answered correctly and restored after reload, and only the test conversation was removed. Monitoring returned one pending finding rather than three; it is resolved.
+
 # ERVY chocolates
 - [x] Moved the five-hazelnut-praline product immediately after the ERVY chocolate bar and added a main design photo with black ERVY logos on every white chocolate, leaving the box unprinted; order test passed and live category/product image verified, existing price retained.
 

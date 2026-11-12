@@ -3,6 +3,7 @@ import { createClient } from 'npm:@supabase/supabase-js@2'
 import { streamResponse, GatewayError } from 'npm:@lovable.dev/ai-gateway'
 import { z } from 'npm:zod@3'
 import { hasAdminRole } from './admin-access.ts'
+import { loadRecentChatHistory } from './history.ts'
 import { sendTemplateEmail } from '../_shared/transactional-email-templates/send-email.ts'
 
 const VisitorSchema = z.object({
@@ -18,7 +19,6 @@ const BodySchema = z.union([
 ])
 
 const MAX_MESSAGES_PER_CONVERSATION = 60
-const HISTORY_LIMIT = 20
 
 const SYSTEM_PROMPT = `You are the AI assistant of Luxury Chocolate SIA (luxurychocolate.lv), a Latvian company making personalized Belgian chocolate with printed logos, photos and designs.
 
@@ -153,15 +153,13 @@ Deno.serve(async (req) => {
     if (insertErr) throw insertErr
     if (!userMessage) throw new Error('Message not saved')
 
-    const { data: history, error: histErr } = await supabase
+    const history = await loadRecentChatHistory(supabase
       .from('chat_messages')
       .select('role, content')
       .eq('conversation_id', conversationId)
-      .order('created_at', { ascending: true })
-      .limit(HISTORY_LIMIT)
-    if (histErr) throw histErr
+    )
 
-    const input = (history ?? []).map((m) => ({
+    const input = history.map((m) => ({
       role: m.role as 'user' | 'assistant',
       content: m.content,
     }))
