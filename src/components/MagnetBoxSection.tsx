@@ -5,6 +5,7 @@ import type { Lang } from "@/i18n/types";
 import { expandLangs } from "@/i18n/expandLangs";
 import Lightbox from "@/components/Lightbox";
 import { Link } from "react-router-dom";
+import ChristmasGiftGallery from "@/components/ChristmasGiftGallery";
 
 import bookBox1 from "@/assets/bookbox-1.jpg";
 import bookBox2 from "@/assets/bookbox-2.jpg";
@@ -690,6 +691,8 @@ const MagnetBoxSection = ({ lang = "lv", onCtaClick }: MagnetBoxSectionProps) =>
           </div>
 
           {/* Features */}
+          <ChristmasGiftGallery lang={lang} />
+
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto mb-12">
             <div className="bg-card rounded-xl p-6 text-center" style={{ boxShadow: "var(--shadow-card)" }}>
               <Magnet className="w-8 h-8 text-primary mx-auto mb-4" />
