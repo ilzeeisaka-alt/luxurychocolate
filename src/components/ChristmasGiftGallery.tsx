@@ -22,8 +22,13 @@ import gift17 from "@/assets/christmas-gallery/gift-17.webp.asset.json";
 import gift18 from "@/assets/christmas-gallery/gift-18.webp.asset.json";
 import gift19 from "@/assets/christmas-gallery/gift-19.webp.asset.json";
 import gift20 from "@/assets/christmas-gallery/gift-20.webp.asset.json";
+import gift21 from "@/assets/christmas-gallery/gift-21.webp.asset.json";
+import gift22 from "@/assets/christmas-gallery/gift-22.webp.asset.json";
+import gift23 from "@/assets/christmas-gallery/gift-23.webp.asset.json";
+import gift24 from "@/assets/christmas-gallery/gift-24.webp.asset.json";
+import gift25 from "@/assets/christmas-gallery/gift-25.webp.asset.json";
 
-const images = [gift01, gift02, gift03, gift04, gift05, gift06, gift07, gift08, gift09, gift10, gift11, gift12, gift13, gift14, gift15, gift16, gift17, gift18, gift19, gift20].map((asset) => asset.url);
+const images = [gift01, gift02, gift03, gift04, gift05, gift06, gift07, gift08, gift09, gift10, gift11, gift12, gift13, gift14, gift15, gift16, gift17, gift18, gift19, gift20, gift21, gift22, gift23, gift24, gift25].map((asset) => asset.url);
 const captions = {
   lv: ["Personalizēta šokolādes dāvana", "Šokolādes adventes kalendārs", "Šokolādes apsveikuma kartīte", "Piecu konfekšu dāvanu kastīte", "Piparkūka ar logo un sarkanu lentīti", "Piparkūka ar logo uz krūzes", "Piparkūkas svētku iepakojumā", "Šokolādes glezna dāvanu kastītē", "Ziemassvētku piparkūkas ar apdruku", "Personalizēts svētku dāvanu komplekts"],
   en: ["Personalized chocolate gift", "Chocolate Advent calendar", "Chocolate greeting card", "Five-chocolate gift box", "Logo gingerbread with a red ribbon", "Logo gingerbread on a mug", "Gingerbread in festive packaging", "Chocolate picture in a gift box", "Printed Christmas gingerbread", "Personalized festive gift set"],
@@ -37,11 +42,19 @@ const additionalCaptions = {
   et: ["Logoga šokolaadid kuldse paelaga", "Piparkookide kinkekomplekt punaste paeltega", "Kommidega advendikalender", "Personaliseeritud šokolaadipilt sinise paelaga", "Šokolaadimündid ja pidulikud kujundid", "Südamekujulised šokolaadid tervitusega", "100 euro rahatähe trükiga šokolaad", "Ettevõtte jõulušokolaadid", "Südamekujulised šokolaadid valgete paeltega", "Pudelite külge seotavad šokolaadisüdamed"],
 };
 
+const latestCaptions = {
+  lv: ["Šokolādes konfektes ar logo un zelta lentītēm", "Svētku šokolādes konfekšu dāvanu izlase", "Šokolādes glezna grāmatas formas kastē", "Personalizētas konfektes kastītē ar oranžu lentīti", "Sarkanas korporatīvo dāvanu kastītes ar šokolādi"],
+  en: ["Logo chocolates with gold ribbons", "Festive chocolate gift selection", "Chocolate picture in a book-shaped box", "Personalized chocolates in a box with an orange ribbon", "Red corporate chocolate gift boxes"],
+  ru: ["Шоколадные конфеты с логотипом и золотыми лентами", "Праздничная подборка шоколадных подарков", "Шоколадная картина в коробке-книге", "Персонализированные конфеты в коробке с оранжевой лентой", "Красные корпоративные подарочные коробки с шоколадом"],
+  et: ["Logoga šokolaadikommid kuldsete paeltega", "Pidulik šokolaadikingituste valik", "Šokolaadipilt raamatukujulises karbis", "Personaliseeritud kommid oranži paelaga karbis", "Punased ettevõtte šokolaadikinkekarbid"],
+};
+
 export default function ChristmasGiftGallery({ lang = "lv" }: { lang?: Lang }) {
   const [index, setIndex] = useState<number | null>(null);
   const titles = [
     ...(captions[lang as keyof typeof captions] ?? captions.en),
     ...(additionalCaptions[lang as keyof typeof additionalCaptions] ?? additionalCaptions.en),
+    ...(latestCaptions[lang as keyof typeof latestCaptions] ?? latestCaptions.en),
   ];
   const labels = imageViewerLabels(lang);
 
