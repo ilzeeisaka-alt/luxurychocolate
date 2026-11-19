@@ -1,4 +1,5 @@
 # Architecture rules
+- Use a dedicated commercial fortune-cookie page with useSeo and WebPage/BreadcrumbList metadata, linking to catalog products instead of inventing aggregate prices or ratings.
 - Measure the fixed navigation height for homepage hero clearance instead of assuming a desktop header size; wrapped links must not cover the chocolate lettering.
 - Keep customer price proposals separate from catalog prices: server-validate published products, save private submissions, expose admin-only reads through RLS and send fixed-recipient event-deduplicated notifications; proposals must never change checkout prices.
 - Keep hero chocolate lettering as localized Unicode text with a shared chocolate texture and explicit translations for every supported language, preserving native script shaping without per-language image generation; retain the original Latvian artwork.

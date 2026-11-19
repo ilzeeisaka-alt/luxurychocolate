@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { Sparkles } from "lucide-react";
+import { Link } from "react-router-dom";
+import { Button } from "@/components/ui/button";
 import Lightbox from "@/components/Lightbox";
 import fortuneBagged from "@/assets/fortune-cookies/fortune-cookies-bagged.jpg";
 
@@ -39,6 +41,9 @@ const FortuneCookieSection = () => {
               Klasiskie laimes cepumi (fortune cookies) ar Jūsu izvēlētu vēstījumu iekšpusē.
               Ideāli pasākumiem, viesu dāvanām, restorāniem un korporatīvām aktivitātēm.
             </p>
+            <Button asChild variant="link" className="mt-4">
+              <Link to="/laimes-cepumi">Laimes cepumi — piedāvājums un personalizācija</Link>
+            </Button>
           </div>
 
           {/* Video + image */}

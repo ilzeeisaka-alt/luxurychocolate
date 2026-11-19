@@ -32,6 +32,7 @@ const CheckoutReturn = lazy(() => import("./pages/CheckoutReturn.tsx"));
 const Paldies = lazy(() => import("./pages/Paldies.tsx"));
 const OrderTracking = lazy(() => import("./pages/OrderTracking.tsx"));
 const Piparkukas = lazy(() => import("./pages/Piparkukas.tsx"));
+const LaimesCepumi = lazy(() => import("./pages/LaimesCepumi.tsx"));
 const ZiemassvētkuSokolades = lazy(() => import("./pages/ZiemassvetkuSokolades.tsx"));
 const ReklamasSokolade = lazy(() => import("./pages/ReklamasSokolade.tsx"));
 const KlientuDavanas = lazy(() => import("./pages/KlientuDavanas.tsx"));
@@ -149,6 +150,7 @@ const App = () => (
             <Route path="/track/:orderNumber" element={<OrderTracking />} />
             <Route path="/sokolades-ar-logo" element={<SokoladesArLogo />} />
             <Route path="/piparkukas" element={<Piparkukas />} />
+            <Route path="/laimes-cepumi" element={<LaimesCepumi />} />
             <Route path="/ziemassvetku-korporativas-sokolades" element={<ZiemassvētkuSokolades />} />
             <Route path="/reklamas-sokolade" element={<ReklamasSokolade />} />
             <Route path="/sokolades-klientu-davanam" element={<KlientuDavanas />} />
