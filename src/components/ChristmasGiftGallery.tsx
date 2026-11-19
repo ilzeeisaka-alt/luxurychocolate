@@ -27,8 +27,9 @@ import gift22 from "@/assets/christmas-gallery/gift-22.webp.asset.json";
 import gift23 from "@/assets/christmas-gallery/gift-23.webp.asset.json";
 import gift24 from "@/assets/christmas-gallery/gift-24.webp.asset.json";
 import gift25 from "@/assets/christmas-gallery/gift-25.webp.asset.json";
+import gift26 from "@/assets/christmas-gallery/gift-26.webp.asset.json";
 
-const images = [gift01, gift02, gift03, gift04, gift05, gift06, gift07, gift08, gift09, gift10, gift11, gift12, gift13, gift14, gift15, gift16, gift17, gift18, gift19, gift20, gift21, gift22, gift23, gift24, gift25].map((asset) => asset.url);
+const images = [gift01, gift02, gift03, gift04, gift05, gift06, gift07, gift08, gift09, gift10, gift11, gift12, gift13, gift14, gift15, gift16, gift17, gift18, gift19, gift20, gift21, gift22, gift23, gift24, gift25, gift26].map((asset) => asset.url);
 const captions = {
   lv: ["Personalizēta šokolādes dāvana", "Šokolādes adventes kalendārs", "Šokolādes apsveikuma kartīte", "Piecu konfekšu dāvanu kastīte", "Piparkūka ar logo un sarkanu lentīti", "Piparkūka ar logo uz krūzes", "Piparkūkas svētku iepakojumā", "Šokolādes glezna dāvanu kastītē", "Ziemassvētku piparkūkas ar apdruku", "Personalizēts svētku dāvanu komplekts"],
   en: ["Personalized chocolate gift", "Chocolate Advent calendar", "Chocolate greeting card", "Five-chocolate gift box", "Logo gingerbread with a red ribbon", "Logo gingerbread on a mug", "Gingerbread in festive packaging", "Chocolate picture in a gift box", "Printed Christmas gingerbread", "Personalized festive gift set"],
@@ -49,12 +50,20 @@ const latestCaptions = {
   et: ["Logoga šokolaadikommid kuldsete paeltega", "Pidulik šokolaadikingituste valik", "Šokolaadipilt raamatukujulises karbis", "Personaliseeritud kommid oranži paelaga karbis", "Punased ettevõtte šokolaadikinkekarbid"],
 };
 
+const mixMediaCaptions = {
+  lv: ["Šokolādes dāvanu kaste ar sarkanu lentīti — Mix Media Group"],
+  en: ["Chocolate gift box with a red ribbon — Mix Media Group"],
+  ru: ["Подарочная коробка шоколада с красной лентой — Mix Media Group"],
+  et: ["Šokolaadikinkekarp punase paelaga — Mix Media Group"],
+};
+
 export default function ChristmasGiftGallery({ lang = "lv" }: { lang?: Lang }) {
   const [index, setIndex] = useState<number | null>(null);
   const titles = [
     ...(captions[lang as keyof typeof captions] ?? captions.en),
     ...(additionalCaptions[lang as keyof typeof additionalCaptions] ?? additionalCaptions.en),
     ...(latestCaptions[lang as keyof typeof latestCaptions] ?? latestCaptions.en),
+    ...(mixMediaCaptions[lang as keyof typeof mixMediaCaptions] ?? mixMediaCaptions.en),
   ];
   const labels = imageViewerLabels(lang);
 
