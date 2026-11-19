@@ -14,6 +14,7 @@ import StrawberryRosesSection from "@/components/StrawberryRosesSection";
 import RestaurantChocolateSection from "@/components/RestaurantChocolateSection";
 import DailyChocolateSection from "@/components/DailyChocolateSection";
 import BookBoxSection from "@/components/BookBoxSection";
+import PrintedPaperChocolatesSection from "@/components/PrintedPaperChocolatesSection";
 import MagnetBoxSection from "@/components/MagnetBoxSection";
 import CoinsCardsSection from "@/components/CoinsCardsSection";
 import VipGiftSection from "@/components/VipGiftSection";
@@ -77,6 +78,7 @@ const Index = () => {
       <CakeChocolateSection />
       <RestaurantChocolateSection />
       <BookBoxSection />
+      <PrintedPaperChocolatesSection lang="lv" />
       <FaqSection />
       <IdeasSection />
       <RelatedPagesSection />
