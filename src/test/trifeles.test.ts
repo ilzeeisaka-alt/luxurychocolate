@@ -11,6 +11,12 @@ async function catalogRead(path: string) {
 }
 
 describe("Truffles catalog", () => {
+  it("prices the wooden truffle box at EUR 120 including VAT in Trifeles", async () => {
+    const products = await catalogRead("products?slug=eq.kaste-ar-trifelem-koka-kaste&select=price_cents,currency,prices_include_vat,published,product_categories(slug)");
+    expect(products).toHaveLength(1);
+    expect(products[0]).toMatchObject({ price_cents: 12000, currency: "EUR", prices_include_vat: true, published: true, product_categories: { slug: "trifeles" } });
+  });
+
   it("contains twelve truffles in the copied BDO three-panel box", async () => {
     const products = await catalogRead("products?slug=eq.12-trifelu-kastite-bdo-dizains-3-paneli&select=metadata,published,product_categories(slug)");
     expect(products).toHaveLength(1);
