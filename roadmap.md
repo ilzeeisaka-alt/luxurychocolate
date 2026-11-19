@@ -62,3 +62,6 @@
 - Live site changes require publishing and a new Ahrefs crawl; screenshot counts are historical, not a fresh verdict.
 - Route canonical and Article/hreflang metadata are still client-rendered. Removed the misleading homepage canonical fallback on every route; fully route-specific initial HTML needs hosting prerendering or a separate approved SSR migration.
 - GPTBot sample responses were 0.24–0.40 seconds today; the historical AI-crawler latency was not reproduced and hosting-side timing is not controlled by these edits.
+
+## Truffle box Christmas background
+- [x] Give the "Kaste ar trifelēm — koka kastē" product photos a festive Christmas background (evergreen, gold tones, fairy lights, candle glow) while keeping the wooden box, golden clasp, truffles and Red Dot logo on both lid sides unchanged; publish the three edited photos, make the open-box view primary, and keep the two plain-background logo views after them. Product page checked: five thumbnails in one even row, no build errors.
