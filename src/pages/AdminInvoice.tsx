@@ -203,6 +203,26 @@ const AdminInvoice = () => {
         toast.error("Vispirms sagaidiet attēlu ielādi vai novērsiet attēlu ielādes kļūdu.");
         return;
       }
+      if (docType === "visualization") {
+        const sheets = Array.from(invoiceRef.current.querySelectorAll<HTMLElement>(".order-sheet-page"));
+        const pdf = new jsPDF({ unit: "mm", format: "a4", orientation: "portrait" });
+        for (const [index, sheet] of sheets.entries()) {
+          const canvas = await html2canvas(sheet, {
+            scale: 2, useCORS: true, windowWidth: 1280,
+            onclone: (_document, clonedSheet) => {
+              clonedSheet.style.width = "746px";
+              clonedSheet.style.margin = "0";
+              clonedSheet.style.border = "none";
+            },
+          });
+          if (index > 0) pdf.addPage();
+          const width = Math.min(194, (canvas.width * 281) / canvas.height);
+          const height = (canvas.height * width) / canvas.width;
+          pdf.addImage(canvas.toDataURL("image/jpeg", 0.92), "JPEG", (210 - width) / 2, 8, width, height, undefined, "FAST");
+        }
+        pdf.save(`${filePrefix}_${invoiceNumber}.pdf`);
+        return;
+      }
       const canvas = await html2canvas(invoiceRef.current, { scale: 1.5, backgroundColor: getComputedStyle(document.documentElement).getPropertyValue("--background").trim() ? getComputedStyle(invoiceRef.current).backgroundColor : null, useCORS: true });
       const imgData = canvas.toDataURL("image/jpeg", 0.82);
       const pdf = new jsPDF({ unit: "mm", format: "a4", orientation: "portrait" });
@@ -325,7 +345,7 @@ const AdminInvoice = () => {
           ))}
         </div>
 
-        <div ref={invoiceRef} className="print-area bg-card text-card-foreground rounded-lg border border-border p-4 sm:p-10 shadow-sm">
+        <div ref={invoiceRef} className={`print-area bg-card text-card-foreground ${docType === "visualization" ? "" : "rounded-lg border border-border p-4 sm:p-10 shadow-sm"}`}>
           {docType === "visualization" ? <OrderVisualizationDocument order={order} date={dateStr} registrationNumber={regNr} eventName={eventNameStr} eventDate={eventDateStr} /> : <>
           <div className="flex flex-col sm:flex-row sm:justify-between items-start mb-8 gap-6">
             <div className="flex items-start gap-4">

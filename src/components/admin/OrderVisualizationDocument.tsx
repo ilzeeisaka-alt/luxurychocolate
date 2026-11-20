@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { orderDesignLogos, primaryProductPhoto, type OrderDesignItem } from "@/lib/orderVisualization";
-import seal from "@/assets/logo-seal-clean.png";
-import heroLogo from "@/assets/logo-hero-gold-center.png";
-import chocoTime from "@/assets/its-choco-time-gold.png";
+import seal from "@/assets/order-sheet-seal.png.asset.json";
+import brandFooter from "@/assets/order-sheet-brand-footer.png.asset.json";
 import ilzePhoto from "@/assets/ilze-eisaka.jpg";
+import "./order-sheet.css";
 
 interface Props {
   order: { order_number: string; customer_name: string | null; customer_email: string; customer_phone: string | null; company_name: string | null; vat_number: string | null; shipping_address: string | null; shipping_city?: string | null; shipping_postal_code?: string | null; shipping_country?: string | null; order_items: OrderDesignItem[] };
@@ -66,23 +66,32 @@ export default function OrderVisualizationDocument({ order, date, registrationNu
     return () => { active = false; };
   }, [order]);
 
-  return <div className="order-design space-y-8 text-foreground">
-    <header className="flex flex-wrap items-center justify-between gap-6 border-b border-border pb-6">
-      <div className="flex items-center gap-4"><DocumentImage src={seal} alt="Luxury Chocolate" className="h-20 w-20 object-contain" /><DocumentImage src={chocoTime} alt="It's Choco Time" className="h-20 w-32 object-contain" /></div>
-      <div><h1 className="text-2xl font-bold">Pasūtījuma vizualizācija</h1><p className="mt-2 break-all">{order.order_number}</p><p className="text-sm text-muted-foreground">Datums: {date}</p></div>
-    </header>
-    <div className="grid gap-6 sm:grid-cols-2 text-sm">
-      <section><h2 className="font-bold mb-3">Pārdevējs</h2><div className="flex items-start gap-4"><DocumentImage src={ilzePhoto} alt="Ilze Eisaka" className="h-24 w-20 object-cover object-top rounded" /><div className="min-w-0 break-words"><p className="font-semibold">Luxury Chocolate SIA</p><p>Ilze Eisaka</p><p>PVN: LV40103921954</p><p>Kandavas iela 29a, Rīga, LV-1083</p><p>info@luxurychocolate.lv</p><p>+371 26 177 853</p></div></div></section>
-      <section className="min-w-0 break-words"><h2 className="font-bold mb-3">Pircējs</h2><p className="font-semibold">{order.company_name || order.customer_name || "—"}</p>{order.company_name && <p>{order.customer_name}</p>}{registrationNumber && <p>Reģ. Nr.: {registrationNumber}</p>}{order.vat_number && <p>PVN: {order.vat_number}</p>}<p>{order.customer_email}</p><p>{order.customer_phone}</p><p>{[order.shipping_address, order.shipping_city, order.shipping_postal_code, order.shipping_country].filter(Boolean).join(", ")}</p>{eventName && <p className="mt-2">Pasākums: {eventName}</p>}{eventDate && <p>Pasākuma datums / laiks: {eventDate}</p>}</section>
-    </div>
+  return <div className="order-design order-sheet">
     {loading && <p role="status">Ielādē attēlus…</p>}{error && <p role="alert" className="text-destructive">{error}</p>}
-    {order.order_items.map(item => <section key={item.id} className="order-design-item border-t border-border pt-6">
-      <div className="flex flex-wrap items-start justify-between gap-3 mb-4"><h2 className="text-lg font-semibold max-w-full break-words">{item.product_name}</h2><p className="text-sm shrink-0">Daudzums: {item.quantity} gab.</p></div>
-      {photos[item.id] ? <DocumentImage src={photos[item.id]} alt={item.product_name} className="w-full max-h-[440px] object-contain" /> : !loading && <p className="text-sm text-muted-foreground">Produktam nav attēla.</p>}
-      {(item.width_mm || item.height_mm) && <p className="text-sm mt-3">Izmērs: {item.width_mm ?? "—"} × {item.height_mm ?? "—"} mm</p>}
-      {orderDesignLogos(item).length > 0 && <div className="mt-5"><h3 className="font-semibold text-sm mb-3">Klienta logo un foto</h3><div className="grid grid-cols-2 sm:grid-cols-3 gap-4">{orderDesignLogos(item).map((logo, index) => <div key={`${logo.url}-${index}`} className="min-w-0">{logoUrls[logo.url] && <DocumentImage src={logoUrls[logo.url]} alt={logo.filename || "Klienta logo"} className="h-28 w-full object-contain" />}<p className="text-xs break-words mt-2">{logo.filename}{logo.quantity ? ` · ${logo.quantity} gab.` : ""}</p></div>)}</div></div>}
-      {item.custom_text && <p className="mt-4 text-sm whitespace-pre-wrap">Uzraksts: {item.custom_text}</p>}{item.notes && <p className="mt-2 text-sm whitespace-pre-wrap">{item.notes}</p>}
-    </section>)}
-    <footer className="border-t border-border pt-6 flex flex-wrap items-center justify-between gap-4"><DocumentImage src={heroLogo} alt="Luxury Chocolate zelta logo" className="h-20 w-24 object-contain" /><div className="text-center text-xs"><p>Luxury Chocolate SIA · luxurychocolate.lv</p><p>info@luxurychocolate.lv · +371 26 177 853</p></div><DocumentImage src={chocoTime} alt="It's Choco Time zelta logo" className="h-16 w-28 object-contain" /></footer>
+    {order.order_items.map((item, itemIndex) => <article key={item.id} className="order-design-item order-sheet-page">
+      <header className="order-sheet-header">
+        <section>
+          <h2 className="order-sheet-party-title">Ražotājs</h2>
+          <div className="order-sheet-seller">
+            <DocumentImage src={ilzePhoto} alt="Ilze Eisaka" className="order-sheet-person" />
+            <div className="order-sheet-details"><strong>ILZE EISAKA</strong><p>Luxury Chocolate SIA</p><p>www.luxurychocolate.lv</p><p>info@luxurychocolate.lv</p><p>+371 26 177 853</p><p>Kandavas iela 29a, Rīga</p><p>LV-1083, Latvija</p><p>PVN: LV40103921954</p></div>
+          </div>
+        </section>
+        <div className="order-sheet-brand"><DocumentImage src={seal.url} alt="Luxury Chocolate" className="order-sheet-seal" /></div>
+        <section className="order-sheet-client">
+          <h2 className="order-sheet-party-title">Klients</h2>
+          <div className="order-sheet-details"><strong>{order.customer_name || order.company_name || "—"}</strong>{order.company_name && <p>{order.company_name}</p>}{registrationNumber && <p>Reģ. Nr.: {registrationNumber}</p>}{order.vat_number && <p>PVN: {order.vat_number}</p>}<p>{order.customer_email}</p><p>{order.customer_phone}</p><p>{[order.shipping_address, order.shipping_city, order.shipping_postal_code, order.shipping_country].filter(Boolean).join(", ")}</p></div>
+        </section>
+      </header>
+      <div className="order-sheet-title-row">
+        {itemIndex === 0 ? <h1 className="order-sheet-title">Vizualizācija</h1> : <h2 className="order-sheet-title">Vizualizācija</h2>}
+        <div className="order-sheet-dates"><p>{order.order_number}</p><p>Sagatavots: <span>{date}</span></p>{eventDate && <p>Pasākuma datums / laiks: <span>{eventDate}</span></p>}</div>
+      </div>
+      <div><h2 className="order-sheet-product-title">{item.product_name}</h2><p className="order-sheet-product-meta">Daudzums: {item.quantity} gab.{(item.width_mm || item.height_mm) ? ` · Izmērs: ${item.width_mm ?? "—"} × ${item.height_mm ?? "—"} mm` : ""}</p></div>
+      {photos[item.id] ? <DocumentImage src={photos[item.id]} alt={item.product_name} className="order-sheet-product-image" /> : !loading && <p className="text-sm text-muted-foreground">Produktam nav attēla.</p>}
+      {orderDesignLogos(item).length > 0 && <section><h3 className="text-center text-sm mb-3">Klienta logo un foto</h3><div className="order-sheet-uploads">{orderDesignLogos(item).map((logo, index) => <div key={`${logo.url}-${index}`} className="order-sheet-upload">{logoUrls[logo.url] && <DocumentImage src={logoUrls[logo.url]} alt={logo.filename || "Klienta logo"} className="object-contain" />}<p>{logo.filename}{logo.quantity ? ` · ${logo.quantity} gab.` : ""}</p></div>)}</div></section>}
+      {(eventName || item.custom_text || item.notes) && <div className="order-sheet-notes">{eventName && <p><b>Pasākums:</b> {eventName}</p>}{item.custom_text && <p><b>Uzraksts:</b> {item.custom_text}</p>}{item.notes && <p>{item.notes}</p>}</div>}
+      <footer className="order-sheet-footer"><DocumentImage src={brandFooter.url} alt="It's Choco Time · Royal Luxury Chocolate · Handmade from Belgian chocolate · Luxury Chocolate.lv" className="object-contain" /></footer>
+    </article>)}
   </div>;
 }
