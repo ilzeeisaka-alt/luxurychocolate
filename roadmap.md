@@ -1,4 +1,5 @@
 # Order visualization documents
+- [x] Show the client's company email domain as website and normalize both contacts' address/locality rows; real signed-in ALPS Order Sheet shows www.alps.archi and matching LV-postcode/Latvija rows, vertical alignment verified and eighteen tests passed.
 - [x] Give customers owner-filtered on-screen invoice/Order Sheet links after order confirmation, paid return and in account history; administrator portrait/logo mappings remain protected.
 - [x] Add saved-recipient, event-deduplicated managed customer document emails to confirmation and verified payment hooks; functions deployed, confirmation send to company test recipient verified. Paid Stripe flow not exercised with a charge.
 - [x] Verify real test-customer order confirmation, both one-page PDFs, account links, mobile layout, successful customer email and repeated-send deduplication, and foreign-order/email plus signed-out email denial; nineteen tests passed. Removed test purchases after verification.

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
-import { orderDesignLogos, primaryProductPhoto, type OrderDesignItem } from "@/lib/orderVisualization";
+import { contactAddress, contactWebsite, orderDesignLogos, primaryProductPhoto, type OrderDesignItem } from "@/lib/orderVisualization";
 import seal from "@/assets/order-sheet-seal.png.asset.json";
 import brandFooter from "@/assets/order-sheet-brand-footer.png.asset.json";
 import ilzePhoto from "@/assets/ilze-eisaka.jpg";
@@ -98,6 +98,8 @@ export default function OrderVisualizationDocument({ order, date, registrationNu
 
   const contact = splitContactName(order.customer_name);
   const contactName = contact.name || normalCase(order.company_name) || "—";
+  const sellerAddress = contactAddress("Kandavas iela 29a", "Rīga", "LV-1083", "LV");
+  const clientAddress = contactAddress(order.shipping_address, order.shipping_city, order.shipping_postal_code, order.shipping_country);
 
   return <div className="order-design order-sheet" lang={language} dir={["ar", "he", "fa", "ur"].includes(language) ? "rtl" : "ltr"}>
     {loading && <p role="status">{tx.loading}</p>}{error && <p role="alert" className="text-destructive">{tx.imageUnavailable}</p>}
@@ -109,7 +111,7 @@ export default function OrderVisualizationDocument({ order, date, registrationNu
             <DocumentImage unavailable={tx.imageUnavailable} src={ilzePhoto} alt="Ilze Eisaka" className="order-sheet-person" />
             <ContactDetails name="ILZE EISAKA" title={tx.boardMember} company="Luxury Chocolate SIA"
               website="www.luxurychocolate.lv" email="info@luxurychocolate.lv" phone="+371 26 177 853"
-              address="Kandavas iela 29a, Rīga" locality="LV-1083, Latvija"
+              address={sellerAddress.address} locality={sellerAddress.locality}
               registration={`${tx.registration}: 40103921954`} vat={`${tx.vat}: LV40103921954`} />
           </div>
         </section>
@@ -125,8 +127,9 @@ export default function OrderVisualizationDocument({ order, date, registrationNu
               {(() => { const logos = [...new Map(order.order_items.flatMap(orderDesignLogos).map(logo => [logo.url, logo])).values()]; return logos.map((logo, index) => logoUrls[logo.url] ? <DocumentImage unavailable={tx.imageUnavailable} key={`${logo.url}-${index}`} src={logoUrls[logo.url]} alt={logo.filename || tx.clientMedia} className="order-sheet-client-logo" /> : null); })()}
             </div>
             <ContactDetails name={contactName} title={contact.title} company={normalCase(order.company_name)}
-              email={order.customer_email} phone={order.customer_phone} address={order.shipping_address}
-              locality={[order.shipping_city, order.shipping_postal_code, order.shipping_country].filter(Boolean).join(", ")}
+              website={contactWebsite(order.customer_email)}
+              email={order.customer_email} phone={order.customer_phone} address={clientAddress.address}
+              locality={clientAddress.locality}
               registration={registrationNumber ? `${tx.registration}: ${registrationNumber}` : undefined}
               vat={order.vat_number ? `${tx.vat}: ${order.vat_number}` : undefined} />
           </div>

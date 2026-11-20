@@ -1,8 +1,20 @@
 import { describe, expect, it } from "vitest";
-import { orderDesignLogos, primaryProductPhoto, type OrderDesignItem } from "../lib/orderVisualization";
+import { contactAddress, contactWebsite, orderDesignLogos, primaryProductPhoto, type OrderDesignItem } from "../lib/orderVisualization";
 
 const item: OrderDesignItem = { id: "line-1", product_name: "Trifeles", quantity: 12, logo_url: "/old.png", logos: null };
 describe("Order visualization data", () => {
+  it("derives the client's company website from its email, not a public mailbox service", () => {
+    expect(contactWebsite("agnese@alps.archi")).toBe("www.alps.archi");
+    expect(contactWebsite("someone@gmail.com")).toBeUndefined();
+    expect(contactWebsite("not-an-email")).toBeUndefined();
+  });
+  it("formats both contacts with street and city above postal code and country", () => {
+    expect(contactAddress("Kandavas iela 29a", "Rīga", "LV-1083", "LV")).toEqual({ address: "Kandavas iela 29a, Rīga", locality: "LV-1083, Latvija" });
+    expect(contactAddress("Sporta iela 2-k1, Rīga, LV-1013")).toEqual({ address: "Sporta iela 2-k1, Rīga", locality: "LV-1013, Latvija" });
+    expect(contactAddress("Sporta iela 2-k1", "Rīga", "LV-1013", "Latvia")).toEqual({ address: "Sporta iela 2-k1, Rīga", locality: "LV-1013, Latvija" });
+    expect(contactAddress(null)).toEqual({ address: "", locality: "" });
+    expect(contactAddress("1 Main Street", "London", "SW1A 1AA", "United Kingdom")).toEqual({ address: "1 Main Street, London", locality: "SW1A 1AA, United Kingdom" });
+  });
   it("keeps all purchased-line logos and their assigned quantities", () => {
     expect(orderDesignLogos({ ...item, logos: [{ url: "/a.png", filename: "A", quantity: 5 }, { url: "/b.png", filename: "B", quantity: 7 }] })).toEqual([{ url: "/a.png", filename: "A", quantity: 5 }, { url: "/b.png", filename: "B", quantity: 7 }]);
   });

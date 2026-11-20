@@ -21,3 +21,24 @@ export function orderDesignLogos(item: OrderDesignItem) {
 export function primaryProductPhoto(images: { url: string; is_primary: boolean; sort_order: number }[]) {
   return [...images].sort((a, b) => Number(b.is_primary) - Number(a.is_primary) || a.sort_order - b.sort_order)[0]?.url ?? null;
 }
+
+export function contactWebsite(email: string) {
+  const domain = email.trim().toLowerCase().split("@")[1];
+  if (!domain || !/^(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z]{2,}$/.test(domain)) return undefined;
+  const mailboxDomains = ["gmail.com", "googlemail.com", "outlook.com", "hotmail.com", "live.com", "yahoo.com", "icloud.com", "inbox.lv", "mail.ru", "yandex.ru", "proton.me", "protonmail.com"];
+  return mailboxDomains.includes(domain) ? undefined : `www.${domain}`;
+}
+
+export function contactAddress(address?: string | null, city?: string | null, postalCode?: string | null, country?: string | null) {
+  let parts = (address ?? "").split(",").map(part => part.trim()).filter(Boolean);
+  const embeddedPostal = parts.join(", ").match(/\bLV\s*-\s*\d{4}\b/i)?.[0];
+  const postal = (postalCode || embeddedPostal || "").trim().replace(/^LV\s*-\s*/i, "LV-");
+  const embeddedCountry = parts.find(part => /^(Latvija|Latvia|LV)$/i.test(part));
+  const countryValue = country?.trim() || embeddedCountry || (/^LV-/i.test(postal) ? "Latvija" : "");
+  const countryName = /^(LV|Latvia|Latvija)$/i.test(countryValue) ? "Latvija" : countryValue;
+  parts = parts.map(part => embeddedPostal ? part.replace(embeddedPostal, "").trim() : part)
+    .filter(part => part && part !== embeddedCountry && part !== countryValue);
+  const cityName = city?.trim() || (parts.length > 1 ? parts.pop() : undefined);
+  if (cityName && !parts.some(part => part.toLowerCase() === cityName.toLowerCase())) parts.push(cityName);
+  return { address: parts.join(", "), locality: [postal, countryName].filter(Boolean).join(", ") };
+}
