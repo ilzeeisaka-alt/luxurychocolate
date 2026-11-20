@@ -85,11 +85,13 @@ export default function OrderVisualizationDocument({ order, date, registrationNu
         </div>
         <section className="order-sheet-client">
           <h2 className="order-sheet-party-title">Klients</h2>
+          <div className="order-sheet-seller order-sheet-seller-client">
           <div className="order-sheet-client-media">
-            {contactPhoto && <DocumentImage key={contactPhoto} src={contactPhoto} alt="Klienta kontaktpersona" className="order-sheet-person order-sheet-contact-photo" />}
-            {(() => { const logos = [...new Map(order.order_items.flatMap(orderDesignLogos).map(logo => [logo.url, logo])).values()]; return logos.map((logo, index) => logoUrls[logo.url] ? <DocumentImage key={`${logo.url}-${index}`} src={logoUrls[logo.url]} alt={logo.filename || "Klienta logo"} className="order-sheet-client-logo" /> : null); })()}
+              {contactPhoto && <DocumentImage key={contactPhoto} src={contactPhoto} alt="Klienta kontaktpersona" className="order-sheet-person order-sheet-contact-photo" />}
+              {(() => { const logos = [...new Map(order.order_items.flatMap(orderDesignLogos).map(logo => [logo.url, logo])).values()]; return logos.map((logo, index) => logoUrls[logo.url] ? <DocumentImage key={`${logo.url}-${index}`} src={logoUrls[logo.url]} alt={logo.filename || "Klienta logo"} className="order-sheet-client-logo" /> : null); })()}
+            </div>
+  <div className="order-sheet-details"><strong>{order.customer_name || order.company_name || "—"}</strong>{order.company_name && <p>{order.company_name}</p>}{registrationNumber && <p>Reģ. Nr.: {registrationNumber}</p>}{order.vat_number && <p>PVN: {order.vat_number}</p>}<p>{order.customer_email}</p><p>{order.customer_phone}</p><p>{[order.shipping_address, order.shipping_city, order.shipping_postal_code, order.shipping_country].filter(Boolean).join(", ")}</p></div>
           </div>
-          <div className="order-sheet-details"><strong>{order.customer_name || order.company_name || "—"}</strong>{order.company_name && <p>{order.company_name}</p>}{registrationNumber && <p>Reģ. Nr.: {registrationNumber}</p>}{order.vat_number && <p>PVN: {order.vat_number}</p>}<p>{order.customer_email}</p><p>{order.customer_phone}</p><p>{[order.shipping_address, order.shipping_city, order.shipping_postal_code, order.shipping_country].filter(Boolean).join(", ")}</p></div>
         </section>
       </header>
       <div className="order-sheet-title-row">
