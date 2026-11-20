@@ -71,10 +71,6 @@ export default function OrderVisualizationDocument({ order, date, registrationNu
   return <div className="order-design order-sheet">
     {loading && <p role="status">Ielādē attēlus…</p>}{error && <p role="alert" className="text-destructive">{error}</p>}
     {order.order_items.map((item, itemIndex) => <article key={item.id} className="order-design-item order-sheet-page">
-      <div className="order-sheet-brand-row">
-        <DocumentImage src={seal.url} alt="Luxury Chocolate" className="order-sheet-seal" />
-        {clientLogo && <DocumentImage key={clientLogo} src={clientLogo} alt="Maksātāja logo" className="order-sheet-payer-logo" />}
-      </div>
       <header className="order-sheet-header">
         <section>
           <h2 className="order-sheet-party-title">Ražotājs</h2>
@@ -83,6 +79,10 @@ export default function OrderVisualizationDocument({ order, date, registrationNu
             <div className="order-sheet-details"><strong>ILZE EISAKA</strong><p>Luxury Chocolate SIA</p><p>www.luxurychocolate.lv</p><p>info@luxurychocolate.lv</p><p>+371 26 177 853</p><p>Kandavas iela 29a, Rīga</p><p>LV-1083, Latvija</p><p>PVN: LV40103921954</p></div>
           </div>
         </section>
+        <div className="order-sheet-brand-row">
+          <DocumentImage src={seal.url} alt="Luxury Chocolate" className="order-sheet-seal" />
+          {clientLogo && <DocumentImage key={clientLogo} src={clientLogo} alt="Maksātāja logo" className="order-sheet-payer-logo" />}
+        </div>
         <section className="order-sheet-client">
           <h2 className="order-sheet-party-title">Klients</h2>
           <div className="order-sheet-client-media">
