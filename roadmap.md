@@ -1,3 +1,6 @@
+# Order visualization documents
+- [ ] Add an administrator order visualization document beside invoice/delivery documents, with buyer/seller details, ordered product photos and uploaded logos, site branding, print and PDF; verify signed-in flow.
+
 # Fortune cookie SEO
 - [x] Added /laimes-cepumi with targeted metadata, WebPage/BreadcrumbList data, existing photo and product links; linked from homepage and static catalog and added to sitemap. Verified desktop/mobile, loaded photo, offer dialog and shop navigation; live changes need publishing.
 
