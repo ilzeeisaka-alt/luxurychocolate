@@ -11,6 +11,24 @@ async function catalogRead(path: string) {
 }
 
 describe("Truffles catalog", () => {
+  it("gives the copied clear-lid box and lid the same 22.5 by 17.5 cm footprint", async () => {
+    const products = await catalogRead("products?slug=eq.kaste-ar-trifelem-red-dot-caurspidigs-vaks&select=metadata,published,product_categories(slug)");
+    expect(products).toHaveLength(1);
+    expect(products[0]).toMatchObject({ published: true, product_categories: { slug: "trifeles" }, metadata: { box_width_cm: 22.5, box_depth_cm: 17.5, lid_width_cm: 22.5, lid_depth_cm: 17.5 } });
+  });
+
+  it("uses a removable transparent lid for the new box", async () => {
+    const products = await catalogRead("products?slug=eq.kaste-ar-trifelem-red-dot-caurspidigs-vaks&select=metadata");
+    expect(products).toHaveLength(1);
+    expect(products[0].metadata).toMatchObject({ lid_transparent: true, lid_removable: true });
+  });
+
+  it("retains Red Dot branding on every truffle and on the box", async () => {
+    const products = await catalogRead("products?slug=eq.kaste-ar-trifelem-red-dot-caurspidigs-vaks&select=metadata");
+    expect(products).toHaveLength(1);
+    expect(products[0].metadata).toMatchObject({ logo: "Red Dot", logo_on_each_truffle: true, logo_on_box: true });
+  });
+
   it("prices the wooden truffle box at EUR 120 including VAT in Trifeles", async () => {
     const products = await catalogRead("products?slug=eq.kaste-ar-trifelem-koka-kaste&select=price_cents,currency,prices_include_vat,published,product_categories(slug)");
     expect(products).toHaveLength(1);
