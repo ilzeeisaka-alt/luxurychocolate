@@ -18,6 +18,7 @@ const Auth = lazy(() => import("./pages/Auth.tsx"));
 const Account = lazy(() => import("./pages/Account.tsx"));
 const Affiliate = lazy(() => import("./pages/Affiliate.tsx"));
 const Admin = lazy(() => import("./pages/Admin.tsx"));
+const CustomerOrder = lazy(() => import("./pages/CustomerOrder.tsx"));
 const AdminInvoice = lazy(() => import("./pages/AdminInvoice.tsx"));
 const SokoladesArLogo = lazy(() => import("./pages/SokoladesArLogo.tsx"));
 const KukuSokoladesVeikals = lazy(() => import("./pages/KukuSokoladesVeikals.tsx"));
@@ -131,6 +132,7 @@ const App = () => (
             {/* Auth */}
             <Route path="/auth" element={<Auth />} />
             <Route path="/account" element={<Account />} />
+            <Route path="/account/orders/:orderId" element={<CustomerOrder />} />
             <Route path="/affiliate" element={<Affiliate />} />
             <Route path="/admin" element={<Admin />} />
             <Route path="/admin/rekins/:orderId" element={<AdminInvoice />} />

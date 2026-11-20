@@ -1,5 +1,6 @@
 // Stripe webhook handler — creates orders + order_items after successful payment.
 // Auto-registered by Lovable Cloud for both sandbox and live (?env=sandbox|live).
+import { sendOrderDocuments } from "../_shared/order-documents.ts";
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2.45.0";
 import { type StripeEnv, createStripeClient, verifyWebhook } from "../_shared/stripe.ts";
@@ -60,6 +61,7 @@ async function handleCheckoutCompleted(session: any, env: StripeEnv) {
     .eq("stripe_session_id", sessionId)
     .maybeSingle();
   if (existing) {
+    await sendOrderDocuments(supabase, existing.id, undefined, "paid");
     console.log("Order already exists for session:", sessionId);
     return;
   }
@@ -143,6 +145,7 @@ async function handleCheckoutCompleted(session: any, env: StripeEnv) {
 
   if (itemErr) throw new Error(`Failed to insert order item: ${itemErr.message}`);
 
+  await sendOrderDocuments(supabase, order.id, undefined, "paid");
   console.log("Order created:", order.order_number, "id:", order.id);
 
   // Send confirmation emails (non-blocking — log errors but don't fail webhook)
@@ -196,6 +199,7 @@ async function handleShopOrderCompleted(session: any, env: StripeEnv) {
     return;
   }
   if (existing.status === "paid") {
+    await sendOrderDocuments(supabase, orderId, undefined, "paid");
     console.log("Order already paid:", orderId);
     return;
   }
@@ -260,6 +264,7 @@ async function handleShopOrderCompleted(session: any, env: StripeEnv) {
     .select("product_name, quantity, unit_price_cents, total_price_cents")
     .eq("order_id", order.id);
 
+  await sendOrderDocuments(supabase, order.id, undefined, "paid");
   console.log("Shop order paid:", order.order_number);
 
   // Email (reuse existing helper format — simplified for shop orders)
@@ -344,6 +349,7 @@ async function sendShopOrderEmail(order: any, items: any[]) {
   await send(["ilze.eisaka@gmail.com", "info@luxurychocolate.lv"], `Jauns veikala pasūtījums ${order.order_number}`);
 }
 
+const escapeHtml = (v: unknown) =>
   String(v ?? "")
     .replaceAll("&", "&amp;")
     .replaceAll("<", "&lt;")

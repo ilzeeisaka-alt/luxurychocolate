@@ -718,7 +718,7 @@ const Rekins = () => {
         logos: i.logos ?? [],
       }));
       const { error: itemsErr } = await supabase.from("order_items").insert(orderItems as never);
-      if (itemsErr) console.error("order_items insert error", itemsErr);
+      if (itemsErr) throw itemsErr;
 
       // 3. Clear cart
       await supabase.from("cart_items").delete().eq("user_id", user.id);
@@ -753,8 +753,10 @@ const Rekins = () => {
         },
       });
 
-      toast({ title: tx.orderConfirmedTitle, description: tx.orderConfirmedDesc(orderData.order_number) });
-      navigate(withLang("/account"));
+      const { data: emailResult, error: emailError } = await supabase.functions.invoke("order-document-email", { body: { orderId: orderData.id } });
+      if (emailError || !emailResult?.sent) toast({ title: "Pasūtījums saglabāts", description: "Dokumenti ir pieejami ekrānā, bet e-pastu neizdevās nosūtīt.", variant: "destructive" });
+      else toast({ title: tx.orderConfirmedTitle, description: tx.orderConfirmedDesc(orderData.order_number) });
+      navigate(`/account/orders/${orderData.id}?type=proforma`);
     } catch (e) {
       toast({ title: tx.errorTitle, description: tx.confirmError, variant: "destructive" });
       console.error(e);

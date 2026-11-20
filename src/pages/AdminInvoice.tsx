@@ -13,6 +13,7 @@ import OrderVisualizationDocument from "@/components/admin/OrderVisualizationDoc
 import ContactPhotoControl from "@/components/admin/ContactPhotoControl";
 import ClientLogoControl from "@/components/admin/ClientLogoControl";
 import { Button } from "@/components/ui/button";
+import { ownsOrder } from "@/lib/orderDocumentAccess";
 import type { OrderDesignItem } from "@/lib/orderVisualization";
 import { toast } from "sonner";
 
@@ -32,6 +33,7 @@ interface OrderItem extends OrderDesignItem {
 }
 
 interface Order {
+  user_id: string | null;
   id: string;
   order_number: string;
   customer_email: string;
@@ -48,6 +50,7 @@ interface Order {
   total_cents: number;
   currency: string;
   created_at: string;
+  status: string;
   order_items: OrderItem[];
 }
 
@@ -56,7 +59,7 @@ const fmt = (cents: number, currency = "EUR") =>
 
 type DocType = "proforma" | "invoice" | "visualization";
 
-const AdminInvoice = () => {
+const AdminInvoice = ({ customerView = false }: { customerView?: boolean }) => {
   const { orderId } = useParams<{ orderId: string }>();
   const [searchParams, setSearchParams] = useSearchParams();
   const docType = (searchParams.get("type") as DocType) || "proforma";
@@ -91,7 +94,7 @@ const AdminInvoice = () => {
   }, [loading]);
 
   useEffect(() => {
-    if (!authLoading && !user) navigate("/auth", { replace: true });
+    if (!authLoading && !user) navigate(`/auth?redirect=${encodeURIComponent(window.location.pathname + window.location.search)}`, { replace: true });
   }, [authLoading, user, navigate]);
 
   useEffect(() => {
@@ -104,12 +107,11 @@ const AdminInvoice = () => {
   const load = useCallback(async () => {
     if (!orderId) return;
     setLoading(true);
-    const { data } = await supabase
-      .from("orders")
-      .select("*, order_items(*)")
-      .eq("id", orderId)
-      .maybeSingle();
-    setOrder(data as unknown as Order);
+    if (!user) return;
+    let query = supabase.from("orders").select("*, order_items(*)").eq("id", orderId);
+    if (customerView) query = query.eq("user_id", user.id);
+    const { data } = await query.maybeSingle();
+    setOrder(data && (!customerView || ownsOrder(user.id, data.user_id)) ? data as unknown as Order : null);
     // Try to load reg nr from profile
     if (data?.user_id) {
       const { data: p } = await supabase
@@ -120,9 +122,9 @@ const AdminInvoice = () => {
       if (p?.registration_number) setRegNr(p.registration_number);
     }
     setLoading(false);
-  }, [orderId]);
+  }, [orderId, customerView, user]);
 
-  useEffect(() => { if (isAdmin) load(); }, [isAdmin, load]);
+  useEffect(() => { if (isAdmin || (customerView && user)) void load(); }, [isAdmin, customerView, user, load]);
 
   const docMeta = useMemo(() => {
     switch (docType) {
@@ -254,7 +256,7 @@ const AdminInvoice = () => {
     }
   };
 
-  if (authLoading || isAdmin === null || loading) {
+  if (authLoading || (!customerView && isAdmin === null) || loading) {
     return (
       <div className="min-h-screen bg-background flex items-center justify-center">
         <Loader2 className="w-8 h-8 animate-spin text-primary" />
@@ -262,7 +264,7 @@ const AdminInvoice = () => {
     );
   }
 
-  if (!isAdmin) {
+  if (!customerView && !isAdmin) {
     return (
       <div className="min-h-screen bg-background flex items-center justify-center text-foreground">
         Nav piekļuves.
@@ -302,8 +304,8 @@ const AdminInvoice = () => {
       <div className="no-print"><Navbar /></div>
       <main className="container mx-auto px-4 pb-16 max-w-5xl" style={{ paddingTop: navHeight + 96 }}>
         <div className="no-print flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 mb-4">
-          <button onClick={() => navigate("/admin")} className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground">
-            <ChevronLeft className="w-4 h-4" /> Atpakaļ uz admin
+          <button onClick={() => navigate(customerView ? "/account?tab=orders" : "/admin")} className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground">
+            <ChevronLeft className="w-4 h-4" /> {customerView ? "Mani pasūtījumi" : "Atpakaļ uz admin"}
           </button>
           <div className="flex flex-wrap gap-2 mr-0 sm:mr-8">
             <button onClick={handlePrint} className="flex items-center gap-2 rounded-lg border border-border bg-card text-foreground px-4 py-2.5 text-sm font-medium hover:bg-muted">
@@ -320,7 +322,7 @@ const AdminInvoice = () => {
             { v: "proforma", l: "Priekšapmaksas rēķins" },
             { v: "invoice", l: "Rēķins-Pavadzīme" },
             { v: "visualization", l: "Pasūtījuma vizualizācija" },
-          ] as { v: DocType; l: string }[]).map((t) => (
+          ] as { v: DocType; l: string }[]).filter(t => !customerView || t.v !== "invoice" || !["pending", "cancelled"].includes(order.status)).map((t) => (
             <Button
               key={t.v}
               onClick={() => setSearchParams(t.v === "visualization" || halfMode === "none" ? { type: t.v } : { type: t.v, half: halfMode })}
@@ -351,8 +353,8 @@ const AdminInvoice = () => {
           ))}
         </div>
 
-        {docType === "visualization" && <ContactPhotoControl orderId={order.id} onChange={setContactPhoto} />}
-        {docType === "visualization" && <ClientLogoControl orderId={order.id} onChange={setClientLogo} />}
+        {!customerView && docType === "visualization" && <ContactPhotoControl orderId={order.id} onChange={setContactPhoto} />}
+        {!customerView && docType === "visualization" && <ClientLogoControl orderId={order.id} onChange={setClientLogo} />}
         <div ref={invoiceRef} className={`print-area bg-card text-card-foreground ${docType === "visualization" ? "" : "rounded-lg border border-border p-4 sm:p-10 shadow-sm"}`}>
           {docType === "visualization" ? <OrderVisualizationDocument order={order} date={dateStr} registrationNumber={regNr} eventName={eventNameStr} eventDate={eventDateStr} contactPhoto={contactPhoto} clientLogo={clientLogo} onLanguageChange={setVisualizationLanguage} /> : <>
           <div className="flex flex-col sm:flex-row sm:justify-between items-start mb-8 gap-6">

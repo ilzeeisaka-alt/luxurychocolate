@@ -90,6 +90,7 @@ const CheckoutReturn = () => {
         if (data.status !== "pending" && data.status !== "cancelled") {
           const qs = new URLSearchParams();
           if (data.order_number) qs.set("order", data.order_number);
+          qs.set("orderId", data.id);
           if (data.customer_email) qs.set("email", data.customer_email);
           navigate(`/paldies?${qs.toString()}`, { replace: true });
           return;

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -7,6 +7,8 @@ import { Badge } from "@/components/ui/badge";
 import { Loader2, Package, ChevronDown, ChevronUp, ExternalLink, RotateCcw } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+
+import { customerDocumentPath } from "@/lib/orderDocumentAccess";
 
 interface OrderItem {
   id: string;
@@ -177,6 +179,10 @@ const OrdersList = ({ userId }: OrdersListProps) => {
               </div>
             </CardHeader>
             <CardContent>
+              <div className="flex flex-wrap gap-2 mb-3">
+                <Button asChild size="sm" variant="outline"><Link to={customerDocumentPath(order.id, "proforma")}>Mans rēķins</Link></Button>
+                <Button asChild size="sm" variant="outline"><Link to={customerDocumentPath(order.id, "visualization")}>Mana vizualizācija</Link></Button>
+              </div>
               <Button
                 variant="ghost"
                 size="sm"

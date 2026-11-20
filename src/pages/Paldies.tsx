@@ -11,6 +11,7 @@ const Paldies = () => {
   const [params] = useSearchParams();
   const orderNumber = params.get("order");
   const email = params.get("email");
+  const orderId = params.get("orderId");
 
   useSeo({
     title: "Paldies par pasūtījumu — Luxury Chocolate",
@@ -155,10 +156,14 @@ const Paldies = () => {
           </div>
         </div>
 
+        {orderId && <div className="mt-10 flex flex-wrap gap-3 justify-center">
+          <Button asChild><Link to={`/account/orders/${encodeURIComponent(orderId)}?type=invoice`}>Mans rēķins</Link></Button>
+          <Button asChild variant="outline"><Link to={`/account/orders/${encodeURIComponent(orderId)}?type=visualization`}>Mana vizualizācija</Link></Button>
+        </div>}
         {/* CTAs */}
         <div className="mt-12 flex flex-col sm:flex-row gap-3 justify-center">
           <Button asChild size="lg">
-            <Link to="/account">Apskatīt manus pasūtījumus</Link>
+            <Link to="/account?tab=orders">Apskatīt manus pasūtījumus</Link>
           </Button>
           <Button asChild size="lg" variant="outline">
             <Link to="/veikals">Turpināt iepirkties</Link>

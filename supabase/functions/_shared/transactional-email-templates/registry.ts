@@ -1,3 +1,4 @@
+import { template as orderDocumentsTemplate } from './order-documents.tsx'
 import type { ComponentType } from 'npm:react@18.3.1'
 import { template as offerRequestTemplate } from './offer-request.tsx'
 import { template as shopLogoUploadTemplate } from './shop-logo-upload.tsx'
@@ -24,6 +25,7 @@ export interface TemplateEntry {
  *   // then add to TEMPLATES: 'welcome': welcomeTemplate
  */
 export const TEMPLATES: Record<string, TemplateEntry> = {
+  'order-documents': orderDocumentsTemplate,
   'product-price-proposal': productPriceProposalTemplate,
   'product-visualization': productVisualizationTemplate,
   'ai-chat-notification': aiChatNotificationTemplate,

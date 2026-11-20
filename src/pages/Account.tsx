@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import { z } from "zod";
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/hooks/useAuth";
@@ -44,6 +44,7 @@ const emptyProfile: ProfileForm = {
 
 const Account = () => {
   const navigate = useNavigate();
+  const [params] = useSearchParams();
   const { user, loading: authLoading, signOut } = useAuth();
   const [profile, setProfile] = useState<ProfileForm>(emptyProfile);
   const [loadingProfile, setLoadingProfile] = useState(true);
@@ -184,7 +185,7 @@ const Account = () => {
           Partneru programma — pelni 10%
         </Link>
 
-        <Tabs defaultValue="profile">
+        <Tabs defaultValue={params.get("tab") === "orders" ? "orders" : "profile"}>
           <TabsList>
             <TabsTrigger value="profile"><User className="h-4 w-4 mr-2" />Profils</TabsTrigger>
             <TabsTrigger value="orders"><Package className="h-4 w-4 mr-2" />Pasūtījumi</TabsTrigger>

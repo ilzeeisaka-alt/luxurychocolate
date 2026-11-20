@@ -87,7 +87,7 @@ serve(async (req) => {
     // Load cart
     const { data: cart, error: cartErr } = await supabaseAdmin
       .from("cart_items")
-      .select("id, quantity, logo_url, logo_filename, product:products(id, slug, name, name_i18n, price_cents, currency, in_stock, published)")
+      .select("id, quantity, logo_url, logo_filename, logos, notes, product:products(id, slug, name, name_i18n, price_cents, currency, in_stock, published)")
       .eq("user_id", user.id);
 
     if (cartErr) throw cartErr;
@@ -188,6 +188,10 @@ serve(async (req) => {
       product_slug: l.product.slug,
       product_name: pickI18n(l.product.name_i18n, currentLang, l.product.name),
       product_type: "shop_product",
+      logo_url: l.logo_url,
+      logo_filename: l.logo_filename,
+      logos: l.logos ?? [],
+      notes: l.notes,
       quantity: l.quantity,
       unit_price_cents: l.product.price_cents,
       total_price_cents: l.product.price_cents * l.quantity,
