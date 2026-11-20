@@ -1,4 +1,5 @@
 # Order visualization documents
+- [x] Make Order Sheet headings, labels and dates follow the purchased product language with 55-language document copy; preserve client names, original job titles and addresses. Sixteen tests passed; real signed-in Latvian, English and Russian orders and English three-page PDF verified.
 - [x] Removed the English translation from the client contact's job title in the six ALPS orders, so the document shows only "Sociālo Tīklu Administratore"; verified in the database and in the signed-in order sheet.
 - [x] Formatted both order-sheet contact blocks equally — contact names in capitals, job titles in small unbolded letters (client title split from the order's name field, manufacturer title "Valdes locekle"); seven tests passed and the real signed-in ALPS order verified in the browser.
 - [x] Added private administrator contact-person photo upload, replacement and removal; six tests passed and real-order upload, reload persistence, removal, replacement, mobile width and downloaded PDF verified.

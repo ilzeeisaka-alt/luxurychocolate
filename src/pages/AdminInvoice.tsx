@@ -77,6 +77,8 @@ const AdminInvoice = () => {
   const [navHeight, setNavHeight] = useState(160);
   const [contactPhoto, setContactPhoto] = useState("");
   const [clientLogo, setClientLogo] = useState("");
+  const [visualizationLanguage, setVisualizationLanguage] = useState("lv");
+  const dateLocale = docType === "visualization" ? visualizationLanguage : "lv-LV";
 
   useEffect(() => {
     const nav = document.getElementById("luxury-navigation");
@@ -125,13 +127,13 @@ const AdminInvoice = () => {
   const docMeta = useMemo(() => {
     switch (docType) {
       case "visualization":
-        return { title: "Pasūtījuma vizualizācija", prefix: "VIS", filePrefix: "Vizualizacija" };
+        return { title: "Pasūtījuma vizualizācija", prefix: "VIS", filePrefix: visualizationLanguage === "lv" ? "Vizualizacija" : visualizationLanguage === "ru" ? "Vizualizatsiya" : "Visualization" };
       case "invoice":
         return { title: "Rēķins-Pavadzīme", prefix: "INV", filePrefix: "Rekins-Pavadzime" };
       default:
         return { title: "Priekšapmaksas rēķins", prefix: "PRO", filePrefix: "Prieksapmaksa" };
     }
-  }, [docType]);
+  }, [docType, visualizationLanguage]);
 
   const invoiceNumber = useMemo(() => {
     if (!order) return "";
@@ -139,7 +141,7 @@ const AdminInvoice = () => {
   }, [order, docMeta]);
 
   const issueDateSource = order ? ((order as { issue_date?: string | null }).issue_date ?? order.created_at) : null;
-  const dateStr = issueDateSource ? new Date(issueDateSource).toLocaleDateString("lv-LV") : "";
+  const dateStr = issueDateSource ? new Date(issueDateSource).toLocaleDateString(dateLocale) : "";
   const dueDate = useMemo(() => {
     if (!issueDateSource) return "";
     const d = new Date(issueDateSource);
@@ -154,7 +156,7 @@ const AdminInvoice = () => {
       const d = new Date(val.trim().replace(" ", "T"));
       if (isNaN(d.getTime())) return val.trim();
       const hasTime = /\d{2}:\d{2}/.test(val);
-      return d.toLocaleString("lv-LV", hasTime ? { dateStyle: "short", timeStyle: "short" } : { dateStyle: "short" });
+      return d.toLocaleString(dateLocale, hasTime ? { dateStyle: "short", timeStyle: "short" } : { dateStyle: "short" });
     };
     if (o?.event_date) return fmt(o.event_date);
     const raw = o?.notes ?? "";
@@ -165,7 +167,7 @@ const AdminInvoice = () => {
     if (!line) return "";
     const value = line.split(/:(.+)/s)[1]?.trim() ?? "";
     return value ? fmt(value) : "";
-  }, [order]);
+  }, [order, dateLocale]);
 
   const eventNameStr = useMemo(() => {
     const raw = order?.notes ?? "";
@@ -352,7 +354,7 @@ const AdminInvoice = () => {
         {docType === "visualization" && <ContactPhotoControl orderId={order.id} onChange={setContactPhoto} />}
         {docType === "visualization" && <ClientLogoControl orderId={order.id} onChange={setClientLogo} />}
         <div ref={invoiceRef} className={`print-area bg-card text-card-foreground ${docType === "visualization" ? "" : "rounded-lg border border-border p-4 sm:p-10 shadow-sm"}`}>
-          {docType === "visualization" ? <OrderVisualizationDocument order={order} date={dateStr} registrationNumber={regNr} eventName={eventNameStr} eventDate={eventDateStr} contactPhoto={contactPhoto} clientLogo={clientLogo} /> : <>
+          {docType === "visualization" ? <OrderVisualizationDocument order={order} date={dateStr} registrationNumber={regNr} eventName={eventNameStr} eventDate={eventDateStr} contactPhoto={contactPhoto} clientLogo={clientLogo} onLanguageChange={setVisualizationLanguage} /> : <>
           <div className="flex flex-col sm:flex-row sm:justify-between items-start mb-8 gap-6">
             <div className="flex items-start gap-4">
               <img src={logoUrl} alt="Luxury Chocolate" className="w-20 h-20 object-contain" crossOrigin="anonymous" />
