@@ -5,7 +5,7 @@ import seal from "@/assets/order-sheet-seal.png.asset.json";
 import brandFooter from "@/assets/order-sheet-brand-footer.png.asset.json";
 import ilzePhoto from "@/assets/ilze-eisaka.jpg";
 import "./order-sheet.css";
-import { normalCase } from "@/lib/orderSheetName";
+import { normalCase, splitContactName } from "@/lib/orderSheetName";
 
 interface Props {
   order: { order_number: string; customer_name: string | null; customer_email: string; customer_phone: string | null; company_name: string | null; vat_number: string | null; shipping_address: string | null; shipping_city?: string | null; shipping_postal_code?: string | null; shipping_country?: string | null; order_items: OrderDesignItem[] };
@@ -69,6 +69,9 @@ export default function OrderVisualizationDocument({ order, date, registrationNu
     return () => { active = false; };
   }, [order]);
 
+  const contact = splitContactName(order.customer_name);
+  const contactName = contact.name || normalCase(order.company_name) || "—";
+
   return <div className="order-design order-sheet">
     {loading && <p role="status">Ielādē attēlus…</p>}{error && <p role="alert" className="text-destructive">{error}</p>}
     {order.order_items.map((item, itemIndex) => <article key={item.id} className="order-design-item order-sheet-page">
@@ -91,7 +94,7 @@ export default function OrderVisualizationDocument({ order, date, registrationNu
               {contactPhoto && <DocumentImage key={contactPhoto} src={contactPhoto} alt="Klienta kontaktpersona" className="order-sheet-person order-sheet-contact-photo" />}
               {(() => { const logos = [...new Map(order.order_items.flatMap(orderDesignLogos).map(logo => [logo.url, logo])).values()]; return logos.map((logo, index) => logoUrls[logo.url] ? <DocumentImage key={`${logo.url}-${index}`} src={logoUrls[logo.url]} alt={logo.filename || "Klienta logo"} className="order-sheet-client-logo" /> : null); })()}
             </div>
-  <div className="order-sheet-details"><strong>{normalCase(order.customer_name) || normalCase(order.company_name) || "—"}</strong>{order.company_name && <p>{normalCase(order.company_name)}</p>}{registrationNumber && <p>Reģ. Nr.: {registrationNumber}</p>}{order.vat_number && <p>PVN: {order.vat_number}</p>}<p>{order.customer_email}</p><p>{order.customer_phone}</p><p>{[order.shipping_address, order.shipping_city, order.shipping_postal_code, order.shipping_country].filter(Boolean).join(", ")}</p></div>
+  <div className="order-sheet-details"><strong>{contactName}</strong>{contact.title && <p className="order-sheet-role">{contact.title}</p>}{order.company_name && <p>{normalCase(order.company_name)}</p>}{registrationNumber && <p>Reģ. Nr.: {registrationNumber}</p>}{order.vat_number && <p>PVN: {order.vat_number}</p>}<p>{order.customer_email}</p><p>{order.customer_phone}</p><p>{[order.shipping_address, order.shipping_city, order.shipping_postal_code, order.shipping_country].filter(Boolean).join(", ")}</p></div>
           </div>
         </section>
       </header>
