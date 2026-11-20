@@ -8,7 +8,8 @@
 }
 .order-sheet-page { padding: 24px; display: flex; flex-direction: column; gap: 20px; }
 .order-sheet-page + .order-sheet-page { border-top: 1px solid hsl(var(--border)); margin-top: 32px; }
-.order-sheet-header { display: grid; grid-template-columns: minmax(0, 1fr) 170px minmax(0, 1fr); gap: 16px; align-items: start; }
+.order-sheet-brand-row { display: flex; align-items: center; justify-content: center; gap: 48px; }
+.order-sheet-header { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 24px; align-items: start; }
 .order-sheet h1, .order-sheet h2, .order-sheet h3 { letter-spacing: 0; font-weight: 900; }
 .order-sheet-party-title { text-transform: uppercase; font-size: 26px; margin-bottom: 12px; }
 .order-sheet-seller { display: flex; gap: 10px; align-items: center; }
@@ -19,10 +20,8 @@
 .order-sheet-client-media { display: flex; justify-content: flex-end; align-items: flex-start; gap: 10px; margin-bottom: 8px; }
 .order-sheet-contact-photo { margin: 0; }
 .order-sheet-client-logo { width: 84px; height: 84px; object-fit: contain; }
-.order-sheet-seal { width: 100%; height: 175px; object-fit: contain; }
-.order-sheet-brand-pair { display: flex; align-items: center; justify-content: center; gap: 12px; }
-.order-sheet-brand-pair .order-sheet-seal { width: 50%; min-width: 0; }
-.order-sheet-payer-logo { width: 50%; height: 120px; min-width: 0; object-fit: contain; }
+.order-sheet-seal { height: 175px; width: auto; max-width: 44%; object-fit: contain; }
+.order-sheet-payer-logo { height: 175px; width: auto; max-width: 44%; object-fit: contain; }
 .order-sheet-title-row { display: flex; justify-content: space-between; gap: 20px; align-items: end; border-bottom: 1px solid hsl(var(--sheet-ink)); padding-bottom: 10px; }
 .order-sheet-title { font-size: 30px; color: hsl(var(--sheet-accent)); text-transform: uppercase; }
 .order-sheet-dates { text-align: right; font-size: 11px; line-height: 1.5; overflow-wrap: anywhere; }
@@ -40,8 +39,9 @@
 @media (max-width: 639px) {
   .order-sheet-page { padding: 12px; gap: 16px; }
   .order-sheet-header { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 16px; }
-  .order-sheet-brand { grid-column: 1 / -1; grid-row: 1; }
-  .order-sheet-seal { height: 120px; }
+  .order-sheet-brand-row { gap: 20px; }
+  .order-sheet-seal { height: 120px; max-width: 46%; }
+  .order-sheet-payer-logo { height: 120px; max-width: 46%; }
   .order-sheet-party-title { font-size: 19px; }
   .order-sheet-seller { flex-direction: column; align-items: start; }
   .order-sheet-person { height: 96px; width: 72px; }
