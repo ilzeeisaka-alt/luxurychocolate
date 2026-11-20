@@ -568,6 +568,29 @@ export type Database = {
         }
         Relationships: []
       }
+      order_contact_photos: {
+        Row: {
+          order_id: string
+          storage_path: string
+        }
+        Insert: {
+          order_id: string
+          storage_path: string
+        }
+        Update: {
+          order_id?: string
+          storage_path?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "order_contact_photos_order_id_fkey"
+            columns: ["order_id"]
+            isOneToOne: true
+            referencedRelation: "orders"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       order_items: {
         Row: {
           area_cm2: number | null

@@ -1,4 +1,6 @@
 # Order visualization documents
+- [x] Added private administrator contact-person photo upload, replacement and removal; six tests passed and real-order upload, reload persistence, removal, replacement, mobile width and downloaded PDF verified.
+- [x] Added the permitted public Agnese Reķe portrait from Salaspils library to the requested order using the new upload control.
 - [x] Matched the supplied Order Sheet layout with manufacturer/client header, central seal, red visualization heading, large product photo and supplied four-logo footer; verified the real signed-in order, mobile width and downloaded single-page PDF, corrected logo crop artifacts, and passed four existing tests.
 - [x] Added administrator order visualization beside invoices/delivery documents with buyer/seller details, exact product photos, customer logos, Ilze photo and site branding; four tests passed, two real signed-in orders including an uploaded client logo rendered with all images, PDF downloads and mobile layout verified.
 

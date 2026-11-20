@@ -12,6 +12,7 @@ interface Props {
   registrationNumber: string;
   eventName: string;
   eventDate: string;
+  contactPhoto?: string;
 }
 
 function DocumentImage({ src, alt, className }: { src: string; alt: string; className: string }) {
@@ -19,7 +20,7 @@ function DocumentImage({ src, alt, className }: { src: string; alt: string; clas
   return failed ? <p className="text-sm text-muted-foreground">{alt}: attēlu nevar atvērt.</p> : <img src={src} alt={alt} className={className} crossOrigin="anonymous" onError={() => setFailed(true)} />;
 }
 
-export default function OrderVisualizationDocument({ order, date, registrationNumber, eventName, eventDate }: Props) {
+export default function OrderVisualizationDocument({ order, date, registrationNumber, eventName, eventDate, contactPhoto }: Props) {
   const [photos, setPhotos] = useState<Record<string, string>>({});
   const [logoUrls, setLogoUrls] = useState<Record<string, string>>({});
   const [loading, setLoading] = useState(true);
@@ -80,6 +81,7 @@ export default function OrderVisualizationDocument({ order, date, registrationNu
         <div className="order-sheet-brand"><DocumentImage src={seal.url} alt="Luxury Chocolate" className="order-sheet-seal" /></div>
         <section className="order-sheet-client">
           <h2 className="order-sheet-party-title">Klients</h2>
+          {contactPhoto && <DocumentImage key={contactPhoto} src={contactPhoto} alt="Klienta kontaktpersona" className="order-sheet-person order-sheet-contact-photo" />}
           <div className="order-sheet-details"><strong>{order.customer_name || order.company_name || "—"}</strong>{order.company_name && <p>{order.company_name}</p>}{registrationNumber && <p>Reģ. Nr.: {registrationNumber}</p>}{order.vat_number && <p>PVN: {order.vat_number}</p>}<p>{order.customer_email}</p><p>{order.customer_phone}</p><p>{[order.shipping_address, order.shipping_city, order.shipping_postal_code, order.shipping_country].filter(Boolean).join(", ")}</p></div>
         </section>
       </header>
