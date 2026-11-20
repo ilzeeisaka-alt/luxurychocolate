@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Printer, ChevronLeft, Loader2, Download, CreditCard, Eye } from "lucide-react";
+import { Printer, ChevronLeft, Loader2, Download, CreditCard, Eye, Upload } from "lucide-react";
 import jsPDF from "jspdf";
 import html2canvas from "html2canvas";
 import Navbar from "@/components/Navbar";
@@ -53,6 +53,11 @@ const INVOICE_TEXT = {
     payInvoice: "Pay invoice",
     confirmOrder: "Confirm order",
     viewVisualization: "Visualization",
+    logoForVisualization: "Your logo for the visualization",
+    logoForVisualizationHint: "Upload your logo — it will appear on the order visualization next to the product.",
+    uploadLogo: "Upload logo",
+    changeLogo: "Change logo",
+    noLogoYet: "No logo added yet",
     buyerDetails: "Invoice recipient details",
     companyPlaceholder: "Company / person name",
     regPlaceholder: "Registration number",
@@ -128,6 +133,11 @@ const INVOICE_TEXT = {
     payInvoice: "Apmaksāt rēķinu",
     confirmOrder: "Apstiprināt pasūtījumu",
     viewVisualization: "Vizualizācija",
+    logoForVisualization: "Jūsu logo vizualizācijai",
+    logoForVisualizationHint: "Augšupielādējiet savu logo — tas parādīsies pasūtījuma vizualizācijā pie produkta.",
+    uploadLogo: "Augšupielādēt logo",
+    changeLogo: "Nomainīt logo",
+    noLogoYet: "Logo vēl nav pievienots",
     buyerDetails: "Rēķina saņēmēja rekvizīti",
     companyPlaceholder: "Uzņēmuma / personas nosaukums",
     regPlaceholder: "Reģistrācijas numurs",
@@ -203,6 +213,11 @@ const INVOICE_TEXT = {
     payInvoice: "Оплатить счёт",
     confirmOrder: "Подтвердить заказ",
     viewVisualization: "Визуализация",
+    logoForVisualization: "Ваш логотип для визуализации",
+    logoForVisualizationHint: "Загрузите свой логотип — он появится в визуализации заказа рядом с продуктом.",
+    uploadLogo: "Загрузить логотип",
+    changeLogo: "Заменить логотип",
+    noLogoYet: "Логотип ещё не добавлен",
     buyerDetails: "Реквизиты получателя счёта",
     companyPlaceholder: "Название компании / имя частного лица",
     regPlaceholder: "Регистрационный номер",
@@ -278,6 +293,11 @@ const INVOICE_TEXT = {
     payInvoice: "Maksa arve",
     confirmOrder: "Kinnita tellimus",
     viewVisualization: "Visualiseering",
+    logoForVisualization: "Teie logo visualiseeringule",
+    logoForVisualizationHint: "Laadige üles oma logo — see ilmub tellimuse visualiseeringul toote kõrval.",
+    uploadLogo: "Laadi logo üles",
+    changeLogo: "Vaheta logo",
+    noLogoYet: "Logo pole veel lisatud",
     buyerDetails: "Arve saaja andmed",
     companyPlaceholder: "Ettevõtte / isiku nimi",
     regPlaceholder: "Registrinumber",
@@ -673,6 +693,46 @@ const Rekins = () => {
     }
   };
 
+  const [uploadingLogoFor, setUploadingLogoFor] = useState<string | null>(null);
+  const logoInputRefs = useRef<Record<string, HTMLInputElement | null>>({});
+
+  const handleItemLogoUpload = async (item: CartLine, file: File) => {
+    const ext = "." + (file.name.split(".").pop()?.toLowerCase() ?? "");
+    const allowed = [".png", ".jpg", ".jpeg", ".gif", ".svg", ".webp", ".pdf", ".bmp", ".heic", ".heif", ".tiff", ".tif"];
+    if (!allowed.includes(ext)) {
+      toast({ title: tx.errorTitle, description: `${file.name}: neatbalstīts formāts`, variant: "destructive" });
+      return;
+    }
+    if (file.size > 20 * 1024 * 1024) {
+      toast({ title: tx.errorTitle, description: `${file.name}: pārsniedz 20MB`, variant: "destructive" });
+      return;
+    }
+    setUploadingLogoFor(item.id);
+    try {
+      const fileName = `${Date.now()}-${Math.random().toString(36).substring(2)}${ext}`;
+      const { error: uploadError } = await supabase.storage
+        .from("client-logos")
+        .upload(fileName, file, { contentType: file.type || "application/octet-stream", upsert: false });
+      if (uploadError) throw uploadError;
+      const { data: urlData } = supabase.storage.from("client-logos").getPublicUrl(fileName);
+      const logos = [{ url: urlData.publicUrl, filename: file.name, quantity: item.quantity }];
+      const { error: updateError } = await supabase
+        .from("cart_items")
+        .update({ logo_url: urlData.publicUrl, logo_filename: file.name, logos } as never)
+        .eq("id", item.id);
+      if (updateError) throw updateError;
+      setItems((prev) => prev.map((i) => (i.id === item.id ? { ...i, logo_url: urlData.publicUrl, logo_filename: file.name, logos } : i)));
+      toast({ title: file.name });
+    } catch (e) {
+      console.error(e);
+      toast({ title: tx.errorTitle, description: tx.confirmError, variant: "destructive" });
+    } finally {
+      setUploadingLogoFor(null);
+      const input = logoInputRefs.current[item.id];
+      if (input) input.value = "";
+    }
+  };
+
   const handleConfirm = async (docType: "proforma" | "visualization" = "proforma") => {
     if (!buyerCompany || !buyerEmail) {
       toast({ title: tx.missingDetailsTitle, description: tx.missingDetailsDesc, variant: "destructive" });
@@ -907,6 +967,49 @@ const Rekins = () => {
           </div>
         </section>
 
+        {/* Client logo for the order visualization */}
+        {!loading && validItems.length > 0 && (
+          <section className="no-print bg-card border border-border rounded-xl p-6 mb-6">
+            <h2 className="text-lg font-medium text-foreground mb-1">{tx.logoForVisualization}</h2>
+            <p className="text-sm text-muted-foreground mb-4">{tx.logoForVisualizationHint}</p>
+            <div className="space-y-3">
+              {validItems.map((i) => {
+                const logoName = i.logo_filename || (i.logos && i.logos[0]?.filename) || null;
+                return (
+                  <div key={i.id} className="flex items-center justify-between gap-3 flex-wrap rounded-lg border border-border px-4 py-3">
+                    <div className="min-w-0">
+                      <p className="text-sm font-medium text-foreground truncate">
+                        {localizeProductName(pickI18n(i.product!.name_i18n, lang, i.product!.name), lang, tx)}
+                      </p>
+                      <p className="text-xs text-muted-foreground truncate">
+                        {logoName ?? tx.noLogoYet}
+                      </p>
+                    </div>
+                    <button
+                      type="button"
+                      disabled={uploadingLogoFor === i.id}
+                      onClick={() => logoInputRefs.current[i.id]?.click()}
+                      className="inline-flex items-center gap-2 rounded-md border border-border px-3 py-2 text-sm text-foreground hover:border-primary/50 transition-colors disabled:opacity-60"
+                    >
+                      {uploadingLogoFor === i.id ? <Loader2 className="w-4 h-4 animate-spin" /> : <Upload className="w-4 h-4" />}
+                      {logoName ? tx.changeLogo : tx.uploadLogo}
+                    </button>
+                    <input
+                      ref={(el) => { logoInputRefs.current[i.id] = el; }}
+                      type="file"
+                      accept=".png,.gif,.jpg,.jpeg,.svg,.webp,.pdf,.bmp,.heic,.heif,.tiff,.tif"
+                      className="hidden"
+                      onChange={(e) => {
+                        const file = e.target.files?.[0];
+                        if (file) void handleItemLogoUpload(i, file);
+                      }}
+                    />
+                  </div>
+                );
+              })}
+            </div>
+          </section>
+        )}
 
         {/* Printable invoice */}
         {loading ? (

@@ -85,3 +85,6 @@
 
 ## Truffle box Christmas background
 - [x] Give the "Kaste ar trifelēm — koka kastē" product photos a festive Christmas background (evergreen, gold tones, fairy lights, candle glow) while keeping the wooden box, golden clasp, truffles and Red Dot logo on both lid sides unchanged; publish the three edited photos, make the open-box view primary, and keep the two plain-background logo views after them. Product page checked: five thumbnails in one even row, no build errors.
+
+## Customer logo upload on invoice page
+- [x] Add a per-item "Jūsu logo vizualizācijai" upload section on /rekins (lv/en/ru/et) that stores the logo on the cart item so it flows into the order and the visualization; verified end-to-end with a test order (logo visible on the visualization page).
