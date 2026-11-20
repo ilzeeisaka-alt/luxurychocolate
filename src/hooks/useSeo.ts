@@ -49,6 +49,51 @@ const seoKeywords: Record<string, string> = {
   "/is": "súkkulaðiprentun, prentun á súkkulaði, prentað súkkulaði, sérsniðið súkkulaði, súkkulaði með merki, fyrirtækjagjafir, belgískt súkkulaði",
 };
 
+// Core offer themes every language homepage must advertise to search engines.
+const themeKeywords: Record<string, string[]> = {
+  "/": ["šokolādes apdruka", "personalizēti laimes cepumi", "logo kapkeiki", "korporatīvā šokolāde", "Ziemassvētku un Jaunā gada dāvanu šokolādes", "logo šokolādes izstādēm", "logo šokolādes konditorejām", "logo šokolādes restorāniem"],
+  "/en": ["chocolate printing", "personalized fortune cookies", "logo cupcakes", "corporate chocolate", "Christmas and New Year chocolate gifts", "logo chocolates for exhibitions", "logo chocolates for confectioneries", "logo chocolates for restaurants"],
+  "/ru": ["печать на шоколаде", "персонализированное печенье с предсказаниями", "капкейки с логотипом", "корпоративный шоколад", "шоколадные подарки на Рождество и Новый год", "шоколад с логотипом для выставок", "шоколад с логотипом для кондитерских", "шоколад с логотипом для ресторанов"],
+  "/et": ["šokolaadi trükk", "personaliseeritud ennustusküpsised", "logoga koogikesed", "korporatiivne šokolaad", "jõulu- ja uusaasta šokolaadikingid", "logoga šokolaad messidele", "logoga šokolaad kondiitritele", "logoga šokolaad restoranidele"],
+  "/lt": ["šokolado spauda", "personalizuoti laimės sausainiai", "keksiukai su logotipu", "korporatyvinis šokoladas", "kalėdinės ir naujametinės šokolado dovanos", "šokoladas su logotipu parodoms", "šokoladas su logotipu konditerijoms", "šokoladas su logotipu restoranams"],
+  "/sv": ["chokladtryck", "personliga lyckokakor", "cupcakes med logotyp", "företagschoklad", "jul- och nyårspresenter i choklad", "logochoklad för mässor", "logochoklad för konditorier", "logochoklad för restauranger"],
+  "/no": ["sjokoladetrykk", "personlige lykkekaker", "cupcakes med logo", "bedriftssjokolade", "jule- og nyttårsgaver i sjokolade", "logosjokolade for messer", "logosjokolade for konditorier", "logosjokolade for restauranter"],
+  "/fi": ["suklaapainatus", "personoidut onnenkeksit", "logokuppikakut", "yrityssuklaa", "joulun ja uudenvuoden suklaalahjat", "logosuklaat messuille", "logosuklaat konditorioille", "logosuklaat ravintoloille"],
+  "/da": ["chokoladetryk", "personlige lykkekager", "cupcakes med logo", "firmachokolade", "jule- og nytårsgaver i chokolade", "logochokolade til messer", "logochokolade til konditorier", "logochokolade til restauranter"],
+  "/de": ["Schokoladendruck", "personalisierte Glückskekse", "Logo-Cupcakes", "Firmenschokolade", "Weihnachts- und Neujahrsschokolade als Geschenk", "Logo-Schokolade für Messen", "Logo-Schokolade für Konditoreien", "Logo-Schokolade für Restaurants"],
+  "/fr": ["impression sur chocolat", "biscuits chinois personnalisés", "cupcakes avec logo", "chocolat d'entreprise", "cadeaux chocolat de Noël et Nouvel An", "chocolats logo pour salons", "chocolats logo pour pâtisseries", "chocolats logo pour restaurants"],
+  "/it": ["stampa su cioccolato", "biscotti della fortuna personalizzati", "cupcake con logo", "cioccolato aziendale", "regali di cioccolato per Natale e Capodanno", "cioccolatini con logo per fiere", "cioccolatini con logo per pasticcerie", "cioccolatini con logo per ristoranti"],
+  "/es": ["impresión en chocolate", "galletas de la fortuna personalizadas", "cupcakes con logo", "chocolate corporativo", "regalos de chocolate de Navidad y Año Nuevo", "chocolates con logo para ferias", "chocolates con logo para pastelerías", "chocolates con logo para restaurantes"],
+  "/ar": ["طباعة على الشوكولاتة", "كعك الحظ المخصص", "كب كيك بشعار", "شوكولاتة الشركات", "هدايا شوكولاتة لعيد الميلاد ورأس السنة", "شوكولاتة بشعار للمعارض", "شوكولاتة بشعار لمحلات الحلويات", "شوكولاتة بشعار للمطاعم"],
+  "/nl": ["chocoladedruk", "gepersonaliseerde gelukskoekjes", "cupcakes met logo", "bedrijfschocolade", "kerst- en nieuwjaarscadeaus van chocolade", "logochocolade voor beurzen", "logochocolade voor banketbakkerijen", "logochocolade voor restaurants"],
+  "/pl": ["nadruk na czekoladzie", "personalizowane ciasteczka z wróżbą", "babeczki z logo", "czekolada firmowa", "czekoladowe prezenty na Boże Narodzenie i Nowy Rok", "czekoladki z logo na targi", "czekoladki z logo dla cukierni", "czekoladki z logo dla restauracji"],
+  "/cs": ["potisk čokolády", "personalizované sušenky štěstí", "cupcakes s logem", "firemní čokoláda", "čokoládové dárky na Vánoce a Nový rok", "čokolády s logem na veletrhy", "čokolády s logem pro cukrárny", "čokolády s logem pro restaurace"],
+  "/pt": ["impressão em chocolate", "biscoitos da sorte personalizados", "cupcakes com logo", "chocolate corporativo", "presentes de chocolate de Natal e Ano Novo", "chocolates com logo para feiras", "chocolates com logo para confeitarias", "chocolates com logo para restaurantes"],
+  "/el": ["εκτύπωση σε σοκολάτα", "εξατομικευμένα μπισκότα τύχης", "cupcakes με λογότυπο", "εταιρική σοκολάτα", "χριστουγεννιάτικα και πρωτοχρονιάτικα δώρα σοκολάτας", "σοκολάτες με λογότυπο για εκθέσεις", "σοκολάτες με λογότυπο για ζαχαροπλαστεία", "σοκολάτες με λογότυπο για εστιατόρια"],
+  "/tr": ["çikolata baskı", "kişiye özel şans kurabiyeleri", "logolu cupcake", "kurumsal çikolata", "Noel ve Yılbaşı çikolata hediyeleri", "fuarlar için logolu çikolata", "pastaneler için logolu çikolata", "restoranlar için logolu çikolata"],
+  "/hu": ["csokoládé nyomtatás", "személyre szabott szerencsesüti", "logós cupcake", "céges csokoládé", "karácsonyi és újévi csokoládé ajándékok", "logós csokoládé kiállításokra", "logós csokoládé cukrászdáknak", "logós csokoládé éttermeknek"],
+  "/ro": ["imprimare pe ciocolată", "fursecuri cu răvaș personalizate", "cupcakes cu logo", "ciocolată corporate", "cadouri din ciocolată de Crăciun și Anul Nou", "ciocolată cu logo pentru expoziții", "ciocolată cu logo pentru cofetării", "ciocolată cu logo pentru restaurante"],
+  "/bg": ["печат върху шоколад", "персонализирани бисквитки с късмет", "къпкейкове с лого", "корпоративен шоколад", "шоколадови подаръци за Коледа и Нова година", "шоколад с лого за изложения", "шоколад с лого за сладкарници", "шоколад с лого за ресторанти"],
+  "/hr": ["tisak na čokoladi", "personalizirani kolačići sreće", "cupcakes s logom", "korporativna čokolada", "čokoladni pokloni za Božić i Novu godinu", "čokolade s logom za sajmove", "čokolade s logom za slastičarnice", "čokolade s logom za restorane"],
+  "/sk": ["potlač na čokoláde", "personalizované koláčiky šťastia", "cupcakes s logom", "firemná čokoláda", "čokoládové darčeky na Vianoce a Nový rok", "čokolády s logom na veľtrhy", "čokolády s logom pre cukrárne", "čokolády s logom pre reštaurácie"],
+  "/sl": ["tisk na čokoladi", "personalizirani piškotki sreče", "cupcakes z logotipom", "poslovna čokolada", "čokoladna darila za božič in novo leto", "čokolade z logotipom za sejme", "čokolade z logotipom za slaščičarne", "čokolade z logotipom za restavracije"],
+  "/uk": ["друк на шоколаді", "персоналізоване печиво з передбаченнями", "капкейки з логотипом", "корпоративний шоколад", "шоколадні подарунки на Різдво та Новий рік", "шоколад з логотипом для виставок", "шоколад з логотипом для кондитерських", "шоколад з логотипом для ресторанів"],
+  "/sr": ["štampa na čokoladi", "personalizovani kolačići sreće", "kapkejk sa logom", "korporativna čokolada", "čokoladni pokloni za Božić i Novu godinu", "čokolade sa logom za sajmove", "čokolade sa logom za poslastičarnice", "čokolade sa logom za restorane"],
+  "/bs": ["štampa na čokoladi", "personalizirani kolačići sreće", "kapkejk sa logom", "korporativna čokolada", "čokoladni pokloni za Božić i Novu godinu", "čokolade sa logom za sajmove", "čokolade sa logom za slastičarne", "čokolade sa logom za restorane"],
+  "/mk": ["печат на чоколадо", "персонализирани колачиња со среќа", "капкејкови со лого", "корпоративно чоколадо", "чоколадни подароци за Божиќ и Нова година", "чоколадо со лого за саеми", "чоколадо со лого за слаткарници", "чоколадо со лого за ресторани"],
+  "/sq": ["shtypje në çokollatë", "biskota fati të personalizuara", "cupcakes me logo", "çokollatë korporative", "dhurata çokollate për Krishtlindje dhe Vit të Ri", "çokollata me logo për panaire", "çokollata me logo për ëmbëltore", "çokollata me logo për restorante"],
+  "/is": ["súkkulaðiprentun", "sérsniðnar lukkukökur", "bollakökur með merki", "fyrirtækjasúkkulaði", "jóla- og áramótagjafir úr súkkulaði", "merkjasúkkulaði fyrir sýningar", "merkjasúkkulaði fyrir bakarí", "merkjasúkkulaði fyrir veitingastaði"],
+};
+
+export function homepageKeywords(path: string): string {
+  const themes = themeKeywords[path];
+  const base = seoKeywords[path] ?? "";
+  if (!themes) return base;
+  return [...themes, ...base.split(",").map((s) => s.trim()).filter(Boolean)]
+    .filter((k, i, all) => all.findIndex((x) => x.toLowerCase() === k.toLowerCase()) === i)
+    .join(", ");
+}
+
 function setMeta(name: string, content: string, attribute = "name") {
   let el = document.querySelector(`meta[${attribute}="${name}"]`) as HTMLMetaElement | null;
   if (!el) {
@@ -123,7 +168,7 @@ export function useSeo({ title, description, path, ogImage, keywords }: SeoProps
     setLink("canonical", url);
 
     // Keywords
-    const kw = keywords || seoKeywords[cleanPath] || "";
+    const kw = keywords || homepageKeywords(cleanPath);
     if (kw) setMeta("keywords", kw);
 
     // Open Graph
