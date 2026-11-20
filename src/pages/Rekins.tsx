@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Printer, ChevronLeft, Loader2, Download, CreditCard } from "lucide-react";
+import { Printer, ChevronLeft, Loader2, Download, CreditCard, Eye } from "lucide-react";
 import jsPDF from "jspdf";
 import html2canvas from "html2canvas";
 import Navbar from "@/components/Navbar";
@@ -52,6 +52,7 @@ const INVOICE_TEXT = {
     payNow: "Pay now",
     payInvoice: "Pay invoice",
     confirmOrder: "Confirm order",
+    viewVisualization: "Visualization",
     buyerDetails: "Invoice recipient details",
     companyPlaceholder: "Company / person name",
     regPlaceholder: "Registration number",
@@ -126,6 +127,7 @@ const INVOICE_TEXT = {
     payNow: "Maksāt tagad",
     payInvoice: "Apmaksāt rēķinu",
     confirmOrder: "Apstiprināt pasūtījumu",
+    viewVisualization: "Vizualizācija",
     buyerDetails: "Rēķina saņēmēja rekvizīti",
     companyPlaceholder: "Uzņēmuma / personas nosaukums",
     regPlaceholder: "Reģistrācijas numurs",
@@ -200,6 +202,7 @@ const INVOICE_TEXT = {
     payNow: "Оплатить сейчас",
     payInvoice: "Оплатить счёт",
     confirmOrder: "Подтвердить заказ",
+    viewVisualization: "Визуализация",
     buyerDetails: "Реквизиты получателя счёта",
     companyPlaceholder: "Название компании / имя частного лица",
     regPlaceholder: "Регистрационный номер",
@@ -274,6 +277,7 @@ const INVOICE_TEXT = {
     payNow: "Maksa kohe",
     payInvoice: "Maksa arve",
     confirmOrder: "Kinnita tellimus",
+    viewVisualization: "Visualiseering",
     buyerDetails: "Arve saaja andmed",
     companyPlaceholder: "Ettevõtte / isiku nimi",
     regPlaceholder: "Registrinumber",
@@ -669,7 +673,7 @@ const Rekins = () => {
     }
   };
 
-  const handleConfirm = async () => {
+  const handleConfirm = async (docType: "proforma" | "visualization" = "proforma") => {
     if (!buyerCompany || !buyerEmail) {
       toast({ title: tx.missingDetailsTitle, description: tx.missingDetailsDesc, variant: "destructive" });
       return;
@@ -754,9 +758,9 @@ const Rekins = () => {
       });
 
       const { data: emailResult, error: emailError } = await supabase.functions.invoke("order-document-email", { body: { orderId: orderData.id } });
-      if (emailError || !emailResult?.sent) toast({ title: "Pasūtījums saglabāts", description: "Dokumenti ir pieejami ekrānā, bet e-pastu neizdevās nosūtīt.", variant: "destructive" });
+      if (emailError) toast({ title: "Pasūtījums saglabāts", description: "Dokumenti ir pieejami ekrānā, bet e-pastu neizdevās nosūtīt.", variant: "destructive" });
       else toast({ title: tx.orderConfirmedTitle, description: tx.orderConfirmedDesc(orderData.order_number) });
-      navigate(`/account/orders/${orderData.id}?type=proforma`);
+      navigate(`/account/orders/${orderData.id}?type=${docType}`);
     } catch (e) {
       toast({ title: tx.errorTitle, description: tx.confirmError, variant: "destructive" });
       console.error(e);
@@ -1135,7 +1139,15 @@ const Rekins = () => {
               {tx.saveInvoice}
             </button>
             <button
-              onClick={handleConfirm}
+              onClick={() => handleConfirm("visualization")}
+              disabled={confirming}
+              className="flex items-center gap-2 rounded-lg border border-border bg-card text-foreground px-5 py-3 text-sm font-medium hover:bg-muted disabled:opacity-50"
+            >
+              {confirming ? <Loader2 className="w-4 h-4 animate-spin" /> : <Eye className="w-4 h-4" />}
+              {tx.viewVisualization}
+            </button>
+            <button
+              onClick={() => handleConfirm()}
               disabled={confirming}
               className="flex items-center gap-2 rounded-lg border border-primary/40 bg-primary/10 text-foreground px-5 py-3 text-sm font-medium hover:bg-primary/20 disabled:opacity-50"
             >
