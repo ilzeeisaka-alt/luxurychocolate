@@ -88,3 +88,6 @@
 
 ## Customer logo upload on invoice page
 - [x] Add a per-item "Jūsu logo vizualizācijai" upload section on /rekins (lv/en/ru/et) that stores the logo on the cart item so it flows into the order and the visualization; verified end-to-end with a test order (logo visible on the visualization page).
+
+## Power & Beauty Studio coffee chocolate
+- [x] Copied the 7 g bagged coffee chocolate as a separate white-chocolate product with the supplied Power & Beauty Studio logo; retained EUR 2.42 source price/category, synchronized catalog links, passed the copy test and verified the real product heading, price and loaded 1536px photo.
