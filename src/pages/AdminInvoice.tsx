@@ -9,12 +9,16 @@ import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/hooks/useAuth";
 import logoUrl from "@/assets/luxury-chocolate-logo.jpg";
 import chocoTimeUrl from "@/assets/its-choco-time.png";
+import OrderVisualizationDocument from "@/components/admin/OrderVisualizationDocument";
+import { Button } from "@/components/ui/button";
+import type { OrderDesignItem } from "@/lib/orderVisualization";
+import { toast } from "sonner";
 
 // Inserts a zero-width space after the first character so iOS cannot auto-detect
 // the string as an email/phone and draw its link decoration (strikethrough) over it.
 const undetectable = (s: string) => (s ? s.charAt(0) + "\u200B" + s.slice(1) : s);
 
-interface OrderItem {
+interface OrderItem extends OrderDesignItem {
   id: string;
   product_name: string;
   quantity: number;
@@ -48,7 +52,7 @@ interface Order {
 const fmt = (cents: number, currency = "EUR") =>
   new Intl.NumberFormat("lv-LV", { style: "currency", currency }).format(cents / 100);
 
-type DocType = "proforma" | "invoice";
+type DocType = "proforma" | "invoice" | "visualization";
 
 const AdminInvoice = () => {
   const { orderId } = useParams<{ orderId: string }>();
@@ -68,6 +72,17 @@ const AdminInvoice = () => {
   const [loading, setLoading] = useState(true);
   const [isAdmin, setIsAdmin] = useState<boolean | null>(null);
   const [regNr, setRegNr] = useState("");
+  const [navHeight, setNavHeight] = useState(160);
+
+  useEffect(() => {
+    const nav = document.getElementById("luxury-navigation");
+    if (!nav) return;
+    const measure = () => setNavHeight(Math.ceil(nav.getBoundingClientRect().height));
+    measure();
+    const observer = new ResizeObserver(measure);
+    observer.observe(nav);
+    return () => observer.disconnect();
+  }, [loading]);
 
   useEffect(() => {
     if (!authLoading && !user) navigate("/auth", { replace: true });
@@ -105,6 +120,8 @@ const AdminInvoice = () => {
 
   const docMeta = useMemo(() => {
     switch (docType) {
+      case "visualization":
+        return { title: "Pasūtījuma vizualizācija", prefix: "VIS", filePrefix: "Vizualizacija" };
       case "invoice":
         return { title: "Rēķins-Pavadzīme", prefix: "INV", filePrefix: "Rekins-Pavadzime" };
       default:
@@ -180,7 +197,13 @@ const AdminInvoice = () => {
     if (!invoiceRef.current) return;
     setSavingPdf(true);
     try {
-      const canvas = await html2canvas(invoiceRef.current, { scale: 1.5, backgroundColor: "#ffffff" });
+      await document.fonts.ready;
+      await Promise.all(Array.from(invoiceRef.current.querySelectorAll("img")).map(image => image.decode().catch(() => undefined)));
+      if (invoiceRef.current.querySelector('[role="status"], [role="alert"]')) {
+        toast.error("Vispirms sagaidiet attēlu ielādi vai novērsiet attēlu ielādes kļūdu.");
+        return;
+      }
+      const canvas = await html2canvas(invoiceRef.current, { scale: 1.5, backgroundColor: getComputedStyle(document.documentElement).getPropertyValue("--background").trim() ? getComputedStyle(invoiceRef.current).backgroundColor : null, useCORS: true });
       const imgData = canvas.toDataURL("image/jpeg", 0.82);
       const pdf = new jsPDF({ unit: "mm", format: "a4", orientation: "portrait" });
       const pageW = pdf.internal.pageSize.getWidth();
@@ -198,6 +221,8 @@ const AdminInvoice = () => {
         heightLeft -= pageH;
       }
       pdf.save(`${filePrefix}_${invoiceNumber}.pdf`);
+    } catch {
+      toast.error("Neizdevās saglabāt PDF. Mēģiniet vēlreiz vai izmantojiet drukāšanu.");
     } finally {
       setSavingPdf(false);
     }
@@ -244,15 +269,17 @@ const AdminInvoice = () => {
           .sig-block .h-6 { height: 14px !important; }
           .sig-block .mb-8 { margin-bottom: 18px !important; }
           .sig-block .mt-4 { margin-top: 6px !important; }
+          .order-design-item { break-inside: avoid; }
+          .order-design img { max-height: 100mm; }
         }
       `}</style>
       <div className="no-print"><Navbar /></div>
-      <main className="container mx-auto px-4 pt-28 pb-16 max-w-5xl">
-        <div className="no-print flex items-center justify-between mb-4">
+      <main className="container mx-auto px-4 pb-16 max-w-5xl" style={{ paddingTop: navHeight + 96 }}>
+        <div className="no-print flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 mb-4">
           <button onClick={() => navigate("/admin")} className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground">
             <ChevronLeft className="w-4 h-4" /> Atpakaļ uz admin
           </button>
-          <div className="flex flex-wrap gap-2">
+          <div className="flex flex-wrap gap-2 mr-0 sm:mr-8">
             <button onClick={handlePrint} className="flex items-center gap-2 rounded-lg border border-border bg-card text-foreground px-4 py-2.5 text-sm font-medium hover:bg-muted">
               <Printer className="w-4 h-4" /> Drukāt
             </button>
@@ -266,10 +293,11 @@ const AdminInvoice = () => {
           {([
             { v: "proforma", l: "Priekšapmaksas rēķins" },
             { v: "invoice", l: "Rēķins-Pavadzīme" },
+            { v: "visualization", l: "Pasūtījuma vizualizācija" },
           ] as { v: DocType; l: string }[]).map((t) => (
-            <button
+            <Button
               key={t.v}
-              onClick={() => setSearchParams(halfMode === "none" ? { type: t.v } : { type: t.v, half: halfMode })}
+              onClick={() => setSearchParams(t.v === "visualization" || halfMode === "none" ? { type: t.v } : { type: t.v, half: halfMode })}
               className={`rounded-md border px-3 py-1.5 text-sm font-medium transition ${
                 docType === t.v
                   ? "border-primary bg-primary text-primary-foreground"
@@ -277,9 +305,9 @@ const AdminInvoice = () => {
               }`}
             >
               {t.l}
-            </button>
+            </Button>
           ))}
-          {([
+          {docType !== "visualization" && ([
             { v: "prepay", l: "50% priekšapmaksas rēķins" },
             { v: "postpay", l: "50% pēcapmaksa rēķins" },
           ] as { v: "prepay" | "postpay"; l: string }[]).map((t) => (
@@ -297,7 +325,8 @@ const AdminInvoice = () => {
           ))}
         </div>
 
-        <div ref={invoiceRef} className="print-area bg-white text-black rounded-xl border border-border p-10 shadow-sm">
+        <div ref={invoiceRef} className="print-area bg-card text-card-foreground rounded-lg border border-border p-4 sm:p-10 shadow-sm">
+          {docType === "visualization" ? <OrderVisualizationDocument order={order} date={dateStr} registrationNumber={regNr} eventName={eventNameStr} eventDate={eventDateStr} /> : <>
           <div className="flex flex-col sm:flex-row sm:justify-between items-start mb-8 gap-6">
             <div className="flex items-start gap-4">
               <img src={logoUrl} alt="Luxury Chocolate" className="w-20 h-20 object-contain" crossOrigin="anonymous" />
@@ -454,6 +483,7 @@ const AdminInvoice = () => {
               </div>
             </>
           )}
+          </>}
         </div>
       </main>
       <div className="no-print"><FooterSection /></div>

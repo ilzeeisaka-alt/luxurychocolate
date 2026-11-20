@@ -431,6 +431,9 @@ const Admin = () => {
                 </AccordionTrigger>
                 <AccordionContent className="px-4 pb-4 pt-2">
                   <div className="mb-4 flex flex-wrap justify-end gap-2">
+                    <Button variant="outline" size="sm" asChild>
+                      <a href={`/admin/rekins/${order.id}?type=visualization`} target="_blank" rel="noopener noreferrer"><Package className="h-4 w-4 mr-2" />Pasūtījuma vizualizācija</a>
+                    </Button>
                     <a
                       href={`/admin/rekins/${order.id}?type=proforma`}
                       target="_blank"
