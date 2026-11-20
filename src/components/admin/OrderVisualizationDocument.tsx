@@ -25,6 +25,24 @@ function DocumentImage({ src, alt, className, unavailable }: { src: string; alt:
   return failed ? <p className="text-sm text-muted-foreground">{alt}: {unavailable}</p> : <img src={src} alt={alt} className={className} crossOrigin="anonymous" onError={() => setFailed(true)} />;
 }
 
+function ContactDetails({ name, title, company, website, email, phone, address, locality, registration, vat }: {
+  name: string; title?: string; company?: string | null; website?: string; email?: string;
+  phone?: string | null; address?: string | null; locality?: string; registration?: string; vat?: string;
+}) {
+  return <div className="order-sheet-details">
+    <strong data-contact-field="name">{name || "—"}</strong>
+    <p data-contact-field="title" className="order-sheet-role">{title || "—"}</p>
+    <p data-contact-field="company">{company || "—"}</p>
+    <p data-contact-field="website">{website || "—"}</p>
+    <p data-contact-field="email">{email || "—"}</p>
+    <p data-contact-field="phone">{phone || "—"}</p>
+    <p data-contact-field="address">{address || "—"}</p>
+    <p data-contact-field="locality">{locality || "—"}</p>
+    <p data-contact-field="registration">{registration || "—"}</p>
+    <p data-contact-field="vat">{vat || "—"}</p>
+  </div>;
+}
+
 export default function OrderVisualizationDocument({ order, date, registrationNumber, eventName, eventDate, contactPhoto, clientLogo, onLanguageChange }: Props) {
   const [photos, setPhotos] = useState<Record<string, string>>({});
   const [logoUrls, setLogoUrls] = useState<Record<string, string>>({});
@@ -89,7 +107,10 @@ export default function OrderVisualizationDocument({ order, date, registrationNu
           <h2 className="order-sheet-party-title">{tx.manufacturer}</h2>
           <div className="order-sheet-seller">
             <DocumentImage unavailable={tx.imageUnavailable} src={ilzePhoto} alt="Ilze Eisaka" className="order-sheet-person" />
-            <div className="order-sheet-details"><strong>ILZE EISAKA</strong><p className="order-sheet-role">{tx.boardMember}</p><p>Luxury Chocolate SIA</p><p>www.luxurychocolate.lv</p><p>info@luxurychocolate.lv</p><p>+371 26 177 853</p><p>Kandavas iela 29a, Rīga</p><p>LV-1083, Latvija</p><p>{tx.vat}: LV40103921954</p></div>
+            <ContactDetails name="ILZE EISAKA" title={tx.boardMember} company="Luxury Chocolate SIA"
+              website="www.luxurychocolate.lv" email="info@luxurychocolate.lv" phone="+371 26 177 853"
+              address="Kandavas iela 29a, Rīga" locality="LV-1083, Latvija"
+              registration={`${tx.registration}: 40103921954`} vat={`${tx.vat}: LV40103921954`} />
           </div>
         </section>
         <div className="order-sheet-brand-row">
@@ -103,7 +124,11 @@ export default function OrderVisualizationDocument({ order, date, registrationNu
               {contactPhoto && <DocumentImage unavailable={tx.imageUnavailable} key={contactPhoto} src={contactPhoto} alt={tx.client} className="order-sheet-person order-sheet-contact-photo" />}
               {(() => { const logos = [...new Map(order.order_items.flatMap(orderDesignLogos).map(logo => [logo.url, logo])).values()]; return logos.map((logo, index) => logoUrls[logo.url] ? <DocumentImage unavailable={tx.imageUnavailable} key={`${logo.url}-${index}`} src={logoUrls[logo.url]} alt={logo.filename || tx.clientMedia} className="order-sheet-client-logo" /> : null); })()}
             </div>
-  <div className="order-sheet-details"><strong>{contactName}</strong>{contact.title && <p className="order-sheet-role">{contact.title}</p>}{order.company_name && <p>{normalCase(order.company_name)}</p>}{registrationNumber && <p>{tx.registration}: {registrationNumber}</p>}{order.vat_number && <p>{tx.vat}: {order.vat_number}</p>}<p>{order.customer_email}</p><p>{order.customer_phone}</p><p>{[order.shipping_address, order.shipping_city, order.shipping_postal_code, order.shipping_country].filter(Boolean).join(", ")}</p></div>
+            <ContactDetails name={contactName} title={contact.title} company={normalCase(order.company_name)}
+              email={order.customer_email} phone={order.customer_phone} address={order.shipping_address}
+              locality={[order.shipping_city, order.shipping_postal_code, order.shipping_country].filter(Boolean).join(", ")}
+              registration={registrationNumber ? `${tx.registration}: ${registrationNumber}` : undefined}
+              vat={order.vat_number ? `${tx.vat}: ${order.vat_number}` : undefined} />
           </div>
         </section>
       </header>
