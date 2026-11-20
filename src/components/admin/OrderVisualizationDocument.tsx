@@ -79,12 +79,14 @@ export default function OrderVisualizationDocument({ order, date, registrationNu
             <div className="order-sheet-details"><strong>ILZE EISAKA</strong><p>Luxury Chocolate SIA</p><p>www.luxurychocolate.lv</p><p>info@luxurychocolate.lv</p><p>+371 26 177 853</p><p>Kandavas iela 29a, Rīga</p><p>LV-1083, Latvija</p><p>PVN: LV40103921954</p></div>
           </div>
         </section>
-        <div className="order-sheet-brand"><DocumentImage src={seal.url} alt="Luxury Chocolate" className="order-sheet-seal" /></div>
+        <div className={`order-sheet-brand${clientLogo ? " order-sheet-brand-pair" : ""}`}>
+          <DocumentImage src={seal.url} alt="Luxury Chocolate" className="order-sheet-seal" />
+          {clientLogo && <DocumentImage key={clientLogo} src={clientLogo} alt="Maksātāja logo" className="order-sheet-payer-logo" />}
+        </div>
         <section className="order-sheet-client">
           <h2 className="order-sheet-party-title">Klients</h2>
           <div className="order-sheet-client-media">
             {contactPhoto && <DocumentImage key={contactPhoto} src={contactPhoto} alt="Klienta kontaktpersona" className="order-sheet-person order-sheet-contact-photo" />}
-            {clientLogo && <DocumentImage key={clientLogo} src={clientLogo} alt="Klienta logo" className="order-sheet-client-logo" />}
             {(() => { const logos = [...new Map(order.order_items.flatMap(orderDesignLogos).map(logo => [logo.url, logo])).values()]; return logos.map((logo, index) => logoUrls[logo.url] ? <DocumentImage key={`${logo.url}-${index}`} src={logoUrls[logo.url]} alt={logo.filename || "Klienta logo"} className="order-sheet-client-logo" /> : null); })()}
           </div>
           <div className="order-sheet-details"><strong>{order.customer_name || order.company_name || "—"}</strong>{order.company_name && <p>{order.company_name}</p>}{registrationNumber && <p>Reģ. Nr.: {registrationNumber}</p>}{order.vat_number && <p>PVN: {order.vat_number}</p>}<p>{order.customer_email}</p><p>{order.customer_phone}</p><p>{[order.shipping_address, order.shipping_city, order.shipping_postal_code, order.shipping_country].filter(Boolean).join(", ")}</p></div>
