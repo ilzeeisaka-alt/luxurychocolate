@@ -4,6 +4,7 @@
 - Infer Order Sheet language from purchased product-name snapshots matched to catalog translations, not the administrator UI; use a single document dictionary for screen and PDF while preserving names, addresses and original client job titles.
 - Render both Order Sheet contact blocks through shared ordered fields and CSS subgrid rows, retaining missing-value placeholders so wrapped or absent details cannot shift matching rows.
 - Format both Order Sheet addresses through one helper (street/city, then postal code/country), including legacy inline Latvian postcodes, and infer company websites only from non-mailbox email domains; this keeps contact rows comparable without inventing a public-mail-provider website.
+- Infer missing Order Sheet registration numbers only from valid LV-prefixed eleven-digit VAT numbers, preserving explicit registration values; other countries' VAT identifiers are not necessarily company registration numbers.
 - Reuse invoice/Order Sheet rendering on owner-filtered customer routes backed by existing order RLS; never expose administrator-only portrait/logo mappings or upload controls to customers.
 - Send customer document links from the purchase-specific email function and payment hooks using saved order recipients and order/event deduplication; links require the owning account and never publish private documents.
 - Use a dedicated commercial fortune-cookie page with useSeo and WebPage/BreadcrumbList metadata, linking to catalog products instead of inventing aggregate prices or ratings.

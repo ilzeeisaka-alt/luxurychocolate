@@ -1,4 +1,5 @@
 # Order visualization documents
+- [x] Fill missing Latvian company registration from valid VAT data; real ALPS document shows 40003771232 with no remaining client-data dashes, seven tests passed and preview checked.
 - [x] Show the client's company email domain as website and normalize both contacts' address/locality rows; real signed-in ALPS Order Sheet shows www.alps.archi and matching LV-postcode/Latvija rows, vertical alignment verified and eighteen tests passed.
 - [x] Give customers owner-filtered on-screen invoice/Order Sheet links after order confirmation, paid return and in account history; administrator portrait/logo mappings remain protected.
 - [x] Add saved-recipient, event-deduplicated managed customer document emails to confirmation and verified payment hooks; functions deployed, confirmation send to company test recipient verified. Paid Stripe flow not exercised with a charge.

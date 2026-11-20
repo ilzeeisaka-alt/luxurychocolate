@@ -1,8 +1,14 @@
 import { describe, expect, it } from "vitest";
-import { contactAddress, contactWebsite, orderDesignLogos, primaryProductPhoto, type OrderDesignItem } from "../lib/orderVisualization";
+import { contactAddress, contactRegistrationNumber, contactWebsite, orderDesignLogos, primaryProductPhoto, type OrderDesignItem } from "../lib/orderVisualization";
 
 const item: OrderDesignItem = { id: "line-1", product_name: "Trifeles", quantity: 12, logo_url: "/old.png", logos: null };
 describe("Order visualization data", () => {
+  it("fills the missing Latvian registration number from the client's VAT number", () => {
+    expect(contactRegistrationNumber("", "LV40003771232")).toBe("40003771232");
+    expect(contactRegistrationNumber("12345678901", "LV40003771232")).toBe("12345678901");
+    expect(contactRegistrationNumber("", "DE123456789")).toBeUndefined();
+    expect(contactRegistrationNumber("", "LV123")).toBeUndefined();
+  });
   it("derives the client's company website from its email, not a public mailbox service", () => {
     expect(contactWebsite("agnese@alps.archi")).toBe("www.alps.archi");
     expect(contactWebsite("someone@gmail.com")).toBeUndefined();

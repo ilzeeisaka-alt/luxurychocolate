@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
-import { contactAddress, contactWebsite, orderDesignLogos, primaryProductPhoto, type OrderDesignItem } from "@/lib/orderVisualization";
+import { contactAddress, contactRegistrationNumber, contactWebsite, orderDesignLogos, primaryProductPhoto, type OrderDesignItem } from "@/lib/orderVisualization";
 import seal from "@/assets/order-sheet-seal.png.asset.json";
 import brandFooter from "@/assets/order-sheet-brand-footer.png.asset.json";
 import ilzePhoto from "@/assets/ilze-eisaka.jpg";
@@ -100,6 +100,7 @@ export default function OrderVisualizationDocument({ order, date, registrationNu
   const contactName = contact.name || normalCase(order.company_name) || "—";
   const sellerAddress = contactAddress("Kandavas iela 29a", "Rīga", "LV-1083", "LV");
   const clientAddress = contactAddress(order.shipping_address, order.shipping_city, order.shipping_postal_code, order.shipping_country);
+  const clientRegistration = contactRegistrationNumber(registrationNumber, order.vat_number);
 
   return <div className="order-design order-sheet" lang={language} dir={["ar", "he", "fa", "ur"].includes(language) ? "rtl" : "ltr"}>
     {loading && <p role="status">{tx.loading}</p>}{error && <p role="alert" className="text-destructive">{tx.imageUnavailable}</p>}
@@ -130,7 +131,7 @@ export default function OrderVisualizationDocument({ order, date, registrationNu
               website={contactWebsite(order.customer_email)}
               email={order.customer_email} phone={order.customer_phone} address={clientAddress.address}
               locality={clientAddress.locality}
-              registration={registrationNumber ? `${tx.registration}: ${registrationNumber}` : undefined}
+              registration={clientRegistration ? `${tx.registration}: ${clientRegistration}` : undefined}
               vat={order.vat_number ? `${tx.vat}: ${order.vat_number}` : undefined} />
           </div>
         </section>

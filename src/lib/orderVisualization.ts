@@ -29,6 +29,12 @@ export function contactWebsite(email: string) {
   return mailboxDomains.includes(domain) ? undefined : `www.${domain}`;
 }
 
+export function contactRegistrationNumber(registration?: string | null, vat?: string | null) {
+  if (registration?.trim()) return registration.trim();
+  const match = vat?.trim().toUpperCase().match(/^LV(\d{11})$/);
+  return match?.[1];
+}
+
 export function contactAddress(address?: string | null, city?: string | null, postalCode?: string | null, country?: string | null) {
   let parts = (address ?? "").split(",").map(part => part.trim()).filter(Boolean);
   const embeddedPostal = parts.join(", ").match(/\bLV\s*-\s*\d{4}\b/i)?.[0];
