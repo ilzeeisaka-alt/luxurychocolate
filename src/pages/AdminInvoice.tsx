@@ -117,13 +117,14 @@ const AdminInvoice = () => {
     return `${docMeta.prefix}-${order.order_number.replace("ORD-", "")}`;
   }, [order, docMeta]);
 
-  const dateStr = order ? new Date(order.created_at).toLocaleDateString("lv-LV") : "";
+  const issueDateSource = order ? ((order as { issue_date?: string | null }).issue_date ?? order.created_at) : null;
+  const dateStr = issueDateSource ? new Date(issueDateSource).toLocaleDateString("lv-LV") : "";
   const dueDate = useMemo(() => {
-    if (!order) return "";
-    const d = new Date(order.created_at);
+    if (!issueDateSource) return "";
+    const d = new Date(issueDateSource);
     d.setDate(d.getDate() + 7);
     return d.toLocaleDateString("lv-LV");
-  }, [order]);
+  }, [issueDateSource]);
 
   // Pasākuma datums / laiks tiek saglabāts pasūtījuma piezīmēs, piem. "Pasākuma datums / laiks: 2026-08-19T10:00"
   const eventDateStr = useMemo(() => {
