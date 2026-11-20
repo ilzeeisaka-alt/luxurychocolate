@@ -1,4 +1,5 @@
 # Order visualization documents
+- [x] Formatted both order-sheet contact blocks equally — contact names in capitals, job titles in small unbolded letters (client title split from the order's name field, manufacturer title "Valdes locekle"); seven tests passed and the real signed-in ALPS order verified in the browser.
 - [x] Added private administrator contact-person photo upload, replacement and removal; six tests passed and real-order upload, reload persistence, removal, replacement, mobile width and downloaded PDF verified.
 - [x] Added the permitted public Agnese Reķe portrait from Salaspils library to the requested order using the new upload control.
 - [x] Matched the supplied Order Sheet layout with manufacturer/client header, central seal, red visualization heading, large product photo and supplied four-logo footer; verified the real signed-in order, mobile width and downloaded single-page PDF, corrected logo crop artifacts, and passed four existing tests.

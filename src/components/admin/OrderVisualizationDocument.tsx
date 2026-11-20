@@ -80,7 +80,7 @@ export default function OrderVisualizationDocument({ order, date, registrationNu
           <h2 className="order-sheet-party-title">Ražotājs</h2>
           <div className="order-sheet-seller">
             <DocumentImage src={ilzePhoto} alt="Ilze Eisaka" className="order-sheet-person" />
-            <div className="order-sheet-details"><strong>ILZE EISAKA</strong><p>Luxury Chocolate SIA</p><p>www.luxurychocolate.lv</p><p>info@luxurychocolate.lv</p><p>+371 26 177 853</p><p>Kandavas iela 29a, Rīga</p><p>LV-1083, Latvija</p><p>PVN: LV40103921954</p></div>
+            <div className="order-sheet-details"><strong>ILZE EISAKA</strong><p className="order-sheet-role">Valdes locekle</p><p>Luxury Chocolate SIA</p><p>www.luxurychocolate.lv</p><p>info@luxurychocolate.lv</p><p>+371 26 177 853</p><p>Kandavas iela 29a, Rīga</p><p>LV-1083, Latvija</p><p>PVN: LV40103921954</p></div>
           </div>
         </section>
         <div className="order-sheet-brand-row">
