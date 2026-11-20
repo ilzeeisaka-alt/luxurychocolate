@@ -11,6 +11,7 @@ import logoUrl from "@/assets/luxury-chocolate-logo.jpg";
 import chocoTimeUrl from "@/assets/its-choco-time.png";
 import OrderVisualizationDocument from "@/components/admin/OrderVisualizationDocument";
 import ContactPhotoControl from "@/components/admin/ContactPhotoControl";
+import ClientLogoControl from "@/components/admin/ClientLogoControl";
 import { Button } from "@/components/ui/button";
 import type { OrderDesignItem } from "@/lib/orderVisualization";
 import { toast } from "sonner";
@@ -75,6 +76,7 @@ const AdminInvoice = () => {
   const [regNr, setRegNr] = useState("");
   const [navHeight, setNavHeight] = useState(160);
   const [contactPhoto, setContactPhoto] = useState("");
+  const [clientLogo, setClientLogo] = useState("");
 
   useEffect(() => {
     const nav = document.getElementById("luxury-navigation");
@@ -348,8 +350,9 @@ const AdminInvoice = () => {
         </div>
 
         {docType === "visualization" && <ContactPhotoControl orderId={order.id} onChange={setContactPhoto} />}
+        {docType === "visualization" && <ClientLogoControl orderId={order.id} onChange={setClientLogo} />}
         <div ref={invoiceRef} className={`print-area bg-card text-card-foreground ${docType === "visualization" ? "" : "rounded-lg border border-border p-4 sm:p-10 shadow-sm"}`}>
-          {docType === "visualization" ? <OrderVisualizationDocument order={order} date={dateStr} registrationNumber={regNr} eventName={eventNameStr} eventDate={eventDateStr} contactPhoto={contactPhoto} /> : <>
+          {docType === "visualization" ? <OrderVisualizationDocument order={order} date={dateStr} registrationNumber={regNr} eventName={eventNameStr} eventDate={eventDateStr} contactPhoto={contactPhoto} clientLogo={clientLogo} /> : <>
           <div className="flex flex-col sm:flex-row sm:justify-between items-start mb-8 gap-6">
             <div className="flex items-start gap-4">
               <img src={logoUrl} alt="Luxury Chocolate" className="w-20 h-20 object-contain" crossOrigin="anonymous" />

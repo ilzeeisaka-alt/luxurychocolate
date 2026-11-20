@@ -71,6 +71,13 @@
       "when": 1795178639752,
       "tag": "0009_order_contact_photos",
       "breakpoints": true
+    },
+    {
+      "idx": 10,
+      "version": "7",
+      "when": 1795179141309,
+      "tag": "0010_order_client_logos",
+      "breakpoints": true
     }
   ]
 }
