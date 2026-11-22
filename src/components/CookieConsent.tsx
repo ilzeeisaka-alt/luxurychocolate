@@ -78,7 +78,7 @@ const CookieConsent = () => {
           animate={{ y: 0, opacity: 1 }}
           exit={{ y: 100, opacity: 0 }}
           transition={{ type: "spring", damping: 25, stiffness: 300 }}
-          className="fixed bottom-0 left-0 right-0 z-[9999] p-4 sm:p-6"
+          className="fixed bottom-0 left-0 right-0 z-[9999] p-4 sm:p-6 print:hidden"
         >
           <div className="mx-auto max-w-3xl rounded-2xl border border-border bg-card/95 backdrop-blur-md p-5 sm:p-6 shadow-2xl">
             <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">

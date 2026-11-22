@@ -191,7 +191,15 @@ const AdminInvoice = ({ customerView = false }: { customerView?: boolean }) => {
     document.title = `${filePrefix}_${invoiceNumber}`;
   }, [filePrefix, invoiceNumber]);
 
-  const handlePrint = () => {
+  const handlePrint = async () => {
+    if (docType === "visualization" && invoiceRef.current) {
+      await document.fonts.ready;
+      await Promise.all(Array.from(invoiceRef.current.querySelectorAll("img")).map(image => image.decode().catch(() => undefined)));
+      if (invoiceRef.current.querySelector('[role="status"], [role="alert"]')) {
+        toast.error("Vispirms sagaidiet attēlu ielādi vai novērsiet attēlu ielādes kļūdu.");
+        return;
+      }
+    }
     const prev = document.title;
     document.title = `${filePrefix}_${invoiceNumber}`;
     const restore = () => {
@@ -283,7 +291,7 @@ const AdminInvoice = ({ customerView = false }: { customerView?: boolean }) => {
   const currency = order.currency;
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className={`min-h-screen bg-background ${docType === "visualization" ? "order-sheet-print-layout" : ""}`}>
       <style>{`
         @media print {
           @page { size: A4; margin: 8mm; }

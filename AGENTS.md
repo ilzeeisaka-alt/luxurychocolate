@@ -1,6 +1,7 @@
 # Architecture rules
 - Store order contact portraits in an admin-only order mapping and private customer-logo storage, normalize raster uploads to PNG, and use signed URLs in documents; never publish customer portraits as catalog assets.
 - Build administrator order visualization documents as item-based Order Sheets from the protected order and its exact product IDs, keeping catalog photos unchanged and client uploads separate; reuse invoice routing and export each sheet to its own PDF page without publishing private order data.
+- Print each Order Sheet inside the A4 content height with a flexible product-photo row and no navigation clearance or floating notices; this keeps complete item documents on one page without cropping photos.
 - Infer Order Sheet language from purchased product-name snapshots matched to catalog translations, not the administrator UI; use a single document dictionary for screen and PDF while preserving names, addresses and original client job titles.
 - Render both Order Sheet contact blocks through shared ordered fields and CSS subgrid rows, retaining missing-value placeholders so wrapped or absent details cannot shift matching rows.
 - Format both Order Sheet addresses through one helper (street/city, then postal code/country), including legacy inline Latvian postcodes, and infer company websites only from non-mailbox email domains; this keeps contact rows comparable without inventing a public-mail-provider website.
