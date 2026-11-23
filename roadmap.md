@@ -1,3 +1,6 @@
+# TalTap 15-piece gingerbread bag
+- [x] Copied the linked product into Christmas gingerbread with TalTap logos on chocolate decorations, plain ribbon and no bag sticker; retained EUR 18.15 source price, added photo/catalog links, passed five tests and verified the loaded photo, title and price on the product page.
+
 # Order visualization documents
 - [x] Load saved client logos consistently in both order views and show them automatically beside the manufacturer logo in the centered header with uploaded-logo fallback; 17 tests passed, real TalTap/ALPS headers checked, owner-view persistence verified, mobile has no overflow and TalTap prints on one A4 page. Removed temporary test order.
 - [x] Added a "Vizualizācija" button on the customer invoice page (/rekins) that confirms the order and opens its Order Sheet directly; verified signed-in navigation, rendered customer visualization and email function behavior (test addresses suppressed as expected).
