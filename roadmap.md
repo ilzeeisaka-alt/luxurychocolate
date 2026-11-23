@@ -1,4 +1,5 @@
 # TalTap 15-piece gingerbread bag
+- [x] Matched ribbon to TalTap blue and shortened localized product names by removing ribbon/sticker exclusions; verified the updated image and heading in the browser and passed five existing tests.
 - [x] Copied the linked product into Christmas gingerbread with TalTap logos on chocolate decorations, plain ribbon and no bag sticker; retained EUR 18.15 source price, added photo/catalog links, passed five tests and verified the loaded photo, title and price on the product page.
 
 # Order visualization documents
