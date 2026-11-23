@@ -315,7 +315,8 @@ const AdminInvoice = ({ customerView = false }: { customerView?: boolean }) => {
           @page { size: A4; margin: 8mm; }
           html, body { background: white !important; }
           .no-print { display: none !important; }
-          .print-area { box-shadow: none !important; border: none !important; padding: 0 !important; }
+          main { padding-left: 0 !important; padding-right: 0 !important; max-width: none !important; }
+          .print-area { box-shadow: none !important; border: none !important; padding: 0 !important; margin-left: auto !important; margin-right: auto !important; max-width: 186mm !important; }
           .print-area * { font-size: 11px !important; line-height: 1.35 !important; }
           .print-area h1 { font-size: 18px !important; }
           .print-tight { margin-top: 12px !important; }
