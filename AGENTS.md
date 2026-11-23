@@ -1,4 +1,5 @@
 # Architecture rules
+- Derive Order Sheet PDF names and browser print titles from one shared filename helper using purchased product snapshots and the saved customer company; both export paths must identify the same order.
 - Store order contact portraits in an admin-only order mapping and private customer-logo storage, normalize raster uploads to PNG, and use signed URLs in documents; never publish customer portraits as catalog assets.
 - Build administrator order visualization documents as item-based Order Sheets from the protected order and its exact product IDs, keeping catalog photos unchanged and client uploads separate; reuse invoice routing and export each sheet to its own PDF page without publishing private order data.
 - Print each Order Sheet inside the A4 content height with a flexible product-photo row and no navigation clearance or floating notices; this keeps complete item documents on one page without cropping photos.

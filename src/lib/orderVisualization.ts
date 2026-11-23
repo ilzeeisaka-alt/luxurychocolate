@@ -32,6 +32,15 @@ export function primaryProductPhoto(images: { url: string; is_primary: boolean; 
   return [...images].sort((a, b) => Number(b.is_primary) - Number(a.is_primary) || a.sort_order - b.sort_order)[0]?.url ?? null;
 }
 
+export function orderVisualizationFilename(prefix: string, number: string, company: string | null | undefined, items: { product_name: string }[]) {
+  const safePart = (value: string) => value.normalize("NFC")
+    .replace(/[<>:"/\\|?*\u0000-\u001f\u007f]/g, "-")
+    .replace(/\s+/g, " ").trim().replace(/[. ]+$/g, "");
+  const products = [...new Set(items.map(item => safePart(item.product_name)).filter(Boolean))].join(" + ") || "Produkts";
+  // Bound descriptive sections independently so neither company nor order number is lost.
+  return [safePart(prefix), Array.from(products).slice(0, 120).join(""), Array.from(safePart(company || "") || "Klients").slice(0, 60).join(""), safePart(number)].filter(Boolean).join("_");
+}
+
 export function contactWebsite(email: string) {
   const domain = email.trim().toLowerCase().split("@")[1];
   if (!domain || !/^(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z]{2,}$/.test(domain)) return undefined;

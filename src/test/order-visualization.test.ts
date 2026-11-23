@@ -1,8 +1,18 @@
 import { describe, expect, it } from "vitest";
-import { contactAddress, contactRegistrationNumber, contactWebsite, orderDesignLogos, orderHeaderLogo, primaryProductPhoto, type OrderDesignItem } from "../lib/orderVisualization";
+import { contactAddress, contactRegistrationNumber, contactWebsite, orderDesignLogos, orderHeaderLogo, orderVisualizationFilename, primaryProductPhoto, type OrderDesignItem } from "../lib/orderVisualization";
 
 const item: OrderDesignItem = { id: "line-1", product_name: "Trifeles", quantity: 12, logo_url: "/old.png", logos: null };
 describe("Order visualization data", () => {
+  it("includes the product and client company in every saved visualization filename", () => {
+    expect(orderVisualizationFilename("Vizualizacija", "VIS-123", "TalTap SIA", [{ product_name: "TalTap piparkūkas maisiņā ar lentīti, 250 g" }])).toBe("Vizualizacija_TalTap piparkūkas maisiņā ar lentīti, 250 g_TalTap SIA_VIS-123");
+  });
+  it("keeps distinct purchased product names and makes names safe for saving", () => {
+    expect(orderVisualizationFilename("Visualization", "VIS-124", 'A/B: "SIA"', [{ product_name: "Trifeles" }, { product_name: "Kapkeiki" }, { product_name: "Trifeles" }])).toBe("Visualization_Trifeles + Kapkeiki_A-B- -SIA-_VIS-124");
+    expect(orderVisualizationFilename("Vizualizacija", "VIS-125", null, [])).toBe("Vizualizacija_Produkts_Klients_VIS-125");
+    const longName = orderVisualizationFilename("Visualization", "VIS-126", "TalTap SIA", [{ product_name: "A".repeat(300) }]);
+    expect(longName).toContain("_TalTap SIA_VIS-126");
+    expect(longName.length).toBeLessThan(240);
+  });
   it("automatically uses the saved client logo for every order sheet", () => {
     expect(orderHeaderLogo("/taltap.png", [item], { "/old.png": "/signed-upload.png" })).toBe("/taltap.png");
   });

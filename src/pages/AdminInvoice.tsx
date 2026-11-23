@@ -14,7 +14,7 @@ import ContactPhotoControl from "@/components/admin/ContactPhotoControl";
 import ClientLogoControl from "@/components/admin/ClientLogoControl";
 import { Button } from "@/components/ui/button";
 import { ownsOrder } from "@/lib/orderDocumentAccess";
-import type { OrderDesignItem } from "@/lib/orderVisualization";
+import { orderVisualizationFilename, type OrderDesignItem } from "@/lib/orderVisualization";
 import { toast } from "sonner";
 
 // Inserts a zero-width space after the first character so iOS cannot auto-detect
@@ -199,12 +199,15 @@ const AdminInvoice = ({ customerView = false }: { customerView?: boolean }) => {
   const [savingPdf, setSavingPdf] = useState(false);
 
   const filePrefix = halfMode === "prepay" ? "Prieksapmaksa50" : halfMode === "postpay" ? "Pecapmaksa50" : docMeta.filePrefix;
+  const documentFilename = docType === "visualization"
+    ? orderVisualizationFilename(docMeta.filePrefix, invoiceNumber, order?.company_name, order?.order_items ?? [])
+    : `${filePrefix}_${invoiceNumber}`;
 
   // Always show the invoice file name as the page title, so browser print (Ctrl+P)
   // and the print dialog also suggest the correct file name.
   useEffect(() => {
-    document.title = `${filePrefix}_${invoiceNumber}`;
-  }, [filePrefix, invoiceNumber]);
+    document.title = documentFilename;
+  }, [documentFilename]);
 
   const handlePrint = async () => {
     if (docType === "visualization" && invoiceRef.current) {
@@ -216,7 +219,7 @@ const AdminInvoice = ({ customerView = false }: { customerView?: boolean }) => {
       }
     }
     const prev = document.title;
-    document.title = `${filePrefix}_${invoiceNumber}`;
+    document.title = documentFilename;
     const restore = () => {
       document.title = prev;
       window.removeEventListener("afterprint", restore);
@@ -251,7 +254,7 @@ const AdminInvoice = ({ customerView = false }: { customerView?: boolean }) => {
           const height = (canvas.height * width) / canvas.width;
           pdf.addImage(canvas.toDataURL("image/jpeg", 0.92), "JPEG", (210 - width) / 2, 8, width, height, undefined, "FAST");
         }
-        pdf.save(`${filePrefix}_${invoiceNumber}.pdf`);
+        pdf.save(`${documentFilename}.pdf`);
         return;
       }
       const canvas = await html2canvas(invoiceRef.current, { scale: 1.5, backgroundColor: getComputedStyle(document.documentElement).getPropertyValue("--background").trim() ? getComputedStyle(invoiceRef.current).backgroundColor : null, useCORS: true });
