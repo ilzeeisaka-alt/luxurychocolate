@@ -11,6 +11,7 @@ import { useToast } from "@/hooks/use-toast";
 import { getStoredRef, type StoredRef } from "@/lib/affiliateRef";
 import { useCurrentLang, pickI18n } from "@/i18n/useCurrentLang";
 import { tUI } from "@/i18n/uiStrings";
+import { buyerDraftKey } from "@/lib/repeatCustomer";
 
 
 interface LogoRef { url: string; filename: string; quantity?: number }
@@ -85,7 +86,7 @@ const Grozs = () => {
   const [affRef, setAffRef] = useState<StoredRef | null>(() => getStoredRef());
   const savedAgency = (() => {
     try {
-      const raw = localStorage.getItem("invoice_buyer_form");
+      const raw = user ? localStorage.getItem(buyerDraftKey(user.id)) : null;
       if (raw) {
         const p = JSON.parse(raw);
         return { on: !!p.agencyOn, pct: typeof p.agencyPct === "number" ? p.agencyPct : 20 };
@@ -111,15 +112,16 @@ const Grozs = () => {
   }, [authLoading, user, navigate, withLang, lang]);
 
   useEffect(() => {
+    if (!user) return;
     try {
-      const raw = localStorage.getItem("invoice_buyer_form");
+      const raw = localStorage.getItem(buyerDraftKey(user.id));
       const p = raw ? JSON.parse(raw) : {};
       localStorage.setItem(
-        "invoice_buyer_form",
+        buyerDraftKey(user.id),
         JSON.stringify({ ...p, agencyOn: agencyDiscountOn, agencyPct: agencyDiscountPct }),
       );
     } catch {}
-  }, [agencyDiscountOn, agencyDiscountPct]);
+  }, [user, agencyDiscountOn, agencyDiscountPct]);
 
 
   const shipping = SHIPPING_OPTIONS.find((o) => o.id === shippingId) ?? SHIPPING_OPTIONS[0];

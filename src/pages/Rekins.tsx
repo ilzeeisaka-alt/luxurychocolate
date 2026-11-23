@@ -14,6 +14,7 @@ import { tUI } from "@/i18n/uiStrings";
 import logoUrl from "@/assets/luxury-chocolate-logo.jpg";
 import chocoTimeUrl from "@/assets/its-choco-time.png";
 import { Check } from "lucide-react";
+import { buyerDraftKey, repeatCustomerDefaults } from "@/lib/repeatCustomer";
 
 interface LogoRef { url: string; filename: string; quantity?: number }
 interface CartLine {
@@ -415,7 +416,8 @@ const Rekins = () => {
   const [loading, setLoading] = useState(true);
 
   // Buyer (customer) details — persisted in localStorage so they survive reloads / navigation
-  const STORAGE_KEY = "invoice_buyer_form";
+  const STORAGE_KEY = user ? buyerDraftKey(user.id) : "invoice_buyer_form:signed-out";
+  const [loadedBuyerUser, setLoadedBuyerUser] = useState<string | null>(null);
   const saved = (() => {
     try { return JSON.parse(localStorage.getItem(STORAGE_KEY) || "{}"); } catch { return {}; }
   })();
@@ -458,6 +460,7 @@ const Rekins = () => {
 
   // Persist on every change
   useEffect(() => {
+    if (!user || loadedBuyerUser !== user.id) return;
     localStorage.setItem(
       STORAGE_KEY,
       JSON.stringify({
@@ -467,7 +470,7 @@ const Rekins = () => {
         agencyOn: agencyDiscountOn, agencyPct: agencyDiscountPct,
       }),
     );
-  }, [buyerCompany, buyerContact, buyerVat, buyerRegNr, buyerAddress, buyerEmail, buyerPhone, eventName, eventDate, deliveryAddress, agencyDiscountOn, agencyDiscountPct]);
+  }, [user, loadedBuyerUser, STORAGE_KEY, buyerCompany, buyerContact, buyerVat, buyerRegNr, buyerAddress, buyerEmail, buyerPhone, eventName, eventDate, deliveryAddress, agencyDiscountOn, agencyDiscountPct]);
 
   const updateEventDate = useCallback((value: string) => {
     setEventDate(value);
@@ -481,7 +484,7 @@ const Rekins = () => {
     } catch {
       localStorage.setItem(STORAGE_KEY, JSON.stringify({ eventDate: value }));
     }
-  }, [lang]);
+  }, [lang, STORAGE_KEY]);
 
   // Browsers can restore or commit datetime-local values without React receiving
   // the synthetic change event. Listen to the native field as well and poll its
@@ -520,7 +523,7 @@ const Rekins = () => {
       window.removeEventListener("pageshow", syncVisibleEventDate);
       window.removeEventListener("focus", syncVisibleEventDate);
     };
-  }, [lang]);
+  }, [lang, STORAGE_KEY]);
 
 
   const invoiceNumber = useMemo(() => {
@@ -561,20 +564,24 @@ const Rekins = () => {
       .select("company_name, vat_number, registration_number, legal_address, legal_city, legal_postal_code, legal_country, phone, email, first_name, last_name")
       .eq("user_id", user.id)
       .maybeSingle();
-    if (profile) {
-      setBuyerCompany((v) => v || profile.company_name || "");
-      setBuyerVat((v) => v || profile.vat_number || "");
-      setBuyerRegNr((v) => v || profile.registration_number || "");
-      const contact = [profile.first_name, profile.last_name].filter(Boolean).join(" ");
-      setBuyerContact((v) => v || contact);
-      const addr = [profile.legal_address, profile.legal_city, profile.legal_postal_code, profile.legal_country]
-        .filter(Boolean).join(", ");
-      setBuyerAddress((v) => v || addr);
-      setBuyerPhone((v) => v || profile.phone || "");
-      setBuyerEmail((v) => v || profile.email || user.email || "");
-    } else {
-      setBuyerEmail((v) => v || user.email || "");
-    }
+    const { data: previous } = await supabase.from("orders")
+      .select("user_id,company_name,customer_name,customer_email,customer_phone,vat_number,shipping_address,notes")
+      .eq("user_id", user.id).order("created_at", { ascending: false }).limit(1).maybeSingle();
+    const defaults = repeatCustomerDefaults(user.id, user.email, previous, profile);
+    let draft: Record<string, unknown> = {};
+    try { draft = JSON.parse(localStorage.getItem(buyerDraftKey(user.id)) || "{}"); } catch { /* Use saved order instead. */ }
+    const value = (key: keyof typeof defaults) => typeof draft[key] === "string" ? String(draft[key]) : defaults[key];
+    setBuyerCompany(value("company"));
+    setBuyerContact(value("contact"));
+    setBuyerVat(value("vat"));
+    setBuyerRegNr(value("regNr"));
+    setBuyerAddress(value("address"));
+    setBuyerPhone(value("phone"));
+    setBuyerEmail(value("email"));
+    setDeliveryAddress(value("deliveryAddress"));
+    setEventName(typeof draft.eventName === "string" ? draft.eventName : "");
+    setEventDate(typeof draft.eventDate === "string" ? draft.eventDate : "");
+    setLoadedBuyerUser(user.id);
     setLoading(false);
   }, [user]);
 
@@ -754,6 +761,8 @@ const Rekins = () => {
           shipping_address: deliveryAddress || buyerAddress,
           shipping_method: shippingLabel,
           notes: [
+            buyerRegNr ? `Reģistrācijas numurs: ${buyerRegNr}` : null,
+            buyerAddress ? `Juridiskā adrese: ${buyerAddress}` : null,
             eventName ? `Pasākuma nosaukums: ${eventName}` : null,
             eventDate ? `Pasākuma datums / laiks: ${eventDate}` : null,
           ].filter(Boolean).join("\n") || null,

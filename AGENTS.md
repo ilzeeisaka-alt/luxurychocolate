@@ -1,4 +1,5 @@
 # Architecture rules
+- Prefill checkout contact defaults from the owner's latest saved order and profile, with account-scoped editable browser drafts; preserve legal address/registration in order notes and never carry event dates into a new purchase, so repeat buyers retain private contact details across devices without changing historical orders.
 - Derive Order Sheet PDF names and browser print titles from one shared filename helper using purchased product snapshots and the saved customer company; both export paths must identify the same order.
 - Store order contact portraits in an admin-only order mapping and private customer-logo storage, normalize raster uploads to PNG, and use signed URLs in documents; never publish customer portraits as catalog assets.
 - Build administrator order visualization documents as item-based Order Sheets from the protected order and its exact product IDs, keeping catalog photos unchanged and client uploads separate; reuse invoice routing and export each sheet to its own PDF page without publishing private order data.

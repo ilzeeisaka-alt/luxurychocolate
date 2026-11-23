@@ -125,6 +125,8 @@ const AdminInvoice = ({ customerView = false }: { customerView?: boolean }) => {
       if (p?.registration_number) setRegNr(p.registration_number);
     }
     if (data && (!customerView || ownsOrder(user.id, data.user_id))) {
+      const savedRegistration = data.notes?.split("\n").find(line => line.startsWith("Reģistrācijas numurs: "))?.slice("Reģistrācijas numurs: ".length).trim();
+      if (savedRegistration) setRegNr(savedRegistration);
       const { data: photo } = await supabase.from("order_contact_photos").select("storage_path").eq("order_id", data.id).maybeSingle();
       const { data: logo } = await supabase.from("order_client_logos").select("storage_path").eq("order_id", data.id).maybeSingle();
       let photoPath = photo?.storage_path;
