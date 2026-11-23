@@ -13,7 +13,7 @@ import OrderVisualizationDocument from "@/components/admin/OrderVisualizationDoc
 import ContactPhotoControl from "@/components/admin/ContactPhotoControl";
 import ClientLogoControl from "@/components/admin/ClientLogoControl";
 import { Button } from "@/components/ui/button";
-import { ownsOrder } from "@/lib/orderDocumentAccess";
+import { ownsOrder, canReuseOrderContact } from "@/lib/orderDocumentAccess";
 import { orderVisualizationFilename, type OrderDesignItem } from "@/lib/orderVisualization";
 import { toast } from "sonner";
 
@@ -126,15 +126,34 @@ const AdminInvoice = ({ customerView = false }: { customerView?: boolean }) => {
     }
     if (data && (!customerView || ownsOrder(user.id, data.user_id))) {
       const { data: photo } = await supabase.from("order_contact_photos").select("storage_path").eq("order_id", data.id).maybeSingle();
-      if (photo) {
-        const { data: signed } = await supabase.storage.from("customer-logos").createSignedUrl(photo.storage_path, 3600);
-        if (signed) setContactPhoto(signed.signedUrl);
-      }
       const { data: logo } = await supabase.from("order_client_logos").select("storage_path").eq("order_id", data.id).maybeSingle();
-      if (logo) {
-        const { data: signed } = await supabase.storage.from("customer-logos").createSignedUrl(logo.storage_path, 3600);
-        if (signed) setClientLogo(signed.signedUrl);
+      let photoPath = photo?.storage_path;
+      let logoPath = logo?.storage_path;
+      if ((!photoPath || !logoPath) && data.user_id) {
+        const { data: previous } = await supabase.from("orders")
+          .select("id,user_id,company_name,customer_email,customer_name")
+          .eq("user_id", data.user_id).eq("customer_email", data.customer_email)
+          .neq("id", data.id).order("created_at", { ascending: false });
+        const matching = (previous ?? []).filter(candidate => canReuseOrderContact(data, candidate, "logo"));
+        if (matching.length) {
+          const ids = matching.map(candidate => candidate.id);
+          const [logos, photos] = await Promise.all([
+            supabase.from("order_client_logos").select("order_id,storage_path").in("order_id", ids),
+            supabase.from("order_contact_photos").select("order_id,storage_path").in("order_id", ids),
+          ]);
+          for (const candidate of matching) {
+            logoPath ??= logos.data?.find(row => row.order_id === candidate.id)?.storage_path;
+            if (canReuseOrderContact(data, candidate, "photo")) {
+              photoPath ??= photos.data?.find(row => row.order_id === candidate.id)?.storage_path;
+            }
+            if (logoPath && photoPath) break;
+          }
+        }
       }
+      await Promise.all([
+        photoPath ? supabase.storage.from("customer-logos").createSignedUrl(photoPath, 3600).then(({ data: signed }) => { if (signed) setContactPhoto(signed.signedUrl); }) : Promise.resolve(),
+        logoPath ? supabase.storage.from("customer-logos").createSignedUrl(logoPath, 3600).then(({ data: signed }) => { if (signed) setClientLogo(signed.signedUrl); }) : Promise.resolve(),
+      ]);
     }
     setLoading(false);
   }, [orderId, customerView, user]);
