@@ -315,8 +315,25 @@ const AdminInvoice = ({ customerView = false }: { customerView?: boolean }) => {
           @page { size: A4; margin: 8mm; }
           html, body { background: white !important; }
           .no-print { display: none !important; }
-          main { padding-left: 0 !important; padding-right: 0 !important; max-width: none !important; }
+          main { padding: 0 !important; max-width: none !important; }
           .print-area { box-shadow: none !important; border: none !important; padding: 0 !important; margin-left: auto !important; margin-right: auto !important; max-width: 186mm !important; }
+          .print-area:not(:has(.order-sheet-page)) { min-height: 279mm; display: flex; flex-direction: column; justify-content: center; }
+          .print-area:not(:has(.order-sheet-page)) * { font-size: 9.5px !important; line-height: 1.3 !important; }
+          .print-area:not(:has(.order-sheet-page)) h1 { font-size: 15px !important; }
+          .print-area:not(:has(.order-sheet-page)) .mb-8 { margin-bottom: 10px !important; }
+          .print-area:not(:has(.order-sheet-page)) img.w-20 { width: 13mm !important; height: 13mm !important; }
+          .print-area:not(:has(.order-sheet-page)) .py-2 { padding-top: 4px !important; padding-bottom: 4px !important; }
+          .print-area:not(:has(.order-sheet-page)) .py-1 { padding-top: 2px !important; padding-bottom: 2px !important; }
+          .print-area:not(:has(.order-sheet-page)) table td, .print-area:not(:has(.order-sheet-page)) table th { padding-top: 3px !important; padding-bottom: 3px !important; }
+          .print-area:not(:has(.order-sheet-page)) .mt-6 { margin-top: 8px !important; }
+          .print-area:not(:has(.order-sheet-page)) .mt-8 { margin-top: 10px !important; }
+          .print-area:not(:has(.order-sheet-page)) .mt-10 { margin-top: 12px !important; }
+          .print-area:not(:has(.order-sheet-page)) .mt-3 { margin-top: 4px !important; }
+          .print-area:not(:has(.order-sheet-page)) .mt-4 { margin-top: 5px !important; }
+          .print-area:not(:has(.order-sheet-page)) .pt-4 { padding-top: 6px !important; }
+          .print-area:not(:has(.order-sheet-page)) .pt-6 { padding-top: 8px !important; }
+          .print-area:not(:has(.order-sheet-page)) .gap-8 { gap: 12px !important; }
+          .print-area:not(:has(.order-sheet-page)) .gap-10 { gap: 16px !important; }
           .print-area * { font-size: 11px !important; line-height: 1.35 !important; }
           .print-area h1 { font-size: 18px !important; }
           .print-tight { margin-top: 12px !important; }
