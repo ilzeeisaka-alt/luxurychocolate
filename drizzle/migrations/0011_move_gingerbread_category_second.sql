@@ -1,0 +1,1 @@
+update public.product_categories set sort_order=sort_order+1 where parent_id is null and sort_order>=1 and slug<>'ziemassvetku-piparkukas'; update public.product_categories set sort_order=1 where slug='ziemassvetku-piparkukas';

@@ -78,6 +78,13 @@
       "when": 1795179141309,
       "tag": "0010_order_client_logos",
       "breakpoints": true
+    },
+    {
+      "idx": 11,
+      "version": "7",
+      "when": 1795425836181,
+      "tag": "0011_move_gingerbread_category_second",
+      "breakpoints": true
     }
   ]
 }
