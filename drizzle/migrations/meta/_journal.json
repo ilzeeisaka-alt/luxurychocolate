@@ -85,6 +85,13 @@
       "when": 1795425836181,
       "tag": "0011_move_gingerbread_category_second",
       "breakpoints": true
+    },
+    {
+      "idx": 12,
+      "version": "7",
+      "when": 1795427860981,
+      "tag": "0012_customer_view_own_contact_photo",
+      "breakpoints": true
     }
   ]
 }

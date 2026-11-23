@@ -1,0 +1,3 @@
+CREATE POLICY "Owners view own order contact photo" ON public.order_contact_photos FOR SELECT TO authenticated USING (EXISTS (SELECT 1 FROM public.orders o WHERE o.id = order_id AND o.user_id = auth.uid()));
+GRANT SELECT ON public.order_contact_photos TO authenticated;
+CREATE POLICY "Owners view own order contact photo file" ON storage.objects FOR SELECT TO authenticated USING (bucket_id = 'customer-logos' AND EXISTS (SELECT 1 FROM public.order_contact_photos p JOIN public.orders o ON o.id = p.order_id WHERE p.storage_path = name AND o.user_id = auth.uid()));

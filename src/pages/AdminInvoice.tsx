@@ -121,6 +121,13 @@ const AdminInvoice = ({ customerView = false }: { customerView?: boolean }) => {
         .maybeSingle();
       if (p?.registration_number) setRegNr(p.registration_number);
     }
+    if (customerView && data) {
+      const { data: photo } = await supabase.from("order_contact_photos").select("storage_path").eq("order_id", data.id).maybeSingle();
+      if (photo) {
+        const { data: signed } = await supabase.storage.from("customer-logos").createSignedUrl(photo.storage_path, 3600);
+        if (signed) setContactPhoto(signed.signedUrl);
+      }
+    }
     setLoading(false);
   }, [orderId, customerView, user]);
 
