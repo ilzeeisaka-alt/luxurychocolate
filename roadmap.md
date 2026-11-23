@@ -1,4 +1,5 @@
 # Order visualization documents
+- [x] Load saved client logos consistently in both order views and show them automatically beside the manufacturer logo in the centered header with uploaded-logo fallback; 17 tests passed, real TalTap/ALPS headers checked, owner-view persistence verified, mobile has no overflow and TalTap prints on one A4 page. Removed temporary test order.
 - [x] Added a "Vizualizācija" button on the customer invoice page (/rekins) that confirms the order and opens its Order Sheet directly; verified signed-in navigation, rendered customer visualization and email function behavior (test addresses suppressed as expected).
 - [x] Fill missing Latvian company registration from valid VAT data; real ALPS document shows 40003771232 with no remaining client-data dashes, seven tests passed and preview checked.
 - [x] Show the client's company email domain as website and normalize both contacts' address/locality rows; real signed-in ALPS Order Sheet shows www.alps.archi and matching LV-postcode/Latvija rows, vertical alignment verified and eighteen tests passed.

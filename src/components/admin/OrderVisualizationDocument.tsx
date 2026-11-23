@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
-import { contactAddress, contactRegistrationNumber, contactWebsite, orderDesignLogos, primaryProductPhoto, type OrderDesignItem } from "@/lib/orderVisualization";
+import { contactAddress, contactRegistrationNumber, contactWebsite, orderDesignLogos, orderHeaderLogo, primaryProductPhoto, type OrderDesignItem } from "@/lib/orderVisualization";
 import seal from "@/assets/order-sheet-seal.png.asset.json";
 import brandFooter from "@/assets/order-sheet-brand-footer.png.asset.json";
 import ilzePhoto from "@/assets/ilze-eisaka.jpg";
@@ -101,6 +101,7 @@ export default function OrderVisualizationDocument({ order, date, registrationNu
   const sellerAddress = contactAddress("Kandavas iela 29a", "Rīga", "LV-1083", "LV");
   const clientAddress = contactAddress(order.shipping_address, order.shipping_city, order.shipping_postal_code, order.shipping_country);
   const clientRegistration = contactRegistrationNumber(registrationNumber, order.vat_number);
+  const headerLogo = orderHeaderLogo(clientLogo, order.order_items, logoUrls);
 
   return <div className="order-design order-sheet" lang={language} dir={["ar", "he", "fa", "ur"].includes(language) ? "rtl" : "ltr"}>
     {loading && <p role="status">{tx.loading}</p>}{error && <p role="alert" className="text-destructive">{tx.imageUnavailable}</p>}
@@ -118,14 +119,13 @@ export default function OrderVisualizationDocument({ order, date, registrationNu
         </section>
         <div className="order-sheet-brand-row">
           <DocumentImage unavailable={tx.imageUnavailable} src={seal.url} alt="Luxury Chocolate" className="order-sheet-seal" />
-          {clientLogo && <DocumentImage unavailable={tx.imageUnavailable} key={clientLogo} src={clientLogo} alt={tx.clientMedia} className="order-sheet-payer-logo" />}
+          {headerLogo && <DocumentImage unavailable={tx.imageUnavailable} key={headerLogo} src={headerLogo} alt={tx.clientMedia} className="order-sheet-payer-logo" />}
         </div>
         <section className="order-sheet-client">
           <h2 className="order-sheet-party-title">{tx.client}</h2>
           <div className="order-sheet-seller order-sheet-seller-client">
           <div className="order-sheet-client-media">
               {contactPhoto && <DocumentImage unavailable={tx.imageUnavailable} key={contactPhoto} src={contactPhoto} alt={tx.client} className="order-sheet-person order-sheet-contact-photo" />}
-              {(() => { const logos = [...new Map(order.order_items.flatMap(orderDesignLogos).map(logo => [logo.url, logo])).values()]; return logos.map((logo, index) => logoUrls[logo.url] ? <DocumentImage unavailable={tx.imageUnavailable} key={`${logo.url}-${index}`} src={logoUrls[logo.url]} alt={logo.filename || tx.clientMedia} className="order-sheet-client-logo" /> : null); })()}
             </div>
             <ContactDetails name={contactName} title={contact.title} company={normalCase(order.company_name)}
               website={contactWebsite(order.customer_email)}

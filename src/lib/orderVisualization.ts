@@ -18,6 +18,16 @@ export function orderDesignLogos(item: OrderDesignItem) {
   return logos.length ? logos : item.logo_url ? [{ url: item.logo_url, filename: item.logo_filename ?? "", quantity: item.quantity }] : [];
 }
 
+export function orderHeaderLogo(savedLogo: string | undefined, items: OrderDesignItem[], resolvedLogos: Record<string, string>) {
+  if (savedLogo) return savedLogo;
+  for (const item of items) {
+    for (const logo of orderDesignLogos(item)) {
+      if (resolvedLogos[logo.url]) return resolvedLogos[logo.url];
+    }
+  }
+  return undefined;
+}
+
 export function primaryProductPhoto(images: { url: string; is_primary: boolean; sort_order: number }[]) {
   return [...images].sort((a, b) => Number(b.is_primary) - Number(a.is_primary) || a.sort_order - b.sort_order)[0]?.url ?? null;
 }

@@ -107,6 +107,9 @@ const AdminInvoice = ({ customerView = false }: { customerView?: boolean }) => {
   const load = useCallback(async () => {
     if (!orderId) return;
     setLoading(true);
+    setClientLogo("");
+    setContactPhoto("");
+    setRegNr("");
     if (!user) return;
     let query = supabase.from("orders").select("*, order_items(*)").eq("id", orderId);
     if (customerView) query = query.eq("user_id", user.id);
@@ -121,7 +124,7 @@ const AdminInvoice = ({ customerView = false }: { customerView?: boolean }) => {
         .maybeSingle();
       if (p?.registration_number) setRegNr(p.registration_number);
     }
-    if (customerView && data) {
+    if (data && (!customerView || ownsOrder(user.id, data.user_id))) {
       const { data: photo } = await supabase.from("order_contact_photos").select("storage_path").eq("order_id", data.id).maybeSingle();
       if (photo) {
         const { data: signed } = await supabase.storage.from("customer-logos").createSignedUrl(photo.storage_path, 3600);
