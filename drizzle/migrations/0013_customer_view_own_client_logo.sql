@@ -1,0 +1,3 @@
+CREATE POLICY "Owners view own order client logo" ON public.order_client_logos FOR SELECT TO authenticated USING (EXISTS (SELECT 1 FROM public.orders o WHERE o.id = order_id AND o.user_id = auth.uid()));
+GRANT SELECT ON public.order_client_logos TO authenticated;
+CREATE POLICY "Owners view own order client logo file" ON storage.objects FOR SELECT TO authenticated USING (bucket_id = 'customer-logos' AND EXISTS (SELECT 1 FROM public.order_client_logos p JOIN public.orders o ON o.id = p.order_id WHERE p.storage_path = name AND o.user_id = auth.uid()));

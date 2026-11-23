@@ -92,6 +92,13 @@
       "when": 1795427860981,
       "tag": "0012_customer_view_own_contact_photo",
       "breakpoints": true
+    },
+    {
+      "idx": 13,
+      "version": "7",
+      "when": 1795428460250,
+      "tag": "0013_customer_view_own_client_logo",
+      "breakpoints": true
     }
   ]
 }
