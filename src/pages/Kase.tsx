@@ -11,6 +11,7 @@ import { getStripe, stripeEnvironment } from "@/lib/stripe";
 import { PaymentTestModeBanner } from "@/components/PaymentTestModeBanner";
 import { getStoredRef } from "@/lib/affiliateRef";
 import { useCurrentLang } from "@/i18n/useCurrentLang";
+import { checkoutBuyerDetails } from "@/lib/checkoutBuyerDraft";
 
 const CHECKOUT_TEXT = {
   lv: {
@@ -91,24 +92,10 @@ const Kase = () => {
   const options = useMemo(
     () => ({
       fetchClientSecret: async (): Promise<string> => {
+        if (!user) throw new Error(tx.sessionError);
         const shippingId = sessionStorage.getItem("shipping_id") || "pickup";
         const affRef = getStoredRef();
-        let agencyDiscountOn = false;
-        let agencyDiscountPct = 20;
-        let eventName: string | null = null;
-        let eventDate: string | null = null;
-        let deliveryAddress: string | null = null;
-        try {
-          const raw = localStorage.getItem("invoice_buyer_form");
-          if (raw) {
-            const p = JSON.parse(raw);
-            agencyDiscountOn = !!p.agencyOn;
-            agencyDiscountPct = typeof p.agencyPct === "number" ? p.agencyPct : 20;
-            eventName = typeof p.eventName === "string" && p.eventName.trim() ? p.eventName.trim() : null;
-            eventDate = typeof p.eventDate === "string" && p.eventDate.trim() ? p.eventDate.trim() : null;
-            deliveryAddress = typeof p.deliveryAddress === "string" && p.deliveryAddress.trim() ? p.deliveryAddress.trim() : null;
-          }
-        } catch {}
+        const { agencyDiscountOn, agencyDiscountPct, eventName, eventDate, deliveryAddress } = checkoutBuyerDetails(localStorage, user.id);
         const { data, error } = await supabase.functions.invoke("create-shop-checkout", {
           body: {
             environment: stripeEnvironment,
@@ -132,7 +119,7 @@ const Kase = () => {
         return data.clientSecret;
       },
     }),
-    [lang, tx.sessionError, withLang],
+    [lang, tx.sessionError, withLang, user],
   );
 
   return (
@@ -141,7 +128,7 @@ const Kase = () => {
       <Navbar />
       <main className="container mx-auto px-4 pt-28 pb-16 max-w-3xl">
         <h1 className="text-3xl text-foreground mb-6">{tx.title}</h1>
-        {!ready ? (
+        {!ready || !user ? (
           <div className="flex items-center justify-center py-20">
             <Loader2 className="w-8 h-8 animate-spin text-primary" />
           </div>

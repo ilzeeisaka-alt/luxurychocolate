@@ -1,4 +1,5 @@
 # Architecture rules
+- Card checkout reads buyer discount/event/delivery fields through the account-scoped draft helper and waits for the authenticated user; legacy unscoped drafts must never affect payments.
 - Prefill checkout contact defaults from the owner's latest saved order and profile, with account-scoped editable browser drafts; preserve legal address/registration in order notes and never carry event dates into a new purchase, so repeat buyers retain private contact details across devices without changing historical orders.
 - Derive Order Sheet PDF names and browser print titles from one shared filename helper using purchased product snapshots and the saved customer company; both export paths must identify the same order.
 - Store order contact portraits in an admin-only order mapping and private customer-logo storage, normalize raster uploads to PNG, and use signed URLs in documents; never publish customer portraits as catalog assets.
