@@ -418,8 +418,8 @@ const AdminInvoice = ({ customerView = false }: { customerView?: boolean }) => {
           ))}
         </div>
 
-        {!customerView && docType === "visualization" && <ContactPhotoControl orderId={order.id} onChange={setContactPhoto} />}
-        {!customerView && docType === "visualization" && <ClientLogoControl orderId={order.id} onChange={setClientLogo} />}
+        {(isAdmin || customerView) && docType === "visualization" && <ContactPhotoControl orderId={order.id} onChange={setContactPhoto} autoFind={!customerView} />}
+        {isAdmin && docType === "visualization" && <ClientLogoControl orderId={order.id} onChange={setClientLogo} />}
         <div ref={invoiceRef} className={`print-area bg-card text-card-foreground ${docType === "visualization" ? "" : "rounded-lg border border-border p-4 sm:p-10 shadow-sm"}`}>
           {docType === "visualization" ? <OrderVisualizationDocument order={order} date={dateStr} registrationNumber={regNr} eventName={eventNameStr} eventDate={eventDateStr} contactPhoto={contactPhoto} clientLogo={clientLogo} onLanguageChange={setVisualizationLanguage} /> : <>
           <div className="flex flex-col sm:flex-row sm:justify-between items-start mb-8 gap-6">

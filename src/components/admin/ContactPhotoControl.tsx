@@ -5,7 +5,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { prepareContactPhoto } from "@/lib/contactPhoto";
 import { toast } from "sonner";
 
-export default function ContactPhotoControl({ orderId, onChange }: { orderId: string; onChange: (url: string) => void }) {
+export default function ContactPhotoControl({ orderId, onChange, autoFind = true }: { orderId: string; onChange: (url: string) => void; autoFind?: boolean }) {
   const input = useRef<HTMLInputElement>(null);
   const [path, setPath] = useState("");
   const [busy, setBusy] = useState(true);
@@ -21,7 +21,7 @@ export default function ContactPhotoControl({ orderId, onChange }: { orderId: st
           const { data: signed, error: signError } = await supabase.storage.from("customer-logos").createSignedUrl(data.storage_path, 3600);
           if (signError) throw signError;
           if (active) { setPath(data.storage_path); onChange(signed.signedUrl); }
-        } else {
+        } else if (autoFind) {
           const { data: found } = await supabase.functions.invoke("find-contact-photo", { body: { orderId } });
           if (found?.found && found.storage_path && active) {
             const { data: signed } = await supabase.storage.from("customer-logos").createSignedUrl(found.storage_path, 3600);
@@ -33,7 +33,7 @@ export default function ContactPhotoControl({ orderId, onChange }: { orderId: st
     }
     void load();
     return () => { active = false; };
-  }, [orderId, onChange]);
+  }, [orderId, onChange, autoFind]);
 
   async function upload(file: File) {
     setBusy(true);
