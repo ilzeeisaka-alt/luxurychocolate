@@ -41,6 +41,12 @@ export function orderVisualizationFilename(prefix: string, number: string, compa
   return [safePart(prefix), Array.from(products).slice(0, 120).join(""), Array.from(safePart(company || "") || "Klients").slice(0, 60).join(""), safePart(number)].filter(Boolean).join("_");
 }
 
+/** Explicit company website saved in order notes ("Mājaslapa: ..." / "Website: ..."). */
+export function orderWebsite(notes?: string | null) {
+  const match = notes?.match(/^(?:Mājaslapa|Website)\s*:\s*(\S+)\s*$/im)?.[1];
+  return match ? match.replace(/^https?:\/\//i, "").replace(/\/+$/, "") : undefined;
+}
+
 export function contactWebsite(email: string) {
   const domain = email.trim().toLowerCase().split("@")[1];
   if (!domain || !/^(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z]{2,}$/.test(domain)) return undefined;

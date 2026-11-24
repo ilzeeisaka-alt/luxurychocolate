@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
-import { contactAddress, contactRegistrationNumber, contactWebsite, orderDesignLogos, orderHeaderLogo, primaryProductPhoto, type OrderDesignItem } from "@/lib/orderVisualization";
+import { orderWebsite, contactAddress, contactRegistrationNumber, contactWebsite, orderDesignLogos, orderHeaderLogo, primaryProductPhoto, type OrderDesignItem } from "@/lib/orderVisualization";
 import seal from "@/assets/order-sheet-seal.png.asset.json";
 import brandFooter from "@/assets/order-sheet-brand-footer.png.asset.json";
 import ilzePhoto from "@/assets/ilze-eisaka.jpg";
@@ -128,7 +128,7 @@ export default function OrderVisualizationDocument({ order, date, registrationNu
               {contactPhoto && <DocumentImage unavailable={tx.imageUnavailable} key={contactPhoto} src={contactPhoto} alt={tx.client} className="order-sheet-person order-sheet-contact-photo" />}
             </div>
             <ContactDetails name={contactName} title={contact.title} company={normalCase(order.company_name)}
-              website={contactWebsite(order.customer_email)}
+              website={orderWebsite(order.notes) ?? contactWebsite(order.customer_email)}
               email={order.customer_email} phone={order.customer_phone} address={clientAddress.address}
               locality={clientAddress.locality}
               registration={clientRegistration ? `${tx.registration}: ${clientRegistration}` : undefined}
