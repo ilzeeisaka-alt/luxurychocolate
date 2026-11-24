@@ -32,4 +32,5 @@
 - Editorial pages using the shared SEO landing layout explicitly opt into Article metadata; commercial pages do not, and organization references reuse the sitewide entity to avoid incomplete duplicates.
 - Keep supplemental Christmas gift photos in a shared gallery within MagnetBoxSection, using CDN pointers and ProductImageViewer; both homepages and the Christmas landing page then show the same collection.
 - Load AI chat context newest-first with a bounded query, then reverse for chronological model input; long chats must retain the latest customer question.- Auto-fill missing Order Sheet contact portraits only through the admin-verified find-contact-photo function, which searches the company website derived from a non-mailbox email for name-matched images; social networks are not scraped.
-- find-contact-photo resolves the client website from order notes, then a non-mailbox email domain, then verified company-name/mailbox-name domain guesses (page must mention the company or registration number), saving a found site into order notes; Gmail-style buyers still get logos/photos.
+- find-contact-photo finds the client site via notes, non-mailbox email domain, then verified company-name guesses; saves it to notes.
+- Order Sheet main photo prefers a private per-item client-logo mockup (order-item-mockup, stored once); catalog photos unchanged.

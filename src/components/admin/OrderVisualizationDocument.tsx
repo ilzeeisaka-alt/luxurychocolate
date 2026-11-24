@@ -20,6 +20,8 @@ interface Props {
   onLanguageChange?: (lang: string) => void;
 }
 
+const mockupAttempts = new Set<string>();
+
 function DocumentImage({ src, alt, className, unavailable }: { src: string; alt: string; className: string; unavailable: string }) {
   const [failed, setFailed] = useState(false);
   return failed ? <p className="text-sm text-muted-foreground">{alt}: {unavailable}</p> : <img src={src} alt={alt} className={className} crossOrigin="anonymous" onError={() => setFailed(true)} />;
@@ -48,6 +50,7 @@ export default function OrderVisualizationDocument({ order, date, registrationNu
   const [logoUrls, setLogoUrls] = useState<Record<string, string>>({});
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
+  const [generating, setGenerating] = useState(false);
   const [language, setLanguage] = useState("lv");
   const tx = orderSheetText(language);
   useEffect(() => {
@@ -88,7 +91,25 @@ export default function OrderVisualizationDocument({ order, date, registrationNu
             } else nextLogos[logo.url] = logo.url;
           }
         }
+        // Client-logo mockups replace the catalog photo as the large image; generate missing ones once.
+        const itemIds = order.order_items.map(item => item.id);
+        const { data: mockups } = await supabase.from("order_item_mockups").select("order_item_id,storage_path").in("order_item_id", itemIds);
+        for (const m of mockups ?? []) {
+          const { data } = await supabase.storage.from("customer-logos").createSignedUrl(m.storage_path, 3600);
+          if (data?.signedUrl) nextPhotos[m.order_item_id] = data.signedUrl;
+        }
         if (active) { setPhotos(nextPhotos); setLogoUrls(nextLogos); }
+        const missing = itemIds.filter(id => !(mockups ?? []).some(m => m.order_item_id === id) && nextPhotos[id] && !mockupAttempts.has(id));
+        for (const id of missing) {
+          mockupAttempts.add(id);
+          if (active) setGenerating(true);
+          const { data: res } = await supabase.functions.invoke("order-item-mockup", { body: { orderItemId: id } });
+          if (res?.storage_path) {
+            const { data } = await supabase.storage.from("customer-logos").createSignedUrl(res.storage_path, 3600);
+            if (data?.signedUrl && active) setPhotos(prev => ({ ...prev, [id]: data.signedUrl }));
+          }
+        }
+        if (active) setGenerating(false);
       } catch { if (active) setError(true); }
       finally { if (active) setLoading(false); }
     }
@@ -104,7 +125,7 @@ export default function OrderVisualizationDocument({ order, date, registrationNu
   const headerLogo = orderHeaderLogo(clientLogo, order.order_items, logoUrls);
 
   return <div className="order-design order-sheet" lang={language} dir={["ar", "he", "fa", "ur"].includes(language) ? "rtl" : "ltr"}>
-    {loading && <p role="status">{tx.loading}</p>}{error && <p role="alert" className="text-destructive">{tx.imageUnavailable}</p>}
+    {loading && <p role="status">{tx.loading}</p>}{generating && <p role="status" className="text-sm text-muted-foreground print:hidden">…</p>}{error && <p role="alert" className="text-destructive">{tx.imageUnavailable}</p>}
     {order.order_items.map((item, itemIndex) => <article key={item.id} className="order-design-item order-sheet-page">
       <header className="order-sheet-header">
         <section>

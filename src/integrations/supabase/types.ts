@@ -614,6 +614,42 @@ export type Database = {
           },
         ]
       }
+      order_item_mockups: {
+        Row: {
+          created_at: string
+          order_id: string
+          order_item_id: string
+          storage_path: string
+        }
+        Insert: {
+          created_at?: string
+          order_id: string
+          order_item_id: string
+          storage_path: string
+        }
+        Update: {
+          created_at?: string
+          order_id?: string
+          order_item_id?: string
+          storage_path?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "order_item_mockups_order_id_fkey"
+            columns: ["order_id"]
+            isOneToOne: false
+            referencedRelation: "orders"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "order_item_mockups_order_item_id_fkey"
+            columns: ["order_item_id"]
+            isOneToOne: true
+            referencedRelation: "order_items"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       order_items: {
         Row: {
           area_cm2: number | null
