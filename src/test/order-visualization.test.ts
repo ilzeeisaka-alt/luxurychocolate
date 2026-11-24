@@ -51,3 +51,12 @@ describe("Order visualization data", () => {
     expect(primaryProductPhoto([])).toBeNull();
   });
 });
+import { needsOrderSheet } from "../lib/orderVisualization";
+describe("needsOrderSheet", () => {
+  it("skips the production preparation product", () => {
+    expect(needsOrderSheet({ product_name: "Sagatavošana šokolādes ražošanai", product_slug: "sagatavosana-sokolades-razosanai-reklamas" })).toBe(false);
+  });
+  it("keeps normal products", () => {
+    expect(needsOrderSheet({ product_name: "3,8 cm šokolādes", product_slug: "3-8-cm-sokolades" })).toBe(true);
+  });
+});

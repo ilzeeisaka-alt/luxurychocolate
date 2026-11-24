@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
-import { orderWebsite, contactAddress, contactRegistrationNumber, contactWebsite, orderDesignLogos, orderHeaderLogo, primaryProductPhoto, type OrderDesignItem } from "@/lib/orderVisualization";
+import { orderWebsite, contactAddress, contactRegistrationNumber, contactWebsite, orderDesignLogos, orderHeaderLogo, primaryProductPhoto, needsOrderSheet, type OrderDesignItem } from "@/lib/orderVisualization";
 import seal from "@/assets/order-sheet-seal.png.asset.json";
 import brandFooter from "@/assets/order-sheet-brand-footer.png.asset.json";
 import ilzePhoto from "@/assets/ilze-eisaka.jpg";
@@ -45,7 +45,8 @@ function ContactDetails({ name, title, company, website, email, phone, address, 
   </div>;
 }
 
-export default function OrderVisualizationDocument({ order, date, registrationNumber, eventName, eventDate, contactPhoto, clientLogo, onLanguageChange }: Props) {
+export default function OrderVisualizationDocument({ order: fullOrder, date, registrationNumber, eventName, eventDate, contactPhoto, clientLogo, onLanguageChange }: Props) {
+  const order = useMemo(() => ({ ...fullOrder, order_items: fullOrder.order_items.filter(needsOrderSheet) }), [fullOrder]);
   const [photos, setPhotos] = useState<Record<string, string>>({});
   const [logoUrls, setLogoUrls] = useState<Record<string, string>>({});
   const [loading, setLoading] = useState(true);

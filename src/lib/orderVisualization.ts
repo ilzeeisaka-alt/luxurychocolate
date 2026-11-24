@@ -73,3 +73,8 @@ export function contactAddress(address?: string | null, city?: string | null, po
   if (cityName && !parts.some(part => part.toLowerCase() === cityName.toLowerCase())) parts.push(cityName);
   return { address: parts.join(", "), locality: [postal, countryName].filter(Boolean).join(", ") };
 }
+/** Production-preparation fee items never get an Order Sheet page. */
+export function needsOrderSheet(item: { product_name?: string | null; product_slug?: string | null }) {
+  const fold = (v?: string | null) => (v ?? "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+  return !fold(item.product_slug).startsWith("sagatavosana-sokolades-") && !fold(item.product_name).startsWith("sagatavosana sokolades");
+}
