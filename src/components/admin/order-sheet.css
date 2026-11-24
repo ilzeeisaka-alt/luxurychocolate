@@ -9,7 +9,7 @@
 .order-sheet-page { padding: 24px; display: flex; flex-direction: column; gap: 20px; }
 .order-sheet-page + .order-sheet-page { border-top: 1px solid hsl(var(--border)); margin-top: 32px; }
 .order-sheet-brand-row { display: flex; align-items: center; justify-content: center; gap: 16px; min-width: 0; width: 100%; align-self: start; grid-column: 2; grid-row: 2 / span 10; }
-.order-sheet-header { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr) minmax(0, 1fr); grid-template-rows: auto repeat(10, auto); column-gap: 20px; align-items: start; }
+.order-sheet-header { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr) minmax(0, 1.5fr); grid-template-rows: auto repeat(10, auto); column-gap: 20px; align-items: start; }
 .order-sheet-header > section { display: grid; grid-template-rows: subgrid; grid-row: 1 / span 11; min-width: 0; }
 .order-sheet-header > section:first-child { grid-column: 1; }
 .order-sheet-header > .order-sheet-client { grid-column: 3; }
@@ -70,7 +70,7 @@
   .order-sheet-page:last-child { break-after: auto; }
   .order-sheet-page + .order-sheet-page { border: none; margin: 0; }
   .order-sheet-page > * { flex-shrink: 0; }
-  .order-sheet-header { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr); column-gap: 3mm; }
+  .order-sheet-header { grid-template-columns: minmax(0, 1.5fr) minmax(0, 0.8fr) minmax(0, 1.5fr); column-gap: 3mm; }
   .order-sheet-seller { grid-template-columns: 16mm minmax(0, 1fr); column-gap: 2mm; }
   .order-sheet-seller-client { grid-template-columns: minmax(0, 1fr) 16mm; }
   .order-sheet-person { width: 16mm; height: 22mm; }
