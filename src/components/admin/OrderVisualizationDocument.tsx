@@ -10,7 +10,7 @@ import { orderSheetLanguage } from "@/lib/orderSheetLanguage";
 import { orderSheetText } from "@/i18n/orderSheet";
 
 interface Props {
-  order: { order_number: string; customer_name: string | null; customer_email: string; customer_phone: string | null; company_name: string | null; vat_number: string | null; shipping_address: string | null; shipping_city?: string | null; shipping_postal_code?: string | null; shipping_country?: string | null; order_items: OrderDesignItem[] };
+  order: { order_number: string; customer_name: string | null; customer_email: string; customer_phone: string | null; company_name: string | null; vat_number: string | null; shipping_address: string | null; shipping_city?: string | null; shipping_postal_code?: string | null; shipping_country?: string | null; notes?: string | null; order_items: OrderDesignItem[] };
   date: string;
   registrationNumber: string;
   eventName: string;
