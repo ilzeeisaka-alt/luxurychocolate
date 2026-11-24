@@ -25,6 +25,7 @@
 - [x] Added /laimes-cepumi with targeted metadata, WebPage/BreadcrumbList data, existing photo and product links; linked from homepage and static catalog and added to sitemap. Verified desktop/mobile, loaded photo, offer dialog and shop navigation; live changes need publishing.
 
 # Project monitoring
+- [x] Swept cart/invoice/card, confirmation, payment hooks, saved-order documents, account/reorder/tracking, email jobs and live order triggers; fixed draft restoration, discounted subtotal/shipping preservation, billing-address substitution and omitted confirmation details. 35 tests passed; signed-in reload and both card handoffs verified without a charge; payment/notification functions deployed. Settled records untouched; full charged-order/email flow remains unverified.
 - [x] Corrected card checkout's account-scoped buyer draft; ten tests passed and a signed-in product → invoice → card checkout request retained the 20% agency discount, event name/date and delivery address despite conflicting legacy values. Verification stopped before card payment.
 - [x] Corrected recent AI chat context and deployed ai-chat; four tests passed, a real eleventh question answered correctly and restored after reload, and only the test conversation was removed. Monitoring returned one pending finding rather than three; it is resolved.
 

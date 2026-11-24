@@ -96,6 +96,19 @@ const Grozs = () => {
   })();
   const [agencyDiscountOn, setAgencyDiscountOn] = useState<boolean>(savedAgency.on);
   const [agencyDiscountPct, setAgencyDiscountPct] = useState<number>(savedAgency.pct);
+  const [loadedAgencyUser, setLoadedAgencyUser] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (!user) { setLoadedAgencyUser(null); return; }
+    let saved = { on: false, pct: 20 };
+    try {
+      const draft = JSON.parse(localStorage.getItem(buyerDraftKey(user.id)) || "{}");
+      saved = { on: !!draft?.agencyOn, pct: typeof draft?.agencyPct === "number" ? draft.agencyPct : 20 };
+    } catch { /* Keep defaults for an invalid draft. */ }
+    setAgencyDiscountOn(saved.on);
+    setAgencyDiscountPct(saved.pct);
+    setLoadedAgencyUser(user.id);
+  }, [user?.id]);
 
 
   useSeo({
@@ -112,7 +125,7 @@ const Grozs = () => {
   }, [authLoading, user, navigate, withLang, lang]);
 
   useEffect(() => {
-    if (!user) return;
+    if (!user || loadedAgencyUser !== user.id) return;
     try {
       const raw = localStorage.getItem(buyerDraftKey(user.id));
       const p = raw ? JSON.parse(raw) : {};
@@ -121,7 +134,7 @@ const Grozs = () => {
         JSON.stringify({ ...p, agencyOn: agencyDiscountOn, agencyPct: agencyDiscountPct }),
       );
     } catch {}
-  }, [user, agencyDiscountOn, agencyDiscountPct]);
+  }, [user, loadedAgencyUser, agencyDiscountOn, agencyDiscountPct]);
 
 
   const shipping = SHIPPING_OPTIONS.find((o) => o.id === shippingId) ?? SHIPPING_OPTIONS[0];

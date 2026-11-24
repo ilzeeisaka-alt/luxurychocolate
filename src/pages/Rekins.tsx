@@ -15,6 +15,7 @@ import logoUrl from "@/assets/luxury-chocolate-logo.jpg";
 import chocoTimeUrl from "@/assets/its-choco-time.png";
 import { Check } from "lucide-react";
 import { buyerDraftKey, repeatCustomerDefaults } from "@/lib/repeatCustomer";
+import { checkoutBuyerDetails } from "@/lib/checkoutBuyerDraft";
 
 interface LogoRef { url: string; filename: string; quantity?: number }
 interface CartLine {
@@ -581,6 +582,9 @@ const Rekins = () => {
     setDeliveryAddress(value("deliveryAddress"));
     setEventName(typeof draft.eventName === "string" ? draft.eventName : "");
     setEventDate(typeof draft.eventDate === "string" ? draft.eventDate : "");
+    const checkoutDetails = checkoutBuyerDetails(localStorage, user.id);
+    setAgencyDiscountOn(checkoutDetails.agencyDiscountOn);
+    setAgencyDiscountPct(checkoutDetails.agencyDiscountPct);
     setLoadedBuyerUser(user.id);
     setLoading(false);
   }, [user]);
@@ -765,6 +769,7 @@ const Rekins = () => {
             buyerAddress ? `Juridiskā adrese: ${buyerAddress}` : null,
             eventName ? `Pasākuma nosaukums: ${eventName}` : null,
             eventDate ? `Pasākuma datums / laiks: ${eventDate}` : null,
+            agencyDiscountCents > 0 ? `Agency discount: ${agencyPctClamped}% (-${(agencyDiscountCents / 100).toFixed(2)} ${currency})` : null,
           ].filter(Boolean).join("\n") || null,
           subtotal_cents: subtotalAfterDiscount,
           shipping_cents: shipping.cents,
@@ -814,6 +819,8 @@ const Rekins = () => {
             eventDate,
             eventDateDisplay,
             deliveryAddress,
+            agencyDiscountPct: agencyPctClamped,
+            agencyDiscountCents,
             shipping: shippingLabel,
             shippingCost: shipping.cents / 100,
             total: total / 100,

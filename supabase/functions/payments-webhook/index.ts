@@ -1,6 +1,7 @@
 // Stripe webhook handler — creates orders + order_items after successful payment.
 // Auto-registered by Lovable Cloud for both sandbox and live (?env=sandbox|live).
 import { sendOrderDocuments } from "../_shared/order-documents.ts";
+import { canCompleteShopPayment, shopPaymentDetails } from "../_shared/shop-payment-details.ts";
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2.45.0";
 import { type StripeEnv, createStripeClient, verifyWebhook } from "../_shared/stripe.ts";
@@ -191,7 +192,7 @@ async function handleShopOrderCompleted(session: any, env: StripeEnv) {
   // Idempotency
   const { data: existing } = await supabase
     .from("orders")
-    .select("id, status, customer_email, customer_name, customer_phone, shipping_address, shipping_city, shipping_postal_code, shipping_country, notes")
+    .select("id, status, customer_email, customer_name, customer_phone, subtotal_cents, shipping_cents, shipping_address, shipping_city, shipping_postal_code, shipping_country, notes")
     .eq("id", orderId)
     .maybeSingle();
   if (!existing) {
@@ -203,6 +204,7 @@ async function handleShopOrderCompleted(session: any, env: StripeEnv) {
     console.log("Order already paid:", orderId);
     return;
   }
+  if (!canCompleteShopPayment(existing.status)) return;
 
   // Fetch full session for shipping/customer details + totals
   const stripe = createStripeClient(env);
@@ -211,9 +213,9 @@ async function handleShopOrderCompleted(session: any, env: StripeEnv) {
   });
   const cd = fullSession.customer_details;
   const shipping = (fullSession as any).shipping_details || (fullSession as any).shipping;
-  const shippingAddr = shipping?.address || cd?.address;
+  const savedPaymentDetails = shopPaymentDetails(existing, shipping?.address, cd?.address);
 
-  // Update order to paid
+  // Update only a pending order; settled records retain their saved purchase details.
   const { data: order, error: updErr } = await supabase
     .from("orders")
     .update({
@@ -227,18 +229,12 @@ async function handleShopOrderCompleted(session: any, env: StripeEnv) {
       customer_name: cd?.name || shipping?.name || existing.customer_name || null,
       customer_phone: cd?.phone || existing.customer_phone || null,
       total_cents: fullSession.amount_total || 0,
-      subtotal_cents: fullSession.amount_subtotal || fullSession.amount_total || 0,
       tax_cents: fullSession.total_details?.amount_tax || 0,
-      shipping_cents: fullSession.total_details?.amount_shipping || 0,
-      shipping_address: shippingAddr?.line1
-        ? [shippingAddr.line1, shippingAddr.line2].filter(Boolean).join(", ")
-        : existing.shipping_address || null,
-      shipping_city: shippingAddr?.city || existing.shipping_city || null,
-      shipping_postal_code: shippingAddr?.postal_code || existing.shipping_postal_code || null,
-      shipping_country: shippingAddr?.country || existing.shipping_country || null,
+      ...savedPaymentDetails,
       paid_at: new Date().toISOString(),
     })
     .eq("id", orderId)
+    .eq("status", "pending")
     .select()
     .single();
 
@@ -331,6 +327,7 @@ async function sendShopOrderEmail(order: any, items: any[]) {
       <table style="width:100%;border-collapse:collapse;margin:16px 0;">${itemsHtml}</table>
       <p style="text-align:right;font-weight:700;font-size:16px;">Kopā: ${formatPrice(order.total_cents, order.currency)}</p>
       ${order.shipping_address ? `<p style="margin:16px 0;color:#666;font-size:14px;"><strong>Piegādes adrese:</strong><br>${escapeHtml(order.shipping_address)}${order.shipping_city ? `, ${escapeHtml(order.shipping_city)}` : ""}${order.shipping_postal_code ? `, ${escapeHtml(order.shipping_postal_code)}` : ""}${order.shipping_country ? `, ${escapeHtml(order.shipping_country)}` : ""}</p>` : ""}
+      ${order.notes ? `<p style="white-space:pre-wrap;">${escapeHtml(order.notes)}</p>` : ""}
       <p style="margin:24px 0 0;color:#999;font-size:12px;">Luxury Chocolate</p>
     </div>
   `;

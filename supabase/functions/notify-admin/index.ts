@@ -60,6 +60,10 @@ serve(async (req) => {
         <p><strong>E-pasts:</strong> ${esc(data?.email)}</p>
         <p><strong>Tel.:</strong> ${esc(data?.phone || "—")}</p>
         <p><strong>Piegāde:</strong> ${esc(data?.shipping)}</p>
+        ${data?.deliveryAddress ? `<p><strong>Piegādes adrese:</strong> ${esc(data.deliveryAddress)}</p>` : ""}
+        ${data?.eventName ? `<p><strong>Pasākuma nosaukums:</strong> ${esc(data.eventName)}</p>` : ""}
+        ${data?.eventDateDisplay || data?.eventDate ? `<p><strong>Pasākuma datums / laiks:</strong> ${esc(data.eventDateDisplay || data.eventDate)}</p>` : ""}
+        ${data?.agencyDiscountCents > 0 ? `<p><strong>Aģentūras atlaide:</strong> ${esc(data.agencyDiscountPct)}% (−${esc((data.agencyDiscountCents / 100).toFixed(2))} ${esc(data.currency)})</p>` : ""}
         <hr style="margin:16px 0;border:0;border-top:1px solid #ddd;" />
         <p><strong>Preces:</strong></p>
         <ul>
