@@ -50,7 +50,7 @@ Deno.serve(async (req) => {
     if (!photo) return json({ found: false, reason: 'no_photo' })
 
     const result = await editImage({ model: 'openai/gpt-image-2.5-sunburst', image: [photo, logo], n: 1, size: 'auto', quality: 'high', output_format: 'png',
-      prompt: `Image 1 is our Luxury Chocolate catalog product photo (${item.product_name}). Image 2 is the client's logo. Replace every existing logo or print on the chocolates/packaging in image 1 with the client's logo from image 2, reproducing its lettering, colors and symbols faithfully, printed naturally on the chocolate surface. Keep the product, shape, quantity, packaging, background and composition exactly the same. Photorealistic, no extra text, no watermark.` })
+      prompt: `Image 1 is our Luxury Chocolate catalog product photo (${item.product_name}). Image 2 is the client's logo. Print the client's logo from image 2 onto the surface of the chocolates in image 1, reproducing its lettering, colors and symbols faithfully, as a natural print/engraving on the chocolate. CRITICAL: keep every chocolate piece exactly as in image 1 — same chocolate color (brown stays brown, white stays white), same shapes, same sizes, same quantity. Do NOT turn any chocolate piece into a solid black or colored circle/badge/sticker; the logo must be a print on the existing chocolate, not a replacement of it. Keep the product, packaging, background and composition exactly the same. Photorealistic, no extra text, no watermark.` })
     const b64 = result.data?.[0]?.b64_json
     if (!b64) throw new Error('No image returned')
     const bytes = Uint8Array.from(atob(b64), c => c.charCodeAt(0))
