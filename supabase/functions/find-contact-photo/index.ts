@@ -7,6 +7,35 @@ const PATHS = ['', '/par', '/par/', '/par-mums', '/komanda', '/about', '/about-u
 const json = (d: unknown, s = 200) => new Response(JSON.stringify(d), { status: s, headers: { ...corsHeaders, 'Content-Type': 'application/json' } })
 const fold = (s: string) => s.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase()
 
+
+const LEGAL = ['sia','as','ik','ltd','llc','oy','ou','uab','gmbh','mm','biedriba','nodibinajums']
+// Resolve the company website: explicit notes link, company email domain, then verified guesses from company name / mailbox name.
+async function resolveSite(db: any, orderId: string, order: { customer_email?: string | null; company_name?: string | null; notes?: string | null }) {
+  const noted = order.notes?.match(/(?:Mājaslapa|Website):\s*(\S+)/i)?.[1]
+  if (noted) { try { return new URL(noted.startsWith('http') ? noted : `https://${noted}`).hostname.replace(/^www\./, '') } catch { /* ignore */ } }
+  const domain = order.customer_email?.toLowerCase().split('@')[1]
+  if (domain && !MAILBOX.includes(domain)) return domain
+  const tokens = new Set<string>()
+  const words = fold(order.company_name ?? '').replace(/["'“”„]/g, ' ').split(/[^a-z0-9-]+/).filter(w => w.length > 2 && !LEGAL.includes(w))
+  if (words[0]) tokens.add(words[0])
+  if (words.length > 1) tokens.add(words.join(''))
+  const local = fold(order.customer_email?.split('@')[0] ?? '').replace(/[^a-z0-9-]/g, '')
+  if (local.length > 3) tokens.add(local)
+  const reg = order.notes?.match(/(\d{11})/)?.[1]
+  for (const t of tokens) for (const tld of ['lv', 'com', 'eu']) {
+    const host = `${t}.${tld}`
+    try {
+      const r = await get(`https://${host}`); if (!r.ok) continue
+      const html = fold(await r.text())
+      if (!html.includes(words[0] ?? t) && !(reg && html.includes(reg))) continue
+      const site = new URL(r.url).hostname.replace(/^www\./, '')
+      await db.from('orders').update({ notes: `${order.notes ? order.notes + '\n' : ''}Mājaslapa: https://${site}/` }).eq('id', orderId)
+      return site
+    } catch { continue }
+  }
+  return null
+}
+
 async function get(url: string) {
   const r = await fetch(url, { headers: { 'User-Agent': 'Mozilla/5.0 LuxuryChocolateBot' }, redirect: 'follow', signal: AbortSignal.timeout(8000) })
   return r
@@ -29,10 +58,10 @@ Deno.serve(async (req) => {
     if (kind === 'logo') return await findLogo(db, auth.user.id, orderId)
     const { data: existing } = await db.from('order_contact_photos').select('storage_path').eq('order_id', orderId).maybeSingle()
     if (existing) return json({ found: true, storage_path: existing.storage_path })
-    const { data: order } = await db.from('orders').select('customer_name, customer_email').eq('id', orderId).maybeSingle()
+    const { data: order } = await db.from('orders').select('customer_name, customer_email, company_name, notes').eq('id', orderId).maybeSingle()
     if (!order) return json({ error: 'Not found' }, 404)
-    const domain = order.customer_email?.toLowerCase().split('@')[1]
-    if (!domain || MAILBOX.includes(domain)) return json({ found: false, reason: 'no_company_website' })
+    const domain = await resolveSite(db, orderId, order)
+    if (!domain) return json({ found: false, reason: 'no_company_website' })
     const words = fold(order.customer_name ?? '').split(/[^a-z]+/).filter(w => w.length > 2)
     const first = words[0], last = words[1]
     if (!first) return json({ found: false, reason: 'no_name' })
@@ -99,12 +128,12 @@ async function saveImage(db: any, userId: string, orderId: string, url: string, 
 async function findLogo(db: any, userId: string, orderId: string) {
   const { data: existing } = await db.from('order_client_logos').select('storage_path').eq('order_id', orderId).maybeSingle()
   if (existing) return json({ found: true, storage_path: existing.storage_path })
-  const { data: order } = await db.from('orders').select('customer_email, company_name').eq('id', orderId).maybeSingle()
+  const { data: order } = await db.from('orders').select('customer_email, company_name, notes').eq('id', orderId).maybeSingle()
   if (!order) return json({ error: 'Not found' }, 404)
-  const domain = order.customer_email?.toLowerCase().split('@')[1]
-  if (!domain || MAILBOX.includes(domain)) return json({ found: false, reason: 'no_company_website' })
+  const domain = await resolveSite(db, orderId, order)
+  if (!domain) return json({ found: false, reason: 'no_company_website' })
   const brand = fold(domain.split('.')[0])
-  for (const base of [`https://www.${domain}`, `https://${domain}`]) {
+  for (const base of [`https://www.${domain}`, `https://${domain}`, `https://${domain}/lv`]) {
     let html = '', pageUrl = base
     try { const r = await get(base); if (!r.ok) continue; pageUrl = r.url; html = await r.text() } catch { continue }
     const candidates: string[] = []
