@@ -164,7 +164,7 @@ const HeroSection = ({
         <Button onClick={onCtaClick} size="sm" className="whitespace-normal h-auto min-h-9">{formButton}</Button>
       </div>
       {/* Video ar logo abās malās */}
-      <div className="relative w-full h-[38vh] sm:h-[60vh] overflow-hidden bg-foreground">
+      <div className="relative w-full h-[44vh] sm:h-[60vh] overflow-hidden bg-foreground">
         <img src={heroPoster.url} alt="" aria-hidden="true" fetchPriority="high" width={720} height={1280} className="absolute inset-0 w-full h-full object-cover" style={{ objectPosition: "center 35%" }} />
         {playVideo && (
         <video
