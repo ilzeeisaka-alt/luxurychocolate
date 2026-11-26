@@ -122,7 +122,18 @@ const App = () => (
         <AuthProvider>
         <OrderNotificationsListener />
         <ReferralTracker />
-        <Suspense fallback={<div className="min-h-screen bg-background" />}>
+        <Suspense fallback={
+          <div className="min-h-screen bg-background text-foreground px-6 py-16">
+            <div className="mx-auto max-w-xl">
+              <p className="text-primary text-3xl font-bold mb-6">Luxury Chocolate</p>
+              <div className="flex flex-wrap gap-x-6 gap-y-4">
+                <a className="underline underline-offset-4" href="tel:+37126177853">+371 26 177 853</a>
+                <a className="underline underline-offset-4" href="mailto:info@luxurychocolate.lv">info@luxurychocolate.lv</a>
+              </div>
+              <div role="progressbar" className="mt-8 h-1 w-24 bg-primary motion-safe:animate-pulse" />
+            </div>
+          </div>
+        }>
           <Routes>
             {Object.entries(seoAliases).map(([from, to]) => <Route key={from} path={from} element={<Navigate to={to} replace />} />)}
             <Route path="/sv/:slug" element={<LangPage lang="sv" />} />

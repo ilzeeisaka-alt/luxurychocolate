@@ -1,4 +1,5 @@
 # Architecture rules
+- Defer homepage galleries and use WebP first-screen art to reduce initial loading.
 - Card checkout reads buyer discount/event/delivery fields through the account-scoped draft helper and waits for the authenticated user; legacy unscoped drafts must never affect payments.
 - Restore each account's draft before cart/invoice persistence; payment completion retains discounted shop subtotals and line-item shipping, never substitutes billing for saved delivery, and only updates pending orders.
 - Prefill checkout contact defaults from the owner's latest saved order and profile, with account-scoped editable browser drafts; preserve legal address/registration in order notes and never carry event dates into a new purchase, so repeat buyers retain private contact details across devices without changing historical orders.

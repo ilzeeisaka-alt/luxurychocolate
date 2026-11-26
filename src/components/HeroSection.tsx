@@ -1,11 +1,13 @@
-import { useLayoutEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
-import logo from "@/assets/logo-hero-gold-center.png";
-import chocoTimeLogo from "@/assets/its-choco-time-gold.png";
-import chocolatePrintingTitle from "@/assets/hero-chocolate-printing.png";
-import chocolatePrintingTitleEn from "@/assets/hero-chocolate-printing-en.png";
+import logo from "@/assets/logo-hero-gold-center.webp.asset.json";
+import chocoTimeLogo from "@/assets/its-choco-time-gold.webp.asset.json";
+import chocolatePrintingTitle from "@/assets/hero-chocolate-printing.webp.asset.json";
+import chocolatePrintingTitleEn from "@/assets/hero-chocolate-printing-en.webp.asset.json";
+import heroPoster from "@/assets/hero-poster.webp.asset.json";
+import { Button } from "@/components/ui/button";
 import { heroChocolateTitles, heroChocolateRtlLanguages } from "@/i18n/heroChocolateTitle";
-import { ExternalLink, ShoppingBag } from "lucide-react";
+import { ExternalLink, ShoppingBag, Phone, Mail } from "lucide-react";
 import type { Lang } from "@/i18n/types";
 import { expandLangs } from "@/i18n/expandLangs";
 
@@ -124,6 +126,15 @@ const HeroSection = ({
 }: HeroSectionProps) => {
   const sectionRef = useRef<HTMLElement>(null);
   const [navigationClearance, setNavigationClearance] = useState(0);
+  const [playVideo, setPlayVideo] = useState(false);
+
+  useEffect(() => {
+    const connection = (navigator as Navigator & { connection?: { saveData?: boolean } }).connection;
+    if (connection?.saveData || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    // Let the lightweight poster and heading paint before competing for video bandwidth.
+    const timer = window.setTimeout(() => setPlayVideo(true), 1800);
+    return () => window.clearTimeout(timer);
+  }, []);
 
   useLayoutEffect(() => {
     const navigation = document.getElementById("luxury-navigation");
@@ -147,19 +158,28 @@ const HeroSection = ({
 
   return (
     <section ref={sectionRef} className="flex flex-col bg-foreground" style={{ paddingTop: navigationClearance }}>
+      <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-1 px-4 pt-16 pb-3 sm:pt-3 text-sm text-background">
+        <a href="tel:+37126177853" className="inline-flex min-h-9 items-center gap-2 hover:text-primary"><Phone size={16} />+371 26 177 853</a>
+        <a href="mailto:info@luxurychocolate.lv" className="inline-flex min-h-9 items-center gap-2 hover:text-primary"><Mail size={16} />info@luxurychocolate.lv</a>
+        <Button onClick={onCtaClick} size="sm" className="whitespace-normal h-auto min-h-9">{formButton}</Button>
+      </div>
       {/* Video ar logo abās malās */}
-      <div className="relative w-full h-[55vh] sm:h-[70vh] overflow-hidden bg-foreground">
+      <div className="relative w-full h-[38vh] sm:h-[60vh] overflow-hidden bg-foreground">
+        <img src={heroPoster.url} alt="" aria-hidden="true" fetchPriority="high" width={720} height={1280} className="absolute inset-0 w-full h-full object-cover" style={{ objectPosition: "center 35%" }} />
+        {playVideo && (
         <video
           autoPlay
           muted
           loop
           playsInline
-          preload="auto"
+          preload="none"
+          poster={heroPoster.url}
           className="absolute inset-0 w-full h-full object-cover"
           style={{ objectPosition: "center 35%" }}
         >
           <source src="/video/hero.mp4" type="video/mp4" />
         </video>
+        )}
 
         {/* Maigs gradients malās lai logo labāk redzami */}
         <div
@@ -173,10 +193,10 @@ const HeroSection = ({
         {/* Augšējais teksts uz video */}
         <div className="absolute top-[16%] sm:top-[12%] left-0 right-0 z-10 text-center px-4">
           {lang === "lv" || lang === "en" ? (
-            <p>
+            <h1 className="m-0">
               <span className="sr-only">{heroChocolateTitles[lang]}</span>
               <img
-                src={lang === "lv" ? chocolatePrintingTitle : chocolatePrintingTitleEn}
+                src={lang === "lv" ? chocolatePrintingTitle.url : chocolatePrintingTitleEn.url}
                 alt=""
                 aria-hidden="true"
                 width={1884}
@@ -184,30 +204,32 @@ const HeroSection = ({
                 fetchPriority="high"
                 className="mx-auto h-auto w-full max-w-[620px] object-contain"
               />
-            </p>
+            </h1>
           ) : (
-            <p
+            <h1
               className="hero-chocolate-title"
               lang={lang}
               dir={heroChocolateRtlLanguages.includes(lang) ? "rtl" : "ltr"}
             >
               <span className="hero-chocolate-title-depth" aria-hidden="true">{heroChocolateTitles[lang]}</span>
               <span className="hero-chocolate-title-face">{heroChocolateTitles[lang]}</span>
-            </p>
+            </h1>
           )}
         </div>
 
         {/* Kreisais logo */}
         <div className="absolute top-[55%] -translate-y-1/2 left-3 sm:left-6 z-10">
           <div className="w-[180px] h-[180px] sm:w-[260px] sm:h-[260px] lg:w-[320px] lg:h-[320px] flex items-center justify-center">
-            <img src={logo} alt={logoAlt} className="w-full h-full object-contain" />
+            <img src={logo.url} width={640} height={640} alt={logoAlt} className="w-full h-full object-contain" />
           </div>
         </div>
 
         {/* Labais logo */}
         <div className="absolute top-1/2 -translate-y-1/2 right-4 sm:right-10 z-10">
           <img
-            src={chocoTimeLogo}
+            src={chocoTimeLogo.url}
+            width={340}
+            height={340}
             alt="It's Choco Time"
             className="w-[100px] sm:w-[170px] h-auto object-contain"
           />
@@ -231,11 +253,11 @@ const HeroSection = ({
       {/* Teksts un CTA pogas zem video */}
       <div className="relative bg-foreground pt-12 pb-16 sm:pt-16 sm:pb-20 text-center">
         <div className="container mx-auto px-4">
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl text-white mb-5 leading-[1.1] tracking-tight font-normal">
+          <h2 className="text-3xl sm:text-5xl lg:text-6xl text-background mb-5 leading-[1.1] font-normal">
             {title1}
             <br />
             <span className="text-primary">{title2}</span>
-          </h1>
+          </h2>
 
           <p className="text-lg sm:text-xl text-white/60 mb-4 max-w-xl mx-auto leading-relaxed tracking-wide font-normal">
             {subtitle}
@@ -248,16 +270,16 @@ const HeroSection = ({
           )}
 
           <div className="flex flex-wrap justify-center gap-4">
-            <button
+            <Button
               onClick={onCtaClick}
-              className="inline-flex items-center justify-center rounded-lg bg-primary text-primary-foreground px-10 py-4 font-medium tracking-wider text-base uppercase transition-all duration-300 active:scale-[0.97] hover:brightness-110"
+              className="h-auto whitespace-normal px-10 py-4 text-base uppercase active:scale-[0.97]"
               style={{
                 boxShadow: "0 0 0 1px rgba(196,163,90,0.3), 0 4px 20px -4px rgba(196,163,90,0.4), 0 8px 32px -8px rgba(0,0,0,0.3)",
                 letterSpacing: "0.12em",
               }}
             >
               {ctaButton}
-            </button>
+            </Button>
             <Link
               to="/kuku-sokolades-veikals"
               className="group inline-flex items-center gap-2 justify-center rounded-lg bg-primary/10 border border-primary text-primary px-10 py-4 font-medium tracking-wider text-base uppercase transition-all duration-300 active:scale-[0.97] hover:bg-primary hover:text-primary-foreground"
@@ -266,13 +288,14 @@ const HeroSection = ({
               <ShoppingBag size={18} />
               {orderNowLabels[lang]}
             </Link>
-            <button
+            <Button
               onClick={onCtaClick}
-              className="inline-flex items-center justify-center rounded-lg border border-primary text-primary px-10 py-4 font-medium tracking-wider text-base uppercase transition-all duration-300 active:scale-[0.97] hover:bg-primary hover:text-primary-foreground"
+              variant="outline"
+              className="h-auto whitespace-normal border-primary bg-transparent text-primary px-10 py-4 text-base uppercase hover:bg-primary hover:text-primary-foreground"
               style={{ letterSpacing: "0.12em" }}
             >
               {formButton}
-            </button>
+            </Button>
             <a
               href={shopUrls[lang]}
               target="_blank"

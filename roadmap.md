@@ -1,3 +1,8 @@
+# Homepage speed and contact review
+- [x] Verified an existing H1 and five direct contact links; contacts and heading were below the first screen. The quoted live PageSpeed result has not been reproduced.
+- [x] Reduced hero artwork from roughly 3.2 MB to 227 KB, added a 47 KB video poster, delayed video start, served Satoshi locally and deferred heavy below-fold galleries. Initial preview media elements dropped from 133 to 43.
+- [x] Made chocolate lettering the single H1, added top phone/email/form controls and a useful loading screen; checked mobile/desktop layout, contact targets and form opening with no runtime errors. New published PageSpeed measurement still requires publishing.
+
 # TalTap 15-piece gingerbread bag
 - [x] Matched ribbon to TalTap blue and shortened localized product names by removing ribbon/sticker exclusions; verified the updated image and heading in the browser and passed five existing tests.
 - [x] Copied the linked product into Christmas gingerbread with TalTap logos on chocolate decorations, plain ribbon and no bag sticker; retained EUR 18.15 source price, added photo/catalog links, passed five tests and verified the loaded photo, title and price on the product page.
